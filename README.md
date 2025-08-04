@@ -51,7 +51,7 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 1. **Clone and setup the project**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
    cd mcp-proto-okn
    uv sync
    ```
