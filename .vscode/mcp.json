@@ -1,0 +1,43 @@
+{
+    "servers": {
+         "mcp-biobricks-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/biobricks-ice/sparql"]
+        },
+        "mcp-biohealth-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/biohealth/sparql"]
+        },"mcp-climate-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/climatepub4kg/sparql"]
+        },
+        "mcp-dreamkg-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/dreamkg/sparql"]
+        },
+        "mcp-fiokg-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/fiokg/sparql"]
+        },
+        "mcp-geoconnex-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/geoconnex/sparql"]
+        },
+        "mcp-hydrologykg-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/hydrologykg/sparql"]
+        },
+        "mcp-sawgraph-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/sawgraph/sparql"]
+        },
+        "mcp-semopenalex-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/semopenalex/sparql"]
+        },
+        "mcp-spoke-sparql": {
+            "command": "uvx",
+            "args": ["mcp-server-sparql", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
+        },
+    }
+}
