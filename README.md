@@ -27,7 +27,6 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 2. **Install GitHub Copilot extension** (required for MCP integration)
    
    - Open VS Code Insiders
-   - Install the GitHub Copilot extension from the marketplace
    - Sign in with your GitHub account that has Copilot access
    - **Note**: You need an active GitHub Copilot subscription to use MCP features
    
@@ -58,7 +57,7 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 
 2. **Configure the MCP servers**
 
-   This project includes a pre-configured `.vscode/mcp.json` file with multiple Proto-OKN knowledge graph endpoints. You need to update the commands to use the new `mcp-server-protookn`:
+   This project includes a pre-configured `.vscode/mcp.json` file with multiple Proto-OKN knowledge graph endpoints. You can add third party endpoints with a custom description as shown for Wikidata in the example. You need to update the commands to use the new `mcp-server-protookn`:
 
    Edit `.vscode/mcp.json` and update the server configurations:
 
@@ -69,10 +68,10 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
          "command": "uv",
          "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
        },
-       "mcp-dreamkg-sparql": {
-         "command": "uv",
-         "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/dreamkg/sparql"]
-       }
+      "mcp-wikidata-sparql": {
+            "command": "uv",
+            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql", "--description", "Wikidata SPARQL endpoint"]
+      }
      }
    }
    ```
@@ -83,6 +82,8 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 
    - Open VS Code Insiders
    - Open a new chat window
+   - Select `Agent` mode
+   - For best results, select the `Claude Sonnet 4` model
    - The MCP servers should automatically connect and provide access to the knowledge graphs
 
 ### Quick Start: Query a Knowledge Graph
@@ -108,14 +109,6 @@ Once everything is set up, you can start querying knowledge graphs through the V
 
 The chat interface will use the MCP server to execute SPARQL queries against the configured endpoints and return structured results.
 
-### Alternative Installation Methods
-
-#### Using uvx (standalone execution)
-
-```bash
-uvx mcp-server-protookn --endpoint https://frink.apps.renci.org/spoke/sparql
-```
-
 ## Usage
 
 ### Command Line Parameters
@@ -127,16 +120,6 @@ The MCP server accepts the following command line arguments:
 
 **Optional:**
 - `--description`: Custom description for the SPARQL endpoint (automatically generated for FRINK endpoints)
-
-### Command Line
-
-```bash
-# FRINK endpoint (automatic documentation linking)
-uvx mcp-server-protookn --endpoint https://frink.apps.renci.org/spoke/sparql
-
-# Custom endpoint with description
-uvx mcp-server-protookn --endpoint https://example.com/sparql --description "Custom SPARQL endpoint"
-```
 
 ## Tool: `query`
 

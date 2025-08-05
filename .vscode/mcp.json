@@ -39,6 +39,10 @@
         "mcp-spoke-sparql": {
             "command": "uv",
             "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
+        },
+        "mcp-wikidata-sparql": {
+            "command": "uv",
+            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql","--description", "Wikidata SPARQL endpoint"]
         }
     }
 }

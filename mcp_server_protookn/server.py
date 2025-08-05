@@ -22,14 +22,6 @@ Classes:
 Functions:
     parse_args: Parse command line arguments for endpoint URL and optional description
     main: Main entry point that sets up and runs the MCP server
-    
-Usage:
-    python server.py --endpoint https://frink.apps.renci.org/spoke/sparql
-    python server.py --endpoint https://otherendpoint/sparql --description "Custom SPARQL endpoint"
-    
-    Or via uvx:
-    uvx mcp-server-protookn --endpoint https://frink.apps.renci.org/spoke/sparql
-    uvx mcp-server-protookn --endpoint https://otherendpoint/sparql --description "Custom description"
 
 Example MCP Configuration:
     {
@@ -68,20 +60,12 @@ from mcp.server.fastmcp import FastMCP
 class SPARQLServer:
     def __init__(self, endpoint_url: str, description: Optional[str] = None):
         self.endpoint_url = endpoint_url
-        # Automatically detect FRINK endpoints and set description
-        if endpoint_url.startswith("https://frink.apps.renci.org/"):
-            # Extract the KG name from the URL
-            path_parts = urlparse(endpoint_url).path.strip('/').split('/')
-            kg_name = path_parts[-2]
-            self.description = f"https://frink.renci.org/registry/kgs/{kg_name}"
-            print(self.description)
-        else:
-            self.description = description or "SPARQL Query Server"
+        self.description = description or "SPARQL Query Server"
         self.sparql = SPARQLWrapper(endpoint_url, self.description)
         self.sparql.setReturnFormat(JSON)
     
     def query(self, query_string: str) -> Dict[str, Any]:
-        f"""Execute a SPARQL query and return the results or for questions about the underlying KG see {self.description}"""
+        f"""Execute a SPARQL query or general qauery about the KG. {self.description}"""
         try:
             self.sparql.setQuery(query_string)
             results = self.sparql.query().convert()
@@ -109,18 +93,36 @@ def parse_args():
 
 def main():
     args = parse_args()
-    
+    kg_name = ""
+
+    # Customize the description based on the Proto-OKN endpoint
+    if args.endpoint.startswith("https://frink.apps.renci.org/"):
+        path_parts = urlparse(args.endpoint).path.strip('/').split('/')
+        kg_name = path_parts[-2] if len(path_parts) >= 2 else "unknown"
+        # Fix naming inconsistency
+        if kg_name == "climatepub4kg":
+            kg_name = "climatemodelskg"
+        registry_url = f"https://frink.renci.org/registry/kgs/{kg_name}"
+        description = f"""
+        If the query is about the scientific data within {kg_name}, use SPARQL. 
+        If the query is about SPOKE as a project (funding, contacts, awards, description), 
+        fetch information from the registry at https://frink.renci.org/registry/kgs/{kg_name} instead.
+        """
+    else:
+        description = args.description
+
     # Initialize the SPARQL server with the endpoint URL
-    sparql_server = SPARQLServer(endpoint_url=args.endpoint, description=None)
-    
+    sparql_server = SPARQLServer(endpoint_url=args.endpoint, description=description)
+
     # Create the MCP server
     mcp = FastMCP("SPARQL Query Server")
     
     query_doc = f"""
-Execute a SPARQL query against the endpoint {sparql_server.endpoint_url}.
+Execute a SPARQL query against the {kg_name} knowledge graph endpoint: {sparql_server.endpoint_url}. 
+{description}
         
 Args:
-    query_string: A valid SPARQL query string
+    query_string: A valid SPARQL query string or a question about the knowledge graph
     
 Returns:
     The query results in JSON format
