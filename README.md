@@ -69,8 +69,8 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
          "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
        },
       "mcp-wikidata-sparql": {
-            "command": "uv",
-            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql", "--description", "Access to Wikidata's knowledge graph"]
+         "command": "uv",
+         "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql", "--description", "Access to Wikidata's knowledge graph"]
       }
      }
    }
@@ -81,9 +81,10 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 3. **Start using the MCP server**
 
    - Open VS Code Insiders
+   - File -> Open Folder: mcp-proto-okn
    - Open a new chat window
    - Select `Agent` mode
-   - For best results, select the `Claude Sonnet 4` model
+   - Select the `Claude Sonnet 4` model (all other models including GPT-5 perform poorly)
    - The MCP servers should automatically connect and provide access to the knowledge graphs
 
 ### Quick Start: Query a Knowledge Graph
