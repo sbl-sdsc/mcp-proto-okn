@@ -177,7 +177,7 @@ Returns:
         return sparql_server.execute(query_string)
 
     description_doc = """
-Returns a description and other metadata about the endpoint, including the PI, funding information, and more.
+Get a description and other metadata about the endpoint, including the PI, funding information, and more.
 
 Returns:
     A string containing either:

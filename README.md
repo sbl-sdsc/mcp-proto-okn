@@ -122,7 +122,9 @@ The MCP server accepts the following command line arguments:
 **Optional:**
 - `--description`: Custom description for the SPARQL endpoint (automatically generated for FRINK endpoints)
 
-## Tool: `query`
+## Tools
+
+### `query`
 
 Execute a SPARQL query against the configured endpoint.
 
@@ -134,6 +136,19 @@ Execute a SPARQL query against the configured endpoint.
 **Returns:**
 
 - The query results in JSON format
+
+### `get_description`
+
+Get a description and other metadata about the endpoint, including the PI, funding information, and more.
+
+
+**Parameters:**
+
+None
+
+**Returns:**
+
+- A description of the SPARQL endpoint extracted from the ProtOKN registry or a custom description provided in mcp.json configuration file.
 
 
 ## Links
