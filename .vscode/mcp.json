@@ -42,7 +42,7 @@
         },
         "mcp-wikidata-sparql": {
             "command": "uv",
-            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql","--description", "Wikidata SPARQL endpoint"]
+            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql","--description", "Access to Wikidata's knowledge graph"]
         }
     }
 }

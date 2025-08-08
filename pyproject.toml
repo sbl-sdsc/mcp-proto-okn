@@ -12,7 +12,7 @@ authors = [
 ]
 dependencies = [
     "mcp>=1.6.0",
-    "SPARQLWrapper>=2.0.0"
+    "sparqlwrapper>=2.0.0",
 ]
 classifiers = [
     "Development Status :: 4 - Beta",

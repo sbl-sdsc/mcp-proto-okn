@@ -70,7 +70,7 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
        },
       "mcp-wikidata-sparql": {
             "command": "uv",
-            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql", "--description", "Wikidata SPARQL endpoint"]
+            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql", "--description", "Access to Wikidata's knowledge graph"]
       }
      }
    }
@@ -92,9 +92,9 @@ Once everything is set up, you can start querying knowledge graphs through the V
 
 **Example prompts to try:**
 
-1. **Explore the SPOKE knowledge graph structure:**
+1. **Get a description of a knowledge graph:**
    ```
-   What types of entities are available in the SPOKE knowledge graph?
+   Provide a concise overview of the SPOKE knowledge graph, including its main purpose, data sources, and key features.
    ```
 2. **Query that combines multiple entity types:**
    ```
