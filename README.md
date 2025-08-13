@@ -131,7 +131,6 @@ Execute a SPARQL query against the configured endpoint.
 **Parameters:**
 
 - `query_string`: A valid SPARQL query string
-- `description`: Custom description for the SPARQL endpoint (automatically generated for FRINK endpoints)
 
 **Returns:**
 
@@ -169,7 +168,6 @@ CA Nelson, PW Rose, K Soman, LM Sanders, SG Gebre, SV Costes, SE Baranzini, Nasa
 
 L Sanders, S Costes, K Soman, P Rose, C Nelson, A Sawyer, S Gebre, S Baranzini, Biomedical Knowledge Graph Capability for Space Biology Knowledge Gain, 45th COSPAR Scientific Assembly. Held 13-21 July, 2024, https://ui.adsabs.harvard.edu/abs/2024cosp...45.2183S/abstract
 
-------
 
 ## Funding
 NSF Award number [2333819](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333819), Proto-OKN Theme 1: Connecting Biomedical information on Earth and in Space via the SPOKE knowledge graph.
