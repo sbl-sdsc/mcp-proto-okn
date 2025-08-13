@@ -158,3 +158,18 @@ None
 - [Knowledge Graph Registry](https://frink.renci.org/registry/)
 - [MCP Protocol](https://modelcontextprotocol.io/)
 - [Original MCP Server SPARQL](https://github.com/ekzhu/mcp-server-sparql/)
+
+
+## Citation
+PW Rose, CA Nelson, Y Shi, SE Baranzini, MCP Server Proto-OKN. Available online: https://github.com/sbl-sdsc/mcp-proto-okn (2025)
+
+PW Rose, CA Nelson, SG Gebre, K Soman, KA Grigorev, LM Sanders, SV Costes, SE Baranzini, NASA SPOKE-GeneLab Knowledge Graph. Available online: https://github.com/BaranziniLab/spoke_genelab (2025)
+
+CA Nelson, PW Rose, K Soman, LM Sanders, SG Gebre, SV Costes, SE Baranzini, Nasa Genelab-Knowledge Graph Fabric Enables Deep Biomedical Analysis of Multi-Omics Datasets, https://ntrs.nasa.gov/citations/20250000723 (2025)
+
+L Sanders, S Costes, K Soman, P Rose, C Nelson, A Sawyer, S Gebre, S Baranzini, Biomedical Knowledge Graph Capability for Space Biology Knowledge Gain, 45th COSPAR Scientific Assembly. Held 13-21 July, 2024, https://ui.adsabs.harvard.edu/abs/2024cosp...45.2183S/abstract
+
+------
+
+## Funding
+NSF Award number [2333819](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333819), Proto-OKN Theme 1: Connecting Biomedical information on Earth and in Space via the SPOKE knowledge graph.
