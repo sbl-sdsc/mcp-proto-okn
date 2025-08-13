@@ -1,6 +1,6 @@
 # MCP Server Proto-OKN
 
-A Model Context Protocol (MCP) server that provides tools for querying SPARQL endpoints, with specialized support for Proto-OKN (Prototype Open Knowledge Network) knowledge graphs hosted on the FRINK platform.
+A Model Context Protocol (MCP) server that provides tools for querying SPARQL endpoints, with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network) knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform.
 
 ## Features
 
@@ -57,9 +57,9 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 
 2. **Configure the MCP servers**
 
-   This project includes a pre-configured `.vscode/mcp.json` file with multiple Proto-OKN knowledge graph endpoints. You can add third party endpoints with a custom description as shown for Wikidata in the example. You need to update the commands to use the new `mcp-server-protookn`:
+   This project includes a pre-configured `.vscode/mcp.json` file with multiple Proto-OKN knowledge graph endpoints. You can add third party endpoints with a custom description as shown for Wikidata in the example.
 
-   Edit `.vscode/mcp.json` and update the server configurations:
+   Edit `.vscode/mcp.json` to update the server configurations. Here is a snippet of the mcp.json file:
 
    ```json
    {
@@ -76,7 +76,7 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
    }
    ```
 
-   The existing file contains configurations for all major Proto-OKN knowledge graphs. You can enable/disable specific servers by adding or removing them from the configuration.
+   The existing file contains configurations for a subset of Proto-OKN knowledge graphs. You can enable/disable specific servers by adding or removing them from the configuration.
 
 3. **Start using the MCP server**
 
