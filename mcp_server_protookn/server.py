@@ -77,9 +77,6 @@ class SPARQLServer:
             return None
         path_parts = urlparse(self.endpoint_url).path.strip('/').split('/')
         kg_name = path_parts[-2] if len(path_parts) >= 2 else "unknown"
-        # fix name inconsistency
-        if kg_name == "climatepub4kg":
-            kg_name = "climatemodelskg"
         registry_url = f"https://frink.renci.org/registry/kgs/{kg_name}"
         self.registry_url = registry_url  # Store it for later use
         return kg_name, registry_url

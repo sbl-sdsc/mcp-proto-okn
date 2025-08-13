@@ -8,9 +8,9 @@
             "command": "uv",
             "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/biohealth/sparql"]
         },
-        "mcp-climate-sparql": {
+        "mcp-climatemodelskg-sparql": {
             "command": "uv",
-            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/climatepub4kg/sparql"]
+            "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/climatemodelskg/sparql"]
         },
         "mcp-dreamkg-sparql": {
             "command": "uv",
