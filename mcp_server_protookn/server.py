@@ -70,19 +70,19 @@ class SPARQLServer:
         self.sparql = SPARQLWrapper(endpoint_url)
         self.sparql.setReturnFormat(JSON)
 
-    # ---------------------- Internal helpers ---------------------- #
+    # ---------------------- Internal helpers ---------------------- #   
     def _get_registry_url(self) -> Optional[Tuple[str, str]]:
-        """Get the FRINK registry URL for the SPARQL endpoint."""
+        """Get the FRINK registry URL for the SPARQL endpoint in markdown format."""
         if not self.endpoint_url.startswith("https://frink.apps.renci.org/"):
             return None
         path_parts = urlparse(self.endpoint_url).path.strip('/').split('/')
         kg_name = path_parts[-2] if len(path_parts) >= 2 else "unknown"
-        registry_url = f"https://frink.renci.org/registry/kgs/{kg_name}"
-        self.registry_url = registry_url  # Store it for later use
+        registry_url = f"https://raw.githubusercontent.com/frink-okn/okn-registry/refs/heads/main/docs/registry/kgs/{kg_name}.md"
+        self.registry_url = registry_url
         return kg_name, registry_url
-
+    
     def _fetch_registry_content(self) -> Optional[str]:
-        """Fetch registry page content (cleaned) or None on failure."""
+        """Fetch registry page content in markdown format or None on failure."""
         try:
             result = self._get_registry_url()
             if not result:
@@ -92,21 +92,9 @@ class SPARQLServer:
             self.kg_name = kg_name
  
             with urlopen(registry_url, timeout=5) as resp:
-                content_type = resp.headers.get("Content-Type", "").lower()
                 raw = resp.read()
                 text = raw.decode("utf-8", errors="replace")
-                if "html" in content_type:
-                    # Extract meaningful content from HTML
-                    import re
-                    # Remove script and style tags completely
-                    text = re.sub(r'<script[^>]*>.*?</script>', '', text, flags=re.DOTALL | re.IGNORECASE)
-                    text = re.sub(r'<style[^>]*>.*?</style>', '', text, flags=re.DOTALL | re.IGNORECASE)
-                    # Remove HTML tags but keep content
-                    text = re.sub(r'<[^>]+>', ' ', text)
-                    # Clean up whitespace
-                    text = re.sub(r'\s+', ' ', text)
-                    # Remove common HTML entities
-                    text = text.replace('&nbsp;', ' ').replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
+                print(text)
                 return text.strip()
         except Exception:
             return None
