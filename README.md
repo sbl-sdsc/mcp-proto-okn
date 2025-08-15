@@ -14,6 +14,10 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
 - **Flexible Configuration**: Support for both FRINK and custom SPARQL endpoints
 - **Automatic Documentation**: Registry links for supported knowledge graphs
 
+## Overview
+
+![MCP Architecture](mcp_architecture.png)
+
 ## Installation
 
 ### Prerequisites
