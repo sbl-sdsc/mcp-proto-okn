@@ -1,5 +1,5 @@
 {
-    "servers": {
+    "mcpServers": {
         "mcp-biobricks-sparql": {
             "command": "uv",
             "args": ["tool", "run", "mcp-server-protookn", "--endpoint", "https://frink.apps.renci.org/biobricks-ice/sparql"]

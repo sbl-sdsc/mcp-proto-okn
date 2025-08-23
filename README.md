@@ -1,43 +1,63 @@
 # MCP Server Proto-OKN
 
-A Model Context Protocol (MCP) server that provides tools for querying SPARQL endpoints, with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network) knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform.
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Model Context Protocol](https://img.shields.io/badge/MCP-Compatible-green.svg)](https://modelcontextprotocol.io/)
+
+A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoints with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network). This server enables intelligent querying of biomedical and scientific knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform.
+
+## Table of Contents
+
+- [Features](#features)
+- [Architecture](#architecture)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  - [Claude Desktop Setup](#claude-desktop-setup)
+  - [VS Code Setup](#vs-code-setup)
+- [Configuration](#configuration)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
+- [Citation](#citation)
+- [Acknowledgments](#acknowledgments)
 
 ## Features
 
-- **FRINK Integration**: Automatic detection and documentation linking for FRINK-hosted knowledge graphs
-- **Proto-OKN Support**: Optimized for querying knowledge graphs in the Proto-OKN ecosystem including:
-  - SPOKE (Scalable Precision Medicine Open Knowledge Engine)
-  - BioBricks ICE (Chemical safety and cheminformatics)
-  - DREAM-KG (Addressing homelessness with explainable AI)
-  - SAWGraph (Safe Agricultural Products and Water monitoring)
-  - And many other Proto-OKN knowledge graphs
-- **Flexible Configuration**: Support for both FRINK and custom SPARQL endpoints
-- **Automatic Documentation**: Registry links for supported knowledge graphs
+- **🔗 FRINK Integration**: Automatic detection and documentation linking for FRINK-hosted knowledge graphs
+- **🧬 Proto-OKN Ecosystem**: Optimized support for biomedical and scientific knowledge graphs including:
+  - **SPOKE** - Scalable Precision Medicine Open Knowledge Engine
+  - **BioBricks ICE** - Chemical safety and cheminformatics data
+  - **DREAM-KG** - Addressing homelessness with explainable AI
+  - **SAWGraph** - Safe Agricultural Products and Water monitoring
+  - **Additional Proto-OKN knowledge graphs** - Expanding ecosystem of scientific data
+- **⚙️ Flexible Configuration**: Support for both FRINK and custom SPARQL endpoints
+- **📚 Automatic Documentation**: Registry links and metadata for supported knowledge graphs
 
-## Overview
+## Architecture
 
 ![MCP Architecture](mcp_architecture.png)
 
+The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) and SPARQL knowledge graphs, enabling natural language queries to be converted into structured SPARQL queries and executed against scientific databases.
+
+## Prerequisites
+
+Before installing the MCP Server Proto-OKN, ensure you have:
+
+- **Operating System**: macOS, Linux, or Windows
+- **Client Application**: One of the following:
+  - Claude Desktop with Pro or Max subscription
+  - VS Code Insiders with GitHub Copilot subscription
+
 ## Installation
 
-### Prerequisites
+### Initial Setup
 
-1. **Install VS Code Insiders** (required for MCP support)
-   
-   Download and install VS Code Insiders from [https://code.visualstudio.com/insiders/](https://code.visualstudio.com/insiders/)
-   
-   VS Code Insiders is needed because it includes the latest MCP (Model Context Protocol) features.
+1. **Install uv Package Manager**
 
-2. **Install GitHub Copilot extension** (required for MCP integration)
-   
-   - Open VS Code Insiders
-   - Sign in with your GitHub account that has Copilot access
-   - **Note**: You need an active GitHub Copilot subscription to use MCP features
-   
-   MCP servers integrate with VS Code through the Copilot Chat interface.
+   The `uv` package manager is required for Python dependency management:
 
-3. **Install uv** (Python package manager)
-   
    ```bash
    # macOS/Linux
    curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -45,13 +65,25 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
    # Windows
    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    
-   # Or via pip
+   # Alternative: via pip
    pip install uv
    ```
 
-### Setup Instructions
+   > **Note**: Python installation is not required. `uv` will automatically install Python and all dependencies.
 
-1. **Clone and setup the project**
+2. **Verify Installation Path**
+
+   ```bash
+   which uv
+   ```
+
+   If `uv` is not installed in `/usr/local/bin`, create a symbolic link for Claude Desktop compatibility:
+
+   ```bash
+   sudo ln -s $(which uv) /usr/local/bin/uv
+   ```
+
+3. **Clone and Setup Project**
 
    ```bash
    git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
@@ -59,119 +91,238 @@ A Model Context Protocol (MCP) server that provides tools for querying SPARQL en
    uv sync
    ```
 
-2. **Configure the MCP servers**
+### Claude Desktop Setup
 
-   This project includes a pre-configured `.vscode/mcp.json` file with multiple Proto-OKN knowledge graph endpoints. You can add third party endpoints with a custom description as shown for Wikidata in the example.
+**Recommended for most users**
 
-   Edit `.vscode/mcp.json` to update the server configurations. Here is a snippet of the mcp.json file:
+1. **Download and Install Claude Desktop**
 
-   ```json
-   {
-     "servers": {
-       "mcp-spoke-sparql": {
-         "command": "uv",
-         "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
-       },
-      "mcp-wikidata-sparql": {
-         "command": "uv",
-         "args": ["run", "python", "-m", "mcp_server_protookn.server", "--endpoint", "https://query.wikidata.org/sparql", "--description", "Access to Wikidata's knowledge graph"]
-      }
-     }
-   }
+   Visit [https://claude.ai/download](https://claude.ai/download) and install Claude Desktop for your operating system.
+
+   > **Requirements**: Claude Pro or Max subscription is required for MCP server functionality.
+
+2. **Configure MCP Server** (macOS)
+
+   ```bash
+   cp claude_desktop_config.json "$HOME/Library/Application Support/Claude/"
    ```
 
-   The existing file contains configurations for a subset of Proto-OKN knowledge graphs. You can enable/disable specific servers by adding or removing them from the configuration.
+   For other operating systems, refer to the [Claude documentation](https://claude.ai/docs) for the correct configuration file location.
 
-3. **Start using the MCP server**
+   > **Note**: If you have existing MCP server configurations, merge the contents instead of overwriting.
+
+3. **Verify Installation**
+
+   1. Launch Claude Desktop
+   2. Click **"Connect your tools to Claude"** at the bottom of the interface
+   3. Click **"Manage connectors"**
+   4. Verify that `mcp-proto-okn` tools appear in the connector list
+
+### VS Code Setup
+
+**For advanced users and developers**
+
+1. **Install VS Code Insiders**
+
+   Download and install VS Code Insiders from [https://code.visualstudio.com/insiders/](https://code.visualstudio.com/insiders/)
+
+   > **Note**: VS Code Insiders is required as it includes the latest MCP (Model Context Protocol) features.
+
+2. **Install GitHub Copilot Extension**
 
    - Open VS Code Insiders
-   - File -> Open Folder: mcp-proto-okn
-   - Open a new chat window
-   - Select `Agent` mode
-   - Select the `Claude Sonnet 4` model (all other models including GPT-5 perform poorly)
-   - The MCP servers should automatically connect and provide access to the knowledge graphs
+   - Sign in with your GitHub account
+   - Install the GitHub Copilot extension
 
-### Quick Start: Query a Knowledge Graph
+   > **Requirements**: GitHub Copilot subscription is required for MCP integration.
 
-Once everything is set up, you can start querying knowledge graphs through the VS Code chat interface:
+3. **Configure Workspace**
 
-**Example prompts to try:**
+   1. Open VS Code Insiders
+   2. File → Open Folder → Select `mcp-proto-okn` directory
+   3. Open a new chat window
+   4. Select **Agent** mode
+   5. Choose **Claude Sonnet 4** model for optimal performance
+   6. The MCP servers will automatically connect and provide knowledge graph access
 
-1. **Get a description of a knowledge graph:**
+## Configuration
+
+The server comes pre-configured with 10 Proto-OKN SPARQL endpoints. You can customize the configuration by editing the appropriate files:
+
+- **Claude Desktop**: `claude_desktop_config.json`
+- **VS Code**: `.vscode/mcp.json`
+
+### Adding Custom Endpoints
+
+To add additional Proto-OKN endpoints or third-party SPARQL endpoints, modify the configuration file:
+
+```json
+{
+  "mcpServers": {
+    "mcp-spoke-sparql": {
+      "command": "uv",
+      "args": [
+        "tool", "run", "mcp-server-protookn", 
+        "--endpoint", "https://frink.apps.renci.org/spoke/sparql"
+      ]
+    },
+    "mcp-uniprot-sparql": {
+      "command": "uv",
+      "args": [
+        "tool", "run", "mcp-server-protookn",
+        "--endpoint", "https://sparql.uniprot.org/sparql",
+        "--description", "Resource for protein sequence and function information. For details: https://purl.uniprot.org/html/index-en.htm"
+      ]
+    }
+  }
+}
+```
+
+> **Note**: For VS Code configuration (`.vscode/mcp.json`), replace `mcpServers` with `servers`.
+
+## Quick Start
+
+Once configured, you can immediately start querying knowledge graphs through natural language prompts in Claude Desktop or VS Code chat interface.
+
+### Example Queries
+
+1. **Knowledge Graph Overview**
    ```
    Provide a concise overview of the SPOKE knowledge graph, including its main purpose, data sources, and key features.
    ```
-2. **Query that combines multiple entity types:**
+
+2. **Multi-Entity Analysis**
    ```
    Antibiotic contamination can contribute to antimicrobial resistance. Find locations with antibiotic contamination.
    ```
 
-3. **Query across multiple KGs:**
+3. **Cross-Knowledge Graph Comparison**
    ```
    What type of data is available for perfluorooctanoic acid in SPOKE, BioBricks, and SAWGraph?
    ```
 
-
-The chat interface will use the MCP server to execute SPARQL queries against the configured endpoints and return structured results.
+The AI assistant will automatically convert your natural language queries into appropriate SPARQL queries, execute them against the configured endpoints, and return structured, interpretable results.
 
 ## Usage
 
-### Command Line Parameters
+### Command Line Interface
 
-The MCP server accepts the following command line arguments:
+The MCP server can be invoked directly with the following parameters:
 
-**Required:**
-- `--endpoint`: SPARQL endpoint URL (e.g., `https://frink.apps.renci.org/spoke/sparql`)
+**Required Parameters:**
+- `--endpoint` : SPARQL endpoint URL (e.g., `https://frink.apps.renci.org/spoke/sparql`)
 
-**Optional:**
-- `--description`: Custom description for the SPARQL endpoint (automatically generated for FRINK endpoints)
+**Optional Parameters:**
+- `--description` : Custom description for the SPARQL endpoint (auto-generated for FRINK endpoints)
 
-## Tools
+### Example Usage
 
-### `query`
+```bash
+uv tool run mcp-server-protookn --endpoint https://frink.apps.renci.org/spoke/sparql
+```
 
-Execute a SPARQL query against the configured endpoint.
+## API Reference
 
-**Parameters:**
+### Available Tools
 
-- `query_string`: A valid SPARQL query string
+#### `query`
 
-**Returns:**
-
-- The query results in JSON format
-
-### `get_description`
-
-Get a description and other metadata about the endpoint, including the PI, funding information, and more.
-
+Executes SPARQL queries against the configured endpoint.
 
 **Parameters:**
-
-None
+- `query_string` (string, required): A valid SPARQL query
 
 **Returns:**
+- JSON object containing query results
 
-- A description of the SPARQL endpoint extracted from the ProtOKN registry or a custom description provided in mcp.json configuration file.
+**Example:**
+```sparql
+SELECT ?subject ?predicate ?object 
+WHERE { ?subject ?predicate ?object } 
+LIMIT 10
+```
 
+#### `get_description`
 
-## Links
+Retrieves endpoint metadata and documentation.
 
-- [Proto-OKN Project](https://www.proto-okn.net/)
-- [FRINK Platform](https://frink.renci.org/)
-- [Knowledge Graph Registry](https://frink.renci.org/registry/)
-- [MCP Protocol](https://modelcontextprotocol.io/)
-- [Original MCP Server SPARQL](https://github.com/ekzhu/mcp-server-sparql/)
+**Parameters:**
+- None
+
+**Returns:**
+- String containing endpoint description, PI information, funding details, and related documentation links
+
+## Contributing
+
+We welcome contributions to the MCP Server Proto-OKN project! Please follow these guidelines:
+
+1. **Fork the Repository**: Create a personal fork of the project
+2. **Create Feature Branch**: `git checkout -b feature/your-feature-name`
+3. **Make Changes**: Implement your feature or bug fix
+4. **Add Tests**: Ensure your changes are covered by tests
+5. **Submit Pull Request**: Open a PR with a clear description of your changes
+
+### Development Setup
+
+```bash
+git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
+cd mcp-proto-okn
+uv sync --dev
+```
+
+### Code Style
+
+- Follow PEP 8 guidelines
+- Use type hints where appropriate
+- Add docstrings for all public functions
+- Tests the MCP servers before submitting
+
+## License
+
+This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
 
 
 ## Citation
-PW Rose, CA Nelson, Y Shi, SE Baranzini, MCP Server Proto-OKN. Available online: https://github.com/sbl-sdsc/mcp-proto-okn (2025)
 
-PW Rose, CA Nelson, SG Gebre, K Soman, KA Grigorev, LM Sanders, SV Costes, SE Baranzini, NASA SPOKE-GeneLab Knowledge Graph. Available online: https://github.com/BaranziniLab/spoke_genelab (2025)
+If you use MCP Server Proto-OKN in your research, please cite the following works:
 
-CA Nelson, PW Rose, K Soman, LM Sanders, SG Gebre, SV Costes, SE Baranzini, Nasa Genelab-Knowledge Graph Fabric Enables Deep Biomedical Analysis of Multi-Omics Datasets, https://ntrs.nasa.gov/citations/20250000723 (2025)
+```bibtex
+@software{rose2025mcp,
+  title={MCP Server Proto-OKN},
+  author={Rose, P.W. and Nelson, C.A. and Shi, Y. and Baranzini, S.E.},
+  year={2025},
+  url={https://github.com/sbl-sdsc/mcp-proto-okn}
+}
 
-L Sanders, S Costes, K Soman, P Rose, C Nelson, A Sawyer, S Gebre, S Baranzini, Biomedical Knowledge Graph Capability for Space Biology Knowledge Gain, 45th COSPAR Scientific Assembly. Held 13-21 July, 2024, https://ui.adsabs.harvard.edu/abs/2024cosp...45.2183S/abstract
+@software{rose2025spoke,
+  title={NASA SPOKE-GeneLab Knowledge Graph},
+  author={Rose, P.W. and Nelson, C.A. and Gebre, S.G. and Soman, K. and Grigorev, K.A. and Sanders, L.M. and Costes, S.V. and Baranzini, S.E.},
+  year={2025},
+  url={https://github.com/BaranziniLab/spoke_genelab}
+}
+```
 
+### Related Publications
 
-## Funding
-NSF Award number [2333819](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333819), Proto-OKN Theme 1: Connecting Biomedical information on Earth and in Space via the SPOKE knowledge graph.
+- Nelson, C.A., Rose, P.W., Soman, K., Sanders, L.M., Gebre, S.G., Costes, S.V., Baranzini, S.E. (2025). "Nasa Genelab-Knowledge Graph Fabric Enables Deep Biomedical Analysis of Multi-Omics Datasets." *NASA Technical Reports*, 20250000723. [Link](https://ntrs.nasa.gov/citations/20250000723)
+
+- Sanders, L., Costes, S., Soman, K., Rose, P., Nelson, C., Sawyer, A., Gebre, S., Baranzini, S. (2024). "Biomedical Knowledge Graph Capability for Space Biology Knowledge Gain." *45th COSPAR Scientific Assembly*, July 13-21, 2024. [Link](https://ui.adsabs.harvard.edu/abs/2024cosp...45.2183S/abstract)
+
+## Acknowledgments
+
+### Funding
+
+This work is supported by:
+- **National Science Foundation** Award [#2333819](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333819): "Proto-OKN Theme 1: Connecting Biomedical information on Earth and in Space via the SPOKE knowledge graph"
+
+### Related Projects
+
+- [Proto-OKN Project](https://www.proto-okn.net/) - Prototype Open Knowledge Network initiative
+- [FRINK Platform](https://frink.renci.org/) - Knowledge graph hosting infrastructure  
+- [Knowledge Graph Registry](https://frink.renci.org/registry/) - Catalog of available knowledge graphs
+- [Model Context Protocol](https://modelcontextprotocol.io/) - AI assistant integration standard
+- [Original MCP Server SPARQL](https://github.com/ekzhu/mcp-server-sparql/) - Base implementation reference
+
+---
+
+*For questions, issues, or contributions, please visit our [GitHub repository](https://github.com/sbl-sdsc/mcp-proto-okn).*
