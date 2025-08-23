@@ -107,7 +107,11 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
    > **Note**: If you have existing MCP server configurations, merge the contents instead of overwriting.
 
-3. **Verify Installation**
+3. **Restart Claude Desktop**
+
+   After saving the configuration file, quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.
+
+4. **Verify Installation**
 
    1. Launch Claude Desktop
    2. Click **"Connect your tools to Claude"** at the bottom of the interface
