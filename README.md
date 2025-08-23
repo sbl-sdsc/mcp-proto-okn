@@ -6,23 +6,6 @@
 
 A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoints with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network). This server enables intelligent querying of biomedical and scientific knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform.
 
-## Table of Contents
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-  - [Claude Desktop Setup](#claude-desktop-setup)
-  - [VS Code Setup](#vs-code-setup)
-- [Configuration](#configuration)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [API Reference](#api-reference)
-- [Contributing](#contributing)
-- [License](#license)
-- [Citation](#citation)
-- [Acknowledgments](#acknowledgments)
-
 ## Features
 
 - **🔗 FRINK Integration**: Automatic detection and documentation linking for FRINK-hosted knowledge graphs
@@ -90,6 +73,12 @@ Before installing the MCP Server Proto-OKN, ensure you have:
    cd mcp-proto-okn
    uv sync
    ```
+4. **Create a `uv` tool**
+   The tool runs in a self-contained environment managed by uv.
+   ```bash
+   uv tool install $HOME/path_to_git_repo/mcp-proto-okn
+   uv tool list
+   ```
 
 ### Claude Desktop Setup
 
@@ -101,13 +90,19 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
    > **Requirements**: Claude Pro or Max subscription is required for MCP server functionality.
 
-2. **Configure MCP Server** (macOS)
+2. **Configure MCP Server**
 
+   **macOS**
    ```bash
    cp claude_desktop_config.json "$HOME/Library/Application Support/Claude/"
    ```
 
-   For other operating systems, refer to the [Claude documentation](https://claude.ai/docs) for the correct configuration file location.
+   **Windows**
+   ```bash
+   copy claude_desktop_config.json  %APPDATA%\Claude\claude_desktop_config.json
+   ```
+
+   Refer to the [Claude documentation](https://modelcontextprotocol.io/quickstart/user) for details.
 
    > **Note**: If you have existing MCP server configurations, merge the contents instead of overwriting.
 
@@ -154,7 +149,7 @@ The server comes pre-configured with 10 Proto-OKN SPARQL endpoints. You can cust
 
 ### Adding Custom Endpoints
 
-To add additional Proto-OKN endpoints or third-party SPARQL endpoints, modify the configuration file:
+To add additional Proto-OKN endpoints or third-party SPARQL endpoints, modify the configuration file. The snippet below shows how to specify FRINK and third-party endpoint.
 
 ```json
 {
@@ -235,13 +230,6 @@ Executes SPARQL queries against the configured endpoint.
 **Returns:**
 - JSON object containing query results
 
-**Example:**
-```sparql
-SELECT ?subject ?predicate ?object 
-WHERE { ?subject ?predicate ?object } 
-LIMIT 10
-```
-
 #### `get_description`
 
 Retrieves endpoint metadata and documentation.
@@ -251,31 +239,6 @@ Retrieves endpoint metadata and documentation.
 
 **Returns:**
 - String containing endpoint description, PI information, funding details, and related documentation links
-
-## Contributing
-
-We welcome contributions to the MCP Server Proto-OKN project! Please follow these guidelines:
-
-1. **Fork the Repository**: Create a personal fork of the project
-2. **Create Feature Branch**: `git checkout -b feature/your-feature-name`
-3. **Make Changes**: Implement your feature or bug fix
-4. **Add Tests**: Ensure your changes are covered by tests
-5. **Submit Pull Request**: Open a PR with a clear description of your changes
-
-### Development Setup
-
-```bash
-git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
-cd mcp-proto-okn
-uv sync --dev
-```
-
-### Code Style
-
-- Follow PEP 8 guidelines
-- Use type hints where appropriate
-- Add docstrings for all public functions
-- Tests the MCP servers before submitting
 
 ## License
 
@@ -287,14 +250,14 @@ This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICEN
 If you use MCP Server Proto-OKN in your research, please cite the following works:
 
 ```bibtex
-@software{rose2025mcp,
+@software{rose2025mcp-proto-okn,
   title={MCP Server Proto-OKN},
   author={Rose, P.W. and Nelson, C.A. and Shi, Y. and Baranzini, S.E.},
   year={2025},
   url={https://github.com/sbl-sdsc/mcp-proto-okn}
 }
 
-@software{rose2025spoke,
+@software{rose2025spoke-genelab,
   title={NASA SPOKE-GeneLab Knowledge Graph},
   author={Rose, P.W. and Nelson, C.A. and Gebre, S.G. and Soman, K. and Grigorev, K.A. and Sanders, L.M. and Costes, S.V. and Baranzini, S.E.},
   year={2025},
