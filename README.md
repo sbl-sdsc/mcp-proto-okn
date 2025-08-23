@@ -54,7 +54,7 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
    > **Note**: Python installation is not required. `uv` will automatically install Python and all dependencies.
 
-2. **Verify Installation Path**
+2. **Verify Installation Path** (macOS only)
 
    ```bash
    which uv
@@ -74,6 +74,7 @@ Before installing the MCP Server Proto-OKN, ensure you have:
    uv sync
    ```
 4. **Create a `uv` tool**
+
    The tool runs in a self-contained environment managed by uv.
    ```bash
    uv tool install $HOME/path_to_git_repo/mcp-proto-okn
@@ -149,7 +150,7 @@ The server comes pre-configured with 10 Proto-OKN SPARQL endpoints. You can cust
 
 ### Adding Custom Endpoints
 
-To add additional Proto-OKN endpoints or third-party SPARQL endpoints, modify the configuration file. The snippet below shows how to specify FRINK and third-party endpoint.
+To add additional Proto-OKN endpoints or third-party SPARQL endpoints, modify the configuration file. The snippet below shows how to specify FRINK and third-party endpoints.
 
 ```json
 {
