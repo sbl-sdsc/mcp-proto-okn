@@ -1,26 +1,27 @@
-# MCP Server Proto-OKN
+# MCP Proto-OKN Server
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Model Context Protocol](https://img.shields.io/badge/MCP-Compatible-green.svg)](https://modelcontextprotocol.io/)
+[![PyPI version](https://badge.fury.io/py/mcp-proto-okn.svg)](https://badge.fury.io/py/mcp-proto-okn)
 
-A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoints with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network). This server enables intelligent querying of biomedical and scientific knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform.
+A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoints with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network). This server enables querying the scientific knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform. In addition, third-party SPARQL endpoints can be queried.
 
 ## Features
 
 - **🔗 FRINK Integration**: Automatic detection and documentation linking for FRINK-hosted knowledge graphs
-- **🧬 Proto-OKN Ecosystem**: Optimized support for biomedical and scientific knowledge graphs including:
+- **🧬 Proto-OKN Ecosystem**: Optimized support for biomedical and scientific knowledge graphs, including:
   - **SPOKE** - Scalable Precision Medicine Open Knowledge Engine
   - **BioBricks ICE** - Chemical safety and cheminformatics data
-  - **DREAM-KG** - Addressing homelessness with explainable AI
   - **SAWGraph** - Safe Agricultural Products and Water monitoring
   - **Additional Proto-OKN knowledge graphs** - Expanding ecosystem of scientific data
 - **⚙️ Flexible Configuration**: Support for both FRINK and custom SPARQL endpoints
-- **📚 Automatic Documentation**: Registry links and metadata for supported knowledge graphs
+- **📚 Automatic Documentation**: Registry links and metadata for Proto-OKN knowledge graphs
+- **🔗 Federated Query**: Prompts can query multiple endpoints
 
 ## Architecture
 
-![MCP Architecture](mcp_architecture.png)
+![MCP Architecture](https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/mcp_architecture.png)
 
 The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) and SPARQL knowledge graphs, enabling natural language queries to be converted into structured SPARQL queries and executed against scientific databases.
 
@@ -35,51 +36,19 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
 ## Installation
 
-### Initial Setup
+### Prerequisites
 
-1. **Install uv Package Manager**
+The MCP Proto-OKN server requires the `uv` package manager to be installed on your system. If you don't have it installed run:
 
-   The `uv` package manager is required for Python dependency management:
+```bash
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-   ```bash
-   # macOS/Linux
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   
-   # Windows
-   powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-   
-   # Alternative: via pip
-   pip install uv
-   ```
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
-   > **Note**: Python installation is not required. `uv` will automatically install Python and all dependencies.
-
-2. **Verify Installation Path** (macOS only)
-
-   ```bash
-   which uv
-   ```
-
-   If `uv` is not installed in `/usr/local/bin`, create a symbolic link for Claude Desktop compatibility:
-
-   ```bash
-   sudo ln -s $(which uv) /usr/local/bin/uv
-   ```
-
-3. **Clone and Setup Project**
-
-   ```bash
-   git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
-   cd mcp-proto-okn
-   uv sync
-   ```
-4. **Create a `uv` tool**
-
-   The tool runs in a self-contained environment managed by uv.
-   ```bash
-   uv tool install $HOME/path_to_git_repo/mcp-proto-okn
-   uv tool list
-   ```
+> **Note**: Once `uv` is installed, the `uvx` command in the configuration below will automatically download and run the latest version from PyPI when needed.
 
 ### Claude Desktop Setup
 
@@ -93,30 +62,80 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
 2. **Configure MCP Server**
 
-   **macOS**
+   **Option A: Download Pre-configured File (Recommended)**
+
+   Download the pre-configured `claude_desktop_config.json` file with FRINK endpoints from the repository and copy it to the appropriate location:
+
+   **macOS**:
    ```bash
-   cp claude_desktop_config.json "$HOME/Library/Application Support/Claude/"
+   # Download the config file
+   curl -o /tmp/claude_desktop_config.json https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/config/claude_desktop_config.json
+   
+   # Copy to Claude Desktop configuration directory
+   cp /tmp/claude_desktop_config.json "$HOME/Library/Application Support/Claude/"
    ```
 
-   **Windows**
-   ```bash
-   copy claude_desktop_config.json  %APPDATA%\Claude\claude_desktop_config.json
+   **Windows PowerShell**:
+   ```powershell
+   # Download the config file
+   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/config/claude_desktop_config.json" -OutFile "$env:TEMP\claude_desktop_config.json"
+   
+   # Copy to Claude Desktop configuration directory
+   Copy-Item "$env:TEMP\claude_desktop_config.json" "$env:APPDATA\Claude\"
    ```
 
-   Refer to the [Claude documentation](https://modelcontextprotocol.io/quickstart/user) for details.
+   **Option B: Manual Configuration**
 
-   > **Note**: If you have existing MCP server configurations, merge the contents instead of overwriting.
+   Alternatively, you can manually edit the configuration file in Claude Desktop. Navigate to `Claude->Settings->Developer->Edit Config`
+   to edit it.
+
+   Below is an example of how to configure FRINK endpoints. Third-party SPARQL endpoints with a custom description can be added (see uniprot-sparql example below).
+
+   ```json
+   {
+     "mcpServers": {
+       "spoke-sparql": {
+         "command": "uvx",
+         "args": [
+           "mcp-proto-okn",
+           "--endpoint",
+           "https://frink.apps.renci.org/spoke/sparql"
+         ]
+       },
+       "biobricks-sparql": {
+         "command": "uvx",
+         "args": [
+           "mcp-proto-okn",
+           "--endpoint",
+           "https://frink.apps.renci.org/biobricks-ice/sparql"
+         ]
+       },
+       "uniprot-sparql": {
+         "command": "uvx",
+         "args": [
+           "mcp-proto-okn",
+           "--endpoint",
+           "https://sparql.uniprot.org/sparql",
+           "--description",
+           "Resource for protein sequence and function information. For details: https://purl.uniprot.org/html/index-en.htm"
+         ]
+       }
+     }
+   }
+   ```
+
+   > **Important**: If you have existing MCP server configurations, do not use Option A as it will overwrite your existing configuration. Instead, use Option B and manually merge the Proto-OKN endpoints with your existing `mcpServers` configuration.
 
 3. **Restart Claude Desktop**
 
-   After saving the configuration file, quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.
+   After saving the configuration file, quit Claude Desktop completely and restart it. The application needs to restart to load the new configuration and start the MCP servers.
 
 4. **Verify Installation**
 
    1. Launch Claude Desktop
-   2. Click **"Connect your tools to Claude"** at the bottom of the interface
-   3. Click **"Manage connectors"**
-   4. Verify that `mcp-proto-okn` tools appear in the connector list
+   2. Navigate to `Claude->Settings->Connectors`
+   3. Verify that the configured Proto-OKN endpoints appear in the connector list
+   4. You can configure each service to always ask for permission or to run it unsupervised (recommended)
 
 ### VS Code Setup
 
@@ -138,47 +157,32 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
 3. **Configure Workspace**
 
-   1. Open VS Code Insiders
-   2. File → Open Folder → Select `mcp-proto-okn` directory
-   3. Open a new chat window
-   4. Select **Agent** mode
-   5. Choose **Claude Sonnet 4** model for optimal performance
-   6. The MCP servers will automatically connect and provide knowledge graph access
+   Create or edit `.vscode/mcp.json` in your workspace:
 
-## Configuration
+   ```json
+   {
+     "servers": {
+       "mcp-spoke-sparql": {
+         "command": "uvx",
+         "args": [
+           "mcp-proto-okn",
+           "--endpoint",
+           "https://frink.apps.renci.org/spoke/sparql"
+         ]
+       }
+     }
+   }
+   ```
 
-The server comes pre-configured with 10 Proto-OKN SPARQL endpoints. You can customize the configuration by editing the appropriate files:
+   > **Note**: For the VS Code Insiders configuration, change  "mcpServers" to "servers".
 
-- **Claude Desktop**: `claude_desktop_config.json`
-- **VS Code**: `.vscode/mcp.json`
+4. **Use the MCP Server**
 
-### Adding Custom Endpoints
+   1. Open a new chat window in VS Code
+   2. Select **Agent** mode
+   3. Choose **Claude Sonnet 4 or later** model for optimal performance
+   4. The MCP servers will automatically connect and provide knowledge graph access
 
-To add additional Proto-OKN endpoints or third-party SPARQL endpoints, modify the configuration file. The snippet below shows how to specify FRINK and third-party endpoints.
-
-```json
-{
-  "mcpServers": {
-    "mcp-spoke-sparql": {
-      "command": "uv",
-      "args": [
-        "tool", "run", "mcp-server-protookn", 
-        "--endpoint", "https://frink.apps.renci.org/spoke/sparql"
-      ]
-    },
-    "mcp-uniprot-sparql": {
-      "command": "uv",
-      "args": [
-        "tool", "run", "mcp-server-protookn",
-        "--endpoint", "https://sparql.uniprot.org/sparql",
-        "--description", "Resource for protein sequence and function information. For details: https://purl.uniprot.org/html/index-en.htm"
-      ]
-    }
-  }
-}
-```
-
-> **Note**: For VS Code configuration (`.vscode/mcp.json`), replace `mcpServers` with `servers`.
 
 ## Quick Start
 
@@ -203,22 +207,32 @@ Once configured, you can immediately start querying knowledge graphs through nat
 
 The AI assistant will automatically convert your natural language queries into appropriate SPARQL queries, execute them against the configured endpoints, and return structured, interpretable results.
 
-## Usage
+## Development
 
-### Command Line Interface
+### Installing from Source
 
-The MCP server can be invoked directly with the following parameters:
-
-**Required Parameters:**
-- `--endpoint` : SPARQL endpoint URL (e.g., `https://frink.apps.renci.org/spoke/sparql`)
-
-**Optional Parameters:**
-- `--description` : Custom description for the SPARQL endpoint (auto-generated for FRINK endpoints)
-
-### Example Usage
+If you want to run a development version:
 
 ```bash
-uv tool run mcp-server-protookn --endpoint https://frink.apps.renci.org/spoke/sparql
+# Clone the repository
+git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
+cd mcp-proto-okn
+
+# Install dependencies
+uv sync
+```
+
+### Building and Publishing
+
+```bash
+# Increment version number (patch, minor, major)
+uv version --bump minor
+
+# Build the package
+uv build
+
+# Publish to PyPI (maintainers only)
+uv publish
 ```
 
 ## API Reference
@@ -245,10 +259,42 @@ Retrieves endpoint metadata and documentation.
 **Returns:**
 - String containing endpoint description, PI information, funding details, and related documentation links
 
+### Command Line Interface
+
+**Required Parameters:**
+- `--endpoint` : SPARQL endpoint URL (e.g., `https://frink.apps.renci.org/spoke/sparql`)
+
+**Optional Parameters:**
+- `--description` : Custom description for the SPARQL endpoint (auto-generated for FRINK endpoints)
+
+**Example Usage:**
+
+```bash
+uvx mcp-proto-okn --endpoint https://frink.apps.renci.org/spoke/sparql
+```
+
+## Troubleshooting
+
+### Common Issues
+
+**MCP server not appearing in Claude Desktop:**
+- Ensure you've completely quit and restarted Claude Desktop (not just closed the window)
+- Check that your JSON configuration is valid (use a JSON validator)
+- Verify that `uvx` is installed and accessible in your PATH
+
+**Connection errors:**
+- Check your internet connection
+- Verify the SPARQL endpoint URL is correct and accessible
+- Some endpoints may have rate limits or temporary downtime
+
+**Performance issues:**
+- Complex SPARQL queries may take time to execute
+- Consider breaking down complex queries into smaller parts
+- Check the endpoint's documentation for query best practices
+
 ## License
 
 This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
-
 
 ## Citation
 

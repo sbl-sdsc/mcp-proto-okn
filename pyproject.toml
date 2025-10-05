@@ -1,11 +1,11 @@
 [project]
-name = "mcp-server-protookn"
-version = "0.1.0"
-description = "MCP server for querying FRINK ProtoOKN SPARQL endpoints"
+name = "mcp-proto-okn"
+version = "0.2.0"
+description = "MCP server for querying FRINK SPARKQL endpoints, a project by the NSF Prototype Open Knowledge Network (Proto-OKN) program."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "BSD-3-Clause" }
-keywords = ["sparql", "mcp", "proto-okn", "frink"]
+keywords = ["sparql", "mcp", "proto-okn", "frink", "knowledge graphs"]
 authors = [
     { name = "Peter W Rose", email = "pwrose.ucsd@gmail.com" },
     { name = "Eric Zhu", email = "ekzhu@users.noreply.github.com" }
@@ -18,11 +18,18 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: BSD License",
-    "Programming Language :: Python :: 3.10"
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
-[project.scripts]
-mcp-server-protookn = "mcp_server_protookn.server:main"
+[project.urls]
+Homepage = "https://github.com/sbl-sdsc/mcp-proto-okn"
+Repository = "https://github.com/sbl-sdsc/mcp-proto-okn"
+Issues = "https://github.com/sbl-sdsc/mcp-proto-okn/issues"
 
-[tool.hatch.build.targets.wheel]
-packages = ["mcp_server_protookn"]
+[project.scripts]
+mcp-proto-okn = "mcp_proto_okn.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"] 
