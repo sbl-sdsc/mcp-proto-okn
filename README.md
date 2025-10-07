@@ -43,7 +43,9 @@ The MCP Proto-OKN server requires the `uv` package manager to be installed on yo
 ```bash
 # macOS/Linux
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
+```
 # Windows
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
@@ -222,7 +224,7 @@ cd mcp-proto-okn
 uv sync
 ```
 
-### Building and Publishing
+### Building and Publishing (maintainers only)
 
 ```bash
 # Increment version number (patch, minor, major)
@@ -231,8 +233,11 @@ uv version --bump minor
 # Build the package
 uv build
 
-# Publish to PyPI (maintainers only)
-uv publish
+# Publish to TestPyPI first (recommended)
+uv publish --publish-url https://test.pypi.org/legacy --token pypi-YOUR_TEST_PYPI_TOKEN_HERE
+
+# Publish to PyPI 
+uv publish --token pypi-YOUR_PYPI_TOKEN_HERE
 ```
 
 ## API Reference
