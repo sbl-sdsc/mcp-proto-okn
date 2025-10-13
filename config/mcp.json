@@ -1,0 +1,108 @@
+{
+    "servers": {
+        "biobricks-aopwiki": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-aopwiki/sparql"]
+        },
+        "biobricks-ice": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-ice/sparql"]
+        },
+        "biobricks-mesh": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-mesh/sparql"]
+        },
+        "biobricks-pubchem-annotations": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-pubchem-annotations/sparql"]
+        },
+        "biobricks-tox21": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-tox21/sparql"]
+        },
+        "biobricks-toxcast": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-toxcast/sparql"]
+        },
+        "biohealth": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biohealth/sparql"]
+        },
+        "climatemodelskg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/climatemodelskg/sparql"]
+        },
+        "dreamkg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/dreamkg/sparql"]
+        },
+        "fiokg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/fiokg/sparql"]
+        },
+        "geoconnex": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/geoconnex/sparql"]
+        },
+        "hydrologykg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/hydrologykg/sparql"]
+        },
+        "nasa-gesdisc-kg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nasa-gesdisc-kg/sparql"]
+        },
+        "nikg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nikg/sparql"]
+        },
+        "ruralkg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ruralkg/sparql"]
+        },
+        "sawgraph": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/sawgraph/sparql"]
+        },
+        "scales": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/scales/sparql"]
+        },
+        "securechainkg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/securechainkg/sparql"]
+        },
+        "sockg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/sockg/sparql"]
+        },
+        "spatialkg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spatialkg/sparql"]
+        },
+        "spoke-genelab": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke-genelab/sparql"]
+        },
+        "spoke": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
+        },
+        "sudokn": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/sudokn/sparql"]
+        },
+        "ufokn": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ufokn/sparql"]
+        },
+        "wildlifekn": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/wildlifekn/sparql"]
+        },
+        "uniprot-sparql": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://sparql.uniprot.org/sparql", "--description", "Resource for protein sequence and function information, for details about this endpoint see: https://purl.uniprot.org/html/index-en.htm"]
+        }
+    }
+}

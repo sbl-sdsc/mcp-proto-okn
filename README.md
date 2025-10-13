@@ -96,7 +96,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```json
    {
      "mcpServers": {
-       "spoke-sparql": {
+       "spoke": {
          "command": "uvx",
          "args": [
            "mcp-proto-okn",
@@ -104,7 +104,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
            "https://frink.apps.renci.org/spoke/sparql"
          ]
        },
-       "biobricks-sparql": {
+       "biobricks-ice": {
          "command": "uvx",
          "args": [
            "mcp-proto-okn",
@@ -112,7 +112,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
            "https://frink.apps.renci.org/biobricks-ice/sparql"
          ]
        },
-       "uniprot-sparql": {
+       "uniprot": {
          "command": "uvx",
          "args": [
            "mcp-proto-okn",
@@ -157,32 +157,27 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
    > **Requirements**: GitHub Copilot subscription is required for MCP integration.
 
-3. **Configure Workspace**
+3. **Configure MCP Server**
 
-   Create or edit `.vscode/mcp.json` in your workspace:
+   **Option A: Download Pre-configured File (Recommended)**
 
-   ```json
-   {
-     "servers": {
-       "mcp-spoke-sparql": {
-         "command": "uvx",
-         "args": [
-           "mcp-proto-okn",
-           "--endpoint",
-           "https://frink.apps.renci.org/spoke/sparql"
-         ]
-       }
-     }
-   }
+   Download the pre-configured `mcp.json` file with FRINK endpoints from the repository and copy it to the appropriate location.
+
+   **macOS**:
+   ```bash
+   # Download the config file
+   curl -o /tmp/mcp.json https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/config/mcp.json
+   
+   # Copy to VS Code Insiders configuration directory
+   cp /tmp/mcp.json "$HOME/Library/Application Support/Code - Insiders/User/mcp.json"
    ```
-
-   > **Note**: For the VS Code Insiders configuration, change  "mcpServers" to "servers".
+ > **Note**: VS Code Insiders mcp.json file is identical to the claude_desktop_config.json file, except "mcpServer" is replace by "server".
 
 4. **Use the MCP Server**
 
    1. Open a new chat window in VS Code
    2. Select **Agent** mode
-   3. Choose **Claude Sonnet 4 or later** model for optimal performance
+   3. Choose **Claude Sonnet 4.5 or later** model for optimal performance
    4. The MCP servers will automatically connect and provide knowledge graph access
 
 
@@ -198,7 +193,7 @@ Once configured, you can immediately start querying knowledge graphs through nat
    ```
    @spoke-sparkl
    ```
-   To enable federated queries across specified server, you can specify multiple server names.
+   To enable federated queries across multiple servers, you can specify more than one server name.
    ```
    @spoke-sparql @biobricks-sparql
    ```
