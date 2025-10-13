@@ -192,19 +192,30 @@ Once configured, you can immediately start querying knowledge graphs through nat
 
 ### Example Queries
 
-1. **Knowledge Graph Overview**
+1. **Use specific MCP servers**
+   If you want to query specific MCP servers,
+   use the *@* operator to select the servers.
+   ```
+   @spoke-sparkl
+   ```
+   To enable federated queries across specified server, you can specify multiple server names.
+   ```
+   @spoke-sparql @biobricks-sparql
+   ```
+
+2. **Knowledge Graph Overview**
    ```
    Provide a concise overview of the SPOKE knowledge graph, including its main purpose, data sources, and key features.
    ```
 
-2. **Multi-Entity Analysis**
+3. **Multi-Entity Analysis**
    ```
    Antibiotic contamination can contribute to antimicrobial resistance. Find locations with antibiotic contamination.
    ```
 
-3. **Cross-Knowledge Graph Comparison**
+4. **Cross-Knowledge Graph Comparison**
    ```
-   What type of data is available for perfluorooctanoic acid in SPOKE, BioBricks, and SAWGraph?
+   What type of data is available for perfluorooctanoic acid (PFOA) in SPOKE, BioBricks, and SAWGraph?
    ```
 
 The AI assistant will automatically convert your natural language queries into appropriate SPARQL queries, execute them against the configured endpoints, and return structured, interpretable results.
@@ -234,7 +245,7 @@ uv version --bump minor
 uv build
 
 # Publish to TestPyPI first (recommended)
-uv publish --publish-url https://test.pypi.org/legacy --token pypi-YOUR_TEST_PYPI_TOKEN_HERE
+uv publish --publish-url https://test.pypi.org/legacy/ --token pypi-YOUR_TEST_PYPI_TOKEN_HERE
 
 # Publish to PyPI 
 uv publish --token pypi-YOUR_PYPI_TOKEN_HERE
