@@ -1,6 +1,6 @@
 [project]
 name = "mcp-proto-okn"
-version = "0.2.2"
+version = "0.2.3"
 description = "MCP server for querying FRINK SPARKQL endpoints, a project by the NSF Prototype Open Knowledge Network (Proto-OKN) program."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -15,9 +15,6 @@ dependencies = [
     "sparqlwrapper>=2.0.0",
 ]
 
-[project.optional-dependencies]
-cli = ["typer>=0.12", "mcp[cli]"]
-
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -26,6 +23,9 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
+
+[project.optional-dependencies]
+cli = ["typer>=0.12", "mcp[cli]"]
 
 [project.urls]
 Homepage = "https://github.com/sbl-sdsc/mcp-proto-okn"
@@ -36,4 +36,4 @@ Issues = "https://github.com/sbl-sdsc/mcp-proto-okn/issues"
 mcp-proto-okn = "mcp_proto_okn.server:main"
 
 [tool.setuptools.packages.find]
-where = ["src"] 
+where = ["src"]
