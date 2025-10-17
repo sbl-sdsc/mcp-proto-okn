@@ -321,7 +321,7 @@ If you use MCP Server Proto-OKN in your research, please cite the following work
 
 @software{rose2025spoke-genelab,
   title={NASA SPOKE-GeneLab Knowledge Graph},
-  author={Rose, P.W. and Nelson, C.A. and Gebre, S.G. and Soman, K. and Grigorev, K.A. and Sanders, L.M. and Costes, S.V. and Baranzini, S.E.},
+  author={Rose, P.W. and Nelson, C.A. and Gebre, S.G. and Saravia-Butler AM, and Soman, K. and Grigorev, K.A. and Sanders, L.M. and Costes, S.V. and Baranzini, S.E.},
   year={2025},
   url={https://github.com/BaranziniLab/spoke_genelab}
 }
