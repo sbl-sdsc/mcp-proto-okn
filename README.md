@@ -96,12 +96,12 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```json
    {
      "mcpServers": {
-       "spoke": {
+       "spoke-okn": {
          "command": "uvx",
          "args": [
            "mcp-proto-okn",
            "--endpoint",
-           "https://frink.apps.renci.org/spoke/sparql"
+           "https://frink.apps.renci.org/spoke-okn/sparql"
          ]
        },
        "biobricks-ice": {
@@ -217,19 +217,6 @@ The AI assistant will automatically convert your natural language queries into a
 
 ## Development
 
-### Installing from Source
-
-If you want to run a development version:
-
-```bash
-# Clone the repository
-git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
-cd mcp-proto-okn
-
-# Install dependencies
-uv sync
-```
-
 ### Building and Publishing (maintainers only)
 
 ```bash
@@ -244,24 +231,19 @@ uv publish --publish-url https://test.pypi.org/legacy/ --token pypi-YOUR_TEST_PY
 
 # Publish to PyPI 
 uv publish --token pypi-YOUR_PYPI_TOKEN_HERE
+
+# Clear uv cache (optional)
+uv cache clean
+
+# Remove cached tool installation (optional)
+rm -rf ~/.local/share/uv/tools/mcp-proto-okn
 ```
 
 ## API Reference
 
 ### Available Tools
 
-#### `query`
-
-Executes SPARQL queries against the configured endpoint.
-
-**Parameters:**
-- `query_string` (string, required): A valid SPARQL query
-
-**Returns:**
-- JSON object containing query results
-
 #### `get_description`
-
 Retrieves endpoint metadata and documentation.
 
 **Parameters:**
@@ -270,6 +252,25 @@ Retrieves endpoint metadata and documentation.
 **Returns:**
 - String containing endpoint description, PI information, funding details, and related documentation links
 
+#### `get_schema`
+Retrieves the schema (classes, relationships, properties) for the knowledge graph endpoint.
+
+**Parameters:**
+- None
+
+**Returns:**
+- JSON object containing the endpoint's schema information, including available classes, relationships, and properties
+
+#### `query`
+Executes SPARQL queries against the configured endpoint.
+
+**Parameters:**
+- `query_string` (string, required): A valid SPARQL query
+
+**Returns:**
+- JSON object containing query results
+
+---
 ### Command Line Interface
 
 **Required Parameters:**
