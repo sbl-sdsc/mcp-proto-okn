@@ -1,0 +1,144 @@
+URI,Label,Description
+http://gwml2.org/def/gwml2#GW_Aquifer,Groundwater Aquifer,A body of saturated rock or sediment through which water can easily move (GWML2 standard).
+http://gwml2.org/def/gwml2#gwAquiferSystem,groundwater aquifer system,Links a feature to the aquifer system it belongs to.
+http://gwml2.org/def/gwml2#gwAquiferSystemPart,groundwater aquifer system part,Links an aquifer system to one of its component parts.
+http://hyfo.spatialai.org/v1/hyfo#AquiferWaterFeature,Aquifer Water Feature,A subsurface water feature representing an aquifer.
+http://hyfo.spatialai.org/v1/hyfo#SubsurfaceWaterFeature,Subsurface Water Feature,"A water feature below the earth's surface, such as aquifers and groundwater systems."
+http://hyfo.spatialai.org/v1/hyfo#SurfaceWaterFeature,Surface Water Feature,"A water feature at or above the earth's surface, such as rivers, lakes, and wetlands."
+http://hyfo.spatialai.org/v1/hyfo#WaterFeature,Water Feature,Any hydrologic feature containing or conveying water.
+http://hyfo.spatialai.org/v1/hyfo#WaterFeatureRepresentation,Water Feature Representation,A geometric or symbolic representation of a water feature.
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#FlowPathLength,Flow Path Length,The measured length of a flow path in the NHDPlus dataset.
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasCOMID,has COMID,Links a feature to its Common Identifier (COMID) in the NHDPlus dataset.
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFCODE,has feature code,Links a feature to its feature code (FCODE) in the NHDPlus dataset.
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFTYPE,has feature type,Links a feature to its feature type (FTYPE) in the NHDPlus dataset.
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFlowPathLength,has flow path length,Links a flow path to its length measurement.
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasReachCode,has reach code,Links a feature to its reach code in the NHDPlus dataset.
+http://purl.org/dc/elements/1.1/source,source,A related resource from which the described resource is derived.
+http://purl.org/dc/terms/contributor,contributor,An entity responsible for contributions to the resource.
+http://purl.org/dc/terms/created,date created,Date of creation of the resource.
+http://purl.org/dc/terms/creator,creator,An entity responsible for making the resource.
+http://purl.org/dc/terms/description,description,An account of the resource.
+http://purl.org/dc/terms/modified,date modified,Date on which the resource was changed.
+http://purl.org/dc/terms/publisher,publisher,An entity responsible for making the resource available.
+http://purl.org/dc/terms/title,title,A name given to the resource.
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,connected to,Indicates a topological connection or spatial contact.
+http://purl.org/spatialai/spatial/spatial-full#spatiallyRelatedTo,spatially related to,A general topological connection or spatial contact.
+http://qudt.org/schema/qudt/QuantityKind,Quantity Kind,"The type or kind of quantity being measured (e.g., length, volume, flow rate)."
+http://qudt.org/schema/qudt/QuantityValue,Quantity Value,A measured or calculated value with an associated unit.
+http://qudt.org/schema/qudt/Unit,Unit,"A unit of measurement (e.g., meter, liter, cubic foot per second)."
+http://qudt.org/schema/qudt/hasQuantityKind,has quantity kind,Links a quantity or unit to its quantity kind.
+http://qudt.org/schema/qudt/hasUnit,has unit,Links a quantity value to its unit of measurement.
+http://qudt.org/schema/qudt/numericValue,numeric value,The numerical component of a quantity value.
+http://qudt.org/schema/qudt/quantityValue,quantity value,Links a quantity to its measured or calculated value.
+http://qudt.org/schema/qudt/unit,unit,Specifies the unit of measurement.
+http://sawgraph.spatialai.org/v1/il-isgs#ISGS-Well,Illinois State Geological Survey Well,A well documented by the Illinois State Geological Survey.
+http://sawgraph.spatialai.org/v1/il-isgs#WellDepthInFt,Well Depth in Feet (IL),The depth of an Illinois well measured in feet.
+http://sawgraph.spatialai.org/v1/il-isgs#WellPurpose,Well Purpose,The intended purpose or use of a well.
+http://sawgraph.spatialai.org/v1/il-isgs#WellYield,Well Yield,The rate at which water can be withdrawn from a well.
+http://sawgraph.spatialai.org/v1/il-isgs#hasISWSId,has ISWS ID,Links a well to its Illinois State Water Survey identifier.
+http://sawgraph.spatialai.org/v1/il-isgs#hasOwner,has owner,Links a well to its owner.
+http://sawgraph.spatialai.org/v1/il-isgs#wellDepth,well depth (IL),Links an Illinois well to its depth measurement.
+http://sawgraph.spatialai.org/v1/il-isgs#wellPurpose,well purpose,Links a well to its purpose classification.
+http://sawgraph.spatialai.org/v1/il-isgs#wellYield,well yield,Links a well to its yield measurement.
+http://sawgraph.spatialai.org/v1/il_isgs#ilSawAqId,Illinois SAW aquifer ID,The SAWGraph identifier for an Illinois aquifer.
+http://sawgraph.spatialai.org/v1/il_isgs#ilSawAqSysId,Illinois SAW aquifer system ID,The SAWGraph identifier for an Illinois aquifer system.
+http://sawgraph.spatialai.org/v1/me-mgs#MGS-Well,Maine Geological Survey Well,A well documented by the Maine Geological Survey.
+http://sawgraph.spatialai.org/v1/me-mgs#WellDepthInFt,Well Depth in Feet,The depth of a well measured in feet.
+http://sawgraph.spatialai.org/v1/me-mgs#WellOverburdenThicknessInFt,Well Overburden Thickness in Feet,"The thickness of overburden (unconsolidated material) above bedrock at a well location, measured in feet."
+http://sawgraph.spatialai.org/v1/me-mgs#WellType,Well Type,"The type classification of a well (e.g., drilled, dug, driven)."
+http://sawgraph.spatialai.org/v1/me-mgs#WellUse,Well Use,"The purpose for which a well is used (e.g., domestic, irrigation, industrial)."
+http://sawgraph.spatialai.org/v1/me-mgs#hasUse,has use,Links a well to its use classification.
+http://sawgraph.spatialai.org/v1/me-mgs#ofWellType,of well type,Links a well to its type classification.
+http://sawgraph.spatialai.org/v1/me-mgs#wellDepth,well depth,Links a well to its depth measurement.
+http://sawgraph.spatialai.org/v1/me-mgs#wellOverburden,well overburden,Links a well to its overburden thickness measurement.
+http://sawgraph.spatialai.org/v1/me_mgs#meMgsAqId,Maine MGS aquifer ID,The Maine Geological Survey identifier for an aquifer.
+http://sawgraph.spatialai.org/v1/me_mgs#meSawAqSysId,Maine SAW aquifer system ID,The SAWGraph identifier for a Maine aquifer system.
+http://sawgraph.spatialai.org/v1/saw_water#aquiferType,aquifer type,"The type classification of an aquifer (e.g., confined, unconfined, perched)."
+http://sawgraph.spatialai.org/v1/us-sdwis#CombinedDistributionSystem,Combined Distribution System,A distribution system that combines water from multiple public water systems.
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-ServiceArea,PWS Service Area,The geographic area served by a public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-ServiceAreaType,PWS Service Area Type,The type classification of a public water system service area.
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SourceWaterType,PWS Source Water Type,"The type of water source used by a public water system (surface water, groundwater, etc.)."
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeature,PWS Sub-Feature,"A component of a public water system (e.g., well, intake, treatment plant)."
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeatureActivity,PWS Sub-Feature Activity,The operational activity status of a public water system component.
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeatureType,PWS Sub-Feature Type,The type classification of a public water system component.
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem,Public Water System,A system for providing water for human consumption that has at least 15 service connections or regularly serves 25+ people (EPA SDWIS).
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-CWS,Community Water System,"A public water system that serves the same population year-round (e.g., municipalities)."
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-GW,Groundwater-Based Public Water System,A public water system that draws water from groundwater sources.
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-NCWS,Non-Community Water System,A public water system that is not a community water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-NTNCWS,Non-Transient Non-Community Water System,"A public water system that regularly serves at least 25 of the same people for 6+ months per year (e.g., schools, factories)."
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-SW,Surface Water-Based Public Water System,A public water system that draws water from surface water sources.
+http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-TNCWS,Transient Non-Community Water System,"A public water system that serves the public but not the same people year-round (e.g., rest stops, campgrounds)."
+http://sawgraph.spatialai.org/v1/us-sdwis#buysFrom,buys from,Indicates that one public water system purchases water from another.
+http://sawgraph.spatialai.org/v1/us-sdwis#deactivationDate,deactivation date,The date when a public water system was deactivated.
+http://sawgraph.spatialai.org/v1/us-sdwis#firstReport,first report,The date of the first report for a public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#hasActivity,has activity,Links a PWS sub-feature to its activity status.
+http://sawgraph.spatialai.org/v1/us-sdwis#hasMethod,has method,Specifies the method used by a PWS feature.
+http://sawgraph.spatialai.org/v1/us-sdwis#hasOwnership,has ownership,Specifies the ownership type of a public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#hasPart,has part,Links a public water system to one of its component parts.
+http://sawgraph.spatialai.org/v1/us-sdwis#hasPermanentSource,has permanent source,Links a public water system to its permanent water source.
+http://sawgraph.spatialai.org/v1/us-sdwis#hasSource,has source,Links a public water system to one of its water sources.
+http://sawgraph.spatialai.org/v1/us-sdwis#inCombinedSystem,in combined system,Links a public water system to a combined distribution system it participates in.
+http://sawgraph.spatialai.org/v1/us-sdwis#lastReport,last report,The date of the most recent report for a public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#partOf,part of,Links a component to the public water system it belongs to.
+http://sawgraph.spatialai.org/v1/us-sdwis#populationServed,population served,The number of people served by the public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#primarySourceType,primary source type,The primary type of water source used by the system.
+http://sawgraph.spatialai.org/v1/us-sdwis#pwsName,PWS name,The name of the public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#sellsTo,sells to,Indicates that one public water system sells water to another.
+http://sawgraph.spatialai.org/v1/us-sdwis#serviceArea,service area,Links a public water system to its service area.
+http://sawgraph.spatialai.org/v1/us-sdwis#serviceAreaType,service area type,Specifies the type of service area.
+http://sawgraph.spatialai.org/v1/us-sdwis#serviceConnections,service connections,The number of service connections provided by the public water system.
+http://sawgraph.spatialai.org/v1/us-sdwis#sourceFor,source for,Links a water source to the public water system it supplies.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion,Administrative Region,Administrative regions as defined by GADM.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_0,Administrative Region Level 0,GADM level 0 administrative regions (countries).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_1,Administrative Region Level 1,"GADM level 1 administrative regions (states, provinces)."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_2,Administrative Region Level 2,GADM level 2 administrative regions (counties).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_3,Administrative Region Level 3,GADM level 3 administrative regions (county subdivisions).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_4,Administrative Region Level 4,GADM level 4 administrative regions.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_5,Administrative Region Level 5,GADM level 5 administrative regions.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_6,Administrative Region Level 6,GADM level 6 administrative regions.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/Cell,Cell,A spatial cell.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/Region,Region,A spatial region.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/RoadSegment,Road Segment,A segment of a road network.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell,S2 Cell,A cell from the S2 discrete global grid system.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level13,S2 Cell Level 13,An S2 cell at zoom level 13.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/StatisticalArea,Statistical Area,A geographic area for statistical data collection.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/ZipCodeArea,ZIP Code Area,A geographic area defined by a postal ZIP code.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/administrativePartOf,administrative part of,Indicates administrative containment.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates features cross each other.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfEquals,spatially equals,Indicates spatial equality.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,Indicates features touch at boundaries.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/spatialRelation,spatial relation,A spatial relationship between features.
+http://www.opengis.net/ont/geosparql#Feature,Feature,A discrete spatial phenomenon in GeoSPARQL.
+http://www.opengis.net/ont/geosparql#Geometry,Geometry,A coherent set of direct positions in space in GeoSPARQL.
+http://www.opengis.net/ont/geosparql#SpatialObject,Spatial Object,Anything spatial in GeoSPARQL.
+http://www.opengis.net/ont/geosparql#asWKT,as WKT,The WKT serialization of a geometry.
+http://www.opengis.net/ont/geosparql#defaultGeometry,default geometry,The default geometric representation of a feature.
+http://www.opengis.net/ont/geosparql#hasDefaultGeometry,has default geometry,Links a feature to its default geometric representation.
+http://www.opengis.net/ont/geosparql#hasGeometry,has geometry,Links a feature to its geometric representation.
+http://www.opengis.net/ont/sf#MultiPolygon,Multi-Polygon,A collection of polygons (Simple Features).
+http://www.opengis.net/ont/sf#Polygon,Polygon,A two-dimensional geometric primitive (Simple Features).
+https://schema.org/domainIncludes,domain includes,Relates a property to a class that constitutes one of its expected types for the subject.
+https://schema.org/name,name,The name of the item.
+https://schema.org/rangeIncludes,range includes,Relates a property to a class that constitutes one of its expected types for the value.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Canal,Canal,"An artificial waterway constructed to allow the passage of boats or ships, or for irrigation."
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Catchment,Catchment,A physiographic unit with defined extent draining to a common outlet.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_CatchmentRealization,Catchment Realization,A geometric representation of a catchment boundary.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_ElementaryFlowPath,Elementary Flow Path,An indivisible flow path segment in a hydrologic network.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Estuary,Estuary,The tidal mouth of a large river where the tide meets the stream.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_FlowPath,Flow Path,A linear hydrologic feature representing the path of water flow.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_HydroFeature,Hydrologic Feature,The abstract supertype of all hydrologic features in the HY Features ontology.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Impoundment,Impoundment,"A body of water confined by a dam, dike, floodgate, or other barrier."
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Lagoon,Lagoon,A shallow body of water separated from a larger body of water by barrier islands or reefs.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Lake,Lake,A natural or artificial body of standing water.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_MainStem,Main Stem,The principal course of a river or stream.
+https://www.opengis.net/def/schema/hy_features/hyf/HY_River,River,"A large natural stream of water flowing in a channel to the sea, a lake, or another river."
+https://www.opengis.net/def/schema/hy_features/hyf/HY_WaterBody,Water Body,"A body of water such as a lake, reservoir, river, or estuary."
+https://www.opengis.net/def/schema/hy_features/hyf/downstreamFlowPath,downstream flow path,Links a flow path to another flow path that is immediately downstream.
+https://www.opengis.net/def/schema/hy_features/hyf/downstreamFlowPathTC,downstream flow path (transitive closure),Links a flow path to all flow paths that are downstream (transitive property).
+https://www.opengis.net/def/schema/hy_features/hyf/encompassingCatchment,encompassing catchment,Links a feature to the catchment that contains it.
+https://www.opengis.net/def/schema/hy_features/hyf/realizedCatchment,realized catchment,Links a catchment realization to the catchment it represents.
+https://www.opengis.net/def/schema/hy_features/hyf/upstreamFlowPath,upstream flow path,Links a flow path to another flow path that is immediately upstream.
+https://www.opengis.net/def/schema/hy_features/hyf/upstreamWaterBody,upstream water body,Links a feature to a water body that is upstream.

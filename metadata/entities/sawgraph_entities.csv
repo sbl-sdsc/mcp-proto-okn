@@ -1,0 +1,74 @@
+URI,Label,Description
+http://w3id.org/coso/v1/contaminoso#AggregateContaminantMeasurement,Aggregate Contaminant Measurement,"The result of an observation about contaminant(s) that is an aggregate measurement. This can be a spatial, temporal or contaminant aggregate."
+http://w3id.org/coso/v1/contaminoso#AnalysisMethod,Analysis Method,The analysis method used to identify the contaminant.
+http://w3id.org/coso/v1/contaminoso#ContaminantAbsoluteMeasurement,Contaminant Absolute Measurement,The result of an observation about a contaminant that is an absolute measurement.
+http://w3id.org/coso/v1/contaminoso#ContaminantAbsoluteQuantityKind,Contaminant Absolute Quantity Kind,"A type of contaminant quantity that is an absolute amount, such as a mass or volume."
+http://w3id.org/coso/v1/contaminoso#ContaminantConcentrationQuantityKind,Contaminant Concentration Quantity Kind,A type of contaminant quantity that is a concentration measurement.
+http://w3id.org/coso/v1/contaminoso#ContaminantMassQuantityKind,Contaminant Quantity Kind,The type of quantity that is measured for the contaminant.
+http://w3id.org/coso/v1/contaminoso#ContaminantMeasurement,Contaminant Measurement,The result of an observation about a contaminant or contaminants.
+http://w3id.org/coso/v1/contaminoso#ContaminantObservation,Contaminant Observation,An observation of a contaminant.
+http://w3id.org/coso/v1/contaminoso#ContaminantRelativeMeasurement,Contaminant Relative Measurement,The result of an observation about a contaminant that is a relative measurement.
+http://w3id.org/coso/v1/contaminoso#ContaminantRelativeQuantityKind,Contaminant Relative Quantity Kind,"A type of contaminant quantity that is a relative amount, such as a concentration."
+http://w3id.org/coso/v1/contaminoso#ContaminantReleaseObservation,Contaminant Release Observation,An observation of a contaminant that was released into the environment.
+http://w3id.org/coso/v1/contaminoso#ContaminantSampleObservation,Contaminant Sample Observation,An observation of a contaminant that was sampled from the environment.
+http://w3id.org/coso/v1/contaminoso#ContaminantVolumeQuantityKind,Contaminant Volume Quantity Kind,A type of contaminant quantity that is a volume measurement.
+http://w3id.org/coso/v1/contaminoso#ContaminationProperty,Contamination Property,An observable quality of a feature related to its contamination.
+http://w3id.org/coso/v1/contaminoso#DetectQuantityValue,Detect Quantity Value,A Quantity Value that represents a detection of the contaminant.
+http://w3id.org/coso/v1/contaminoso#DetectionLimit,Detection Limit,The lowest concentration of a substance that can be reliably detected as present with a reasonable degree of confidence.
+http://w3id.org/coso/v1/contaminoso#Feature,Feature,The discrete spatial phenomenon that is the target of the observation.
+http://w3id.org/coso/v1/contaminoso#FeatureType,Feature Type,A category applied to differentiate discrete spatial phenomenon.
+http://w3id.org/coso/v1/contaminoso#MaterialSample,Material Sample,"A physical, tangible sample."
+http://w3id.org/coso/v1/contaminoso#MonitoredFeature,Monitored Feature,The discrete spatial phenomenon that is the target of a release observation due to environmental monitoring.
+http://w3id.org/coso/v1/contaminoso#NonDetectQuantityValue,Non-Detect Quantity Value,A Quantity Value that represents a non-detection of the contaminant. No numeric value is specified.
+http://w3id.org/coso/v1/contaminoso#ObservationAnnotation,Observation Annotation,Metadata that qualifies an observation
+http://w3id.org/coso/v1/contaminoso#Point,Point,The point location at which an observation occurred.
+http://w3id.org/coso/v1/contaminoso#QuantitationLimit,Quantitation Limit,The lowest concentration of a substance that can be reliably measured with acceptable precision and accuracy.
+http://w3id.org/coso/v1/contaminoso#QuantityValue,Quantity Value,A Quantity Value expresses the magnitude and kind of a quantity as a product of a numerical value or enumerated value and a unit of measure.
+http://w3id.org/coso/v1/contaminoso#ReleaseFeature,Release Feature,The discrete spatial phenomenon that may be the target of a release observation.
+http://w3id.org/coso/v1/contaminoso#ReleasePoint,Release Point,The point location at which a release observation occurred.
+http://w3id.org/coso/v1/contaminoso#ResultQualifier,Result Qualifier,"Something that qualifies the result, such as quality control assessment, limitation on the precision or minimum detectable amount. "
+http://w3id.org/coso/v1/contaminoso#SampleAnnotation,Sample Annotation,Metadata that qualifies a sample
+http://w3id.org/coso/v1/contaminoso#SampleMaterialType,Sample Material Type,The type of material that was sampled
+http://w3id.org/coso/v1/contaminoso#SamplePoint,Sample Point,The point location at which a sample observation occurred.
+http://w3id.org/coso/v1/contaminoso#SampledFeature,Sampled Feature,The discrete spatial phenomenon that is the target of a sample observation.
+http://w3id.org/coso/v1/contaminoso#SingleContaminantMeasurement,Single Contaminant Measurement,"The result of an observation about a contaminant that is a single measurement, i.e. a single contaminant at one location from one sample."
+http://w3id.org/coso/v1/contaminoso#Substance,Substance,"Any organic or inorganic substance of a particular molecular identity, including any combination of these substances occurring in whole or in part as a result of a chemical reaction or occurring in nature, and any element or uncombined radical."
+http://w3id.org/coso/v1/contaminoso#SubstanceCollection,Substance Collection,A collection of more than one substances.
+http://w3id.org/coso/v1/contaminoso#analyzedSample,analyzed sample,A relation between an observation of a contaminant and the sample that was analyzed.
+http://w3id.org/coso/v1/contaminoso#casNumber,cas number,The cas number of the substance.
+http://w3id.org/coso/v1/contaminoso#fromSamplePoint,from sample point,A relation between a physical material sample and the location where the sample was taken.
+http://w3id.org/coso/v1/contaminoso#hasAnyFeatureOfInterest,has any feature of interest,A relation between an observation of a contaminant and a feature it is the subject of. There are no specific scale or cardinality constraints that limit the feature.
+http://w3id.org/coso/v1/contaminoso#hasFeatureOfInterest,has feature of interest,A relation between an observation of a contaminant and a feature it is the subject of.
+http://w3id.org/coso/v1/contaminoso#hasResult,has result,A relation between an observation of a contaminant and the measurement that is the result of the observation.
+http://w3id.org/coso/v1/contaminoso#hasResultQualifier,has result qualifier,A relation between measured result and metadata that qualifies the result.
+http://w3id.org/coso/v1/contaminoso#isSampleOf,is sample of,A relation between a physcial material sample and the geographic feature the sample was taken from.
+http://w3id.org/coso/v1/contaminoso#measurementUnit,measurement unit,The unit of measurement the describes the result.
+http://w3id.org/coso/v1/contaminoso#measurementValue,measurement value,The numeric value or enumerated value that quantifies or qualifies the result.
+http://w3id.org/coso/v1/contaminoso#observationAnnotation,observation annotation,A relation between an observation of a contaminant and additional metadata about the observation.
+http://w3id.org/coso/v1/contaminoso#observedAtPoint,observed at point,A relation between an observation of a contaminant and the point that the observation applies to.
+http://w3id.org/coso/v1/contaminoso#observedAtReleasePoint,observed at release point,A relation between an observation of a contaminant that was released and the point where the observation was made and where the release occurred.
+http://w3id.org/coso/v1/contaminoso#observedAtSamplePoint,observed at sample point,A relation between an observation of a contaminant from a material sample and the point where the sample was taken.
+http://w3id.org/coso/v1/contaminoso#observedProperty,observed property,A relation between an observation and the type of contamination property being observed.
+http://w3id.org/coso/v1/contaminoso#observedTime,observed time,The time at which the contaminant was observed in the environment.
+http://w3id.org/coso/v1/contaminoso#ofFeatureType,of feature type,A relation between a feature and a controlled vocabulary term that describes the type of feature
+http://w3id.org/coso/v1/contaminoso#ofSubstance,of substance,A relation between an observation of a contaminant and the substance or substances being observed.
+http://w3id.org/coso/v1/contaminoso#pointFromFeature,point from feature,A relation between a point location and the larger geospatial feature it is a part of.
+http://w3id.org/coso/v1/contaminoso#releaseFeature,release feature,A relation between an observation of a contaminant that was released and the feature where it was released.
+http://w3id.org/coso/v1/contaminoso#resultAnnotation,result annotation,A relation between a result and additional metadata about the result.
+http://w3id.org/coso/v1/contaminoso#sampleAnnotation,sample annotation,A relation between a material sample and additional metadata about the sample.
+http://w3id.org/coso/v1/contaminoso#sampleOfMaterialType,sample of material type,A relation between a material sample and the type of material.
+http://w3id.org/coso/v1/contaminoso#sampledFeature,sampled feature,A relation between an observation of a contaminant from a sample and the feature that was sampled.
+http://w3id.org/coso/v1/contaminoso#substanceID,substance identifier,The unique identifier for the substance.
+http://w3id.org/coso/v1/contaminoso#usedAnalysisMethod,used analysis method,A relation between an observation of a contaminant and the analysis method that was used to perform the observation.
+http://www.opengis.net/ont/geosparql#Feature,Feature,A discrete spatial phenomenon in a universe of discourse.
+http://www.w3.org/ns/sosa/FeatureOfInterest,Feature Of Interest,"The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result, or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling."
+http://www.w3.org/ns/sosa/Observation,Observation,"Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with."
+http://www.w3.org/ns/sosa/Procedure,Procedure,"A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible Results."
+http://www.w3.org/ns/sosa/Property (should this be http://www.w3.org/ns/ssn/Property instead?),Property,A quality of an entity. An aspect of an entity that is intrinsic to and cannot exist without the entity.
+http://www.w3.org/ns/sosa/Result,Result,"The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property."
+http://www.w3.org/ns/sosa/Sample,Sample,"A Sample is a feature which is intended to be representative of a FeatureOfInterest on which Observations may be made. Physical samples are sometimes known as specimens. Samples are artifacts of an observational strategy, and have no significant function outside of their role in the observation process. The characteristics of the samples themselves are of little interest, except perhaps to the manager of a sampling campaign."
+http://www.w3.org/ns/sosa/hasFeatureOfInterest,has feature of interest,"A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."
+http://www.w3.org/ns/sosa/hasResult,has result,Relation linking an Observation or Actuation or act of Sampling and a Result or Sample.
+http://www.w3.org/ns/sosa/isSampleOf,is sample of,Relation from a Sample to the FeatureOfInterest that it is intended to be representative of.
+http://www.w3.org/ns/sosa/observedProperty,observed property,Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation.
+http://www.w3.org/ns/sosa/usedProcedure,used procedure,"A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler."

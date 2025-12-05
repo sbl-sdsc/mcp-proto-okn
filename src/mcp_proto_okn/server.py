@@ -103,7 +103,6 @@ class SPARQLServer:
             with urlopen(registry_url, timeout=5) as resp:
                 raw = resp.read()
                 text = raw.decode("utf-8", errors="replace")
-                # IMPORTANT: don't print to stdout in MCP servers
                 return text.strip()
         except Exception:
             return None

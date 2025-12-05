@@ -1,0 +1,5 @@
+URI,Label,Description
+http://purl.obolibrary.org/obo/CHEMINF_000446,Chemical Identifier,"A unique code or number that identifies a specific chemical substance, such as CAS registry numbers"
+http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name or title for a chemical compound
+http://purl.org/dc/elements/1.1/source,Source,The origin or reference database for chemical information
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what category or class a chemical entity belongs to

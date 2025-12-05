@@ -1,0 +1,19 @@
+URI,Label,Description
+https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A molecule or compound with defined chemical structure and properties
+http://purl.obolibrary.org/obo/CHEMINF_000446,Chemical Identifier,A unique code or number that identifies a specific chemical substance
+http://www.bioassayontology.org/bao#BAO_0000040,Bioassay,A laboratory test that measures the biological or biochemical effects of a substance
+http://purl.obolibrary.org/obo/CHEMINF_000568,Chemical Structure Descriptor,Information that describes the arrangement of atoms in a molecule
+http://purl.obolibrary.org/obo/CHEMINF_000000,Chemical Information,Data or knowledge about chemical substances and their properties
+http://www.bioassayontology.org/bao#BAO_0000179,Biological Target,A molecule in a living system that a drug or chemical substance interacts with
+http://www.bioassayontology.org/bao#BAO_0000015,Assay Design,The specific method and conditions used to conduct a biological experiment
+http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name or title for an entity
+http://purl.org/dc/elements/1.1/source,Source,The origin or reference for a piece of information
+http://edamontology.org/has_identifier,Has Identifier,Links an entity to its unique identification code
+http://purl.obolibrary.org/obo/RO_0000056,Participates In,An entity takes part in or is involved in a biological process
+https://comptox.epa.gov/property/assayID,Assay ID,A unique identifier for a toxicology assay in the EPA CompTox database
+http://purl.obolibrary.org/obo/RO_0000057,Has Participant,A process involves or includes a particular entity
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what category or class something belongs to
+http://purl.obolibrary.org/obo/OBI_0000299,Has Specified Output,The result or product produced by a process or assay
+http://www.bioassayontology.org/bao#BAO_0000209,Has Assay Component,The specific part or measurement within a larger bioassay
+http://purl.obolibrary.org/obo/IAO_0000136,Is About,Indicates that information or data pertains to a particular subject
+http://semanticscience.org/resource/SIO_000300,Has Value,Assigns a specific measurement or quantity to an entity

@@ -1,0 +1,68 @@
+URI,Label,Description
+http://purl.org/dc/elements/1.1/source,source,A related resource from which the described resource is derived.
+http://purl.org/dc/terms/contributor,contributor,An entity responsible for making contributions to the resource.
+http://purl.org/dc/terms/created,date created,Date of creation of the resource.
+http://purl.org/dc/terms/creator,creator,An entity responsible for making the resource.
+http://purl.org/dc/terms/description,description,An account of the resource.
+http://purl.org/dc/terms/modified,date modified,Date on which the resource was changed.
+http://purl.org/dc/terms/publisher,publisher,An entity responsible for making the resource available.
+http://purl.org/dc/terms/title,title,A name given to the resource.
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,connected to,Indicates a topological connection or spatial contact between two features.
+http://purl.org/spatialai/spatial/spatial-full#spatiallyRelatedTo,spatially related to,A general topological connection or spatial contact relationship between features.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion,Administrative Region,Administrative regions as defined by the Global Administrative Area Database (GADM).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_0,Administrative Region Level 0,GADM level 0 administrative regions which represent countries.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_1,Administrative Region Level 1,"GADM level 1 administrative regions which are the highest level of division of a country, such as US states, Canadian provinces, or French departments."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_2,Administrative Region Level 2,"GADM level 2 administrative regions which further subdivide states, provinces, or departments. Examples include counties in the US."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_3,Administrative Region Level 3,"GADM level 3 administrative regions. In the US, these are subdivisions of counties, formally known as county subdivisions, such as minor civil divisions (e.g. towns or townships) or census county divisions."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_4,Administrative Region Level 4,GADM level 4 administrative regions.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_5,Administrative Region Level 5,GADM level 5 administrative regions.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_6,Administrative Region Level 6,GADM level 6 administrative regions.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/Cell,Cell,A spatial cell used for discretizing geographic space into regular units.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/Place,Place,A named geographic location with cultural or social significance.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/PointOfInterest,Point of Interest,A specific location that someone may find useful or interesting.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/Region,Region,A spatial region that represents a bounded area of space.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/RoadSegment,Road Segment,A linear feature representing a segment of a road network.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell,S2 Cell,"A cell from the S2 discrete global grid system, which hierarchically subdivides the sphere."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level0,S2 Cell Level 0,"An S2 cell at zoom level 0, representing one of 6 root cells covering the entire sphere."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level1,S2 Cell Level 1,"An S2 cell at zoom level 1, representing approximately 85 million km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level10,S2 Cell Level 10,"An S2 cell at zoom level 10, representing approximately 327 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level11,S2 Cell Level 11,"An S2 cell at zoom level 11, representing approximately 81.7 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level12,S2 Cell Level 12,"An S2 cell at zoom level 12, representing approximately 20.4 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level13,S2 Cell Level 13,"An S2 cell at zoom level 13, representing approximately 1.27 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level14,S2 Cell Level 14,"An S2 cell at zoom level 14, representing approximately 1.27 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level15,S2 Cell Level 15,"An S2 cell at zoom level 15, representing approximately 318,000 m² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level2,S2 Cell Level 2,"An S2 cell at zoom level 2, representing approximately 21 million km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level3,S2 Cell Level 3,"An S2 cell at zoom level 3, representing approximately 5.3 million km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level4,S2 Cell Level 4,"An S2 cell at zoom level 4, representing approximately 1.3 million km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level5,S2 Cell Level 5,"An S2 cell at zoom level 5, representing approximately 332,000 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level6,S2 Cell Level 6,"An S2 cell at zoom level 6, representing approximately 83,000 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level7,S2 Cell Level 7,"An S2 cell at zoom level 7, representing approximately 20,800 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level8,S2 Cell Level 8,"An S2 cell at zoom level 8, representing approximately 5,200 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level9,S2 Cell Level 9,"An S2 cell at zoom level 9, representing approximately 1,300 km² at the equator."
+http://stko-kwg.geog.ucsb.edu/lod/ontology/StatisticalArea,Statistical Area,A geographic area defined for statistical data collection and reporting purposes.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/ZipCodeArea,ZIP Code Area,A geographic area defined by a postal ZIP code boundary.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/administrativePartOf,administrative part of,Indicates that one administrative region is a part of another administrative region in the hierarchy.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/asWKT,as Well-Known Text,Provides the WKT (Well-Known Text) serialization of a geometry.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/cellID,cell identifier,The unique identifier for a spatial cell in a discrete global grid system.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/hasDefaultGeometry,has default geometry,Links a feature to its primary or default geometric representation.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/hasEndTime,has end time,The ending time of a temporal feature or event.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/hasFIPS,has FIPS code,Relates a geographic feature to its Federal Information Processing Standards (FIPS) code identifier.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/hasGeometry,has geometry,Links a spatial feature to one of its geometric representations.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/hasStartTime,has start time,The beginning time of a temporal feature or event.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/hasTemporalExtent,has temporal extent,Links a feature to its temporal extent or time period.
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates that one geographic feature spatially contains another (DE-9IM pattern T*****FF*).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates that two geographic features cross each other (DE-9IM pattern T*T****** for line/area).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfDisjoint,spatially disjoint,Indicates that two geographic features have no points in common (DE-9IM pattern FF*FF****).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfEquals,spatially equals,Indicates that two geographic features are spatially equal (DE-9IM pattern TFFFTFFFT).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfIntersects,spatially intersects,Indicates that two geographic features have at least one point in common (opposite of disjoint).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates that two geographic features partially overlap (DE-9IM pattern T*T***T** for areas).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,Indicates that two geographic features touch at their boundaries but do not overlap (DE-9IM pattern FT******* or F**T***** or F***T****).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates that one geographic feature is spatially within another (DE-9IM pattern T*F**F***).
+http://stko-kwg.geog.ucsb.edu/lod/ontology/spatialRelation,spatial relation,A general spatial relationship between two geographic features.
+http://www.opengis.net/ont/geosparql#Feature,Feature,A discrete spatial phenomenon representing an abstraction of a real-world entity. From GeoSPARQL specification.
+http://www.opengis.net/ont/geosparql#Geometry,Geometry,"A coherent set of direct positions in space representing the shape, size, and location of a geographic feature. From GeoSPARQL specification."
+http://www.opengis.net/ont/geosparql#SpatialObject,Spatial Object,"Anything spatial (e.g., having spatial extent, position). From GeoSPARQL specification."
+http://www.opengis.net/ont/geosparql#asWKT,as WKT,The Well-Known Text (WKT) serialization of a geometry.
+http://www.opengis.net/ont/geosparql#defaultGeometry,default geometry,The default geometric representation to use for a feature when multiple geometries are available.
+http://www.opengis.net/ont/geosparql#hasGeometry,has geometry,Links a feature to its geometric representation.
+http://www.opengis.net/ont/geosparql#hasMetricArea,has metric area,The area of a spatial object in square meters.

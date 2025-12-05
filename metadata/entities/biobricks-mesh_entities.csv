@@ -1,0 +1,54 @@
+URI,Label,Description
+http://id.nlm.nih.gov/mesh/vocab#Descriptor,Descriptor (Main Heading),A topical term used to describe the subject matter or content of biomedical literature
+http://id.nlm.nih.gov/mesh/vocab#Qualifier,Qualifier (Subheading),"A term used with descriptors to specify a particular aspect of a subject, such as diagnosis or therapy"
+http://id.nlm.nih.gov/mesh/vocab#SupplementaryConcept,Supplementary Concept Record,"Terms for specific substances, protocols, or rare diseases added between annual MeSH updates"
+http://id.nlm.nih.gov/mesh/vocab#TopicalDescriptor,Topical Descriptor,"A descriptor that indicates what a work is about, found in tree categories A through N"
+http://id.nlm.nih.gov/mesh/vocab#PublicationType,Publication Type,A descriptor that indicates the format or genre of a publication rather than its subject
+http://id.nlm.nih.gov/mesh/vocab#GeographicalDescriptor,Geographical Descriptor,"A descriptor for continents, regions, countries, and other geographic locations"
+http://id.nlm.nih.gov/mesh/vocab#Concept,Concept,A specific meaning or idea associated with a MeSH term
+http://id.nlm.nih.gov/mesh/vocab#Term,Term,"A word or phrase used as a name for a concept, including preferred and entry terms"
+http://www.w3.org/2000/01/rdf-schema#label,Label,The human-readable name of a MeSH term
+http://id.nlm.nih.gov/mesh/vocab#preferredConcept,Preferred Concept,The main concept representing the intended meaning of a descriptor
+http://id.nlm.nih.gov/mesh/vocab#concept,Has Concept,Links a descriptor to one of its associated concepts
+http://id.nlm.nih.gov/mesh/vocab#term,Has Term,Links a concept to a term used to express it
+http://id.nlm.nih.gov/mesh/vocab#preferredTerm,Preferred Term,The main term used to refer to a concept
+http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor,Broader Descriptor,A more general term in the MeSH hierarchy
+http://id.nlm.nih.gov/mesh/vocab#narrowerDescriptor,Narrower Descriptor,A more specific term in the MeSH hierarchy
+http://id.nlm.nih.gov/mesh/vocab#treeNumber,Tree Number,A code indicating the hierarchical position of a descriptor in the MeSH tree
+http://id.nlm.nih.gov/mesh/vocab#allowableQualifier,Allowable Qualifier,A subheading that can be used with a particular descriptor
+http://id.nlm.nih.gov/mesh/vocab#pharmacologicalAction,Pharmacological Action,The therapeutic or biological effect of a substance
+http://id.nlm.nih.gov/mesh/vocab#scopeNote,Scope Note,A definition or explanation of how a MeSH term should be used
+http://www.w3.org/2004/02/skos/core#broader,Broader,Indicates a more general related concept
+http://www.w3.org/2004/02/skos/core#narrower,Narrower,Indicates a more specific related concept
+http://id.nlm.nih.gov/mesh/A,Anatomy [A],"Descriptors for body structures, organs, tissues, and cells"
+http://id.nlm.nih.gov/mesh/B,Organisms [B],"Descriptors for bacteria, viruses, fungi, plants, and animals"
+http://id.nlm.nih.gov/mesh/C,Diseases [C],"Descriptors for pathological conditions, syndromes, and signs and symptoms"
+http://id.nlm.nih.gov/mesh/D,Chemicals and Drugs [D],"Descriptors for chemical compounds, pharmaceuticals, and biological substances"
+http://id.nlm.nih.gov/mesh/E,"Analytical, Diagnostic and Therapeutic Techniques and Equipment [E]","Descriptors for medical procedures, diagnostic tests, and treatment methods"
+http://id.nlm.nih.gov/mesh/F,Psychiatry and Psychology [F],"Descriptors for mental processes, behavioral sciences, and psychological phenomena"
+http://id.nlm.nih.gov/mesh/G,Phenomena and Processes [G],"Descriptors for biological, chemical, and physical processes"
+http://id.nlm.nih.gov/mesh/H,Disciplines and Occupations [H],"Descriptors for fields of study, professions, and career specialties"
+http://id.nlm.nih.gov/mesh/I,"Anthropology, Education, Sociology and Social Phenomena [I]",Descriptors for social sciences and cultural topics
+http://id.nlm.nih.gov/mesh/J,"Technology, Industry, Agriculture [J]","Descriptors for industrial processes, agricultural practices, and technology"
+http://id.nlm.nih.gov/mesh/K,Humanities [K],"Descriptors for arts, history, religion, and philosophy"
+http://id.nlm.nih.gov/mesh/L,Information Science [L],"Descriptors for communication, information management, and computer science"
+http://id.nlm.nih.gov/mesh/M,Named Groups [M],Descriptors for population groups and demographic categories
+http://id.nlm.nih.gov/mesh/N,Health Care [N],"Descriptors for health services, facilities, and healthcare systems"
+http://id.nlm.nih.gov/mesh/V,Publication Characteristics [V],Descriptors for types of publications and document formats
+http://id.nlm.nih.gov/mesh/Z,Geographicals [Z],Descriptors for geographic locations worldwide
+http://id.nlm.nih.gov/mesh/D001249,Asthma,A chronic respiratory disease characterized by airway inflammation and breathing difficulties
+http://id.nlm.nih.gov/mesh/D003920,Diabetes Mellitus,A metabolic disorder characterized by high blood sugar levels
+http://id.nlm.nih.gov/mesh/D006973,Hypertension,A condition of persistently elevated blood pressure
+http://id.nlm.nih.gov/mesh/D002294,Carcinoma,A malignant tumor arising from epithelial cells
+http://id.nlm.nih.gov/mesh/D000086382,COVID-19,An infectious disease caused by the SARS-CoV-2 virus
+http://id.nlm.nih.gov/mesh/D000082,Acetaminophen,A pain reliever and fever reducer medication
+http://id.nlm.nih.gov/mesh/D000900,Anti-Bacterial Agents,Substances that inhibit or kill bacteria
+http://id.nlm.nih.gov/mesh/D015992,Body Mass Index,A measure of body fat based on height and weight
+http://id.nlm.nih.gov/mesh/D008279,Magnetic Resonance Imaging,A diagnostic imaging technique using magnetic fields and radio waves
+http://id.nlm.nih.gov/mesh/D011247,Pregnancy,The state of carrying a developing embryo or fetus
+http://id.nlm.nih.gov/mesh/Q000175,diagnosis,Used for methods and procedures to identify a disease or condition
+http://id.nlm.nih.gov/mesh/Q000627,therapeutic use,Used for substances or procedures employed to treat disease
+http://id.nlm.nih.gov/mesh/Q000009,adverse effects,Used for undesired or harmful effects of treatments or exposures
+http://id.nlm.nih.gov/mesh/Q000453,epidemiology,Used for the distribution and determinants of health conditions in populations
+http://id.nlm.nih.gov/mesh/Q000235,genetics,Used for genetic and hereditary aspects of a condition
+http://id.nlm.nih.gov/mesh/Q000517,prevention & control,Used for methods to prevent or reduce disease occurrence
