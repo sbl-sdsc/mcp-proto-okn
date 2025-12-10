@@ -1,27 +1,27 @@
-URI,Label,Description
-http://www.w3.org/ns/oa#Annotation,Annotation,A connection between a target resource (like a chemical compound) and content that annotates it (like textual information or data)
-http://rdf.ncbi.nlm.nih.gov/pubchem/compound/Compound,PubChem Compound,A unique chemical structure with standardized representation in PubChem
-http://rdf.ncbi.nlm.nih.gov/pubchem/substance/Substance,PubChem Substance,"A chemical record deposited by a data contributor, which may map to one or more compounds"
-http://www.w3.org/ns/oa#TextualBody,Textual Body,Text content that provides information about an annotated resource
-http://www.w3.org/ns/oa#hasBody,Has Body,Links an annotation to the content that describes or comments on the target
-http://www.w3.org/ns/oa#hasTarget,Has Target,"Links an annotation to the resource being annotated (e.g., a chemical compound)"
-http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what kind of thing an entity is
-http://www.w3.org/1999/02/22-rdf-syntax-ns#value,Value,The actual text or data content of an annotation
-http://purl.org/dc/elements/1.1/format,Format,The file format or media type of the content
-http://purl.org/dc/elements/1.1/subject,Subject,The chemical compound or substance that the annotation is about
-http://semanticscience.org/resource/CHEMINF_000018,Chemical Name,The common or systematic name of a chemical substance
-http://semanticscience.org/resource/CHEMINF_000059,Molecular Formula,The types and numbers of atoms in a molecule
-http://semanticscience.org/resource/CHEMINF_000043,InChI,International Chemical Identifier - a textual identifier for chemical substances
-http://semanticscience.org/resource/CHEMINF_000399,SMILES,Simplified Molecular Input Line Entry System - a line notation for chemical structures
-http://semanticscience.org/resource/SIO_000008,Has Attribute,Links a chemical entity to its properties or characteristics
-http://semanticscience.org/resource/SIO_000300,Has Value,Assigns a specific measurement or quantity to an attribute
-PubChem:ChemicalProperty,Chemical Property Annotation,"Information about physical or chemical properties like molecular weight, melting point, or solubility"
-PubChem:BiologicalActivity,Biological Activity Annotation,Data about how a compound interacts with biological systems or affects living organisms
-PubChem:ToxicologyData,Toxicology Data Annotation,"Information about potential toxic effects, safety data, and environmental hazards"
-PubChem:PharmacologyData,Pharmacology Data Annotation,"Information about therapeutic uses, drug interactions, and mechanisms of action"
-PubChem:LiteratureReference,Literature Reference Annotation,Citations and excerpts from scientific publications mentioning the compound
-PubChem:PatentData,Patent Data Annotation,Information from patents that describe or claim the chemical compound
-PubChem:Synonym,Synonym Annotation,Alternative names and identifiers for the chemical compound
-http://rdf.ncbi.nlm.nih.gov/pubchem/annotation/ANID1,Annotation ANID1,An annotation containing regulatory limits and chemical property information for Strontium compounds
-http://rdf.ncbi.nlm.nih.gov/pubchem/annotation/ANID10,Annotation ANID10,An annotation containing scientific literature references and biological activity data
-http://rdf.ncbi.nlm.nih.gov/pubchem/annotation/ANID100,Annotation ANID100,An annotation with toxicological data and safety information
+URI,Label,Description,Type
+http://www.w3.org/ns/oa#Annotation,Annotation,A connection between a target resource (like a chemical compound) and content that annotates it (like textual information or data),Class
+http://rdf.ncbi.nlm.nih.gov/pubchem/compound/Compound,PubChem Compound,A unique chemical structure with standardized representation in PubChem,Class
+http://rdf.ncbi.nlm.nih.gov/pubchem/substance/Substance,PubChem Substance,"A chemical record deposited by a data contributor, which may map to one or more compounds",Class
+http://www.w3.org/ns/oa#TextualBody,Textual Body,Text content that provides information about an annotated resource,Class
+http://www.w3.org/ns/oa#hasBody,Has Body,Links an annotation to the content that describes or comments on the target,Predicate
+http://www.w3.org/ns/oa#hasTarget,Has Target,"Links an annotation to the resource being annotated (e.g., a chemical compound)",Predicate
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what kind of thing an entity is,Predicate
+http://www.w3.org/1999/02/22-rdf-syntax-ns#value,Value,The actual text or data content of an annotation,Predicate
+http://purl.org/dc/elements/1.1/format,Format,The file format or media type of the content,Predicate
+http://purl.org/dc/elements/1.1/subject,Subject,The chemical compound or substance that the annotation is about,Predicate
+http://semanticscience.org/resource/CHEMINF_000018,Chemical Name,The common or systematic name of a chemical substance,Predicate
+http://semanticscience.org/resource/CHEMINF_000059,Molecular Formula,The types and numbers of atoms in a molecule,Predicate
+http://semanticscience.org/resource/CHEMINF_000043,InChI,International Chemical Identifier - a textual identifier for chemical substances,Predicate
+http://semanticscience.org/resource/CHEMINF_000399,SMILES,Simplified Molecular Input Line Entry System - a line notation for chemical structures,Predicate
+http://semanticscience.org/resource/SIO_000008,Has Attribute,Links a chemical entity to its properties or characteristics,Predicate
+http://semanticscience.org/resource/SIO_000300,Has Value,Assigns a specific measurement or quantity to an attribute,Predicate
+PubChem:ChemicalProperty,Chemical Property Annotation,"Information about physical or chemical properties like molecular weight, melting point, or solubility",Class
+PubChem:BiologicalActivity,Biological Activity Annotation,Data about how a compound interacts with biological systems or affects living organisms,Class
+PubChem:ToxicologyData,Toxicology Data Annotation,"Information about potential toxic effects, safety data, and environmental hazards",Class
+PubChem:PharmacologyData,Pharmacology Data Annotation,"Information about therapeutic uses, drug interactions, and mechanisms of action",Class
+PubChem:LiteratureReference,Literature Reference Annotation,Citations and excerpts from scientific publications mentioning the compound,Class
+PubChem:PatentData,Patent Data Annotation,Information from patents that describe or claim the chemical compound,Class
+PubChem:Synonym,Synonym Annotation,Alternative names and identifiers for the chemical compound,Class
+http://rdf.ncbi.nlm.nih.gov/pubchem/annotation/ANID1,Annotation ANID1,An annotation containing regulatory limits and chemical property information for Strontium compounds,Class
+http://rdf.ncbi.nlm.nih.gov/pubchem/annotation/ANID10,Annotation ANID10,An annotation containing scientific literature references and biological activity data,Class
+http://rdf.ncbi.nlm.nih.gov/pubchem/annotation/ANID100,Annotation ANID100,An annotation with toxicological data and safety information,Class

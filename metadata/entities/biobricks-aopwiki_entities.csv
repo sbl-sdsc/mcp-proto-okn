@@ -1,35 +1,35 @@
-URI,Label,Description
-http://aopkb.org/aop_ontology#AdverseOutcomePathway,Adverse Outcome Pathway (AOP),A sequence of causally linked biological events that lead from exposure to a harmful effect on health or the environment
-http://aopkb.org/aop_ontology#KeyEvent,Key Event (KE),A measurable change in biological state that is essential for the progression from exposure to adverse outcome
-http://aopkb.org/aop_ontology#KeyEventRelationship,Key Event Relationship (KER),"The causal linkage between two key events, describing how one event leads to another"
-http://purl.obolibrary.org/obo/GO_0008150,Biological Process,A series of molecular and cellular events that occur in living organisms
-http://aopkb.org/aop_ontology#OrganContext,Organ Context,The specific organ or organ system in which a key event occurs
-http://aopkb.org/aop_ontology#CellTypeContext,Cell Type Context,The specific type of cell in which a key event takes place
-http://semanticscience.org/resource/CHEMINF_000446,Chemical Identifier,A unique code that identifies a specific chemical substance
-http://semanticscience.org/resource/CHEMINF_000000,Chemical Information,Data and knowledge about chemical substances and their properties
-http://semanticscience.org/resource/CHEMINF_000405,CAS Registry Number,A unique numerical identifier assigned to chemical substances by the Chemical Abstracts Service
-http://semanticscience.org/resource/CHEMINF_000406,InChI,International Chemical Identifier - a textual representation of chemical structure
-http://semanticscience.org/resource/CHEMINF_000407,InChIKey,A hashed version of InChI providing a fixed-length identifier
-http://semanticscience.org/resource/CHEMINF_000408,PubChem Compound ID,An identifier for chemical compounds in the PubChem database
-http://semanticscience.org/resource/CHEMINF_000409,ChEBI Identifier,An identifier from the Chemical Entities of Biological Interest database
-http://semanticscience.org/resource/CHEMINF_000412,SMILES,Simplified Molecular Input Line Entry System - a text notation for chemical structures
-http://purl.bioontology.org/ontology/NCBITAXON/131567,Taxonomic Classification,The scientific classification of organisms into hierarchical groups
-http://edamontology.org/data_2298,Gene Identifier,A unique code identifying a specific gene
-http://edamontology.org/data_1033,Protein Identifier,A unique code identifying a specific protein
-http://edamontology.org/data_2291,Pathway Identifier,A unique code identifying a biological pathway
-http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C54571,Disease or Disorder,An abnormal condition affecting the body or mind
-http://aopkb.org/aop_ontology#has_molecular_initiating_event,Has Molecular Initiating Event,Links an AOP to the initial interaction between a chemical and a biological system
-http://aopkb.org/aop_ontology#has_key_event,Has Key Event,Links an AOP to one of its component key events
-http://aopkb.org/aop_ontology#has_adverse_outcome,Has Adverse Outcome,Links an AOP to the final harmful effect at the individual or population level
-http://aopkb.org/aop_ontology#has_key_event_relationship,Has Key Event Relationship,Links an AOP to a causal relationship between two of its key events
-http://aopkb.org/aop_ontology#has_upstream_key_event,Has Upstream Key Event,Identifies the earlier event in a key event relationship
-http://aopkb.org/aop_ontology#has_downstream_key_event,Has Downstream Key Event,Identifies the later event in a key event relationship
-http://aopkb.org/aop_ontology#has_chemical_entity,Has Chemical Entity,Links an AOP or key event to a chemical that can trigger or influence it
-http://aopkb.org/aop_ontology#has_evidence,Has Evidence,Links to scientific evidence supporting an AOP or key event relationship
-http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name for an entity
-http://purl.org/dc/elements/1.1/title,Title,The name or heading of an AOP or key event
-http://purl.org/dc/elements/1.1/description,Description,Detailed information explaining an entity
-http://purl.org/dc/elements/1.1/creator,Creator,The person or organization that developed the AOP
-http://purl.org/dc/elements/1.1/identifier,Identifier,A unique code or number for the entity
-http://purl.org/dc/terms/created,Created,The date when the AOP was first created
-http://purl.org/dc/terms/modified,Modified,The date when the AOP was last updated
+URI,Label,Description,Type
+http://aopkb.org/aop_ontology#AdverseOutcomePathway,Adverse Outcome Pathway (AOP),A sequence of causally linked biological events that lead from exposure to a harmful effect on health or the environment,Class
+http://aopkb.org/aop_ontology#KeyEvent,Key Event (KE),A measurable change in biological state that is essential for the progression from exposure to adverse outcome,Class
+http://aopkb.org/aop_ontology#KeyEventRelationship,Key Event Relationship (KER),"The causal linkage between two key events, describing how one event leads to another",Class
+http://purl.obolibrary.org/obo/GO_0008150,Biological Process,A series of molecular and cellular events that occur in living organisms,Class
+http://aopkb.org/aop_ontology#OrganContext,Organ Context,The specific organ or organ system in which a key event occurs,Class
+http://aopkb.org/aop_ontology#CellTypeContext,Cell Type Context,The specific type of cell in which a key event takes place,Class
+http://semanticscience.org/resource/CHEMINF_000446,Chemical Identifier,A unique code that identifies a specific chemical substance,Class
+http://semanticscience.org/resource/CHEMINF_000000,Chemical Information,Data and knowledge about chemical substances and their properties,Class
+http://semanticscience.org/resource/CHEMINF_000405,CAS Registry Number,A unique numerical identifier assigned to chemical substances by the Chemical Abstracts Service,Class
+http://semanticscience.org/resource/CHEMINF_000406,InChI,International Chemical Identifier - a textual representation of chemical structure,Class
+http://semanticscience.org/resource/CHEMINF_000407,InChIKey,A hashed version of InChI providing a fixed-length identifier,Class
+http://semanticscience.org/resource/CHEMINF_000408,PubChem Compound ID,An identifier for chemical compounds in the PubChem database,Class
+http://semanticscience.org/resource/CHEMINF_000409,ChEBI Identifier,An identifier from the Chemical Entities of Biological Interest database,Class
+http://semanticscience.org/resource/CHEMINF_000412,SMILES,Simplified Molecular Input Line Entry System - a text notation for chemical structures,Class
+http://purl.bioontology.org/ontology/NCBITAXON/131567,Taxonomic Classification,The scientific classification of organisms into hierarchical groups,Class
+http://edamontology.org/data_2298,Gene Identifier,A unique code identifying a specific gene,Class
+http://edamontology.org/data_1033,Protein Identifier,A unique code identifying a specific protein,Class
+http://edamontology.org/data_2291,Pathway Identifier,A unique code identifying a biological pathway,Class
+http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C54571,Disease or Disorder,An abnormal condition affecting the body or mind,Class
+http://aopkb.org/aop_ontology#has_molecular_initiating_event,Has Molecular Initiating Event,Links an AOP to the initial interaction between a chemical and a biological system,Predicate
+http://aopkb.org/aop_ontology#has_key_event,Has Key Event,Links an AOP to one of its component key events,Predicate
+http://aopkb.org/aop_ontology#has_adverse_outcome,Has Adverse Outcome,Links an AOP to the final harmful effect at the individual or population level,Predicate
+http://aopkb.org/aop_ontology#has_key_event_relationship,Has Key Event Relationship,Links an AOP to a causal relationship between two of its key events,Predicate
+http://aopkb.org/aop_ontology#has_upstream_key_event,Has Upstream Key Event,Identifies the earlier event in a key event relationship,Predicate
+http://aopkb.org/aop_ontology#has_downstream_key_event,Has Downstream Key Event,Identifies the later event in a key event relationship,Predicate
+http://aopkb.org/aop_ontology#has_chemical_entity,Has Chemical Entity,Links an AOP or key event to a chemical that can trigger or influence it,Predicate
+http://aopkb.org/aop_ontology#has_evidence,Has Evidence,Links to scientific evidence supporting an AOP or key event relationship,Predicate
+http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name for an entity,Predicate
+http://purl.org/dc/elements/1.1/title,Title,The name or heading of an AOP or key event,Predicate
+http://purl.org/dc/elements/1.1/description,Description,Detailed information explaining an entity,Predicate
+http://purl.org/dc/elements/1.1/creator,Creator,The person or organization that developed the AOP,Predicate
+http://purl.org/dc/elements/1.1/identifier,Identifier,A unique code or number for the entity,Predicate
+http://purl.org/dc/terms/created,Created,The date when the AOP was first created,Predicate
+http://purl.org/dc/terms/modified,Modified,The date when the AOP was last updated,Predicate

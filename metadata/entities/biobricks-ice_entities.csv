@@ -1,32 +1,32 @@
-URI,Label,Description
-http://www.bioassayontology.org/bao#BAO_0003064,Bioassay Result,A measured outcome or data point from a biological or biochemical experiment testing the effects of a substance
-https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A molecule or compound with defined chemical structure and properties
-http://purl.obolibrary.org/obo/CHEMINF_000446,Chemical Identifier,A unique code or number that identifies a specific chemical substance
-http://edamontology.org/data_1181,Database Entry,A record or item stored in a scientific database
-http://www.bioassayontology.org/bao#BAO_0000040,Bioassay,A laboratory test that measures the effects of a substance on living cells or organisms
-http://purl.obolibrary.org/obo/CHEMINF_000568,Chemical Structure Descriptor,Information that describes the arrangement of atoms in a molecule
-http://purl.obolibrary.org/obo/CHEMINF_000000,Chemical Information,Data or knowledge about chemical substances and properties
-http://www.bioassayontology.org/bao#BAO_0000179,Biological Target,A molecule in a living system that a drug or substance interacts with
-http://edamontology.org/data_1027,Gene Identifier,A unique code that identifies a specific gene
-http://www.bioassayontology.org/bao#BAO_0000015,Assay Design,The specific method and conditions used to conduct a biological experiment
-https://ice.ntp.niehs.nih.gov/property/mayInformOn,May Inform On,Indicates that assay data might provide information about a particular biological effect or toxicity
-http://purl.org/dc/elements/1.1/source,Source,The origin or reference for a piece of information
-http://purl.obolibrary.org/obo/RO_0000056,Participates In,An entity takes part in or is involved in a biological process
-http://purl.obolibrary.org/obo/RO_0000057,Has Participant,A process involves or includes a particular entity
-http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what category or class something belongs to
-https://ice.ntp.niehs.nih.gov/property/assay_source,Assay Source,The organization or database that provided the experimental data
-https://identifiers.org/umls:C1708327,UMLS Concept,A unified medical term or concept from the medical terminology system
-https://ice.ntp.niehs.nih.gov/property/assay_invitro_assay_format,In Vitro Assay Format,The specific laboratory method used to test substances outside of living organisms
-https://ice.ntp.niehs.nih.gov/property/assay_tissue,Assay Tissue,The type of biological tissue or cell used in the experiment
-https://ice.ntp.niehs.nih.gov/property/throughMechanisticTarget,Through Mechanistic Target,The specific biological molecule through which a substance produces its effect
-http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name for an entity
-http://edamontology.org/has_identifier,Has Identifier,Links an entity to its unique identification code
-http://purl.obolibrary.org/obo/OBI_0000299,Has Specified Output,The result or product produced by a process or assay
-https://ice.ntp.niehs.nih.gov/property/throughMechanisticTarget_NCIm,NCI Mechanistic Target,The biological target classified according to National Cancer Institute terminology
-https://ice.ntp.niehs.nih.gov/property/assay_species,Assay Species,The type of organism used in the biological experiment
-http://www.bioassayontology.org/bao#BAO_0000209,Has Assay Component,The specific part or measurement within a larger bioassay
-https://ice.ntp.niehs.nih.gov/property/assay_entrez_gene_id,Entrez Gene ID,The unique identifier for a gene in the NCBI Entrez Gene database
-http://semanticscience.org/resource/SIO_000221,Has Unit,Specifies the measurement unit for a numerical value
-http://purl.obolibrary.org/obo/IAO_0000136,Is About,Indicates that information or data pertains to a particular subject
-http://semanticscience.org/resource/SIO_000300,Has Value,Assigns a specific measurement or quantity to an entity
-http://purl.obolibrary.org/obo/ExO_0000055,Has Exposure,Relates to the contact or treatment of a system with a substance
+URI,Label,Description,Type
+http://www.bioassayontology.org/bao#BAO_0003064,Bioassay Result,A measured outcome or data point from a biological or biochemical experiment testing the effects of a substance,Class
+https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A molecule or compound with defined chemical structure and properties,Class
+http://purl.obolibrary.org/obo/CHEMINF_000446,Chemical Identifier,A unique code or number that identifies a specific chemical substance,Class
+http://edamontology.org/data_1181,Database Entry,A record or item stored in a scientific database,Class
+http://www.bioassayontology.org/bao#BAO_0000040,Bioassay,A laboratory test that measures the effects of a substance on living cells or organisms,Class
+http://purl.obolibrary.org/obo/CHEMINF_000568,Chemical Structure Descriptor,Information that describes the arrangement of atoms in a molecule,Class
+http://purl.obolibrary.org/obo/CHEMINF_000000,Chemical Information,Data or knowledge about chemical substances and properties,Class
+http://www.bioassayontology.org/bao#BAO_0000179,Biological Target,A molecule in a living system that a drug or substance interacts with,Class
+http://edamontology.org/data_1027,Gene Identifier,A unique code that identifies a specific gene,Class
+http://www.bioassayontology.org/bao#BAO_0000015,Assay Design,The specific method and conditions used to conduct a biological experiment,Class
+https://ice.ntp.niehs.nih.gov/property/mayInformOn,May Inform On,Indicates that assay data might provide information about a particular biological effect or toxicity,Predicate
+http://purl.org/dc/elements/1.1/source,Source,The origin or reference for a piece of information,Predicate
+http://purl.obolibrary.org/obo/RO_0000056,Participates In,An entity takes part in or is involved in a biological process,Predicate
+http://purl.obolibrary.org/obo/RO_0000057,Has Participant,A process involves or includes a particular entity,Predicate
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what category or class something belongs to,Predicate
+https://ice.ntp.niehs.nih.gov/property/assay_source,Assay Source,The organization or database that provided the experimental data,Predicate
+https://identifiers.org/umls:C1708327,UMLS Concept,A unified medical term or concept from the medical terminology system,Predicate
+https://ice.ntp.niehs.nih.gov/property/assay_invitro_assay_format,In Vitro Assay Format,The specific laboratory method used to test substances outside of living organisms,Predicate
+https://ice.ntp.niehs.nih.gov/property/assay_tissue,Assay Tissue,The type of biological tissue or cell used in the experiment,Predicate
+https://ice.ntp.niehs.nih.gov/property/throughMechanisticTarget,Through Mechanistic Target,The specific biological molecule through which a substance produces its effect,Predicate
+http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name for an entity,Predicate
+http://edamontology.org/has_identifier,Has Identifier,Links an entity to its unique identification code,Predicate
+http://purl.obolibrary.org/obo/OBI_0000299,Has Specified Output,The result or product produced by a process or assay,Predicate
+https://ice.ntp.niehs.nih.gov/property/throughMechanisticTarget_NCIm,NCI Mechanistic Target,The biological target classified according to National Cancer Institute terminology,Predicate
+https://ice.ntp.niehs.nih.gov/property/assay_species,Assay Species,The type of organism used in the biological experiment,Predicate
+http://www.bioassayontology.org/bao#BAO_0000209,Has Assay Component,The specific part or measurement within a larger bioassay,Predicate
+https://ice.ntp.niehs.nih.gov/property/assay_entrez_gene_id,Entrez Gene ID,The unique identifier for a gene in the NCBI Entrez Gene database,Predicate
+http://semanticscience.org/resource/SIO_000221,Has Unit,Specifies the measurement unit for a numerical value,Predicate
+http://purl.obolibrary.org/obo/IAO_0000136,Is About,Indicates that information or data pertains to a particular subject,Predicate
+http://semanticscience.org/resource/SIO_000300,Has Value,Assigns a specific measurement or quantity to an entity,Predicate
+http://purl.obolibrary.org/obo/ExO_0000055,Has Exposure,Relates to the contact or treatment of a system with a substance,Predicate

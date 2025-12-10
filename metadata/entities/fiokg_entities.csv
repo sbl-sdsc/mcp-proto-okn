@@ -1,106 +1,106 @@
-URI,Label,Description
-http://w3id.org/fio/v1/epa-frs#Agency,Agency,Federal Agency as identified in EPA Facility Registry Service
-http://w3id.org/fio/v1/epa-frs#Agency.Agriculture,Agriculture,"U.S. Department of Agriculture - manages programs related to farming, forestry, and food safety"
-http://w3id.org/fio/v1/epa-frs#Agency.Commerce,Commerce,U.S. Department of Commerce - oversees business and trade-related environmental programs
-http://w3id.org/fio/v1/epa-frs#Agency.Congress,Congress,U.S. Congress - legislative branch oversight and environmental legislation
-http://w3id.org/fio/v1/epa-frs#Agency.Defense,Defense,U.S. Department of Defense - manages environmental programs on military installations
-http://w3id.org/fio/v1/epa-frs#Agency.Energy,Energy,U.S. Department of Energy - oversees energy production and nuclear facility environmental programs
-http://w3id.org/fio/v1/epa-frs#Agency.HealthandHumanServices,Health and Human Services,U.S. Department of Health and Human Services - manages health and environmental safety programs
-http://w3id.org/fio/v1/epa-frs#Agency.HomelandSecurity,Homeland Security,U.S. Department of Homeland Security - coordinates security-related environmental programs
-http://w3id.org/fio/v1/epa-frs#Agency.HousingandUrbanDevelopment,Housing and Urban Development,U.S. Department of Housing and Urban Development - manages urban environmental and housing programs
-http://w3id.org/fio/v1/epa-frs#Agency.Interior,Interior,U.S. Department of the Interior - manages natural resources and public lands
-http://w3id.org/fio/v1/epa-frs#Agency.Judicial,Judicial,U.S. Judicial Branch - federal courts with jurisdiction over environmental law
-http://w3id.org/fio/v1/epa-frs#Agency.Justice,Justice,U.S. Department of Justice - enforces environmental laws and regulations
-http://w3id.org/fio/v1/epa-frs#Agency.Labor,Labor,U.S. Department of Labor - oversees workplace safety and health programs
-http://w3id.org/fio/v1/epa-frs#Agency.State,State,U.S. Department of State - coordinates international environmental agreements
-http://w3id.org/fio/v1/epa-frs#Agency.Transportation,Transportation,U.S. Department of Transportation - regulates transportation-related environmental impacts
-http://w3id.org/fio/v1/epa-frs#Agency.Treasury,Treasury,U.S. Department of the Treasury - manages financial aspects of environmental programs
-http://w3id.org/fio/v1/epa-frs#Agency.VeteransAffairs,Veterans Affairs,U.S. Department of Veterans Affairs - manages environmental programs at VA facilities
-http://w3id.org/fio/v1/epa-frs#AirProgram,AIR PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR AIR EMISSIONS FROM AREA, STATIONARY, AND MOBILE SOURCES, AS REQUIRED BY THE CLEAN AIR ACT"
-http://w3id.org/fio/v1/epa-frs#AnimalOperation,ANIMAL OPERATIONS,ENVIRONMENTAL PROGRAMS RELATED TO ANIMAL OPERATIONS E.G LIVESTOCK WASTE CONTROL
-http://w3id.org/fio/v1/epa-frs#AssistanceSupportProgram,ASSISTANCE AND SUPPORT PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT PROVIDE ASSISTANCE TO THE REGULATED COMMUNITY AND THE GENERAL PUBLIC (E.G., ENVIRONMENTAL GRANTS, OUTREACH ACTIVITIES) OR ACTIVITIES THAT PROVIDE SUPPORT ACROSS ENVIRONMENTAL PROGRAMS."
-http://w3id.org/fio/v1/epa-frs#ChemicalReleaseProgram,CHEMICAL RELEASE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR CHEMICALS RELEASED TO THE ENVIRONMENT (E.G., TOXIC RELEASE INVENTORY, RELEASE ASSESSMENTS)."
-http://w3id.org/fio/v1/epa-frs#ChemicalStorageProgram,CHEMICAL STORAGE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR THE STORAGE OF CHEMICALS (E.G., RISK MANAGEMENT PROGRAM, SUPERFUND AMENDMENTS AND REAUTHORIZATION ACT (SARA) TITLE III PROGRAM)."
-http://w3id.org/fio/v1/epa-frs#CoastalOceanProgram,COASTAL AND OCEAN PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT IMPROVE THE QUALITY OF COASTAL AND MARINE ECOSYSTEMS AND PROTECT BEACHES, COAST, AND OCEAN RESOURCES FROM POLLUTION."
-http://w3id.org/fio/v1/epa-frs#ComplianceInterest,Compliance Interest,Environmental interest classification for compliance-related activities and records
-http://w3id.org/fio/v1/epa-frs#ComplianceRecord,Compliance Record,A record documenting compliance status and history for a facility
-http://w3id.org/fio/v1/epa-frs#ComplianceSystem,Compliance System,Information system for tracking facility compliance with environmental regulations
-http://w3id.org/fio/v1/epa-frs#DrinkingWaterProgram,DRINKING WATER PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT PROTECT THE QUALITY OF DRINKING WATER IN THE UNITED STATES, AS REQUIRED BY THE SAFE DRINKING WATER ACT."
-http://w3id.org/fio/v1/epa-frs#EPA-PFAS-Facility,EPA PFAS Facility,Facility identified as potentially handling PFAS in EPA PFAS Analytic tools based on industry.
-http://w3id.org/fio/v1/epa-frs#EcologyOperation,ECOLOGY OPERATIONS,PROGRAMS THAT CONCENTRATE ON ECOLOGICAL SYSTEMS SUCH AS FOREST AND TREE EXPERTISE
-http://w3id.org/fio/v1/epa-frs#ElectronicPermitSystem,ELECTRONIC PERMIT SYSTEM,ELECTRONIC PERMIT SYSTEM
-http://w3id.org/fio/v1/epa-frs#EnforcementActivity,Enforcement or Compliance record,"A record that tracks a specific legal, corrective or assistance action taken against a facility"
-http://w3id.org/fio/v1/epa-frs#EnforcementInterest,Enforcement Interest,Environmental interest classification for enforcement-related activities
-http://w3id.org/fio/v1/epa-frs#EnforcementSystem,Enforcement System,Information system for tracking environmental enforcement actions
-http://w3id.org/fio/v1/epa-frs#EnforcementTrackingRecord,Enforcement Tracking Record,A record tracking enforcement actions and their outcomes
-http://w3id.org/fio/v1/epa-frs#EnvironmentalInterestByProgram,Environmental Interest By Program,Classification of environmental interests organized by regulatory program type
-http://w3id.org/fio/v1/epa-frs#EnvironmentalInterestByRecordType,Environmental Interest By Record Type,Interest classification based on the main subject of the record and what type of activity or entity it identifies.
-http://w3id.org/fio/v1/epa-frs#EnvironmentalInterestType,Environmental Interest Type,The environmental permit or regulatory program type that applies to the facility site
-http://w3id.org/fio/v1/epa-frs#FRS-Facility,FRS Facility,Facility from EPA Facility Registry Service
-http://w3id.org/fio/v1/epa-frs#FacilitySiteIdentification,FACILITY/SITE IDENTIFICATION,"INCLUDES SYSTEMS THAT MAINTAIN BASIC IDENTIFICATION INFORMATION ABOUT FACILITIES/SITES AND LINKAGES TO ENVIRONMENTAL PERMITS AND PROGRAMS AT THE STATE, TRIBAL AND NATIONAL LEVEL."
-http://w3id.org/fio/v1/epa-frs#FacilityType,Facility Type,Type of Facility as defined by EPA FRS facility type controlled vocabulary
-http://w3id.org/fio/v1/epa-frs#GrantSystem,Grant System,Information system for tracking environmental grants and funding
-http://w3id.org/fio/v1/epa-frs#GroundWaterProgram,GROUND WATER PROGRAMS,"ENVIRONMENTAL PROGRAMS DESIGNED TO PROTECT GROUND WATER (E.G., UNDERGROUND INJECTION CONTROL (UIC),  MINERAL EXPLORATION)."
-http://w3id.org/fio/v1/epa-frs#HazardousWasteProgram,HAZARDOUS WASTE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE HAZARDOUS WASTE, INCLUDING THE GENERATION, TRANSPORTATION, TREATMENT, STORAGE, AND DISPOSAL OF HAZARDOUS WASTE, AS REQUIRED BY THE RESOURCE CONSERVATION AND RECOVERY ACT (RCRA)."
-http://w3id.org/fio/v1/epa-frs#HealthSafetyProgram,HEALTH AND SAFETY PROGRAMS,"PROGRAMS DESIGNED TO REDUCE HAZARDS AND PREVENT INJURIES, ILLNESSES AND DEATHS IN THE WORKPLACE."
-http://w3id.org/fio/v1/epa-frs#LegacySystem,Legacy System,Older information system maintained for historical environmental data
-http://w3id.org/fio/v1/epa-frs#LegalEnforcementActivities,LEGAL/ENFORCEMENT ACTIVITIES,LEGAL OR ENFORCEMENT ACTIVITIES IN SUPPORT OF OTHER ENVIRONMENTAL PROGRAMS.
-http://w3id.org/fio/v1/epa-frs#MonitoringRecord,Monitoring Record,A record that monitors a facility on an ongoing basis
-http://w3id.org/fio/v1/epa-frs#PermitInterest,Permit Interest,Environmental Interests that create records that are permits or licenses
-http://w3id.org/fio/v1/epa-frs#PermitRecord,Permit or license record,A record that tracks a permit or license awarded to the facility
-http://w3id.org/fio/v1/epa-frs#PermitSystem,Permit System,Information system for managing environmental permits and licenses
-http://w3id.org/fio/v1/epa-frs#PesticidesProgram,PESTICIDES PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT MONITOR BUSINESSES, GOVERNMENT AGENCIES, AND INDIVIDUALS THAT HANDLE, STORE, SELL, AND/OR APPLY PESITICIDES."
-http://w3id.org/fio/v1/epa-frs#ProgramInformationSystem,Program Information System,An Information System maintained for an environmental program
-http://w3id.org/fio/v1/epa-frs#ProjectRecord,Project Record,A record documenting an environmental project or initiative
-http://w3id.org/fio/v1/epa-frs#ProjectSystem,Project System,Information system for tracking environmental projects
-http://w3id.org/fio/v1/epa-frs#RadiationProtectionProgram,RADIATION PROTECTION PROGRAMS,ENVIRONMENTAL PROGRAMS DESIGNED TO PROTECT PEOPLE AND THE ENVIRONMENT FROM HARMFUL EXPOSURE TO RADIATION
-http://w3id.org/fio/v1/epa-frs#Record,Facility Record,A record in an environmental program information system about a facility or site
-http://w3id.org/fio/v1/epa-frs#RegistrationRecord,Registration Record,A record documenting facility registration with an environmental program
-http://w3id.org/fio/v1/epa-frs#RegistryInterest,Registry Interest,Environmental interest classification for facility registry and identification
-http://w3id.org/fio/v1/epa-frs#RegistrySystem,Registry System,Information system for maintaining facility identification and basic information
-http://w3id.org/fio/v1/epa-frs#RemediationRedevelopmentProgram,REMEDIATION AND REDEVELOPMENT PROGRAMS,ENVIRONMENTAL PROGRAMS AIMED AT CLEANING UP AND/OR REDEVELOPING UNCONTROLLED OR ABANDONED PLACES WHERE HAZARDOUS WASTE MAY BE LOCATED POSSIBLY AFFECTING LOCAL ECOSYSTEMS OR PEOPLE.
-http://w3id.org/fio/v1/epa-frs#ReportingInterest,Reporting Interest,Environmental interest classification for reporting requirements
-http://w3id.org/fio/v1/epa-frs#ReportingRecord,Reporting Record,A record documenting reported environmental data or information
-http://w3id.org/fio/v1/epa-frs#ReportingSystem,Reporting System,Information system for collecting and managing environmental reports
-http://w3id.org/fio/v1/epa-frs#RiskInterest,Risk Interest,Environmental interest classification for risk assessment and management
-http://w3id.org/fio/v1/epa-frs#RiskPlanRecord,Risk Plan Record,A record documenting risk management or prevention plans for a facility
-http://w3id.org/fio/v1/epa-frs#SiteInterest,Site Interest,Environmental interest classification for site-level monitoring and assessment
-http://w3id.org/fio/v1/epa-frs#SiteRecord,Site Record,"A record that monitors a site, beyond specific ownership of one organization and their activities, e.g. superfund site, air monitoring site"
-http://w3id.org/fio/v1/epa-frs#SiteSystem,Site System,Information system for tracking environmental sites and their characteristics
-http://w3id.org/fio/v1/epa-frs#SolidWasteProgram,SOLID WASTE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE SOLID WASTES (E.G., COMPOST SITES, LANDFILLS, TRANSFER STATIONS)."
-http://w3id.org/fio/v1/epa-frs#StateSystem,State System,State-level information system for environmental program management
-http://w3id.org/fio/v1/epa-frs#StateTrackingRecord,State Tracking Record,A record maintained by state environmental agencies
-http://w3id.org/fio/v1/epa-frs#StationSystem,Station System,Information system for environmental monitoring stations
-http://w3id.org/fio/v1/epa-frs#SupplementalRecord,Facility Supplemental Record,"Supplemental Record that relates to a facility but primarily identifies something other than the facility itself (e.g. permit, license, incident, enforcement action records)"
-http://w3id.org/fio/v1/epa-frs#TribalSystem,Tribal System,Tribal government information system for environmental program management
-http://w3id.org/fio/v1/epa-frs#TribalTrackingRecord,Tribal Tracking Record,A record maintained by tribal environmental agencies
-http://w3id.org/fio/v1/epa-frs#UndergroundStorageTankProgram,UNDERGROUND STORAGE TANK PROGRAMS,"ENVIRONMENTAL PROGRAMS DESIGNED TO REDUCE THE CHANCE OF RELEASES FROM UNDERGROUND STORAGE TANKS (USTS), DETECT LEAKS AND SPILLS WHEN THEY DO OCCUR, AND SECURE PROMPT CLEANUP"
-http://w3id.org/fio/v1/epa-frs#WasteWaterProgram,WASTE WATER PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE DISCHARGES OF POLLUTANTS TO WATERS OF THE UNITED STATES, AS REQUIRED BY THE CLEAN WATER ACT."
-http://w3id.org/fio/v1/epa-frs#WaterResourcesProgram,WATER RESOURCES PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT MANAGE WATER RESOURCES TO MEET THE NEEDS OF THE NATURAL ENVIRONMENT AND HUMAN COMMUNITIES, INCLUDING WATERSHED MANAGEMENT, STREAM FLOWS, WATER RIGHTS, WELL DRILLING, USE OF WATER SUPPLIES, AND DAM SAFETY."
-http://w3id.org/fio/v1/epa-frs#fromSystem,from System,Links a record to the information system it originated from
-http://w3id.org/fio/v1/epa-frs#hasEnvironmentalInterest,in program type,Links a facility to the environmental program types or interest classifications that apply to it
-http://w3id.org/fio/v1/epa-frs#hasFRSId,has FRS Id,has Identifier in EPA Facility Registry Service
-http://w3id.org/fio/v1/epa-frs#hasMonitoringRecord,has monitoring record,Links a facility to records that monitor it on an ongoing basis
-http://w3id.org/fio/v1/epa-frs#hasRecord,has  record,Links a facility to any type of environmental record associated with it
-http://w3id.org/fio/v1/epa-frs#hasSupplementalRecord,has supplemental record,Links a facility to supplemental records that provide additional information
-http://w3id.org/fio/v1/epa-frs#ofFacilityType,of facility type,Links a facility to its type classification in the EPA FRS controlled vocabulary
-http://w3id.org/fio/v1/epa-frs#ofInterestType,of program category,Links an environmental interest to its classification category
-http://w3id.org/fio/v1/epa-frs#ofPrimaryIndustry,of Primary Industry,Links a facility to its primary industry classification using NAICS codes
-http://w3id.org/fio/v1/epa-frs#ofSecondaryIndustry,of Secondary Industry,Links a facility to its secondary industry classification using NAICS codes
-http://w3id.org/fio/v1/epa-frs#partOf,part Of,Indicates hierarchical relationship - this entity is part of another entity
-http://w3id.org/fio/v1/epa-frs#replacedBy,replaced By,Indicates this entity has been superseded or replaced by another entity
-http://w3id.org/fio/v1/fio#Facility,Facility,"Any physical building, building complex or site (e.g. an airstrip, a mine, or superfund site) at which a commercial or institutional activity occurs."
-http://w3id.org/fio/v1/fio#Industry,Industry,A distinct group of productive or profit-making enterprises.
-http://w3id.org/fio/v1/fio#Organization,Organization,"An organized entity such as a company, government agency, or institution that owns or operates facilities"
-http://w3id.org/fio/v1/fio#hasFacility,has Facility,Links an organization to facilities it owns or operates
-http://w3id.org/fio/v1/fio#ofIndustry,of industry,A relation between an entity and the industry it is classified under
-http://w3id.org/fio/v1/fio#ofYear,of Year,A relation between an industry code and the schema year it belongs to.
-http://w3id.org/fio/v1/fio#ownedBy,owned By,Links a facility to the organization that owns or operates it
-http://w3id.org/fio/v1/fio#sameCode,same code,Links two industry codes that have the same meaning across different NAICS schema versions
-http://w3id.org/fio/v1/fio#subcodeOf,subcode of,A hierarchical relation between an industry and its parent industry
-http://w3id.org/fio/v1/fio#yearDeprecated,year deprecated,A relation between an industry code and the schema year it was deprecated and removed as a industry code with the same meaning.
-http://w3id.org/fio/v1/naics#NAICS-Industry,NAICS Industry,North American Industry Classification System (NAICS) industry code - the most detailed level of industry classification (6 digits)
-http://w3id.org/fio/v1/naics#NAICS-IndustryCode,NAICS Industry Code,A NAICS code that identifies a specific industry category at any level of the classification hierarchy
-http://w3id.org/fio/v1/naics#NAICS-IndustryGroup,NAICS Industry Group,NAICS industry group - an intermediate aggregation of industries (4 digits)
-http://w3id.org/fio/v1/naics#NAICS-IndustrySector,NAICS Industry Sector,NAICS sector - the highest level of industry aggregation (2 digits)
-http://w3id.org/fio/v1/naics#NAICS-IndustrySubsector,NAICS Industry Subsector,NAICS subsector - a subdivision of sectors into more specific industry categories (3 digits)
+URI,Label,Description,Type
+http://w3id.org/fio/v1/epa-frs#Agency,Agency,Federal Agency as identified in EPA Facility Registry Service,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Agriculture,Agriculture,"U.S. Department of Agriculture - manages programs related to farming, forestry, and food safety",Class
+http://w3id.org/fio/v1/epa-frs#Agency.Commerce,Commerce,U.S. Department of Commerce - oversees business and trade-related environmental programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Congress,Congress,U.S. Congress - legislative branch oversight and environmental legislation,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Defense,Defense,U.S. Department of Defense - manages environmental programs on military installations,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Energy,Energy,U.S. Department of Energy - oversees energy production and nuclear facility environmental programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.HealthandHumanServices,Health and Human Services,U.S. Department of Health and Human Services - manages health and environmental safety programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.HomelandSecurity,Homeland Security,U.S. Department of Homeland Security - coordinates security-related environmental programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.HousingandUrbanDevelopment,Housing and Urban Development,U.S. Department of Housing and Urban Development - manages urban environmental and housing programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Interior,Interior,U.S. Department of the Interior - manages natural resources and public lands,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Judicial,Judicial,U.S. Judicial Branch - federal courts with jurisdiction over environmental law,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Justice,Justice,U.S. Department of Justice - enforces environmental laws and regulations,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Labor,Labor,U.S. Department of Labor - oversees workplace safety and health programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.State,State,U.S. Department of State - coordinates international environmental agreements,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Transportation,Transportation,U.S. Department of Transportation - regulates transportation-related environmental impacts,Class
+http://w3id.org/fio/v1/epa-frs#Agency.Treasury,Treasury,U.S. Department of the Treasury - manages financial aspects of environmental programs,Class
+http://w3id.org/fio/v1/epa-frs#Agency.VeteransAffairs,Veterans Affairs,U.S. Department of Veterans Affairs - manages environmental programs at VA facilities,Class
+http://w3id.org/fio/v1/epa-frs#AirProgram,AIR PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR AIR EMISSIONS FROM AREA, STATIONARY, AND MOBILE SOURCES, AS REQUIRED BY THE CLEAN AIR ACT",Class
+http://w3id.org/fio/v1/epa-frs#AnimalOperation,ANIMAL OPERATIONS,ENVIRONMENTAL PROGRAMS RELATED TO ANIMAL OPERATIONS E.G LIVESTOCK WASTE CONTROL,Class
+http://w3id.org/fio/v1/epa-frs#AssistanceSupportProgram,ASSISTANCE AND SUPPORT PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT PROVIDE ASSISTANCE TO THE REGULATED COMMUNITY AND THE GENERAL PUBLIC (E.G., ENVIRONMENTAL GRANTS, OUTREACH ACTIVITIES) OR ACTIVITIES THAT PROVIDE SUPPORT ACROSS ENVIRONMENTAL PROGRAMS.",Class
+http://w3id.org/fio/v1/epa-frs#ChemicalReleaseProgram,CHEMICAL RELEASE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR CHEMICALS RELEASED TO THE ENVIRONMENT (E.G., TOXIC RELEASE INVENTORY, RELEASE ASSESSMENTS).",Class
+http://w3id.org/fio/v1/epa-frs#ChemicalStorageProgram,CHEMICAL STORAGE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR THE STORAGE OF CHEMICALS (E.G., RISK MANAGEMENT PROGRAM, SUPERFUND AMENDMENTS AND REAUTHORIZATION ACT (SARA) TITLE III PROGRAM).",Class
+http://w3id.org/fio/v1/epa-frs#CoastalOceanProgram,COASTAL AND OCEAN PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT IMPROVE THE QUALITY OF COASTAL AND MARINE ECOSYSTEMS AND PROTECT BEACHES, COAST, AND OCEAN RESOURCES FROM POLLUTION.",Class
+http://w3id.org/fio/v1/epa-frs#ComplianceInterest,Compliance Interest,Environmental interest classification for compliance-related activities and records,Class
+http://w3id.org/fio/v1/epa-frs#ComplianceRecord,Compliance Record,A record documenting compliance status and history for a facility,Class
+http://w3id.org/fio/v1/epa-frs#ComplianceSystem,Compliance System,Information system for tracking facility compliance with environmental regulations,Class
+http://w3id.org/fio/v1/epa-frs#DrinkingWaterProgram,DRINKING WATER PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT PROTECT THE QUALITY OF DRINKING WATER IN THE UNITED STATES, AS REQUIRED BY THE SAFE DRINKING WATER ACT.",Class
+http://w3id.org/fio/v1/epa-frs#EPA-PFAS-Facility,EPA PFAS Facility,Facility identified as potentially handling PFAS in EPA PFAS Analytic tools based on industry.,Class
+http://w3id.org/fio/v1/epa-frs#EcologyOperation,ECOLOGY OPERATIONS,PROGRAMS THAT CONCENTRATE ON ECOLOGICAL SYSTEMS SUCH AS FOREST AND TREE EXPERTISE,Class
+http://w3id.org/fio/v1/epa-frs#ElectronicPermitSystem,ELECTRONIC PERMIT SYSTEM,ELECTRONIC PERMIT SYSTEM,Class
+http://w3id.org/fio/v1/epa-frs#EnforcementActivity,Enforcement or Compliance record,"A record that tracks a specific legal, corrective or assistance action taken against a facility",Class
+http://w3id.org/fio/v1/epa-frs#EnforcementInterest,Enforcement Interest,Environmental interest classification for enforcement-related activities,Class
+http://w3id.org/fio/v1/epa-frs#EnforcementSystem,Enforcement System,Information system for tracking environmental enforcement actions,Class
+http://w3id.org/fio/v1/epa-frs#EnforcementTrackingRecord,Enforcement Tracking Record,A record tracking enforcement actions and their outcomes,Class
+http://w3id.org/fio/v1/epa-frs#EnvironmentalInterestByProgram,Environmental Interest By Program,Classification of environmental interests organized by regulatory program type,Class
+http://w3id.org/fio/v1/epa-frs#EnvironmentalInterestByRecordType,Environmental Interest By Record Type,Interest classification based on the main subject of the record and what type of activity or entity it identifies.,Class
+http://w3id.org/fio/v1/epa-frs#EnvironmentalInterestType,Environmental Interest Type,The environmental permit or regulatory program type that applies to the facility site,Class
+http://w3id.org/fio/v1/epa-frs#FRS-Facility,FRS Facility,Facility from EPA Facility Registry Service,Class
+http://w3id.org/fio/v1/epa-frs#FacilitySiteIdentification,FACILITY/SITE IDENTIFICATION,"INCLUDES SYSTEMS THAT MAINTAIN BASIC IDENTIFICATION INFORMATION ABOUT FACILITIES/SITES AND LINKAGES TO ENVIRONMENTAL PERMITS AND PROGRAMS AT THE STATE, TRIBAL AND NATIONAL LEVEL.",Class
+http://w3id.org/fio/v1/epa-frs#FacilityType,Facility Type,Type of Facility as defined by EPA FRS facility type controlled vocabulary,Class
+http://w3id.org/fio/v1/epa-frs#GrantSystem,Grant System,Information system for tracking environmental grants and funding,Class
+http://w3id.org/fio/v1/epa-frs#GroundWaterProgram,GROUND WATER PROGRAMS,"ENVIRONMENTAL PROGRAMS DESIGNED TO PROTECT GROUND WATER (E.G., UNDERGROUND INJECTION CONTROL (UIC),  MINERAL EXPLORATION).",Class
+http://w3id.org/fio/v1/epa-frs#HazardousWasteProgram,HAZARDOUS WASTE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE HAZARDOUS WASTE, INCLUDING THE GENERATION, TRANSPORTATION, TREATMENT, STORAGE, AND DISPOSAL OF HAZARDOUS WASTE, AS REQUIRED BY THE RESOURCE CONSERVATION AND RECOVERY ACT (RCRA).",Class
+http://w3id.org/fio/v1/epa-frs#HealthSafetyProgram,HEALTH AND SAFETY PROGRAMS,"PROGRAMS DESIGNED TO REDUCE HAZARDS AND PREVENT INJURIES, ILLNESSES AND DEATHS IN THE WORKPLACE.",Class
+http://w3id.org/fio/v1/epa-frs#LegacySystem,Legacy System,Older information system maintained for historical environmental data,Class
+http://w3id.org/fio/v1/epa-frs#LegalEnforcementActivities,LEGAL/ENFORCEMENT ACTIVITIES,LEGAL OR ENFORCEMENT ACTIVITIES IN SUPPORT OF OTHER ENVIRONMENTAL PROGRAMS.,Class
+http://w3id.org/fio/v1/epa-frs#MonitoringRecord,Monitoring Record,A record that monitors a facility on an ongoing basis,Class
+http://w3id.org/fio/v1/epa-frs#PermitInterest,Permit Interest,Environmental Interests that create records that are permits or licenses,Class
+http://w3id.org/fio/v1/epa-frs#PermitRecord,Permit or license record,A record that tracks a permit or license awarded to the facility,Class
+http://w3id.org/fio/v1/epa-frs#PermitSystem,Permit System,Information system for managing environmental permits and licenses,Class
+http://w3id.org/fio/v1/epa-frs#PesticidesProgram,PESTICIDES PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT MONITOR BUSINESSES, GOVERNMENT AGENCIES, AND INDIVIDUALS THAT HANDLE, STORE, SELL, AND/OR APPLY PESITICIDES.",Class
+http://w3id.org/fio/v1/epa-frs#ProgramInformationSystem,Program Information System,An Information System maintained for an environmental program,Class
+http://w3id.org/fio/v1/epa-frs#ProjectRecord,Project Record,A record documenting an environmental project or initiative,Class
+http://w3id.org/fio/v1/epa-frs#ProjectSystem,Project System,Information system for tracking environmental projects,Class
+http://w3id.org/fio/v1/epa-frs#RadiationProtectionProgram,RADIATION PROTECTION PROGRAMS,ENVIRONMENTAL PROGRAMS DESIGNED TO PROTECT PEOPLE AND THE ENVIRONMENT FROM HARMFUL EXPOSURE TO RADIATION,Class
+http://w3id.org/fio/v1/epa-frs#Record,Facility Record,A record in an environmental program information system about a facility or site,Class
+http://w3id.org/fio/v1/epa-frs#RegistrationRecord,Registration Record,A record documenting facility registration with an environmental program,Class
+http://w3id.org/fio/v1/epa-frs#RegistryInterest,Registry Interest,Environmental interest classification for facility registry and identification,Class
+http://w3id.org/fio/v1/epa-frs#RegistrySystem,Registry System,Information system for maintaining facility identification and basic information,Class
+http://w3id.org/fio/v1/epa-frs#RemediationRedevelopmentProgram,REMEDIATION AND REDEVELOPMENT PROGRAMS,ENVIRONMENTAL PROGRAMS AIMED AT CLEANING UP AND/OR REDEVELOPING UNCONTROLLED OR ABANDONED PLACES WHERE HAZARDOUS WASTE MAY BE LOCATED POSSIBLY AFFECTING LOCAL ECOSYSTEMS OR PEOPLE.,Class
+http://w3id.org/fio/v1/epa-frs#ReportingInterest,Reporting Interest,Environmental interest classification for reporting requirements,Class
+http://w3id.org/fio/v1/epa-frs#ReportingRecord,Reporting Record,A record documenting reported environmental data or information,Class
+http://w3id.org/fio/v1/epa-frs#ReportingSystem,Reporting System,Information system for collecting and managing environmental reports,Class
+http://w3id.org/fio/v1/epa-frs#RiskInterest,Risk Interest,Environmental interest classification for risk assessment and management,Class
+http://w3id.org/fio/v1/epa-frs#RiskPlanRecord,Risk Plan Record,A record documenting risk management or prevention plans for a facility,Class
+http://w3id.org/fio/v1/epa-frs#SiteInterest,Site Interest,Environmental interest classification for site-level monitoring and assessment,Class
+http://w3id.org/fio/v1/epa-frs#SiteRecord,Site Record,"A record that monitors a site, beyond specific ownership of one organization and their activities, e.g. superfund site, air monitoring site",Class
+http://w3id.org/fio/v1/epa-frs#SiteSystem,Site System,Information system for tracking environmental sites and their characteristics,Class
+http://w3id.org/fio/v1/epa-frs#SolidWasteProgram,SOLID WASTE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE SOLID WASTES (E.G., COMPOST SITES, LANDFILLS, TRANSFER STATIONS).",Class
+http://w3id.org/fio/v1/epa-frs#StateSystem,State System,State-level information system for environmental program management,Class
+http://w3id.org/fio/v1/epa-frs#StateTrackingRecord,State Tracking Record,A record maintained by state environmental agencies,Class
+http://w3id.org/fio/v1/epa-frs#StationSystem,Station System,Information system for environmental monitoring stations,Class
+http://w3id.org/fio/v1/epa-frs#SupplementalRecord,Facility Supplemental Record,"Supplemental Record that relates to a facility but primarily identifies something other than the facility itself (e.g. permit, license, incident, enforcement action records)",Class
+http://w3id.org/fio/v1/epa-frs#TribalSystem,Tribal System,Tribal government information system for environmental program management,Class
+http://w3id.org/fio/v1/epa-frs#TribalTrackingRecord,Tribal Tracking Record,A record maintained by tribal environmental agencies,Class
+http://w3id.org/fio/v1/epa-frs#UndergroundStorageTankProgram,UNDERGROUND STORAGE TANK PROGRAMS,"ENVIRONMENTAL PROGRAMS DESIGNED TO REDUCE THE CHANCE OF RELEASES FROM UNDERGROUND STORAGE TANKS (USTS), DETECT LEAKS AND SPILLS WHEN THEY DO OCCUR, AND SECURE PROMPT CLEANUP",Class
+http://w3id.org/fio/v1/epa-frs#WasteWaterProgram,WASTE WATER PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE DISCHARGES OF POLLUTANTS TO WATERS OF THE UNITED STATES, AS REQUIRED BY THE CLEAN WATER ACT.",Class
+http://w3id.org/fio/v1/epa-frs#WaterResourcesProgram,WATER RESOURCES PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT MANAGE WATER RESOURCES TO MEET THE NEEDS OF THE NATURAL ENVIRONMENT AND HUMAN COMMUNITIES, INCLUDING WATERSHED MANAGEMENT, STREAM FLOWS, WATER RIGHTS, WELL DRILLING, USE OF WATER SUPPLIES, AND DAM SAFETY.",Class
+http://w3id.org/fio/v1/epa-frs#fromSystem,from System,Links a record to the information system it originated from,Predicate
+http://w3id.org/fio/v1/epa-frs#hasEnvironmentalInterest,in program type,Links a facility to the environmental program types or interest classifications that apply to it,Predicate
+http://w3id.org/fio/v1/epa-frs#hasFRSId,has FRS Id,has Identifier in EPA Facility Registry Service,Predicate
+http://w3id.org/fio/v1/epa-frs#hasMonitoringRecord,has monitoring record,Links a facility to records that monitor it on an ongoing basis,Predicate
+http://w3id.org/fio/v1/epa-frs#hasRecord,has  record,Links a facility to any type of environmental record associated with it,Predicate
+http://w3id.org/fio/v1/epa-frs#hasSupplementalRecord,has supplemental record,Links a facility to supplemental records that provide additional information,Predicate
+http://w3id.org/fio/v1/epa-frs#ofFacilityType,of facility type,Links a facility to its type classification in the EPA FRS controlled vocabulary,Predicate
+http://w3id.org/fio/v1/epa-frs#ofInterestType,of program category,Links an environmental interest to its classification category,Predicate
+http://w3id.org/fio/v1/epa-frs#ofPrimaryIndustry,of Primary Industry,Links a facility to its primary industry classification using NAICS codes,Predicate
+http://w3id.org/fio/v1/epa-frs#ofSecondaryIndustry,of Secondary Industry,Links a facility to its secondary industry classification using NAICS codes,Predicate
+http://w3id.org/fio/v1/epa-frs#partOf,part Of,Indicates hierarchical relationship - this entity is part of another entity,Predicate
+http://w3id.org/fio/v1/epa-frs#replacedBy,replaced By,Indicates this entity has been superseded or replaced by another entity,Predicate
+http://w3id.org/fio/v1/fio#Facility,Facility,"Any physical building, building complex or site (e.g. an airstrip, a mine, or superfund site) at which a commercial or institutional activity occurs.",Class
+http://w3id.org/fio/v1/fio#Industry,Industry,A distinct group of productive or profit-making enterprises.,Class
+http://w3id.org/fio/v1/fio#Organization,Organization,"An organized entity such as a company, government agency, or institution that owns or operates facilities",Class
+http://w3id.org/fio/v1/fio#hasFacility,has Facility,Links an organization to facilities it owns or operates,Predicate
+http://w3id.org/fio/v1/fio#ofIndustry,of industry,A relation between an entity and the industry it is classified under,Predicate
+http://w3id.org/fio/v1/fio#ofYear,of Year,A relation between an industry code and the schema year it belongs to.,Predicate
+http://w3id.org/fio/v1/fio#ownedBy,owned By,Links a facility to the organization that owns or operates it,Predicate
+http://w3id.org/fio/v1/fio#sameCode,same code,Links two industry codes that have the same meaning across different NAICS schema versions,Predicate
+http://w3id.org/fio/v1/fio#subcodeOf,subcode of,A hierarchical relation between an industry and its parent industry,Predicate
+http://w3id.org/fio/v1/fio#yearDeprecated,year deprecated,A relation between an industry code and the schema year it was deprecated and removed as a industry code with the same meaning.,Predicate
+http://w3id.org/fio/v1/naics#NAICS-Industry,NAICS Industry,North American Industry Classification System (NAICS) industry code - the most detailed level of industry classification (6 digits),Class
+http://w3id.org/fio/v1/naics#NAICS-IndustryCode,NAICS Industry Code,A NAICS code that identifies a specific industry category at any level of the classification hierarchy,Class
+http://w3id.org/fio/v1/naics#NAICS-IndustryGroup,NAICS Industry Group,NAICS industry group - an intermediate aggregation of industries (4 digits),Class
+http://w3id.org/fio/v1/naics#NAICS-IndustrySector,NAICS Industry Sector,NAICS sector - the highest level of industry aggregation (2 digits),Class
+http://w3id.org/fio/v1/naics#NAICS-IndustrySubsector,NAICS Industry Subsector,NAICS subsector - a subdivision of sectors into more specific industry categories (3 digits),Class
