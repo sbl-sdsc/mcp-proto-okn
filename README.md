@@ -21,7 +21,9 @@ A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoi
 
 ## Architecture
 
-![MCP Architecture](https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/mcp_architecture.png)
+<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/mcp_architecture.png"
+     alt="Tool Selector"
+     width="600">
 
 The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) and SPARQL knowledge graphs, enabling natural language queries to be converted into structured SPARQL queries and executed against scientific databases.
 
