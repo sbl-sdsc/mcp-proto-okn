@@ -36,7 +36,7 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
 ## Installation
 
-![Installation instructions for Claude Desktop and VS Code Insiders](https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/installation.md)
+![Installation instructions for Claude Desktop and VS Code Insiders](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/installation.md)
 
 ## Quick Start
 
