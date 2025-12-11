@@ -44,7 +44,9 @@ Once configured, you can start querying knowledge graphs through natural languag
 
 In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
 
-![Tool Selector](https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/select_mcp_server.png)
+<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/select_mcp_server.png"
+     alt="Tool Selector"
+     width="600">
 
 ### Example Queries
 
@@ -52,7 +54,7 @@ In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
 
    Use `@kg_name` to refer to a specific KG, e.g., `@spoke-genelab`
 
-   Example [chat](https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/examples/spoke_genelab_overview) on how to create an overview and class diagram for a KG.
+   Example [chat](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md?plain=1) on how to create an overview and class diagram for a KG.
 
 3. **Multi-Entity Analysis**
    ```
