@@ -54,7 +54,7 @@ In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
 
    Use `@kg_name` to refer to a specific KG, e.g., `@spoke-genelab`
 
-   Example [chat](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md?plain=1) on how to create an overview and class diagram for a KG.
+   Example [chat](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md) on how to create an overview and class diagram for a KG.
 
 3. **Multi-Entity Analysis**
    ```
