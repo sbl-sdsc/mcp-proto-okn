@@ -1,6 +1,6 @@
 [project]
 name = "mcp-proto-okn"
-version = "0.2.5"
+version = "0.3.0"
 description = "MCP server for querying FRINK SPARKQL endpoints, a project by the NSF Prototype Open Knowledge Network (Proto-OKN) program."
 readme = "README.md"
 requires-python = ">=3.10"
