@@ -1,163 +1,234 @@
-# GeneLab Knowledge Graph: Assay Node Exploration
-## Chat Transcript
+# Chat Transcript: SPOKE-GeneLab Assay Node Analysis
 
-**Date:** December 11, 2025  
-**Topic:** Understanding the Assay node structure in the GeneLab SPARQL endpoint  
-**Focus:** Space flight vs ground control comparisons
-
----
-
-### User Query
-> Describe the Assay node and its properties in @genelab-remote-cypher, and include an example for a space flight vs ground control comparison.
+**Date**: December 11, 2025  
+**Topic**: Understanding the Assay node structure in the SPOKE-GeneLab knowledge graph  
+**User Request**: Describe the Assay node and its properties, with an example comparing ground control vs space flight
 
 ---
 
-### Claude's Investigation Process
+## User Query
 
-#### Step 1: Schema Discovery
-First, I retrieved the complete schema to understand the GeneLab knowledge graph structure.
-
-**Key Findings:**
-- **7 Classes** including Assay, Gene, Study, Mission, Anatomy, CellType, and MethylationRegion
-- **40 Predicates** defining relationships and properties
-- Assay class URI: `http://purl.obolibrary.org/obo/OBI_0000070`
-
-#### Step 2: Understanding Assay Properties
-The Assay node has the following property categories:
-
-**Experimental Design Properties:**
-- `factor_space_1`: Primary experimental grouping (e.g., "Space Flight")
-- `factor_space_2`: Secondary experimental grouping (e.g., "Ground Control")
-- `factors_1`: Primary experimental factors (array)
-- `factors_2`: Secondary experimental factors (array)
-
-**Biological Material Properties:**
-- `material_1` / `material_2`: Biological material names
-- `material_name_1` / `material_name_2`: Ontology-based material names
-- `material_id_1` / `material_id_2`: Controlled ontology identifiers (UBERON codes)
-
-**Methodology Properties:**
-- `measurement`: Type of data produced (e.g., "transcription profiling")
-- `technology`: Platform/method used (e.g., "RNA Sequencing (RNA-Seq)")
-
-**Organism Information:**
-- `organism`: NCBI scientific organism name
-- `taxonomy`: NCBI taxonomy ID
-
-#### Step 3: Exploring Relationships
-The Assay node connects to other entities through:
-
-1. **INVESTIGATED_ASiA** → Anatomical entities
-2. **INVESTIGATED_ASiCT** → Cell types
-3. **MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG** → Genes (with edge properties)
-4. **MEASURED_DIFFERENTIAL_METHYLATION_ASmMR** → Methylation regions
-5. **PERFORMED_SpAS** ← Studies (inverse relationship)
-
-#### Step 4: Finding Real Data
-I queried for actual space flight vs ground control comparisons and found multiple assays.
+> @spoke-genelab: Describe the Assay node and its properties in @genelab-remote-cypher, and include an example for a ground control vs space flight comparison.
 
 ---
 
-### Example Analysis: Space Flight Effects on Mouse Eye
+## Analysis Process
 
-**Assay Details:**
-- **ID:** OSD-100-f1b7f0b93f8d28bc606c5c1127f2d7c9
-- **Study:** OSD-100
-- **Label:** OSD-100_transcription-profiling_rna-sequencing-(rna-seq)
+### Step 1: Schema Discovery
 
-**Experimental Parameters:**
+First, I retrieved the complete schema from the SPOKE-GeneLab knowledge graph to understand the data model:
+
+**Classes Found**:
+- Assay (OBI_0000070)
+- Anatomy (biolink:AnatomicalEntity)
+- CellType (biolink:Cell)
+- Gene (biolink:Gene)
+- Study (biolink:Study)
+- MethylationRegion
+- Mission
+
+**Key Predicates**:
+- PERFORMED_SpAS (Study performs Assay)
+- INVESTIGATED_ASiA (Assay investigated Anatomy)
+- INVESTIGATED_ASiCT (Assay investigated CellType)
+- MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG (Assay measured differential expression)
+- MEASURED_DIFFERENTIAL_METHYLATION_ASmMR (Assay measured differential methylation)
+
+### Step 2: Exploring Space Flight Conditions
+
+Queried for distinct factor_space combinations and found 16 different comparison types:
+
 ```
-Organism:          Mus musculus (mouse)
-Tissue:            Left eye (UBERON:0004548)
-Technology:        RNA Sequencing (RNA-Seq)
-Measurement Type:  Transcription profiling
-Comparison:        Space Flight vs Ground Control
+Space Flight vs Ground Control
+Ground Control vs Space Flight
+Space Flight vs Basal Control
+Space Flight vs Vivarium Control
+(and 12 other combinations)
 ```
 
-**Differential Expression Results:**
+### Step 3: Identifying Example Assay
 
-| Gene Symbol | Gene Name | Log2FC | Adj. P-value | Regulation |
-|-------------|-----------|--------|--------------|------------|
-| Apol9b | Apolipoprotein L9b | +1.83 | 0.011 | ↑ Up in space |
-| Apol9a | Apolipoprotein L9a | +1.79 | 0.002 | ↑ Up in space |
-| Oas2 | 2'-5'-oligoadenylate synthetase 2 | +1.74 | 0.002 | ↑ Up in space |
-| Oas3 | 2'-5'-oligoadenylate synthetase 3 | +1.56 | 0.006 | ↑ Up in space |
-| Sst | Somatostatin | +1.52 | 2.3×10⁻⁶ | ↑ Up in space |
-| Oas1a | 2'-5'-oligoadenylate synthetase 1A | +1.52 | 0.0006 | ↑ Up in space |
-| Fbp2 | Fructose-bisphosphatase 2 | -1.30 | 0.039 | ↓ Down in space |
-| Spink7 | Serine peptidase inhibitor, Kazal type 7 | +1.26 | 0.012 | ↑ Up in space |
-| Pln | Phospholamban | -1.16 | 0.003 | ↓ Down in space |
-| Colq | Collagen-like tail subunit | -1.15 | 0.039 | ↓ Down in space |
+Found assay: `OSD-100-f1b7f0b93f8d28bc606c5c1127f2d7c9`
 
-**Biological Interpretation:**
+**Properties**:
+- Measurement: transcription profiling
+- Technology: RNA Sequencing (RNA-Seq)
+- Tissue: left eye (UBERON:0004548)
+- factor_space_1: "Space Flight"
+- factor_space_2: "Ground Control"
+- Part of Study: OSD-100 (Rodent Research 1)
 
-The differential expression pattern reveals several key responses to spaceflight in mouse eye tissue:
+### Step 4: Extracting Differential Expression Data
 
-1. **Immune/Stress Response Activation:**
-   - Multiple oligoadenylate synthetases (Oas1a, Oas2, Oas3) are significantly up-regulated
-   - These enzymes are part of the interferon-mediated antiviral response
-   - Suggests activation of innate immune pathways
+Retrieved gene-level differential expression measurements with associated statistics:
 
-2. **Lipid Metabolism Changes:**
-   - Apolipoprotein L family members (Apol9a, Apol9b) show strong up-regulation
-   - May indicate alterations in lipid transport or cellular stress responses
+**Sample Results**:
+| Gene | log2FC | adj_p_value | Direction |
+|------|--------|-------------|-----------|
+| Isg15 | +0.925 | 0.027 | Up in space |
+| R3hdml | -1.143 | 0.002 | Down in space |
+| Upb1 | -1.036 | 0.003 | Down in space |
+| Tex15 | +0.421 | 0.006 | Up in space |
 
-3. **Metabolic Adjustments:**
-   - Fbp2 (gluconeogenesis enzyme) is down-regulated
-   - Could reflect changes in energy metabolism under microgravity
-
-4. **Regulatory Changes:**
-   - Somatostatin (Sst) up-regulation suggests neuroendocrine signaling changes
-   - Phospholamban (Pln) down-regulation may affect calcium handling
+Total: 206 genes with differential expression measured in this assay
 
 ---
 
-### Additional Example Assays Found
+## Response Summary
 
-The knowledge graph contains multiple comparative assays:
+# The Assay Node in SPOKE-GeneLab Knowledge Graph
 
-1. **OSD-100** (Eye tissue, RNA-Seq)
-   - Space Flight vs Ground Control comparison
-   - Ground Control vs Space Flight comparison (reciprocal)
+## Overview
 
-2. **OSD-101** (Gastrocnemius muscle, RNA-Seq)
-   - Multiple assays comparing Space Flight and Ground Control
-   - Different tissues allow cross-tissue comparison of spaceflight effects
+The **Assay** node (class URI: `http://purl.obolibrary.org/obo/OBI_0000070`) represents a unique assay instance from NASA's Open Science Data Repository (OSDR). Assays capture the experimental measurements and analyses performed on biological samples, comparing different experimental conditions such as Space Flight versus Ground Control.
+
+## Key Properties
+
+### Experimental Design Properties
+
+- **measurement**: Type of data produced (e.g., "transcription profiling")
+- **technology**: Platform or method used (e.g., "RNA Sequencing (RNA-Seq)")
+- **organism**: Scientific organism name (stored separately on Study node, but assays examine specific organisms)
+
+### Space Flight Comparison Properties
+
+- **factor_space_1**: Primary experimental grouping - indicates whether samples were exposed to:
+  - "Space Flight"
+  - "Ground Control"
+  - "Basal Control"
+  - "Vivarium Control"
+
+- **factor_space_2**: Secondary experimental grouping for comparison (same options as factor_space_1)
+
+- **factors_1** / **factors_2**: Arrays of additional experimental factors beyond space conditions (e.g., dose, time point, sex, strain)
+
+### Biological Material Properties
+
+- **material_1** / **material_2**: Biological material analyzed in each group (e.g., "left eye", "liver", "muscle")
+- **material_name_1** / **material_name_2**: Preferred ontology-based names
+- **material_id_1** / **material_id_2**: Controlled ontology identifiers (e.g., UBERON codes)
+
+## Relationships
+
+### Connections to Other Nodes
+
+1. **PERFORMED_SpAS**: Study → Assay (a Study performs an Assay)
+2. **INVESTIGATED_ASiA**: Assay → Anatomy (Assay investigated anatomical entity)
+3. **INVESTIGATED_ASiCT**: Assay → CellType (Assay investigated cell type)
+4. **MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG**: Assay → Gene (Assay measured differential expression of model organism gene)
+5. **MEASURED_DIFFERENTIAL_METHYLATION_ASmMR**: Assay → MethylationRegion (Assay measured differential methylation)
+
+### Gene Expression Edge Properties
+
+When an Assay measures differential gene expression, the relationship includes:
+
+- **log2fc**: Log2-transformed fold change in gene expression (positive = up-regulation, negative = down-regulation)
+- **adj_p_value**: Multiple testing-corrected p-value (FDR-adjusted, smaller values indicate statistical significance)
+
+## Example: Ground Control vs Space Flight Comparison
+
+### Study Context: Rodent Research 1 (OSD-100)
+
+**Project**: NASA's first Rodent Research spaceflight experiment assessed viability of multi-omics analyses on archived tissue samples from mice aboard the International Space Station.
+
+**Organism**: *Mus musculus* (house mouse)
+
+**Study Description**: 
+NASA's Rodent Research (RR) project is playing a critical role in advancing biomedical research on the physiological effects of space environments. This investigation assessed viability of RNA, DNA, and protein extracted from archived RR-1 tissue samples for epigenomic, transcriptomic, and proteomic assays. Tissues were harvested from subjects, snap-frozen or RNAlater-preserved, and then stored at least a year at -80°C after return to Earth.
+
+### Assay Details
+
+**Assay ID**: `OSD-100-f1b7f0b93f8d28bc606c5c1127f2d7c9`
+
+**Experimental Design**:
+- **Measurement Type**: Transcription profiling
+- **Technology**: RNA Sequencing (RNA-Seq)
+- **Tissue**: Left eye (UBERON:0004548)
+- **Comparison**: Space Flight vs Ground Control
+  - factor_space_1: "Space Flight"
+  - factor_space_2: "Ground Control"
+
+### Sample Differential Expression Results
+
+This assay measured differential gene expression in 206 genes comparing space flight to ground control conditions. Here are representative findings:
+
+| Gene Symbol | log2 Fold Change | Adjusted p-value | Interpretation |
+|-------------|------------------|------------------|----------------|
+| Isg15 | +0.925 | 0.027 | Up-regulated in space flight |
+| R3hdml | -1.143 | 0.002 | Down-regulated in space flight (highly significant) |
+| Upb1 | -1.036 | 0.003 | Down-regulated in space flight (highly significant) |
+| Colq/LOC102639719 | -1.154 | 0.039 | Down-regulated in space flight |
+| Kcnj13 | +0.383 | 0.016 | Up-regulated in space flight |
+| Tex15 | +0.421 | 0.006 | Up-regulated in space flight |
+| Gm2000 | -0.192 | 0.035 | Down-regulated in space flight |
+| Upk3b | -0.683 | 0.028 | Down-regulated in space flight |
+| Ndufb1 | -0.204 | 0.021 | Down-regulated in space flight |
+| 3425401B19Rik | -0.806 | 0.034 | Down-regulated in space flight |
+
+**Key Findings**:
+- Genes with positive log2fc values (e.g., Isg15, Kcnj13, Tex15) show increased expression during space flight compared to ground control
+- Genes with negative log2fc values (e.g., R3hdml, Upb1, Colq) show decreased expression in space flight
+- Statistical significance is indicated by adj_p_value < 0.05
+- The magnitude of log2fc indicates the strength of the effect (values > 1 or < -1 represent more than 2-fold changes)
+
+### Biological Interpretation
+
+This example demonstrates how the Assay node connects:
+- **Experimental conditions** (space flight vs ground control)
+- **Molecular changes** (gene expression alterations)
+- **Specific tissues** (left eye)
+
+This enables researchers to understand the biological impacts of spaceflight at the molecular level. The left eye tissue shows significant transcriptional changes in response to microgravity and the space environment, with multiple genes involved in cellular processes being differentially regulated.
 
 ---
 
-### Technical Notes on Data Structure
+## Technical Notes
 
-**Edge Properties:**
-The differential expression data uses RDF reification, where properties like `log2fc` and `adj_p_value` are attached to the relationship (edge) between the Assay and Gene, not to the Gene node itself.
+### SPARQL Query Examples Used
 
-**SPARQL Pattern for Querying Differential Expression:**
+1. **Retrieve schema**:
 ```sparql
-SELECT ?gene ?symbol ?log2fc ?adj_p_value
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX spoke: <https://purl.org/okn/frink/kg/spoke-genelab/schema/>
+
+SELECT DISTINCT ?factor_space_1 ?factor_space_2
 WHERE {
-  ?stmt a rdf:Statement .
-  ?stmt rdf:subject <ASSAY_URI> .
-  ?stmt rdf:predicate schema:MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG .
-  ?stmt rdf:object ?gene .
-  ?stmt schema:log2fc ?log2fc .
-  ?stmt schema:adj_p_value ?adj_p_value .
-  ?gene schema:symbol ?symbol .
+  ?assay a obo:OBI_0000070 .
+  ?assay spoke:factor_space_1 ?factor_space_1 .
+  ?assay spoke:factor_space_2 ?factor_space_2 .
+}
+```
+
+2. **Retrieve differential expression data**:
+```sparql
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX spoke: <https://purl.org/okn/frink/kg/spoke-genelab/schema/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?study ?gene_symbol ?log2fc ?adj_p_value
+WHERE {
+  ?study spoke:PERFORMED_SpAS <assay_uri> .
+  <assay_uri> spoke:MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG ?gene .
+  ?gene spoke:symbol ?gene_symbol .
+  
+  ?edge a rdf:Statement ;
+        rdf:subject <assay_uri> ;
+        rdf:predicate spoke:MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG ;
+        rdf:object ?gene ;
+        spoke:log2fc ?log2fc ;
+        spoke:adj_p_value ?adj_p_value .
 }
 ```
 
 ---
 
-### Summary
+## Conclusion
 
-The GeneLab knowledge graph provides a rich, interconnected dataset for studying molecular responses to spaceflight. The Assay node serves as the central hub connecting:
-- Experimental design metadata
-- Biological samples and anatomical context
-- Molecular measurements (gene expression, methylation)
-- Statistical results (fold changes, significance values)
-- Study and mission context
+The Assay node in SPOKE-GeneLab serves as a central hub connecting:
+- Studies (experimental context)
+- Biological materials (tissues, cell types)
+- Molecular measurements (genes, methylation regions)
+- Experimental conditions (space flight vs various controls)
+- Statistical evidence (fold changes, p-values)
 
-This structure enables systematic cross-study comparisons and meta-analyses of spaceflight biology.
-
----
-
-**End of Transcript**
+This rich data model enables complex queries across NASA's spaceflight biology datasets, facilitating systems-level understanding of how organisms respond to space environments.
