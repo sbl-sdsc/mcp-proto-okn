@@ -12,9 +12,9 @@ This transcript documents an exploration of the SAWGraph (Safe Agricultural Prod
 
 ## User Request #1
 
-**User:** Only use the FRINK SPARQL endpoints for this project. Do not use the Neo4j Cypher endpoints.
+**User:**
 
-@sawgraph
+> @sawgraph
 
 ---
 
@@ -177,7 +177,9 @@ Would you like me to run some example queries? For instance, I could:
 
 ## User Request #2
 
-**User:** create class diagram
+**User:** 
+
+> create class diagram
 
 ---
 

@@ -1,6 +1,8 @@
 # PFOA ToxCast Analysis - Chat Transcript
 
-## Query 1: Which biological targets does perfluorooctanoic acid (PFOA) interact with?
+## Query 1: 
+
+> Which biological targets does perfluorooctanoic acid (PFOA) interact with?
 
 ### Analysis Process
 I searched the ToxCast database (biobricks-toxcast knowledge graph) to identify all biological targets that PFOA has been tested against.
@@ -65,7 +67,9 @@ I searched the ToxCast database (biobricks-toxcast knowledge graph) to identify 
 
 ---
 
-## Query 2: Which of these assays have a positive result?
+## Query 2: 
+
+> Which of these assays have a positive result?
 
 ### Results Summary
 **147 out of 1,396 assays showed positive results** (hitcall = 1.0)

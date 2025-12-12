@@ -7,7 +7,9 @@
 
 ### Initial Query
 
-**User:** List data available for perfluorooctanoic acid (PFOA) in @spoke-okn, @biobricks-toxcast?
+**User:** 
+
+> List data available for perfluorooctanoic acid (PFOA) in @spoke-okn, @biobricks-toxcast?
 
 **Assistant:** I'll search for PFOA data in both knowledge graphs.
 
@@ -55,7 +57,9 @@ The ToxCast data includes extensive high-throughput screening results across var
 
 ### Request for Specific Examples
 
-**User:** List 5 examples of geolocations and assay results for PFOA.
+**User:**
+
+> List 5 examples of geolocations and assay results for PFOA.
 
 ---
 
@@ -121,7 +125,9 @@ The ToxCast data includes extensive high-throughput screening results across var
 
 ### Request for Positive Assays
 
-**User:** Show 5 assays with positive results for PFOA
+**User:** 
+
+> Show 5 assays with positive results for PFOA
 
 ---
 
@@ -160,7 +166,9 @@ PFOA showed positive biological activity in **147 out of 1,396 assays** (10.5% h
 
 ### Request for Biological Activity Details
 
-**User:** What biological activity is related to these 5 assays?
+**User:** 
+
+> What biological activity is related to these 5 assays?
 
 ---
 
@@ -196,7 +204,9 @@ While the BioBricks-ToxCast knowledge graph doesn't provide a direct AEID-to-ass
 
 ### Request for EPA CompTox Cross-Reference
 
-**User:** Use the URLs in the KG to cross-reference the assay descriptions on the EPA CompTox Dashboard.
+**User:** 
+
+> Use the URLs in the KG to cross-reference the assay descriptions on the EPA CompTox Dashboard.
 
 **Assistant:** I attempted to access the EPA CompTox Dashboard API to retrieve specific assay information, but encountered network restrictions. However, I was able to identify the assay types through knowledge graph exploration.
 

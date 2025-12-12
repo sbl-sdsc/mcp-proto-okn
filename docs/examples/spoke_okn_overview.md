@@ -6,9 +6,8 @@
 ---
 
 ## User Request
-Only use the FRINK SPARQL endpoints for this project. Do not use the Neo4j Cypher endpoints.
 
-@spoke-okn
+> @spoke-okn
 
 ---
 

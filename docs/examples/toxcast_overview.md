@@ -8,7 +8,8 @@
 ## Conversation
 
 ### User
-@biobricks-toxcast
+
+> @biobricks-toxcast
 
 ### Assistant
 I can help you explore the BioBricks ToxCast knowledge graph! This resource contains data from the EPA's ToxCast program, which tests chemicals for potential toxicity.
@@ -75,7 +76,8 @@ What would you like to investigate in the ToxCast data?
 ---
 
 ### User
-Create a class diagram
+
+> Create a class diagram
 
 ### Assistant
 I've created a comprehensive class diagram for the BioBricks ToxCast knowledge graph!
