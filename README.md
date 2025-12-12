@@ -48,49 +48,74 @@ In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/select_mcp_server.png"
      alt="Tool Selector"
-     width="600">
+     width="400">
+
+To create a transcript of a chat, use the following prompt: `Create a chat transcript in .md format`
 
 ### Example Queries
 
 1. **Knowledge Graph Overview and Class Diagram**
 
-   Use `@kg_name` to refer to a specific KG, e.g., `@spoke-genelab`
+   Use `@kg_name` to refer to a specific KG, e.g., `@spoke-genelab` in a chat. The examples below create an overview and a class diagram for each KG.
 
-   Example [chat](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md) on how to create an overview and class diagram for a KG.
+   [spoke-genelab chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md)
 
-3. **Multi-Entity Analysis**
-   ```
-   Antibiotic contamination can contribute to antimicrobial resistance. Find locations with antibiotic contamination.
-   ```
+   [spoke-okn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_overview.md)
 
-4. **Cross-Knowledge Graph Comparison**
-   ```
-   What type of data is available for perfluorooctanoic acid (PFOA) in SPOKE, BioBricks, and SAWGraph?
-   ```
+   [biobricks-toxcast chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/toxcast_overview.md)
 
-The AI assistant will automatically convert your natural language queries into appropriate SPARQL queries, execute them against the configured endpoints, and return structured, interpretable results.
+   [sawgraph chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sawgraph_overview.md)
 
-## Development
+2. **Disease Prevalence in the US (spoke-okn)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
+
+
+3. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
+
+4. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
+
+5. **Biological Targets for PFOA (biobricks-toxcast)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
+
 
 ### Building and Publishing (maintainers only)
 
 ```bash
-# Increment version number (patch, minor, major)
+# Increment version number (major|minor|patch)
 uv version --bump minor
 
 # Build the package
 uv build
 
+# Remove distributions for previous versions
+rm -rf dist
+
 # Publish to TestPyPI first (recommended)
 uv publish --publish-url https://test.pypi.org/legacy/ --token pypi-YOUR_TEST_PYPI_TOKEN_HERE
+
+# Test the deployment
+For testing, add the following parameters to the `args` option in the claude_desktop_config.json.
+  "args": [
+    "--index-url",
+    "https://test.pypi.org/simple/",
+    "--extra-index-url",
+    "https://pypi.org/simple/",
+    "mcp-proto-okn"
+  ]
 
 # Publish to PyPI 
 uv publish --token pypi-YOUR_PYPI_TOKEN_HERE
 
-# Clear uv cache (optional)
+# Clear uv cache (optional, if there are problems)
 uv cache clean
 
-# Remove cached tool installation (optional)
+# Remove cached tool installation (optional, if problems persist)
 rm -rf ~/.local/share/uv/tools/mcp-proto-okn
 ```
 
