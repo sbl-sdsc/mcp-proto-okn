@@ -50,11 +50,11 @@ In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
      alt="Tool Selector"
      width="400">
 
-To create a transcript of a chat, use the following prompt: `Create a chat transcript in .md format`
+To create a transcript of a chat, use the following prompt: `Create a chat transcript in .md format`. The transcript can then be downloaded in .md or .pdf format.
 
 ### Example Queries
 
-1. **Knowledge Graph Overview and Class Diagram**
+1. **Knowledge Graph Overview and Class Diagram (spoke-genelab, spoke-okn, biobricks-toxcast, sawgraph)**
 
    Use `@kg_name` to refer to a specific KG, e.g., `@spoke-genelab` in a chat. The examples below create an overview and a class diagram for each KG.
 
@@ -66,20 +66,23 @@ To create a transcript of a chat, use the following prompt: `Create a chat trans
 
    [sawgraph chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sawgraph_overview.md)
 
-2. **Disease Prevalence in the US (spoke-okn)**
+2. **GeneLab Assay Structure (spoke-genelab)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-assay.md)
+
+3. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-
-3. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+4. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-4. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+5. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-5. **Biological Targets for PFOA (biobricks-toxcast)**
+6. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
