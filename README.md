@@ -48,7 +48,7 @@ In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/select_mcp_server.png"
      alt="Tool Selector"
-     width="400">
+     width="500">
 
 To create a transcript of a chat, use the following prompt: `Create a chat transcript in .md format`. The transcript can then be downloaded in .md or .pdf format.
 
@@ -112,7 +112,7 @@ For testing, add the following parameters to the `args` option in the claude_des
     "mcp-proto-okn"
   ]
 
-# Publish to PyPI 
+# Publish to PyPI (production release)
 uv publish --token pypi-YOUR_PYPI_TOKEN_HERE
 
 # Clear uv cache (optional, if there are problems)
@@ -133,25 +133,51 @@ Retrieves endpoint metadata and documentation.
 - None
 
 **Returns:**
-- String containing endpoint description, PI information, funding details, and related documentation links
+- String containing either:
+  - Registry page content prefixed with a header line identifying the registry source (for FRINK endpoints)
+  - The static/server-provided description when no registry URL applies
 
 #### `get_schema`
 Retrieves the schema (classes, relationships, properties) for the knowledge graph endpoint.
 
+> **Important:** Always call this tool FIRST before making any queries to understand what data is available in the knowledge graph.
+
 **Parameters:**
-- None
+- `compact` (boolean, optional): If `true` (default), returns compact URI:label mappings. If `false`, returns full metadata with descriptions.
 
 **Returns:**
-- JSON object containing the endpoint's schema information, including available classes, relationships, and properties
+- JSON object containing the endpoint's schema information in the specified format, including:
+  - Available classes
+  - Relationships/predicates
+  - Properties with labels and descriptions (when available)
 
 #### `query`
 Executes SPARQL queries against the configured endpoint.
 
+> **Important:** You MUST call `get_schema()` first before using this query tool to understand the available classes and predicates in the knowledge graph.
+
 **Parameters:**
-- `query_string` (string, required): A valid SPARQL query
+- `query_string` (string, required): A valid SPARQL query string
+- `format` (string, optional): Output format. Options:
+  - `'compact'` (default): Columns + data arrays, no repeated keys
+  - `'simplified'`: JSON with dict rows
+  - `'full'`: Complete SPARQL JSON response
+  - `'values'`: List of dictionaries
+  - `'csv'`: CSV string format
 
 **Returns:**
-- JSON object containing query results
+- Query results in the specified format
+
+#### `clean_mermaid_diagram`
+Cleans Mermaid class diagrams by removing unwanted elements.
+
+**Parameters:**
+- `mermaid_content` (string, required): The raw Mermaid class diagram content
+
+**Returns:**
+- Cleaned Mermaid content with the following elements removed:
+  - All note statements that would render as unreadable yellow boxes
+  - Empty curly braces from class definitions
 
 ---
 ### Command Line Interface
