@@ -68,7 +68,7 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
 2. **GeneLab Assay Structure (spoke-genelab)**
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-assay.md)
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_assay.md)
 
 3. **Disease Prevalence in the US (spoke-okn)**
 
