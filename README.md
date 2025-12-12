@@ -50,7 +50,7 @@ In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
      alt="Tool Selector"
      width="500">
 
-To create a transcript of a chat, use the following prompt: `Create a chat transcript in .md format`. The transcript can then be downloaded in .md or .pdf format.
+To create a transcript of a chat (see examples below), use the following prompt: `Create a chat transcript in .md format`. The transcript can then be downloaded in .md or .pdf format.
 
 ### Example Queries
 
