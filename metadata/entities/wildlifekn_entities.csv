@@ -1,0 +1,9 @@
+URI,Label,Description,Type
+"https://wildlife.proto-okn.net/kg/Amphibian_name","Amphibian Name","Represents the scientific or common name of an amphibian species in the KN-Wildlife knowledge network.","Class"
+"https://wildlife.proto-okn.net/kg/Bird_name","Bird Name","Represents the scientific or common name of a bird species in the KN-Wildlife knowledge network.","Class"
+"https://wildlife.proto-okn.net/kg/Location","Location","A geographic place or spatial region where wildlife observations occur.","Class"
+"http://purl.org/dc/terms/date","Date","A point or period of time associated with an event in the lifecycle of the resource.","Predicate"
+"http://www.w3.org/2000/01/rdf-schema#label","Label","A human-readable name or title for a resource.","Predicate"
+"https://schema.org/subjectOf","Subject Of","A CreativeWork or Event about this Thing. Links a resource to content that has it as the subject matter.","Predicate"
+"https://wildlife.proto-okn.net/kg/OBSERVED_AT","Observed At","Relates a wildlife species observation to the geographic location where it was observed.","Predicate"
+"https://wildlife.proto-okn.net/kg/observed_times","Observed Times","The number of times or frequency that a particular species has been observed at a location.","Predicate"

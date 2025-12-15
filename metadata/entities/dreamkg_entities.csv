@@ -1,0 +1,49 @@
+URI,Label,Description,Type
+http://schema.org/AdministrativeArea,AdministrativeArea,A geographical region under the jurisdiction of a particular government.,Class
+http://schema.org/Audience,Audience,"Intended audience for an item, i.e. the group for whom the item was created.",Class
+http://schema.org/CategoryCode,CategoryCode,A category code from a controlled vocabulary or taxonomy.,Class
+http://schema.org/ContactPoint,ContactPoint,A contact point for a person or organization.,Class
+http://schema.org/OpeningHoursSpecification,OpeningHoursSpecification,A structured value providing information about the opening hours of a place or service.,Class
+http://schema.org/Organization,Organization,"An organization such as a school, NGO, corporation, club, etc.",Class
+http://schema.org/Place,Place,"Entities that have a somewhat fixed, physical extension.",Class
+http://schema.org/Service,Service,A service provided by an organization or individual.,Class
+http://schema.org/ServiceChannel,ServiceChannel,"A means for accessing a service, e.g. a phone number, website, or physical location.",Class
+http://schema.org/TextObject,TextObject,"A text file, including articles, speeches, presentations, etc.",Class
+http://schema.org/WebPage,WebPage,"A web page, typically from a website.",Class
+http://www.w3.org/ns/prov#Activity,Activity,"An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",Class
+http://www.w3.org/ns/prov#Collection,Collection,"A collection is an Entity that provides a structure (e.g. set, list, etc.) to some constituents (which are themselves Entities).",Class
+http://www.w3.org/ns/prov#Entity,Entity,"An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.",Class
+http://schema.org/address,address,Physical address of the item.,Predicate
+http://schema.org/areaServed,areaServed,The geographic area where a service or offered item is provided.,Predicate
+http://schema.org/audienceType,audienceType,"The target group associated with a given audience (e.g., veterans, car owners, musicians).",Predicate
+http://schema.org/availableChannel,availableChannel,"A means of accessing the service (e.g. a phone bank, a web site, a location).",Predicate
+http://schema.org/category,category,A category for the item.,Predicate
+http://schema.org/closes,closes,The closing hour of the place or service on the given day(s) of the week.,Predicate
+http://schema.org/codeValue,codeValue,A short textual code that uniquely identifies the value.,Predicate
+http://schema.org/conditionsOfAccess,conditionsOfAccess,"Conditions that affect the availability of, or method(s) of access to, an item.",Predicate
+http://schema.org/containedInPlace,containedInPlace,The basic containment relation between a place and one that contains it.,Predicate
+http://schema.org/dayOfWeek,dayOfWeek,The day of the week for which these opening hours are valid.,Predicate
+http://schema.org/description,description,A description of the item.,Predicate
+http://schema.org/disambiguatingDescription,disambiguatingDescription,A sub property of description providing a short description to disambiguate instances with similar names.,Predicate
+http://schema.org/hasMap,hasMap,A URL to a map of the place.,Predicate
+http://schema.org/hoursAvailable,hoursAvailable,The hours during which this service or contact is available.,Predicate
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,Predicate
+http://schema.org/inCodeSet,inCodeSet,A CategoryCodeSet that contains this category code.,Predicate
+http://schema.org/latitude,latitude,The latitude of a location.,Predicate
+http://schema.org/longitude,longitude,The longitude of a location.,Predicate
+http://schema.org/name,name,The name of the item.,Predicate
+http://schema.org/opens,opens,The opening hour of the place or service on the given day(s) of the week.,Predicate
+http://schema.org/provider,provider,"The service provider, service operator, or service performer.",Predicate
+http://schema.org/sameAs,sameAs,URL of a reference Web page that unambiguously indicates the item's identity.,Predicate
+http://schema.org/serviceLocation,serviceLocation,The location where the service is provided.,Predicate
+http://schema.org/servicePhone,servicePhone,The phone number to use to access the service.,Predicate
+http://schema.org/serviceUrl,serviceUrl,The website to access the service.,Predicate
+http://schema.org/telephone,telephone,The telephone number.,Predicate
+http://schema.org/text,text,The textual content of this CreativeWork.,Predicate
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,type,The subject is an instance of a class.,Predicate
+http://www.w3.org/ns/prov#generated,generated,An activity generated an entity.,Predicate
+http://www.w3.org/ns/prov#hadMember,hadMember,A collection had a member (entity).,Predicate
+http://www.w3.org/ns/prov#influenced,influenced,"This is the inverse of wasInfluencedBy, and can be used to refer to the object of an influence.",Predicate
+http://www.w3.org/ns/prov#wasDerivedFrom,wasDerivedFrom,"A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity.",Predicate
+http://www.w3.org/ns/prov#wasGeneratedBy,wasGeneratedBy,Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.,Predicate
+http://www.w3.org/ns/prov#wasInfluencedBy,wasInfluencedBy,"An entity, activity, or agent was influenced by another entity, activity, or agent. Influence is the capacity of an entity, activity, or agent to have an effect on the character, development, or behavior of another.",Predicate

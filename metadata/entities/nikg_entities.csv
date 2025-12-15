@@ -1,0 +1,17 @@
+URI,Label,Description,Type
+http://www.opengis.net/ont/sf#Point,Point,"A 0-dimensional geometric object representing a single location in coordinate space with x and y coordinates, and optionally z and m coordinates.",Class
+http://www.w3.org/2000/01/rdf-schema#Class,Class,"The class of classes, used in RDF Schema to define the concept of a class.",Class
+https://metadata.phila.gov/BlockGroup,Block Group,"A census block group, a geographic subdivision used for statistical purposes.",Class
+https://metadata.phila.gov/CensusTract,Census Tract,"A census tract, a small geographic subdivision used for presenting statistical data.",Class
+https://metadata.phila.gov/Incident,Incident,"An event or occurrence, typically related to public safety or emergency services.",Class
+https://metadata.phila.gov/Location,Location,"A geographic location or place within the Philadelphia region.",Class
+http://www.opengis.net/ont/geosparql#asWKT,asWKT,"A datatype property that serializes a geometry object as Well-Known Text (WKT) literal format.",Predicate
+http://www.opengis.net/ont/geosparql#hasGeometry,hasGeometry,"An object property that links a spatial feature to its geometric representation.",Predicate
+https://metadata.phila.gov/age_of,age_of,"Indicates the age of a person involved in an incident.",Predicate
+https://metadata.phila.gov/happened_at,happened_at,"Links an incident to the location where it occurred.",Predicate
+https://metadata.phila.gov/is_fatal,is_fatal,"Boolean property indicating whether an incident resulted in a fatality.",Predicate
+https://metadata.phila.gov/OffenderDeceased,OffenderDeceased,"Indicates whether an offender was deceased in relation to an incident.",Predicate
+https://metadata.phila.gov/OffenderInjured,OffenderInjured,"Indicates whether an offender was injured in relation to an incident.",Predicate
+https://metadata.phila.gov/OffenderRace,OffenderRace,"Specifies the race of an offender involved in an incident.",Predicate
+https://metadata.phila.gov/OffenderSex,OffenderSex,"Specifies the sex or gender of an offender involved in an incident.",Predicate
+https://metadata.phila.gov/OfficerInvolved,OfficerInvolved,"Indicates whether a law enforcement officer was involved in an incident.",Predicate

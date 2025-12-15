@@ -1,0 +1,24 @@
+URI,Label,Description,Type
+"https://schema.org/GeoCoordinates","GeoCoordinates","The geographic coordinates of a place or event.",Class
+"https://schema.org/GeoShape","GeoShape","The geographic shape of a place represented using a textual description or geometry format.",Class
+"https://schema.org/Observation","Observation","An observation or data point about a feature or phenomenon.",Class
+"https://schema.org/Place","Place","Entities that have a somewhat fixed physical extension such as a location or venue.",Class
+"https://schema.org/PropertyValue","PropertyValue","A property-value pair representing a characteristic of another entity.",Class
+"https://stko-kwg.geog.ucsb.edu/lod/ontology#S2Cell","S2Cell","A cell in the S2 hierarchical discrete global grid system used for spatial indexing and representation. S2 cells are square-shaped cells that tessellate the Earth's surface in a hierarchical manner for efficient geospatial data processing.",Class
+"http://www.opengis.net/ont/geosparql#asWKT","asWKT","A Well-Known Text serialization of a geometry object conforming to the GeoSPARQL WKT literal format.",Predicate
+"https://schema.org/additionalType","additionalType","An additional type for the item, typically used for adding more specific types from external vocabularies.",Predicate
+"https://schema.org/description","description","A description of the item.",Predicate
+"https://schema.org/elevation","elevation","The elevation of a location measured in meters (WGS 84 datum).",Predicate
+"https://schema.org/geo","geo","The geo coordinates or geographic shape of a place.",Predicate
+"https://schema.org/identifier","identifier","The identifier property represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes, UUIDs etc.",Predicate
+"https://schema.org/latitude","latitude","The latitude of a location in decimal degrees (WGS 84). For example 37.42242.",Predicate
+"https://schema.org/longitude","longitude","The longitude of a location in decimal degrees (WGS 84). For example -122.08585.",Predicate
+"https://schema.org/measuredProperty","measuredProperty","The measuredProperty of an Observation, typically via its StatisticalVariable. A property being measured.",Predicate
+"https://schema.org/name","name","The name of the item.",Predicate
+"https://schema.org/observationAbout","observationAbout","The subject matter of the observation, typically a feature or entity being observed.",Predicate
+"https://schema.org/observationDate","observationDate","The observationDate of an Observation, typically expressed as a date or datetime value.",Predicate
+"https://schema.org/propertyID","propertyID","A commonly used identifier for the characteristic represented by the property.",Predicate
+"https://schema.org/unitCode","unitCode","The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL.",Predicate
+"https://schema.org/unitText","unitText","A string or text indicating the unit of measurement. Useful if the unitCode cannot be used.",Predicate
+"https://schema.org/value","value","The value of a PropertyValue or other structured value.",Predicate
+"https://schema.org/variableMeasured","variableMeasured","The variableMeasured property can indicate (repeated as necessary) the variables that are measured in a dataset or observation.",Predicate

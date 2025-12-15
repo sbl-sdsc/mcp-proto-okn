@@ -1,0 +1,110 @@
+URI,Label,Description,Type
+http://release.niem.gov/niem/domains/jxdm/7.2/Arrest,Arrest,An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/ArrestCharge,Arrest Charge,A formal allegation of a violation of a statute and/or ordinance in association with an arrest,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Attorney,Attorney,An attorney,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Booking,Booking,An administrative step taken after an arrested subject is brought to a police station or detention facility,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/BookingFacility,Booking Facility,A facility where a subject is detained as a result of booking,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefendantParty,Case Defendant Party,An entity being charged or sued in a court of law,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefenseAttorney,Case Defense Attorney,An attorney who defends a subject in a case,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingAttorney,Case Initiating Attorney,An attorney who initiated a case,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingParty,Case Initiating Party,An entity that initiated a case,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseJudge,Case Judge,A judge associated with a case,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Charge,Charge,A formal allegation that a specific person has committed a specific offense,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Court,Court,A court or a unit of a court responsible for trying justice proceedings,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Judge,Judge,An official who hears and decides cases brought before a court of law,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/LawEnforcementOfficial,Law Enforcement Official,A peace official who has the authority to enforce the law,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/RegisterAction,Register Action,An entry in a register of actions in a case,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/RegisterOfActions,Register Of Actions,A chronological list of filings in a case,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Release,Release,A release of a subject from booking or from booking detention,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/Sentence,Sentence,A punishment imposed on a person convicted of a crime,Class
+http://release.niem.gov/niem/domains/jxdm/7.2/SentenceTerm,Sentence Term,A duration of a sentence,Class
+http://release.niem.gov/niem/niem-core/5.0/Person,Person,A human being,Class
+http://schemas.scales-okn.org/rdf/scales#CivilCase,Civil Case,A civil court case in the SCALES knowledge graph,Class
+http://schemas.scales-okn.org/rdf/scales#CriminalCase,Criminal Case,A criminal court case in the SCALES knowledge graph,Class
+http://schemas.scales-okn.org/rdf/scales#Firm,Firm,Links to a law firm entity,Class
+http://schemas.scales-okn.org/rdf/scales#Party,Party,Links to a party entity,Class
+http://fbi.gov/cjis/nibrs/2023.0/NIBRSReportCategoryCode,NIBRS report category code,FBI National Incident-Based Reporting System (NIBRS) report category code,Predicate
+http://fbi.gov/cjis/nibrs/2023.0/OffenseUCRCode,offense UCR code,FBI Uniform Crime Reporting (UCR) offense code,Predicate
+http://release.niem.gov/niem/codes/fips/5.0/CountyCode,county code,FIPS code identifying a US county,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ArrestOfficial,arrest official,A peace official who makes an arrest,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/Attorney,attorney,An attorney,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/BondAmount,bond amount,A monetary amount approved for bond,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/BondType,bond type,"A kind of bond (e.g., cash, surety)",Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/BookingFacility,booking facility,A facility where a subject is detained as a result of booking,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/BookingRelease,booking release,Details about a release of a subject from booking or detention,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/Case,case,An aggregation of information about a set of related activities and events,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseCharge,case charge,A charge or accusation a person is being tried for in a court of law,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseCourt,case court,A court in which a case is being tried,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefendantParty,case defendant party,An entity being charged or sued in a court of law,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefenseAttorney,case defense attorney,An attorney who defends a subject in a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingAttorney,case initiating attorney,An attorney who initiated a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingParty,case initiating party,An entity that initiated a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseJudge,case judge,A judge associated with a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CaseOfficialRoleText,case official role text,A role played by an official in a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeBooking,charge booking,A booking associated with a charge,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeDisposition,charge disposition,The final outcome or result of a charge,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeDispositionCategoryText,charge disposition category text,"A kind of charge disposition (e.g., dismissed, guilty plea)",Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSentence,charge sentence,A sentence given to a person convicted of a charge,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSequenceID,charge sequence ID,A unique identifier for a charge in a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSeverityLevelCode,charge severity level code,"A level of severity of a charge (e.g., felony, misdemeanor)",Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSubject,charge subject,A person alleged or found to have committed a crime,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ChargeText,charge text,A text description of a charge,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CourtCategoryCode,court category code,"A kind of court (e.g., appellate, circuit, district)",Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/CourtName,court name,A name of a court unit,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/DrugCategoryCode,drug category code,"A kind of drug (e.g., narcotic, stimulant)",Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/JudicialOfficialCategoryText,judicial official category text,"A kind of judicial official (e.g., judge, magistrate)",Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/ParticipantRoleCategoryText,participant role category text,A kind of role played by a participant in a case,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/PersonCharge,person charge,A charge associated with a person,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/PersonSexCode,person sex code,A code identifying the gender or sex of a person,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/RegisterActionDate,register action date,A date a register of actions entry was filed,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/RegisterActionDescriptionText,register action description text,A description of an entry in the docket or register of actions,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/Sentence,sentence,A punishment imposed on a person convicted of a crime,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/SentenceDescriptionText,sentence description text,A description of the sentence imposed,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/SentenceTerm,sentence term,A duration of a sentence,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/StatuteKeywordText,statute keyword text,A keyword or phrase describing a statute,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/SubjectBooking,subject booking,A booking of a subject,Predicate
+http://release.niem.gov/niem/domains/jxdm/7.2/TermDuration,term duration,A specific length of time,Predicate
+http://release.niem.gov/niem/niem-core/5.0/ActivityDate,activity date,A date of an activity,Predicate
+http://release.niem.gov/niem/niem-core/5.0/AddressPostalCode,address postal code,A postal code or ZIP code,Predicate
+http://release.niem.gov/niem/niem-core/5.0/AdministrativeID,administrative ID,An identifier assigned for administrative purposes,Predicate
+http://release.niem.gov/niem/niem-core/5.0/CaseDocketID,case docket ID,An identifier used to reference a case in a docket,Predicate
+http://release.niem.gov/niem/niem-core/5.0/CaseGeneralCategoryText,case general category text,A broadly defined kind of case,Predicate
+http://release.niem.gov/niem/niem-core/5.0/CaseSubCategoryText,case sub category text,A more specific classification of a kind of case,Predicate
+http://release.niem.gov/niem/niem-core/5.0/ContactMailingAddress,contact mailing address,A postal mailing address for contact purposes,Predicate
+http://release.niem.gov/niem/niem-core/5.0/CourtName,court name,A name of a court or court unit,Predicate
+http://release.niem.gov/niem/niem-core/5.0/CourtPostalCode,court postal code,A postal code for the location of a court,Predicate
+http://release.niem.gov/niem/niem-core/5.0/EndDate,end date,An end date of an activity or event,Predicate
+http://release.niem.gov/niem/niem-core/5.0/EntityName,entity name,A name of an entity,Predicate
+http://release.niem.gov/niem/niem-core/5.0/FacilityName,facility name,A name of a facility,Predicate
+http://release.niem.gov/niem/niem-core/5.0/JurisdictionText,jurisdiction text,An area in which an organization or person has some kind of authoritative capacity or responsibility,Predicate
+http://release.niem.gov/niem/niem-core/5.0/LocaleCensusBlockID,locale census block ID,A census block identifier,Predicate
+http://release.niem.gov/niem/niem-core/5.0/OrganizationName,organization name,A name of an organization,Predicate
+http://release.niem.gov/niem/niem-core/5.0/PersonFullName,person full name,A complete name of a person,Predicate
+http://release.niem.gov/niem/niem-core/5.0/PersonID,person ID,A unique identifier assigned to a person,Predicate
+http://release.niem.gov/niem/niem-core/5.0/PersonRaceText,person race text,A classification of a person based on physical characteristics,Predicate
+http://release.niem.gov/niem/niem-core/5.0/PersonSexText,person sex text,A gender or sex of a person,Predicate
+http://release.niem.gov/niem/niem-core/5.0/StartDate,start date,A start date of an activity or event,Predicate
+http://release.niem.gov/niem/niem-core/5.0/StatusDescriptionText,status description text,A description of a status,Predicate
+http://schemas.scales-okn.org/rdf/scales#BirthYear,birth year,The year in which a person was born,Predicate
+http://schemas.scales-okn.org/rdf/scales#BookingCase,booking case,Links a booking event to a criminal case,Predicate
+http://schemas.scales-okn.org/rdf/scales#DocketEntry,docket entry,A specific entry in the court docket,Predicate
+http://schemas.scales-okn.org/rdf/scales#DocketTable,docket table,The table of docket entries for a case,Predicate
+http://schemas.scales-okn.org/rdf/scales#Firm,firm,Links to a law firm entity,Predicate
+http://schemas.scales-okn.org/rdf/scales#OntologyLabel,ontology label,A label from the ontology vocabulary,Predicate
+http://schemas.scales-okn.org/rdf/scales#Party,party,Links to a party entity,Predicate
+http://schemas.scales-okn.org/rdf/scales#appointedByParty,appointed by party,Indicates which party appointed an attorney,Predicate
+http://schemas.scales-okn.org/rdf/scales#assignedToDefendant,assigned to defendant,Indicates assignment of an attorney to a defendant,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasChargeType,has charge type,Specifies the type of criminal or civil charge,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasCommissionDate,has commission date,The date on which a judge was commissioned,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasExtraInfo,has extra info,Additional information not captured in other fields,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasFJCNodeID,has FJC node ID,Federal Judicial Center node identifier,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasHighestOffenseLevelOpening,has highest offense level opening,The highest offense level at case opening,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasHighestOffenseLevelTerminated,has highest offense level terminated,The highest offense level at case termination,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasIfpJudgeAttribution,has IFP judge attribution,In forma pauperis (IFP) judge attribution information,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasIfpLabel,has IFP label,In forma pauperis (IFP) status label,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasMemberCase,has member case,Links to a member case in a consolidated case,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasReferenceToOtherEntry,has reference to other entry,References another docket entry,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasRelatedCase,has related case,Links to a related case,Predicate
+http://schemas.scales-okn.org/rdf/scales#hasUVAJudgeDirID,has UVA judge dir ID,University of Virginia Judge Directory identifier,Predicate
+http://schemas.scales-okn.org/rdf/scales#isInCircuit,is in circuit,Indicates which federal circuit a court is in,Predicate
+http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate

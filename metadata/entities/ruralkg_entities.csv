@@ -1,0 +1,71 @@
+URI,Label,Description,Type
+http://sail.ua.edu/ruralkg/administrativearea/City,City,"Represents a city as an administrative area",Class
+http://sail.ua.edu/ruralkg/administrativearea/County,County,"Represents a county as an administrative area",Class
+http://sail.ua.edu/ruralkg/administrativearea/State,State,"Represents a state as an administrative area",Class
+http://sail.ua.edu/ruralkg/settlementtype/CountyStatus,County Status,"Represents the status classification of a county",Class
+http://sail.ua.edu/ruralkg/settlementtype/RUCC,RUCC,"Rural-Urban Continuum Code classification",Class
+http://sail.ua.edu/ruralkg/substanceabuse/Substance,Substance,"Represents a substance involved in substance abuse",Class
+http://sail.ua.edu/ruralkg/substanceabuse/SubstanceRelatedIncident,Substance Related Incident,"Represents an incident related to substance abuse",Class
+http://sail.ua.edu/ruralkg/treatment/MentalHealthService,Mental Health Service,"Represents a mental health service offering",Class
+http://sail.ua.edu/ruralkg/treatment/MentalHealthServiceCategory,Mental Health Service Category,"Represents a category of mental health services",Class
+http://sail.ua.edu/ruralkg/treatment/TreatmentProvider,Treatment Provider,"Represents an organization or individual providing treatment services",Class
+http://sail.ua.edu/ruralkg/variable/NIBRS,NIBRS,"National Incident-Based Reporting System variable",Class
+http://sail.ua.edu/ruralkg/variable/NIBRSAnswer,NIBRS Answer,"Answer value for a NIBRS variable",Class
+http://sail.ua.edu/ruralkg/variable/NSDUH,NSDUH,"National Survey on Drug Use and Health variable",Class
+http://sail.ua.edu/ruralkg/variable/NSDUHAnswer,NSDUH Answer,"Answer value for an NSDUH variable",Class
+http://www.w3.org/2000/01/rdf-schema#Class,Class,"RDF Schema class definition",Class
+http://www.w3.org/2002/07/owl#Ontology,Ontology,"OWL ontology definition",Class
+http://purl.org/dc/terms/created,Created,"Date of creation",Predicate
+http://purl.org/dc/terms/creator,Creator,"Entity that created the resource",Predicate
+http://purl.org/dc/terms/description,Description,"Description of the resource",Predicate
+http://purl.org/dc/terms/hasVersion,Has Version,"Relates a resource to its version",Predicate
+http://purl.org/dc/terms/title,Title,"Name given to the resource",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/abbreviation,Abbreviation,"Abbreviation of an administrative area",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/containsPlace,Contains Place,"Indicates that an administrative area contains another place",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/fips,FIPS,"Federal Information Processing Standards code",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/latitude,Latitude,"Geographic latitude coordinate",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/longitude,Longitude,"Geographic longitude coordinate",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/name,Name,"Name of an administrative area",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/primaryCounty,Primary County,"Primary county associated with an entity",Predicate
+http://sail.ua.edu/ruralkg/administrativearea/ranking,Ranking,"Ranking or ordering value",Predicate
+http://sail.ua.edu/ruralkg/justice/hasVariable,Has Variable,"Associates an entity with a variable",Predicate
+http://sail.ua.edu/ruralkg/settlementtype/censusCounty,Census County,"County designation from census data",Predicate
+http://sail.ua.edu/ruralkg/settlementtype/code,Code,"Classification code for settlement type",Predicate
+http://sail.ua.edu/ruralkg/settlementtype/description,Description,"Description of settlement type",Predicate
+http://sail.ua.edu/ruralkg/settlementtype/hasRUCC,Has RUCC,"Associates an entity with a Rural-Urban Continuum Code",Predicate
+http://sail.ua.edu/ruralkg/settlementtype/population,Population,"Population count",Predicate
+http://sail.ua.edu/ruralkg/settlementtype/year,Year,"Year of data collection or classification",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/code,Code,"Code identifier for substance abuse entity",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/conceptType,Concept Type,"Type of concept in substance abuse domain",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/description,Description,"Description of substance abuse entity",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/domainCategory,Domain Category,"Category within substance abuse domain",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/fromDataset,From Dataset,"Source dataset for the data",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/hasVariable,Has Variable,"Associates entity with a variable",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/hierarchyLevel,Hierarchy Level,"Level in a hierarchical classification",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/identifier,Identifier,"Unique identifier",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/name,Name,"Name of substance abuse entity",Predicate
+http://sail.ua.edu/ruralkg/substanceabuse/year,Year,"Year of data collection",Predicate
+http://sail.ua.edu/ruralkg/treatment/address,Address,"Physical address of treatment facility",Predicate
+http://sail.ua.edu/ruralkg/treatment/alias,Alias,"Alternative name",Predicate
+http://sail.ua.edu/ruralkg/treatment/code,Code,"Code identifier for treatment entity",Predicate
+http://sail.ua.edu/ruralkg/treatment/containsService,Contains Service,"Indicates that an entity contains a service",Predicate
+http://sail.ua.edu/ruralkg/treatment/description,Description,"Description of treatment entity",Predicate
+http://sail.ua.edu/ruralkg/treatment/inCity,In City,"City where entity is located",Predicate
+http://sail.ua.edu/ruralkg/treatment/name,Name,"Name of treatment entity",Predicate
+http://sail.ua.edu/ruralkg/treatment/phone,Phone,"Phone number",Predicate
+http://sail.ua.edu/ruralkg/treatment/providesService,Provides Service,"Service provided by the entity",Predicate
+http://sail.ua.edu/ruralkg/treatment/year,Year,"Year of data collection",Predicate
+http://sail.ua.edu/ruralkg/treatment/zipcode,Zipcode,"ZIP code",Predicate
+http://sail.ua.edu/ruralkg/variable/answerCode,Answer Code,"Code for an answer value",Predicate
+http://sail.ua.edu/ruralkg/variable/answerContent,Answer Content,"Content of an answer",Predicate
+http://sail.ua.edu/ruralkg/variable/code,Code,"Variable code identifier",Predicate
+http://sail.ua.edu/ruralkg/variable/content,Content,"Content of the variable",Predicate
+http://sail.ua.edu/ruralkg/variable/description,Description,"Description of the variable",Predicate
+http://sail.ua.edu/ruralkg/variable/fromDataset,From Dataset,"Source dataset for the variable",Predicate
+http://sail.ua.edu/ruralkg/variable/generatedDescription,Generated Description,"Auto-generated description",Predicate
+http://sail.ua.edu/ruralkg/variable/hasAnswer,Has Answer,"Associates a variable with its answer",Predicate
+http://sail.ua.edu/ruralkg/variable/year,Year,"Year of data collection",Predicate
+http://www.w3.org/2000/01/rdf-schema#comment,Comment,"Human-readable description or comment",Predicate
+http://www.w3.org/2000/01/rdf-schema#isDefinedBy,Is Defined By,"Resource that defines the subject resource",Predicate
+http://www.w3.org/2000/01/rdf-schema#label,Label,"Human-readable name",Predicate
+http://www.w3.org/2000/01/rdf-schema#subClassOf,Subclass Of,"Indicates that a class is a subclass of another class",Predicate
