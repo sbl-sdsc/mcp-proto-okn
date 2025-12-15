@@ -19,6 +19,7 @@ This class extends the mcp-server-sparql MCP server.
 
 import json
 import argparse
+import textwrap
 from typing import Dict, Any, Optional, Union, List, Tuple
 from io import StringIO
 import csv
@@ -220,125 +221,114 @@ class SPARQLServer:
         
         try:
             with urlopen(url, timeout=5) as response:
-                # Read and decode the response
                 content = response.read().decode('utf-8')
                 
-                # Parse CSV
-                csv_reader = csv.DictReader(StringIO(content))
+            # Parse CSV
+            reader = csv.DictReader(StringIO(content))
+            metadata = {}
+            
+            for row in reader:
+                uri = row.get('URI', '').strip()
+                label = row.get('Label', '').strip()
+                description = row.get('Description', '').strip()
                 
-                # Build metadata dict
-                metadata = {}
-                for row in csv_reader:
-                    uri = row.get('URI', '').strip()
-                    label = row.get('Label', '').strip()
-                    description = row.get('Description', '').strip()
-                    rdf_type = row.get('Type', '').strip()
-                    
-                    if uri:
-                        metadata[uri] = {
-                            'label': label,
-                            'description': description,
-                            'rdf_type': rdf_type
-                        }
-                
-                return metadata
-                
-        except HTTPError as e:
-            print(f"HTTP Error fetching entity metadata: {e.code} {e.reason}")
-            print(f"URL attempted: {url}")
-            return {}
-        except URLError as e:
-            print(f"URL Error fetching entity metadata: {e.reason}")
-            print(f"URL attempted: {url}")
-            return {}
+                if uri:
+                    metadata[uri] = {
+                        'label': label,
+                        'description': description
+                    }
+            
+            return metadata
+            
         except Exception as e:
-            print(f"Error parsing entity metadata: {e}")
+            # If file doesn't exist or any error occurs, return empty dict
             return {}
 
-    # ---------------------- Public API ---------------------- #
-    def execute(self, query_string: str, format: str = 'compact') -> Union[Dict[str, Any], str]:
-        """Execute SPARQL query with format options: 'full', 'simplified', 'compact', 'values', 'csv'"""
-        try:
-            # workaround to use federated endpoint (insert a FROM clause to select the KG)
-            info = self._get_registry_url()
-            if info:
-                kg_name, registry_url = info
-                query_string = self._insert_from_clause(query_string, kg_name)
-            
-            self.sparql.setQuery(query_string)
-            result = self.sparql.query().convert()
-            
-            # Format the result based on requested format
-            if format == 'simplified':
-                formatted_result = self._simplify_result(result)
-            elif format == 'compact':
-                formatted_result = self._compact_result(result)
-            elif format == 'values':
-                formatted_result = self._values_only(result)
-            elif format == 'csv':
-                formatted_result = self._to_csv(result)
-            else:
-                formatted_result = result
-            
-            return formatted_result
-                
-        except Exception as e:
-            # Could special-case EndPointNotFound if imported.
-            return {"error": f"Query error: {str(e)}"}
-
-    def query_schema(self, compact: bool = False) -> Dict[str, Any]:
-        """Return a dict with classes and predicates discovered in the graph."""
-        # Try to get entity metadata
-        metadata = self._get_entity_metadata()
-        kg_name = self.kg_name
+    def execute(self, query_string: str, format: str = 'compact') -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
+        """Execute SPARQL query and return results in requested format."""
+        # Get kg_name for FROM clause insertion
+        result = self._get_registry_url()
+        if result:
+            kg_name, _ = result
+            query_string = self._insert_from_clause(query_string, kg_name)
         
-        # If metadata is available, return it directly without querying
-        if len(metadata) > 0:
-            # Extract classes and predicates from metadata
-            class_data = []
-            predicate_data = []
-            
-            for uri, entity_info in metadata.items():
-                rdf_type = entity_info.get('rdf_type', '')
-                label = entity_info.get('label', uri.split('/')[-1].split('#')[-1])
-                description = entity_info.get('description', '')
-                
-                # Check if it's a class or predicate
-                if rdf_type == 'Class':
-                    class_data.append([uri, label, description, rdf_type])
-                elif rdf_type == 'Predicate':
-                    predicate_data.append([uri, label, description, rdf_type])
-            
+        self.sparql.setQuery(query_string)
+        
+        try:
+            raw_result = self.sparql.query().convert()
+        except Exception as e:
             return {
-                'classes': {
-                    'columns': ['uri', 'label', 'description', 'rdf_type'],
-                    'data': class_data,
-                    'count': len(class_data)
-                },
-                'predicates': {
-                    'columns': ['uri', 'label', 'description', 'rdf_type'],
-                    'data': predicate_data,
-                    'count': len(predicate_data)
-                }
+                'error': str(e),
+                'query': query_string
             }
         
-        # No metadata available, query for classes and predicates
-        class_query = f"""
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT DISTINCT ?class
-WHERE {{
-    ?instance rdf:type ?class .
-}}
+        # Apply requested format
+        if format == 'full':
+            return raw_result
+        elif format == 'simplified':
+            return self._simplify_result(raw_result)
+        elif format == 'compact':
+            return self._compact_result(raw_result)
+        elif format == 'values':
+            return self._values_only(raw_result)
+        elif format == 'csv':
+            return self._to_csv(raw_result)
+        else:
+            return self._compact_result(raw_result)
+
+    def query_schema(self, compact: bool = True) -> Dict[str, Any]:
         """
+        Query the knowledge graph schema to discover classes and predicates.
+        
+        Args:
+            compact: If True, returns just URIs. If False, enriches with labels and descriptions.
+        
+        Returns:
+            A dictionary with 'classes' and 'predicates' keys, each containing schema info.
+        """
+        result = self._get_registry_url()
+        if not result:
+            return {
+                'error': 'Cannot determine KG name for schema query',
+                'classes': {'columns': ['uri'], 'data': [], 'count': 0},
+                'predicates': {'columns': ['uri'], 'data': [], 'count': 0}
+            }
+        
+        kg_name, _ = result
+        
+        # FIXED: Query for classes using both 'a' and explicit rdf:type
+        # Also query for objects that are used as types (in case instances aren't available)
+        class_query = textwrap.dedent("""
+            SELECT DISTINCT ?class
+            WHERE {
+              {
+                # Method 1: Find classes through instances using 'a' shorthand
+                ?s a ?class .
+              } UNION {
+                # Method 2: Find classes through instances using explicit rdf:type
+                ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class .
+              } UNION {
+                # Method 3: Find classes that are explicitly declared as rdfs:Class or owl:Class
+                ?class a <http://www.w3.org/2000/01/rdf-schema#Class> .
+              } UNION {
+                ?class a <http://www.w3.org/2002/07/owl#Class> .
+              }
+            }
+            ORDER BY ?class
+        """).strip()
+        
         class_query = self._insert_from_clause(class_query, kg_name)
         classes = self.execute(class_query, format='compact')
-
-        predicate_query = f"""
-SELECT DISTINCT ?predicate
-WHERE {{
-  ?s ?predicate ?o .
-}}
-        """
+        
+        # Query for predicates
+        predicate_query = textwrap.dedent("""
+            SELECT DISTINCT ?predicate
+            WHERE {
+              ?s ?predicate ?o .
+            }
+            ORDER BY ?predicate
+        """).strip()
+        
         predicate_query = self._insert_from_clause(predicate_query, kg_name)
         predicates = self.execute(predicate_query, format='compact')
 
@@ -349,9 +339,27 @@ WHERE {{
         predicate_uris = predicates.get('data', [])
         predicate_uris = [row[0] for row in predicate_uris if row]  # Get first column values
         
-        # No metadata available, just return URIs
-        class_data = [[uri] for uri in class_uris]
-        predicate_data = [[uri] for uri in predicate_uris]
+        # Filter out unwanted URIs from the schema
+        # Exclude: RDF syntax namespace URIs (especially container properties like rdf:_1, rdf:_2, rdf:_5700, etc.)
+        def should_exclude_uri(uri: str) -> bool:
+            """
+            Check if URI should be excluded from schema results.
+            Returns True if the URI should be filtered out.
+            """
+            # Check if URI is from RDF syntax namespace
+            rdf_namespace_prefixes = (
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+                'https://www.w3.org/1999/02/22-rdf-syntax-ns#'
+            )
+            
+            for prefix in rdf_namespace_prefixes:
+                if uri.startswith(prefix):
+                    return True
+            
+            return False  # Don't exclude URIs from other namespaces
+        
+        class_data = [[uri] for uri in class_uris if not should_exclude_uri(uri)]
+        predicate_data = [[uri] for uri in predicate_uris if not should_exclude_uri(uri)]
         
         return {
             'classes': {
