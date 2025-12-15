@@ -66,6 +66,7 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
    [sawgraph chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sawgraph_overview.md)
 
+   [scales chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md)
 
 2. **GeneLab Assay Structure (spoke-genelab)**
 
