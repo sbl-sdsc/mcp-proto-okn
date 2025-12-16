@@ -54,7 +54,7 @@ I've created an interactive map visualization showing spatial clusters of floode
 
 ## Interactive Map Visualization
 
-[View Interactive Flood Map](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/michigan_flood_map.html)
+[Interactive Michigan Flood Map](https://sbl-sdsc.github.io/mcp-proto-okn/examples/michigan_flood_map.html)
 
 ### Key Features:
 
