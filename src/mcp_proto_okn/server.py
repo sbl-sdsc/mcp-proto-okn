@@ -453,10 +453,19 @@ def main():
     # Create MCP server
     mcp = FastMCP("SPARQL Query Server")
 
+    # Extract just the KG short name from endpoint
+    kg_short_name = sparql_server.kg_name if sparql_server.kg_name else "the"
+    
     query_doc = f"""
-Execute a SPARQL query against the {sparql_server.kg_name or ''} knowledge graph endpoint: {sparql_server.endpoint_url}.
+Execute a SPARQL query against the {kg_short_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
 
-IMPORTANT: You MUST call get_schema() first before using this query tool to understand the available classes and predicates in the knowledge graph.
+CRITICAL: Before using this tool or discussing the knowledge graph:
+1. You MUST call get_description() FIRST to get the correct knowledge graph name and details
+2. Until get_description() is called, refer to this knowledge graph ONLY as "{kg_short_name}" (the short label)
+3. DO NOT invent or guess a full name - you will likely hallucinate incorrect information
+4. After get_description() is called, you can use the proper name from the description
+
+IMPORTANT: You MUST call get_schema() before making queries to understand available classes and predicates.
 
 Args:
     query_string: A valid SPARQL query string
@@ -471,7 +480,12 @@ Returns:
         return sparql_server.execute(query_string, format=format)
 
     schema_doc = f"""
-Return the schema (classes, relationships, properties) of the {sparql_server.kg_name or ''} knowledge graph endpoint: {sparql_server.endpoint_url}.
+Return the schema (classes, relationships, properties) of the {kg_short_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
+
+CRITICAL: Before discussing the knowledge graph:
+1. Call get_description() FIRST to get the correct knowledge graph name
+2. Until then, refer to it ONLY as "{kg_short_name}" (the short label)
+3. DO NOT invent or guess a full name
 
 IMPORTANT: Always call this tool FIRST before making any queries to understand what data is available in the knowledge graph.
 
@@ -540,7 +554,7 @@ Returns:
         return '\n'.join(cleaned_lines)
 
     # Add prompt to create chat transcripts
-    @mcp.prompt()
+    @mcp.tool()
     def create_chat_transcript() -> str:
         """Prompt for creating a chat transcript in markdown format with user prompts and Claude responses."""
         from datetime import datetime
@@ -556,19 +570,19 @@ Returns:
 
 ---
 
-🧠 **Claude**  
+🧠 **Assistant**  
 <entire text response goes here>
 
 *Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) on {today}*
 """
 
-    @mcp.prompt()
+    @mcp.tool()
     def visualize_schema() -> str:
         """Prompt for visualizing the knowledge graph schema using a Mermaid class diagram."""
         return """Visualize the knowledge graph schema using a Mermaid class diagram. 
 
 Instructions:
-1. First call get_schema() to retrieve the classes and predicates
+1. First call get_schema() if it has not been called to retrieve the classes and predicates
 2. Create a Mermaid class diagram showing:
    - Classes as nodes
    - Predicates/relationships as connections between classes
