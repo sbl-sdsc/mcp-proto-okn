@@ -68,6 +68,8 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
    [scales chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md)
 
+   [sudokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_overview.md)
+
    [ufokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md)
 
 3. **GeneLab Assay Structure (spoke-genelab)**
