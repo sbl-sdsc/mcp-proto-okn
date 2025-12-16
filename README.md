@@ -96,7 +96,7 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
 9. **Michigan Flooding Event (ufokn)**
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/michigan_flood_map.md)
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
 ### Building and Publishing (maintainers only)
 
