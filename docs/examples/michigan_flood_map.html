@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Michigan Flood Event - October 29, 2024</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 300px;
+        }
+        .info-panel h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .info-panel p {
+            margin: 5px 0;
+            font-size: 13px;
+            color: #666;
+        }
+        .legend {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .legend h4 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 30px;
+            height: 15px;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        .stats {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        canvas {
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <div class="info-panel">
+        <h3>🌊 Michigan Flood Event</h3>
+        <p><strong>Date:</strong> October 29, 2024</p>
+        <p><strong>Sampled Buildings:</strong> <span class="stats">200</span></p>
+        <p><strong>Total Affected:</strong> <span class="stats">19,575</span></p>
+        <p style="margin-top: 10px; font-size: 12px; color: #888;">
+            Heat map shows spatial clustering of flooded buildings. Brighter areas indicate higher concentration.
+        </p>
+    </div>
+    
+    <div class="legend">
+        <h4>Flood Density</h4>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #ff0000;"></div>
+            <span>Very High</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #ff6600;"></div>
+            <span>High</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #ffcc00;"></div>
+            <span>Moderate</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #00ff00;"></div>
+            <span>Low</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #0000ff;"></div>
+            <span>Very Low</span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/simpleheat@0.4.0/simpleheat.js"></script>
+    <script>
+    window.onload = function() {
+        // Initialize map centered on Michigan flood area
+        var map = L.map('map').setView([42.35, -83.1], 10);
+
+        // Add OpenStreetMap base layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Flood location data from UFOKN (200 sampled points)
+        var floodPoints = [
+            [42.9473, -82.453], [42.2675, -83.1339], [42.3352, -83.1164], [42.2601, -83.1406],
+            [42.0914, -83.1532], [42.2627, -83.1462], [42.3209, -83.0948], [42.2094, -83.151],
+            [42.2707, -83.1288], [42.9196, -82.4657], [42.3405, -83.106], [42.2096, -83.1447],
+            [42.1773, -83.1449], [42.3115, -83.1042], [42.3406, -83.1094], [42.3376, -83.0788],
+            [42.3385, -83.1173], [42.7238, -82.5091], [42.8017, -82.4842], [42.1734, -83.1481],
+            [42.2665, -83.1299], [42.3201, -83.1032], [42.8457, -82.4748], [46.2959, -84.2234],
+            [42.213, -83.1529], [42.174, -83.1464], [42.2639, -83.1344], [42.8117, -82.4876],
+            [42.3225, -83.1013], [42.7094, -82.5043], [42.175, -83.1472], [42.3229, -83.0855],
+            [42.3366, -83.101], [42.2102, -83.1532], [42.3157, -83.1032], [42.333, -83.1106],
+            [42.9941, -82.4385], [42.9536, -82.4453], [42.3385, -83.0752], [42.3334, -83.0793],
+            [42.9446, -82.4547], [42.2113, -83.15], [42.2636, -83.1386], [42.3304, -83.1081],
+            [42.9459, -82.4526], [42.3079, -83.1137], [46.2927, -84.2114], [42.2712, -83.1299],
+            [42.7561, -82.482], [42.2643, -83.1386], [42.3385, -83.0739], [42.3156, -83.0975],
+            [42.308, -83.1016], [42.3276, -83.1127], [42.3351, -83.0973], [42.8731, -82.475],
+            [42.6889, -82.5075], [46.41, -84.2318], [42.3136, -83.104], [42.919, -82.4647],
+            [42.723, -82.4913], [42.3086, -83.1087], [46.3091, -84.2235], [42.2649, -83.1327],
+            [42.7021, -82.5023], [46.243, -84.1828], [42.2067, -83.153], [42.3413, -83.1009],
+            [42.7283, -82.4899], [42.311, -83.1028], [42.9597, -82.4551], [42.3135, -83.1004],
+            [42.3463, -83.118], [42.3306, -83.1072], [42.7682, -82.4708], [42.2608, -83.1402],
+            [42.3283, -83.1086], [42.9466, -82.4425], [42.9951, -82.433], [42.3323, -83.1087],
+            [42.3172, -83.1071], [42.3153, -83.0929], [42.346, -83.1161], [42.2057, -83.156],
+            [42.2553, -83.1418], [42.3099, -83.115], [42.3119, -83.0986], [42.3371, -83.0952],
+            [42.317, -83.1082], [42.2585, -83.1457], [42.8008, -82.4837], [42.7323, -82.4904],
+            [42.3351, -83.0976], [42.1762, -83.1464], [42.3175, -83.0875], [42.9647, -82.4433],
+            [42.7123, -82.5024], [42.2605, -83.1337], [42.3111, -83.1054], [42.7382, -82.4888],
+            [42.2695, -83.1309], [42.7906, -82.4801], [42.3161, -83.0979], [42.3155, -83.1021],
+            [42.2707, -83.1334], [42.3405, -83.1076], [42.716, -82.4927], [42.9606, -82.431],
+            [42.981, -82.4262], [42.8283, -82.4881], [42.3404, -83.1159], [42.3304, -83.0953],
+            [42.3168, -83.0957], [42.3473, -83.1161], [42.3361, -83.1114], [42.3362, -83.0873],
+            [42.3167, -83.0879], [42.9479, -82.4482], [42.7203, -82.4908], [42.3355, -83.0748],
+            [42.3223, -83.1002], [46.4197, -84.27], [42.3296, -83.1154], [42.8092, -82.4861],
+            [42.6593, -82.5154], [42.3151, -83.1061], [42.333, -83.0896], [42.3198, -83.0891],
+            [42.3301, -83.0956], [42.3368, -83.105], [42.9892, -82.4292], [42.3113, -83.1123],
+            [42.2605, -83.1406], [42.3149, -83.107], [42.3125, -83.0968], [42.3198, -83.0881],
+            [46.4343, -84.2658], [42.2672, -83.1393], [42.2607, -83.1368], [42.7892, -82.4821],
+            [42.3366, -83.1095], [42.3135, -83.0969], [42.3132, -83.1127], [42.8431, -82.4756],
+            [42.942, -82.459], [42.3265, -83.1119], [42.2632, -83.1368], [42.3362, -83.0946],
+            [42.3239, -83.0881], [42.2186, -83.1556], [42.332, -83.1027], [42.3443, -83.1219],
+            [42.9646, -82.4496], [42.2583, -83.1417], [42.2601, -83.1454], [42.3335, -83.1159],
+            [42.748, -82.4835], [42.9471, -82.4505], [42.315, -83.105], [42.0895, -83.1569],
+            [42.3325, -83.0952], [42.9488, -82.4477], [42.3205, -83.0958], [42.3113, -83.1034],
+            [42.3332, -83.0897], [42.7238, -82.5046], [42.3368, -83.1192], [42.8065, -82.4886],
+            [42.9454, -82.456], [42.2598, -83.1347], [42.3331, -83.1092], [42.8964, -82.4743],
+            [42.328, -83.1089], [46.0838, -84.0595], [42.2079, -83.1571], [42.7117, -82.5041],
+            [42.9969, -82.4337], [42.9975, -82.4295], [42.3372, -83.1147], [42.9544, -82.4376],
+            [42.3418, -83.1117], [42.2635, -83.1313], [42.2665, -83.1431], [42.3383, -83.1037],
+            [42.3124, -83.0976], [42.0877, -83.1575], [42.9634, -82.4291], [42.3095, -83.1061],
+            [42.3286, -83.0929], [42.3117, -83.099], [42.8164, -82.4867], [42.2591, -83.1463],
+            [42.9644, -82.4531], [42.7999, -82.4827], [42.7648, -82.4715], [42.3202, -83.086],
+            [42.0944, -83.151], [42.3367, -83.1124], [42.3123, -83.1025], [42.3269, -83.0934]
+        ];
+
+        // Create custom heatmap layer
+        L.HeatLayer = L.Layer.extend({
+            initialize: function(latlngs, options) {
+                this._latlngs = latlngs;
+                L.setOptions(this, options);
+            },
+
+            onAdd: function(map) {
+                this._map = map;
+                
+                if (!this._canvas) {
+                    this._initCanvas();
+                }
+
+                map._panes.overlayPane.appendChild(this._canvas);
+
+                map.on('moveend', this._reset, this);
+                this._reset();
+            },
+
+            onRemove: function(map) {
+                map.getPanes().overlayPane.removeChild(this._canvas);
+                map.off('moveend', this._reset, this);
+            },
+
+            _initCanvas: function() {
+                var canvas = this._canvas = L.DomUtil.create('canvas', 'leaflet-heatmap-layer');
+                
+                var size = this._map.getSize();
+                canvas.width = size.x;
+                canvas.height = size.y;
+                
+                var animated = this._map.options.zoomAnimation && L.Browser.any3d;
+                L.DomUtil.addClass(canvas, 'leaflet-zoom-' + (animated ? 'animated' : 'hide'));
+
+                this._heat = simpleheat(canvas);
+                this._heat.radius(this.options.radius || 25, this.options.blur || 15);
+                this._heat.gradient(this.options.gradient || {
+                    0.0: 'blue', 0.2: 'cyan', 0.4: 'lime', 
+                    0.6: 'yellow', 0.8: 'orange', 1.0: 'red'
+                });
+            },
+
+            _reset: function() {
+                var topLeft = this._map.containerPointToLayerPoint([0, 0]);
+                L.DomUtil.setPosition(this._canvas, topLeft);
+
+                var size = this._map.getSize();
+                
+                if (this._heat._width !== size.x) {
+                    this._canvas.width = this._heat._width = size.x;
+                }
+                if (this._heat._height !== size.y) {
+                    this._canvas.height = this._heat._height = size.y;
+                }
+
+                this._redraw();
+            },
+
+            _redraw: function() {
+                var data = [];
+                var max = 0;
+                var r = this._heat._r;
+
+                for (var i = 0; i < this._latlngs.length; i++) {
+                    var point = this._map.latLngToContainerPoint(this._latlngs[i]);
+                    var value = this._latlngs[i][2] || 1;
+                    
+                    data.push([
+                        Math.round(point.x),
+                        Math.round(point.y),
+                        value
+                    ]);
+                    
+                    if (value > max) {
+                        max = value;
+                    }
+                }
+
+                this._heat.data(data).max(max);
+                this._heat.draw(this.options.minOpacity || 0.05);
+            }
+        });
+
+        L.heatLayer = function(latlngs, options) {
+            return new L.HeatLayer(latlngs, options);
+        };
+
+        // Add individual markers
+        var markers = L.layerGroup();
+        floodPoints.forEach(function(point) {
+            L.circleMarker([point[0], point[1]], {
+                radius: 3,
+                fillColor: "#ff0000",
+                color: "#8B0000",
+                weight: 1,
+                opacity: 0.6,
+                fillOpacity: 0.4
+            }).bindPopup('<strong>Flooded Building</strong><br>' +
+                         'Lat: ' + point[0].toFixed(4) + '<br>' +
+                         'Lon: ' + point[1].toFixed(4) + '<br>' +
+                         'Date: Oct 29, 2024 08:00').addTo(markers);
+        });
+
+        // Create heatmap data with intensity
+        var heatData = floodPoints.map(function(p) { 
+            return [p[0], p[1], 0.8]; 
+        });
+
+        // Create heat layer
+        var heat = L.heatLayer(heatData, {
+            radius: 25,
+            blur: 35,
+            maxZoom: 17,
+            max: 1.0,
+            minOpacity: 0.1,
+            gradient: {
+                0.0: 'blue',
+                0.2: 'cyan',
+                0.4: 'lime',
+                0.6: 'yellow',
+                0.8: 'orange',
+                1.0: 'red'
+            }
+        }).addTo(map);
+
+        // Add layer control
+        var overlays = {
+            "Flood Heatmap": heat,
+            "Building Markers": markers
+        };
+
+        L.control.layers(null, overlays).addTo(map);
+
+        // Add scale
+        L.control.scale({imperial: true, metric: true}).addTo(map);
+
+        // Fit bounds to show all data
+        var bounds = L.latLngBounds(floodPoints);
+        map.fitBounds(bounds, {padding: [50, 50]});
+    };
+    </script>
+</body>
+</html>

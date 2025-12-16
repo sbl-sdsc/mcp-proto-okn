@@ -68,29 +68,35 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
    [scales chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md)
 
-2. **GeneLab Assay Structure (spoke-genelab)**
+   [ufokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md)
+
+3. **GeneLab Assay Structure (spoke-genelab)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_assay.md)
 
-3. **Disease Prevalence in the US (spoke-okn)**
+4. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-4. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-5. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+6. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-6. **Biological Targets for PFOA (biobricks-toxcast)**
+7. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-7. **Criminal Justice Patterns (scales)**
+8. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
+
+9. **Michigan Flooding Event (ufokn)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/michigan_flood_map.md)
 
 ### Building and Publishing (maintainers only)
 
