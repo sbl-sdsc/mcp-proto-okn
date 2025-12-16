@@ -539,6 +539,44 @@ Returns:
         
         return '\n'.join(cleaned_lines)
 
+    # Add prompt to create chat transcripts
+    @mcp.prompt()
+    def create_chat_transcript() -> str:
+        """Prompt for creating a chat transcript in markdown format with user prompts and Claude responses."""
+        from datetime import datetime
+        today = datetime.now().strftime("%Y-%m-%d")
+        
+        return f"""Create a chat transcript in .md format following the outline below. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document.
+
+## Chat Transcript
+<Title>
+
+👤 **User**  
+<prompt>
+
+---
+
+🧠 **Claude**  
+<entire text response goes here>
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) on {today}*
+"""
+
+    @mcp.prompt()
+    def visualize_schema() -> str:
+        """Prompt for visualizing the knowledge graph schema using a Mermaid class diagram."""
+        return """Visualize the knowledge graph schema using a Mermaid class diagram. 
+
+Instructions:
+1. First call get_schema() to retrieve the classes and predicates
+2. Create a Mermaid class diagram showing:
+   - Classes as nodes
+   - Predicates/relationships as connections between classes
+   - Include labels where available
+3. Use the clean_mermaid_diagram tool to remove any unwanted elements before presenting
+4. Present the diagram inline in your response
+"""
+
     # Run MCP server over stdio
     mcp.run(transport="stdio")
 
