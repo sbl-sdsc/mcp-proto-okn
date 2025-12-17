@@ -44,13 +44,28 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
 Once configured, you can start querying knowledge graphs through natural language prompts in Claude Desktop or VS Code chat interface.
 
-In Claude Desktop, select the KGs you want to query, e.g., `spoke-genelab`.
+### Select and Configure MCP Tools
+
+From the top menu bar:
+```
+1. Select: Claude->Settings->Connectors
+2. Click: Configure for the MCP endpoints you want to use
+3. Select Tool permissions: Always allow
+```
+
+In the prompt dialog box, click the `+` button:
+```
+1. Turn off Web search
+2. Toggle MCP services on/off as needed
+```
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/select_mcp_server.png"
      alt="Tool Selector"
      width="500">
 
-To create a transcript of a chat (see examples below), use the following prompt: `Create a chat transcript in .md format`. The transcript can then be downloaded in .md or .pdf format.
+To create a transcript of a chat (see examples below), use the following prompt: 
+```Create a chat transcript```. 
+The transcript can then be downloaded in .md format.
 
 ### Example Queries
 
@@ -72,39 +87,39 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
    [ufokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md)
 
-3. **GeneLab Assay Structure (spoke-genelab)**
+2. **GeneLab Assay Structure (spoke-genelab)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_assay.md)
 
-4. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
+3. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-6. **Disease Prevalence in the US (spoke-okn)**
+4. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-7. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-8. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+6. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-9. **Biological Targets for PFOA (biobricks-toxcast)**
+7. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-10. **Criminal Justice Patterns (scales)**
+8. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-11. **Michigan Flooding Event (ufokn)**
+9. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-12. **Chemical Identifiers (all Proto-OKN KGs)**
+10. **Chemical Identifiers (all Proto-OKN KGs)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)   
 
