@@ -52,6 +52,12 @@ class SPARQLServer:
         self.sparql = SPARQLWrapper(federated_endpoint)
         self.sparql.setReturnFormat(JSON)
 
+        self.sparql.setMethod("GET")
+        self.sparql.addCustomHttpHeader(
+            "Accept", "application/sparql-results+json"
+        )
+        self.sparql.setTimeout(120)
+
     # ---------------------- Internal helpers ---------------------- #
     def _insert_from_clause(self, query_string, kg_name):
         """
