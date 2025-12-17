@@ -119,10 +119,9 @@ The transcript can then be downloaded in .md format.
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-10. **Chemical Identifiers (all Proto-OKN KGs)**
+10. **Chemical Identifiers (Proto-OKN KGs)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)
-
 
 ### Building and Publishing (maintainers only)
 
