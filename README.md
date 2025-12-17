@@ -87,13 +87,13 @@ The transcript can then be downloaded in .md format.
 
    [ufokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md)
 
-2. **GeneLab Assay Structure (spoke-genelab)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_assay.md)
-
-3. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
+2. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
+
+3. **PFOA in Drinking Water (spoke-genelab)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
 4. **Disease Prevalence in the US (spoke-okn)**
 
@@ -122,6 +122,7 @@ The transcript can then be downloaded in .md format.
 10. **Chemical Identifiers (Proto-OKN KGs)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)
+
 
 ### Building and Publishing (maintainers only)
 
