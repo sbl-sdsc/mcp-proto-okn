@@ -582,6 +582,8 @@ Returns:
         
         for line in lines:
             stripped = line.strip()
+            # Remove vertical bars, they are not allowed in class diagrams
+            stripped = stripped.replace('|', ' ')
             
             # Skip any line containing note syntax
             if (stripped.startswith('note ') or 
@@ -628,14 +630,22 @@ Returns:
         """Prompt for visualizing the knowledge graph schema using a Mermaid class diagram."""
         return """Visualize the knowledge graph schema using a Mermaid class diagram. 
 
-Instructions:
+CRITICAL WORKFLOW - Follow these steps exactly:
 1. First call get_schema() if it has not been called to retrieve the classes and predicates
-2. Create a Mermaid class diagram showing:
-   - Classes as nodes
+2. Generate the raw Mermaid class diagram showing:
+   - Classes as nodes with their properties
    - Predicates/relationships as connections between classes
-   - Include labels where available
-3. Use the clean_mermaid_diagram tool to remove any unwanted elements before presenting
-4. Present the diagram inline in your response
+   - Include relationship labels
+3. Do not append newline characters
+4. MANDATORY: Pass your generated diagram through the clean_mermaid_diagram tool
+5. MANDATORY: Use ONLY the cleaned output from step 3 in your response - do NOT use your original draft
+6. Present the cleaned diagram inline in a mermaid code block
+
+Common mistakes to avoid:
+- DO NOT render the diagram before cleaning it
+- DO NOT use your original draft after calling clean_mermaid_diagram
+- DO NOT add note statements or empty curly braces {} for classes without properties
+- ALWAYS copy the exact output from clean_mermaid_diagram tool
 """
 
     # Run MCP server over stdio
