@@ -104,6 +104,10 @@ To create a transcript of a chat (see examples below), use the following prompt:
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
+12. **Chemical Identifiers (all Proto-OKN KGs)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)   
+
 ### Building and Publishing (maintainers only)
 
 ```bash
