@@ -208,7 +208,7 @@ class SPARQLServer:
     def _get_entity_metadata(self) -> Dict[str, Dict[str, str]]:
         """
         Fetch entity metadata from GitHub CSV file.
-        Returns a dict mapping URI to {label, description}.
+        Returns a dict mapping URI to {label, description, type}.
         """
         # Construct the GitHub raw file URL
         result = self._get_registry_url()
@@ -231,11 +231,13 @@ class SPARQLServer:
                 uri = row.get('URI', '').strip()
                 label = row.get('Label', '').strip()
                 description = row.get('Description', '').strip()
+                entity_type = row.get('Type', '').strip()
                 
                 if uri:
                     metadata[uri] = {
                         'label': label,
-                        'description': description
+                        'description': description,
+                        'type': entity_type
                     }
             
             return metadata
@@ -295,7 +297,52 @@ class SPARQLServer:
             }
         
         kg_name, _ = result
+
+        # Try to get metadata from GitHub CSV first
+        entity_metadata = self._get_entity_metadata()
         
+        # If we have metadata, use it to build the schema
+        if entity_metadata:
+            # Separate entities by type
+            classes = []
+            predicates = []
+            
+            for uri, metadata in entity_metadata.items():
+                entity_type = metadata.get('type', '').lower()
+                
+                if entity_type == 'class':
+                    classes.append({
+                        'uri': uri,
+                        'label': metadata.get('label', ''),
+                        'description': metadata.get('description', ''),
+                        'type': metadata.get('type', '')
+                    })
+                elif entity_type == 'predicate':
+                    predicates.append({
+                        'uri': uri,
+                        'label': metadata.get('label', ''),
+                        'description': metadata.get('description', ''),
+                        'type': metadata.get('type', '')
+                    })
+            
+            # Build response with full metadata
+            class_data = [[c['uri'], c['label'], c['description'], c['type']] for c in classes]
+            predicate_data = [[p['uri'], p['label'], p['description'], p['type']] for p in predicates]
+            
+            return {
+                'classes': {
+                    'columns': ['uri', 'label', 'description', 'type'],
+                    'data': class_data,
+                    'count': len(class_data)
+                },
+                'predicates': {
+                    'columns': ['uri', 'label', 'description', 'type'],
+                    'data': predicate_data,
+                    'count': len(predicate_data)
+                }
+            }
+        
+        # Otherwise, fall back to SPARQL queries
         # FIXED: Query for classes using both 'a' and explicit rdf:type
         # Also query for objects that are used as types (in case instances aren't available)
         class_query = textwrap.dedent("""
