@@ -121,7 +121,8 @@ The transcript can then be downloaded in .md format.
 
 10. **Chemical Identifiers (all Proto-OKN KGs)**
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)   
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)
+
 
 ### Building and Publishing (maintainers only)
 
