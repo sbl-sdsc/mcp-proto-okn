@@ -91,17 +91,17 @@ The transcript can then be downloaded in .md format.
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-3. **PFOA in Drinking Water (spoke-genelab)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
-
-4. **Disease Prevalence in the US (spoke-okn)**
+3. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+4. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
+
+5. **PFOA in Drinking Water (spoke-okn)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
 6. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
