@@ -17,6 +17,7 @@ provide a custom description using the --description argument.
 This class extends the mcp-server-sparql MCP server.
 """
 
+import os
 import json
 import argparse
 import textwrap
@@ -26,6 +27,7 @@ import csv
 from urllib.parse import urlparse
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
+import certifi
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 from SPARQLWrapper.SPARQLExceptions import EndPointNotFound
@@ -43,6 +45,10 @@ class SPARQLServer:
         self.registry_url: Optional[str] = None
         self.github_base_url = "https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/metadata/entities"
 
+        # Work around certificate issue
+        os.environ.setdefault("SSL_CERT_FILE", certifi.where())
+        os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
+        
         # Initialize SPARQLWrapper with only the query endpoint
 
         # As a workaround, use the federated endpoint
@@ -53,9 +59,7 @@ class SPARQLServer:
         self.sparql.setReturnFormat(JSON)
 
         self.sparql.setMethod("GET")
-        self.sparql.addCustomHttpHeader(
-            "Accept", "application/sparql-results+json"
-        )
+        self.sparql.addCustomHttpHeader("Accept", "application/sparql-results+json")
         self.sparql.setTimeout(120)
 
     # ---------------------- Internal helpers ---------------------- #
@@ -574,14 +578,19 @@ Returns:
         This tool removes:
         - All note statements that would render as unreadable yellow boxes
         - Empty curly braces from class definitions
+        - Strings after newline characters (e.g., truncates "ClassName\nextra" to "ClassName")
         
         Args:
             mermaid_content: The raw Mermaid class diagram content
             
         Returns:
-            Cleaned Mermaid content with note statements and empty braces removed
+            Cleaned Mermaid content with note statements, empty braces, and post-newline strings removed
         """
         import re
+        
+        # First, truncate any strings after \n characters in the entire content
+        # This handles cases like "MEASURED_DIFFERENTIAL_METHYLATION_ASmMR\nmethylation_diff, q_value"
+        mermaid_content = re.sub(r'(\S+)\\n[^\s\n]*', r'\1', mermaid_content)
         
         lines = mermaid_content.split('\n')
         cleaned_lines = []

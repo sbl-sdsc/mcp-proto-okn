@@ -359,9 +359,10 @@ cli = [
 
 [[package]]
 name = "mcp-proto-okn"
-version = "0.3.0"
+version = "0.4.0"
 source = { editable = "." }
 dependencies = [
+    { name = "certifi" },
     { name = "mcp" },
     { name = "sparqlwrapper" },
 ]
@@ -374,6 +375,7 @@ cli = [
 
 [package.metadata]
 requires-dist = [
+    { name = "certifi", specifier = ">=2024.0.0" },
     { name = "mcp", specifier = ">=1.6.0" },
     { name = "mcp", extras = ["cli"], marker = "extra == 'cli'" },
     { name = "sparqlwrapper", specifier = ">=2.0.0" },
