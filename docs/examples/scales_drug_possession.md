@@ -40,7 +40,7 @@ I've analyzed **6,854 criminal cases** containing drug possession charges in the
 - **Minor traffic and administrative violations** (driving without license, no insurance, pedestrian violations) co-occur in many cases
 - **Property crimes** like theft by receiving stolen property appear in about 2% of drug possession cases
 
-The complete table with all 50 most common co-occurring charges is available in the detailed report: [drug_possession_cooccurring_charges.md](https://sbl-sdsc.github.io/mcp-proto-okn/examples/drug_possession_cooccurring_charges.md)
+The complete table with all 50 most common co-occurring charges is available in the detailed report: [drug_possession_cooccurring_charges.md](https://sbl-sdsc.github.io/mcp-proto-okn/docs/examples/drug_possession_cooccurring_charges.md)
 
 ---
 
@@ -80,7 +80,7 @@ Out of **6,854 drug possession cases**, co-occurring charges break down as follo
 
 The categorized table maintains the same layout showing individual charges within each category, sorted by frequency. This reveals that over half of drug possession cases involve additional drug charges, while nearly 16% involve firearms—highlighting the intersection between drug and weapons offenses in the criminal justice system.
 
-Complete categorized breakdown available at: [drug_possession_categorized.md](https://sbl-sdsc.github.io/mcp-proto-okn/examples/drug_possession_categorized.md)
+Complete categorized breakdown available at: [drug_possession_categorized.md](https://sbl-sdsc.github.io/mcp-proto-okn/docs/examples/drug_possession_categorized.md)
 
 ---
 
