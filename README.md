@@ -115,11 +115,15 @@ The transcript can then be downloaded in .md format.
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-9. **Michigan Flooding Event (ufokn)**
+9. **Drug Possession Charges (scales)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
+
+10. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-10. **Chemical Identifiers (Proto-OKN KGs)**
+11. **Chemical Identifiers (Proto-OKN KGs)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)
 
