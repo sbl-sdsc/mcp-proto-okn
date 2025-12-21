@@ -21,6 +21,7 @@ import os
 import json
 import argparse
 import textwrap
+import re
 from typing import Dict, Any, Optional, Union, List, Tuple
 from io import StringIO
 import csv
@@ -34,6 +35,112 @@ from SPARQLWrapper.SPARQLExceptions import EndPointNotFound
 
 from mcp.server.fastmcp import FastMCP
 
+from . import __version__
+
+class QueryAnalyzer:
+    """Analyzes SPARQL queries for common issues with LIMIT and ORDER BY."""
+    
+    @staticmethod
+    def has_limit(query: str) -> Optional[int]:
+        """Check if query has LIMIT clause and return the limit value."""
+        match = re.search(r'\bLIMIT\s+(\d+)', query, re.IGNORECASE)
+        return int(match.group(1)) if match else None
+    
+    @staticmethod
+    def has_order_by(query: str) -> bool:
+        """Check if query has ORDER BY clause."""
+        return bool(re.search(r'\bORDER\s+BY\b', query, re.IGNORECASE))
+    
+    @staticmethod
+    def extract_select_variables(query: str) -> List[str]:
+        """Extract variable names from SELECT clause."""
+        # Match SELECT ... WHERE/FROM pattern
+        match = re.search(r'\bSELECT\s+(.*?)\s+(?:FROM|WHERE)', query, re.IGNORECASE | re.DOTALL)
+        if not match:
+            return []
+        
+        select_clause = match.group(1)
+        # Find all ?variable patterns
+        variables = re.findall(r'\?(\w+)', select_clause)
+        return variables
+    
+    @staticmethod
+    def suggest_order_by(query: str, numeric_vars: Optional[List[str]] = None) -> str:
+        """
+        Suggest an ORDER BY clause based on query context.
+        
+        Args:
+            query: The SPARQL query string
+            numeric_vars: Optional list of variable names that are numeric
+        
+        Returns:
+            Suggested ORDER BY clause or empty string
+        """
+        variables = QueryAnalyzer.extract_select_variables(query)
+        
+        if not variables:
+            return ""
+        
+        # Priority for sorting suggestions:
+        # 1. Numeric variables (concentration, count, value, etc.)
+        # 2. First non-subject variable
+        
+        numeric_keywords = ['concentration', 'count', 'value', 'amount', 'level', 
+                          'score', 'rank', 'number', 'total', 'sum', 'avg', 'max', 'min']
+        
+        # Check for numeric variable names
+        for var in variables:
+            var_lower = var.lower()
+            if any(keyword in var_lower for keyword in numeric_keywords):
+                return f"ORDER BY DESC(?{var})"
+        
+        # Check if numeric_vars hint provided
+        if numeric_vars:
+            for var in variables:
+                if var in numeric_vars:
+                    return f"ORDER BY DESC(?{var})"
+        
+        # Default: sort by first variable that isn't a subject/entity
+        if len(variables) > 1:
+            return f"ORDER BY DESC(?{variables[1]})"
+        
+        return ""
+    
+    @staticmethod
+    def analyze_query(query: str) -> Dict[str, Any]:
+        """
+        Analyze a SPARQL query for potential issues.
+        
+        Returns a dict with:
+            - has_limit: bool
+            - limit_value: int or None
+            - has_order_by: bool
+            - needs_order_by: bool (True if LIMIT without ORDER BY)
+            - suggested_order: str (suggested ORDER BY clause)
+            - warning: str (warning message if issues found)
+        """
+        limit_val = QueryAnalyzer.has_limit(query)
+        has_order = QueryAnalyzer.has_order_by(query)
+        
+        analysis = {
+            'has_limit': limit_val is not None,
+            'limit_value': limit_val,
+            'has_order_by': has_order,
+            'needs_order_by': limit_val is not None and not has_order,
+            'suggested_order': '',
+            'warning': ''
+        }
+        
+        if analysis['needs_order_by']:
+            analysis['suggested_order'] = QueryAnalyzer.suggest_order_by(query)
+            analysis['warning'] = (
+                f"⚠️  Query uses LIMIT {limit_val} without ORDER BY. "
+                "This returns arbitrary results, not the 'top N'. "
+                f"Consider adding: {analysis['suggested_order']}"
+            )
+        
+        return analysis
+
 
 class SPARQLServer:
     """SPARQL endpoint wrapper with Proto-OKN/registry awareness."""
@@ -44,6 +151,7 @@ class SPARQLServer:
         self.kg_name = ""
         self.registry_url: Optional[str] = None
         self.github_base_url = "https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/metadata/entities"
+        self.analyzer = QueryAnalyzer()
 
         # Work around certificate issue
         os.environ.setdefault("SSL_CERT_FILE", certifi.where())
@@ -256,8 +364,22 @@ class SPARQLServer:
             # If file doesn't exist or any error occurs, return empty dict
             return {}
 
-    def execute(self, query_string: str, format: str = 'compact') -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
-        """Execute SPARQL query and return results in requested format."""
+    def execute(self, query_string: str, format: str = 'compact', analyze: bool = True) -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
+        """Execute SPARQL query and return results in requested format.
+        
+        Args:
+            query_string: The SPARQL query to execute
+            format: Output format (compact, simplified, full, values, csv)
+            analyze: If True, analyze query for common issues (LIMIT without ORDER BY)
+        
+        Returns:
+            Query results in the requested format, with optional query_analysis field
+        """
+        # Analyze query before execution if requested
+        analysis = None
+        if analyze:
+            analysis = self.analyzer.analyze_query(query_string)
+        
         # Get kg_name for FROM clause insertion
         result = self._get_registry_url()
         if result:
@@ -269,24 +391,42 @@ class SPARQLServer:
         try:
             raw_result = self.sparql.query().convert()
         except Exception as e:
+            error_msg = f"Query execution failed: {str(e)}"
+            # Add analysis warning to error message if applicable
+            if analysis and analysis.get('warning'):
+                error_msg += f"\n\n{analysis['warning']}"
             return {
-                'error': str(e),
+                'error': error_msg,
                 'query': query_string
             }
         
         # Apply requested format
         if format == 'full':
-            return raw_result
+            formatted_result = raw_result
         elif format == 'simplified':
-            return self._simplify_result(raw_result)
+            formatted_result = self._simplify_result(raw_result)
         elif format == 'compact':
-            return self._compact_result(raw_result)
+            formatted_result = self._compact_result(raw_result)
         elif format == 'values':
-            return self._values_only(raw_result)
+            formatted_result = self._values_only(raw_result)
         elif format == 'csv':
-            return self._to_csv(raw_result)
+            formatted_result = self._to_csv(raw_result)
         else:
-            return self._compact_result(raw_result)
+            formatted_result = self._compact_result(raw_result)
+        
+        # Add analysis warnings to result if applicable
+        if analyze and analysis and analysis.get('warning'):
+            if isinstance(formatted_result, dict):
+                formatted_result['query_analysis'] = {
+                    'warning': analysis['warning'],
+                    'suggested_order': analysis['suggested_order'],
+                    'limit_value': analysis['limit_value']
+                }
+            elif isinstance(formatted_result, str):
+                # For CSV format, prepend warning as comment
+                formatted_result = f"# {analysis['warning']}\n{formatted_result}"
+        
+        return formatted_result
 
     def query_schema(self, compact: bool = True) -> Dict[str, Any]:
         """
@@ -524,17 +664,34 @@ CRITICAL: Before using this tool or discussing the knowledge graph:
 
 IMPORTANT: You MUST call get_schema() before making queries to understand available classes and predicates.
 
+⚠️ CRITICAL QUERY CONSTRUCTION RULES FOR TOP N QUERIES:
+
+When the user asks for "top N", "highest", "lowest", "maximum", "minimum", or ranked results:
+1. ALWAYS use ORDER BY before LIMIT
+2. Use DESC for highest/maximum values: ORDER BY DESC(?variable) LIMIT N
+3. Use ASC for lowest/minimum values: ORDER BY ASC(?variable) LIMIT N
+
+Examples:
+- "Top 3 highest concentrations":
+  SELECT ?location ?concentration WHERE {{ ... }} ORDER BY DESC(?concentration) LIMIT 3
+  
+- "5 lowest poverty rates":
+  SELECT ?county ?rate WHERE {{ ... }} ORDER BY ASC(?rate) LIMIT 5
+
+WITHOUT ORDER BY, LIMIT RETURNS ARBITRARY RESULTS, NOT THE TOP/BOTTOM N!
+
 Args:
     query_string: A valid SPARQL query string
     format: Output format - 'simplified' (default, JSON with dict rows), 'compact' (columns + data arrays, no repeated keys), 'full' (complete SPARQL JSON), 'values' (list of dicts), or 'csv' (CSV string)
+    analyze: If True (default), analyzes query and warns if LIMIT is used without ORDER BY
 
 Returns:
-    The query results in the specified format
+    The query results in the specified format. If analyze=True and issues are detected, includes a 'query_analysis' field with warnings and suggestions.
 """
 
     @mcp.tool(description=query_doc)
-    def query(query_string: str, format: str = 'compact') -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
-        return sparql_server.execute(query_string, format=format)
+    def query(query_string: str, format: str = 'compact', analyze: bool = True) -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
+        return sparql_server.execute(query_string, format=format, analyze=analyze)
 
     schema_doc = f"""
 Return the schema (classes, relationships, properties) of the {kg_short_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
@@ -637,7 +794,9 @@ Returns:
 🧠 **Assistant**  
 <entire text response goes here>
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) on {today}*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) {__version__} for {kg_short_name} using <model_string> on {today}*
+
+Note: Replace <model_string> with the actual model identifier being used (e.g., claude-opus-4-5-20251101, claude-sonnet-4-5-20250929).
 """
 
     @mcp.tool()
