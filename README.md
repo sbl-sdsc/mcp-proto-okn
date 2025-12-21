@@ -79,6 +79,8 @@ The transcript can then be downloaded in .md format.
 
    [biobricks-toxcast chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/toxcast_overview.md)
 
+   [nikg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_overview.md)
+
    [sawgraph chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sawgraph_overview.md)
 
    [scales chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md)
@@ -87,39 +89,39 @@ The transcript can then be downloaded in .md format.
 
    [ufokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md)
 
-2. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
+3. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-3. **Disease Prevalence in the US (spoke-okn)**
+4. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-4. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-5. **PFOA in Drinking Water (spoke-okn)**
+6. **PFOA in Drinking Water (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-6. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+7. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-7. **Biological Targets for PFOA (biobricks-toxcast)**
+8. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-8. **Criminal Justice Patterns (scales)**
+9. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-9. **Drug Possession Charges (scales)**
+10. **Drug Possession Charges (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-10. **Michigan Flooding Event (ufokn)**
+11. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
