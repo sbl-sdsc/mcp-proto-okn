@@ -52,7 +52,7 @@ Would you like to explore a specific area, or should I show you some example que
 ---
 
 👤 **User**  
-Visualize the scheam
+Visualize the schema
 
 ---
 
