@@ -109,7 +109,7 @@ The transcript can then be downloaded in .md format.
 
    [sockg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sockg_overview.md)
 
-   [spatial chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spatial_overview.md)
+   [spatialkg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spatialkg_overview.md)
 
    [spoke-genelab chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md)
 
