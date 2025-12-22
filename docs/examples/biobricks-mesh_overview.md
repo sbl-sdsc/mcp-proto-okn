@@ -6,207 +6,213 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore the BioBricks MeSH knowledge graph! Let me start by getting information about this knowledge graph.
+I'll help you explore this knowledge graph. Let me first get information about what this knowledge graph contains.
 
-**BioBricks MeSH** is an open knowledge graph containing Medical Subject Headings (MeSH) from the U.S. National Library of Medicine.
+*[Retrieved description of BioBricks MeSH knowledge graph]*
 
-## What's in BioBricks MeSH?
+Great! I can see this is the **BioBricks MeSH** knowledge graph - an open knowledge graph containing Medical Subject Headings (MeSH), which is the U.S. National Library of Medicine's controlled vocabulary for biomedical terms.
 
-This knowledge graph contains:
-- **18.1 million triples** representing 2.4 million biomedical entities
-- **862,579 terms** with rich labels and descriptions
-- **464,362 concepts** organized hierarchically
-- **249,243 chemical substance records**
-- **66,110 organisms**
-- **29,940 topical descriptors**
-- **6,750 diseases**
+*[Retrieved schema information]*
 
-## Main Categories
+Perfect! This is the **BioBricks MeSH** knowledge graph, containing the Medical Subject Headings (MeSH) controlled vocabulary used for indexing biomedical literature. Here's what you can explore in this knowledge graph:
 
-The data is organized into major branches:
-- **[A] Anatomy** - body structures, organs, tissues, cells
-- **[B] Organisms** - bacteria, viruses, fungi, plants, animals
-- **[C] Diseases** - pathological conditions, syndromes, symptoms
-- **[D] Chemicals and Drugs** - compounds, pharmaceuticals, biological substances
-- **[E] Techniques and Equipment** - medical procedures, diagnostics, treatments
-- **[F] Psychiatry and Psychology** - mental processes, behavioral sciences
-- **[G] Phenomena and Processes** - biological, chemical, physical processes
-- **[H] Disciplines and Occupations** - fields of study, professions
-- **[I-N, V, Z]** - Social sciences, technology, humanities, information science, healthcare, publications, and geography
+## Key Content Areas
 
-## What can you do with it?
+The knowledge graph contains **over 18.1 million triples** covering:
 
-You can query this knowledge graph to:
-- Explore hierarchical relationships between medical terms
-- Find related diseases, drugs, and treatments
-- Discover pharmacological actions and drug effects
-- Navigate the taxonomy of organisms and anatomy
-- Search for diagnostic and therapeutic procedures
-- Access comprehensive scope notes and definitions
+### Major Categories (A-Z):
+- **Anatomy [A]** - Body structures, organs, tissues, cells
+- **Organisms [B]** - Bacteria, viruses, fungi, plants, animals  
+- **Diseases [C]** - Pathological conditions, syndromes, symptoms
+- **Chemicals and Drugs [D]** - Compounds, pharmaceuticals, biological substances
+- **Analytical/Diagnostic Techniques [E]** - Medical procedures, tests, treatments
+- **Psychiatry and Psychology [F]** - Mental processes, behavioral sciences
+- **Phenomena and Processes [G]** - Biological, chemical, physical processes
+- **Disciplines and Occupations [H]** - Fields of study, professions
+- **Social Phenomena [I]** - Social sciences, cultural topics
+- **Technology and Industry [J]** - Industrial processes, agriculture
+- **Humanities [K]** - Arts, history, religion, philosophy
+- **Information Science [L]** - Communication, computer science
+- **Named Groups [M]** - Population groups, demographics
+- **Health Care [N]** - Health services, facilities, systems
+- **Geographicals [Z]** - Geographic locations worldwide
 
-Would you like to explore any specific aspect of this biomedical vocabulary? For example, I can help you find information about specific diseases, drugs, medical procedures, or explore relationships within the MeSH hierarchy.
+### What Questions Can I Help You Answer?
+
+I can help you explore:
+- Disease hierarchies and relationships
+- Drug/chemical classifications
+- Medical procedure categorizations  
+- Anatomical structures and their organization
+- Organism taxonomies
+- Relationships between medical concepts
+
+Would you like to explore a specific area, or should I show you some example queries?
 
 ---
 
 👤 **User**  
-Visualize the schema
+Visualize the scheam
 
 ---
 
 🧠 **Assistant**  
+I'll visualize the schema for you using a Mermaid diagram.
+
+*[Generated and cleaned Mermaid class diagram]*
+
+Here's the schema visualization for the BioBricks MeSH knowledge graph:
 
 ```mermaid
 classDiagram
     class Descriptor {
         +rdfs:label
-        +vocab:scopeNote
-        +vocab:treeNumber
+        +scopeNote
+        +treeNumber
     }
     
     class TopicalDescriptor {
-        Categories A-N
+        +rdfs:label
     }
     
     class PublicationType {
-        Category V
+        +rdfs:label
     }
     
     class GeographicalDescriptor {
-        Category Z
+        +rdfs:label
     }
     
     class Qualifier {
         +rdfs:label
-        Subheadings
+        +scopeNote
     }
     
     class SupplementaryConcept {
         +rdfs:label
-        Substances, protocols, rare diseases
+        +scopeNote
     }
     
     class Concept {
         +rdfs:label
-        Specific meanings
+        +scopeNote
     }
     
     class Term {
         +rdfs:label
-        Names and phrases
     }
     
     class Anatomy_A {
-        Body structures
+        +rdfs:label
     }
     
     class Organisms_B {
-        Bacteria, viruses, fungi
+        +rdfs:label
     }
     
     class Diseases_C {
-        Pathological conditions
+        +rdfs:label
     }
     
     class Chemicals_D {
-        Compounds, drugs
+        +rdfs:label
     }
     
     class Techniques_E {
-        Procedures, equipment
+        +rdfs:label
     }
     
-    class Psychiatry_F {
-        Mental processes
+    class Psychology_F {
+        +rdfs:label
     }
     
     class Phenomena_G {
-        Biological processes
+        +rdfs:label
     }
     
     class Disciplines_H {
-        Fields of study
+        +rdfs:label
     }
     
     class Social_I {
-        Social sciences
+        +rdfs:label
     }
     
     class Technology_J {
-        Industry, agriculture
+        +rdfs:label
     }
     
     class Humanities_K {
-        Arts, history
+        +rdfs:label
     }
     
-    class Information_L {
-        Communication, IT
+    class InfoScience_L {
+        +rdfs:label
     }
     
     class NamedGroups_M {
-        Demographics
+        +rdfs:label
     }
     
     class HealthCare_N {
-        Health services
+        +rdfs:label
     }
     
-    Descriptor <|-- TopicalDescriptor
-    Descriptor <|-- PublicationType
-    Descriptor <|-- GeographicalDescriptor
+    class Publications_V {
+        +rdfs:label
+    }
     
-    TopicalDescriptor <|-- Anatomy_A
-    TopicalDescriptor <|-- Organisms_B
-    TopicalDescriptor <|-- Diseases_C
-    TopicalDescriptor <|-- Chemicals_D
-    TopicalDescriptor <|-- Techniques_E
-    TopicalDescriptor <|-- Psychiatry_F
-    TopicalDescriptor <|-- Phenomena_G
-    TopicalDescriptor <|-- Disciplines_H
-    TopicalDescriptor <|-- Social_I
-    TopicalDescriptor <|-- Technology_J
-    TopicalDescriptor <|-- Humanities_K
-    TopicalDescriptor <|-- Information_L
-    TopicalDescriptor <|-- NamedGroups_M
-    TopicalDescriptor <|-- HealthCare_N
+    class Geographicals_Z {
+        +rdfs:label
+    }
     
-    Descriptor "1" --> "*" Concept : vocab:concept
-    Descriptor "1" --> "1" Concept : vocab:preferredConcept
-    Descriptor "*" --> "*" Qualifier : vocab:allowableQualifier
-    Descriptor "*" --> "*" Descriptor : vocab:broaderDescriptor
-    Descriptor "*" --> "*" Descriptor : vocab:narrowerDescriptor
-    Descriptor "*" --> "*" Descriptor : vocab:pharmacologicalAction
+    Descriptor <|-- TopicalDescriptor : is-a
+    Descriptor <|-- PublicationType : is-a
+    Descriptor <|-- GeographicalDescriptor : is-a
     
-    Concept "1" --> "*" Term : vocab:term
-    Concept "1" --> "1" Term : vocab:preferredTerm
+    TopicalDescriptor <|-- Anatomy_A : is-a
+    TopicalDescriptor <|-- Organisms_B : is-a
+    TopicalDescriptor <|-- Diseases_C : is-a
+    TopicalDescriptor <|-- Chemicals_D : is-a
+    TopicalDescriptor <|-- Techniques_E : is-a
+    TopicalDescriptor <|-- Psychology_F : is-a
+    TopicalDescriptor <|-- Phenomena_G : is-a
+    TopicalDescriptor <|-- Disciplines_H : is-a
+    TopicalDescriptor <|-- Social_I : is-a
+    TopicalDescriptor <|-- Technology_J : is-a
+    TopicalDescriptor <|-- Humanities_K : is-a
+    TopicalDescriptor <|-- InfoScience_L : is-a
+    TopicalDescriptor <|-- NamedGroups_M : is-a
+    TopicalDescriptor <|-- HealthCare_N : is-a
     
-    SupplementaryConcept "*" --> "*" Descriptor : vocab:pharmacologicalAction
+    PublicationType <|-- Publications_V : is-a
+    GeographicalDescriptor <|-- Geographicals_Z : is-a
+    
+    Descriptor --> Concept : preferredConcept
+    Descriptor --> Concept : concept
+    Descriptor --> Qualifier : allowableQualifier
+    Descriptor --> Descriptor : broaderDescriptor
+    Descriptor --> Descriptor : narrowerDescriptor
+    
+    SupplementaryConcept --> Concept : concept
+    SupplementaryConcept --> Descriptor : pharmacologicalAction
+    
+    Concept --> Term : preferredTerm
+    Concept --> Term : term
+    Concept --> Concept : broader
+    Concept --> Concept : narrower
 ```
 
-## Schema Overview
+This diagram shows the hierarchical structure of the MeSH knowledge graph:
 
-This diagram shows the BioBricks MeSH knowledge graph structure:
+**Key Structure:**
+- **Descriptor** is the main class with three subtypes: TopicalDescriptor, PublicationType, and GeographicalDescriptor
+- **TopicalDescriptor** branches into 14 subject categories (A-N) covering everything from Anatomy to Health Care
+- **Descriptors** link to **Concepts** (which define meanings) and **Terms** (the actual words/phrases used)
+- **Qualifiers** (subheadings) can be associated with descriptors to refine their meaning
+- **SupplementaryConcept** provides additional terms for specific substances, protocols, or rare diseases
 
-**Core Structure:**
-- **Descriptor** is the main class, with three specialized types: TopicalDescriptor, PublicationType, and GeographicalDescriptor
-- **TopicalDescriptor** branches into 14 subject categories (A-N), each representing a major domain of biomedical knowledge
-- **Descriptors** connect to **Concepts** (specific meanings), which in turn connect to **Terms** (actual words/phrases)
-- **Qualifiers** are subheadings that can modify descriptors to specify aspects like diagnosis, therapy, or adverse effects
-- **SupplementaryConcept** records cover specific substances, protocols, and rare diseases
-
-**Key Relationships:**
-- Hierarchical navigation through `broaderDescriptor` and `narrowerDescriptor`
-- Concept mappings through `preferredConcept` and `concept`
-- Term variations through `preferredTerm` and `term`
-- Pharmacological actions linking substances to their effects
-- Allowable qualifiers specifying which subheadings can be used with each descriptor
-
-This hierarchical structure enables sophisticated queries about medical terminology, drug interactions, disease classifications, and biomedical relationships.
-
----
-
-👤 **User**  
-Create transcript
+The relationships show how terms are organized hierarchically (broader/narrower) and how different components connect to form the complete controlled vocabulary system.
 
 ---
 
