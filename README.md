@@ -73,61 +73,85 @@ The transcript can then be downloaded in .md format.
 
    Use `@kg_name` to refer to a specific KG, e.g., `@spoke-genelab` in a chat. The examples below create an overview and a class diagram for each KG.
 
-   [spoke-genelab chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md)
+   [biobricks-aopwiki chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-aopwiki_overview.md)
 
-   [spoke-okn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_overview.md)
+   [biobricks-ice chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-ice_overview.md)
 
-   [biobricks-toxcast chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/toxcast_overview.md)
+   [biobricks-mesh chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-mesh_overview.md)
+
+   [biobricks-pubchem-annotations chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-pubchem-annotations_overview.md)
+
+   [biobricks-tox21 chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-tox21_overview.md)
+
+   [biobricks-toxcast chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-toxcast_overview.md)
 
    [climatemodelskg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/climatemodelskg_overview.md)
+
+   [dreamkg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/dreamkg_overview.md)
+
+   [fiokg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/fiokg_overview.md)
+
+   [geoconnex chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/geoconnex_overview.md)
+
+   [hydrologykg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/hydrologykg_overview.md)
+
+   [nasa-gesdisc-kg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nasa-gesdisc-kg_overview.md)
 
    [nikg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_overview.md)
 
    [ruralkg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ruralkg_overview.md)
 
-   [securechainkg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/securechainkg_overview.md)
-
    [sawgraph chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sawgraph_overview.md)
 
    [scales chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md)
+
+   [securechainkg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/securechainkg_overview.md)
+
+   [sockg chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sockg_overview.md)
+
+   [spatial chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spatial_overview.md)
+
+   [spoke-genelab chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_genelab_overview.md)
+
+   [spoke-okn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_overview.md)
 
    [sudokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_overview.md)
 
    [ufokn chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md)
 
-2. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
+3. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-3. **Disease Prevalence in the US (spoke-okn)**
+4. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-4. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-5. **PFOA in Drinking Water (spoke-okn)**
+6. **PFOA in Drinking Water (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-6. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+7. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-7. **Biological Targets for PFOA (biobricks-toxcast)**
+8. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-8. **Criminal Justice Patterns (scales)**
+9. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-9. **Drug Possession Charges (scales)**
+10. **Drug Possession Charges (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-10. **Michigan Flooding Event (ufokn)**
+11. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
