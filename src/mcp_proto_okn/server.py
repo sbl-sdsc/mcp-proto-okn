@@ -804,22 +804,40 @@ Note: Replace <model_string> with the actual model identifier being used (e.g., 
         """Prompt for visualizing the knowledge graph schema using a Mermaid class diagram."""
         return """Visualize the knowledge graph schema using a Mermaid class diagram. 
 
-CRITICAL WORKFLOW - Follow these steps exactly:
-1. First call get_schema() if it has not been called to retrieve the classes and predicates
-2. Generate the raw Mermaid class diagram showing:
+⚠️  MANDATORY TWO-STEP PROCESS - NO EXCEPTIONS ⚠️
+
+STEP 1 - GENERATE RAW DIAGRAM:
+1. Call get_schema() if not already called to retrieve classes and predicates
+2. Generate a raw Mermaid class diagram showing:
    - Classes as nodes with their properties
    - Predicates/relationships as connections between classes
    - Include relationship labels
-3. Do not append newline characters
-4. MANDATORY: Pass your generated diagram through the clean_mermaid_diagram tool
-5. MANDATORY: Use ONLY the cleaned output from step 3 in your response - do NOT use your original draft
-6. Present the cleaned diagram inline in a mermaid code block
+   - Do not append newline characters to class names or properties
 
-Common mistakes to avoid:
-- DO NOT render the diagram before cleaning it
-- DO NOT use your original draft after calling clean_mermaid_diagram
-- DO NOT add note statements or empty curly braces {} for classes without properties
-- ALWAYS copy the exact output from clean_mermaid_diagram tool
+STEP 2 - CLEAN THE DIAGRAM (ABSOLUTELY REQUIRED):
+3. ⛔ STOP - You MUST call the clean_mermaid_diagram tool with your raw diagram
+4. ⛔ WAIT for the clean_mermaid_diagram tool response
+5. ⛔ Use ONLY the cleaned output in your final response
+
+FINAL OUTPUT:
+6. Present the CLEANED diagram (from step 5) inline in a mermaid code block
+7. Discard your original raw diagram - it must NOT be shown to the user
+
+🚫 CRITICAL ERRORS TO AVOID:
+- ❌ NEVER show the raw diagram to the user without cleaning it first
+- ❌ NEVER skip calling clean_mermaid_diagram - it is MANDATORY
+- ❌ NEVER use your original draft after receiving cleaned output
+- ❌ NEVER add note statements (they create unreadable yellow boxes)
+- ❌ NEVER add empty curly braces {} for classes without properties
+
+✅ SUCCESS CHECKLIST:
+□ Called get_schema()
+□ Generated raw Mermaid diagram
+□ Called clean_mermaid_diagram tool with raw diagram
+□ Received cleaned output from tool
+□ Presented ONLY the cleaned diagram to user
+
+If you show a diagram without calling clean_mermaid_diagram first, you have failed this task.
 """
 
     # Run MCP server over stdio
