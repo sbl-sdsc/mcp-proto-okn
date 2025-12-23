@@ -10,11 +10,11 @@ A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoi
 ## Features
 
 - **🔗 FRINK Integration**: Automatic detection and documentation linking for FRINK-hosted knowledge graphs
-- **🧬 Proto-OKN Ecosystem**: Optimized support for biomedical and scientific knowledge graphs, including:
-  - **SPOKE** - Scalable Precision Medicine Open Knowledge Engine
-  - **BioBricks ICE** - Chemical safety and cheminformatics data
-  - **SAWGraph** - Safe Agricultural Products and Water monitoring
-  - **Additional Proto-OKN knowledge graphs** - Expanding ecosystem of scientific data
+- **🕸️ Proto-OKN Knowledge Graphs**: Optimized support for biomedical and scientific knowledge graphs, including:
+    - 🧬 Biology & Health
+    - 🌱 Environment
+    - ⚖️ Justice
+    - 🛠️ Technology & Manufacturing
 - **⚙️ Flexible Configuration**: Support for both FRINK and custom SPARQL endpoints
 - **📚 Automatic Documentation**: Registry links and metadata for Proto-OKN knowledge graphs
 - **🔗 Federated Query**: Prompts can query multiple endpoints
@@ -69,7 +69,7 @@ The transcript can then be downloaded in .md format.
 
 ## Example Queries
 
-### 📊 Knowledge Graph Overviews & Class Diagrams
+1. **Knowledge Graph Overviews & Class Diagrams**
 
 Use @kg_name to refer to a specific knowledge graph in chat (for example, @spoke-genelab).
 Each link below points to a chat transcript that demonstrates how to generate a knowledge-graph overview and class diagram for a given Proto-OKN Theme 1 KG. The examples are grouped by domain area.
