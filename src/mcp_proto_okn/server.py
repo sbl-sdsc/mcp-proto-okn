@@ -148,10 +148,11 @@ class SPARQLServer:
     def __init__(self, endpoint_url: str, description: Optional[str] = None):
         self.endpoint_url = endpoint_url
         self.description = description  # None means: try to infer
-        self.kg_name = ""
-        self.registry_url: Optional[str] = None
         self.github_base_url = "https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/metadata/entities"
         self.analyzer = QueryAnalyzer()
+
+        # Extract KG name from endpoint URL during initialization
+        self.kg_name, self.registry_url = self._get_registry_url()
 
         # Work around certificate issue
         os.environ.setdefault("SSL_CERT_FILE", certifi.where())
@@ -162,7 +163,6 @@ class SPARQLServer:
         # As a workaround, use the federated endpoint
         # self.sparql = SPARQLWrapper(endpoint_url)
         federated_endpoint = "https://frink.apps.renci.org/federation/sparql"
-        
         self.sparql = SPARQLWrapper(federated_endpoint)
         self.sparql.setReturnFormat(JSON)
 
@@ -293,7 +293,7 @@ class SPARQLServer:
     def _get_registry_url(self) -> Optional[Tuple[str, str]]:
         """Return (kg_name, registry_url) if this looks like a FRINK endpoint, else None."""
         if not self.endpoint_url.startswith("https://frink.apps.renci.org/"):
-            return None
+            return "", ""
 
         path_parts = urlparse(self.endpoint_url).path.strip("/").split("/")
         kg_name = path_parts[-2] if len(path_parts) >= 2 else "unknown"
@@ -303,20 +303,17 @@ class SPARQLServer:
             "refs/heads/main/docs/registry/kgs/"
             f"{kg_name}.md"
         )
-        self.registry_url = registry_url
-        self.kg_name = kg_name
+        #self.registry_url = registry_url
+        #self.kg_name = kg_name
         return kg_name, registry_url
 
     def _fetch_registry_content(self) -> Optional[str]:
         """Fetch registry page content in markdown format or None on failure."""
         try:
-            result = self._get_registry_url()
-            if not result:
+            if not self.registry_url:
                 return None
 
-            kg_name, registry_url = result
-
-            with urlopen(registry_url, timeout=5) as resp:
+            with urlopen(self.registry_url, timeout=5) as resp:
                 raw = resp.read()
                 text = raw.decode("utf-8", errors="replace")
                 return text.strip()
@@ -328,13 +325,10 @@ class SPARQLServer:
         Fetch entity metadata from GitHub CSV file.
         Returns a dict mapping URI to {label, description, type}.
         """
-        # Construct the GitHub raw file URL
-        result = self._get_registry_url()
-        if not result:
+        if not self.registry_url:
             return {}
-            
-        kg_name, _ = result
-        filename = f"{kg_name}_entities.csv"
+    
+        filename = f"{self.kg_name}_entities.csv"
         url = f"{self.github_base_url}/{filename}"
         
         try:
@@ -380,11 +374,9 @@ class SPARQLServer:
         if analyze:
             analysis = self.analyzer.analyze_query(query_string)
         
-        # Get kg_name for FROM clause insertion
-        result = self._get_registry_url()
-        if result:
-            kg_name, _ = result
-            query_string = self._insert_from_clause(query_string, kg_name)
+        # Get kg_name for FROM clause insertion for federated endpoint
+        if self.kg_name != '':
+            query_string = self._insert_from_clause(query_string, self.kg_name)
         
         self.sparql.setQuery(query_string)
         
@@ -438,15 +430,14 @@ class SPARQLServer:
         Returns:
             A dictionary with 'classes' and 'predicates' keys, each containing schema info.
         """
-        result = self._get_registry_url()
-        if not result:
+        if not self.registry_url:
             return {
                 'error': 'Cannot determine KG name for schema query',
                 'classes': {'columns': ['uri'], 'data': [], 'count': 0},
                 'predicates': {'columns': ['uri'], 'data': [], 'count': 0}
             }
         
-        kg_name, _ = result
+        kg_name = self.kg_name
 
         # Try to get metadata from GitHub CSV first
         entity_metadata = self._get_entity_metadata()
@@ -514,7 +505,7 @@ class SPARQLServer:
             ORDER BY ?class
         """).strip()
         
-        class_query = self._insert_from_clause(class_query, kg_name)
+        class_query = self._insert_from_clause(class_query, self.kg_name)
         classes = self.execute(class_query, format='compact')
         
         # Query for predicates
@@ -526,7 +517,7 @@ class SPARQLServer:
             ORDER BY ?predicate
         """).strip()
         
-        predicate_query = self._insert_from_clause(predicate_query, kg_name)
+        predicate_query = self._insert_from_clause(predicate_query, self.kg_name)
         predicates = self.execute(predicate_query, format='compact')
 
         # Extract URIs from compact format
@@ -575,7 +566,7 @@ class SPARQLServer:
         """Return human-readable metadata about this endpoint."""
         # If caller provided an explicit description, honor it.
         if self.description is not None:
-            return self.description.strip()
+           return self.description.strip()
 
         # Otherwise, try FRINK registry
         content = self._fetch_registry_content()
@@ -649,16 +640,13 @@ def main():
 
     # Create MCP server
     mcp = FastMCP("SPARQL Query Server")
-
-    # Extract just the KG short name from endpoint
-    kg_short_name = sparql_server.kg_name if sparql_server.kg_name else "the"
     
     query_doc = f"""
-Execute a SPARQL query against the {kg_short_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
+Execute a SPARQL query against the {sparql_server.kg_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
 
 CRITICAL: Before using this tool or discussing the knowledge graph:
 1. You MUST call get_description() FIRST to get the correct knowledge graph name and details
-2. Until get_description() is called, refer to this knowledge graph ONLY as "{kg_short_name}" (the short label)
+2. Until get_description() is called, refer to this knowledge graph ONLY as "{sparql_server.kg_name}" (the short label)
 3. DO NOT invent or guess a full name - you will likely hallucinate incorrect information
 4. After get_description() is called, you can use the proper name from the description
 
@@ -694,11 +682,11 @@ Returns:
         return sparql_server.execute(query_string, format=format, analyze=analyze)
 
     schema_doc = f"""
-Return the schema (classes, relationships, properties) of the {kg_short_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
+Return the schema (classes, relationships, properties) of the {sparql_server.kg_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
 
 CRITICAL: Before discussing the knowledge graph:
 1. Call get_description() FIRST to get the correct knowledge graph name
-2. Until then, refer to it ONLY as "{kg_short_name}" (the short label)
+2. Until then, refer to it ONLY as "{sparql_server.kg_name}" (the short label)
 3. DO NOT invent or guess a full name
 
 IMPORTANT: Always call this tool FIRST before making any queries to understand what data is available in the knowledge graph.
@@ -781,7 +769,9 @@ Returns:
         from datetime import datetime
         today = datetime.now().strftime("%Y-%m-%d")
         
-        return f"""Create a chat transcript in .md format following the outline below. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document.
+        return f"""Create a chat transcript in .md format following the outline below. 
+1. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document. Include mermaid diagrams inline. Do not link to the mermaid file.
+2. Do not include the prompt to create this transcript.
 
 ## Chat Transcript
 <Title>
@@ -794,9 +784,10 @@ Returns:
 🧠 **Assistant**  
 <entire text response goes here>
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) {__version__} for {kg_short_name} using <model_string> on {today}*
 
-Note: Replace <model_string> with the actual model identifier being used (e.g., claude-opus-4-5-20251101, claude-sonnet-4-5-20250929).
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) {__version__} for {sparql_server.kg_name} on {today}*
+
+IMPORTANT: After the footer above, add a line with the model string you are using (e.g., claude-sonnet-4-20250514).
 """
 
     @mcp.tool()
@@ -804,40 +795,34 @@ Note: Replace <model_string> with the actual model identifier being used (e.g., 
         """Prompt for visualizing the knowledge graph schema using a Mermaid class diagram."""
         return """Visualize the knowledge graph schema using a Mermaid class diagram. 
 
-⚠️  MANDATORY TWO-STEP PROCESS - NO EXCEPTIONS ⚠️
-
-STEP 1 - GENERATE RAW DIAGRAM:
-1. Call get_schema() if not already called to retrieve classes and predicates
-2. Generate a raw Mermaid class diagram showing:
-   - Classes as nodes with their properties
-   - Predicates/relationships as connections between classes
+CRITICAL WORKFLOW - Follow these steps exactly:
+1. First call get_schema() if it has not been called to retrieve the classes and predicates
+2. Generate the raw Mermaid class diagram showing:
+   - All classes as nodes with their properties
+   - All predicates/relationships as connections between classes
    - Include relationship labels
-   - Do not append newline characters to class names or properties
+3. Make the diagram taller / less wide:
+   - Set the diagram direction to TB (top→bottom): `direction TB`
+4. Do not append newline characters
+5. MANDATORY: Pass your generated diagram through the clean_mermaid_diagram tool
+6. MANDATORY: Use ONLY the cleaned output from step 5 in your response - do NOT use your original draft
+7. MANDATORY: Present the cleaned diagram inline in a mermaid code block in your response
+8. MANDATORY: After presenting the diagram in your response, create a .mermaid file containing ONLY the cleaned diagram code (no markdown fences, no explanatory text)
+9. MANDATORY: Save the .mermaid file to /mnt/user-data/outputs/<kg_name>-schema.mermaid
+10. MANDATORY: Use the present_files tool to share the .mermaid file with the user so it renders in the output window
 
-STEP 2 - CLEAN THE DIAGRAM (ABSOLUTELY REQUIRED):
-3. ⛔ STOP - You MUST call the clean_mermaid_diagram tool with your raw diagram
-4. ⛔ WAIT for the clean_mermaid_diagram tool response
-5. ⛔ Use ONLY the cleaned output in your final response
+RENDERING REQUIREMENTS:
+- The .mermaid file MUST contain ONLY the Mermaid diagram code
+- DO NOT include markdown code fences (```mermaid) in the .mermaid file
+- DO NOT include any explanatory text in the .mermaid file
+- The file should start with "classDiagram" and contain only the diagram definition
+- ALWAYS use present_files to share the .mermaid file after creating it
 
-FINAL OUTPUT:
-6. Present the CLEANED diagram (from step 5) inline in a mermaid code block
-7. Discard your original raw diagram - it must NOT be shown to the user
-
-🚫 CRITICAL ERRORS TO AVOID:
-- ❌ NEVER show the raw diagram to the user without cleaning it first
-- ❌ NEVER skip calling clean_mermaid_diagram - it is MANDATORY
-- ❌ NEVER use your original draft after receiving cleaned output
-- ❌ NEVER add note statements (they create unreadable yellow boxes)
-- ❌ NEVER add empty curly braces {} for classes without properties
-
-✅ SUCCESS CHECKLIST:
-□ Called get_schema()
-□ Generated raw Mermaid diagram
-□ Called clean_mermaid_diagram tool with raw diagram
-□ Received cleaned output from tool
-□ Presented ONLY the cleaned diagram to user
-
-If you show a diagram without calling clean_mermaid_diagram first, you have failed this task.
+Common mistakes to avoid:
+- DO NOT render the diagram before cleaning it
+- DO NOT use your original draft after calling clean_mermaid_diagram
+- DO NOT add note statements or empty curly braces {} for classes without properties
+- ALWAYS copy the exact output from clean_mermaid_diagram tool
 """
 
     # Run MCP server over stdio
