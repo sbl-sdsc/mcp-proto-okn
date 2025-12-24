@@ -1,5 +1,5 @@
 {
-    "mcpServers: {
+    "mcpServers": {
         "biobricks-aopwiki-dev": {
             "command": "uv",
             "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https:/frink.apps.renci.org/biobricks-aopwiki/sparql"]
