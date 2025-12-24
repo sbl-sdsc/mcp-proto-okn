@@ -1,6 +1,5 @@
-# SOCKG Knowledge Graph Exploration
-
 ## Chat Transcript
+Exploring the Soil Organic Carbon Knowledge Graph (SOCKG)
 
 👤 **User**  
 @sockg
@@ -8,312 +7,290 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore this knowledge graph! Let me start by getting information about what this knowledge graph contains.
+I'll help you explore the sockg knowledge graph. Let me start by getting information about this knowledge graph and its schema.
 
-Perfect! Now I have all the information about the **Soil Organic Carbon Knowledge Graph (SOCKG)**. Let me give you an overview:
+Great! I can now help you explore the **Soil Organic Carbon Knowledge Graph (SOCKG)**. This knowledge graph contains detailed agricultural experimental data focused on soil organic carbon, which is crucial for understanding carbon sequestration and climate-friendly farming practices.
 
-## Overview
+## What's in SOCKG?
 
-The Soil Organic Carbon Knowledge Graph (SOCKG) is a comprehensive knowledge graph designed to enhance soil carbon modeling for voluntary carbon markets. It consolidates fragmented agricultural experimental data into a unified semantic framework.
+The knowledge graph includes:
 
-## What's Inside
+- **Agricultural experiments**: Tillage events, crop rotations, fertilizer applications, soil measurements
+- **Environmental data**: Weather observations, greenhouse gas flux measurements
+- **Management practices**: Planting, grazing, irrigation, residue management
+- **Soil samples**: Chemical, biological, and physical analyses of soil
+- **Geographic coverage**: Sites across multiple locations with spatial data
+- **Publications**: Research papers, reports, and bibliographic information
 
-SOCKG contains detailed agricultural data including:
+## Key Classes (105 total)
 
-- **Agricultural Management Practices**: Tillage events, planting methods, crop rotations, fertilizer amendments, grazing management, irrigation, and residue management
-- **Soil Measurements**: Chemical, biological, and physical soil samples with depth information
-- **Environmental Data**: Weather observations and greenhouse gas flux measurements
-- **Crop Information**: Cultivars, growth stages, biomass analysis, yield data
-- **Experimental Structure**: Sites, treatments, experimental units, and rotations
+The schema includes classes for:
+- Experimental units, treatments, and sites
+- Soil samples (chemical, biological, physical)
+- Agricultural management (tillage, planting, grazing, irrigation)
+- Crops, cultivars, and cover crops
+- Measurements (biomass, GHG flux, erosion, water quality)
+- Weather observations
+- Publications and research projects
 
-## Key Features
+## What would you like to explore?
 
-The knowledge graph includes **105 classes** and **106 predicates** organized around:
+I can help you:
+- Find specific data about soil organic carbon measurements
+- Explore relationships between management practices and outcomes
+- Query experimental treatments and their effects
+- Analyze spatial patterns across different sites
+- Search for publications and research projects
+- Examine specific crops, tillage methods, or amendments
 
-1. **Experimental organization** - Projects, sites, treatments, and experimental units
-2. **Management practices** - Detailed tracking of agricultural interventions
-3. **Measurements** - Soil samples (chemical/biological/physical), crop measurements, weather, GHG flux
-4. **Spatial data** - Geographic locations linked to administrative regions (GADM) and S2 cells
-5. **Bibliographic information** - Publications, funding sources, authors
-
-## What Can You Do?
-
-You can query this knowledge graph to:
-- Explore soil organic carbon measurements across different management practices
-- Analyze the impact of tillage, amendments, and crop rotations on soil carbon
-- Investigate relationships between weather patterns and agricultural outcomes
-- Find experimental data from specific locations or treatments
-- Explore greenhouse gas emissions under different farming practices
-
-Would you like to explore any specific aspect of the data, such as finding sites with certain management practices, analyzing soil carbon trends, or examining specific crops or regions?
+What aspect of soil carbon research interests you?
 
 ---
 
 👤 **User**  
-Visualize a detailed schema
+Visualize the schema
 
 ---
 
 🧠 **Assistant**  
-I'll create a detailed visual schema of the SOCKG knowledge graph using a Mermaid class diagram.
-
 ```mermaid
 classDiagram
-    %% Core Experimental Structure
-    class Project {
-        +hasProjectScenario
-        +fundedBy
-    }
-    class ProjectScenario
-    class Site {
-        +hasGeometry
-        +sfWithin
-        +weatherAt
-    }
-    class ExperimentalUnit {
-        +usesTreatment
-        +hasTreatment
-        +fromProject
-        +hasMeasurement
-        +unitHasAmendment
-        +unitHasGrazingManagement
-        +unitHasPlantingManagement
-        +unitHasResidueManagement
-        +unitHasTillageManagement
-        +unitHasGrowthStageManagement
-        +hasRotation
-    }
-    class Treatment {
-        +treatmentHasAmendment
-        +treatmentHasGrazingManagement
-        +treatmentHasPlantingManagement
-        +treatmentHasResidueManagement
-        +treatmentHasTillageManagement
-        +treatmentHasGrowthStageManagement
-    }
-    class Rotation {
-        +hasCrop
-    }
+direction TB
 
-    %% Management Practices
-    class Amendment {
-        +hasAmendmentType
-        +withPlacement
-        +hasTiming
-    }
-    class FertilizerAmendment
-    class AmendmentType
-    class AmendmentPlacement
-    class TillageManagement {
-        +hasTillage
-        +hasTillageEvent
-        +usesTillageMethod
-        +usesEquipment
-    }
-    class Tillage
-    class TillageEvent
-    class TillageMethod
-    class PlantingManagement {
-        +hasCrop
-        +hasCultivar
-        +usesPlantingMethod
-        +hasTiming
-    }
-    class PlantingMethod
-    class ResidueManagement {
-        +usesResidueRemoval
-    }
-    class ResidueRemoval
-    class GrazingManagement {
-        +hasAnimalClass
-        +hasAnimalSpecies
-        +hasGrazingRate
-    }
-    class GrowthStageManagement {
-        +hasGrowthStage
-    }
-    class Irrigation
+class ExperimentalUnit {
+  +unitUrl: string
+  +startDate: date
+  +endDate: date
+  +organicManagement: boolean
+  +tileDrainage: boolean
+}
 
-    %% Crop and Plant Information
-    class Cultivar {
-        +of
-        +hasBroadleafOrGrass
-    }
-    class CoverCrop
-    class GrowthStage
-    class PlantFraction
-    class SpeciesMix
-    class BroadleafOrGrass
+class Treatment {
+  +hasRotation
+  +usesTreatment
+}
 
-    %% Measurements
-    class Measurement {
-        +fromUnit
-        +quantityValue
-        +badValueFlag
-        +inferred
-        +isInterpolated
-    }
-    class SoilSample {
-        +upperDepth
-        +lowerDepth
-    }
-    class SoilChemicalSample
-    class SoilBiologicalSample
-    class SoilPhysicalSample
-    class WeatherObservation
-    class GHGFlux {
-        +hasChamberPlacement
-    }
-    class CropRelatedMeasurement {
-        +hasCrop
-        +hasGrowthStage
-    }
-    class BiomassAnalysis
-    class YieldNutrientUptake
-    class ResidueMeasurement
-    class ErosionMeasurement
-    class QualityMeasurement
+class Site {
+  +hasGeometry
+  +sfWithin
+  +weatherAt
+}
 
-    %% Geographic and Spatial
-    class Location {
-        +hasGeometry
-        +sfWithin
-    }
-    class AdministrativeRegion
-    class AdministrativeRegion_0
-    class AdministrativeRegion_1
-    class AdministrativeRegion_2
-    class S2Cell_Level13
-    class Geometry {
-        +asWKT
-    }
+class Location {
+  +hasGeometry
+}
 
-    %% Bibliographic
-    class BibliographicResource {
-        +creator
-        +title
-        +date
-        +identifier
-        +bibliographicCitation
-    }
-    class JournalArticle
-    class BookChapter
-    class Report
-    class Thesis
-    class Person {
-        +givenName
-        +familyName
-        +email
-        +affiliation
-        +hasOccupation
-    }
-    class Organization
-    class FundingSource
+class Project {
+  +fundedBy
+  +hasProjectScenario
+  +fromProject
+}
 
-    %% Measurement Support
-    class QuantityValue {
-        +numericValue
-        +hasUnit
-        +standardUncertainty
-    }
-    class Unit
-    class Timing
-    class StartStopInterval {
-        +startDate
-        +endDate
-    }
+class SoilSample {
+  +upperDepth: float
+  +lowerDepth: float
+  +hasMeasurement
+}
 
-    %% Key Relationships - Experimental Structure
-    Project --> ProjectScenario : hasProjectScenario
-    Project --> FundingSource : fundedBy
-    Site --> Location : weatherAt
-    Site --> Geometry : hasGeometry
-    ExperimentalUnit --> Treatment : usesTreatment
-    ExperimentalUnit --> Project : fromProject
-    ExperimentalUnit --> Rotation : hasRotation
-    ExperimentalUnit --> Measurement : hasMeasurement
-    Treatment --> Amendment : treatmentHasAmendment
-    Treatment --> TillageManagement : treatmentHasTillageManagement
-    Treatment --> PlantingManagement : treatmentHasPlantingManagement
-    Treatment --> ResidueManagement : treatmentHasResidueManagement
-    Treatment --> GrazingManagement : treatmentHasGrazingManagement
-    Treatment --> GrowthStageManagement : treatmentHasGrowthStageManagement
-    
-    %% Management Relationships
-    Amendment --> AmendmentType : hasAmendmentType
-    Amendment --> AmendmentPlacement : withPlacement
-    Amendment --> Timing : hasTiming
-    FertilizerAmendment --|> Amendment
-    TillageManagement --> Tillage : hasTillage
-    TillageManagement --> TillageEvent : hasTillageEvent
-    TillageManagement --> TillageMethod : usesTillageMethod
-    PlantingManagement --> Cultivar : hasCultivar
-    PlantingManagement --> PlantingMethod : usesPlantingMethod
-    PlantingManagement --> Timing : hasTiming
-    GrazingManagement --> AnimalClass : hasAnimalClass
-    GrazingManagement --> AnimalSpecies : hasAnimalSpecies
-    GrowthStageManagement --> GrowthStage : hasGrowthStage
-    Rotation --> Cultivar : hasCrop
+class SoilChemicalSample
 
-    %% Crop Relationships
-    Cultivar --> BroadleafOrGrass : hasBroadleafOrGrass
-    
-    %% Measurement Relationships
-    Measurement --> QuantityValue : quantityValue
-    Measurement --> ExperimentalUnit : fromUnit
-    SoilSample --|> Measurement
-    SoilChemicalSample --|> SoilSample
-    SoilBiologicalSample --|> SoilSample
-    SoilPhysicalSample --|> SoilSample
-    WeatherObservation --|> Measurement
-    GHGFlux --|> Measurement
-    CropRelatedMeasurement --|> Measurement
-    BiomassAnalysis --|> CropRelatedMeasurement
-    YieldNutrientUptake --|> CropRelatedMeasurement
-    ResidueMeasurement --|> Measurement
-    ErosionMeasurement --|> Measurement
-    
-    %% Spatial Relationships
-    Location --> Geometry : hasGeometry
-    Location --> AdministrativeRegion : sfWithin
-    AdministrativeRegion_0 --|> AdministrativeRegion
-    AdministrativeRegion_1 --|> AdministrativeRegion
-    AdministrativeRegion_2 --|> AdministrativeRegion
-    
-    %% Bibliographic Relationships
-    BibliographicResource --> Person : creator
-    JournalArticle --|> BibliographicResource
-    BookChapter --|> BibliographicResource
-    Report --|> BibliographicResource
-    Thesis --|> BibliographicResource
-    Person --> Organization : affiliation
-    
-    %% Measurement Support
-    QuantityValue --> Unit : hasUnit
-    Timing --> StartStopInterval : withStartStopInterval
+class SoilBiologicalSample
+
+class SoilPhysicalSample
+
+class Measurement {
+  +quantityValue
+  +badValueFlag: boolean
+  +inferred: boolean
+  +isInterpolated: boolean
+}
+
+class WeatherObservation {
+  +hasMeasurement
+  +of
+}
+
+class GHGFlux {
+  +hasChamberPlacement
+  +hasMeasurement
+}
+
+class Tillage {
+  +usesTillageMethod
+  +usesEquipment
+}
+
+class TillageEvent {
+  +startDate: date
+  +endDate: date
+}
+
+class TillageManagement {
+  +hasTillageEvent
+  +hasTillage
+}
+
+class Amendment {
+  +hasAmendmentType
+  +withPlacement
+}
+
+class FertilizerAmendment
+
+class PlantingManagement {
+  +usesPlantingMethod
+  +hasCrop
+  +hasCultivar
+  +usesCoverCrop
+}
+
+class GrazingManagement {
+  +hasAnimalSpecies
+  +hasAnimalClass
+  +hasGrazingRate
+}
+
+class ResidueManagement {
+  +usesResidueRemoval
+}
+
+class Rotation {
+  +hasGrowthStage
+}
+
+class Cultivar {
+  +hasBroadleafOrGrass
+}
+
+class CoverCrop
+
+class JournalArticle {
+  +title: string
+  +identifier: string
+  +date: date
+  +creator
+  +cites
+}
+
+class Person {
+  +givenName: string
+  +familyName: string
+  +email: string
+  +affiliation
+}
+
+class Organization {
+  +label: string
+}
+
+class AdministrativeRegion
+
+class AdministrativeRegion_0
+
+class AdministrativeRegion_1
+
+class AdministrativeRegion_2
+
+class S2Cell_Level13
+
+class QuantityValue {
+  +numericValue: float
+  +hasUnit
+  +standardUncertainty: float
+}
+
+ExperimentalUnit --> Treatment : usesTreatment
+ExperimentalUnit --> Site : sfWithin
+ExperimentalUnit --> SoilSample : fromUnit
+ExperimentalUnit --> Measurement : hasMeasurement
+ExperimentalUnit --> TillageManagement : unitHasTillageManagement
+ExperimentalUnit --> PlantingManagement : unitHasPlantingManagement
+ExperimentalUnit --> GrazingManagement : unitHasGrazingManagement
+ExperimentalUnit --> ResidueManagement : unitHasResidueManagement
+ExperimentalUnit --> Amendment : unitHasAmendment
+
+Treatment --> Rotation : hasRotation
+Treatment --> TillageManagement : treatmentHasTillageManagement
+Treatment --> PlantingManagement : treatmentHasPlantingManagement
+Treatment --> GrazingManagement : treatmentHasGrazingManagement
+Treatment --> ResidueManagement : treatmentHasResidueManagement
+Treatment --> Amendment : treatmentHasAmendment
+
+Site --> Location : hasGeometry
+Site --> WeatherObservation : weatherAt
+Site --> AdministrativeRegion : sfWithin
+Site --> Project : fromProject
+
+SoilSample --|> SoilChemicalSample
+SoilSample --|> SoilBiologicalSample
+SoilSample --|> SoilPhysicalSample
+SoilSample --> Measurement : hasMeasurement
+
+Measurement --> QuantityValue : quantityValue
+
+TillageManagement --> Tillage : hasTillage
+TillageManagement --> TillageEvent : hasTillageEvent
+
+Amendment --|> FertilizerAmendment
+
+PlantingManagement --> Cultivar : hasCultivar
+PlantingManagement --> CoverCrop : usesCoverCrop
+
+Rotation --> Cultivar : hasCrop
+
+JournalArticle --> Person : creator
+JournalArticle --> Person : correspondingAuthor
+
+Person --> Organization : affiliation
+
+AdministrativeRegion --|> AdministrativeRegion_0
+AdministrativeRegion --|> AdministrativeRegion_1
+AdministrativeRegion --|> AdministrativeRegion_2
+
+Location --> AdministrativeRegion : sfWithin
+Location --> S2Cell_Level13 : sfWithin
+
+GHGFlux --> Measurement : hasMeasurement
+
+WeatherObservation --> Measurement : hasMeasurement
 ```
 
-This detailed schema visualization shows the SOCKG structure organized into major sections:
+Here's a visualization of the SOCKG schema showing the main classes and their relationships!
 
-**🔬 Core Experimental Structure** (top): The foundation showing how Projects contain ExperimentalUnits that receive Treatments and generate Measurements
+## Key Components:
 
-**🌾 Management Practices** (middle-left): All agricultural interventions including tillage, planting, amendments, grazing, and residue management
+**Core Experimental Structure:**
+- **ExperimentalUnit** - The central entity containing treatments, measurements, and management practices
+- **Treatment** - Experimental treatments applied to units
+- **Site** - Physical locations where experiments are conducted
 
-**📊 Measurements** (middle-right): Various types of measurements including soil samples (chemical, biological, physical), weather observations, GHG flux, and crop-related data
+**Management Practices:**
+- **TillageManagement** - Soil cultivation practices
+- **PlantingManagement** - Crop planting details
+- **GrazingManagement** - Livestock grazing activities
+- **ResidueManagement** - Crop residue handling
+- **Amendment** - Fertilizers and other soil amendments
 
-**🗺️ Geographic & Spatial** (lower-left): Location data with administrative regions at multiple levels and spatial geometries
+**Data Collection:**
+- **SoilSample** - Subdivided into chemical, biological, and physical samples
+- **Measurement** - Quantitative observations with units
+- **WeatherObservation** - Meteorological data
+- **GHGFlux** - Greenhouse gas emissions
 
-**📚 Bibliographic** (lower-right): Publications, authors, organizations, and funding sources
+**Geographic Context:**
+- **Location** - Spatial coordinates
+- **AdministrativeRegion** - Countries, states, counties
+- **S2Cell** - Geometric grid cells
 
-**⚙️ Supporting Classes** (bottom): Measurement infrastructure like quantity values, units, and timing information
+**Publications:**
+- **JournalArticle** - Research papers
+- **Person** - Authors and researchers
+- **Organization** - Affiliated institutions
 
-The arrows show key relationships, with solid lines representing associations and dashed lines (--|>) representing inheritance/subclass relationships.
+The diagram shows how experimental units connect to sites, treatments, and various measurements, creating a comprehensive framework for tracking soil carbon research data!
 
 ---
 
-👤 **User**  
-Create transcript
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for sockg on 2025-12-24*
 
----
-
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 using claude-sonnet-4-20250514 on 2025-12-22*
+claude-sonnet-4-20250514

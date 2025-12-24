@@ -1,55 +1,49 @@
-# Chat Transcript: Exploring the SAWGraph Hydrology Knowledge Graph
+# Chat Transcript
+Exploring the SAWGraph Hydrology Knowledge Graph
 
 👤 **User**  
-hydrologykg
+@hydrologykg
 
 ---
 
 🧠 **Assistant**  
-I'll help you explore the hydrology knowledge graph. Let me first get some information about it.
+I'll help you explore the hydrologykg knowledge graph. Let me first get information about what this knowledge graph contains.
 
-*[Retrieved knowledge graph description and schema]*
+The **SAWGraph Hydrology KG** is now accessible. This knowledge graph integrates surface and groundwater data to help trace pollutant pathways and understand water connectivity. Here's what you can explore:
 
-# SAWGraph Hydrology Knowledge Graph
+## Key Features:
 
-I've connected to the **SAWGraph Hydrology KG**, which is part of the Safe Agricultural Products and Water Graph project. This knowledge graph helps environmental regulators, water safety officials, and PFAS researchers trace pollutant pathways and analyze water quality.
+**Surface Water:**
+- Rivers, streams, lakes, and catchments from NHDPlus
+- Flow paths and hydrological connectivity (upstream/downstream relationships)
+- Water bodies like canals, estuaries, lagoons, and impoundments
 
-## What's in the Knowledge Graph?
+**Groundwater:**
+- Wells from Maine and Illinois geological surveys
+- Aquifers and aquifer systems
+- Well depths, purposes, yields, and types
 
-The graph contains **58 classes** and **85 predicates** covering:
+**Public Water Systems:**
+- Community and non-community water systems
+- Water sources (groundwater vs. surface water)
+- Service connections and population served
 
-### Water Features
-- **Surface water**: streams, rivers, lakes, waterbodies, estuaries, impoundments
-- **Groundwater**: aquifers, wells (from Maine and Illinois geological surveys)
-- **Public water systems**: community water systems, service areas, water sources
-
-### Hydrological Connectivity
-- Upstream/downstream flow paths
-- Catchments and watersheds
-- Transitive closure relationships for tracing water flow
-
-### Spatial Integration
-- S2 cells (Level 13) for precise geolocation
+**Spatial Integration:**
+- S2 cells (Level 13) for precise location
 - Administrative regions (counties, states)
 - ZIP code areas
-- Topological relations (contains, crosses, overlaps, touches)
+- Topological relationships (contains, touches, crosses, overlaps)
 
-### Data Sources
-- USGS National Hydrography Dataset (NHDPlus)
-- Maine Geological Survey wells
-- Illinois State Geological Survey wells
-- EPA Safe Drinking Water Information System (SDWIS)
+## What would you like to explore?
 
-## What Can You Do?
+Some example queries you could ask:
+- Find wells in a specific county or state
+- Trace upstream or downstream flow paths from a location
+- Find public water systems and their sources
+- Identify aquifers and connected wells
+- Explore water features in specific catchments
 
-You can query this graph to:
-- Trace pollutant pathways upstream or downstream
-- Find wells connected to contaminated sites
-- Identify water systems serving specific areas
-- Analyze hydrological connectivity
-- Explore water quality monitoring locations
-
-**What would you like to explore?** For example, I could help you find wells in a specific area, trace downstream connections from a location, or analyze public water system data.
+What interests you?
 
 ---
 
@@ -59,202 +53,186 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-I'll create a visual representation of the SAWGraph Hydrology KG schema using a Mermaid diagram.
+I'll create a visual diagram of the SAWGraph Hydrology KG schema using Mermaid.
 
-*[Generated and cleaned Mermaid class diagram]*
+Here's the SAWGraph Hydrology KG schema visualization:
 
 ```mermaid
 classDiagram
+direction TB
 
-%% Core Water Feature Hierarchy
-class WaterFeature["Water Feature"]
-class SurfaceWaterFeature["Surface Water Feature"]
-class SubsurfaceWaterFeature["Subsurface Water Feature"]
-class AquiferWaterFeature["Aquifer Water Feature"]
+%% Core Water Feature Classes
+class WaterFeature {
+  <<abstract>>
+}
+class SurfaceWaterFeature
+class SubsurfaceWaterFeature
+class WaterFeatureRepresentation
 
+%% Surface Water Features
+class HY_HydroFeature {
+  <<abstract>>
+}
+class HY_WaterBody
+class HY_Lake
+class HY_River
+class HY_Estuary
+class HY_Lagoon
+class HY_Impoundment
+class HY_Canal
+class HY_MainStem
+
+%% Flow Paths and Catchments
+class HY_FlowPath
+class HY_ElementaryFlowPath
+class HY_Catchment
+class HY_CatchmentRealization
+
+%% Groundwater Features
+class GW_Aquifer {
+  +aquiferType
+}
+class AquiferWaterFeature
+class MGS-Well {
+  +wellDepth
+  +wellOverburden
+  +wellType
+  +wellUse
+}
+class ISGS-Well {
+  +wellDepth
+  +wellPurpose
+  +wellYield
+  +owner
+  +ISWSId
+}
+
+%% Public Water Systems
+class PublicWaterSystem {
+  +populationServed
+  +serviceConnections
+  +ownership
+  +firstReport
+  +lastReport
+  +deactivationDate
+}
+class PublicWaterSystem-CWS
+class PublicWaterSystem-NCWS
+class PublicWaterSystem-NTNCWS
+class PublicWaterSystem-TNCWS
+class PublicWaterSystem-GW
+class PublicWaterSystem-SW
+class PWS-SubFeature {
+  +activity
+  +type
+  +method
+}
+class PWS-ServiceArea {
+  +serviceAreaType
+}
+class CombinedDistributionSystem
+
+%% Spatial Classes
+class Feature
+class SpatialObject
+class Geometry
+class Polygon
+class MultiPolygon
+class S2Cell
+class S2Cell_Level13
+class Region
+class AdministrativeRegion
+class ZipCodeArea
+class RoadSegment
+
+%% Measurement Classes
+class QuantityValue {
+  +numericValue
+  +unit
+}
+class QuantityKind
+class Unit
+class FlowPathLength
+
+%% Inheritance Relationships
 WaterFeature <|-- SurfaceWaterFeature
 WaterFeature <|-- SubsurfaceWaterFeature
 SubsurfaceWaterFeature <|-- AquiferWaterFeature
-
-%% HY Features Ontology
-class HY_HydroFeature["Hydrologic Feature"]
-class HY_FlowPath["Flow Path"]
-class HY_ElementaryFlowPath["Elementary Flow Path"]
-class HY_WaterBody["Water Body"]
-class HY_River["River"]
-class HY_Lake["Lake"]
-class HY_Canal["Canal"]
-class HY_Estuary["Estuary"]
-class HY_Lagoon["Lagoon"]
-class HY_Impoundment["Impoundment"]
-class HY_MainStem["Main Stem"]
-class HY_Catchment["Catchment"]
-class HY_CatchmentRealization["Catchment Realization"]
-
-HY_HydroFeature <|-- HY_FlowPath
-HY_FlowPath <|-- HY_ElementaryFlowPath
 HY_HydroFeature <|-- HY_WaterBody
-HY_WaterBody <|-- HY_River
 HY_WaterBody <|-- HY_Lake
-HY_WaterBody <|-- HY_Canal
+HY_WaterBody <|-- HY_River
 HY_WaterBody <|-- HY_Estuary
 HY_WaterBody <|-- HY_Lagoon
 HY_WaterBody <|-- HY_Impoundment
 HY_River <|-- HY_MainStem
+HY_HydroFeature <|-- HY_Canal
+HY_HydroFeature <|-- HY_FlowPath
+HY_FlowPath <|-- HY_ElementaryFlowPath
+HY_HydroFeature <|-- HY_Catchment
 
-%% Flow Path Relationships
-HY_FlowPath --> HY_FlowPath : downstreamFlowPath
-HY_FlowPath --> HY_FlowPath : upstreamFlowPath
-HY_FlowPath --> HY_FlowPath : downstreamFlowPathTC
-HY_FlowPath --> HY_WaterBody : upstreamWaterBody
-
-%% Catchment Relationships
-HY_HydroFeature --> HY_Catchment : encompassingCatchment
-HY_CatchmentRealization --> HY_Catchment : realizedCatchment
-
-%% Groundwater Features
-class GW_Aquifer["Groundwater Aquifer"]
-class MGS_Well["Maine Geological Survey Well"]
-class ISGS_Well["Illinois State Geological Survey Well"]
-class WellType["Well Type"]
-class WellUse["Well Use"]
-class WellPurpose["Well Purpose"]
-class WellDepthInFt["Well Depth in Feet"]
-class WellOverburdenThicknessInFt["Well Overburden Thickness"]
-class WellYield["Well Yield"]
-
-GW_Aquifer --> GW_Aquifer : gwAquiferSystemPart
-MGS_Well --> WellType : ofWellType
-MGS_Well --> WellUse : hasUse
-MGS_Well --> WellDepthInFt : wellDepth
-MGS_Well --> WellOverburdenThicknessInFt : wellOverburden
-ISGS_Well --> WellPurpose : wellPurpose
-ISGS_Well --> WellDepthInFt : wellDepth
-ISGS_Well --> WellYield : wellYield
-
-%% Public Water Systems
-class PublicWaterSystem["Public Water System"]
-class PublicWaterSystem_CWS["Community Water System"]
-class PublicWaterSystem_NCWS["Non-Community Water System"]
-class PublicWaterSystem_NTNCWS["Non-Transient Non-Community WS"]
-class PublicWaterSystem_TNCWS["Transient Non-Community WS"]
-class PublicWaterSystem_GW["Groundwater-Based PWS"]
-class PublicWaterSystem_SW["Surface Water-Based PWS"]
-class PWS_SubFeature["PWS Sub-Feature"]
-class PWS_SubFeatureType["PWS Sub-Feature Type"]
-class PWS_SubFeatureActivity["PWS Sub-Feature Activity"]
-class PWS_ServiceArea["PWS Service Area"]
-class PWS_ServiceAreaType["PWS Service Area Type"]
-class PWS_SourceWaterType["PWS Source Water Type"]
-
-PublicWaterSystem <|-- PublicWaterSystem_CWS
-PublicWaterSystem <|-- PublicWaterSystem_NCWS
-PublicWaterSystem_NCWS <|-- PublicWaterSystem_NTNCWS
-PublicWaterSystem_NCWS <|-- PublicWaterSystem_TNCWS
-PublicWaterSystem <|-- PublicWaterSystem_GW
-PublicWaterSystem <|-- PublicWaterSystem_SW
-
-PublicWaterSystem --> PWS_SubFeature : hasPart
-PublicWaterSystem --> PWS_SubFeature : hasSource
-PublicWaterSystem --> PWS_SubFeature : hasPermanentSource
-PublicWaterSystem --> PWS_ServiceArea : serviceArea
-PublicWaterSystem --> PublicWaterSystem : buysFrom
-PublicWaterSystem --> PublicWaterSystem : sellsTo
-PWS_SubFeature --> PublicWaterSystem : partOf
-PWS_SubFeature --> PublicWaterSystem : sourceFor
-PWS_SubFeature --> PWS_SubFeatureActivity : hasActivity
-PWS_ServiceArea --> PWS_ServiceAreaType : serviceAreaType
-
-%% Spatial Features
-class Feature["Feature"]
-class SpatialObject["Spatial Object"]
-class Geometry["Geometry"]
-class Polygon["Polygon"]
-class MultiPolygon["Multi-Polygon"]
-class Region["Region"]
-class S2Cell["S2 Cell"]
-class S2Cell_Level13["S2 Cell Level 13"]
-class ZipCodeArea["ZIP Code Area"]
+PublicWaterSystem <|-- PublicWaterSystem-CWS
+PublicWaterSystem <|-- PublicWaterSystem-NCWS
+PublicWaterSystem-NCWS <|-- PublicWaterSystem-NTNCWS
+PublicWaterSystem-NCWS <|-- PublicWaterSystem-TNCWS
+PublicWaterSystem <|-- PublicWaterSystem-GW
+PublicWaterSystem <|-- PublicWaterSystem-SW
 
 SpatialObject <|-- Feature
 SpatialObject <|-- Geometry
+Feature <|-- Region
+Region <|-- AdministrativeRegion
+Feature <|-- Cell
+Cell <|-- S2Cell
+S2Cell <|-- S2Cell_Level13
 Geometry <|-- Polygon
 Geometry <|-- MultiPolygon
-Feature <|-- Region
-S2Cell <|-- S2Cell_Level13
+
+%% Key Relationships
+HY_FlowPath --> HY_FlowPath : downstreamFlowPath
+HY_FlowPath --> HY_FlowPath : upstreamFlowPath
+HY_FlowPath --> HY_FlowPath : downstreamFlowPathTC
+HY_Catchment --> HY_CatchmentRealization : realizedCatchment
+HY_HydroFeature --> HY_Catchment : encompassingCatchment
+HY_FlowPath --> FlowPathLength : hasFlowPathLength
+
+GW_Aquifer --> GW_Aquifer : gwAquiferSystemPart
+GW_Aquifer --> GW_Aquifer : gwAquiferSystem
+
+PublicWaterSystem --> PWS-SubFeature : hasPart
+PublicWaterSystem --> PWS-ServiceArea : serviceArea
+PublicWaterSystem --> PublicWaterSystem : buysFrom
+PublicWaterSystem --> PublicWaterSystem : sellsTo
+PublicWaterSystem --> CombinedDistributionSystem : inCombinedSystem
+PWS-SubFeature --> PublicWaterSystem : partOf
 
 Feature --> Geometry : hasGeometry
 Feature --> Geometry : hasDefaultGeometry
-Geometry --> Geometry : asWKT
 
-%% Spatial Relations
-Feature --> Feature : sfContains
-Feature --> Feature : sfWithin
-Feature --> Feature : sfOverlaps
-Feature --> Feature : sfTouches
-Feature --> Feature : sfCrosses
-Feature --> Feature : sfEquals
-Feature --> Feature : connectedTo
-Region --> Region : administrativePartOf
+S2Cell_Level13 --> Feature : sfContains
+S2Cell_Level13 --> Feature : sfWithin
+AdministrativeRegion --> Feature : sfContains
 
-%% Measurements
-class QuantityValue["Quantity Value"]
-class QuantityKind["Quantity Kind"]
-class Unit["Unit"]
-class FlowPathLength["Flow Path Length"]
-
-QuantityValue --> QuantityKind : hasQuantityKind
 QuantityValue --> Unit : hasUnit
-HY_FlowPath --> FlowPathLength : hasFlowPathLength
+QuantityValue --> QuantityKind : hasQuantityKind
+FlowPathLength --> QuantityValue : quantityValue
+MGS-Well --> QuantityValue : wellDepth
+MGS-Well --> QuantityValue : wellOverburden
+ISGS-Well --> QuantityValue : wellDepth
+ISGS-Well --> QuantityValue : wellYield
 ```
 
-This diagram shows the SAWGraph Hydrology KG schema organized into five main sections:
+The diagram shows the main components of the SAWGraph Hydrology KG organized into five major categories:
 
-1. **Water Feature Hierarchy** - The core classification of water features (surface vs. subsurface)
+1. **Water Features** - Abstract hierarchy for surface and subsurface water
+2. **Surface Water** - Rivers, lakes, flow paths, and catchments with upstream/downstream connectivity
+3. **Groundwater** - Aquifers and wells from Maine (MGS) and Illinois (ISGS) surveys
+4. **Public Water Systems** - Community and non-community systems with their sources and service areas
+5. **Spatial Integration** - S2 cells and administrative regions for geospatial queries
 
-2. **HY Features Ontology** - Hydrological features including flow paths, water bodies (rivers, lakes, canals, etc.), and catchments with their connectivity relationships (upstream/downstream)
-
-3. **Groundwater Features** - Aquifers and wells from Maine and Illinois surveys with their properties (depth, type, use, yield)
-
-4. **Public Water Systems** - Community and non-community water systems with their components, sources, and service areas, including water trading relationships (buys/sells)
-
-5. **Spatial Features** - Geographic representations using S2 cells, administrative regions, and GeoSPARQL geometries with spatial relationship predicates
-
-The diagram emphasizes the hydrological connectivity (upstream/downstream relationships) and spatial integration that make this knowledge graph useful for tracing contaminant pathways and analyzing water quality.
+Key relationships enable tracing water flow and contamination pathways throughout the hydrological network.
 
 ---
 
-👤 **User**  
-Create transcript
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for hydrologykg on 2025-12-24*
 
----
-
-🧠 **Assistant**  
-*[Created this transcript document]*
-
----
-
-## Knowledge Graph Information
-
-**Name:** SAWGraph Hydrology KG  
-**SPARQL Endpoint:** https://frink.apps.renci.org/hydrologykg/sparql  
-**Project Homepage:** https://sawgraph.github.io/  
-**Funding:** NSF Award #2333782  
-**Statistics:** https://frink.renci.org/kg-stats/hydrology-kg
-
-**Principal Investigators:**
-- David Kedrowski (david.kedrowski@maine.edu)
-- Torsten Hahmann (torsten.hahmann@maine.edu)
-
-**Description:** The SAWGraph Hydrology KG is part of the Safe Agricultural Products and Water Graph (SAWGraph) that facilities environmental regulators, water safety officials, and PFAS researchers to trace pollutant pathways, identify upstream contamination sources, assess downstream impacts from point sources, and determine which water wells are hydrologically connected to contaminated sites.
-
-**Data Integration:**
-- Surface water features from USGS National Hydrography Dataset (NHDPlus)
-- Groundwater features from state geological surveys (Maine, Illinois)
-- Public water system data from EPA SDWIS
-- Spatial integration via S2 cells (Level 13) and administrative regions
-- Reuse of geoconnex URIs for linking to additional details
-
----
-
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 using claude-sonnet-4-20250514 on 2025-12-22*
+claude-sonnet-4-20250514
