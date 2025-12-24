@@ -6,44 +6,40 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore this knowledge graph! Let me start by getting information about it.
+I'll help you explore the fiokg knowledge graph. Let me start by getting some information about it.
 
-Great! I can see this is the **SAWGraph FRS KG** (Facility Registry Service Knowledge Graph), which is part of the SAWGraph project focused on monitoring PFAS and other contaminants in food and water systems.
-
-Now let me get the schema to understand what data is available:
-
-Perfect! Now I have a comprehensive view of the **SAWGraph FRS Knowledge Graph**. This is a rich environmental dataset containing information about facilities, their industries, environmental programs, and compliance records.
+Great! I now have access to the **SAWGraph FRS KG** (Facility Registry Service Knowledge Graph). This is a comprehensive environmental knowledge graph containing data about over 826,000 facilities across the United States.
 
 ## What's in this Knowledge Graph?
 
-This knowledge graph contains comprehensive data about **826,000+ regulated facilities** across the United States from the EPA's Facility Registry Service. Here are the key components:
-
-### Core Entities
-
-- **Facilities** - Industrial, federal, and utility facilities tracked by EPA programs
-- **Organizations** - Companies and agencies that own/operate facilities  
-- **Industries** - NAICS classification codes (hierarchical: Sector → Subsector → Industry Group → Industry)
-- **Environmental Records** - Permits, monitoring data, enforcement actions, compliance reports
-- **Environmental Programs** - Air, water, waste, hazardous materials, underground storage tanks, etc.
-
-### Key Features
-
+The SAWGraph FRS KG contains:
 - **2.6 million entities** and **10+ million triples**
-- Spatial indexing using S2 cells (Level 13) and county subdivisions
-- Links to environmental interest types and compliance systems
-- Temporal tracking of facility activities
-- **PFAS facility identification** - facilities potentially handling PFAS chemicals
+- Facility data from EPA's Facility Registry Service
+- Industry classifications using NAICS codes
+- Environmental compliance records (permits, monitoring, enforcement)
+- Spatial indexing to counties and S2 cells
+- Links to environmental programs (air, water, waste, hazardous materials, etc.)
 
-### What You Can Explore
+## Key Information You Can Query:
 
-Would you like to:
-1. **Find facilities** by location, industry, or environmental program
-2. **Explore PFAS-related facilities** and their industries
-3. **Analyze compliance and enforcement** patterns
-4. **Examine industry classifications** and facility types
-5. **Investigate specific environmental programs** (air quality, water, waste, etc.)
+1. **Facilities** - Industrial, federal, and utility facilities with locations and industry codes
+2. **Environmental Programs** - Air quality, water quality, hazardous waste, drinking water, underground storage tanks, etc.
+3. **Records** - Permits, monitoring data, enforcement actions, compliance records
+4. **Industries** - NAICS industry classifications at multiple hierarchical levels
+5. **Organizations** - Entities that own/operate facilities
+6. **PFAS Facilities** - Facilities potentially handling PFAS chemicals
 
-What interests you most about this data?
+## What would you like to explore?
+
+I can help you:
+- Find facilities by location, industry, or program type
+- Analyze environmental compliance patterns
+- Explore PFAS-related facilities
+- Search for specific types of environmental records
+- Examine industry distributions
+- Or anything else you're curious about!
+
+What interests you?
 
 ---
 
@@ -53,192 +49,161 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
+Here's the schema visualization for the SAWGraph FRS Knowledge Graph! 
+
 ```mermaid
 classDiagram
-    class Facility["Facility"]
-    Facility : +hasFRSId string
-    
-    class Organization["Organization"]
-    
-    class Industry["Industry"]
-    
-    class NAICSIndustryCode["NAICS Industry Code"]
-    
-    class NAICSIndustrySector["NAICS Industry Sector (2 digits)"]
-    
-    class NAICSIndustrySubsector["NAICS Industry Subsector (3 digits)"]
-    
-    class NAICSIndustryGroup["NAICS Industry Group (4 digits)"]
-    
-    class NAICSIndustry["NAICS Industry (6 digits)"]
-    
-    class FRSFacility["FRS Facility"]
-    
-    class EPAPFASFacility["EPA PFAS Facility"]
-    
-    class FacilityType["Facility Type"]
-    
-    class Record["Facility Record"]
-    
-    class SupplementalRecord["Supplemental Record"]
-    
-    class MonitoringRecord["Monitoring Record"]
-    
-    class PermitRecord["Permit Record"]
-    
-    class EnforcementActivity["Enforcement Activity"]
-    
-    class ComplianceRecord["Compliance Record"]
-    
-    class RegistrationRecord["Registration Record"]
-    
-    class ReportingRecord["Reporting Record"]
-    
-    class RiskPlanRecord["Risk Plan Record"]
-    
-    class SiteRecord["Site Record"]
-    
-    class ProjectRecord["Project Record"]
-    
-    class EnvironmentalInterestType["Environmental Interest Type"]
-    
-    class EnvironmentalInterestByProgram["Environmental Interest By Program"]
-    
-    class EnvironmentalInterestByRecordType["Environmental Interest By Record Type"]
-    
-    class ComplianceInterest["Compliance Interest"]
-    
-    class EnforcementInterest["Enforcement Interest"]
-    
-    class PermitInterest["Permit Interest"]
-    
-    class RegistryInterest["Registry Interest"]
-    
-    class ReportingInterest["Reporting Interest"]
-    
-    class RiskInterest["Risk Interest"]
-    
-    class SiteInterest["Site Interest"]
-    
-    class ProgramInformationSystem["Program Information System"]
-    
-    class ComplianceSystem["Compliance System"]
-    
-    class EnforcementSystem["Enforcement System"]
-    
-    class PermitSystem["Permit System"]
-    
-    class RegistrySystem["Registry System"]
-    
-    class ReportingSystem["Reporting System"]
-    
-    class GrantSystem["Grant System"]
-    
-    class ProjectSystem["Project System"]
-    
-    class SiteSystem["Site System"]
-    
-    class StationSystem["Station System"]
-    
-    class StateSystem["State System"]
-    
-    class TribalSystem["Tribal System"]
-    
-    class LegacySystem["Legacy System"]
-    
-    class AirProgram["AIR PROGRAMS"]
-    
-    class WaterProgram["WASTE WATER PROGRAMS"]
-    
-    class DrinkingWaterProgram["DRINKING WATER PROGRAMS"]
-    
-    class HazardousWasteProgram["HAZARDOUS WASTE PROGRAMS"]
-    
-    class SolidWasteProgram["SOLID WASTE PROGRAMS"]
-    
-    class ChemicalReleaseProgram["CHEMICAL RELEASE PROGRAMS"]
-    
-    class Agency["Agency"]
-    
-    Facility <|-- FRSFacility : is a
-    FRSFacility <|-- EPAPFASFacility : is a
-    
-    NAICSIndustryCode <|-- NAICSIndustrySector : is a
-    NAICSIndustryCode <|-- NAICSIndustrySubsector : is a
-    NAICSIndustryCode <|-- NAICSIndustryGroup : is a
-    NAICSIndustryCode <|-- NAICSIndustry : is a
-    
-    NAICSIndustrySector <-- NAICSIndustrySubsector : subcodeOf
-    NAICSIndustrySubsector <-- NAICSIndustryGroup : subcodeOf
-    NAICSIndustryGroup <-- NAICSIndustry : subcodeOf
-    
-    Record <|-- SupplementalRecord : is a
-    Record <|-- MonitoringRecord : is a
-    SupplementalRecord <|-- PermitRecord : is a
-    SupplementalRecord <|-- EnforcementActivity : is a
-    SupplementalRecord <|-- ComplianceRecord : is a
-    SupplementalRecord <|-- RegistrationRecord : is a
-    SupplementalRecord <|-- ReportingRecord : is a
-    SupplementalRecord <|-- RiskPlanRecord : is a
-    SupplementalRecord <|-- SiteRecord : is a
-    SupplementalRecord <|-- ProjectRecord : is a
-    
-    EnvironmentalInterestType <|-- EnvironmentalInterestByProgram : is a
-    EnvironmentalInterestType <|-- EnvironmentalInterestByRecordType : is a
-    
-    EnvironmentalInterestByRecordType <|-- ComplianceInterest : is a
-    EnvironmentalInterestByRecordType <|-- EnforcementInterest : is a
-    EnvironmentalInterestByRecordType <|-- PermitInterest : is a
-    EnvironmentalInterestByRecordType <|-- RegistryInterest : is a
-    EnvironmentalInterestByRecordType <|-- ReportingInterest : is a
-    EnvironmentalInterestByRecordType <|-- RiskInterest : is a
-    EnvironmentalInterestByRecordType <|-- SiteInterest : is a
-    
-    EnvironmentalInterestByProgram <|-- AirProgram : is a
-    EnvironmentalInterestByProgram <|-- WaterProgram : is a
-    EnvironmentalInterestByProgram <|-- DrinkingWaterProgram : is a
-    EnvironmentalInterestByProgram <|-- HazardousWasteProgram : is a
-    EnvironmentalInterestByProgram <|-- SolidWasteProgram : is a
-    EnvironmentalInterestByProgram <|-- ChemicalReleaseProgram : is a
-    
-    ProgramInformationSystem <|-- ComplianceSystem : is a
-    ProgramInformationSystem <|-- EnforcementSystem : is a
-    ProgramInformationSystem <|-- PermitSystem : is a
-    ProgramInformationSystem <|-- RegistrySystem : is a
-    ProgramInformationSystem <|-- ReportingSystem : is a
-    ProgramInformationSystem <|-- GrantSystem : is a
-    ProgramInformationSystem <|-- ProjectSystem : is a
-    ProgramInformationSystem <|-- SiteSystem : is a
-    ProgramInformationSystem <|-- StationSystem : is a
-    ProgramInformationSystem <|-- StateSystem : is a
-    ProgramInformationSystem <|-- TribalSystem : is a
-    ProgramInformationSystem <|-- LegacySystem : is a
-    
-    Facility --> Organization : ownedBy
-    Organization --> Facility : hasFacility
-    Facility --> FacilityType : ofFacilityType
-    Facility --> NAICSIndustryCode : ofPrimaryIndustry
-    Facility --> NAICSIndustryCode : ofSecondaryIndustry
-    Facility --> EnvironmentalInterestType : hasEnvironmentalInterest
-    Facility --> Record : hasRecord
-    Facility --> SupplementalRecord : hasSupplementalRecord
-    Facility --> MonitoringRecord : hasMonitoringRecord
-    
-    Record --> ProgramInformationSystem : fromSystem
-    EnvironmentalInterestType --> EnvironmentalInterestType : ofInterestType
-    
-    NAICSIndustryCode --> NAICSIndustryCode : sameCode
-    NAICSIndustryCode --> NAICSIndustryCode : subcodeOf
+direction TB
+
+%% Core Classes
+class Facility {
+  +URI identifier
+  +name
+  +location coordinates
+  +FRS ID
+}
+
+class Organization {
+  +URI identifier
+  +name
+}
+
+class Record {
+  +URI identifier
+  +record type
+  +date
+}
+
+class NAICSIndustry {
+  +code (6 digits)
+  +title
+  +description
+}
+
+class NAICSIndustryGroup {
+  +code (4 digits)
+  +title
+}
+
+class NAICSIndustrySubsector {
+  +code (3 digits)
+  +title
+}
+
+class NAICSIndustrySector {
+  +code (2 digits)
+  +title
+}
+
+class EnvironmentalInterestType {
+  +type name
+  +description
+}
+
+class FacilityType {
+  +type name
+}
+
+class ProgramInformationSystem {
+  +system name
+  +description
+}
+
+%% Record Types
+class MonitoringRecord
+class PermitRecord
+class EnforcementActivity
+class ComplianceRecord
+class SupplementalRecord
+
+%% Program Types
+class AirProgram
+class WaterWaterProgram
+class DrinkingWaterProgram
+class HazardousWasteProgram
+class SolidWasteProgram
+class UndergroundStorageTankProgram
+class ChemicalReleaseProgram
+class RemediationRedevelopmentProgram
+
+%% Agency Types
+class Agency
+class AgricultureAgency
+class DefenseAgency
+class EnergyAgency
+class InteriorAgency
+
+%% Special Facility Types
+class EPAPFASFacility
+class FRSFacility
+
+%% Relationships - Facility connections
+Facility --|> FRSFacility : type
+Facility --|> EPAPFASFacility : type
+Organization "1" --> "*" Facility : hasFacility
+Facility --> "1" Organization : ownedBy
+Facility --> "1..*" NAICSIndustry : ofPrimaryIndustry
+Facility --> "0..*" NAICSIndustry : ofSecondaryIndustry
+Facility --> "1..*" EnvironmentalInterestType : hasEnvironmentalInterest
+Facility --> "1" FacilityType : ofFacilityType
+Facility --> "*" Record : hasRecord
+Facility --> "*" MonitoringRecord : hasMonitoringRecord
+Facility --> "*" SupplementalRecord : hasSupplementalRecord
+
+%% Record connections
+Record --|> MonitoringRecord : subtype
+Record --|> PermitRecord : subtype
+Record --|> EnforcementActivity : subtype
+Record --|> ComplianceRecord : subtype
+Record --|> SupplementalRecord : subtype
+Record --> "1" ProgramInformationSystem : fromSystem
+
+%% Industry hierarchy
+NAICSIndustry --> "1" NAICSIndustryGroup : subcodeOf
+NAICSIndustryGroup --> "1" NAICSIndustrySubsector : subcodeOf
+NAICSIndustrySubsector --> "1" NAICSIndustrySector : subcodeOf
+
+%% Environmental Interest Types
+EnvironmentalInterestType --|> AirProgram : type
+EnvironmentalInterestType --|> WaterWaterProgram : type
+EnvironmentalInterestType --|> DrinkingWaterProgram : type
+EnvironmentalInterestType --|> HazardousWasteProgram : type
+EnvironmentalInterestType --|> SolidWasteProgram : type
+EnvironmentalInterestType --|> UndergroundStorageTankProgram : type
+EnvironmentalInterestType --|> ChemicalReleaseProgram : type
+EnvironmentalInterestType --|> RemediationRedevelopmentProgram : type
+
+%% Agency hierarchy
+Agency --|> AgricultureAgency : type
+Agency --|> DefenseAgency : type
+Agency --|> EnergyAgency : type
+Agency --|> InteriorAgency : type
 ```
 
-This visualization shows the structure of the SAWGraph FRS Knowledge Graph with four main hierarchies:
+The diagram shows the key structure:
 
-1. **Facilities & Organizations** (left) - Shows how facilities relate to organizations and their classifications
-2. **NAICS Industry Codes** (top-left) - Hierarchical industry classification from 2-digit sectors down to 6-digit industries
-3. **Environmental Records** (center) - Different types of records associated with facilities
-4. **Environmental Programs** (right side) - Program types and information systems that track facilities
+**Core Entities:**
+- **Facility** - Central entity representing industrial/federal/utility facilities with FRS IDs and locations
+- **Organization** - Entities that own/operate facilities
+- **Record** - Environmental records in various information systems
 
-The diagram illustrates how facilities connect to their industries, environmental programs, and various tracking records through the EPA's regulatory systems.
+**Industry Classification:**
+- 4-level NAICS hierarchy from Sector (2-digit) → Subsector (3-digit) → Industry Group (4-digit) → Industry (6-digit)
+
+**Environmental Programs:**
+- Air Quality, Water/Wastewater, Drinking Water
+- Hazardous Waste, Solid Waste
+- Underground Storage Tanks
+- Chemical Releases, Remediation programs
+
+**Record Types:**
+- Monitoring, Permits, Enforcement, Compliance, Supplemental
+
+**Key Relationships:**
+- Facilities are owned by Organizations
+- Facilities have primary/secondary NAICS industry codes
+- Facilities participate in multiple environmental programs
+- Facilities have various types of environmental records tracked in different information systems
 
 ---
 
@@ -247,4 +212,4 @@ Create transcript
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 using claude-sonnet-4-20250514 on 2025-12-22*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for fiokg using claude-sonnet-4-20250514 on 2025-12-24*
