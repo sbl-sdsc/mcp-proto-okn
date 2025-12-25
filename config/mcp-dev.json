@@ -1,0 +1,108 @@
+{
+    "servers": {
+        "biobricks-aopwiki-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-aopwiki/sparql"]
+        },
+        "biobricks-ice-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-ice/sparql"]
+        },
+        "biobricks-mesh-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-mesh/sparql"]
+        },
+        "biobricks-pubchem-annotations-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-pubchem-annotations/sparql"]
+        },
+        "biobricks-tox21-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-tox21/sparql"]
+        },
+        "biobricks-toxcast-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biobricks-toxcast/sparql"]
+        },
+        "biohealth-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biohealth/sparql"]
+        },
+        "climatemodelskg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/climatemodelskg/sparql"]
+        },
+        "dreamkg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/dreamkg/sparql"]
+        },
+        "fiokg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/fiokg/sparql"]
+        },
+        "geoconnex-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/geoconnex/sparql"]
+        },
+        "hydrologykg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/hydrologykg/sparql"]
+        },
+        "nasa-gesdisc-kg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nasa-gesdisc-kg/sparql"]
+        },
+        "nikg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nikg/sparql"]
+        },
+        "ruralkg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ruralkg/sparql"]
+        },
+        "sawgraph-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/sawgraph/sparql"]
+        },
+        "scales-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/scales/sparql"]
+        },
+        "securechainkg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/securechainkg/sparql"]
+        },
+        "sockg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/sockg/sparql"]
+        },
+        "spatialkg-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spatialkg/sparql"]
+        },
+        "spoke-genelab-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke-genelab/sparql"]
+        },
+        "spoke-okn-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke-okn/sparql"]
+        },
+        "sudokn-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/sudokn/sparql"]
+        },
+        "ufokn-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ufokn/sparql"]
+        },
+        "wildlifekn-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/wildlifekn/sparql"]
+        },
+        "uniprot-sparql-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https:/sparql.uniprot.org/sparql", "--description", "Resource for protein sequence and function information, for details about this endpoint see: https:/purl.uniprot.org/html/index-en.htm"]
+        }
+    }
+}
