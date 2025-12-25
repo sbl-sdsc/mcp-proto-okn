@@ -770,8 +770,9 @@ Returns:
         today = datetime.now().strftime("%Y-%m-%d")
         
         return f"""Create a chat transcript in .md format following the outline below. 
-1. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document. Include mermaid diagrams inline. Do not link to the mermaid file.
-2. Do not include the prompt to create this transcript.
+1. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document. 
+2. Include mermaid diagrams inline. Do not link to the mermaid file.
+3. Do not include the prompt to create this transcript.
 
 ## Chat Transcript
 <Title>
