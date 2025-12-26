@@ -1,0 +1,14 @@
+Geolocation Schema Compatibility Matrix,,,,
+,,,,
+Schema/Standard,KGs Using,Interoperability Level,Normalization Needed,Notes
+GeoSPARQL (OGC),"Geoconnex, SOC-KG, NIKG, SPOKE-OKN, Spatial KG, FRS KG, Hydrology KG",Direct,None - standard geometry representation,Industry standard for semantic geospatial
+S2 Geometry (Google),"Spatial KG, FRS KG, Hydrology KG, SOC-KG, UF-OKN",Direct,None - hierarchical cell IDs,Enables efficient spatial indexing
+STKO-KWG Ontology,"Spatial KG, SOC-KG, Hydrology KG",Direct,None - shared ontology,Common vocabulary for spatial relations
+HY_Features (OGC),"Geoconnex, Hydrology KG",Direct,None - hydrology standard,Semantic hydrology modeling
+Schema.org Geo,"DREAM-KG, Geoconnex, UF-OKN",Moderate,May need URI alignment,Web-oriented geo markup
+FIPS Codes,"Spatial KG, SPOKE-OKN, Rural KG, SCALES",Direct,Standardize to 5-digit format,US geographic identifier standard
+GeoNames,"Climate Models KG, SPOKE-OKN",Moderate,Align geonameid formats,Global gazetteer
+ISO Country Codes,"SPOKE-OKN, Climate Models KG",Direct,Choose ISO2 vs ISO3,International standard
+GADM Admin Regions,"Spatial KG, SOC-KG",Direct,Level alignment needed,Global administrative boundaries
+Custom Ontologies,"SUDOKN, NIKG, Rural KG",Low,Mapping to standard vocabs,May require ontology alignment
+WGS84 Coordinates,All KGs,Direct,Format standardization,Universal coordinate reference

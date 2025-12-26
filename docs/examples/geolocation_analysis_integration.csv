@@ -1,0 +1,13 @@
+Cross-KG Geolocation Linking Potential,,,,,
+,,,,,
+Linking Mechanism,KGs Connected,Integration Strength,Common Identifiers,Use Cases,Challenges
+S2 Cell Level 13 Index,"Spatial KG, FRS KG, Hydrology KG, SOC-KG, UF-OKN",HIGH,"S2 Cell IDs, spatial:connectedTo","Cross-domain spatial joins, facility-hydrology links, contaminant pathway analysis",Requires S2 cell computation for new data
+FIPS Codes (County),"Spatial KG, SPOKE-OKN, Rural KG, SCALES",HIGH,5-digit County FIPS,"Health-justice correlations, rural health analysis, environmental justice",Some variation in FIPS encoding
+GeoSPARQL WKT Geometries,"Geoconnex, SPOKE-OKN, SOC-KG, NIKG",HIGH,"geo:asWKT, sf:Point/Polygon","Spatial queries, overlap analysis, buffer zones",CRS standardization needed
+GeoNames IDs,"Climate Models KG, SPOKE-OKN",MEDIUM,geonameid property,"Climate-health linkages, global location matching",Not all KGs use GeoNames
+ISO Country Codes,"SPOKE-OKN, Climate Models KG",MEDIUM,"ISO3, ISO Alpha-2",International data integration,Limited to country granularity
+GADM Admin Hierarchy,"Spatial KG, SOC-KG",HIGH,KWG Administrative Region URIs,"Hierarchical aggregation, admin unit queries","US-focused, limited international"
+ZIP Codes,"SPOKE-OKN, SUDOKN, SCALES, Rural KG",MEDIUM,5-digit ZIP,"Address-level linking, service area analysis",ZIP-county mismatches
+Lat/Long Coordinates,All KGs,MEDIUM,Decimal degrees (WGS84),"Point-based spatial joins, proximity queries",Precision and format variations
+HY_Features Ontology,"Geoconnex, Hydrology KG",HIGH,"Catchment, Flowpath URIs","Water feature integration, flow tracing",Hydrology-specific
+Data Commons URIs,"FRS KG, Spatial KG",HIGH,dcid: identifiers,"Census data linkage, socioeconomic integration",Requires Data Commons alignment

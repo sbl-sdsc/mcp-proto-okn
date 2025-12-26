@@ -1,0 +1,11 @@
+Geolocation-Based Integration Use Cases,,,,
+,,,,
+Use Case,KGs Involved,Geolocation Link,Query Pattern,Expected Insights
+PFAS Contamination & Health Outcomes,"SAWGraph PFAS, SPOKE-OKN, FRS KG","S2 Cells, County FIPS",Link PFAS observations → S2 cells → counties → disease prevalence,Correlate contamination with health impacts
+Environmental Justice Analysis,"FRS KG, SPOKE-OKN, SCALES","S2 Cells, County FIPS",Facilities → neighborhoods → SDoH → justice outcomes,Identify disproportionate environmental burdens
+Climate Risk & Water Infrastructure,"Climate Models KG, Hydrology KG, UF-OKN","GeoNames, S2 Cells",Climate projections → water systems → flood risk points,Assess climate vulnerability of water infrastructure
+Rural Health Access Mapping,"Rural KG, SPOKE-OKN, DREAM-KG","County FIPS, Coordinates",Treatment providers → rural counties → health outcomes,Identify healthcare deserts
+Supply Chain Geographic Resilience,"SUDOKN, Climate Models KG","Coordinates, Cities",Manufacturers → geographic risk → climate hazards,Assess supply chain climate vulnerability
+Agricultural Practice & Water Quality,"SOC-KG, SAWGraph PFAS, Hydrology KG","S2 Cells, HY_Features",Experimental sites → watersheds → contamination observations,Link farming practices to downstream water quality
+Urban Flooding & Community Impact,"UF-OKN, NIKG, SPOKE-OKN","S2 Cells, Census Tracts",Flood risk → neighborhoods → demographic data,Prioritize flood mitigation investments
+Multi-State Contaminant Tracing,"Geoconnex, SAWGraph, FRS KG","HY_Features, S2 Cells",Trace contaminants via flow paths across jurisdictions,Cross-state contamination source identification

@@ -1,0 +1,53 @@
+Cross-KG Geolocation Data Inventory,,,,,,
+,,,,,,
+Knowledge Graph,Geolocation Data Type,Schema/Standard,Instances,Associated Entities,Granularity,Notes
+SAWGraph Spatial KG,S2 Cell Level 13,Google S2 / STKO-KWG,"7,404,184","Facilities, Samples, Features",~1.27 km²,Primary spatial index for SAWGraph ecosystem
+SAWGraph Spatial KG,Administrative Region L1 (States),GADM / KWG Ontology,102,"Facilities, Samples",State level,US states and territories
+SAWGraph Spatial KG,Administrative Region L2 (Counties),GADM / KWG Ontology / FIPS,"6,228","Facilities, Samples",County level,US counties with FIPS codes
+SAWGraph Spatial KG,Administrative Region L3 (Subdivisions),GADM / KWG Ontology,"35,458","Facilities, Samples",Township/City level,"County subdivisions (towns, townships)"
+Geoconnex,Point Geometry,"GeoSPARQL/WKT, sf:Point","1,150,866","Monitoring Sites, Wells, Dams",Point,Primary geometry for hydrologic locations
+Geoconnex,Polygon Geometry,"GeoSPARQL/WKT, sf:Polygon","1,267","Watersheds, Service Areas",Polygon,Catchment and area boundaries
+Geoconnex,Line Geometry,"GeoSPARQL/WKT, sf:LineString","34,078","Rivers, Streams, Flowpaths",Line,Linear hydrologic features
+Geoconnex,Hydrologic Locations,HY_Features Ontology,Varies,Monitoring Sites,Various,"Streams, Canals, Estuaries, etc."
+SPOKE-OKN,WKT Geometries,GeoSPARQL/WKT,"246,285",Administrative Areas,Various,Geographic boundaries for health data
+SPOKE-OKN,ZIP Codes,Custom Schema,"~33,000","Health Outcomes, SDoH",ZIP code,Postal code level health data
+SPOKE-OKN,Counties,FIPS Codes,"~3,200","Diseases, SDoH",County,County-level prevalence data
+SPOKE-OKN,States,State Abbreviations/FIPS,50+,"Diseases, Compounds",State,State-level environmental data
+SPOKE-OKN,Countries,"ISO3 Codes, GeoNames",~250,"Organisms, Diseases",Country,International isolation/prevalence data
+Climate Models KG,Cities,GeoNames,"30,062","Climate Models, Experiments",City,Global city coverage with coordinates
+Climate Models KG,Countries,ISO/ISO3/GeoNames,252,"Institutes, Experiments",Country,Country boundaries with ISO codes
+Climate Models KG,Country Subdivisions,GeoNames,"3,893",Climate Data,Province/State,Administrative subdivisions
+Climate Models KG,Continents,Custom,7,Climate Domains,Continent,Continental coverage
+Climate Models KG,Lat/Long Coordinates,WGS84,"~34,000","Cities, Locations",Point,Decimal degrees coordinates
+SAWGraph FRS KG,S2 Cell Connections,S2 Level 13 / spatial:connectedTo,"4,384,321",EPA Facilities,~1.27 km²,Facility-to-cell spatial indexing
+SAWGraph FRS KG,Facilities,EPA FRS,"5,672,357",Environmental Records,Point/Site,US regulated facilities
+SAWGraph FRS KG,Admin Region Links,Data Commons URIs,"~826,000",Facilities,County subdivision,Level 3 admin region links
+SOC-KG,Experimental Sites,GeoSPARQL/WKT,60,"Soil Samples, Treatments",Site,Agricultural experimental sites
+SOC-KG,Locations,Custom Schema,58,Experiments,Site,Field locations
+SOC-KG,S2 Cell Level 13,STKO-KWG,"1,069","Samples, Sites",~1.27 km²,Spatial indexing for samples
+NIKG,Point Geometries,"GeoSPARQL/WKT, sf:Point","9,133",Incidents,Point,Philadelphia incident locations
+NIKG,Census Tracts,Philadelphia Metadata,361,Block Groups,Tract,Statistical area boundaries
+NIKG,Block Groups,Philadelphia Metadata,Varies,Incidents,Block Group,Census block groups
+SUDOKN,Postal Addresses,IOF Core / Custom,"20,728",Manufacturers,Address,Full street addresses
+SUDOKN,Lat/Long Coordinates,Custom (2D Cartesian),"20,728",Manufacturers,Point,Geocoded coordinates
+SUDOKN,Cities,Custom Schema,"2,994",Manufacturers,City,City-level classification
+SUDOKN,States,Custom Schema,129,Manufacturers,State,State-level classification
+SUDOKN,ZIP Codes,US Postal,Varies,Manufacturers,ZIP,5-digit postal codes
+Rural Resilience KG,Counties,FIPS Codes,"3,253","Health Services, RUCC",County,US counties with RUCC codes
+Rural Resilience KG,Cities,Custom Schema,"31,120",Treatment Providers,City,Cities across US
+Rural Resilience KG,States,State Codes,56,"Counties, Providers",State,US states and territories
+Rural Resilience KG,Treatment Providers,"Lat/Long, Address","9,037",Mental Health Services,Point/Address,Geocoded provider locations
+DREAM-KG,Lat/Long Coordinates,Schema.org,87,Social Service Organizations,Point,Service organization locations
+DREAM-KG,Addresses,Schema.org,87,Organizations,Address,Full postal addresses
+SAWGraph PFAS KG,Sample Points,ContaminOSO,"19,167",PFAS Observations,Point,Sample collection locations
+SAWGraph PFAS KG,Sampled Features,ContaminOSO,"18,929",Observations,Feature,"Wells, water bodies, facilities"
+SAWGraph PFAS KG,Observations,SOSA/SSN,"1,282,200","Samples, Measurements",Point,Contamination measurements
+SAWGraph Hydrology KG,S2 Cells Level 13,STKO-KWG,"7,404,184",Water Features,~1.27 km²,Shared with Spatial KG
+SAWGraph Hydrology KG,Water Features,HY_Features/NHDPlus,Varies,"Aquifers, Streams, Lakes",Various,Surface and groundwater features
+SAWGraph Hydrology KG,Public Water Systems,EPA SDWIS,Varies,Service Areas,System,PWS with service populations
+UF-OKN,Places,Schema.org Place,Varies,"Infrastructure, Risk Points",Various,Urban infrastructure locations
+UF-OKN,GeoCoordinates,Schema.org,Varies,"Buildings, Roads",Point,WGS84 coordinates
+UF-OKN,S2 Cells,STKO-KWG,Varies,Flood Risk,~1.27 km²,Spatial indexing for flood data
+SCALES,County FIPS Codes,NIEM/FIPS,Varies,"Cases, Courts",County,Court jurisdiction locations
+SCALES,Postal Codes,NIEM,Varies,"Parties, Courts",ZIP,Address-level data
+SCALES,Court Jurisdictions,NIEM,Varies,Cases,District/Circuit,Federal court boundaries

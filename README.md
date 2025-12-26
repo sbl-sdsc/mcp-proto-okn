@@ -125,8 +125,12 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 11. **Philadelphia Area Incidents (nikg)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+
+12. **Cross-KG Geolocation Analysis**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-12. **Chemical Identifiers (Proto-OKN KGs)**
+13. **Cross-KG Chemical Identifiers**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)
 
