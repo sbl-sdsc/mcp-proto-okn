@@ -195,6 +195,6 @@ The integration of Rural KG, SPOKE-OKN, and DREAM-KG demonstrates the power of f
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for ruralkg on 2025-12-27*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2025-12-27*
 
 *Model: Claude Sonnet 4.5 (claude-sonnet-4-20250514)*
