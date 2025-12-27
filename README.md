@@ -131,15 +131,19 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-13. **Philadelphia Area Incidents (nikg)**
+13. **Flooding and Socio-Economic Factors (ufokn, spatialkd, spoke-okn)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
+
+14. **Philadelphia Area Incidents (nikg)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
 
-14. **Cross-KG Geolocation Analysis**
+15. **Cross-KG Geolocation Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-15. **Cross-KG Chemical Compound Analysis**
+16. **Cross-KG Chemical Compound Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
