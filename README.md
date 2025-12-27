@@ -132,7 +132,7 @@ Each link below points to a chat transcript that demonstrates how to generate a 
    
 13. **Cross-KG Chemical Identifiers**
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/chemical_identifiers.md)
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
 
 ### Building and Publishing (maintainers only)
