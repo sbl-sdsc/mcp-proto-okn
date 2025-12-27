@@ -131,7 +131,7 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-13. **Flooding and Socio-Economic Factors (ufokn, spatialkd, spoke-okn)**
+13. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
