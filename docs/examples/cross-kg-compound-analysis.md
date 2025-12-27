@@ -554,6 +554,6 @@ Two files have been created with the complete analysis:
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for spoke-okn on 2025-12-26*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2025-12-26*
 
 Model: claude-opus-4-5-20250514
