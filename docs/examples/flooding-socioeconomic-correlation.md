@@ -185,6 +185,6 @@ Create transcript
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for ufokn on 2025-12-27*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2025-12-27*
 
 Model: claude-sonnet-4-20250514
