@@ -118,24 +118,28 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-
 10. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
-11. **Michigan Flooding Event (ufokn)**
+
+11. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
+
+    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
+
+12. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-12. **Philadelphia Area Incidents (nikg)**
+13. **Philadelphia Area Incidents (nikg)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
 
-13. **Cross-KG Geolocation Analysis**
+14. **Cross-KG Geolocation Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-14. **Cross-KG Chemical Compound Analysis**
+15. **Cross-KG Chemical Compound Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
