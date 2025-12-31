@@ -98,52 +98,56 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-5. **PFOA in Drinking Water (spoke-okn)**
+5. **Contamination at Superfund Sites (spoke-okn)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
+
+6. **PFOA in Drinking Water (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-6. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+7. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-7. **Biological Targets for PFOA (biobricks-toxcast)**
+8. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-8. **Criminal Justice Patterns (scales)**
+9. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-9. **Drug Possession Charges (scales)**
+10. **Drug Possession Charges (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-10. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
+11. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
 
-11. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
+12. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-12. **Michigan Flooding Event (ufokn)**
+13. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-13. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
+14. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
-14. **Philadelphia Area Incidents (nikg)**
+15. **Philadelphia Area Incidents (nikg)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
 
-15. **Cross-KG Geolocation Analysis**
+16. **Cross-KG Geolocation Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-16. **Cross-KG Chemical Compound Analysis**
+17. **Cross-KG Chemical Compound Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 

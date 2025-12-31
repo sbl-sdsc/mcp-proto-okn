@@ -1,207 +1,289 @@
-# SPOKE-OKN Knowledge Graph Exploration
+# SPOKE-OKN Schema Visualization
+
 ## Chat Transcript
 
-### Date: December 11, 2025
+👤 **User**  
+@spoke-okn
 
 ---
 
-## User Request
+🧠 **Assistant**  
+I'll help you explore the SPOKE-OKN knowledge graph! Let me first get some information about this resource.
 
-> @spoke-okn
+Great! I can help you work with the **SPOKE-OKN (SPOKE Open Knowledge Network)** knowledge graph. This is a comprehensive biomedical and environmental health knowledge graph that integrates diverse data across genomics, environmental science, and public health.
 
----
+**Key features of SPOKE-OKN:**
+- Integrates data on organisms, genes, diseases, chemical compounds, social determinants of health, and environmental contexts
+- Includes detailed geographic information (countries down to ZIP codes)
+- Supports spatial analyses of health outcomes, environmental exposures, and socioeconomic factors
+- Maintained by the Baranzini Lab at UCSF
 
-## Initial Discovery
+**What would you like to explore?** I can help you:
+- Understand what types of data are available (genes, diseases, locations, environmental factors, etc.)
+- Search for specific information (e.g., genes related to diseases, environmental exposures in certain areas)
+- Analyze relationships between different entities
+- Visualize the knowledge graph structure
 
-I explored the SPOKE-OKN knowledge graph, which is a comprehensive biomedical and environmental health knowledge graph that integrates diverse data across genomics, environmental science, and public health.
-
-### Overview
-- **Endpoint**: https://frink.apps.renci.org/spoke-okn/sparql
-- **Homepage**: https://spoke.ucsf.edu
-- **PI**: Sergio Baranzini (sergio.baranzini@ucsf.edu)
-- **Funding**: NSF Award #2333819
-
-### Description
-The spoke-okn (SPOKE Open Knowledge Network) KG is a comprehensive biomedical and environmental health knowledge graph that integrates diverse data across genomics, environmental science, and public health. It encompasses multiple primary entity types, including organisms, geographic locations (from countries to ZIP codes), genes, diseases, chemical compounds, social determinants of health, and environmental contexts. With detailed hierarchical coverage of geographic information, spoke-okn supports spatial analyses of health outcomes, environmental exposures, and socioeconomic factors across a range of geographic scales.
-
----
-
-## Knowledge Graph Structure
-
-### Main Entity Types (7 Classes)
-
-1. **Gene** - Units of heredity determining biological characteristics
-2. **Disease** - Disorders or illnesses affecting health
-3. **Chemical Entity** - Chemical substances and compounds
-4. **Environmental Feature** - Environmental quality entities
-5. **Organism Taxon** - Classifications of living organisms (including bacterial strains)
-6. **Administrative Area** - Geographic regions (countries, states, counties, cities, ZIP codes)
-7. **Social Determinants of Health (SDoH)** - Social/economic factors influencing health
-
-### Relationship Categories (124 predicates)
-
-#### Disease-Related
-- Disease-Gene associations
-- Disease-SDoH associations  
-- Disease prevalence and mortality by location
-- Drug treatments and contraindications
-- Disease subtypes and similarities
-
-#### Chemical/Drug-Related
-- Drug-drug interactions
-- Gene upregulation/downregulation by compounds
-- Antimicrobial resistance patterns
-- Chemical roles and hierarchies
-- Treatment and contraindication relationships
-
-#### Geographic
-- Hierarchical location relationships (city in county in state in country)
-- Disease prevalence/mortality by location
-- Environmental features and chemical compounds found in locations
-- SDoH prevalence by location
-
-#### Gene-Related
-- Gene expression in diseases
-- Positive/negative disease markers
-- Drug response variants
-- Pharmacogenomic associations
+Would you like me to show you the schema to see what kinds of data and relationships are available, or do you have a specific question you'd like to explore?
 
 ---
 
-## Class Diagram
+👤 **User**  
+Visualize the schema
+
+---
+
+🧠 **Assistant**  
+I'll visualize the schema for you. Let me first get the schema information and then create a visual diagram.
 
 ```mermaid
 classDiagram
-    class Gene {
-        +label: string
-        +ensembl: string
-        +synonyms: string[]
-    }
-    
-    class Disease {
-        +label: string
-        +mesh_list: string[]
-        +omim_list: string[]
-    }
-    
-    class ChemicalEntity {
-        +label: string
-        +smiles: string
-        +standardized_smiles: string
-        +max_phase: int
-    }
-    
-    class EnvironmentalFeature {
-        +label: string
-        +mesh_ids: string[]
-    }
-    
-    class OrganismTaxon {
-        +label: string
-        +level: string
-        +strain: string
-        +gram_stain: string
-        +motility: string
-        +oxygen_requirement: string
-        +genome_size: string
-        +antimicrobial_resistance: string
-    }
-    
-    class AdministrativeArea {
-        +label: string
-        +location_name: string
-        +latitude: decimal
-        +longitude: decimal
-        +population: int
-        +state_fips: string
-        +county_fips: string
-        +city_fips: string
-        +iso3: string
-    }
-    
-    class SDoH {
-        +label: string
-        +domain: string
-        +topic: string
-        +variable: string
-        +short_question_text: string
-    }
+direction TB
 
-    %% Disease Relationships
-    Disease "0..*" -- "0..*" Gene : ASSOCIATES_DaG
-    Disease "0..*" -- "0..*" Disease : ISA_DiD (subtype)
-    Disease "0..*" -- "0..*" Disease : RESEMBLES_DrD
-    Disease "0..*" -- "0..*" SDoH : ASSOCIATES_SaD
-    Disease "0..*" -- "1..*" AdministrativeArea : PREVALENCE_DpL
-    Disease "0..*" -- "1..*" AdministrativeArea : MORTALITY_DmL
-    
-    %% Chemical/Drug Relationships
-    ChemicalEntity "0..*" -- "0..*" Disease : TREATS_CtD
-    ChemicalEntity "0..*" -- "0..*" Disease : CONTRAINDICATES_CcD
-    ChemicalEntity "0..*" -- "0..*" ChemicalEntity : INTERACTS_CiC
-    ChemicalEntity "0..*" -- "0..*" ChemicalEntity : ISA_CiC (subtype)
-    ChemicalEntity "0..*" -- "0..*" ChemicalEntity : PARTOF_CpC
-    ChemicalEntity "0..*" -- "0..*" ChemicalEntity : HASROLE_ChC
-    ChemicalEntity "0..*" -- "0..*" Gene : UPREGULATES_CuG
-    ChemicalEntity "0..*" -- "0..*" Gene : DOWNREGULATES_CdG
-    ChemicalEntity "0..*" -- "1..*" AdministrativeArea : FOUNDIN_CfL
-    
-    %% Gene Relationships
-    Gene "0..*" -- "0..*" Disease : EXPRESSEDIN_GeiD
-    Gene "0..*" -- "0..*" Disease : MARKER_POS_GmpD
-    Gene "0..*" -- "0..*" Disease : MARKER_NEG_GmnD
-    Gene "0..*" -- "0..*" ChemicalEntity : RESISTANT_TO_mGrC
-    Gene "0..*" -- "0..*" ChemicalEntity : RESPONSE_TO_mGrC
-    Gene "0..*" -- "0..*" ChemicalEntity : ADVRESPONSE_TO_mGarC
-    
-    %% Organism Relationships
-    OrganismTaxon "0..*" -- "0..*" ChemicalEntity : RESPONDS_TO_OrC
-    OrganismTaxon "0..*" -- "1..*" AdministrativeArea : ISOLATEDIN_OiL
-    
-    %% Environmental Relationships
-    EnvironmentalFeature "0..*" -- "0..*" EnvironmentalFeature : ISA_EiE (subtype)
-    EnvironmentalFeature "0..*" -- "1..*" AdministrativeArea : FOUNDIN_EfL
-    
-    %% Geographic Relationships
-    AdministrativeArea "0..*" -- "0..*" AdministrativeArea : PARTOF_LpL
-    
-    %% SDoH Relationships
-    SDoH "0..*" -- "0..*" SDoH : ISA_SiS (subtype)
-    SDoH "0..*" -- "1..*" AdministrativeArea : PREVALENCEIN_SpL
+class SDoH {
+    data_source
+    domain
+    mesh_ids
+    topic
+}
+
+class AdministrativeArea {
+    abbr
+    city_fips
+    code
+    county_fips
+    iso3
+    latitude
+    longitude
+    state
+    state_fips
+    state_name
+    zipcode_type
+}
+
+class ChemicalEntity {
+    max_phase
+    smiles
+    standardized_smiles
+    synonyms
+}
+
+class Disease {
+    mesh_list
+    omim_list
+}
+
+class EnvironmentalFeature {
+    synonyms
+}
+
+class Gene {
+    ensembl
+}
+
+class OrganismTaxon {
+    antimicrobial_resistance
+    biovar
+    collection_date
+    disease
+    genbank_accessions
+    genome_size
+    gram_stain
+    has_amr_phenotype
+    host_age
+    host_gender
+    host_health
+    host_is_human
+    host_name
+    is_resistant
+    isolation_country
+    isolation_source
+    level
+    motility
+    oxygen_requirement
+    pathovar
+    salinity
+    serovar
+    sporulation
+    strain
+    temperature_range
+    usa_isolation_country
+}
+
+class CONTRAINDICATES_CcD {
+    Activity Sources
+}
+
+class TREATS_CtD {
+    Activity Sources
+    Phase
+}
+
+class ASSOCIATES_SaD {
+    Co-occurrence
+    Enrichment
+    Fisher's Test
+    Odds Ratio
+}
+
+class RESEMBLES_DrD {
+    Co-occurrence
+    Enrichment
+    Fisher's Test
+    Odds Ratio
+}
+
+class PREVALENCE_DpL {
+    Data Value
+    Data Value Type
+    Data Value Unit
+    Location Name
+    Lower Bound
+    Metric Name
+    Short Question Text
+    State Abbreviation
+    State Description
+    Total Population
+    Upper Bound
+    Value
+    Year
+}
+
+class FOUNDIN_CfL {
+    Date
+    Date Type
+    Media
+    Metrics
+    Unit
+    Value
+    Year
+}
+
+class INTERACTS_CiC {
+    Drug-Drug Interaction Risk
+}
+
+class MORTALITY_DmL {
+    Global Health Estimate Code
+    Mortality Per 100k
+    Population
+    Usability
+    Value
+}
+
+class RESPONDS_TO_OrC {
+    Laboratory Typing Method
+    Laboratory Typing Platform
+    Measurement Sign
+    Measurement Unit
+    Measurement Value
+    Resistant Phenotype
+    Testing Standard Year
+    Vendor
+}
+
+class PREVALENCEIN_SpL {
+    Method
+    Value
+    Variable
+    Year
+}
+
+class FOUNDIN_EfL {
+    Metrics
+    Unit
+    Value
+    Year
+}
+
+class PARTOF_LpL {
+    Percent of Place Area in ZIP
+    Percent of ZIP Area in Place
+}
+
+SDoH --> SDoH : ISA_SiS
+Disease --> Disease : ISA_DiD
+ChemicalEntity --> ChemicalEntity : ISA_CiC
+EnvironmentalFeature --> EnvironmentalFeature : ISA_EiE
+AdministrativeArea --> AdministrativeArea : PARTOF_LpL_simple
+ChemicalEntity --> ChemicalEntity : PARTOF_CpC
+
+ChemicalEntity --> FOUNDIN_CfL
+FOUNDIN_CfL --> AdministrativeArea
+
+EnvironmentalFeature --> FOUNDIN_EfL
+FOUNDIN_EfL --> AdministrativeArea
+
+OrganismTaxon --> AdministrativeArea : ISOLATEDIN_OiL
+
+Disease --> PREVALENCE_DpL
+PREVALENCE_DpL --> AdministrativeArea
+
+SDoH --> PREVALENCEIN_SpL
+PREVALENCEIN_SpL --> AdministrativeArea
+
+Disease --> MORTALITY_DmL
+MORTALITY_DmL --> AdministrativeArea
+
+Disease --> Gene : ASSOCIATES_DaG
+
+SDoH --> ASSOCIATES_SaD
+ASSOCIATES_SaD --> Disease
+
+ChemicalEntity --> TREATS_CtD
+TREATS_CtD --> Disease
+
+ChemicalEntity --> CONTRAINDICATES_CcD
+CONTRAINDICATES_CcD --> Disease
+
+ChemicalEntity --> INTERACTS_CiC
+INTERACTS_CiC --> ChemicalEntity
+
+ChemicalEntity --> Gene : UPREGULATES_CuG
+ChemicalEntity --> Gene : DOWNREGULATES_CdG
+
+Gene --> Disease : EXPRESSEDIN_GeiD
+
+OrganismTaxon --> RESPONDS_TO_OrC
+RESPONDS_TO_OrC --> ChemicalEntity
+
+Gene --> ChemicalEntity : RESISTANT_TO_mGrC
+Gene --> ChemicalEntity : RESPONSE_TO_mGrC
+Gene --> ChemicalEntity : ADVRESPONSE_TO_mGarC
+
+Gene --> Disease : MARKER_POS_GmpD
+Gene --> Disease : MARKER_NEG_GmnD
+
+Disease --> RESEMBLES_DrD
+RESEMBLES_DrD --> Disease
+
+ChemicalEntity --> ChemicalEntity : HASROLE_ChC
+
+AdministrativeArea --> PARTOF_LpL
+PARTOF_LpL --> AdministrativeArea
 ```
 
----
+Here's a visual representation of the SPOKE-OKN knowledge graph schema! 
 
-## Key Insights
+**Key Components:**
 
-The SPOKE-OKN knowledge graph provides a rich integration of:
+**7 Main Entity Types:**
+- **SDoH** (Social Determinants of Health) - social and economic factors affecting health
+- **AdministrativeArea** - geographic locations (countries, states, counties, ZIP codes)
+- **ChemicalEntity** - drugs and chemical compounds
+- **Disease** - disorders and illnesses
+- **EnvironmentalFeature** - environmental quality entities
+- **Gene** - units of heredity
+- **OrganismTaxon** - bacterial strains and organisms
 
-1. **Biomedical Data**: Genes, diseases, and their associations with detailed medical coding (MeSH, OMIM, Ensembl)
+**Relationship Types:**
+- **Simple arrows** show direct relationships (e.g., Gene → Disease, Chemical → Gene)
+- **Box-shaped relationships** contain edge properties - these store quantitative data on the relationships themselves (like disease prevalence values, drug interaction risk levels, mortality rates, etc.)
 
-2. **Pharmacological Data**: Chemical compounds, drugs, their interactions, treatment relationships, and clinical trial phases
-
-3. **Geographic Data**: Multi-level administrative hierarchies with population and coordinate data for spatial health analysis
-
-4. **Environmental Health**: Environmental features and chemical presence in locations with measurements and metrics
-
-5. **Microbiological Data**: Organism taxonomy with antimicrobial resistance profiles and isolation locations
-
-6. **Social Determinants**: Health factors organized by domain and topic with geographic prevalence
-
-7. **Pharmacogenomics**: Gene variants affecting drug response, resistance, and adverse reactions
-
-This comprehensive structure enables complex queries spanning genomics, environmental science, public health, and spatial epidemiology.
+The diagram shows how SPOKE-OKN integrates biomedical, environmental, and geographic data to support research on health outcomes, environmental exposures, and social determinants of health.
 
 ---
 
-## Summary
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2025-12-31*
 
-The SPOKE-OKN knowledge graph is a powerful resource for:
-- Investigating disease-gene associations
-- Analyzing drug interactions and pharmacogenomics
-- Studying geographic health disparities
-- Exploring environmental health impacts
-- Understanding social determinants of health
-- Tracking antimicrobial resistance patterns
-
-All data is accessible via SPARQL queries at the Frink endpoint.
+Model: claude-sonnet-4-20250514
