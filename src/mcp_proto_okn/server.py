@@ -40,6 +40,14 @@ from . import __version__
 class QueryAnalyzer:
     """Analyzes SPARQL queries for common issues with LIMIT and ORDER BY."""
     
+    def __init__(self, edge_predicates_with_props: Optional[set] = None):
+        """Initialize with optional set of predicates that have edge properties."""
+        self.edge_predicates_with_props = edge_predicates_with_props or set()
+    
+    def update_edge_predicates(self, predicates: set):
+        """Update the set of predicates known to have edge properties."""
+        self.edge_predicates_with_props = predicates
+    
     @staticmethod
     def has_limit(query: str) -> Optional[int]:
         """Check if query has LIMIT clause and return the limit value."""
@@ -86,7 +94,8 @@ class QueryAnalyzer:
         # 2. First non-subject variable
         
         numeric_keywords = ['concentration', 'count', 'value', 'amount', 'level', 
-                          'score', 'rank', 'number', 'total', 'sum', 'avg', 'max', 'min']
+                          'score', 'rank', 'number', 'total', 'sum', 'avg', 'max', 'min',
+                          'p_value', 'pvalue', 'log2fc', 'fc', 'fold']
         
         # Check for numeric variable names
         for var in variables:
@@ -106,8 +115,50 @@ class QueryAnalyzer:
         
         return ""
     
-    @staticmethod
-    def analyze_query(query: str) -> Dict[str, Any]:
+    def _analyze_edge_property_access(self, query: str) -> str:
+        """
+        Check if query might be trying to access edge properties incorrectly.
+        Returns warning string if issues detected, empty string otherwise.
+        """
+        if not self.edge_predicates_with_props:
+            # No edge property metadata available yet
+            return ""
+        
+        # Check if query uses RDF reification pattern
+        has_reification = bool(re.search(
+            r'rdf:subject.*rdf:predicate.*rdf:object', 
+            query, 
+            re.IGNORECASE | re.DOTALL
+        ))
+        
+        # Check if query references any predicates known to have edge properties
+        predicates_in_query = []
+        for predicate in self.edge_predicates_with_props:
+            # Match both URI and label forms
+            predicate_pattern = re.escape(str(predicate))
+            if re.search(predicate_pattern, query, re.IGNORECASE):
+                predicates_in_query.append(predicate)
+        
+        # If query uses edge predicates but not reification pattern, warn
+        if predicates_in_query and not has_reification:
+            predicate_names = ', '.join(str(p).split('/')[-1] for p in predicates_in_query[:3])
+            if len(predicates_in_query) > 3:
+                predicate_names += f", and {len(predicates_in_query) - 3} more"
+            
+            return (
+                f"\n⚠️  Detected relationship(s) with edge properties: {predicate_names}\n"
+                "These relationships store data ON the relationship itself (e.g., log2fc, p-values).\n"
+                "To access edge properties, use the RDF reification pattern:\n"
+                "  ?stmt rdf:subject ?source ;\n"
+                "        rdf:predicate schema:RELATIONSHIP_NAME ;\n"
+                "        rdf:object ?target ;\n"
+                "        schema:property_name ?value .\n"
+                "Check the schema's edge_properties section for query templates."
+            )
+        
+        return ""
+    
+    def analyze_query(self, query: str) -> Dict[str, Any]:
         """
         Analyze a SPARQL query for potential issues.
         
@@ -118,6 +169,7 @@ class QueryAnalyzer:
             - needs_order_by: bool (True if LIMIT without ORDER BY)
             - suggested_order: str (suggested ORDER BY clause)
             - warning: str (warning message if issues found)
+            - edge_property_warning: str (warning if edge properties not accessed correctly)
         """
         limit_val = QueryAnalyzer.has_limit(query)
         has_order = QueryAnalyzer.has_order_by(query)
@@ -128,9 +180,11 @@ class QueryAnalyzer:
             'has_order_by': has_order,
             'needs_order_by': limit_val is not None and not has_order,
             'suggested_order': '',
-            'warning': ''
+            'warning': '',
+            'edge_property_warning': ''
         }
         
+        # Check for LIMIT without ORDER BY
         if analysis['needs_order_by']:
             analysis['suggested_order'] = QueryAnalyzer.suggest_order_by(query)
             analysis['warning'] = (
@@ -138,6 +192,15 @@ class QueryAnalyzer:
                 "This returns arbitrary results, not the 'top N'. "
                 f"Consider adding: {analysis['suggested_order']}"
             )
+        
+        # Check for edge property access (generic)
+        edge_property_analysis = self._analyze_edge_property_access(query)
+        if edge_property_analysis:
+            analysis['edge_property_warning'] = edge_property_analysis
+            if analysis['warning']:
+                analysis['warning'] += '\n' + edge_property_analysis
+            else:
+                analysis['warning'] = edge_property_analysis
         
         return analysis
 
@@ -149,7 +212,14 @@ class SPARQLServer:
         self.endpoint_url = endpoint_url
         self.description = description  # None means: try to infer
         self.github_base_url = "https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/metadata/entities"
-        self.analyzer = QueryAnalyzer()
+        
+        # Track schema state
+        self._schema_fetched = False
+        self._edge_properties_cache = {}  # Cache edge property metadata
+        self._edge_predicates_with_props = set()  # Set of predicate URIs/labels that have edge properties
+        
+        # Initialize analyzer (will be updated after schema is fetched)
+        self.analyzer = QueryAnalyzer(edge_predicates_with_props=set())
 
         # Extract KG name from endpoint URL during initialization
         self.kg_name, self.registry_url = self._get_registry_url()
@@ -323,7 +393,7 @@ class SPARQLServer:
     def _get_entity_metadata(self) -> Dict[str, Dict[str, str]]:
         """
         Fetch entity metadata from GitHub CSV file.
-        Returns a dict mapping URI to {label, description, type}.
+        Returns a dict mapping URI to {label, description, type, edge_property_of, source_class, target_class}.
         """
         if not self.registry_url:
             return {}
@@ -344,12 +414,18 @@ class SPARQLServer:
                 label = row.get('Label', '').strip()
                 description = row.get('Description', '').strip()
                 entity_type = row.get('Type', '').strip()
+                edge_property_of = row.get('EdgePropertyOf', '').strip()
+                source_class = row.get('SourceClass', '').strip()
+                target_class = row.get('TargetClass', '').strip()
                 
                 if uri:
                     metadata[uri] = {
                         'label': label,
                         'description': description,
-                        'type': entity_type
+                        'type': entity_type,
+                        'edge_property_of': edge_property_of,
+                        'source_class': source_class,
+                        'target_class': target_class
                     }
             
             return metadata
@@ -371,6 +447,18 @@ class SPARQLServer:
         """
         # Analyze query before execution if requested
         analysis = None
+        warnings = []
+        
+        # Warn if schema hasn't been fetched
+        if not self._schema_fetched and analyze:
+            warnings.append({
+                "type": "schema_not_fetched",
+                "message": (
+                    "⚠️  RECOMMENDATION: Call get_schema() before querying to understand "
+                    "the knowledge graph structure, especially for edge properties."
+                )
+            })
+        
         if analyze:
             analysis = self.analyzer.analyze_query(query_string)
         
@@ -418,7 +506,47 @@ class SPARQLServer:
                 # For CSV format, prepend warning as comment
                 formatted_result = f"# {analysis['warning']}\n{formatted_result}"
         
+        # Add schema warnings if present
+        if warnings and isinstance(formatted_result, dict):
+            if 'query_analysis' in formatted_result:
+                formatted_result['query_analysis']['schema_warnings'] = warnings
+            else:
+                formatted_result['schema_warnings'] = warnings
+        
         return formatted_result
+
+    def _generate_query_template(self, relationship_label: str, source_class: str, target_class: str, properties: List[Dict]) -> str:
+        """Generate a SPARQL query template for a reified relationship with edge properties."""
+        
+        source_var = source_class.lower() if source_class else 'source'
+        target_var = target_class.lower() if target_class else 'target'
+        
+        # Build property selects and patterns
+        prop_selects = []
+        prop_patterns = []
+        
+        for prop in properties:
+            prop_label = prop['label']
+            prop_selects.append(f"?{prop_label}")
+            prop_patterns.append(f"         schema:{prop_label} ?{prop_label} ;")
+        
+        # Remove trailing semicolon from last pattern
+        if prop_patterns:
+            prop_patterns[-1] = prop_patterns[-1].rstrip(' ;') + ' .'
+        
+        template = f"""PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://purl.org/okn/frink/kg/spoke-genelab/schema/>
+
+SELECT ?{source_var} ?{target_var} {' '.join(prop_selects)}
+WHERE {{
+  ?stmt rdf:subject ?{source_var} ;
+        rdf:predicate schema:{relationship_label} ;
+        rdf:object ?{target_var} ;
+{chr(10).join(prop_patterns)}
+}}
+LIMIT 10"""
+        
+        return template
 
     def query_schema(self, compact: bool = True) -> Dict[str, Any]:
         """
@@ -428,13 +556,15 @@ class SPARQLServer:
             compact: If True, returns just URIs. If False, enriches with labels and descriptions.
         
         Returns:
-            A dictionary with 'classes' and 'predicates' keys, each containing schema info.
+            A dictionary with 'classes', 'predicates', 'edge_properties', and 'node_properties' keys.
         """
         if not self.registry_url:
             return {
                 'error': 'Cannot determine KG name for schema query',
                 'classes': {'columns': ['uri'], 'data': [], 'count': 0},
-                'predicates': {'columns': ['uri'], 'data': [], 'count': 0}
+                'predicates': {'columns': ['uri'], 'data': [], 'count': 0},
+                'edge_properties': {},
+                'node_properties': {'columns': ['uri'], 'data': [], 'count': 0}
             }
         
         kg_name = self.kg_name
@@ -447,6 +577,8 @@ class SPARQLServer:
             # Separate entities by type
             classes = []
             predicates = []
+            edge_properties_dict = {}
+            node_properties = []
             
             for uri, metadata in entity_metadata.items():
                 entity_type = metadata.get('type', '').lower()
@@ -459,29 +591,143 @@ class SPARQLServer:
                         'type': metadata.get('type', '')
                     })
                 elif entity_type == 'predicate':
+                    # Extract the short name from the URI (last part after the final slash)
+                    short_name = uri.split('/')[-1] if '/' in uri else uri
                     predicates.append({
+                        'uri': uri,
+                        'short_name': short_name,  # Add short name for matching
+                        'label': metadata.get('label', ''),
+                        'description': metadata.get('description', ''),
+                        'type': metadata.get('type', ''),
+                        'source_class': metadata.get('source_class', ''),
+                        'target_class': metadata.get('target_class', ''),
+                        'has_edge_properties': False  # Will be updated below
+                    })
+                elif entity_type == 'edgeproperty':
+                    parent_relationships = metadata.get('edge_property_of', '')
+                    
+                    # BUGFIX: Edge properties can belong to multiple relationships (semicolon-separated)
+                    # Split on semicolon and process each relationship separately
+                    if parent_relationships:
+                        # Split on semicolon and strip whitespace from each relationship name
+                        relationship_list = [rel.strip() for rel in parent_relationships.split(';') if rel.strip()]
+                        
+                        for parent_relationship in relationship_list:
+                            if parent_relationship not in edge_properties_dict:
+                                edge_properties_dict[parent_relationship] = []
+                            
+                            edge_properties_dict[parent_relationship].append({
+                                'uri': uri,
+                                'label': metadata.get('label', ''),
+                                'description': metadata.get('description', ''),
+                                'type': metadata.get('type', '')
+                            })
+                elif entity_type == 'nodeproperty':
+                    node_properties.append({
                         'uri': uri,
                         'label': metadata.get('label', ''),
                         'description': metadata.get('description', ''),
-                        'type': metadata.get('type', '')
+                        'type': metadata.get('type', ''),
+                        'class': metadata.get('source_class', '')
+                    })
+            
+            # Mark predicates that have edge properties
+            # BUGFIX: Match using short_name (e.g., "TREATS_CtD") not label (e.g., "Treats (Compound treats Disease)")
+            for pred in predicates:
+                pred_short_name = pred['short_name']
+                if pred_short_name in edge_properties_dict:
+                    pred['has_edge_properties'] = True
+            
+            # Build edge properties output with relationship metadata
+            edge_properties_output = {}
+            for relationship_label, properties in edge_properties_dict.items():
+                # Find the full relationship metadata using short_name
+                rel_metadata = next((p for p in predicates if p['short_name'] == relationship_label), None)
+                
+                if rel_metadata:
+                    edge_properties_output[relationship_label] = {
+                        'uri': rel_metadata['uri'],
+                        'label': relationship_label,
+                        'description': rel_metadata['description'],
+                        'source_class': rel_metadata['source_class'],
+                        'target_class': rel_metadata['target_class'],
+                        'properties': properties,
+                        'query_template': self._generate_query_template(
+                            relationship_label, 
+                            rel_metadata['source_class'],
+                            rel_metadata['target_class'],
+                            properties
+                        )
+                    }
+            
+            # Cache edge property information and update analyzer
+            self._edge_properties_cache = edge_properties_output
+            predicates_with_props = set()
+            for relationship_label, edge_info in edge_properties_output.items():
+                # Add both URI and label
+                predicates_with_props.add(edge_info['uri'])
+                predicates_with_props.add(relationship_label)
+            
+            self._edge_predicates_with_props = predicates_with_props
+            self.analyzer.update_edge_predicates(predicates_with_props)
+            self._schema_fetched = True
+            
+            # Add edge property summary if not compact
+            if not compact:
+                edge_prop_summary = {
+                    "CRITICAL_NOTE": (
+                        "Some relationships have edge properties (data stored on the relationship itself). "
+                        "To query these, use the RDF reification pattern shown in each edge's query_template."
+                    ),
+                    "edges_with_properties": []
+                }
+                
+                for relationship_label, edge_info in edge_properties_output.items():
+                    edge_prop_summary["edges_with_properties"].append({
+                        "relationship": relationship_label,
+                        "uri": edge_info['uri'],
+                        "properties": [
+                            {
+                                "name": p.get("label", ""),
+                                "type": p.get("description", "").split("(")[-1].rstrip(")")
+                            } 
+                            for p in edge_info.get("properties", [])
+                        ],
+                        "example_query": edge_info.get("query_template", "")
                     })
             
             # Build response with full metadata
             class_data = [[c['uri'], c['label'], c['description'], c['type']] for c in classes]
-            predicate_data = [[p['uri'], p['label'], p['description'], p['type']] for p in predicates]
+            predicate_data = [[p['uri'], p['label'], p['description'], p['type'], p['source_class'], p['target_class'], p['has_edge_properties']] for p in predicates]
+            node_property_data = [[n['uri'], n['label'], n['description'], n['type'], n['class']] for n in node_properties]
             
-            return {
+            result = {
                 'classes': {
                     'columns': ['uri', 'label', 'description', 'type'],
                     'data': class_data,
                     'count': len(class_data)
                 },
                 'predicates': {
-                    'columns': ['uri', 'label', 'description', 'type'],
+                    'columns': ['uri', 'label', 'description', 'type', 'source_class', 'target_class', 'has_edge_properties'],
                     'data': predicate_data,
                     'count': len(predicate_data)
+                },
+                'edge_properties': edge_properties_output,
+                'node_properties': {
+                    'columns': ['uri', 'label', 'description', 'type', 'class'],
+                    'data': node_property_data,
+                    'count': len(node_property_data)
                 }
             }
+            
+            # Prepend summary to result if not compact
+            if not compact and edge_properties_output:
+                result = {
+                    "edge_property_summary": edge_prop_summary,
+                    **result
+                }
+            
+            return result
         
         # Otherwise, fall back to SPARQL queries
         # FIXED: Query for classes using both 'a' and explicit rdf:type
@@ -559,6 +805,12 @@ class SPARQLServer:
                 'columns': ['uri'],
                 'data': predicate_data,
                 'count': len(predicate_data)
+            },
+            'edge_properties': {},
+            'node_properties': {
+                'columns': ['uri'],
+                'data': [],
+                'count': 0
             }
         }
 
@@ -583,6 +835,71 @@ class SPARQLServer:
 
         # Fallback
         return "SPARQL Query Server"
+    
+    def get_edge_property_info(self, predicate_name: str) -> Optional[Dict[str, Any]]:
+        """
+        Get information about edge properties for a specific predicate.
+        
+        Args:
+            predicate_name: Name or URI of the predicate
+        
+        Returns:
+            Dict with edge property information or None if not found
+        """
+        # Search by exact match first (by label)
+        if predicate_name in self._edge_properties_cache:
+            return self._edge_properties_cache[predicate_name]
+        
+        # Search by URI
+        for label, info in self._edge_properties_cache.items():
+            if info.get("uri") == predicate_name:
+                return info
+        
+        # Search by partial match
+        predicate_lower = predicate_name.lower()
+        for label, info in self._edge_properties_cache.items():
+            uri = info.get("uri", "")
+            if predicate_lower in uri.lower() or predicate_lower in label.lower():
+                return info
+        
+        return None
+
+    def get_relationship_template(self, relationship_name: str) -> str:
+        """
+        Get a query template for a specific relationship.
+        
+        Args:
+            relationship_name: Name of the relationship
+        
+        Returns:
+            A ready-to-use SPARQL query template, or error message if not found
+        """
+        edge_info = self.get_edge_property_info(relationship_name)
+        
+        if not edge_info:
+            return f"Relationship '{relationship_name}' not found in schema or has no edge properties."
+        
+        if "query_template" in edge_info:
+            return edge_info["query_template"]
+        
+        # Generate a basic template if none exists
+        properties = edge_info.get("properties", [])
+        prop_vars = "\n         ".join(f"schema:{p['label']} ?{p['label']} ;" for p in properties)
+        label = edge_info.get("label", relationship_name)
+        source_class = edge_info.get("source_class", "source")
+        target_class = edge_info.get("target_class", "target")
+        
+        return f"""PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://purl.org/okn/frink/kg/{self.kg_name}/schema/>
+
+SELECT ?{source_class.lower()} ?{target_class.lower()} {' '.join('?' + p['label'] for p in properties)}
+WHERE {{
+  ?stmt rdf:subject ?{source_class.lower()} ;
+        rdf:predicate schema:{label} ;
+        rdf:object ?{target_class.lower()} ;
+        {prop_vars.rstrip(' ;')} .
+}}
+LIMIT 10"""
     
     def _fetch_additional_description(self) -> Optional[str]:
         """
@@ -644,13 +961,31 @@ def main():
     query_doc = f"""
 Execute a SPARQL query against the {sparql_server.kg_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
 
+⚠️ CRITICAL WORKFLOW - ALWAYS FOLLOW THIS ORDER:
+1. If you haven't already, call get_schema() FIRST to understand the data structure
+2. Check the schema's edge_properties section for relationships with properties
+3. Construct your query using the appropriate pattern
+
 CRITICAL: Before using this tool or discussing the knowledge graph:
 1. You MUST call get_description() FIRST to get the correct knowledge graph name and details
 2. Until get_description() is called, refer to this knowledge graph ONLY as "{sparql_server.kg_name}" (the short label)
 3. DO NOT invent or guess a full name - you will likely hallucinate incorrect information
 4. After get_description() is called, you can use the proper name from the description
 
-IMPORTANT: You MUST call get_schema() before making queries to understand available classes and predicates.
+EDGE PROPERTIES - CRITICAL:
+Many relationships in this knowledge graph have properties stored as edge attributes (data ON the relationship itself).
+Examples include: log2fc, adj_p_value, methylation_diff, q_value, etc.
+
+To query edge properties, you MUST use the RDF reification pattern:
+```sparql
+?stmt rdf:subject ?source ;
+      rdf:predicate schema:RELATIONSHIP_NAME ;
+      rdf:object ?target ;
+      schema:property_name ?value .
+```
+
+The schema provides query_template for all edges with properties. USE THEM as examples!
+Check the edge_properties section in the schema output to see which relationships have properties.
 
 ⚠️ CRITICAL QUERY CONSTRUCTION RULES FOR TOP N QUERIES:
 
@@ -671,7 +1006,7 @@ WITHOUT ORDER BY, LIMIT RETURNS ARBITRARY RESULTS, NOT THE TOP/BOTTOM N!
 Args:
     query_string: A valid SPARQL query string
     format: Output format - 'simplified' (default, JSON with dict rows), 'compact' (columns + data arrays, no repeated keys), 'full' (complete SPARQL JSON), 'values' (list of dicts), or 'csv' (CSV string)
-    analyze: If True (default), analyzes query and warns if LIMIT is used without ORDER BY
+    analyze: If True (default), analyzes query and warns if LIMIT is used without ORDER BY, and checks for edge property issues
 
 Returns:
     The query results in the specified format. If analyze=True and issues are detected, includes a 'query_analysis' field with warnings and suggestions.
@@ -691,11 +1026,27 @@ CRITICAL: Before discussing the knowledge graph:
 
 IMPORTANT: Always call this tool FIRST before making any queries to understand what data is available in the knowledge graph.
 
+WHAT THIS RETURNS:
+- classes: Node types in the knowledge graph (entities like Gene, Study, Assay, etc.)
+- predicates: Relationships between nodes
+- edge_properties: Relationships that have data stored ON the relationship itself
+  (these require special RDF reification pattern - see query templates in the output)
+- node_properties: Attributes stored directly on nodes
+
+⚠️ CRITICAL: Many queries fail because users don't check edge_properties!
+Relationships with edge properties store quantitative data ON the relationship itself.
+Examples: log2fc, adj_p_value, methylation_diff, q_value
+
+Each edge property entry includes:
+- A list of properties with their data types
+- A query_template showing the exact RDF reification pattern to use
+- USE THESE TEMPLATES as examples for your queries!
+
 Args:
-    compact: If True (default), returns compact URI:label mappings. If False, returns full metadata with descriptions.
+    compact: If True (default), returns compact URI:label mappings. If False, returns full metadata with descriptions and edge_property_summary.
 
 Returns:
-    The schema in the specified format
+    The schema in the specified format, including critical edge_properties section
 """
 
     @mcp.tool(description=schema_doc)
@@ -715,6 +1066,25 @@ Returns:
     def get_description() -> str:
         return sparql_server.build_description()
 
+    # Add tool to get query templates for relationships with edge properties
+    @mcp.tool()
+    def get_query_template(relationship_name: str) -> str:
+        """Get a query template for a specific relationship, especially useful for edges with properties.
+        
+        This is a generic tool that works with any knowledge graph. It retrieves the
+        appropriate query template based on the schema, not hardcoded relationships.
+        
+        Use this when you need an example of how to query a relationship that has edge properties
+        (like MEASURED_DIFFERENTIAL_EXPRESSION, MEASURED_DIFFERENTIAL_METHYLATION, etc.).
+        
+        Args:
+            relationship_name: Name of the relationship (e.g., 'MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG')
+        
+        Returns:
+            A ready-to-use SPARQL query template showing the RDF reification pattern for this relationship
+        """
+        return sparql_server.get_relationship_template(relationship_name)
+
     # Add tool to clean Mermaid diagrams
     @mcp.tool()
     def clean_mermaid_diagram(mermaid_content: str) -> str:
@@ -722,7 +1092,7 @@ Returns:
         
         This tool removes:
         - All note statements that would render as unreadable yellow boxes
-        - Empty curly braces from class definitions
+        - Empty curly braces from class definitions (handles both single-line and multi-line)
         - Strings after newline characters (e.g., truncates "ClassName\nextra" to "ClassName")
         
         Args:
@@ -739,9 +1109,12 @@ Returns:
         
         lines = mermaid_content.split('\n')
         cleaned_lines = []
+        i = 0
         
-        for line in lines:
+        while i < len(lines):
+            line = lines[i]
             stripped = line.strip()
+            
             # Remove vertical bars, they are not allowed in class diagrams
             stripped = stripped.replace('|', ' ')
             
@@ -750,15 +1123,49 @@ Returns:
                 'note for' in stripped or 
                 'note left' in stripped or 
                 'note right' in stripped):
+                i += 1
                 continue
             
-            # Remove empty curly braces from class definitions
+            # Check for empty class definitions (single-line format)
             # Match patterns like: "class ClassName {     }" or "class ClassName { }"
             if re.match(r'^\s*class\s+\w+\s*\{\s*\}\s*$', line):
                 # Replace the line with just the class name without braces
                 line = re.sub(r'^(\s*class\s+\w+)\s*\{\s*\}\s*$', r'\1', line)
+                cleaned_lines.append(line)
+                i += 1
+                continue
+            
+            # Check for empty class definitions (multi-line format)
+            # Match: "class ClassName {" followed by "}" on next line(s)
+            if re.match(r'^\s*class\s+\w+\s*\{\s*$', line):
+                # Look ahead to check if next non-empty line is just "}"
+                j = i + 1
+                found_closing = False
+                has_content = False
+                
+                while j < len(lines):
+                    next_line = lines[j].strip()
+                    if not next_line:  # Empty line, skip
+                        j += 1
+                        continue
+                    if next_line == '}':  # Found closing brace
+                        found_closing = True
+                        break
+                    else:  # Found content between braces
+                        has_content = True
+                        break
+                
+                if found_closing and not has_content:
+                    # This is an empty class definition - remove the braces
+                    class_match = re.match(r'^(\s*class\s+\w+)\s*\{\s*$', line)
+                    if class_match:
+                        cleaned_lines.append(class_match.group(1))
+                    # Skip ahead past the closing brace
+                    i = j + 1
+                    continue
             
             cleaned_lines.append(line)
+            i += 1
         
         return '\n'.join(cleaned_lines)
 
@@ -768,11 +1175,12 @@ Returns:
         """Prompt for creating a chat transcript in markdown format with user prompts and Claude responses."""
         from datetime import datetime
         today = datetime.now().strftime("%Y-%m-%d")
-        
+    
         return f"""Create a chat transcript in .md format following the outline below. 
 1. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document. 
 2. Include mermaid diagrams inline. Do not link to the mermaid file.
 3. Do not include the prompt to create this transcript.
+4. Save the transcript to ~/Downloads/<descriptive-filename>.md
 
 ## Chat Transcript
 <Title>
@@ -786,9 +1194,12 @@ Returns:
 <entire text response goes here>
 
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) {__version__} for {sparql_server.kg_name} on {today}*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) {__version__} on {today}*
 
-IMPORTANT: After the footer above, add a line with the model string you are using (e.g., claude-sonnet-4-20250514).
+IMPORTANT: 
+- After the footer above, add a line with the model string you are using).
+- Save the complete transcript to ~/Downloads/ with a descriptive filename (e.g., ~/Downloads/{sparql_server.kg_name}-chat-transcript-{today}.md)
+- Use the present_files tool to share the transcript file with the user.
 """
 
     @mcp.tool()
@@ -796,21 +1207,53 @@ IMPORTANT: After the footer above, add a line with the model string you are usin
         """Prompt for visualizing the knowledge graph schema using a Mermaid class diagram."""
         return """Visualize the knowledge graph schema using a Mermaid class diagram. 
 
-CRITICAL WORKFLOW - Follow these steps exactly:
+CRITICAL WORKFLOW - Follow these steps EXACTLY IN ORDER:
+
+STEP 1-5: Generate Draft Diagram
 1. First call get_schema() if it has not been called to retrieve the classes and predicates
-2. Generate the raw Mermaid class diagram showing:
-   - All classes as nodes with their properties
-   - All predicates/relationships as connections between classes
-   - Include relationship labels
-3. Make the diagram taller / less wide:
+2. Analyze the schema to identify:
+   - Node classes (entities like Gene, Study, Assay, etc.)
+   - Edge predicates (relationships between nodes)
+   - Edge properties (predicates that describe data types like float, int, string, boolean, date, etc.)
+3. Generate the raw Mermaid class diagram showing:
+   - All node classes with their properties
+   - For edges WITHOUT properties: show as labeled arrows between classes (e.g., `Mission --> Study : CONDUCTED_MIcS`)
+   - For edges WITH properties: represent the edge as an intermediary class containing the properties, with unlabeled arrows connecting source → edge class → target
+4. Make the diagram taller / less wide:
    - Set the diagram direction to TB (top→bottom): `direction TB`
-4. Do not append newline characters
-5. MANDATORY: Pass your generated diagram through the clean_mermaid_diagram tool
-6. MANDATORY: Use ONLY the cleaned output from step 5 in your response - do NOT use your original draft
-7. MANDATORY: Present the cleaned diagram inline in a mermaid code block in your response
-8. MANDATORY: After presenting the diagram in your response, create a .mermaid file containing ONLY the cleaned diagram code (no markdown fences, no explanatory text)
-9. MANDATORY: Save the .mermaid file to /mnt/user-data/outputs/<kg_name>-schema.mermaid
-10. MANDATORY: Use the present_files tool to share the .mermaid file with the user so it renders in the output window
+5. Do not append newline characters
+
+⚠️  STEP 6-9: MANDATORY CLEANING - CANNOT BE SKIPPED ⚠️
+6. STOP HERE! You now have a draft diagram. DO NOT use it yet.
+7. Call clean_mermaid_diagram and pass your draft diagram as the parameter
+8. Wait for the tool to return the cleaned diagram
+9. Your draft is now OBSOLETE. Delete it from your mind. You will use ONLY the cleaned output.
+
+STEP 10-13: Present ONLY the Cleaned Diagram
+10. Copy the EXACT text returned by clean_mermaid_diagram (not your draft)
+11. Present this CLEANED diagram inline in a mermaid code block
+12. Create a .mermaid file with ONLY the CLEANED diagram code (no markdown fences)
+13. Save to /mnt/user-data/outputs/<kg_name>-schema.mermaid and call present_files
+
+⛔ STOP AND CHECK - Before you respond to the user:
+□ Did I call clean_mermaid_diagram? If NO → Go back and call it now
+□ Am I using the cleaned output? If NO → Replace with cleaned output
+□ Does my diagram contain empty {} braces? If YES → You're using your draft, use cleaned output
+□ Did I call present_files? If NO → Call it now
+
+EDGES WITH PROPERTIES - CRITICAL GUIDELINES:
+- When an edge predicate has associated properties (e.g., log2fc, adj_p_value), DO NOT use a separate namespace
+- Instead, represent the edge as an intermediary class with the original predicate name
+- Connect the source class to the edge class, then the edge class to the target class
+- Example: Instead of `Assay --> Gene : MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG` with a separate EdgeProperties namespace,
+  create:
+    class MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG {
+        float log2fc
+        float adj_p_value
+    }
+    Assay --> MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG
+    MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG --> Gene
+- This approach clearly shows that the properties belong to the relationship itself
 
 RENDERING REQUIREMENTS:
 - The .mermaid file MUST contain ONLY the Mermaid diagram code
@@ -819,11 +1262,13 @@ RENDERING REQUIREMENTS:
 - The file should start with "classDiagram" and contain only the diagram definition
 - ALWAYS use present_files to share the .mermaid file after creating it
 
-Common mistakes to avoid:
-- DO NOT render the diagram before cleaning it
-- DO NOT use your original draft after calling clean_mermaid_diagram
-- DO NOT add note statements or empty curly braces {} for classes without properties
-- ALWAYS copy the exact output from clean_mermaid_diagram tool
+❌ COMMON MISTAKES - These will cause errors:
+- Using your draft diagram instead of the cleaned output from clean_mermaid_diagram
+- Not calling clean_mermaid_diagram at all
+- Calling clean_mermaid_diagram but then using your original draft anyway
+- Including empty curly braces {} for classes without properties (the cleaner removes these)
+- Not calling present_files to share the final .mermaid file
+- Using a separate EdgeProperties namespace instead of intermediary classes
 """
 
     # Run MCP server over stdio
