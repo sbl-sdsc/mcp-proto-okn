@@ -86,68 +86,72 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 | [spoke-okn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-okn_overview.md) | [climatemodelskg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/climatemodelskg_overview.md) |  |  |
 |  | [sockg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sockg_overview.md) |  |  |
 
-2. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
+2. **Spaceflight Missions (spoke-genelab)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_breakdown.md)
+   
+3. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-3. **Disease Prevalence in the US (spoke-okn)**
+4. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-4. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-5. **Contamination at Superfund Sites (spoke-okn)**
+6. **Contamination at Superfund Sites (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
 
-6. **PFOA in Drinking Water (spoke-okn)**
+7. **PFOA in Drinking Water (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-7. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+8. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-8. **Biological Targets for PFOA (biobricks-toxcast)**
+9. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-9. **Criminal Justice Patterns (scales)**
+10. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-10. **Drug Possession Charges (scales)**
+11. **Drug Possession Charges (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-11. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
+12. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
 
-12. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
+13. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-13. **Michigan Flooding Event (ufokn)**
+14. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-14. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
+15. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
-15. **Philadelphia Area Incidents (nikg)**
+16. **Philadelphia Area Incidents (nikg)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
 
-16. **Cross-KG Geolocation Analysis**
+17. **Cross-KG Geolocation Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-17. **Cross-KG Chemical Compound Analysis**
+18. **Cross-KG Chemical Compound Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
