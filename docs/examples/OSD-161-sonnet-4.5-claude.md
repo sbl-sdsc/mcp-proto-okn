@@ -1,9 +1,9 @@
-# Comprehensive Spaceflight Gene Expression Analysis: OSD-161
+# Chat Transcript: Integrating GeneLab and SPOKE Knowledge to Characterize Spaceflight Gene Expression and Disease Relevance
 
-## Chat Transcript
+## Study OSD-161: Rodent Research 3 Analysis
 
 👤 **User**  
-Objective: Integrate GeneLab, SPOKE, and PubMed knowledge to characterize spaceflight-associated gene expression changes and their disease relevance.
+Objective: Integrate GeneLab, and SPOKE knowledge to characterize spaceflight-associated gene expression changes and their disease relevance.
 @spoke-genelab
     1.    Retrieve study OSD-161 and summarize its experimental design (organism, mission, spaceflight vs. ground control).
     2.    List all assays associated with this study.
@@ -18,336 +18,289 @@ Objective: Integrate GeneLab, SPOKE, and PubMed knowledge to characterize spacef
     •    Disease name
     •    Evidence type or source KG
     •    Number of supporting associations (if available).
-@pubmed
-    7.   Identify publications that mention these genes in the context of spaceflight or microgravity, and return:
-    •    PMID
-    •    Title
-    •    Year
-    •    Brief relevance summary (1 sentence).
-Output format:
-    •    Tables for assays, factors, gene lists, ortholog mappings, and disease associations
-    •    A short narrative summary synthesizing biological and translational relevance
 @spoke-genelab
-   8. Create transcript
+   7. Create chat transcript
 
 ---
 
 🧠 **Assistant**  
 
-# Analysis Results
+I've completed a comprehensive analysis integrating data from GeneLab and SPOKE knowledge graphs to characterize spaceflight-associated gene expression changes and their disease relevance. Here's the complete analysis:
 
-## 1. Study OSD-161 Overview
+## 1. Study Overview: OSD-161
 
-I successfully retrieved study OSD-161 (Rodent Research 3) from the SPOKE-GeneLab knowledge graph. Here's the experimental design:
+**Study Information:**
+- **Accession:** OSD-161
+- **Project Title:** Rodent Research 3 (RR3)
+- **Project Type:** Spaceflight Study
+- **Organism:** Mus musculus (Mouse)
+- **Tissue Examined:** Adrenal gland
 
-### Study Characteristics
-- **Study ID**: OSD-161
-- **Project Title**: Rodent Research 3 (RR3)
-- **Project Type**: Spaceflight Study
-- **Organism**: *Mus musculus* (Mouse)
-- **Missions**: 
-  - SpaceX-8 (April 8 - May 11, 2016)
-  - SpaceX-9 (July 18 - August 26, 2016)
-- **Space Program**: NASA
-- **Flight Program**: International Space Station (ISS)
+**Mission Details:**
 
-### Experimental Groups
-The study compared three experimental conditions:
-1. **Space Flight**: Mice exposed to ISS microgravity environment
-2. **Ground Control**: Earth-based control group
-3. **Basal Control**: Baseline comparison group
+The study was conducted across two SpaceX missions to the International Space Station (ISS):
 
----
+1. **SpaceX-8**
+   - Flight Program: International Space Station (ISS)
+   - Space Program: NASA
+   - Duration: April 8, 2016 - May 11, 2016
 
-## 2. Assays from OSD-161
+2. **SpaceX-9**
+   - Flight Program: International Space Station (ISS)
+   - Space Program: NASA
+   - Duration: July 18, 2016 - August 26, 2016
 
-The study generated 6 RNA-Seq assays, all examining the **adrenal gland** tissue:
+## 2. Assays Associated with Study OSD-161
 
-| Assay | Comparison | Measurement | Technology | Tissue |
-|-------|------------|-------------|------------|--------|
-| OSD-161-26eaa8ce | Space Flight vs Ground Control | Transcription profiling | RNA-Seq | Adrenal gland |
-| OSD-161-18173e63 | Ground Control vs Basal Control | Transcription profiling | RNA-Seq | Adrenal gland |
-| OSD-161-2b7b773a | Basal Control vs Space Flight | Transcription profiling | RNA-Seq | Adrenal gland |
-| OSD-161-707d5b32 | Space Flight vs Basal Control | Transcription profiling | RNA-Seq | Adrenal gland |
-| OSD-161-ab5155c2 | Ground Control vs Space Flight | Transcription profiling | RNA-Seq | Adrenal gland |
-| OSD-161-d57b3907 | Basal Control vs Ground Control | Transcription profiling | RNA-Seq | Adrenal gland |
+The study includes **6 RNA-Seq assays**, all examining the **adrenal gland** tissue:
 
----
+| Assay ID | Measurement | Technology | Tissue | Condition 1 | Condition 2 |
+|----------|------------|------------|--------|-------------|-------------|
+| rr3-adr_1 | Transcription profiling | RNA-Seq | Adrenal gland | Ground Control | Basal Control |
+| rr3-adr_2 | Transcription profiling | RNA-Seq | Adrenal gland | **Space Flight** | **Ground Control** |
+| rr3-adr_3 | Transcription profiling | RNA-Seq | Adrenal gland | Basal Control | Space Flight |
+| rr3-adr_4 | Transcription profiling | RNA-Seq | Adrenal gland | Space Flight | Basal Control |
+| rr3-adr_5 | Transcription profiling | RNA-Seq | Adrenal gland | Ground Control | Space Flight |
+| rr3-adr_6 | Transcription profiling | RNA-Seq | Adrenal gland | Basal Control | Ground Control |
 
-## 3. Experimental Factors
+## 3. Unique Experimental Factors
 
-**Unique factors identified across assays**:
-- **Tissue**: Adrenal gland (all assays)
-- **Platform**: RNA Sequencing (RNA-Seq)
-- **Measurement**: Transcription profiling
-- **Experimental conditions**: Space Flight, Ground Control, Basal Control
-- **Comparison groups**: Six different pairwise comparisons
+**Factors extracted across all assays:**
+- **Tissue:** Adrenal gland (consistent across all assays)
+- **Platform/Technology:** RNA Sequencing (RNA-Seq)
+- **Measurement Type:** Transcription profiling
+- **Experimental Conditions:** 
+  - Space Flight
+  - Ground Control
+  - Basal Control
 
----
+**Key Comparison:** The primary analysis focused on the **Space Flight vs. Ground Control** comparison (Assay rr3-adr_2).
 
-## 4. Differential Gene Expression Analysis
+## 4. Differential Expression Results: Space Flight vs. Ground Control
 
-I analyzed assay **OSD-161-26eaa8ce** comparing Space Flight vs Ground Control conditions (the primary experimental comparison).
+### Top 5 Up-regulated Genes in Spaceflight
 
-### Top 5 Up-Regulated Genes (Space Flight > Ground Control)
+| Rank | Mouse Gene | Human Ortholog | log2 Fold Change | Adjusted p-value | Function |
+|------|------------|----------------|------------------|------------------|----------|
+| 1 | **Fos** | **FOS** | +1.96 | 0.0244 | Immediate early gene, cellular stress response, transcription factor |
+| 2 | **Btg2** | **BTG2** | +1.37 | 1.51×10⁻⁸ | Cell cycle regulation, anti-proliferative, differentiation |
+| 3 | **G530011O06Rik** | *No ortholog* | +0.97 | 0.0496 | Uncharacterized gene |
+| 4 | **Cited2** | **CITED2** | +0.92 | 2.15×10⁻⁵ | Transcriptional co-activator, hypoxia response, development |
+| 5 | **Dusp1** | **DUSP1** | +0.76 | 0.0171 | MAP kinase phosphatase, negative regulator of stress responses |
 
-| Mouse Gene | Symbol | Log2 FC | Adj. P-Value | Regulation |
-|------------|--------|---------|--------------|------------|
-| 14281 | Fos | **+1.96** | 0.0244 | Up-regulated |
-| 12227 | Btg2 | **+1.37** | 1.51 × 10⁻⁸ | Up-regulated |
-| 654820 | G530011O06Rik | **+0.97** | 0.0496 | Up-regulated |
-| 17684 | Cited2 | **+0.92** | 2.15 × 10⁻⁵ | Up-regulated |
-| 19252 | Dusp1 | **+0.76** | 0.0171 | Up-regulated |
+### Top 5 Down-regulated Genes in Spaceflight
 
-### Top 5 Down-Regulated Genes (Space Flight < Ground Control)
-
-| Mouse Gene | Symbol | Log2 FC | Adj. P-Value | Regulation |
-|------------|--------|---------|--------------|------------|
-| 110557 | H2-Q6 | **-1.39** | 0.0244 | Down-regulated |
-| 110558, 15018 | H2-Q7/H2-Q9 | **-1.37** | 0.0446 | Down-regulated |
-| 14415 | Gad1 | **-1.16** | 0.0458 | Down-regulated |
-| 12517 | Cd72 | **-0.88** | 0.0371 | Down-regulated |
-
-All genes shown have adjusted p-values < 0.05, indicating statistical significance after multiple testing correction.
-
----
+| Rank | Mouse Gene | Human Ortholog(s) | log2 Fold Change | Adjusted p-value | Function |
+|------|------------|-------------------|------------------|------------------|----------|
+| 1 | **H2-Q6** | **HLA-A, HLA-B, HLA-C, HLA-E, HLA-F, HLA-G** | -1.39 | 0.0244 | MHC class I, antigen presentation |
+| 2 | **H2-Q7/H2-Q9** | **HLA-A, HLA-B, HLA-C, HLA-E, HLA-F, HLA-G** | -1.37 | 0.0446 | MHC class I, antigen presentation |
+| 3 | **Gad1** | **GAD1** | -1.16 | 0.0458 | Glutamate decarboxylase, GABA synthesis |
+| 4 | **Cd72** | **CD72** | -0.88 | 0.0371 | B-cell receptor signaling, immune regulation |
 
 ## 5. Human Ortholog Mapping
 
-I mapped the mouse genes to their human orthologs using the SPOKE-GeneLab knowledge graph:
+Successfully mapped **9 of 10** differentially expressed genes to human orthologs:
 
-| Mouse Gene | Mouse Symbol | Human Gene | Human Symbol | Notes |
-|------------|--------------|------------|--------------|-------|
-| 14281 | Fos | 2353 | **FOS** | Immediate early gene |
-| 12227 | Btg2 | 7832 | **BTG2** | Cell cycle regulator |
-| 17684 | Cited2 | 10370 | **CITED2** | Transcriptional regulator |
-| 19252 | Dusp1 | 1843 | **DUSP1** | Phosphatase |
-| 110557 | H2-Q6 | 3105-3107, 3133-3135 | **HLA-A/B/C/E/F/G** | MHC class I complex |
-| 15018 | H2-Q7/H2-Q9 | 3105-3107, 3133-3135 | **HLA-A/B/C/E/F/G** | MHC class I complex |
-| 14415 | Gad1 | 2571 | **GAD1** | GABA synthesis enzyme |
-| 12517 | Cd72 | 971 | **CD72** | B-cell receptor |
+**Up-regulated genes:**
+- Fos → **FOS**
+- Btg2 → **BTG2**
+- Cited2 → **CITED2**
+- Dusp1 → **DUSP1**
+- G530011O06Rik → *No human ortholog found*
 
-**Note**: Mouse MHC class I genes (H2-Q) map to multiple human HLA genes, reflecting evolutionary expansion of the major histocompatibility complex in humans.
+**Down-regulated genes:**
+- Gad1 → **GAD1**
+- Cd72 → **CD72**
+- H2-Q6 → **HLA-A, HLA-B, HLA-C, HLA-E, HLA-F, HLA-G** (6 human orthologs)
+- H2-Q7/H2-Q9 → **HLA-A, HLA-B, HLA-C, HLA-E, HLA-F, HLA-G** (6 human orthologs)
 
----
+**Note:** The mouse MHC class I genes (H2-Q family) map to multiple human HLA genes, reflecting the complexity of MHC evolution.
 
-## 6. Disease Associations from SPOKE-OKN
+## 6. Disease Associations from SPOKE-OKN Knowledge Graph
 
-I queried the SPOKE-OKN knowledge graph to identify disease associations for the human orthologs. Here are the key findings:
+### Summary of Gene-Disease Association Counts
 
-### Summary by Gene
+| Human Gene | Direction | log2FC | Disease Associations | Evidence Source |
+|------------|-----------|--------|---------------------|-----------------|
+| **HLA-B** | Down | -1.37 | **22 diseases** | Disease Ontology |
+| **FOS** | Up | +1.96 | **8 diseases** | Disease Ontology |
+| **GAD1** | Down | -1.16 | **5 diseases** | Disease Ontology |
+| **HLA-A** | Down | -1.39 | **4 diseases** | Disease Ontology |
+| **HLA-C** | Down | -1.37 | **3 diseases** | Disease Ontology |
+| **HLA-G** | Down | -1.37 | **2 diseases** | Disease Ontology |
+| **HLA-F** | Down | -1.37 | **1 disease** | Disease Ontology |
+| **BTG2** | Up | +1.37 | 0 | - |
+| **CITED2** | Up | +0.92 | 0 | - |
+| **DUSP1** | Up | +0.76 | 0 | - |
+| **CD72** | Down | -0.88 | 0 | - |
 
-**FOS (8 disease associations)**:
-- Inflammatory bowel disease
-- Cardiomyopathy
-- Liver disease
-- Nervous system disease
-- Anxiety disorder
-- Polycystic ovary syndrome
-- Diabetes mellitus
-- Depressive disorder
+### Detailed Disease Associations
 
-**GAD1 (5 disease associations)**:
-- Schizophrenia
-- Nervous system disease
-- Epilepsy
-- Depressive disorder
-- Autism spectrum disorder
+#### FOS (Up-regulated, +1.96 log2FC)
+**Associated with 8 diseases (Disease Ontology):**
+1. Anxiety disorder
+2. Cardiomyopathy
+3. Depressive disorder
+4. Diabetes mellitus
+5. Inflammatory bowel disease
+6. Liver disease
+7. Nervous system disease
+8. Polycystic ovary syndrome
 
-**HLA-A (4 disease associations)**:
-- Viral infectious disease
-- Nervous system disease
-- Alopecia areata
-- Rheumatoid arthritis
+**Clinical Significance:** FOS is an immediate early gene activated by stress. Its up-regulation in spaceflight aligns with known associations with stress-related disorders (anxiety, depression), metabolic dysregulation (diabetes), and inflammatory conditions.
 
-**HLA-B (19 disease associations)** - Most extensive:
-- Viral infectious disease
-- Meningitis, Encephalitis
-- Psoriasis, Dermatitis
-- Rheumatoid arthritis
-- Inflammatory bowel disease
-- Cardiomyopathy, Hypertension, Endocarditis
-- Depression, Bipolar disorder, Epilepsy
-- Asthma
-- HIV infectious disease
-- And others
+#### GAD1 (Down-regulated, -1.16 log2FC)
+**Associated with 5 diseases (Disease Ontology):**
+1. Autism spectrum disorder
+2. Depressive disorder
+3. Epilepsy
+4. Nervous system disease
+5. Schizophrenia
 
-**HLA-C (3 disease associations)**:
-- Dermatitis
-- Psoriasis
-- Alopecia areata
+**Clinical Significance:** GAD1 synthesizes GABA, the major inhibitory neurotransmitter. Down-regulation could impact neurological function, consistent with its association with psychiatric and neurological disorders.
 
-**HLA-F (1 disease association)**:
-- Multiple sclerosis
+#### HLA-A (Down-regulated, -1.39 log2FC)
+**Associated with 4 diseases (Disease Ontology):**
+1. Alopecia areata
+2. Nervous system disease
+3. Rheumatoid arthritis
+4. Viral infectious disease
 
-**HLA-G (2 disease associations)**:
-- Asthma
-- Rheumatoid arthritis
+#### HLA-B (Down-regulated, -1.37 log2FC)
+**Associated with 22 diseases (Disease Ontology):**
+1. Asthma
+2. Bipolar disorder
+3. Cardiomyopathy
+4. Depressive disorder
+5. Dermatitis
+6. Encephalitis
+7. Endocarditis
+8. Epilepsy
+9. Gastroesophageal reflux disease
+10. Human immunodeficiency virus infectious disease
+11. Hypertension
+12. Inflammatory bowel disease
+13. Liver disease
+14. Major depressive disorder
+15. Meningitis
+16. Migraine
+17. Nervous system disease
+18. Pancreatitis
+19. Psoriasis
+20. Rheumatoid arthritis
+21. Skin benign neoplasm
+22. Viral infectious disease
 
-### Disease Category Analysis
+**Clinical Significance:** HLA-B shows the most extensive disease associations, particularly with immune-mediated inflammatory conditions, infectious diseases, and neuropsychiatric disorders.
 
-The 45 total gene-disease associations cluster into several key categories:
+#### HLA-C (Down-regulated, -1.37 log2FC)
+**Associated with 3 diseases (Disease Ontology):**
+1. Alopecia areata
+2. Dermatitis
+3. Psoriasis
 
-1. **Nervous System Disorders** (9 associations)
-   - Genes: FOS, GAD1, HLA-A, HLA-B
-   - Diseases: Schizophrenia, epilepsy, depression, autism, nervous system disease
+#### HLA-F (Down-regulated, -1.37 log2FC)
+**Associated with 1 disease (Disease Ontology):**
+1. Multiple sclerosis
 
-2. **Autoimmune/Inflammatory Diseases** (14 associations)
-   - Genes: HLA genes predominantly, FOS
-   - Diseases: Rheumatoid arthritis, IBD, psoriasis, dermatitis, asthma
+#### HLA-G (Down-regulated, -1.37 log2FC)
+**Associated with 2 diseases (Disease Ontology):**
+1. Asthma
+2. Rheumatoid arthritis
 
-3. **Psychiatric Disorders** (7 associations)
-   - Genes: FOS, GAD1, HLA-B
-   - Diseases: Depression, anxiety, bipolar disorder, schizophrenia
+## Key Biological Insights
 
-4. **Infectious Diseases** (4 associations)
-   - Genes: HLA-A, HLA-B
-   - Diseases: Viral infections, HIV, meningitis, encephalitis
+### 1. Stress Response Activation
+The significant up-regulation of immediate early genes (FOS +1.96 log2FC, DUSP1 +0.76 log2FC) indicates robust activation of cellular stress response pathways in the adrenal gland during spaceflight. This is consistent with the adrenal gland's role in the stress response system.
 
-5. **Metabolic/Endocrine Disorders** (3 associations)
-   - Genes: FOS
-   - Diseases: Diabetes, PCOS
+### 2. Immune System Dysregulation
+The coordinated down-regulation of multiple MHC class I genes (HLA orthologs, -1.37 to -1.39 log2FC) suggests potential immune suppression, a well-documented consequence of spaceflight. This could increase susceptibility to:
+- Viral infections
+- Inflammatory diseases
+- Autoimmune conditions
 
-**Evidence Type**: All associations are from the ASSOCIATES_DaG (Disease associates with Gene) relationship in SPOKE-OKN, which integrates data from multiple biomedical databases including DisGeNET, GWAS catalogs, and literature mining.
+### 3. Neurological Impact
+Down-regulation of GAD1 (-1.16 log2FC), which is critical for GABA synthesis, suggests potential effects on neurotransmitter homeostasis. This finding is particularly relevant given the extensive associations with:
+- Psychiatric disorders (depression, schizophrenia, bipolar disorder)
+- Neurological diseases (epilepsy, autism spectrum disorder)
+- Nervous system disease in general
 
----
+### 4. Disease Relevance Categories
 
-## 7. PubMed Literature Analysis
+**Most strongly implicated disease categories:**
 
-According to PubMed, I searched for publications mentioning the identified genes in the context of spaceflight or microgravity and found **68 total articles**. Here are the most relevant recent publications:
+1. **Immune/Inflammatory Diseases:**
+   - Rheumatoid arthritis
+   - Inflammatory bowel disease
+   - Psoriasis
+   - Dermatitis
 
-### Key Publications
+2. **Neuropsychiatric Disorders:**
+   - Depression (multiple genes)
+   - Anxiety
+   - Schizophrenia
+   - Bipolar disorder
+   - Epilepsy
 
-| PMID | Year | Title | Relevance | DOI |
-|------|------|-------|-----------|-----|
-| 38203808 | 2024 | Deficiency Blocks Bone Loss in Simulated Microgravity | Demonstrates c-Fos pathway involvement in microgravity-induced bone loss via Fos-Jun-Src-Integrin pathway | [10.3390/ijms25010637](https://doi.org/10.3390/ijms25010637) |
-| 37642364 | 2023 | In search of stress: analysis of stress-related markers in mice after hindlimb unloading | Reports Fra-1 (Fos-related antigen 1) activation in amygdala and GAD65/67 changes in hippocampus during simulated microgravity | [10.1080/01616412.2023.2252280](https://doi.org/10.1080/01616412.2023.2252280) |
-| 36617569 | 2023 | D-Mannose prevents bone loss under weightlessness | Shows c-Fos and NFATc1 suppression prevents osteoclast fusion and bone loss in weightlessness | [10.1186/s12967-022-03870-1](https://doi.org/10.1186/s12967-022-03870-1) |
-| 32971944 | 2020 | 4-Acetylantroquinonol B Inhibits Osteoclastogenesis | Demonstrates NFATc1, c-Fos, and DC-STAMP modulation in microgravity-induced osteoclast differentiation | [10.3390/ijms21186971](https://doi.org/10.3390/ijms21186971) |
-| 32964111 | 2020 | Molecular impact of launch vibrations in planarians | Examines early stress response gene c-Fos expression changes during launch-related hypergravity exposure | [10.1038/s41526-020-00115-7](https://doi.org/10.1038/s41526-020-00115-7) |
-| 31470364 | 2019 | Proteasome inhibition suppresses microgravity RANK signaling | Demonstrates c-Fos and NFATc1 regulation in microgravity-induced osteoclast differentiation and bone resorption | [10.1016/j.cyto.2019.154821](https://doi.org/10.1016/j.cyto.2019.154821) |
-| 31331434 | 2019 | Impacts of Simulated Microgravity on Rat Brain | Reports c-Jun/c-Fos pathway involvement in brain inflammatory cytokine regulation during simulated microgravity | [10.3967/bes2019.067](https://doi.org/10.3967/bes2019.067) |
-| 30295679 | 2018 | Hindlimb suspension-induced cell apoptosis | Shows increased c-Fos protein expression in posterior parietal cortex following simulated microgravity exposure | No DOI available |
+3. **Infectious Diseases:**
+   - Viral infectious diseases (multiple associations)
+   - HIV infectious disease
 
-### Literature Synthesis
+4. **Metabolic Conditions:**
+   - Diabetes mellitus
+   - Polycystic ovary syndrome
 
-Based on articles retrieved from PubMed, **c-Fos (FOS)** emerges as a critical mediator of multiple spaceflight-induced physiological changes:
+5. **Cardiovascular:**
+   - Cardiomyopathy
+   - Hypertension
 
-1. **Bone Loss**: c-Fos is essential for osteoclast differentiation and fusion, driving the 1-2% monthly bone loss observed in astronauts ([DOI: 10.3390/ijms25010637](https://doi.org/10.3390/ijms25010637))
+### 5. Spaceflight Health Implications
 
-2. **Stress Response**: c-Fos activation serves as a marker of cellular stress in brain regions during microgravity exposure ([DOI: 10.1080/01616412.2023.2252280](https://doi.org/10.1080/01616412.2023.2252280))
+This analysis reveals that spaceflight-induced gene expression changes in the adrenal gland affect genes associated with:
+- **Immune function** (via HLA genes) → may explain increased infection susceptibility
+- **Stress regulation** (via FOS) → may contribute to psychological stress
+- **Neurotransmitter metabolism** (via GAD1) → may affect mood and cognitive function
 
-3. **Inflammatory Signaling**: The c-Jun/c-Fos (AP-1) pathway regulates inflammatory cytokines in response to spaceflight conditions ([DOI: 10.3967/bes2019.067](https://doi.org/10.3967/bes2019.067))
+These findings provide molecular evidence for known spaceflight health challenges including immune dysregulation, increased stress, and potential neuropsychiatric effects.
 
-4. **Cell Survival**: c-Fos involvement in apoptotic pathways affects neuronal survival in brain regions like the parietal cortex and lateral geniculate nucleus
+## Data Sources and Evidence
 
-The literature confirms that the genes identified in our OSD-161 analysis are functionally important in mediating spaceflight-induced physiological changes across multiple organ systems.
+**Knowledge Graphs Used:**
+1. **SPOKE-GeneLab (GeneLab Knowledge Graph)**
+   - Source: NASA Open Science Data Repository (OSDR)
+   - Study: OSD-161 (Rodent Research 3)
+   - Data: RNA-Seq differential expression analysis
+   - Organism: Mus musculus
+   - Tissue: Adrenal gland
 
----
+2. **SPOKE-OKN (SPOKE Open Knowledge Network)**
+   - Source: Disease Ontology
+   - Data: Human gene-disease associations
+   - Integrated from multiple biomedical databases
 
-## 8. Biological and Translational Synthesis
+**Analysis Methodology:**
+1. Retrieved study metadata and assay information from SPOKE-GeneLab
+2. Extracted differential expression data (log2FC and adjusted p-values)
+3. Mapped mouse genes to human orthologs using SPOKE-GeneLab orthology relationships
+4. Queried SPOKE-OKN for disease associations with human orthologs
+5. Integrated findings to characterize disease relevance
 
-### Key Biological Insights
+## Conclusions
 
-**1. Stress Response Activation**
-The dramatic upregulation of immediate early genes (FOS, DUSP1, BTG2, CITED2) in the adrenal gland indicates a robust stress response to spaceflight. The adrenal gland is the primary organ for stress hormone production, so these changes likely reflect:
-- Activation of stress signaling cascades
-- Adaptation to microgravity environment
-- Potential dysregulation of cortisol/corticosterone production
+This integrated analysis of GeneLab spaceflight transcriptomics and SPOKE disease knowledge reveals:
 
-**2. Immune System Suppression**
-The striking downregulation of MHC class I genes (H2-Q6/Q7/Q9 → HLA-A/B/C/E/F/G) suggests:
-- Impaired antigen presentation to CD8+ T cells
-- Reduced capacity to recognize virus-infected cells
-- Potential increased susceptibility to infections
+1. **Spaceflight induces significant transcriptional changes** in the mouse adrenal gland, with both up-regulation of stress response genes and down-regulation of immune function genes.
 
-This aligns with well-documented immune dysfunction in astronauts, including:
-- Reactivation of latent viruses (Epstein-Barr, varicella-zoster)
-- Increased infection rates during missions
-- Delayed wound healing
+2. **Affected genes are associated with multiple disease categories**, particularly immune/inflammatory diseases, neuropsychiatric disorders, and infectious diseases.
 
-**3. Neurotransmitter Metabolism Disruption**
-GAD1 downregulation has important implications:
-- GAD1 encodes glutamate decarboxylase, the enzyme that converts glutamate to GABA
-- Reduced GAD1 → reduced GABA synthesis → altered inhibitory neurotransmission
-- May contribute to neuropsychiatric symptoms observed in astronauts
-- Links to disease associations: schizophrenia, epilepsy, autism, depression
+3. **The down-regulation of MHC class I genes** (HLA orthologs) provides molecular evidence for spaceflight-induced immune suppression, explaining increased disease susceptibility.
 
-**4. Cellular Adaptation Mechanisms**
-- **BTG2** upregulation suggests anti-proliferative responses and cell cycle arrest
-- **DUSP1** upregulation indicates negative feedback on MAPK signaling pathways
-- **CITED2** upregulation points to altered transcriptional regulation of hypoxia and stress responses
+4. **The stress response activation** (FOS up-regulation) and altered neurotransmitter metabolism (GAD1 down-regulation) provide mechanistic links to psychological and neurological challenges in spaceflight.
 
-### Translational Relevance
-
-**Disease Risk Predictions**:
-The gene expression changes and disease associations suggest astronauts may face increased risks for:
-
-1. **Infectious Diseases**: HLA downregulation → viral susceptibility
-2. **Bone Disorders**: FOS upregulation → accelerated bone resorption
-3. **Neuropsychiatric Conditions**: GAD1 downregulation, FOS upregulation → mood/cognitive changes
-4. **Cardiovascular Issues**: FOS associations with cardiomyopathy and hypertension
-5. **Autoimmune Disorders**: HLA dysregulation → immune system dysfunction
-
-**Potential Countermeasures**:
-
-Based on the molecular pathways identified:
-
-1. **Immunomodulatory interventions** to maintain HLA expression and antigen presentation
-2. **Bone protection strategies** targeting the FOS/NFATc1/osteoclast pathway (e.g., D-mannose as shown in [DOI: 10.1186/s12967-022-03870-1](https://doi.org/10.1186/s12967-022-03870-1))
-3. **GABAergic support** to address neurotransmitter deficiencies
-4. **Anti-inflammatory approaches** leveraging DUSP1 pathway modulation
-5. **Stress management protocols** to mitigate excessive immediate early gene activation
-
-**Biomarker Development**:
-
-The identified genes could serve as biomarkers for:
-- **Pre-flight screening**: Baseline HLA, GAD1 expression levels
-- **In-flight monitoring**: FOS, DUSP1 as stress indicators
-- **Post-flight assessment**: Recovery of immune function via HLA expression
-
-### Clinical Implications
-
-This integrative analysis demonstrates how spaceflight-induced gene expression changes map directly to:
-1. Known astronaut health risks (bone loss, immune dysfunction, neuropsychiatric changes)
-2. Specific disease pathways with terrestrial clinical relevance
-3. Potential therapeutic targets for both space medicine and Earth-based conditions
-
-The convergence of GeneLab experimental data, SPOKE disease associations, and PubMed literature provides strong evidence for:
-- **FOS** as a central hub in spaceflight adaptation (stress, bone, inflammation, neurological function)
-- **HLA genes** as critical mediators of immune dysfunction in microgravity
-- **GAD1** as a link between spaceflight exposure and neuropsychiatric risk
-
-### Future Directions
-
-1. **Multi-tissue profiling**: Extend analysis to brain, muscle, bone, and immune tissues
-2. **Temporal dynamics**: Track gene expression changes across mission timeline
-3. **Mechanistic validation**: Functional studies in ground-based microgravity simulators
-4. **Countermeasure testing**: Validate therapeutic interventions targeting identified pathways
-5. **Personalized medicine**: Genetic screening for spaceflight adaptation capacity
+5. **This integrated approach** demonstrates the value of combining spaceflight omics data with comprehensive disease knowledge graphs to understand health implications of space exploration.
 
 ---
 
-## Conclusion
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-06*
 
-This comprehensive analysis successfully integrated three major biomedical data sources to characterize spaceflight-associated gene expression changes in OSD-161:
-
-✅ **SPOKE-GeneLab** provided experimental spaceflight data showing significant differential expression in adrenal gland tissue
-
-✅ **SPOKE-OKN** revealed 45 disease associations across 8 human genes, highlighting risks for immune, neurological, psychiatric, and metabolic disorders
-
-✅ **PubMed** literature confirmed the functional importance of identified genes (especially FOS) in mediating spaceflight-induced bone loss, stress responses, and inflammatory signaling
-
-The convergence of these data sources provides actionable insights for:
-- Understanding molecular mechanisms of spaceflight adaptation
-- Identifying disease risks for long-duration missions
-- Developing targeted countermeasures
-- Creating biomarker panels for astronaut health monitoring
-
-This knowledge graph-based approach demonstrates the power of integrating heterogeneous biomedical data to generate translational insights for both space medicine and terrestrial health applications.
-
----
-
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2026-01-05*
-
-*Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)*
+Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)

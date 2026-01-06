@@ -2,7 +2,7 @@
 OSD-161 Spaceflight Gene Expression and Disease Relevance Analysis
 
 👤 **User**  
-Objective: Integrate GeneLab, SPOKE, and PubMed knowledge to characterize spaceflight-associated gene expression changes and their disease relevance.
+Objective: Integrate GeneLab and SPOKE knowledge to characterize spaceflight-associated gene expression changes and their disease relevance.
 
 @spoke-genelab
     1.    Retrieve study OSD-161 and summarize its experimental design (organism, mission, spaceflight vs. ground control).
