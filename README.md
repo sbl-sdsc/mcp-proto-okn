@@ -44,7 +44,7 @@ Before installing the MCP Server Proto-OKN, ensure you have:
 
 Once configured, you can start querying knowledge graphs through natural language prompts in Claude Desktop or VS Code chat interface.
 
-### Select and Configure MCP Tools
+### Select and Configure MCP Tools (Claude Desktop)
 
 From the top menu bar:
 ```
@@ -94,193 +94,94 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-4. **Disease Prevalence in the US (spoke-okn)**
+4. **Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**
+
+   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd-161-sonnet-4.5.md)
+
+5. **Disease Prevalence in the US (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-5. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+6. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-6. **Contamination at Superfund Sites (spoke-okn)**
+7. **Contamination at Superfund Sites (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
 
-7. **PFOA in Drinking Water (spoke-okn)**
+8. **PFOA in Drinking Water (spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-8. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+9. **Data about PFOA (spoke-okn, biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-9. **Biological Targets for PFOA (biobricks-toxcast)**
+10. **Biological Targets for PFOA (biobricks-toxcast)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-10. **Criminal Justice Patterns (scales)**
+11. **Criminal Justice Patterns (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-11. **Drug Possession Charges (scales)**
+12. **Drug Possession Charges (scales)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-12. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
+13. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
-
-13. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
+14. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
 
     [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-14. **Michigan Flooding Event (ufokn)**
+15. **Michigan Flooding Event (ufokn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-15. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
+16. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
-16. **Philadelphia Area Incidents (nikg)**
+17. **Philadelphia Area Incidents (nikg)**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
 
-17. **Cross-KG Geolocation Analysis**
+18. **Cross-KG Geolocation Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-18. **Cross-KG Chemical Compound Analysis**
+19. **Cross-KG Chemical Compound Analysis**
 
    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
 
-### Building and Publishing (maintainers only)
+## Building and Publishing (maintainers only)
 
-```bash
-# Increment version number (major|minor|patch)
-uv version --bump minor
+[Instructions for building, testing, and publishing the mcp-proto-okn package on PyPI](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/build_publish.md)
 
-# Remove distributions for previous versions
-rm -rf dist
 
-# Build the package
-uv build
+## API Reference and Query Analysis System
 
-# Publish to TestPyPI first (recommended)
-uv publish --publish-url https://test.pypi.org/legacy/ --token pypi-YOUR_TEST_PYPI_TOKEN_HERE
-
-# Test the deployment
-For testing, add the following parameters to the `args` option in the claude_desktop_config.json.
-  "args": [
-    "--index-url",
-    "https://test.pypi.org/simple/",
-    "--extra-index-url",
-    "https://pypi.org/simple/",
-    "mcp-proto-okn"
-  ]
-
-# Publish to PyPI (production release)
-uv publish --token pypi-YOUR_PYPI_TOKEN_HERE
-
-# Clear uv cache (optional, if there are problems)
-uv cache clean
-
-# Remove cached tool installation (optional, if problems persist)
-rm -rf ~/.local/share/uv/tools/mcp-proto-okn
-```
-
-## API Reference
-
-### Available Tools
-
-#### `get_description`
-Retrieves endpoint metadata and documentation.
-
-**Parameters:**
-- None
-
-**Returns:**
-- String containing either:
-  - Registry page content prefixed with a header line identifying the registry source (for FRINK endpoints)
-  - The static/server-provided description when no registry URL applies
-
-#### `get_schema`
-Retrieves the schema (classes, relationships, properties) for the knowledge graph endpoint.
-
-> **Important:** Always call this tool FIRST before making any queries to understand what data is available in the knowledge graph.
-
-**Parameters:**
-- `compact` (boolean, optional): If `true` (default), returns compact URI:label mappings. If `false`, returns full metadata with descriptions.
-
-**Returns:**
-- JSON object containing the endpoint's schema information in the specified format, including:
-  - Available classes
-  - Relationships/predicates
-  - Properties with labels and descriptions (when available)
-
-#### `query`
-Executes SPARQL queries against the configured endpoint.
-
-> **Important:** You MUST call `get_schema()` first before using this query tool to understand the available classes and predicates in the knowledge graph.
-
-**Parameters:**
-- `query_string` (string, required): A valid SPARQL query string
-- `format` (string, optional): Output format. Options:
-  - `'compact'` (default): Columns + data arrays, no repeated keys
-  - `'simplified'`: JSON with dict rows
-  - `'full'`: Complete SPARQL JSON response
-  - `'values'`: List of dictionaries
-  - `'csv'`: CSV string format
-
-**Returns:**
-- Query results in the specified format
-
-#### `clean_mermaid_diagram`
-Cleans Mermaid class diagrams by removing unwanted elements.
-
-**Parameters:**
-- `mermaid_content` (string, required): The raw Mermaid class diagram content
-
-**Returns:**
-- Cleaned Mermaid content with the following elements removed:
-  - All note statements that would render as unreadable yellow boxes
-  - Empty curly braces from class definitions
-
----
-### Command Line Interface
-
-**Required Parameters:**
-- `--endpoint` : SPARQL endpoint URL (e.g., `https://frink.apps.renci.org/spoke/sparql`)
-
-**Optional Parameters:**
-- `--description` : Custom description for the SPARQL endpoint (auto-generated for FRINK endpoints)
-
-**Example Usage:**
-
-```bash
-uvx mcp-proto-okn --endpoint https://frink.apps.renci.org/spoke/sparql
-```
+[mcp-proto-okn server API](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/api.md)
 
 ## Troubleshooting
 
-### Common Issues
-
 **MCP server not appearing in Claude Desktop:**
 - Ensure you've completely quit and restarted Claude Desktop (not just closed the window)
-- Check that your JSON configuration is valid (use a JSON validator)
-- Verify that `uvx` is installed and accessible in your PATH
+- Check that your JSON configuration is valid (attach your config file to a chat and ask it to fix any errors)
+- Verify that `uvx` is installed and accessible in your PATH (which uvx)
 
 **Connection errors:**
-- Check your internet connection
 - Verify the SPARQL endpoint URL is correct and accessible
 - Some endpoints may have rate limits or temporary downtime
 
 **Performance issues:**
 - Complex SPARQL queries may take time to execute
 - Consider breaking down complex queries into smaller parts
-- Check the endpoint's documentation for query best practices
 
 ## License
 
@@ -293,14 +194,14 @@ If you use MCP Server Proto-OKN in your research, please cite the following work
 ```bibtex
 @software{rose2025mcp-proto-okn,
   title={MCP Server Proto-OKN},
-  author={Rose, P.W. and Nelson, C.A. and Shi, Y. and Baranzini, S.E.},
+  author={Rose, P.W. and Nelson, C.A. and Saravia-Butler, A.M. and Shi, Y. and Baranzini, S.E.},
   year={2025},
   url={https://github.com/sbl-sdsc/mcp-proto-okn}
 }
 
 @software{rose2025spoke-genelab,
   title={NASA SPOKE-GeneLab Knowledge Graph},
-  author={Rose, P.W. and Nelson, C.A. and Gebre, S.G. and Saravia-Butler AM, and Soman, K. and Grigorev, K.A. and Sanders, L.M. and Costes, S.V. and Baranzini, S.E.},
+  author={Rose, P.W. and Nelson, C.A. and Gebre, S.G. and Saravia-Butler, A.M. and Soman, K. and Grigorev, K.A. and Sanders, L.M. and Costes, S.V. and Baranzini, S.E.},
   year={2025},
   url={https://github.com/BaranziniLab/spoke_genelab}
 }
