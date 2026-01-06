@@ -63,15 +63,17 @@ In the prompt dialog box, click the `+` button:
      alt="Tool Selector"
      width="500">
 
+Use @kg_name to refer to a specific knowledge graph in chat (for example, @spoke-genelab).
+
 To create a transcript of a chat (see examples below), use the following prompt: 
 ```Create a chat transcript```. 
-The transcript can then be downloaded in .md format.
+The transcript can then be downloaded in .md or .pdf format.
 
 ## Example Queries
 
+
 ### Knowledge Graph Overviews & Class Diagrams
 
-Use @kg_name to refer to a specific knowledge graph in chat (for example, @spoke-genelab).
 Each link below points to a chat transcript that demonstrates how to generate a knowledge-graph overview and class diagram for a given Proto-OKN Theme 1 KG. The examples are grouped by domain area.
 
 | 🧬 Biology & Health | 🌱 Environment | ⚖️ Justice | 🛠️ Technology & Manufacturing | Other
@@ -122,13 +124,13 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 ### Proto-OKN Integration Opportunities
 
-1. [**Cross-KG Geolocation Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
+1. [**Cross-KG Geolocation Data Exploration**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-2. [**Cross-KG Chemical Compound Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
+2. [**Cross-KG Chemical Compound Data Exploration**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
 ### Cross-Platform LLM Benchmarks
 
-This section compares the results of two queries using Claude Desktop and VS Code Insiders with different LLMs.
+This section compares the results of two queries using Claude Desktop and VS Code Insiders with commons LLMs.
 
 | Query | Claude Sonnet 4.5 | Claude Sonnet 4.5 | Gemini 3 Pro | Groq Code Fast 1 | GPT-5.2 |
 |-------|-------------------------------|----------------------------|--------------|------------------|---------|
