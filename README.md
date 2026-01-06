@@ -69,7 +69,7 @@ The transcript can then be downloaded in .md format.
 
 ## Example Queries
 
-1. **Knowledge Graph Overviews & Class Diagrams**
+### Knowledge Graph Overviews & Class Diagrams
 
 Use @kg_name to refer to a specific knowledge graph in chat (for example, @spoke-genelab).
 Each link below points to a chat transcript that demonstrates how to generate a knowledge-graph overview and class diagram for a given Proto-OKN Theme 1 KG. The examples are grouped by domain area.
@@ -86,77 +86,54 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 | [spoke-okn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-okn_overview.md) | [climatemodelskg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/climatemodelskg_overview.md) |  |  |
 |  | [sockg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sockg_overview.md) |  |  |
 
-2. **Spaceflight Missions (spoke-genelab)**
+### Use Cases
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_breakdown.md)
+1. [**Spaceflight Missions (spoke-genelab)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_breakdown.md)
    
-3. **Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**
+2. [**Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
+3. [**Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd-161-sonnet-4.5.md)
 
-4. **Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**
+4. [**Disease Prevalence in the US (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd-161-sonnet-4.5.md)
+5. [**Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-5. **Disease Prevalence in the US (spoke-okn)**
+6. [**Contamination at Superfund Sites (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
+7. [**PFOA in Drinking Water (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-6. **Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**
+8. [**Data about PFOA (spoke-okn, biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
+9. [**Biological Targets for PFOA (biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-7. **Contamination at Superfund Sites (spoke-okn)**
+10. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
+11. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-8. **PFOA in Drinking Water (spoke-okn)**
+12. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
+13. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-9. **Data about PFOA (spoke-okn, biobricks-toxcast)**
+14. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
+15. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
-10. **Biological Targets for PFOA (biobricks-toxcast)**
+16. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
+### Proto-OKN Integration Opportunities
 
-11. **Criminal Justice Patterns (scales)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
-
-12. **Drug Possession Charges (scales)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
-
-13. **Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**
-
-    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
-
-14. **Rural Health Access (ruralkg, dreamkg, spoke-okn)**
-
-    [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
-
-15. **Michigan Flooding Event (ufokn)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
-
-16. **Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
-
-17. **Philadelphia Area Incidents (nikg)**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
-
-18. **Cross-KG Geolocation Analysis**
-
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
+1. [**Cross-KG Geolocation Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-geolocation-analysis.md)
    
-19. **Cross-KG Chemical Compound Analysis**
+2. [**Cross-KG Chemical Compound Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
 
-   [Chat transcript](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-kg-compound-analysis.md)
+### Cross-Platform LLM Benchmarks
+
+This section compares the results of two queries using Claude Desktop and VS Code Insiders with different LLMs.
+
+| Query | Claude Sonnet 4.5 | Claude Sonnet 4.5 | Gemini 3 Pro | Groq Code Fast 1 | GPT-5.2 |
+|-------|-------------------------------|----------------------------|--------------|------------------|---------|
+| **Spaceflight Missions** | [Claude Desktop](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-sonnet-4.5-claude.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-sonnet-4.5-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-Gemini-3-Pro.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-Gorc-Code-Fast-1.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-GPT-5.2.md) |
+| **OSD-161 Analysis** | [Claude Desktop](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-sonnet-4.5-claude.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-sonnet-4.5-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161_Gemini-3-ProPreview-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-Groc-Code-Fact-1-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-GPT-5.2-vs-studio.md) |
 
 
 ## Building and Publishing (maintainers only)
