@@ -127,6 +127,9 @@ Generates a comprehensive prompt for creating a Mermaid class diagram visualizat
 **Edge Property Visualization:**
 Edges with properties are represented as intermediary classes:
 ```mermaid
+classDiagram
+direction TB
+
 class RELATIONSHIP_NAME {
     float property1
     float property2
