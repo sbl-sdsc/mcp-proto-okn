@@ -76,10 +76,10 @@ The transcript can then be downloaded in .md or .pdf format.
 
 Each link below points to a chat transcript that demonstrates how to generate a knowledge-graph overview and class diagram for a given Proto-OKN Theme 1 KG. The examples are grouped by domain area.
 
-| 🧬 Biology & Health | 🌱 Environment | ⚖️ Justice | 🛠️ Technology & Manufacturing | Other
+| 🧬 Biology & Health | 🌱 Environment | ⚖️ Justice | 🛠️ Technology & Manufacturing | NASA/NIH
 |--------------------|---------------|-----------|-------------------------------|-------------|
 | [biobricks-aopwiki](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-aopwiki_overview.md) | [sawgraph](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sawgraph_overview.md) | [ruralkg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ruralkg_overview.md) | [securechainkg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/securechainkg_overview.md) | [nasa-gesdisc-kg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nasa-gesdisc-kg_overview.md) |
-| [biobricks-ice](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-ice_overview.md) | [fiokg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/fiokg_overview.md) | [scales](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md) | [sudokn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_overview.md) |
+| [biobricks-ice](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-ice_overview.md) | [fiokg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/fiokg_overview.md) | [scales](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_overview.md) | [sudokn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_overview.md) | [nde](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nde_overview.md)
 | [biobricks-mesh](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-mesh_overview.md) | [geoconnex](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/geoconnex_overview.md) | [nikg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_overview.md) |  |
 | [biobricks-pubchem-annotations](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-pubchem-annotations_overview.md) | [spatialkg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spatialkg_overview.md) | [dreamkg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/dreamkg_overview.md) |  |
 | [biobricks-tox21](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-tox21_overview.md) | [hydrologykg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/hydrologykg_overview.md) |  |  |
@@ -121,6 +121,8 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 15. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
 16. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+
+17. [**NIAID Data Exploration - COVID-19 Vaccine Research (nde)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nde_COVID-19-Vaccine-Research.md)
 
 ### Proto-OKN Integration Opportunities
 
