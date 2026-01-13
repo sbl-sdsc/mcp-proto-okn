@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Dakota Mining Industry Suppliers Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        .info-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 300px;
+        }
+        .info-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .info-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .leaflet-popup-content {
+            font-size: 14px;
+        }
+        .leaflet-popup-content h4 {
+            margin: 0 0 8px 0;
+            color: #2c5282;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="info-box">
+        <h3>ND Mining Industry Suppliers</h3>
+        <p><strong>Total Locations:</strong> 27</p>
+        <p><strong>Unique Businesses:</strong> 21</p>
+        <p>Click on markers for details</p>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on North Dakota
+        const map = L.map('map').setView([47.5, -100.5], 7);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Business locations data
+        const businesses = [
+            {name: "ARNOLD MACHINERY CO.", city: "Jamestown", zip: "58401", lat: 46.9, lon: -98.7},
+            {name: "Ben's Structural Fabrication, Inc.", city: "Fargo", zip: "58105", lat: 46.8954, lon: -96.8078},
+            {name: "Central Machining & Pump Repair, Inc.", city: "Minot", zip: "58701", lat: 48.1, lon: -101.3},
+            {name: "Champ Industries USA Inc.", city: "Jamestown", zip: "58401", lat: 46.9, lon: -98.7},
+            {name: "CNC STEEL LLC", city: "Fargo", zip: "58102", lat: 46.93, lon: -96.83},
+            {name: "CNC STEEL LLC", city: "Casselton", zip: "58012", lat: 47.0, lon: -97.2},
+            {name: "Custom Engineered Machine LLC", city: "Dickinson", zip: "58602", lat: 46.8792, lon: -102.79},
+            {name: "Custom Engineered Machine LLC", city: "Williston", zip: "58801", lat: 48.3, lon: -103.7},
+            {name: "Delta Constructors", city: "Grassy Butte", zip: "58634", lat: 47.4431, lon: -103.294},
+            {name: "Delta Constructors", city: "Stanley", zip: "58784", lat: 48.4, lon: -102.4},
+            {name: "Delta Constructors", city: "Tioga", zip: "58784", lat: 48.4, lon: -102.4},
+            {name: "Delta Constructors", city: "Watford City", zip: "58854", lat: 47.8, lon: -103.1},
+            {name: "FISHER SAND & GRAVEL CO.", city: "Dickinson", zip: "58601", lat: 46.9, lon: -102.8},
+            {name: "Jetheat Inc.", city: "Williston", zip: "58801", lat: 48.3, lon: -103.7},
+            {name: "Leonardite Products", city: "Williston", zip: "58801", lat: 48.3, lon: -103.7},
+            {name: "Leonardite Products", city: "Williston", zip: "58802-0548", lat: 48.1465, lon: -103.622},
+            {name: "MALLOY ELECTRIC MOTOR & MACHINING", city: "Fargo", zip: "58105", lat: 46.8954, lon: -96.8078},
+            {name: "MALLOY ELECTRIC MOTOR & MACHINING", city: "Mandan", zip: "58554", lat: 46.7, lon: -100.9},
+            {name: "Midway Machining, Inc.", city: "Mandan", zip: "58554", lat: 46.7, lon: -100.9},
+            {name: "MIDWEST HOSE & SPECIALTY INC.", city: "Williston", zip: "58802", lat: 48.1688, lon: -103.615},
+            {name: "NXL Technologies", city: "Williston", zip: "58801", lat: 48.3, lon: -103.7},
+            {name: "Patterson-UTI", city: "Williston", zip: "58801", lat: 48.3, lon: -103.7},
+            {name: "Rig Mats Of America, Inc.", city: "Williston", zip: "58801", lat: 48.2257, lon: -103.649},
+            {name: "RMS Tritec LLC", city: "Bismarck", zip: "58501", lat: 43.76, lon: -93.34},
+            {name: "Sabin Metal Corporation", city: "Williston", zip: "58802-1347", lat: 48.1465, lon: -103.622},
+            {name: "Sheet Metal Specialties, Inc.", city: "Bismarck", zip: "58504-6922", lat: 46.8, lon: -100.8},
+            {name: "Wanzek, Inc.", city: "Fargo", zip: "58104", lat: 46.79, lon: -96.84}
+        ];
+
+        // Custom icon for markers
+        const customIcon = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        // Add markers for each business
+        businesses.forEach(business => {
+            const marker = L.marker([business.lat, business.lon], {icon: customIcon}).addTo(map);
+            
+            const popupContent = `
+                <h4>${business.name}</h4>
+                <p><strong>City:</strong> ${business.city}</p>
+                <p><strong>ZIP:</strong> ${business.zip}</p>
+                <p><strong>Coordinates:</strong> ${business.lat.toFixed(4)}, ${business.lon.toFixed(4)}</p>
+            `;
+            
+            marker.bindPopup(popupContent);
+        });
+
+        // Add a scale control
+        L.control.scale({imperial: true, metric: true}).addTo(map);
+    </script>
+</body>
+</html>
