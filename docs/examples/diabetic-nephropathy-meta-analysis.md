@@ -235,6 +235,7 @@ These molecular changes align with known diabetic nephropathy pathology:
 I've created two comprehensive documents with the complete analysis and all 200 genes ranked by effect size.
 
 [Diabetic nephropathy metaanalysis report](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/diabetic_nephropathy_metaanalysis_report.md)
+
 [Supplementary_gene_list](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/supplementary_gene_list.md)
 
 ---
