@@ -81,7 +81,7 @@ I've created a comprehensive prompt for the **Cross-Study Disease Gene Expressio
 
 This template can be adapted for any disease by simply replacing the disease keywords in the SPARQL queries.
 
-[Link to prompt document: cross_study_metaanalysis_prompt.md]
+[Prompt document](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross_study_metaanalysis_prompt.md)
 
 ---
 
@@ -234,8 +234,8 @@ These molecular changes align with known diabetic nephropathy pathology:
 
 I've created two comprehensive documents with the complete analysis and all 200 genes ranked by effect size.
 
-[Link to main report: diabetic_nephropathy_metaanalysis_report.md]
-[Link to supplementary data: supplementary_gene_list.md]
+[Diabetic nephropathy metaanalysis report](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/diabetic_nephropathy_metaanalysis_report.md)
+[Supplementary_gene_list](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/supplementary_gene_list.md)
 
 ---
 
