@@ -1,0 +1,67 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+https://w3id.org/biolink/vocab/AnatomicalEntity,AnatomicalEntity,An anatomical entity from ontology (e.g. UBERON) describing anatomical structures examined in assays,Class,,,
+https://w3id.org/biolink/vocab/Assay,Assay,A unique assay instance representing differential gene expression measurements from Gene Expression Atlas,Class,,,
+https://w3id.org/biolink/vocab/Association,Association,A general association between entities in the knowledge graph,Class,,,
+https://w3id.org/biolink/vocab/Attribute,Attribute,An attribute or characteristic of an entity,Class,,,
+https://w3id.org/biolink/vocab/BiologicalProcess,BiologicalProcess,A biological process from Gene Ontology (GO),Class,,,
+https://w3id.org/biolink/vocab/BiologicalSex,BiologicalSex,The biological sex of study subjects,Class,,,
+https://w3id.org/biolink/vocab/Cell,Cell,A cell type from Cell Ontology (CL) examined in assays or studies,Class,,,
+https://w3id.org/biolink/vocab/Disease,Disease,A disease studied in experiments,Class,,,
+https://w3id.org/biolink/vocab/Gene,Gene,A gene with unique identifier (NCBI Gene ID or Ensembl ID),Class,,,
+https://w3id.org/biolink/vocab/GeneExpressionMixin,GeneExpressionMixin,An association representing differential gene expression between an assay and a gene with quantitative properties,Class,,,
+https://w3id.org/biolink/vocab/LifeStage,LifeStage,The life stage or developmental stage of study subjects,Class,,,
+https://w3id.org/biolink/vocab/Pathway,Pathway,A biological pathway,Class,,,
+https://w3id.org/biolink/vocab/PopulationOfIndividualOrganisms,PopulationOfIndividualOrganisms,A population or group of organisms,Class,,,
+https://w3id.org/biolink/vocab/ProteinDomain,ProteinDomain,A protein domain,Class,,,
+https://w3id.org/biolink/vocab/Study,Study,A study from Gene Expression Atlas containing multiple assays,Class,,,
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Assay,AnatomicalEntity
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Assay,Cell
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Assay,LifeStage
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,Attribute
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,BiologicalSex
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,Cell
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,LifeStage
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,PopulationOfIndividualOrganisms
+https://w3id.org/biolink/vocab/has_input,has_input,Links an assay to its input disease,Predicate,,Assay,Disease
+https://w3id.org/biolink/vocab/has_output,has_output,Links an assay to association output,Predicate,,Assay,Association
+https://w3id.org/biolink/vocab/has_output,has_output,Links a study to its assay outputs,Predicate,,Study,Assay
+https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to biological process,Predicate,,Association,BiologicalProcess
+https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to pathway,Predicate,,Association,Pathway
+https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to protein domain,Predicate,,Association,ProteinDomain
+https://w3id.org/biolink/vocab/studies,studies,Links a study to disease studied,Predicate,,Study,Disease
+https://w3id.org/biolink/vocab/subject,subject,Links GeneExpressionMixin to its subject assay,Predicate,,GeneExpressionMixin,Assay
+https://w3id.org/biolink/vocab/object,object,Links GeneExpressionMixin to its object gene,Predicate,,GeneExpressionMixin,Gene
+https://w3id.org/biolink/vocab/predicate,predicate,Defines the relationship type in an association (typically affects_expression_of),Predicate,,GeneExpressionMixin,
+https://spoke.ucsf.edu/genelab/adj_p_value,adj_p_value,Multiple testing-corrected p-value assessing the statistical significance of differential gene expression after controlling the false-discovery rate (FDR). Smaller values (e.g. <= 0.05) indicate the observed log2 fold change is unlikely to arise by chance (float),EdgeProperty,GeneExpressionMixin,,
+https://spoke.ucsf.edu/genelab/log2fc,log2fc,Log2-transformed fold change in gene expression between experimental condition and reference baseline. Positive values indicate up-regulation while negative values denote down-regulation (float),EdgeProperty,GeneExpressionMixin,,
+https://spoke.ucsf.edu/genelab/array_design,array_design,Array design identifier for the assay (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/contrast_id,contrast_id,Unique identifier for the contrast in an association (string),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/effect_size,effect_size,Effect size measure for the association (float),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/enrichment_type,enrichment_type,Type of enrichment analysis performed (string),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/ensembl_id,ensembl_id,Ensembl gene identifier (string),NodeProperty,,Gene,
+https://spoke.ucsf.edu/genelab/experiment_accession,experiment_accession,Gene Expression Atlas experiment accession identifier (string),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/experimental_factors,experimental_factors,Experimental factors applied in the study (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/factors_1,factors_1,Primary experimental factor(s) for this assay group (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/factors_2,factors_2,Secondary experimental factor(s) for this assay group (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/genes_significant,genes_significant,Number of genes showing significant differential expression (integer),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/genes_total,genes_total,Total number of genes analyzed (integer),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/id_source,id_source,Source of the gene identifier (e.g. NCBI or Ensembl) (string),NodeProperty,,Gene,
+https://spoke.ucsf.edu/genelab/measurement,measurement,Type of measurement in the assay (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/ncbi_gene_id,ncbi_gene_id,NCBI Gene (Entrez) identifier (string),NodeProperty,,Gene,
+https://spoke.ucsf.edu/genelab/p_value,p_value,Unadjusted p-value for statistical significance (float),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/project_title,project_title,Title of the study/project (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/project_type,project_type,Type of project (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/pubmed_id,pubmed_id,PubMed identifier for associated publication (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/reference_group_id,reference_group_id,Identifier for the reference/control group (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/reference_group_label,reference_group_label,Label/name for the reference/control group (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/secondary_accessions,secondary_accessions,Alternative accession identifiers for the study (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/source,source,Data source (Gene Expression Atlas) (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/study_id,study_id,Unique study identifier (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/submitter_affiliation,submitter_affiliation,Institutional affiliation of study submitter (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/submitter_email,submitter_email,Email address of study submitter (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/submitter_name,submitter_name,Name of study submitter (string),NodeProperty,,Study,
+https://spoke.ucsf.edu/genelab/technology,technology,Platform or technology used for the assay (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/term_id,term_id,Term identifier from ontology (string),NodeProperty,,Association,
+https://spoke.ucsf.edu/genelab/test_group_id,test_group_id,Identifier for the test/experimental group (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/test_group_label,test_group_label,Label/name for the test/experimental group (string),NodeProperty,,Assay,
+https://spoke.ucsf.edu/genelab/uri,uri,Uniform Resource Identifier for the entity (string),NodeProperty,,AnatomicalEntity,

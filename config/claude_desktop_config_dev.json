@@ -40,6 +40,10 @@
             "command": "uv",
             "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/fiokg/sparql"]
         },
+        "gene-expression-atlas-okn-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/gene-expression-atlas-okn/sparql"]
+        },
         "geoconnex-dev": {
             "command": "uv",
             "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/geoconnex/sparql"]
@@ -51,6 +55,10 @@
         "nasa-gesdisc-kg-dev": {
             "command": "uv",
             "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nasa-gesdisc-kg/sparql"]
+        },
+        "nde-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nde/sparql"]
         },
         "nikg-dev": {
             "command": "uv",

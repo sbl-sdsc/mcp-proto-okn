@@ -40,6 +40,10 @@
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/fiokg/sparql"]
         },
+        "gene-expression-atlas-okn": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/gene-expression-altlas-okn/sparql"]
+        },
         "geoconnex": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/geoconnex/sparql"]
@@ -51,6 +55,10 @@
         "nasa-gesdisc-kg": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nasa-gesdisc-kg/sparql"]
+        },
+        "nde": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nde/sparql"]
         },
         "nikg": {
             "command": "uvx",
