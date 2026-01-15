@@ -244,13 +244,6 @@ Create transcript
 
 ---
 
-🧠 **Assistant**  
-I've created a comprehensive chat transcript documenting our entire analysis session.
-
-[Link to transcript: diabetic-nephropathy-meta-analysis-transcript-2026-01-15.md]
-
----
-
 *Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-15*
 
 Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)
