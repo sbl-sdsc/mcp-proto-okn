@@ -96,37 +96,39 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 3. [**Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd-161-sonnet-4.5.md)
 
-4. [**Disease Prevalence in the US (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
+4. [**Spaceflight Gene Expression with Open Targets MCP integration (spoke-genelab, Open Targets, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spaceflight-gene-expression-analysis-open-targets.md)
 
-5. [**Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
+5. [**Disease Prevalence in the US (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
-6. [**Contamination at Superfund Sites (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
+6. [**Disease Prevalence - Socio-Economic Factors Correlation (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/disease_socio_economic_correlation.md)
 
-7. [**PFOA in Drinking Water (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
+7. [**NIAID Data Exploration - COVID-19 Vaccine Research (nde)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nde_COVID-19-Vaccine-Research.md)
 
-8. [**Data about PFOA (spoke-okn, biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
+8. [**Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/diabetic-nephropathy-meta-analysis.md)
 
-9. [**Biological Targets for PFOA (biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
+9. [**Contamination at Superfund Sites (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
 
-10. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
+10. [**PFOA in Drinking Water (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-11. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
+11. [**Data about PFOA (spoke-okn, biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-12. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
+12. [**Biological Targets for PFOA (biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-13. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
+13. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-14. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
+14. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-15. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
+15. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
-16. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+16. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-17. [**NIAID Data Exploration - COVID-19 Vaccine Research (nde)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nde_COVID-19-Vaccine-Research.md)
+17. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-18. [**Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/diabetic-nephropathy-meta-analysis.md)
+18. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
 
-19. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
+19. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+
+20. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
 
 
 
