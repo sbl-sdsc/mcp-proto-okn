@@ -14,24 +14,26 @@ https://w3id.org/biolink/vocab/Pathway,Pathway,A biological pathway,Class,,,
 https://w3id.org/biolink/vocab/PopulationOfIndividualOrganisms,PopulationOfIndividualOrganisms,A population or group of organisms,Class,,,
 https://w3id.org/biolink/vocab/ProteinDomain,ProteinDomain,A protein domain,Class,,,
 https://w3id.org/biolink/vocab/Study,Study,A study from Gene Expression Atlas containing multiple assays,Class,,,
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Assay,AnatomicalEntity
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Assay,Cell
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Assay,LifeStage
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,Attribute
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,BiologicalSex
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,Cell
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,LifeStage
-https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an entity to its attributes,Predicate,,Study,PopulationOfIndividualOrganisms
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an assay to its anatomical entity attribute,Predicate,,Assay,AnatomicalEntity
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an assay to its cell type attribute,Predicate,,Assay,Cell
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links an assay to its life stage attribute,Predicate,,Assay,LifeStage
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links a study to its general attributes,Predicate,,Study,Attribute
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links a study to its biological sex attribute,Predicate,,Study,BiologicalSex
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links a study to its cell type attribute,Predicate,,Study,Cell
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links a study to its life stage attribute,Predicate,,Study,LifeStage
+https://w3id.org/biolink/vocab/has_attribute,has_attribute,Links a study to its population attribute,Predicate,,Study,PopulationOfIndividualOrganisms
 https://w3id.org/biolink/vocab/has_input,has_input,Links an assay to its input disease,Predicate,,Assay,Disease
-https://w3id.org/biolink/vocab/has_output,has_output,Links an assay to association output,Predicate,,Assay,Association
+https://w3id.org/biolink/vocab/has_output,has_output,Links an assay to its association output,Predicate,,Assay,Association
 https://w3id.org/biolink/vocab/has_output,has_output,Links a study to its assay outputs,Predicate,,Study,Assay
-https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to biological process,Predicate,,Association,BiologicalProcess
-https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to pathway,Predicate,,Association,Pathway
-https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to protein domain,Predicate,,Association,ProteinDomain
+https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to biological process it participates in,Predicate,,Association,BiologicalProcess
+https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to pathway it participates in,Predicate,,Association,Pathway
+https://w3id.org/biolink/vocab/participates_in,participates_in,Links an association to protein domain it participates in,Predicate,,Association,ProteinDomain
 https://w3id.org/biolink/vocab/studies,studies,Links a study to disease studied,Predicate,,Study,Disease
 https://w3id.org/biolink/vocab/subject,subject,Links GeneExpressionMixin to its subject assay,Predicate,,GeneExpressionMixin,Assay
 https://w3id.org/biolink/vocab/object,object,Links GeneExpressionMixin to its object gene,Predicate,,GeneExpressionMixin,Gene
 https://w3id.org/biolink/vocab/predicate,predicate,Defines the relationship type in an association (typically affects_expression_of),Predicate,,GeneExpressionMixin,
+https://w3id.org/biolink/vocab/in_taxon,in_taxon,Links a gene to its taxonomic organism (NCBI taxonomy ID or scientific name),Predicate,,Gene,
+https://w3id.org/biolink/vocab/in_taxon,in_taxon,Links a study to its taxonomic organism,Predicate,,Study,
 https://spoke.ucsf.edu/genelab/adj_p_value,adj_p_value,Multiple testing-corrected p-value assessing the statistical significance of differential gene expression after controlling the false-discovery rate (FDR). Smaller values (e.g. <= 0.05) indicate the observed log2 fold change is unlikely to arise by chance (float),EdgeProperty,GeneExpressionMixin,,
 https://spoke.ucsf.edu/genelab/log2fc,log2fc,Log2-transformed fold change in gene expression between experimental condition and reference baseline. Positive values indicate up-regulation while negative values denote down-regulation (float),EdgeProperty,GeneExpressionMixin,,
 https://spoke.ucsf.edu/genelab/array_design,array_design,Array design identifier for the assay (string),NodeProperty,,Assay,
@@ -65,3 +67,34 @@ https://spoke.ucsf.edu/genelab/term_id,term_id,Term identifier from ontology (st
 https://spoke.ucsf.edu/genelab/test_group_id,test_group_id,Identifier for the test/experimental group (string),NodeProperty,,Assay,
 https://spoke.ucsf.edu/genelab/test_group_label,test_group_label,Label/name for the test/experimental group (string),NodeProperty,,Assay,
 https://spoke.ucsf.edu/genelab/uri,uri,Uniform Resource Identifier for the entity (string),NodeProperty,,AnatomicalEntity,
+https://w3id.org/biolink/vocab/category,category,Category classification for an entity (string),NodeProperty,,Study,
+https://w3id.org/biolink/vocab/category,category,Category classification for an entity (string),NodeProperty,,Assay,
+https://w3id.org/biolink/vocab/category,category,Category classification for an entity (string),NodeProperty,,Association,
+https://w3id.org/biolink/vocab/category,category,Category classification for an entity (string),NodeProperty,,Gene,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Study,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Assay,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Association,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Gene,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,AnatomicalEntity,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Cell,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Disease,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,LifeStage,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,BiologicalSex,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,PopulationOfIndividualOrganisms,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,BiologicalProcess,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,Pathway,
+https://w3id.org/biolink/vocab/id,id,Unique identifier for an entity (string),NodeProperty,,ProteinDomain,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,Study,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,Assay,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,Gene,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,AnatomicalEntity,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,Cell,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,Disease,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,LifeStage,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,BiologicalSex,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,BiologicalProcess,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,Pathway,
+https://w3id.org/biolink/vocab/name,name,Human-readable name for an entity (string),NodeProperty,,ProteinDomain,
+https://w3id.org/biolink/vocab/description,description,Textual description of an entity (string),NodeProperty,,Study,
+https://w3id.org/biolink/vocab/description,description,Textual description of an entity (string),NodeProperty,,Assay,
+https://w3id.org/biolink/vocab/symbol,symbol,Gene symbol (string),NodeProperty,,Gene,
