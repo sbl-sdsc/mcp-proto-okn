@@ -124,7 +124,9 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 17. [**NIAID Data Exploration - COVID-19 Vaccine Research (nde)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nde_COVID-19-Vaccine-Research.md)
 
-18. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
+18. [**Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/diabetic-nephropathy-meta-analysis.md)
+
+19. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
 
 
 
