@@ -1,4 +1,4 @@
-# Gene Expression Atlas OKN Exploration
+# Gene Expression Atlas Knowledge Graph Exploration
 
 👤 **User**  
 @gene-expression-atlas-okn
@@ -6,55 +6,51 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore the gene-expression-atlas-okn knowledge graph. Let me first get information about this knowledge graph to understand what data it contains.
+I'll help you explore the gene expression atlas knowledge graph. Let me first get some information about what's available in this resource.
 
-Great! Now let me get the schema to understand the structure of this knowledge graph.
+Great! I can help you explore the **Gene Expression Atlas** knowledge graph, which contains selected studies from the EMBL-EBI Gene Expression Atlas. This resource includes:
 
-Perfect! I now have a comprehensive understanding of the **Gene Expression Atlas Open Knowledge Network**. This is a rich semantic knowledge graph containing selected studies from the EMBL-EBI Gene Expression Atlas.
-
-## Overview
-
-The knowledge graph contains:
-- **243 studies** with **797 assays**
+- **243 studies** with 797 assays
 - Expression data for **152,879 genes**
-- Differential gene expression measurements with statistical metrics
+- Differential expression measurements with statistical metrics
+- Links to anatomical entities, cell types, diseases, developmental stages, and biological sex categories
 
-## Key Entities (Classes)
+Let me get the schema to show you what kinds of data and relationships are available:
 
-The knowledge graph includes these main entity types:
+Perfect! Here's what you can explore in this knowledge graph:
 
-1. **Gene** - Genes with NCBI Gene IDs or Ensembl IDs
-2. **Study** - Research studies from Gene Expression Atlas
-3. **Assay** - Individual differential expression measurements
-4. **AnatomicalEntity** - Anatomical structures (from UBERON ontology)
-5. **Cell** - Cell types (from Cell Ontology)
-6. **Disease** - Diseases studied
-7. **BiologicalProcess** - GO biological processes
-8. **Pathway** - Biological pathways
-9. **BiologicalSex** - Sex categories
-10. **LifeStage** - Developmental stages
-11. **GeneExpressionMixin** - Expression associations with quantitative data
-12. **Association** - General associations between entities
+## Main Entity Types:
+- **Study** - 243 gene expression studies from the Atlas
+- **Assay** - 797 individual assays/experiments  
+- **Gene** - 152,879 genes with expression data
+- **AnatomicalEntity** - Tissue/organ locations
+- **Cell** - Cell types
+- **Disease** - Disease conditions
+- **BiologicalSex** - Sex-specific data
+- **LifeStage** - Developmental stages
+- **BiologicalProcess**, **Pathway**, **ProteinDomain** - Functional annotations
 
-## What You Can Explore
+## Key Relationships:
+- Studies contain assays (has_output)
+- Assays measure gene expression with statistical metrics
+- Studies can be linked to diseases, populations, and organisms
 
-You can query this knowledge graph to:
-- Find genes differentially expressed in specific tissues, cell types, or diseases
-- Explore expression patterns across developmental stages
-- Investigate disease-associated expression changes
-- Analyze expression data by biological sex
-- Find enriched pathways and biological processes
-- Get study metadata including PubMed references and experimental conditions
+## Important Properties:
+- **Statistical metrics**: p_value, effect_size, genes_significant
+- **Study metadata**: project_title, pubmed_id, experimental_factors
+- **Assay details**: technology, array_design, test/reference groups
+- **Gene identifiers**: ncbi_gene_id, ensembl_id, symbol
 
-## Example Questions
+## What would you like to explore?
 
-Would you like me to help you with any of these types of queries?
-- "Which genes are upregulated in heart tissue?"
-- "Find studies related to a specific disease"
-- "Show expression patterns for a specific gene"
-- "What assays involve specific cell types?"
+I can help you:
+1. Search for genes and their expression patterns
+2. Find studies related to specific diseases or tissues
+3. Analyze differential expression data
+4. Explore experimental factors and contrasts
+5. Visualize the knowledge graph structure
 
-What would you like to explore in this gene expression data?
+What interests you?
 
 ---
 
@@ -64,83 +60,109 @@ Visualize schema
 ---
 
 🧠 **Assistant**  
-I'll create a visual representation of the Gene Expression Atlas schema using a Mermaid class diagram. Let me follow the workflow step by step.
-
-First, I'll generate the draft diagram based on the schema I already retrieved:
-
-Perfect! Now I'll present the cleaned diagram and save it to a file:
+I'll create a visual schema diagram for you. Let me generate the Mermaid class diagram showing all the entity types and their relationships.
 
 ```mermaid
 classDiagram
 direction TB
 
 class Study {
-    string experiment_accession
-    string experimental_factors
+    string id
     string project_title
     string project_type
     string pubmed_id
+    string experimental_factors
     string secondary_accessions
     string source
-    string submitter_affiliation
-    string submitter_email
     string submitter_name
+    string submitter_email
+    string submitter_affiliation
 }
 
 class Assay {
-    string array_design
-    string factors_1
-    string factors_2
-    string measurement
-    string reference_group_id
-    string reference_group_label
+    string id
+    string description
     string study_id
     string technology
+    string array_design
+    string measurement
+    string factors_1
+    string factors_2
     string test_group_id
     string test_group_label
+    string reference_group_id
+    string reference_group_label
 }
 
 class Gene {
+    string id
+    string symbol
+    string category
+    string ncbi_gene_id
     string ensembl_id
     string id_source
-    string ncbi_gene_id
 }
 
-class GeneExpressionMixin {
-    string contrast_id
-    string experiment_accession
+class AnatomicalEntity {
+    string id
+    string name
+    string uri
+}
+
+class Cell {
+    string id
+    string name
+}
+
+class Disease {
+    string id
+    string name
+}
+
+class BiologicalSex {
+    string id
+    string name
+}
+
+class LifeStage {
+    string id
+    string name
+}
+
+class BiologicalProcess {
+    string id
+    string name
+}
+
+class Pathway {
+    string id
+    string name
+}
+
+class ProteinDomain {
+    string id
+    string name
+}
+
+class PopulationOfIndividualOrganisms {
+    string id
+    string name
 }
 
 class Association {
     string contrast_id
-    float effect_size
-    string enrichment_type
     string experiment_accession
+    string term_id
+    float p_value
+    float effect_size
     int genes_significant
     int genes_total
-    float p_value
-    string term_id
+    string enrichment_type
 }
 
-class AnatomicalEntity {
-    string uri
+class GeneExpressionMixin {
+    string id
 }
-
-class Cell
-
-class Disease
-
-class BiologicalProcess
-
-class BiologicalSex
-
-class LifeStage
-
-class Pathway
-
-class ProteinDomain
-
-class PopulationOfIndividualOrganisms
 
 Study --> Assay : has_output
 Study --> Disease : studies
@@ -151,26 +173,26 @@ GeneExpressionMixin --> Gene : object
 Association --> ProteinDomain : participates_in
 ```
 
-I've created a visual schema diagram for the Gene Expression Atlas knowledge graph! The diagram shows:
+Here's the schema visualization for the Gene Expression Atlas knowledge graph! The diagram shows:
 
-**Core Data Flow:**
-- **Study** → **Assay** → **Gene** (via GeneExpressionMixin)
-- Studies contain multiple assays that measure gene expression
+**Core Structure:**
+- **Study** entities contain multiple **Assay** experiments
+- **GeneExpressionMixin** connects assays to genes, representing the actual expression measurements
+- **Association** entities capture enrichment and statistical relationships
 
-**Key Entity Types:**
-- **Study** - Research projects with metadata (title, PubMed ID, submitter info, experimental factors)
-- **Assay** - Individual expression measurements with test/reference groups and technology details
-- **Gene** - Genes identified by NCBI or Ensembl IDs
-- **GeneExpressionMixin** - The connection between assays and genes with contrast information
-- **Association** - General associations with statistical measures (p-values, effect sizes, enrichment data)
+**Biological Context:**
+- Studies can be linked to **Disease** conditions and **PopulationOfIndividualOrganisms**
+- The schema includes entities for anatomical locations, cell types, life stages, biological sex, pathways, and protein domains
 
-**Contextual Entities:**
-- AnatomicalEntity, Cell, Disease, BiologicalProcess, BiologicalSex, LifeStage, Pathway, ProteinDomain, PopulationOfIndividualOrganisms
+**Key Properties:**
+- Studies have metadata like titles, PubMed IDs, and experimental factors
+- Assays track technology platforms, test/reference groups, and measurement types
+- Genes have multiple identifiers (NCBI, Ensembl) and symbols
+- Associations include statistical measures (p-values, effect sizes)
 
-The diagram renders interactively above and is also available as a downloadable .mermaid file.
+The downloadable .mermaid file is ready for you to use in documentation or presentations!
 
 ---
 
 *Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-15*
-
-Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)
+*Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)*
