@@ -56,36 +56,6 @@ Create transcript
 
 ---
 
-🧠 **Assistant**  
-I'll create a chat transcript in markdown format documenting our conversation about libcurl vulnerabilities.
-
-*[Created initial transcript file]*
-
-I've created a detailed markdown transcript of our conversation about libcurl vulnerabilities in the SecureChain KG. The transcript includes:
-
-- Your original question
-- My methodology and investigation steps
-- The vulnerability findings (CVE-2023-27537 affecting libcurl 7.88.1)
-- Important caveats about knowledge graph coverage
-- Technical details from the SPARQL queries
-
-The transcript is now available for download.
-
----
-
-👤 **User**  
-Use the create_transcript tool to create the transcript!
-
----
-
-🧠 **Assistant**  
-You're absolutely right! I should use the dedicated `create_chat_transcript` tool for creating proper transcripts. Let me create it now using the correct format.
-
-*[Using securechainkg:create_chat_transcript tool]*
-
-This transcript documents our conversation about querying the SecureChain KG knowledge graph for libcurl vulnerabilities in versions 7.8 or newer, which revealed one vulnerability (CVE-2023-27537) affecting libcurl 7.88.1, a CWE-415 Double Free vulnerability.
-
-
 *Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-17*
 
 **Model:** Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)
