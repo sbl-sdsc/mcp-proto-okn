@@ -151,7 +151,7 @@ This section compares the results of two queries using Claude Desktop and VS Cod
 
 mcp-proto-okn vs. SPARQL Ground-Truth Evaluation
 
-[Benchmarks]((https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks.md)
+[Benchmarks](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks.md)
 
 ## Building and Publishing (maintainers only)
 
