@@ -147,6 +147,11 @@ This section compares the results of two queries using Claude Desktop and VS Cod
 | **Spaceflight Missions** | [Claude Desktop](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-sonnet-4.5-claude.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-sonnet-4.5-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-Gemini-3-Pro.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-Gorc-Code-Fast-1.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spacex-missions-GPT-5.2.md) |
 | **Gene Expression Analysis** | [Claude Desktop](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-sonnet-4.5-claude.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-sonnet-4.5-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161_Gemini-3-ProPreview-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-Groc-Code-Fact-1-vs-studio.md) | [VS Code](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/OSD-161-GPT-5.2-vs-studio.md) |
 
+## Benchmarks (in progress)
+
+mcp-proto-okn vs. SPARQL Ground-Truth Evaluation
+
+[Benchmarks]((https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks.md)
 
 ## Building and Publishing (maintainers only)
 
