@@ -6,18 +6,18 @@ https://w3id.org/secure-chain/Software,Software,Represents software applications
 https://w3id.org/secure-chain/SoftwareVersion,Software Version,Represents a specific version of a software application within the secure chain.,Class,,,
 https://w3id.org/secure-chain/Vulnerability,Vulnerability,Represents vulnerabilities that may affect software or hardware components in the secure supply chain.,Class,,,
 https://w3id.org/secure-chain/VulnerabilityType,Vulnerability Type,Represents types or classifications of vulnerabilities affecting secure supply chains.,Class,,,
-http://schema.org/Organization,Organization,"An organization such as a school, NGO, corporation, club, etc.",Class,,,
+http://schema.org/Organization,Organization,An organization such as a school, NGO, corporation, club, etc.,Class,,,
 http://schema.org/Person,Person,A person.,Class,,,
 https://spec.industrialontologies.org/ontology/core/Core/Manufacturer,Manufacturer,A manufacturer in the supply chain.,Class,,,
 https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct,Material Product,A material product.,Class,,,
-https://w3id.org/secure-chain/hasHardwareVersion,has Hardware Version,Indicates the relationship between a hardware product and its version.,Predicate,,Hardware,Hardware Version
-https://w3id.org/secure-chain/hasSoftwareVersion,has Software Version,Indicates the relationship between a software product and its version.,Predicate,,Software,Software Version
-https://w3id.org/secure-chain/vulnerableTo,vulnerable To,Indicates that a particular version of software is vulnerable to a specific vulnerability.,Predicate,,Software Version,Vulnerability
-https://w3id.org/secure-chain/vulnerabilityType,vulnerability Type,Associates a vulnerability with its specific type or classification.,Predicate,,Vulnerability,Vulnerability Type
-https://w3id.org/secure-chain/dependsOn,depends On,Indicates that a software version depends on another software version.,Predicate,,Software Version,Software Version
+https://w3id.org/secure-chain/hasHardwareVersion,has Hardware Version,Indicates the relationship between a hardware product and its version.,Predicate,,Hardware,HardwareVersion
+https://w3id.org/secure-chain/hasSoftwareVersion,has Software Version,Indicates the relationship between a software product and its version.,Predicate,,Software,SoftwareVersion
+https://w3id.org/secure-chain/vulnerableTo,vulnerable To,Indicates that a particular version of software is vulnerable to a specific vulnerability.,Predicate,,SoftwareVersion,Vulnerability
+https://w3id.org/secure-chain/vulnerabilityType,vulnerability Type,Associates a vulnerability with its specific type or classification.,Predicate,,Vulnerability,VulnerabilityType
+https://w3id.org/secure-chain/dependsOn,depends On,Indicates that a software version depends on another software version.,Predicate,,SoftwareVersion,SoftwareVersion
 http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,,
 http://schema.org/contributor,contributor,A contributor to the software.,Predicate,,Software,Person
-http://schema.org/license,license,The license for the software version.,Predicate,,Software Version,License
+http://schema.org/license,license,The license for the software version.,Predicate,,SoftwareVersion,License
 https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,Predicate,,Software,
 https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,Predicate,,,
 https://w3id.org/secure-chain/cpe23,cpe23,Common Platform Enumeration (CPE) 2.3 identifier for software or hardware.,Predicate,,,
@@ -25,3 +25,36 @@ http://schema.org/identifier,identifier,The identifier property represents any k
 http://schema.org/name,name,The name of the item.,Predicate,,,
 http://schema.org/url,url,URL of the item.,Predicate,,,
 http://schema.org/programmingLanguage,programming Language,The programming language used.,Predicate,,Software,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Organization,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,License,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Software,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Vulnerability,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,VulnerabilityType,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Organization,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Person,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Hardware,
+http://schema.org/name,name,The name of the item.,NodeProperty,,HardwareVersion,
+http://schema.org/name,name,The name of the item.,NodeProperty,,License,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Software,
+http://schema.org/programmingLanguage,programming Language,The programming language used.,NodeProperty,,Organization,
+http://schema.org/programmingLanguage,programming Language,The programming language used.,NodeProperty,,Hardware,
+http://schema.org/url,url,URL of the item.,NodeProperty,,Organization,
+http://schema.org/url,url,URL of the item.,NodeProperty,,Software,
+http://schema.org/url,url,URL of the item.,NodeProperty,,SoftwareVersion,
+https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Organization,
+https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Hardware,
+https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Software,
+https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,NodeProperty,,HardwareVersion,
+https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,NodeProperty,,SoftwareVersion,
+https://w3id.org/secure-chain/cpe23,cpe23,Common Platform Enumeration (CPE) 2.3 identifier for software or hardware.,NodeProperty,,HardwareVersion,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,Manufacturer,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,MaterialProduct,
+http://asu.edu/semantics/SUDOKN/hasNumberOfEmployees,has Number Of Employees,Number of employees in an organization.,NodeProperty,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasOrganizationYearOfEstablishment,has Organization Year Of Establishment,Year of establishment for an organization.,NodeProperty,,Manufacturer,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has Text Value,Text value property.,NodeProperty,,BusinessDescription,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has Text Value,Text value property.,NodeProperty,,PostalAddress,
+http://asu.edu/semantics/SUDOKN/hasIntegerValue,has Integer Value,Integer value property.,NodeProperty,,TwoDimensionalCartesianSpatialCoordinateDatum,
+http://asu.edu/semantics/SUDOKN/hasLatitudeValue,has Latitude Value,Latitude coordinate value.,NodeProperty,,GeospatialLocation,
+http://asu.edu/semantics/SUDOKN/hasLongitudeValue,has Longitude Value,Longitude coordinate value.,NodeProperty,,GeospatialLocation,
+http://asu.edu/semantics/SUDOKN/hasNAICSTextValue,has NAICS Text Value,NAICS classification text value.,NodeProperty,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasNAICSCodeValue,has NAICS Code Value,NAICS classification code value.,NodeProperty,,Manufacturer,
