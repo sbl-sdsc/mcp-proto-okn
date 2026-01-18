@@ -1,437 +1,192 @@
-# SUDOKN Knowledge Graph Exploration - Chat Transcript
-
-## Exploring the Supply and Demand Open Knowledge Network
-
----
+# Chat Transcript: SUDOKN Knowledge Graph Exploration
 
 👤 **User**  
 @sudokn
 
 ---
 
-🧠 **Claude**  
-I'll help you explore the SUDOKN knowledge graph. Let me start by getting information about this endpoint.
+🧠 **Assistant**  
+I'll help you explore the sudokn knowledge graph! Let me start by getting some information about this knowledge graph.
 
-Great! I can now help you explore the **SUDOKN (Supply and Demand Open Knowledge Network)** - a specialized knowledge graph focused on manufacturing capability data for Small and Medium-Sized Manufacturers (SMMs) in the United States.
+Great! Now let me get the schema to understand what data is available in this knowledge graph.
 
-## About SUDOKN
+Perfect! I now have all the information about the SUDOKN knowledge graph. Let me provide you with a comprehensive overview.
+
+# SUDOKN Knowledge Graph
+
+**SUDOKN** (Supply and Demand Open Knowledge Network) is a specialized knowledge graph focused on **manufacturing capabilities of Small and Medium-Sized Manufacturers (SMMs)** across the United States.
+
+## Key Features
 
 SUDOKN contains detailed information about:
-- **Manufacturing organizations** and their locations
-- **Process capabilities**: machining, welding, coating, finishing, 3D printing
-- **Material processing**: metals, plastics, composites
-- **Quality certifications**: ISO 9000/9001, AS9100/9102
-- **Industry alignments**: aerospace, automotive, electronics, food processing
-- **NAICS industry classifications**
 
-The knowledge graph uses the Industrial Ontologies Foundry (IOF) core ontologies for semantic interoperability.
+### 1. **Manufacturing Organizations**
+- Company profiles and business information
+- Geographic locations (with postal addresses and coordinates)
+- Contact details (phone, email, web)
+- Size metrics (number of employees)
+- Year of establishment
 
-**PI**: Farhad Ameri (Arizona State University)  
-**Funding**: NSF Award #2333801  
-**Homepage**: https://projects.engineering.asu.edu/sudokn/
+### 2. **Manufacturing Capabilities**
+The knowledge graph includes extensive information on:
+- **Process capabilities**: Machining, welding, coating, casting, forming, 3D printing, and many more
+- **Material processing**: Metals (aluminum, steel, titanium, etc.), plastics, composites, ceramics, and more
+- Specialized capabilities like CNC machining, precision welding, surface treatments
 
----
+### 3. **Industry Classifications**
+- **NAICS codes**: Detailed industry classifications
+- **Industry sectors**: Aerospace, automotive, electronics, medical devices, defense, and more
+- Product categories that manufacturers supply
 
-## What would you like to explore?
+### 4. **Quality Certifications**
+Manufacturers can have various certifications including:
+- ISO certifications (9001, 13485, 14001, etc.)
+- AS9100 (aerospace)
+- FDA certifications
+- ITAR compliance
+- And many others
 
-I can help you:
-1. **View the schema** - See what types of data and relationships are available
-2. **Query manufacturers** - Find companies by capability, location, certification, or industry
-3. **Analyze supply chains** - Explore supplier networks and capabilities
-4. **Search by location** - Find manufacturers in specific regions
-5. **Filter by certifications** - Identify quality-certified manufacturers
+### 5. **Business Characteristics**
+- Ownership status (minority-owned, woman-owned, veteran-owned, etc.)
+- Special designations (HUBZone, small disadvantaged business)
 
-What interests you most about the SUDOKN manufacturing data?
+## What Can You Do With SUDOKN?
 
----
-
-👤 **User**  
-View the schema
-
----
-
-🧠 **Claude**  
-Perfect! I've retrieved the SUDOKN schema. This is a comprehensive manufacturing knowledge graph. Let me create a visual summary of the key elements:
-
-## SUDOKN Schema Overview
-
-The SUDOKN knowledge graph contains **794 classes** and **52 predicates** (relationships). Here are the main components:
-
-### 🏭 **Core Entities**
-
-**Organizations:**
-- `Manufacturer` - Small and Medium-Sized Manufacturing companies
-- Attributes: name, employees count, year established, postal address, email, web address
-- Location data: city, state, ZIP code, latitude/longitude coordinates
-
-### 🔧 **Manufacturing Capabilities**
-
-**Process Capabilities** (400+ types):
-- **Machining**: CNC Milling, CNC Turning, Drilling, Boring, Grinding, EDM, Swiss Machining
-- **Welding**: MIG, TIG, Plasma Arc, Laser, Robotic, Spot, Gas Welding
-- **Casting**: Die Casting, Investment Casting, Sand Casting, Centrifugal Casting
-- **Forming**: Bending, Stamping, Drawing, Extrusion, Forging
-- **Coating**: Powder Coating, Anodizing, Electroplating, Galvanizing, Painting
-- **Finishing**: Polishing, Deburring, Buffing, Honing, Lapping
-- **Additive Manufacturing**: 3D Printing, Fused Deposition Modeling, Stereolithography
-
-**Material Processing Capabilities** (100+ types):
-- **Metals**: Steel, Stainless Steel, Aluminum, Copper, Brass, Bronze, Titanium, Inconel
-- **Plastics**: Acrylic, Polycarbonate, Nylon, Teflon, Delrin, Urethane
-- **Composites**: Carbon, Fiberglass, Graphite
-- **Specialty**: Ceramics, Glass, Exotic Materials
-
-### 📜 **Certifications**
-
-**Quality Certifications**:
-- ISO 9001/9000, ISO 13485, ISO 14001
-- AS9100/9102/9120 (Aerospace)
-- IATF 16949 (Automotive)
-- FDA GMP, NADCAP, ITAR Compliant
-
-### 🏢 **Industry Alignments**
-
-**Industries Served** (40+ types):
-- Aerospace, Automotive, Electronics, Medical/Healthcare
-- Energy, Oil & Gas, Defense/Military
-- Food & Beverage, Pharmaceutical
-- Communications, Construction, Agriculture
-
-### 📊 **NAICS Classifications**
-
-**NAICS Codes** (200+ codes):
-- NAICS 33 - Manufacturing
-- NAICS 331 - Primary Metal Manufacturing
-- NAICS 332 - Fabricated Metal Products
-- NAICS 333 - Machinery Manufacturing
-- NAICS 334 - Computer/Electronic Products
-- NAICS 335 - Electrical Equipment
-- NAICS 336 - Transportation Equipment
-- NAICS 337 - Furniture
-
-### 🏷️ **Ownership Status**
-
-- Women Owned
-- Veteran Owned
-- Minority Owned
-- Small Disadvantaged Business
-- Native American Owned
-
-### 🔗 **Key Relationships**
-
-- `hasProcessCapability` - Links manufacturers to their capabilities
-- `hasMaterialCapability` - Links to materials they can process
-- `hasCertificate` - Quality/compliance certifications
-- `suppliesToIndustry` - Industries they serve
-- `hasNAICSClassifier` - Industry classification codes
-- `organizationLocatedIn` - Geographic location
-
----
+You can use this knowledge graph to:
+- Find manufacturers by capability (e.g., "Find companies that do laser cutting and welding")
+- Search by location and industry
+- Identify suppliers with specific certifications
+- Match manufacturers to product categories
+- Analyze manufacturing capabilities by region
+- Find diverse suppliers (woman-owned, veteran-owned, etc.)
 
 Would you like me to:
-1. **Query specific manufacturers** by capability, location, or certification?
-2. **Analyze capabilities** - Find manufacturers with specific processes?
-3. **Explore certifications** - Search by quality standards?
-4. **Geographic analysis** - Find manufacturers in specific regions?
-5. **Create a visual diagram** of the schema relationships?
+1. Show you some example queries?
+2. Find specific manufacturers or capabilities?
+3. Create visualizations of the data?
+4. Explore a particular industry or region?
+
+Just let me know what you'd like to explore!
 
 ---
 
 👤 **User**  
-Create a visual diagram
+Visualize schema
 
 ---
 
-🧠 **Claude**  
-Perfect! Here's the **SUDOKN Knowledge Graph Schema Visualization**:
+🧠 **Assistant**  
+I'll create a visualization of the SUDOKN knowledge graph schema for you.
+
+Now let me generate the schema visualization following the workflow:
+
+**Step 1-2**: I already have the schema from earlier, so I'll analyze it to identify the main components.
+
+**Step 3-5**: Let me generate the draft Mermaid diagram:
+
+**Step 10-13**: Now I'll present the cleaned diagram and save it to a file:
 
 ```mermaid
 classDiagram
-    class Manufacturer {
-        +hasName
-        +hasNumberOfEmployees
-        +hasOrganizationYearOfEstablishment
-        +hasPostalAddress
-        +hasEmailAddress
-        +hasWebAddress
-        +hasZIPcode
-        +hasSpatialCoordinates
-    }
-    
-    class Certificate {
-        <<abstract>>
-    }
-    
-    class QualityCertificate {
-        ISO9001
-        ISO9000
-        ISO13485
-        ISO14001
-    }
-    
-    class AerospaceCertificate {
-        AS9100
-        AS9102
-        AS9120
-        NADCAP
-    }
-    
-    class AutomotiveCertificate {
-        IATF16949
-        QS9000
-    }
-    
-    class OtherCertificate {
-        FDA_GMP
-        ITAR
-        ASME
-    }
-    
-    class ManufacturingProcessCapability {
-        <<abstract>>
-    }
-    
-    class MachiningCapability {
-        CNCMilling
-        CNCTurning
-        CNCLathe
-        Drilling
-        Boring
-        Grinding
-        EDM
-        SwissMachining
-    }
-    
-    class WeldingCapability {
-        MIGWelding
-        TIGWelding
-        PlasmaArcWelding
-        LaserWelding
-        RoboticWelding
-        SpotWelding
-        GasWelding
-    }
-    
-    class CastingCapability {
-        DieCasting
-        InvestmentCasting
-        SandCasting
-        CentrifugalCasting
-        PermanentMoldCasting
-    }
-    
-    class FormingCapability {
-        Bending
-        Stamping
-        Drawing
-        Extrusion
-        Forging
-        SheetMetalForming
-    }
-    
-    class CoatingCapability {
-        PowderCoating
-        Anodizing
-        Electroplating
-        Galvanizing
-        Painting
-        ThermalSprayCoating
-    }
-    
-    class FinishingCapability {
-        Polishing
-        Deburring
-        Buffing
-        Honing
-        Lapping
-        SurfaceGrinding
-    }
-    
-    class AdditiveManufacturingCapability {
-        3DPrinting
-        FusedDepositionModeling
-        Stereolithography
-        SelectiveLaserSintering
-    }
-    
-    class MaterialProcessingCapability {
-        <<abstract>>
-    }
-    
-    class MetalProcessingCapability {
-        SteelProcessing
-        StainlessSteelProcessing
-        AluminumProcessing
-        TitaniumProcessing
-        InconelProcessing
-        CopperProcessing
-        BrassProcessing
-    }
-    
-    class PlasticProcessingCapability {
-        AcrylicFabrication
-        PolycarbonateProcessing
-        NylonProcessing
-        TeflonProcessing
-        DelrinProcessing
-    }
-    
-    class CompositeProcessingCapability {
-        CarbonProcessing
-        FiberProcessing
-        GraphiteProcessing
-    }
-    
-    class NAICSClassifier {
-        +hasNAICSCodeValue
-        +hasNAICSTextValue
-    }
-    
-    class NAICS33 {
-        Manufacturing
-    }
-    
-    class NAICS331 {
-        PrimaryMetalManufacturing
-    }
-    
-    class NAICS332 {
-        FabricatedMetalProducts
-    }
-    
-    class NAICS333 {
-        MachineryManufacturing
-    }
-    
-    class NAICS334 {
-        ComputerElectronicProducts
-    }
-    
-    class NAICS336 {
-        TransportationEquipment
-    }
-    
-    class Industry {
-        <<abstract>>
-    }
-    
-    class AerospaceIndustry
-    class AutomotiveIndustry
-    class ElectronicsIndustry
-    class MedicalIndustry
-    class EnergyIndustry
-    class DefenseIndustry
-    
-    class OwnershipStatusClassifier {
-        <<abstract>>
-    }
-    
-    class WomenOwned
-    class VeteranOwned
-    class MinorityOwned
-    class SmallDisadvantagedBusiness
-    
-    class GeospatialLocation {
-        +hasLatitudeValue
-        +hasLongitudeValue
-        +locatedInCity
-        +locatedInState
-    }
-    
-    class City
-    class State
-    class PostalAddress
-    
-    Manufacturer "1" --> "0..*" Certificate : hasCertificate
-    Certificate <|-- QualityCertificate
-    Certificate <|-- AerospaceCertificate
-    Certificate <|-- AutomotiveCertificate
-    Certificate <|-- OtherCertificate
-    
-    Manufacturer "1" --> "0..*" ManufacturingProcessCapability : hasProcessCapability
-    ManufacturingProcessCapability <|-- MachiningCapability
-    ManufacturingProcessCapability <|-- WeldingCapability
-    ManufacturingProcessCapability <|-- CastingCapability
-    ManufacturingProcessCapability <|-- FormingCapability
-    ManufacturingProcessCapability <|-- CoatingCapability
-    ManufacturingProcessCapability <|-- FinishingCapability
-    ManufacturingProcessCapability <|-- AdditiveManufacturingCapability
-    
-    Manufacturer "1" --> "0..*" MaterialProcessingCapability : hasMaterialCapability
-    MaterialProcessingCapability <|-- MetalProcessingCapability
-    MaterialProcessingCapability <|-- PlasticProcessingCapability
-    MaterialProcessingCapability <|-- CompositeProcessingCapability
-    
-    Manufacturer "1" --> "1" NAICSClassifier : hasPrimaryNAICSClassifier
-    Manufacturer "1" --> "0..*" NAICSClassifier : hasNAICSClassifier
-    NAICSClassifier <|-- NAICS33
-    NAICS33 <|-- NAICS331
-    NAICS33 <|-- NAICS332
-    NAICS33 <|-- NAICS333
-    NAICS33 <|-- NAICS334
-    NAICS33 <|-- NAICS336
-    
-    Manufacturer "1" --> "0..*" Industry : suppliesToIndustry
-    Industry <|-- AerospaceIndustry
-    Industry <|-- AutomotiveIndustry
-    Industry <|-- ElectronicsIndustry
-    Industry <|-- MedicalIndustry
-    Industry <|-- EnergyIndustry
-    Industry <|-- DefenseIndustry
-    
-    Manufacturer "1" --> "0..*" OwnershipStatusClassifier : hasOwnershipStatusClassifier
-    OwnershipStatusClassifier <|-- WomenOwned
-    OwnershipStatusClassifier <|-- VeteranOwned
-    OwnershipStatusClassifier <|-- MinorityOwned
-    OwnershipStatusClassifier <|-- SmallDisadvantagedBusiness
-    
-    Manufacturer "1" --> "1" GeospatialLocation : hasSpatialCoordinates
-    Manufacturer "1" --> "1" PostalAddress : hasPostalAddress
-    GeospatialLocation --> City : locatedInCity
-    GeospatialLocation --> State : locatedInState
+direction TB
+
+class Organization {
+    string hasBusinessDescription
+    int hasNumberOfEmployees
+    int hasOrganizationYearOfEstablishment
+    string hasPhoneNumberValue
+    string hasFaxNumberValue
+    string hasEmailAddress
+    string hasWebAddress
+}
+
+class PostalAddress {
+    string hasAddressLine
+    string hasZipcodeValue
+}
+
+class GeospatialLocation {
+    float hasLatitudeValue
+    float hasLongitudeValue
+}
+
+class City {
+    string label
+}
+
+class State {
+    string label
+}
+
+class Country {
+    string label
+}
+
+class NAICSClassifier {
+    string label
+}
+
+class Industry {
+    string label
+}
+
+class ProductCategoryClassifier {
+    string label
+}
+
+class ManufacturingProcessCapability {
+    string label
+}
+
+class MaterialProcessingCapability {
+    string label
+}
+
+class QualityCertificate {
+    string label
+}
+
+class OwnershipStatusClassifier {
+    string label
+}
+
+Organization --> PostalAddress : organizationLocatedIn
+PostalAddress --> City : locatedInCity
+PostalAddress --> State : locatedInState
+PostalAddress --> Country : locatedInCountry
+Organization --> GeospatialLocation : hasGeospatialLocation
+Organization --> NAICSClassifier : hasPrimaryNAICSClassifier
+Organization --> NAICSClassifier : hasSecondaryNAICSClassifier
+Organization --> Industry : suppliesToIndustry
+Organization --> ProductCategoryClassifier : manufactures
+Organization --> ManufacturingProcessCapability : hasProcessCapability
+Organization --> MaterialProcessingCapability : hasMaterialCapability
+Organization --> QualityCertificate : hasCertificate
+Organization --> OwnershipStatusClassifier : hasOwnershipStatusClassifier
 ```
 
-## 📊 Key Insights from the Schema Diagram
+Perfect! I've created a schema visualization for the SUDOKN knowledge graph. The diagram shows:
 
-This visual representation shows how SUDOKN organizes manufacturing data:
+## Core Structure
 
-**Central Entity**: `Manufacturer` (the hub of all relationships)
+**Central Entity**: **Organization** (manufacturers)
+- Contains business information (description, employee count, establishment year, contact details)
 
-**Six Main Relationship Categories**:
+**Connected to**:
+- **PostalAddress** → **City**, **State**, **Country** (geographic hierarchy)
+- **GeospatialLocation** (latitude/longitude coordinates)
+- **NAICSClassifier** (primary and secondary industry codes)
+- **Industry** (industries they supply to)
+- **ProductCategoryClassifier** (products they manufacture)
+- **ManufacturingProcessCapability** (manufacturing processes like CNC, welding, etc.)
+- **MaterialProcessingCapability** (materials they work with)
+- **QualityCertificate** (ISO, AS9100, FDA certifications, etc.)
+- **OwnershipStatusClassifier** (woman-owned, veteran-owned, etc.)
 
-1. **🔧 Process Capabilities** - What manufacturers can DO (400+ specific capabilities)
-   - Machining, Welding, Casting, Forming, Coating, Finishing, Additive Manufacturing
-
-2. **🧱 Material Capabilities** - What they can WORK WITH
-   - Metals, Plastics, Composites (100+ specific materials)
-
-3. **📜 Certifications** - Quality assurance and compliance
-   - ISO, AS, IATF, FDA, ITAR, NADCAP standards
-
-4. **🏢 Industry Alignments** - Who they SERVE
-   - Aerospace, Automotive, Electronics, Medical, Energy, Defense
-
-5. **🏷️ Classifications** - Industry codes and ownership status
-   - NAICS codes (hierarchical industry classification)
-   - Ownership: Women, Veteran, Minority owned
-
-6. **📍 Location Data** - WHERE they are
-   - Address, City, State, GPS coordinates
-
-This schema enables powerful queries like "Find all AS9100-certified manufacturers in Ohio with CNC milling and titanium processing capabilities that serve the aerospace industry."
-
-Would you like me to run some example queries to show the data in action?
+The visualization is now available as a downloadable Mermaid diagram file that you can use in documentation or presentations!
 
 ---
 
-👤 **User**  
-create a transcript
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-17*
 
----
-
-🧠 **Claude**  
-*Creating this transcript document...*
-
----
-
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) on 2025-12-15*
+Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)
