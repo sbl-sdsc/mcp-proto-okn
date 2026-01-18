@@ -1,105 +1,105 @@
 URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
-https://climatepub4kg.github.io/ontology#Activity,Activity,,Class,,,
-https://climatepub4kg.github.io/ontology#City,City,,Class,,,
-https://climatepub4kg.github.io/ontology#Continent,Continent,,Class,,,
-https://climatepub4kg.github.io/ontology#Country_Subdivision,Country_Subdivision,,Class,,,
-https://climatepub4kg.github.io/ontology#Country,Country,,Class,,,
-https://climatepub4kg.github.io/ontology#Domain,Domain,,Class,,,
-https://climatepub4kg.github.io/ontology#Ensemble,Ensemble,,Class,,,
-https://climatepub4kg.github.io/ontology#Experiment,Experiment,,Class,,,
-https://climatepub4kg.github.io/ontology#ExperimentFamily,ExperimentFamily,,Class,,,
-https://climatepub4kg.github.io/ontology#Field,Field,,Class,,,
-https://climatepub4kg.github.io/ontology#Forcing,Forcing,,Class,,,
-https://climatepub4kg.github.io/ontology#Frequency,Frequency,,Class,,,
-https://climatepub4kg.github.io/ontology#GridLabel,GridLabel,,Class,,,
-https://climatepub4kg.github.io/ontology#Innovation,Innovation,,Class,,,
-https://climatepub4kg.github.io/ontology#Institute,Institute,,Class,,,
-https://climatepub4kg.github.io/ontology#Instrument,Instrument,,Class,,,
-https://climatepub4kg.github.io/ontology#Keyword,Keyword,,Class,,,
-https://climatepub4kg.github.io/ontology#Member,Member,,Class,,,
-https://climatepub4kg.github.io/ontology#Method,Method,,Class,,,
-https://climatepub4kg.github.io/ontology#Metric,Metric,,Class,,,
-https://climatepub4kg.github.io/ontology#MIPEra,MIPEra,,Class,,,
-https://climatepub4kg.github.io/ontology#Model,Model,,Class,,,
-https://climatepub4kg.github.io/ontology#Natural_Hazard,Natural_Hazard,,Class,,,
-https://climatepub4kg.github.io/ontology#NaturalHazardType,NaturalHazardType,,Class,,,
-https://climatepub4kg.github.io/ontology#No_Country_Region,No_Country_Region,,Class,,,
-https://climatepub4kg.github.io/ontology#ObservationalDataset,ObservationalDataset,,Class,,,
-https://climatepub4kg.github.io/ontology#Ocean_Circulation,Ocean_Circulation,,Class,,,
-https://climatepub4kg.github.io/ontology#Paper,Paper,,Class,,,
-https://climatepub4kg.github.io/ontology#PhysicalFeature,PhysicalFeature,,Class,,,
-https://climatepub4kg.github.io/ontology#PhysicalScheme,PhysicalScheme,,Class,,,
-https://climatepub4kg.github.io/ontology#Platform,Platform,,Class,,,
-https://climatepub4kg.github.io/ontology#Problem,Problem,,Class,,,
-https://climatepub4kg.github.io/ontology#Project,Project,,Class,,,
-https://climatepub4kg.github.io/ontology#RCM,RCM,,Class,,,
-https://climatepub4kg.github.io/ontology#Realm,Realm,,Class,,,
-https://climatepub4kg.github.io/ontology#Resolution,Resolution,,Class,,,
-https://climatepub4kg.github.io/ontology#Result,Result,,Class,,,
-https://climatepub4kg.github.io/ontology#SimulationType,SimulationType,,Class,,,
-https://climatepub4kg.github.io/ontology#Source,Source,,Class,,,
-https://climatepub4kg.github.io/ontology#SourceComponent,SourceComponent,,Class,,,
-https://climatepub4kg.github.io/ontology#SourceType,SourceType,,Class,,,
-https://climatepub4kg.github.io/ontology#SubExperiment,SubExperiment,,Class,,,
-https://climatepub4kg.github.io/ontology#Task,Task,,Class,,,
-https://climatepub4kg.github.io/ontology#Teleconnection,Teleconnection,,Class,,,
-https://climatepub4kg.github.io/ontology#Variable,Variable,,Class,,,
-https://climatepub4kg.github.io/ontology#Water_Bodies,Water_Bodies,,Class,,,
-https://climatepub4kg.github.io/ontology#Weather_Event,Weather_Event,,Class,,,
-https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,,Predicate,,Experiment,Realm
-https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,,Predicate,,SourceComponent,Realm
-https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,,Predicate,,Source,Realm
-https://climatepub4kg.github.io/ontology#ASSOCIATED_WITH_MEMBER,ASSOCIATED_WITH_MEMBER,,Predicate,,Source,Member
-https://climatepub4kg.github.io/ontology#BELONGS_TO_MIP_ERA,BELONGS_TO_MIP_ERA,,Predicate,,Source,MIPEra
-https://climatepub4kg.github.io/ontology#CORRESPONDS_TO,CORRESPONDS_TO,,Predicate,,Model,Source
-https://climatepub4kg.github.io/ontology#COVERS_DOMAIN,COVERS_DOMAIN,,Predicate,,Project,Domain
-https://climatepub4kg.github.io/ontology#COVERS_DOMAIN,COVERS_DOMAIN,,Predicate,,RCM,Domain
-https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,,Predicate,,RCM,City
-https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,,Predicate,,RCM,Continent
-https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,,Predicate,,RCM,Country_Subdivision
-https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,,Predicate,,RCM,Country
-https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,,Predicate,,RCM,No_Country_Region
-https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,,Predicate,,RCM,Water_Bodies
-https://climatepub4kg.github.io/ontology#DRIVEN_BY_SOURCE,DRIVEN_BY_SOURCE,,Predicate,,RCM,Source
-https://climatepub4kg.github.io/ontology#FOCUSES_ON_REALM,FOCUSES_ON_REALM,,Predicate,,Activity,Realm
-https://climatepub4kg.github.io/ontology#GENERATED_BY_ACTIVITY,GENERATED_BY_ACTIVITY,,Predicate,,Source,Activity
-https://climatepub4kg.github.io/ontology#HAS_METRIC,HAS_METRIC,,Predicate,,Source,Metric
-https://climatepub4kg.github.io/ontology#HAS_PHYSICAL_FEATURE,HAS_PHYSICAL_FEATURE,,Predicate,,Source,PhysicalFeature
-https://climatepub4kg.github.io/ontology#HAS_SIMULATION_TYPE,HAS_SIMULATION_TYPE,,Predicate,,Source,SimulationType
-https://climatepub4kg.github.io/ontology#HAS_SOURCE_COMPONENT,HAS_SOURCE_COMPONENT,,Predicate,,Source,SourceComponent
-https://climatepub4kg.github.io/ontology#HAS_SOURCE_COMPONENT,HAS_SOURCE_COMPONENT,,Predicate,,SourceComponent,SourceComponent
-https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESOLUTION,,Predicate,,Experiment,Resolution
-https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESOLUTION,,Predicate,,Source,Resolution
-https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESOLUTION,,Predicate,,Variable,Resolution
-https://climatepub4kg.github.io/ontology#HAS_SUB_EXPERIMENT,HAS_SUB_EXPERIMENT,,Predicate,,Experiment,SubExperiment
-https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,,Predicate,,SourceComponent,SourceComponent
-https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,,Predicate,,SourceComponent,Source
-https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,,Predicate,,Source,Source
-https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,,Predicate,,Source,SourceComponent
-https://climatepub4kg.github.io/ontology#IN_CONTINENT,IN_CONTINENT,,Predicate,,Country,Continent
-https://climatepub4kg.github.io/ontology#IN_COUNTRY,IN_COUNTRY,,Predicate,,City,Country
-https://climatepub4kg.github.io/ontology#IN_COUNTRY,IN_COUNTRY,,Predicate,,Country_Subdivision,Country
-https://climatepub4kg.github.io/ontology#INCLUDES_ENSEMBLE_MEMBER,INCLUDES_ENSEMBLE_MEMBER,,Predicate,,Experiment,Ensemble
-https://climatepub4kg.github.io/ontology#INCLUDES_EXPERIMENT,INCLUDES_EXPERIMENT,,Predicate,,ExperimentFamily,Experiment
-https://climatepub4kg.github.io/ontology#INHERITED_FROM,INHERITED_FROM,,Predicate,,Source,Source
-https://climatepub4kg.github.io/ontology#IS_OF_TYPE,IS_OF_TYPE,,Predicate,,Source,SourceType
-https://climatepub4kg.github.io/ontology#METHOD_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,METHOD_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,,Predicate,,Method,ObservationalDataset
-https://climatepub4kg.github.io/ontology#METHOD_HAS_INNOVATION,METHOD_HAS_INNOVATION,,Predicate,,Method,Innovation
-https://climatepub4kg.github.io/ontology#METHOD_HAS_RESULT,METHOD_HAS_RESULT,,Predicate,,Method,Result
-https://climatepub4kg.github.io/ontology#METHOD_SOLVES_PROBLEM,METHOD_SOLVES_PROBLEM,,Predicate,,Method,Problem
-https://climatepub4kg.github.io/ontology#METHOD_USES_METRIC,METHOD_USES_METRIC,,Predicate,,Method,Metric
-https://climatepub4kg.github.io/ontology#METHOD_USES_MODEL,METHOD_USES_MODEL,,Predicate,,Method,Model
-https://climatepub4kg.github.io/ontology#METHOD_WORKS_ON_TASK,METHOD_WORKS_ON_TASK,,Predicate,,Method,Task
-https://climatepub4kg.github.io/ontology#MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,,Predicate,,Model,ObservationalDataset
-https://climatepub4kg.github.io/ontology#MODEL_HAS_RESULT,MODEL_HAS_RESULT,,Predicate,,Model,Result
-https://climatepub4kg.github.io/ontology#MODEL_SOLVES_PROBLEM,MODEL_SOLVES_PROBLEM,,Predicate,,Model,Problem
-https://climatepub4kg.github.io/ontology#MODEL_USES_METRIC,MODEL_USES_METRIC,,Predicate,,Model,Metric
+https://climatepub4kg.github.io/ontology#Activity,Activity,A specific climate modeling or analysis activity performed as part of a larger research effort,Class,,,
+https://climatepub4kg.github.io/ontology#City,City,An urban settlement or municipality,Class,,,
+https://climatepub4kg.github.io/ontology#Continent,Continent,One of the major landmasses on Earth,Class,,,
+https://climatepub4kg.github.io/ontology#Country_Subdivision,Country_Subdivision,"A political or administrative subdivision within a country (e.g., state, province, region)",Class,,,
+https://climatepub4kg.github.io/ontology#Country,Country,A sovereign nation or political entity,Class,,,
+https://climatepub4kg.github.io/ontology#Domain,Domain,A spatial or conceptual domain covered by climate model simulations,Class,,,
+https://climatepub4kg.github.io/ontology#Ensemble,Ensemble,A collection of multiple model runs used to assess uncertainty and variability in climate projections,Class,,,
+https://climatepub4kg.github.io/ontology#Experiment,Experiment,A specific climate model experiment with defined conditions and objectives,Class,,,
+https://climatepub4kg.github.io/ontology#ExperimentFamily,ExperimentFamily,A group of related climate experiments sharing common characteristics or goals,Class,,,
+https://climatepub4kg.github.io/ontology#Field,Field,A scientific discipline or domain of study within climate research,Class,,,
+https://climatepub4kg.github.io/ontology#Forcing,Forcing,"An external factor or condition that drives changes in the climate system (e.g., greenhouse gases, solar radiation)",Class,,,
+https://climatepub4kg.github.io/ontology#Frequency,Frequency,The temporal resolution or sampling rate of climate data output,Class,,,
+https://climatepub4kg.github.io/ontology#GridLabel,GridLabel,A label or identifier for a specific grid configuration used in climate models,Class,,,
+https://climatepub4kg.github.io/ontology#Innovation,Innovation,"A novel method, technique, or approach introduced in climate modeling research",Class,,,
+https://climatepub4kg.github.io/ontology#Institute,Institute,A research institution or organization conducting climate science,Class,,,
+https://climatepub4kg.github.io/ontology#Instrument,Instrument,A measurement device or observational tool used to collect climate data,Class,,,
+https://climatepub4kg.github.io/ontology#Keyword,Keyword,A descriptive term or phrase characterizing research topics or content,Class,,,
+https://climatepub4kg.github.io/ontology#Member,Member,An individual member or realization within an ensemble of model runs,Class,,,
+https://climatepub4kg.github.io/ontology#Method,Method,A computational or analytical technique used in climate modeling or analysis,Class,,,
+https://climatepub4kg.github.io/ontology#Metric,Metric,A quantitative measure or indicator used to evaluate model performance or climate characteristics,Class,,,
+https://climatepub4kg.github.io/ontology#MIPEra,MIPEra,A Model Intercomparison Project era representing a coordinated phase of climate model experiments,Class,,,
+https://climatepub4kg.github.io/ontology#Model,Model,A computational representation of the climate system or its components,Class,,,
+https://climatepub4kg.github.io/ontology#Natural_Hazard,Natural_Hazard,A naturally occurring event that poses risks to human populations or ecosystems,Class,,,
+https://climatepub4kg.github.io/ontology#NaturalHazardType,NaturalHazardType,A category or classification of natural hazards,Class,,,
+https://climatepub4kg.github.io/ontology#No_Country_Region,No_Country_Region,"A geographic region not associated with any specific country (e.g., ocean, international waters)",Class,,,
+https://climatepub4kg.github.io/ontology#ObservationalDataset,ObservationalDataset,A collection of empirical measurements or observations of climate variables,Class,,,
+https://climatepub4kg.github.io/ontology#Ocean_Circulation,Ocean_Circulation,Large-scale patterns of water movement in the oceans,Class,,,
+https://climatepub4kg.github.io/ontology#Paper,Paper,A scientific publication or research article,Class,,,
+https://climatepub4kg.github.io/ontology#PhysicalFeature,PhysicalFeature,"A tangible geographic or environmental characteristic (e.g., mountain range, ice sheet)",Class,,,
+https://climatepub4kg.github.io/ontology#PhysicalScheme,PhysicalScheme,A parameterization or representation of physical processes in climate models,Class,,,
+https://climatepub4kg.github.io/ontology#Platform,Platform,A computational infrastructure or facility used for climate modeling,Class,,,
+https://climatepub4kg.github.io/ontology#Problem,Problem,A scientific challenge or question addressed by climate research,Class,,,
+https://climatepub4kg.github.io/ontology#Project,Project,A coordinated research initiative or program in climate science,Class,,,
+https://climatepub4kg.github.io/ontology#RCM,RCM,Regional Climate Model - a high-resolution model focusing on a specific geographic region,Class,,,
+https://climatepub4kg.github.io/ontology#Realm,Realm,"A major component of the Earth system (e.g., atmosphere, ocean, land, sea ice)",Class,,,
+https://climatepub4kg.github.io/ontology#Resolution,Resolution,The spatial or temporal granularity of model grid cells or data sampling,Class,,,
+https://climatepub4kg.github.io/ontology#Result,Result,"An outcome, finding, or conclusion from climate modeling or analysis",Class,,,
+https://climatepub4kg.github.io/ontology#SimulationType,SimulationType,"A category of climate simulation (e.g., historical, future projection, control run)",Class,,,
+https://climatepub4kg.github.io/ontology#Source,Source,A climate model or data source providing simulation output,Class,,,
+https://climatepub4kg.github.io/ontology#SourceComponent,SourceComponent,A specific component or module within a climate model source,Class,,,
+https://climatepub4kg.github.io/ontology#SourceType,SourceType,A classification or category of climate model sources,Class,,,
+https://climatepub4kg.github.io/ontology#SubExperiment,SubExperiment,A subset or variant of a larger experiment with specific modifications,Class,,,
+https://climatepub4kg.github.io/ontology#Task,Task,A specific objective or analysis task in climate research,Class,,,
+https://climatepub4kg.github.io/ontology#Teleconnection,Teleconnection,A climate pattern or correlation between distant geographic regions,Class,,,
+https://climatepub4kg.github.io/ontology#Variable,Variable,"A measurable climate quantity or parameter (e.g., temperature, precipitation)",Class,,,
+https://climatepub4kg.github.io/ontology#Water_Bodies,Water_Bodies,"Bodies of water such as lakes, rivers, seas, or oceans",Class,,,
+https://climatepub4kg.github.io/ontology#Weather_Event,Weather_Event,A specific meteorological occurrence or phenomenon,Class,,,
+https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,Indicates which Earth system realm an entity applies to or operates within,Predicate,,Experiment,Realm
+https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,Indicates which Earth system realm an entity applies to or operates within,Predicate,,SourceComponent,Realm
+https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,Indicates which Earth system realm an entity applies to or operates within,Predicate,,Source,Realm
+https://climatepub4kg.github.io/ontology#ASSOCIATED_WITH_MEMBER,ASSOCIATED_WITH_MEMBER,Links a source to a specific ensemble member,Predicate,,Source,Member
+https://climatepub4kg.github.io/ontology#BELONGS_TO_MIP_ERA,BELONGS_TO_MIP_ERA,Indicates which MIP era a source belongs to,Predicate,,Source,MIPEra
+https://climatepub4kg.github.io/ontology#CORRESPONDS_TO,CORRESPONDS_TO,Establishes a correspondence relationship between a model and its source implementation,Predicate,,Model,Source
+https://climatepub4kg.github.io/ontology#COVERS_DOMAIN,COVERS_DOMAIN,Indicates the spatial domain covered by an entity,Predicate,,Project,Domain
+https://climatepub4kg.github.io/ontology#COVERS_DOMAIN,COVERS_DOMAIN,Indicates the spatial domain covered by an entity,Predicate,,RCM,Domain
+https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,City
+https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,Continent
+https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,Country_Subdivision
+https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,Country
+https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,No_Country_Region
+https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,Water_Bodies
+https://climatepub4kg.github.io/ontology#DRIVEN_BY_SOURCE,DRIVEN_BY_SOURCE,Indicates which source provides driving data or boundary conditions,Predicate,,RCM,Source
+https://climatepub4kg.github.io/ontology#FOCUSES_ON_REALM,FOCUSES_ON_REALM,Specifies which realm is the primary focus of an activity,Predicate,,Activity,Realm
+https://climatepub4kg.github.io/ontology#GENERATED_BY_ACTIVITY,GENERATED_BY_ACTIVITY,Links output or results to the activity that produced them,Predicate,,Source,Activity
+https://climatepub4kg.github.io/ontology#HAS_METRIC,HAS_METRIC,Associates a metric used for evaluation or measurement,Predicate,,Source,Metric
+https://climatepub4kg.github.io/ontology#HAS_PHYSICAL_FEATURE,HAS_PHYSICAL_FEATURE,Links to relevant physical geographic features,Predicate,,Source,PhysicalFeature
+https://climatepub4kg.github.io/ontology#HAS_SIMULATION_TYPE,HAS_SIMULATION_TYPE,Specifies the type or category of simulation,Predicate,,Source,SimulationType
+https://climatepub4kg.github.io/ontology#HAS_SOURCE_COMPONENT,HAS_SOURCE_COMPONENT,Indicates component modules or elements within a source,Predicate,,Source,SourceComponent
+https://climatepub4kg.github.io/ontology#HAS_SOURCE_COMPONENT,HAS_SOURCE_COMPONENT,Indicates component modules or elements within a source,Predicate,,SourceComponent,SourceComponent
+https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESOLUTION,Specifies the spatial resolution used,Predicate,,Experiment,Resolution
+https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESOLUTION,Specifies the spatial resolution used,Predicate,,Source,Resolution
+https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESOLUTION,Specifies the spatial resolution used,Predicate,,Variable,Resolution
+https://climatepub4kg.github.io/ontology#HAS_SUB_EXPERIMENT,HAS_SUB_EXPERIMENT,Links to sub-experiments or variants,Predicate,,Experiment,SubExperiment
+https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,Indicates version progression or updates,Predicate,,SourceComponent,SourceComponent
+https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,Indicates version progression or updates,Predicate,,SourceComponent,Source
+https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,Indicates version progression or updates,Predicate,,Source,Source
+https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,Indicates version progression or updates,Predicate,,Source,SourceComponent
+https://climatepub4kg.github.io/ontology#IN_CONTINENT,IN_CONTINENT,Specifies which continent a location is in,Predicate,,Country,Continent
+https://climatepub4kg.github.io/ontology#IN_COUNTRY,IN_COUNTRY,Specifies which country a location is in,Predicate,,City,Country
+https://climatepub4kg.github.io/ontology#IN_COUNTRY,IN_COUNTRY,Specifies which country a location is in,Predicate,,Country_Subdivision,Country
+https://climatepub4kg.github.io/ontology#INCLUDES_ENSEMBLE_MEMBER,INCLUDES_ENSEMBLE_MEMBER,Indicates ensemble members included in an experiment,Predicate,,Experiment,Ensemble
+https://climatepub4kg.github.io/ontology#INCLUDES_EXPERIMENT,INCLUDES_EXPERIMENT,Links to experiments included within a family,Predicate,,ExperimentFamily,Experiment
+https://climatepub4kg.github.io/ontology#INHERITED_FROM,INHERITED_FROM,Indicates inheritance or derivation from a previous version or source,Predicate,,Source,Source
+https://climatepub4kg.github.io/ontology#IS_OF_TYPE,IS_OF_TYPE,Specifies the type classification of an entity,Predicate,,Source,SourceType
+https://climatepub4kg.github.io/ontology#METHOD_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,METHOD_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,Links methods to observational datasets used for experimentation,Predicate,,Method,ObservationalDataset
+https://climatepub4kg.github.io/ontology#METHOD_HAS_INNOVATION,METHOD_HAS_INNOVATION,Associates innovations or novel aspects with a method,Predicate,,Method,Innovation
+https://climatepub4kg.github.io/ontology#METHOD_HAS_RESULT,METHOD_HAS_RESULT,Links methods to their outcomes or results,Predicate,,Method,Result
+https://climatepub4kg.github.io/ontology#METHOD_SOLVES_PROBLEM,METHOD_SOLVES_PROBLEM,Indicates which problems a method addresses,Predicate,,Method,Problem
+https://climatepub4kg.github.io/ontology#METHOD_USES_METRIC,METHOD_USES_METRIC,Specifies metrics used by a method,Predicate,,Method,Metric
+https://climatepub4kg.github.io/ontology#METHOD_USES_MODEL,METHOD_USES_MODEL,Links methods to models they employ,Predicate,,Method,Model
+https://climatepub4kg.github.io/ontology#METHOD_WORKS_ON_TASK,METHOD_WORKS_ON_TASK,Indicates tasks that a method is designed to address,Predicate,,Method,Task
+https://climatepub4kg.github.io/ontology#MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,Links models to observational datasets used for validation or experiments,Predicate,,Model,ObservationalDataset
+https://climatepub4kg.github.io/ontology#MODEL_HAS_RESULT,MODEL_HAS_RESULT,Associates results produced by a model,Predicate,,Model,Result
+https://climatepub4kg.github.io/ontology#MODEL_SOLVES_PROBLEM,MODEL_SOLVES_PROBLEM,Indicates problems addressed by a model,Predicate,,Model,Problem
+https://climatepub4kg.github.io/ontology#MODEL_USES_METRIC,MODEL_USES_METRIC,Links models to evaluation metrics,Predicate,,Model,Metric
 https://climatepub4kg.github.io/ontology#MODEL_WORKS_FOR_TASK,MODEL_WORKS_FOR_TASK,,Predicate,,Model,Task
 https://climatepub4kg.github.io/ontology#PAPER_APPLIES_METHOD,PAPER_APPLIES_METHOD,,Predicate,,Paper,Method
 https://climatepub4kg.github.io/ontology#PAPER_BELONGS_TO_FIELD,PAPER_BELONGS_TO_FIELD,,Predicate,,Paper,Field
 https://climatepub4kg.github.io/ontology#PAPER_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,PAPER_EXPERIMENTS_ON_OBSERVATIONAL_DATASET,,Predicate,,Paper,ObservationalDataset
 https://climatepub4kg.github.io/ontology#PAPER_HAS_INNOVATION,PAPER_HAS_INNOVATION,,Predicate,,Paper,Innovation
-https://climatepub4kg.github.io/ontology#PAPER_HAS_KEYWORD,PAPER_HAS_KEYWORD,,Predicate,,Paper,Keyword
+https://climatepub4kg.github.io/ontology#PAPER_HAS_KEYWORD,PAPER_HAS_KEYWORD,Links keywords to a publication,Predicate,,Paper,Keyword
 https://climatepub4kg.github.io/ontology#PAPER_HAS_MODEL,PAPER_HAS_MODEL,,Predicate,,Paper,Model
 https://climatepub4kg.github.io/ontology#PAPER_HAS_RESULT,PAPER_HAS_RESULT,,Predicate,,Paper,Result
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,,Predicate,,Paper,Teleconnection
@@ -141,7 +141,7 @@ https://climatepub4kg.github.io/ontology#PART_OF_PROJECT,PART_OF_PROJECT,,Predic
 https://climatepub4kg.github.io/ontology#PART_OF_PROJECT,PART_OF_PROJECT,,Predicate,,RCM,Project
 https://climatepub4kg.github.io/ontology#PARTICIPATED_IN,PARTICIPATED_IN,,Predicate,,Institute,Project
 https://climatepub4kg.github.io/ontology#PERFORMED_BY_INSTITUTE,PERFORMED_BY_INSTITUTE,,Predicate,,Experiment,Institute
-https://climatepub4kg.github.io/ontology#PRODUCED_BY_INSTITUTE,PRODUCED_BY_INSTITUTE,,Predicate,,Source,Institute
+https://climatepub4kg.github.io/ontology#PRODUCED_BY_INSTITUTE,PRODUCED_BY_INSTITUTE,Indicates which institute produced or developed an entity,Predicate,,Source,Institute
 https://climatepub4kg.github.io/ontology#PRODUCES_VARIABLE,PRODUCES_VARIABLE,,Predicate,,RCM,Variable
 https://climatepub4kg.github.io/ontology#PRODUCES_VARIABLE,PRODUCES_VARIABLE,,Predicate,,Source,Variable
 https://climatepub4kg.github.io/ontology#PRODUCES_VARIABLE,PRODUCES_VARIABLE,,Predicate,,SourceComponent,Variable
@@ -168,106 +168,106 @@ https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id
 https://climatepub4kg.github.io/ontology#cf_standard_name,cf_standard_name,,NodeProperty,,Variable,
 https://climatepub4kg.github.io/ontology#experiment_title,experiment_title,,NodeProperty,,Experiment,
 https://climatepub4kg.github.io/ontology#id,id,,NodeProperty,,Paper,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Activity,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,City,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Continent,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Country,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Country_Subdivision,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Domain,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Ensemble,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Experiment,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,ExperimentFamily,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Field,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Forcing,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Frequency,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,GridLabel,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Innovation,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Institute,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Instrument,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Keyword,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Member,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Method,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Metric,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,MIPEra,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Model,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Natural_Hazard,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,NaturalHazardType,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,No_Country_Region,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,ObservationalDataset,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Ocean_Circulation,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Paper,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,PhysicalFeature,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,PhysicalScheme,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Platform,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Problem,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Project,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,RCM,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Realm,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Resolution,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Result,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,SimulationType,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Source,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,SourceComponent,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,SourceType,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,SubExperiment,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Task,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Teleconnection,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Variable,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Water_Bodies,
-https://climatepub4kg.github.io/ontology#name,name,,NodeProperty,,Weather_Event,
-https://climatepub4kg.github.io/ontology#paper_id,paper_id,,NodeProperty,,Field,
-https://climatepub4kg.github.io/ontology#paper_id,paper_id,,NodeProperty,,Innovation,
-https://climatepub4kg.github.io/ontology#paper_id,paper_id,,NodeProperty,,Method,
-https://climatepub4kg.github.io/ontology#paper_id,paper_id,,NodeProperty,,Model,
-https://climatepub4kg.github.io/ontology#paper_id,paper_id,,NodeProperty,,Problem,
-https://climatepub4kg.github.io/ontology#paper_id,paper_id,,NodeProperty,,Task,
-https://climatepub4kg.github.io/ontology#title,title,,NodeProperty,,Paper,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Activity,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,City,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Continent,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Country,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Country_Subdivision,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Domain,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Ensemble,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Experiment,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,ExperimentFamily,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Field,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Forcing,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Frequency,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,GridLabel,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Innovation,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Institute,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Instrument,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Keyword,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Member,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Method,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Metric,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,MIPEra,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Model,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Natural_Hazard,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,NaturalHazardType,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,No_Country_Region,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,ObservationalDataset,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Ocean_Circulation,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Paper,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,PhysicalFeature,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,PhysicalScheme,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Platform,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Problem,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Project,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,RCM,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Realm,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Resolution,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Result,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,SimulationType,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Source,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,SourceComponent,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,SourceType,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,SubExperiment,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Task,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Teleconnection,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Variable,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Water_Bodies,
-https://climatepub4kg.github.io/ontology#uuid,uuid,,NodeProperty,,Weather_Event,
-https://climatepub4kg.github.io/ontology#variable_long_name,variable_long_name,,NodeProperty,,Variable,
-https://climatepub4kg.github.io/ontology#variable_units,variable_units,,NodeProperty,,Variable,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Activity,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,City,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Continent,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Country,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Country_Subdivision,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Domain,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Ensemble,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Experiment,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,ExperimentFamily,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Field,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Forcing,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Frequency,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,GridLabel,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Innovation,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Institute,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Instrument,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Keyword,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Member,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Method,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Metric,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,MIPEra,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Model,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Natural_Hazard,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,NaturalHazardType,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,No_Country_Region,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,ObservationalDataset,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Ocean_Circulation,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Paper,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,PhysicalFeature,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,PhysicalScheme,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Platform,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Problem,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Project,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,RCM,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Realm,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Resolution,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Result,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,SimulationType,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Source,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,SourceComponent,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,SourceType,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,SubExperiment,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Task,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Teleconnection,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Variable,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Water_Bodies,
+https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Weather_Event,
+https://climatepub4kg.github.io/ontology#paper_id,paper_id,A unique identifier for the associated paper,NodeProperty,,Field,
+https://climatepub4kg.github.io/ontology#paper_id,paper_id,A unique identifier for the associated paper,NodeProperty,,Innovation,
+https://climatepub4kg.github.io/ontology#paper_id,paper_id,A unique identifier for the associated paper,NodeProperty,,Method,
+https://climatepub4kg.github.io/ontology#paper_id,paper_id,A unique identifier for the associated paper,NodeProperty,,Model,
+https://climatepub4kg.github.io/ontology#paper_id,paper_id,A unique identifier for the associated paper,NodeProperty,,Problem,
+https://climatepub4kg.github.io/ontology#paper_id,paper_id,A unique identifier for the associated paper,NodeProperty,,Task,
+https://climatepub4kg.github.io/ontology#title,title,The title of the publication,NodeProperty,,Paper,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Activity,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,City,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Continent,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Country,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Country_Subdivision,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Domain,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Ensemble,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Experiment,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,ExperimentFamily,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Field,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Forcing,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Frequency,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,GridLabel,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Innovation,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Institute,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Instrument,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Keyword,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Member,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Method,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Metric,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,MIPEra,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Model,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Natural_Hazard,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,NaturalHazardType,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,No_Country_Region,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,ObservationalDataset,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Ocean_Circulation,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Paper,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,PhysicalFeature,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,PhysicalScheme,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Platform,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Problem,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Project,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,RCM,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Realm,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Resolution,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Result,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,SimulationType,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Source,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,SourceComponent,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,SourceType,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,SubExperiment,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Task,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Teleconnection,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Variable,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Water_Bodies,
+https://climatepub4kg.github.io/ontology#uuid,uuid,Universally Unique Identifier for the entity,NodeProperty,,Weather_Event,
+https://climatepub4kg.github.io/ontology#variable_long_name,variable_long_name,The full descriptive name of a climate variable,NodeProperty,,Variable,
+https://climatepub4kg.github.io/ontology#variable_units,variable_units,The measurement units for a climate variable,NodeProperty,,Variable,
