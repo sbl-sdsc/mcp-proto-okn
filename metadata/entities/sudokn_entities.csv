@@ -1,0 +1,91 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://asu.edu/semantics/SUDOKN/City,City,A city location.,Class,,,
+http://asu.edu/semantics/SUDOKN/State,State,A state or province.,Class,,,
+http://asu.edu/semantics/SUDOKN/Country,Country,A country.,Class,,,
+http://asu.edu/semantics/SUDOKN/County,County,A county.,Class,,,
+http://asu.edu/semantics/SUDOKN/BusinessDescription,Business Description,Description of a business organization.,Class,,,
+http://asu.edu/semantics/SUDOKN/Certificate,Certificate,A certification document.,Class,,,
+http://asu.edu/semantics/SUDOKN/PostalAddress,Postal Address,A postal address.,Class,,,
+http://asu.edu/semantics/SUDOKN/EmailAddress,Email Address,An email address.,Class,,,
+http://asu.edu/semantics/SUDOKN/WebAddress,Web Address,A web address (URL).,Class,,,
+http://asu.edu/semantics/SUDOKN/AddressLine,Address Line,A line in a postal address.,Class,,,
+http://asu.edu/semantics/SUDOKN/USPostalCode,US Postal Code,A United States postal code.,Class,,,
+http://asu.edu/semantics/SUDOKN/TwoDimensionalCartesianSpatialCoordinateDatum,Two Dimensional Cartesian Spatial Coordinate Datum,A two-dimensional spatial coordinate.,Class,,,
+http://asu.edu/semantics/SUDOKN/NAICSClassifier,NAICS Classifier,North American Industry Classification System classifier.,Class,,,
+http://asu.edu/semantics/SUDOKN/ProductCategoryClassifier,Product Category Classifier,Classifier for product categories.,Class,,,
+http://asu.edu/semantics/SUDOKN/OwnershipStatusClassifier,Ownership Status Classifier,Classifier for business ownership status.,Class,,,
+http://asu.edu/semantics/SUDOKN/SpecialBusinessStatusClassifier,Special Business Status Classifier,Classifier for special business status (e.g. minority-owned).,Class,,,
+http://asu.edu/semantics/SUDOKN/Classifier,Classifier,A classification entity.,Class,,,
+http://asu.edu/semantics/SUDOKN/ManufacturingProcessCapability,Manufacturing Process Capability,A capability related to manufacturing processes.,Class,,,
+http://asu.edu/semantics/SUDOKN/MaterialProcessingCapability,Material Processing Capability,A capability to process materials.,Class,,,
+http://asu.edu/semantics/SUDOKN/QualityManagementCapability,Quality Management Capability,A capability related to quality management.,Class,,,
+http://asu.edu/semantics/SUDOKN/MachiningCapability,Machining Capability,A capability to perform machining operations.,Class,,,
+http://asu.edu/semantics/SUDOKN/WeldingCapability,Welding Capability,A capability to perform welding operations.,Class,,,
+http://asu.edu/semantics/SUDOKN/CastingCapability,Casting Capability,A capability to perform casting operations.,Class,,,
+http://asu.edu/semantics/SUDOKN/CoatingCapability,Coating Capability,A capability to perform coating operations.,Class,,,
+http://asu.edu/semantics/SUDOKN/FabricatingCapability,Fabricating Capability,A capability to fabricate materials.,Class,,,
+http://asu.edu/semantics/SUDOKN/FormingCapability,Forming Capability,A capability to form materials.,Class,,,
+http://asu.edu/semantics/SUDOKN/JoiningCapability,Joining Capability,A capability to join materials.,Class,,,
+http://asu.edu/semantics/SUDOKN/CNCMachiningCapability,CNC Machining Capability,A capability to perform CNC machining.,Class,,,
+http://asu.edu/semantics/SUDOKN/AdditiveManufacturingCapability,Additive Manufacturing Capability,A capability for additive manufacturing (3D printing).,Class,,,
+http://asu.edu/semantics/SUDOKN/AluminumProcessingCapability,Aluminum Processing Capability,A capability to process aluminum.,Class,,,
+http://asu.edu/semantics/SUDOKN/SteelProcessingCapability,Steel Processing Capability,A capability to process steel.,Class,,,
+http://asu.edu/semantics/SUDOKN/StainlessSteelProcessingCapability,Stainless Steel Processing Capability,A capability to process stainless steel.,Class,,,
+http://asu.edu/semantics/SUDOKN/PlasticProcessingCapability,Plastic Processing Capability,A capability to process plastics.,Class,,,
+http://asu.edu/semantics/SUDOKN/CopperProcessingCapability,Copper Processing Capability,A capability to process copper.,Class,,,
+http://asu.edu/semantics/SUDOKN/ISO9001Certificate,ISO9001 Certificate,ISO 9001 quality management certification.,Class,,,
+http://asu.edu/semantics/SUDOKN/AS9100Certificate,AS9100 Certificate,AS9100 aerospace quality management certification.,Class,,,
+http://asu.edu/semantics/SUDOKN/ITARCertificate,ITAR Certificate,International Traffic in Arms Regulations compliance certification.,Class,,,
+http://asu.edu/semantics/SUDOKN/AerospaceIndustry,Aerospace Industry,The aerospace industry.,Class,,,
+http://asu.edu/semantics/SUDOKN/AutomotiveIndustry,Automotive Industry,The automotive industry.,Class,,,
+http://asu.edu/semantics/SUDOKN/DefenseIndustry,Defense Industry,The defense industry.,Class,,,
+http://asu.edu/semantics/SUDOKN/MedicalDevicesIndustry,Medical Devices Industry,The medical devices industry.,Class,,,
+http://asu.edu/semantics/SUDOKN/SemiconductorIndustry,Semiconductor Industry,The semiconductor industry.,Class,,,
+http://asu.edu/semantics/SUDOKN/MinorityOwned,Minority Owned,Minority-owned business status.,Class,,,
+http://asu.edu/semantics/SUDOKN/WomenOwned,Women Owned,Women-owned business status.,Class,,,
+http://asu.edu/semantics/SUDOKN/VeteranOwned,Veteran Owned,Veteran-owned business status.,Class,,,
+http://asu.edu/semantics/SUDOKN/SmallDisadvantagedBusiness,Small Disadvantaged Business,Small disadvantaged business status.,Class,,,
+https://spec.industrialontologies.org/ontology/core/Core/Manufacturer,Manufacturer,A manufacturer in the supply chain.,Class,,,
+https://spec.industrialontologies.org/ontology/core/Core/Organization,Organization,An organization.,Class,,,
+https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct,Material Product,A material product.,Class,,,
+https://spec.industrialontologies.org/ontology/core/Core/Capability,Capability,A capability of an organization or system.,Class,,,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/GeospatialLocation,Geospatial Location,A location defined by geographic coordinates.,Class,,,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/GeospatialSite,Geospatial Site,A physical site with geographic location.,Class,,,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Industry,Industry,An industry sector.,Class,,,
+http://asu.edu/semantics/SUDOKN/attestsTo,attests to,,Predicate,Certificate,Capability
+http://asu.edu/semantics/SUDOKN/classifiedByProductCategory,classified by product category,,Predicate,MaterialProduct,ProductCategoryClassifier
+http://asu.edu/semantics/SUDOKN/hasAddressLine,has address part,,Predicate,GeospatialSite,AddressLine
+http://asu.edu/semantics/SUDOKN/hasBusinessDescription,has business description,,Predicate,Organization,BusinessDescription
+http://asu.edu/semantics/SUDOKN/hasCertificate,has certificate,,Predicate,Organization,Certificate
+http://asu.edu/semantics/SUDOKN/hasEmailAddress,has email address,,Predicate,Organization,EmailAddress
+http://asu.edu/semantics/SUDOKN/hasGeospatialLocation,has geospatial location,,Predicate,GeospatialSite,GeospatialLocation
+http://asu.edu/semantics/SUDOKN/hasManagementCapability,has management capability,,Predicate,Organization,QualityManagementCapability
+http://asu.edu/semantics/SUDOKN/hasMaterialCapability,has material capability,,Predicate,Organization,MaterialProcessingCapability
+http://asu.edu/semantics/SUDOKN/hasNAICSClassifier,has NAICS classifier,,Predicate,Organization,NAICSClassifier
+http://asu.edu/semantics/SUDOKN/hasOwnershipStatusClassifier,has ownership status classifier,,Predicate,Organization,OwnershipStatusClassifier
+http://asu.edu/semantics/SUDOKN/hasPrimaryNAICSClassifier,has primary NAICS classifier,,Predicate,Organization,NAICSClassifier
+http://asu.edu/semantics/SUDOKN/hasProcessCapability,has process capability,,Predicate,Organization,ManufacturingProcessCapability
+http://asu.edu/semantics/SUDOKN/hasSecondaryNAICSClassifier,has secondary NAICS classifier,,Predicate,Organization,NAICSClassifier
+http://asu.edu/semantics/SUDOKN/hasSpecialBusinessStatusClassifier,has special business status classifier,,Predicate,Organization,SpecialBusinessStatusClassifier
+http://asu.edu/semantics/SUDOKN/hasWebAddress,has web address,,Predicate,Organization,WebAddress
+http://asu.edu/semantics/SUDOKN/locatedInCity,located in city,,Predicate,GeospatialSite,City
+http://asu.edu/semantics/SUDOKN/locatedInCountry,located in country,,Predicate,GeospatialSite,Country
+http://asu.edu/semantics/SUDOKN/locatedInCounty,located in county,,Predicate,GeospatialSite,County
+http://asu.edu/semantics/SUDOKN/locatedInState,located in state,,Predicate,GeospatialSite,State
+http://asu.edu/semantics/SUDOKN/manufactures,manufactures,,Predicate,Organization,MaterialProduct
+http://asu.edu/semantics/SUDOKN/suppliesToIndustry,supplies to industry,,Predicate,Organization,Industry
+http://asu.edu/semantics/SUDOKN/hasOrder,has order,Order number for address lines.,NodeProperty,AddressLine,
+http://asu.edu/semantics/SUDOKN/hasVirtualLocationIdentifierValue,has virtual location identifier value,The value of a virtual location identifier (email or web address).,NodeProperty,EmailAddress,
+http://asu.edu/semantics/SUDOKN/hasVirtualLocationIdentifierValue,has virtual location identifier value,The value of a virtual location identifier (email or web address).,NodeProperty,WebAddress,
+http://asu.edu/semantics/SUDOKN/hasPhoneNumberValue,has phone number value,Phone number value.,NodeProperty,GeospatialSite,
+http://asu.edu/semantics/SUDOKN/hasFaxNumberValue,has fax number value,Fax number value.,NodeProperty,GeospatialSite,
+http://asu.edu/semantics/SUDOKN/hasZipcodeValue,has zipcode value,ZIP code value.,NodeProperty,GeospatialSite,
+http://asu.edu/semantics/SUDOKN/hasNumberOfEmployees,has number of employees,Number of employees in the organization.,NodeProperty,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasOrganizationYearOfEstablishment,has organization year of establishment,Year the organization was established.,NodeProperty,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasLatitudeValue,has latitude value,Latitude coordinate value.,NodeProperty,GeospatialLocation,
+http://asu.edu/semantics/SUDOKN/hasLongitudeValue,has longitude value,Longitude coordinate value.,NodeProperty,GeospatialLocation,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has text value,A text value property.,NodeProperty,BusinessDescription,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has text value,A text value property.,NodeProperty,PostalAddress,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,Manufacturer,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,MaterialProduct,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,Organization,
