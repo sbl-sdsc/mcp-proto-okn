@@ -1,0 +1,23 @@
+Metric,Count,Percentage
+Ground-truth records,235,100.00%
+LLM records,238,101.28%
+Intersection size,233,99.15%
+False positives,5,2.10%
+False negatives,2,0.85%
+Precision,N/A,97.90%
+Recall,N/A,99.15%
+F1 Score,N/A,98.52%
+
+Discrepancy Type,Version,Issue
+False Positive,1.0.2o,Unverified - may be vulnerable
+False Positive,1.1.1g,CONFIRMED VULNERABLE - should not be in list
+False Positive,1.1.1k",override=True,URL encoding difference (semantic duplicate)
+False Positive,1.1.1l,CONFIRMED VULNERABLE - should not be in list
+False Positive,1.1.1s",override=True,URL encoding difference (semantic duplicate)
+False Negative,1.1.1k",override%3DTrue,URL encoding difference (semantic duplicate)
+False Negative,1.1.1s",override%3DTrue,URL encoding difference (semantic duplicate)
+
+Root Cause,Description,Impact
+URI vs Literal Handling,Ground truth returns URIs; LLM extracts literal values,URL encoding differences (2 records)
+Missing Type Constraint,LLM query missing explicit type constraint,Included vulnerable versions (2 records)
+Software Name Matching,LLM uses case-flexible matching,Potentially broader match scope
