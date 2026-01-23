@@ -2,6 +2,7 @@
 
 ### securechainkg
 
+#### Original Prompts
 [**ffmpeg Vulnerabilities**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities.md)
 
 [**openssl Vulnerabilities**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/2-securechain-openssl-vulnerabilities.md)
@@ -11,3 +12,15 @@
 [**libcurl Vulnerabilities**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/4-securechainkg-libcurl-vulnerabilities.md)
 
 [**libde265 Vulnerabilities**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/5-securechainkg-libde265-vulnerabilities.md)
+
+#### Refined Prompts & Evaluation against Ground Truth Query
+
+[**ffmpeg Vulnerabilities Evaluation**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities-evaluation.md)
+
+[**ffmpeg Vulnerabilities Deep Evaluation**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities-deep-evaluation.md)
+
+[**ffmpeg Vulnerabilities Query Semantic Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities-query-semantic-analysis.md)
+
+[**ffmpeg Vulnerabilities Query Performance Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities-query-performance-analysis.md)
+
+[**ffmpeg Vulnerabilities MCP Server Design Feedback**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities-mcp-server-design-feedback.md)
