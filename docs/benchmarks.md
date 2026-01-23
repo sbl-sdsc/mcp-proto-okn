@@ -23,9 +23,9 @@
 
 [**ffmpeg Vulnerabilities MCP Server Design Feedback**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-ffmpeg-vulnerabilities-mcp-server-design-feedback.md)
 
-[**openssl Vulnerabilities Evaluation**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-openssl-vulnerabilities-evaluation.md)
+[**openssl Vulnerabilities Evaluation**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/2-securechainkg-openssl-vulnerabilities-evaluation.md)
 
-[**openssl Vulnerabilities Query Semantic Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-openssl-vulnerabilities-query-semantic-analysis.md)
+[**openssl Vulnerabilities Query Semantic Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/2-securechainkg-openssl-vulnerabilities-query-semantic-analysis.md)
 
-[**openssl Vulnerabilities Query Performance Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/1-securechainkg-openssl-vulnerabilities-query-performance-analysis.md)
+[**openssl Vulnerabilities Query Performance Analysis**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks/2-securechainkg-openssl-vulnerabilities-query-performance-analysis.md)
 
