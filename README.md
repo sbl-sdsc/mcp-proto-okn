@@ -7,6 +7,12 @@
 
 A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoints with specialized support for the NSF-funded [Proto-OKN Project](https://www.proto-okn.net/) (Prototype Open Knowledge Network). This server enables querying the scientific knowledge graphs hosted on the [FRINK](https://frink.renci.org/) platform. In addition, third-party SPARQL endpoints can be queried.
 
+## Natural Language Querying Across Knowledge Graphs with MCP
+
+### [Video](https://www.youtube.com/watch?v=50L-tKCoXJE)
+
+### [Presentation](https://nebigdatahub.org/wp-content/uploads/2026/01/MCP-Proto-OKN-Technical-Review.pdf)
+
 ## Features
 
 - **🔗 FRINK Integration**: Automatic detection and documentation linking for FRINK-hosted knowledge graphs
