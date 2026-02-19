@@ -207,6 +207,10 @@ class QueryAnalyzer:
 
 class SPARQLServer:
     """SPARQL endpoint wrapper with Proto-OKN/registry awareness."""
+    
+    # Maximum number of URIs in a VALUES clause before triggering batched execution
+    # Large VALUES clauses can cause 403 errors or timeouts
+    MAX_VALUES_PER_BATCH = 20
 
     def __init__(self, endpoint_url: str, description: Optional[str] = None):
         self.endpoint_url = endpoint_url
@@ -238,7 +242,8 @@ class SPARQLServer:
 
         self.sparql.setMethod("GET")
         self.sparql.addCustomHttpHeader("Accept", "application/sparql-results+json")
-        self.sparql.setTimeout(120)
+        self.sparql.setTimeout(300)
+#        self.sparql.setTimeout(120)
 
     # ---------------------- Internal helpers ---------------------- #
     def _insert_from_clause(self, query_string, kg_name):
@@ -286,24 +291,6 @@ class SPARQLServer:
         
         return []
 
-    def _simplify_result(self, result: Dict) -> Dict:
-        """Remove type/datatype metadata, keep only values"""
-        if 'results' not in result:
-            return result
-            
-        simplified_bindings = []
-        for binding in result['results']['bindings']:
-            row = {}
-            for var, data in binding.items():
-                row[var] = data.get('value', '')
-            simplified_bindings.append(row)
-        
-        return {
-            'variables': result['head']['vars'],
-            'rows': simplified_bindings,
-            'count': len(simplified_bindings)
-        }
-    
     def _compact_result(self, result: Dict) -> Dict:
         """Return compact format with headers separate from data arrays"""
         if 'results' not in result:
@@ -324,41 +311,6 @@ class SPARQLServer:
             'data': data_rows,
             'count': len(data_rows)
         }
-
-    def _values_only(self, result: Dict) -> List[Dict[str, str]]:
-        """Return flat list of value dictionaries"""
-        if 'results' not in result:
-            return []
-        
-        values_list = []
-        for binding in result['results']['bindings']:
-            row = {}
-            for var in binding:
-                row[var] = binding[var].get('value', '')
-            values_list.append(row)
-        
-        return values_list
-
-    def _to_csv(self, result: Dict) -> str:
-        """Convert result to CSV string"""
-        if 'results' not in result:
-            return ""
-        
-        output = StringIO()
-        vars = result['head']['vars']
-        writer = csv.DictWriter(output, fieldnames=vars)
-        writer.writeheader()
-        
-        for binding in result['results']['bindings']:
-            row = {}
-            for var in vars:
-                if var in binding:
-                    row[var] = binding[var].get('value', '')
-                else:
-                    row[var] = ''
-            writer.writerow(row)
-        
-        return output.getvalue()
     
     def _get_registry_url(self) -> Optional[Tuple[str, str]]:
         """Return (kg_name, registry_url) if this looks like a FRINK endpoint, else None."""
@@ -434,20 +386,493 @@ class SPARQLServer:
             # If file doesn't exist or any error occurs, return empty dict
             return {}
 
-    def execute(self, query_string: str, format: str = 'compact', analyze: bool = True) -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
-        """Execute SPARQL query and return results in requested format.
+    def _detect_ontology_uris(self, query_string: str) -> List[str]:
+        """
+        Detect ontology URIs in a SPARQL query that should be expanded to include descendants.
+        
+        Detects URIs from all Ubergraph namespace prefixes, including:
+        - OBO Foundry ontologies (MONDO, DOID, HP, GO, UBERON, CL, CHEBI, PR, SO, etc.)
+        - Additional biological ontologies (ChEBI, Uberon, EMAPA, FBBT, etc.)
+        - Gene nomenclature (Bird Gene Nomenclature)
+        - Other semantic web vocabularies present in Ubergraph
+        
+        Args:
+            query_string: The SPARQL query string
+            
+        Returns:
+            List of ontology URIs found in the query
+        """
+        # Define all namespace prefixes present in Ubergraph
+        # These prefixes were identified by querying the Ubergraph endpoint
+        namespace_prefixes = [
+            # All OBO patterns combined:
+            # - Base OBO: PREFIX_DIGITS (e.g., MONDO_0005178, GO_0008150)
+            # - Hash properties: ontology#property (e.g., chebi#has_functional_parent)
+            # - Uberon core: uberon/core#property
+            # - ChEBI slash: chebi/property
+            r'http://purl\.obolibrary\.org/obo/(?:[A-Z]+_\d+|(?:chebi|emapa|fbbt|fypo|HAO|ma|mondo|nbo|ncbitaxon|pato|pr|so|vbo)#[A-Za-z_]+|uberon/core#[A-Za-z_]+|chebi/[A-Za-z_]+)',
+            
+            # Gene nomenclature
+            r'http://birdgenenames\.org/cgnc/GeneReport\?id=\d+',
+            
+            # Other semantic web vocabularies (if they contain hierarchical concepts)
+            # Note: Not all of these will have rdfs:subClassOf relationships
+            # but we include them for completeness
+            r'http://www\.w3\.org/2002/07/owl#[A-Za-z]+',
+        ]
+        
+        detected_uris = []
+        
+        # Extract URIs in angle brackets for each prefix pattern
+        for prefix_pattern in namespace_prefixes:
+            uri_pattern = f'<({prefix_pattern})>'
+            matches = re.findall(uri_pattern, query_string)
+            detected_uris.extend(matches)
+        
+        return list(set(detected_uris))  # Remove duplicates
+    
+    def _fetch_descendants_for_uri(self, uri: str, max_results: int = 2000, max_depth: int = 5) -> List[str]:
+        """
+        Fetch descendant URIs for a given ontology URI using the ubergraph,
+        with depth limiting to avoid runaway traversals.
+        
+        Uses a bounded property path (up to max_depth hops) instead of unbounded
+        rdfs:subClassOf* to prevent timeouts on large ontologies.
+        
+        Args:
+            uri: The ontology URI to expand
+            max_results: Maximum number of descendants to retrieve
+            max_depth: Maximum number of subClassOf hops to traverse (default: 5)
+            
+        Returns:
+            List of descendant URIs (including the original URI)
+        """
+        # Build a depth-limited query using UNION of explicit path lengths.
+        # This avoids unbounded rdfs:subClassOf* which can timeout on large ontologies.
+        # Each UNION branch adds one more hop: ?d subClassOf ?mid1 . ?mid1 subClassOf <uri> etc.
+        depth_patterns = []
+        for depth in range(1, max_depth + 1):
+            if depth == 1:
+                depth_patterns.append(f"{{ ?descendant rdfs:subClassOf <{uri}> }}")
+            else:
+                # Chain: ?descendant -> ?m1 -> ?m2 -> ... -> <uri>
+                chain_parts = []
+                prev_var = "?descendant"
+                for i in range(1, depth):
+                    next_var = f"?_mid{i}"
+                    chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
+                    prev_var = next_var
+                chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
+                depth_patterns.append("{ " + " ".join(chain_parts) + " }")
+        
+        union_block = "\n    UNION\n    ".join(depth_patterns)
+        
+        query = f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        
+        SELECT DISTINCT ?descendant
+        FROM <https://purl.org/okn/frink/kg/ubergraph>
+        WHERE {{
+          {{
+            {union_block}
+          }}
+        }}
+        LIMIT {max_results}
+        """
+        
+        try:
+            # Execute directly against the federated endpoint to avoid recursion
+            self.sparql.setQuery(query)
+            raw_result = self.sparql.query().convert()
+            
+            # Use the existing _extract_values method
+            desc_uris = self._extract_values(raw_result, 'descendant')
+            # Filter out the original URI and include it at the start
+            descendants = [uri] + [d for d in desc_uris if d and d != uri]
+            
+            return descendants[:max_results]
+        except Exception as e:
+            # If expansion fails, just return the original URI
+            return [uri]
+    
+    def _expand_query_with_descendants(self, query_string: str, ontology_uris: List[str], max_descendants: int = 100, max_depth: int = 5, bind_variables: Optional[List[str]] = None) -> Tuple[Union[str, List[str]], Dict[str, List[str]]]:
+        """
+        Rewrite a SPARQL query to include descendants of detected ontology URIs.
+        
+        Pre-fetches descendants from the ubergraph (with depth limiting) and injects
+        them as VALUES clauses into the user's query. This approach works correctly
+        across named graphs — the ubergraph is queried separately for the hierarchy,
+        then the expanded URI list is used in the KG-specific query.
+        
+        When the total number of expanded URIs exceeds MAX_VALUES_PER_BATCH, this method
+        returns a list of batched queries instead of a single query string.
+        
+        Args:
+            query_string: Original SPARQL query
+            ontology_uris: List of ontology URIs detected in the query
+            max_descendants: Maximum descendants to fetch per URI
+            max_depth: Maximum hierarchy depth to traverse (default: 5)
+            bind_variables: Optional list of variable names (with or without '?') that should
+                           be constrained to the expanded ontology concepts. For example, if
+                           you expand mondo:0005578 and want ?disease to only match those
+                           concepts, pass bind_variables=['disease'] or ['?disease'].
+                           This is useful for GROUP BY queries where you want to count/aggregate
+                           per descendant rather than just filter datasets.
+            
+        Returns:
+            Tuple of (expanded_query_or_queries, uri_to_descendants_mapping)
+            where expanded_query_or_queries is either:
+            - A single query string (if total URIs <= MAX_VALUES_PER_BATCH)
+            - A list of query strings (if batching is required)
+        """
+        if not ontology_uris:
+            return query_string, {}
+        
+        # Normalize bind_variables (ensure they start with ?)
+        bind_vars = []
+        if bind_variables:
+            bind_vars = [v if v.startswith('?') else f'?{v}' for v in bind_variables]
+        
+        uri_to_descendants = {}
+        var_to_descendants = {}  # Map variable names to their descendant lists
+        
+        # Fetch all descendants first
+        for uri in ontology_uris:
+            descendants = self._fetch_descendants_for_uri(uri, max_results=max_descendants, max_depth=max_depth)
+            uri_to_descendants[uri] = descendants
+            
+            if len(descendants) <= 1:
+                # No descendants found (or just the original URI), skip expansion
+                continue
+            
+            # Create a unique variable name based on the URI identifier
+            uri_id = uri.split('_')[-1] if '_' in uri else uri.split('/')[-1]
+            var_name = f"?expanded_uri_{uri_id}"
+            var_to_descendants[var_name] = descendants
+        
+        # Calculate total number of expanded URIs
+        total_uris = sum(len(descendants) for descendants in var_to_descendants.values())
+        
+        # If total URIs is manageable, use the original single-query approach
+        if total_uris <= self.MAX_VALUES_PER_BATCH:
+            expanded_query = query_string
+            values_clauses = []
+            
+            for uri in ontology_uris:
+                descendants = uri_to_descendants.get(uri, [])
+                if len(descendants) <= 1:
+                    continue
+                
+                uri_id = uri.split('_')[-1] if '_' in uri else uri.split('/')[-1]
+                var_name = f"?expanded_uri_{uri_id}"
+                
+                # Build the VALUES clause with all descendants
+                uri_values = " ".join(f"<{d}>" for d in descendants)
+                
+                if bind_vars:
+                    # When bind_expansion_to is specified, we want the bind variable
+                    # (e.g., ?disease) to iterate over the expanded descendants independently.
+                    #
+                    # Strategy: Replace the original <URI> with the FIRST bind variable,
+                    # and add a VALUES clause constraining that bind variable to the
+                    # expanded descendants. This merges the URI triple and the bind
+                    # variable triple into using the same user-defined variable,
+                    # avoiding intersection queries (which would undercount results)
+                    # and substring corruption (e.g., ?diseaseLabel -> ?expanded_uri_XLabel).
+                    #
+                    # Example: Given query:
+                    #   ?dataset schema:healthCondition <MONDO_0005578> .
+                    #   ?dataset schema:healthCondition ?disease .
+                    # With bind_expansion_to=['disease'], this becomes:
+                    #   VALUES ?disease { <MONDO_0005578> <MONDO_0008383> ... }
+                    #   ?dataset schema:healthCondition ?disease .
+                    #   ?dataset schema:healthCondition ?disease .  (redundant but harmless)
+                    #
+                    # Each descendant is then counted independently — no co-occurrence required.
+                    bind_var = bind_vars[0]  # Use first bind variable for this URI
+                    expanded_query = expanded_query.replace(f"<{uri}>", bind_var)
+                    values_clause = f"VALUES {bind_var} {{ {uri_values} }}"
+                    values_clauses.append(values_clause)
+                else:
+                    # Standard expansion: replace URI with a new expansion variable
+                    expanded_query = expanded_query.replace(f"<{uri}>", var_name)
+                    values_clause = f"VALUES {var_name} {{ {uri_values} }}"
+                    values_clauses.append(values_clause)
+            
+            # Insert VALUES clauses after WHERE {
+            if values_clauses:
+                combined_values = "\n  ".join(values_clauses)
+                where_match = re.search(r'WHERE\s*\{', expanded_query, re.IGNORECASE)
+                if where_match:
+                    insert_pos = where_match.end()
+                    expanded_query = (
+                        expanded_query[:insert_pos] + 
+                        f"\n  {combined_values}\n" +
+                        expanded_query[insert_pos:]
+                    )
+            
+            return expanded_query, uri_to_descendants
+        
+        # Otherwise, create batched queries.
+        #
+        # Strategy: batch ALL expanded variables independently, then emit one query
+        # per combination (Cartesian product of per-variable batches).
+        #
+        # Per-variable batch size: we give each variable an equal share of the budget.
+        # With N expanded variables and a budget of MAX_VALUES_PER_BATCH total URIs per
+        # query, each variable gets at most MAX_VALUES_PER_BATCH // N slots per batch.
+        # This guarantees that the total VALUES-clause size of any single query never
+        # exceeds MAX_VALUES_PER_BATCH (modulo rounding up to at least 1).
+
+        num_expanded_vars = len(var_to_descendants)
+        per_var_batch_size = max(1, self.MAX_VALUES_PER_BATCH // num_expanded_vars)
+
+        # Build per-variable batch lists: {var_name: [[chunk0], [chunk1], ...]}
+        var_batches: Dict[str, List[List[str]]] = {}
+        for var_name, desc_list in var_to_descendants.items():
+            chunks = [
+                desc_list[i:i + per_var_batch_size]
+                for i in range(0, len(desc_list), per_var_batch_size)
+            ]
+            var_batches[var_name] = chunks
+
+        # Build the Cartesian product of per-variable batch indices.
+        # For the common case of a single expanded variable this is just a flat loop.
+        import itertools
+        var_names = list(var_batches.keys())
+        chunk_index_ranges = [range(len(var_batches[v])) for v in var_names]
+
+        # Map expansion variable names back to bind/replacement names
+        # so that query rewriting stays consistent with the non-batched path.
+        var_to_replacement: Dict[str, str] = {}
+        if bind_vars:
+            # All expanded variables map to the first bind variable (same as non-batched path)
+            for v in var_names:
+                var_to_replacement[v] = bind_vars[0]
+        else:
+            for v in var_names:
+                var_to_replacement[v] = v  # keep the ?expanded_uri_XXXX name
+
+        batched_queries = []
+        for combo in itertools.product(*chunk_index_ranges):
+            # combo[i] is the chunk index for var_names[i]
+
+            # Start from the original unmodified query string for each batch
+            batch_query = query_string
+
+            # Replace literal URIs in the query with the appropriate variable names
+            for uri in ontology_uris:
+                descendants = uri_to_descendants.get(uri, [])
+                if len(descendants) <= 1:
+                    continue
+                uri_id = uri.split('_')[-1] if '_' in uri else uri.split('/')[-1]
+                var_name = f"?expanded_uri_{uri_id}"
+                replacement = var_to_replacement.get(var_name, var_name)
+                batch_query = batch_query.replace(f"<{uri}>", replacement)
+
+            # Build one VALUES clause per variable, using this combo's chunk
+            values_clauses = []
+            for i, v in enumerate(var_names):
+                chunk = var_batches[v][combo[i]]
+                replacement = var_to_replacement[v]
+                uri_values = " ".join(f"<{d}>" for d in chunk)
+                values_clauses.append(f"VALUES {replacement} {{ {uri_values} }}")
+
+            # Deduplicate VALUES clauses that target the same replacement variable
+            # (happens when bind_expansion_to maps multiple expanded vars to one name).
+            seen_replacements = {}
+            deduped_clauses = []
+            for clause in values_clauses:
+                # Extract the variable name from "VALUES ?foo { ... }"
+                m = re.match(r'VALUES\s+(\?\w+)', clause)
+                rep_var = m.group(1) if m else clause
+                if rep_var not in seen_replacements:
+                    seen_replacements[rep_var] = True
+                    deduped_clauses.append(clause)
+            values_clauses = deduped_clauses
+
+            # Insert VALUES clauses right after WHERE {
+            combined_values = "\n  ".join(values_clauses)
+            where_match = re.search(r'WHERE\s*\{', batch_query, re.IGNORECASE)
+            if where_match:
+                insert_pos = where_match.end()
+                batch_query = (
+                    batch_query[:insert_pos] +
+                    f"\n  {combined_values}\n" +
+                    batch_query[insert_pos:]
+                )
+
+            batched_queries.append(batch_query)
+
+        return batched_queries, uri_to_descendants
+    
+    def _merge_batch_results(self, results: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Merge results from multiple batched queries into a single result.
+        
+        Args:
+            results: List of query results in compact format
+            
+        Returns:
+            Single merged result in compact format
+        """
+        if not results:
+            return {'columns': [], 'data': [], 'count': 0}
+        
+        if len(results) == 1:
+            return results[0]
+        
+        # Get columns from first result
+        merged = {
+            'columns': results[0].get('columns', []),
+            'data': [],
+            'count': 0
+        }
+        
+        # Collect all data rows, removing duplicates
+        seen_rows = set()
+        for result in results:
+            if 'data' in result:
+                for row in result['data']:
+                    # Convert row to tuple for hashing
+                    row_tuple = tuple(row)
+                    if row_tuple not in seen_rows:
+                        seen_rows.add(row_tuple)
+                        merged['data'].append(row)
+        
+        merged['count'] = len(merged['data'])
+        
+        # Merge any warnings or analysis from the first result
+        if 'query_analysis' in results[0]:
+            merged['query_analysis'] = results[0]['query_analysis']
+        if 'schema_warnings' in results[0]:
+            merged['schema_warnings'] = results[0]['schema_warnings']
+        
+        return merged
+
+    
+    def _execute_raw(self, query_string: str, analyze: bool = True, auto_expand: bool = True) -> Dict[str, Any]:
+        """Internal execute method that handles the actual SPARQL execution.
+        
+        Note: _fetch_descendants_for_uri now queries the endpoint directly, 
+        so there is no risk of infinite recursion even with auto_expand=True.
+        """
+        return self.execute(query_string, analyze=analyze, auto_expand_descendants=auto_expand)
+    
+    def execute(self, query_string: str, analyze: bool = True, auto_expand_descendants: bool = True, max_descendants: int = 2000, max_depth: int = 5, bind_expansion_to: Optional[List[str]] = None) -> Dict[str, Any]:
+        """Execute SPARQL query and return results in compact format.
         
         Args:
             query_string: The SPARQL query to execute
-            format: Output format (compact, simplified, full, values, csv)
             analyze: If True, analyze query for common issues (LIMIT without ORDER BY)
+            auto_expand_descendants: If True (default), automatically expand ontology URIs by
+                pre-fetching descendants from ubergraph and injecting VALUES clauses.
+                This enables queries like "arthritis" to automatically include all subtypes.
+                Set to False when you want only the exact concepts mentioned in your query.
+            max_descendants: Maximum descendants to fetch per ontology URI (default: 100).
+                Increase for comprehensive coverage of large ontology branches.
+            max_depth: Maximum hierarchy depth to traverse when expanding (default: 5 hops).
+                Controls how deep to traverse the subClassOf hierarchy:
+                - max_depth=1: Direct children only (e.g., osteoarthritis, rheumatoid arthritis)
+                - max_depth=2: Children and grandchildren
+                - max_depth=5: Up to 5 levels deep in the hierarchy
+                Decrease for faster queries on very large/deep ontologies, increase for deeper coverage.
+            bind_expansion_to: Optional list of variable names (with or without '?') that should be
+                replaced with the expanded ontology variable. This is useful for GROUP BY queries
+                where you want to count/aggregate per descendant concept.
+                
+                How it works: When you specify bind_expansion_to=['disease'], all occurrences of 
+                ?disease in your query will be replaced with the expansion variable (e.g., 
+                ?expanded_uri_0005578), which is constrained to only the parent + descendant concepts.
+                
+                Example WITHOUT bind_expansion_to:
+                ```sparql
+                SELECT ?disease (COUNT(?dataset) as ?count)
+                WHERE {
+                    ?dataset schema:healthCondition mondo:0005578 .  # Gets expanded
+                    ?dataset schema:healthCondition ?disease .       # Matches ALL diseases
+                }
+                GROUP BY ?disease
+                ```
+                This returns ALL diseases on datasets that have arthritis, including unrelated ones
+                like Cancer, Alzheimer's, etc.
+                
+                Example WITH bind_expansion_to=['disease']:
+                ```sparql
+                SELECT ?disease (COUNT(?dataset) as ?count)
+                WHERE {
+                    ?dataset schema:healthCondition mondo:0005578 .  # Gets expanded
+                    ?dataset schema:healthCondition ?disease .       # Now ONLY matches expanded concepts
+                }
+                GROUP BY ?disease
+                ```
+                This returns ONLY arthritis-related diseases (parent + descendants) with their counts.
+
         
         Returns:
-            Query results in the requested format, with optional query_analysis field
+            Query results in compact format (columns + data arrays).
+            If auto_expand_descendants=True and ontology URIs were expanded, includes 
+            'ontology_expansion' field with expansion details.
+            If analyze=True and issues detected, includes 'query_analysis' field with warnings.
+        
+        Examples:
+            # Query for arthritis datasets - automatically includes all subtypes
+            query('SELECT ?dataset WHERE { ?dataset schema:healthCondition <MONDO_0005578> }')
+            
+            # Query for direct children only
+            query('SELECT ?dataset WHERE { ... }', max_depth=1)
+            
+            # Query without expansion - only exact matches
+            query('SELECT ?dataset WHERE { ... }', auto_expand_descendants=False)
+            
+            # Count datasets per descendant (GROUP BY use case)
+            query('''
+                SELECT ?disease ?diseaseLabel (COUNT(DISTINCT ?dataset) as ?count)
+                WHERE {
+                    ?dataset schema:healthCondition mondo:0005578 .
+                    ?dataset schema:healthCondition ?disease .
+                    ?disease schema:name ?diseaseLabel .
+                }
+                GROUP BY ?disease ?diseaseLabel
+            ''', max_depth=1, bind_expansion_to=['disease'])
         """
         # Analyze query before execution if requested
         analysis = None
         warnings = []
+        expansion_info = None
+        
+        # Auto-expand ontology URIs to include descendants if requested
+        original_query = query_string
+        queries_to_execute = [query_string]  # Default: single query
+        is_batched = False
+        
+        if auto_expand_descendants:
+            ontology_uris = self._detect_ontology_uris(query_string)
+            if ontology_uris:
+                # Pre-fetch descendants from ubergraph with depth limiting,
+                # then inject them as VALUES clauses into the user's query
+                expanded_result, uri_to_descendants = self._expand_query_with_descendants(
+                    query_string, ontology_uris, max_descendants, max_depth, bind_expansion_to
+                )
+                
+                # Check if result is a single query or multiple batched queries
+                if isinstance(expanded_result, list):
+                    queries_to_execute = expanded_result
+                    is_batched = True
+                else:
+                    queries_to_execute = [expanded_result]
+                
+                expansion_info = {
+                    "expanded": True,
+                    "original_uris": ontology_uris,
+                    "expanded_uris": {
+                        uri: len(descendants) for uri, descendants in uri_to_descendants.items()
+                    },
+                    "total_concepts": sum(len(descendants) for descendants in uri_to_descendants.values()),
+                    "batched": is_batched,
+                    "num_batches": len(queries_to_execute) if is_batched else 1,
+                    "max_values_per_batch": self.MAX_VALUES_PER_BATCH
+                }
         
         # Warn if schema hasn't been fetched
         if not self._schema_fetched and analyze:
@@ -459,59 +884,85 @@ class SPARQLServer:
                 )
             })
         
+        # Analyze first query (or single query if not batched)
         if analyze:
-            analysis = self.analyzer.analyze_query(query_string)
+            analysis = self.analyzer.analyze_query(queries_to_execute[0])
         
-        # Get kg_name for FROM clause insertion for federated endpoint
-        if self.kg_name != '':
-            query_string = self._insert_from_clause(query_string, self.kg_name)
+        # Execute query/queries
+        batch_results = []
+        batch_errors = []
+        for batch_idx, query_str in enumerate(queries_to_execute):
+            # Get kg_name for FROM clause insertion for federated endpoint
+            if self.kg_name != '':
+                query_str = self._insert_from_clause(query_str, self.kg_name)
+            
+            self.sparql.setQuery(query_str)
+            
+            try:
+                raw_result = self.sparql.query().convert()
+            except Exception as e:
+                if is_batched:
+                    # For batched execution, record the error and continue with
+                    # remaining batches so partial results are not lost.
+                    batch_errors.append({
+                        'batch': batch_idx,
+                        'error': str(e),
+                        'query': query_str
+                    })
+                    continue
+                else:
+                    # Single-query failure: return the error immediately (original behaviour).
+                    error_msg = f"Query execution failed: {str(e)}"
+                    # Add analysis warning to error message if applicable
+                    if analysis and analysis.get('warning'):
+                        error_msg += f"\n\n{analysis['warning']}"
+                    return {
+                        'error': error_msg,
+                        'query': query_str
+                    }
+            
+            # Convert to compact format (columns + data arrays)
+            formatted_result = self._compact_result(raw_result)
+            batch_results.append(formatted_result)
         
-        self.sparql.setQuery(query_string)
-        
-        try:
-            raw_result = self.sparql.query().convert()
-        except Exception as e:
-            error_msg = f"Query execution failed: {str(e)}"
-            # Add analysis warning to error message if applicable
+        # If every batch failed, surface the first error
+        if is_batched and not batch_results:
+            first_err = batch_errors[0]
+            error_msg = f"Query execution failed: {first_err['error']}"
             if analysis and analysis.get('warning'):
                 error_msg += f"\n\n{analysis['warning']}"
             return {
                 'error': error_msg,
-                'query': query_string
+                'query': first_err['query']
             }
         
-        # Apply requested format
-        if format == 'full':
-            formatted_result = raw_result
-        elif format == 'simplified':
-            formatted_result = self._simplify_result(raw_result)
-        elif format == 'compact':
-            formatted_result = self._compact_result(raw_result)
-        elif format == 'values':
-            formatted_result = self._values_only(raw_result)
-        elif format == 'csv':
-            formatted_result = self._to_csv(raw_result)
+        # Merge results if batched
+        if is_batched:
+            formatted_result = self._merge_batch_results(batch_results)
+            # Surface any per-batch errors as a non-fatal warning in the result
+            if batch_errors:
+                formatted_result['batch_errors'] = batch_errors
         else:
-            formatted_result = self._compact_result(raw_result)
+            formatted_result = batch_results[0]
         
         # Add analysis warnings to result if applicable
         if analyze and analysis and analysis.get('warning'):
-            if isinstance(formatted_result, dict):
-                formatted_result['query_analysis'] = {
-                    'warning': analysis['warning'],
-                    'suggested_order': analysis['suggested_order'],
-                    'limit_value': analysis['limit_value']
-                }
-            elif isinstance(formatted_result, str):
-                # For CSV format, prepend warning as comment
-                formatted_result = f"# {analysis['warning']}\n{formatted_result}"
+            formatted_result['query_analysis'] = {
+                'warning': analysis['warning'],
+                'suggested_order': analysis['suggested_order'],
+                'limit_value': analysis['limit_value']
+            }
         
         # Add schema warnings if present
-        if warnings and isinstance(formatted_result, dict):
+        if warnings:
             if 'query_analysis' in formatted_result:
                 formatted_result['query_analysis']['schema_warnings'] = warnings
             else:
                 formatted_result['schema_warnings'] = warnings
+        
+        # Add ontology expansion info if URIs were expanded
+        if expansion_info:
+            formatted_result['ontology_expansion'] = expansion_info
         
         return formatted_result
 
@@ -543,8 +994,8 @@ WHERE {{
         rdf:predicate schema:{relationship_label} ;
         rdf:object ?{target_var} ;
 {chr(10).join(prop_patterns)}
-}}
-LIMIT 10"""
+}}"""
+# LIMIT 10"""
         
         return template
 
@@ -568,6 +1019,10 @@ LIMIT 10"""
             }
         
         kg_name = self.kg_name
+
+        # ubergraph has > 200K unique triples.
+        if kg_name == "ubergraph":
+            return []
 
         # Try to get metadata from GitHub CSV first
         entity_metadata = self._get_entity_metadata()
@@ -972,6 +1427,37 @@ CRITICAL: Before using this tool or discussing the knowledge graph:
 3. DO NOT invent or guess a full name - you will likely hallucinate incorrect information
 4. After get_description() is called, you can use the proper name from the description
 
+AUTOMATIC ONTOLOGY EXPANSION:
+By default, this tool automatically detects ontology URIs (MONDO, DOID, HP, GO, UBERON, CL, CHEBI, etc.) 
+in your query and expands them to include all descendant concepts. The expansion works by:
+1. Pre-fetching descendants from the ubergraph (with depth-limited traversal, default max 5 hops)
+2. Injecting the expanded URI list as a VALUES clause into your query
+
+For example:
+- A query for MONDO_0005578 (arthritic joint disease) will automatically include osteoarthritis, rheumatoid arthritis, etc.
+- A query for GO_0008150 (biological process) will include all child processes
+- A query for CL_0000000 (cell) will include all cell types
+
+This means you don't need to manually fetch descendants - just query with the parent concept and
+all subconcepts are automatically included. You can disable this with auto_expand_descendants=False.
+
+The results will include an 'ontology_expansion' field showing which URIs were expanded and how many
+descendants were found.
+
+CONTROLLING EXPANSION DEPTH:
+- max_descendants: Maximum number of descendants to fetch per ontology URI (default: 2000)
+- max_depth: Maximum hierarchy depth to traverse (default: 5 hops)
+  - max_depth=1: DIRECT CHILDREN ONLY (one level down). Use when the user asks for "direct descendants"
+  - max_depth=2: Children and grandchildren
+  - max_depth=5: Up to 5 levels deep (default, good balance)
+  - Increase for deeper ontologies, decrease to 1-3 for faster queries on very large hierarchies
+
+WHEN TO USE get_descendants() vs max_depth:
+- Use max_depth parameter: When you want to query datasets/data with controlled hierarchy depth
+- Use get_descendants() tool: When you want to EXPLORE the ontology structure itself (see what diseases 
+  exist, understand the hierarchy, get distance information). This is useful for answering questions like
+  "what are the types of arthritis?" or "show me the disease hierarchy"
+
 EDGE PROPERTIES - CRITICAL:
 Many relationships in this knowledge graph have properties stored as edge attributes (data ON the relationship itself).
 Examples include: log2fc, adj_p_value, methylation_diff, q_value, etc.
@@ -1005,16 +1491,63 @@ WITHOUT ORDER BY, LIMIT RETURNS ARBITRARY RESULTS, NOT THE TOP/BOTTOM N!
 
 Args:
     query_string: A valid SPARQL query string
-    format: Output format - 'simplified' (default, JSON with dict rows), 'compact' (columns + data arrays, no repeated keys), 'full' (complete SPARQL JSON), 'values' (list of dicts), or 'csv' (CSV string)
     analyze: If True (default), analyzes query and warns if LIMIT is used without ORDER BY, and checks for edge property issues
+    auto_expand_descendants: If True (default), automatically expands ontology URIs by pre-fetching descendants from ubergraph (depth-limited) and injecting as VALUES clauses. Set to False to query only the exact URIs mentioned.
+    max_descendants: Maximum number of descendants to fetch per ontology URI (default: 100). Increase for comprehensive coverage.
+    max_depth: Controls hierarchy depth (default: 5 hops). Set to 1 for direct children only, 2-3 for faster queries, 5+ for deep coverage.
+    bind_expansion_to: Optional list of variable names (with or without '?') that should be replaced 
+        with the expanded ontology variable. This is useful for GROUP BY queries where you want to 
+        count/aggregate per descendant concept rather than per dataset.
+        
+        **HOW IT WORKS**: When you specify bind_expansion_to=['disease'], all occurrences of ?disease 
+        in your query will be replaced with the expansion variable (e.g., ?expanded_uri_0005578), which 
+        is constrained to only the parent + descendant concepts.
+        
+        **WITHOUT bind_expansion_to** - Returns datasets with arthritis (but ?disease matches ALL diseases):
+        ```
+        ?dataset schema:healthCondition mondo:0005578 .  # Gets expanded to include descendants
+        ?dataset schema:healthCondition ?disease .       # ?disease binds to ALL diseases on those datasets!
+        ```
+        Result: Cancer (17 datasets), Alzheimer's (12 datasets), etc. - diseases unrelated to arthritis!
+        
+        **WITH bind_expansion_to=['disease']** - Returns only arthritis-related diseases:
+        ```python
+        query('''
+            SELECT ?disease ?label (COUNT(?dataset) as ?count)
+            WHERE {{
+                ?dataset schema:healthCondition mondo:0005578 .
+                ?dataset schema:healthCondition ?disease .
+                ?disease schema:name ?label .
+            }}
+            GROUP BY ?disease ?label
+        ''', max_depth=1, bind_expansion_to=['disease'])
+        ```
+        Result: Only rheumatoid arthritis (2006 datasets), osteoarthritis (424 datasets), etc.
+        
+        The ?disease variable now ONLY matches the parent concept and its descendants.
 
 Returns:
-    The query results in the specified format. If analyze=True and issues are detected, includes a 'query_analysis' field with warnings and suggestions.
+    The query results in compact format (columns + data arrays). If analyze=True and issues are detected, includes a 'query_analysis' field with warnings and suggestions.
+    If auto_expand_descendants=True and ontology URIs are expanded, includes an 'ontology_expansion' field with expansion details.
 """
 
     @mcp.tool(description=query_doc)
-    def query(query_string: str, format: str = 'compact', analyze: bool = True) -> Union[Dict[str, Any], List[Dict[str, Any]], str]:
-        return sparql_server.execute(query_string, format=format, analyze=analyze)
+    def query(
+        query_string: str, 
+        analyze: bool = True,
+        auto_expand_descendants: bool = True,
+        max_descendants: int = 2000,
+        max_depth: int = 5,
+        bind_expansion_to: Optional[List[str]] = None
+    ) -> Dict[str, Any]:
+        return sparql_server.execute(
+            query_string, 
+            analyze=analyze,
+            auto_expand_descendants=auto_expand_descendants,
+            max_descendants=max_descendants,
+            max_depth=max_depth,
+            bind_expansion_to=bind_expansion_to
+        )
 
     schema_doc = f"""
 Return the schema (classes, relationships, properties) of the {sparql_server.kg_name} knowledge graph endpoint: {sparql_server.endpoint_url}.
@@ -1169,6 +1702,279 @@ Returns:
         
         return '\n'.join(cleaned_lines)
 
+    @mcp.tool()
+    def lookup_uri(
+        label: str,
+        max_results: int = 2000
+    ) -> Dict[str, Any]:
+        """
+        Look up the URI for an ontology term by its label (name) in Ubergraph.
+        
+        USE THIS TOOL WHEN:
+        - You have a human-readable term like "muscle organ", "arthritis", "heart"
+          and need the corresponding ontology URI
+        - You need to find the URI before calling get_descendants() or query()
+        - The user refers to a concept by name rather than by URI
+        
+        DO NOT use web search to find ontology URIs — this tool queries Ubergraph directly.
+        
+        The search is case-insensitive and matches both exact labels (rdfs:label) and
+        exact synonyms (oboInOwl:hasExactSynonym).
+        
+        Args:
+            label: The term to search for (e.g., "muscle organ", "rheumatoid arthritis",
+                   "heart", "glucose"). Case-insensitive.
+            max_results: Maximum number of matching URIs to return (default: 2000)
+            
+        Returns:
+            Dictionary containing:
+            - query_label: The search term used
+            - match_count: Number of matches found
+            - matches: List of matches, each with uri, label, and match_type
+                       (exact_label or exact_synonym)
+            
+        Examples:
+            # Find the URI for "muscle organ"
+            lookup_uri("muscle organ")
+            # → UBERON:0001630 http://purl.obolibrary.org/obo/UBERON_0001630
+            
+            # Find URI for "rheumatoid arthritis"
+            lookup_uri("rheumatoid arthritis")
+            # → MONDO:0005578 http://purl.obolibrary.org/obo/MONDO_0008383
+            
+            # Then use the URI with get_descendants
+            get_descendants("http://purl.obolibrary.org/obo/UBERON_0001630")
+        """
+        query = f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+        
+        SELECT DISTINCT ?uri ?matchedLabel ?matchType
+        FROM <https://purl.org/okn/frink/kg/ubergraph>
+        WHERE {{
+          {{
+            ?uri rdfs:label ?matchedLabel .
+            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
+            BIND("exact_label" AS ?matchType)
+          }}
+          UNION
+          {{
+            ?uri oboInOwl:hasExactSynonym ?matchedLabel .
+            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
+            BIND("exact_synonym" AS ?matchType)
+          }}
+        }}
+        LIMIT {max_results}
+        """
+        
+        try:
+            sparql_server.sparql.setQuery(query)
+            raw_result = sparql_server.sparql.query().convert()
+            
+            matches = []
+            if 'results' in raw_result:
+                for binding in raw_result['results'].get('bindings', []):
+                    matches.append({
+                        'uri': binding.get('uri', {}).get('value', ''),
+                        'label': binding.get('matchedLabel', {}).get('value', ''),
+                        'match_type': binding.get('matchType', {}).get('value', '')
+                    })
+            
+            return {
+                'query_label': label,
+                'match_count': len(matches),
+                'matches': matches
+            }
+        except Exception as e:
+            return {
+                'query_label': label,
+                'match_count': 0,
+                'matches': [],
+                'error': f"Lookup failed: {str(e)}"
+            }
+
+    @mcp.tool()
+    def get_descendants(
+        uri: str,
+        max_results: int = 2000,
+        max_depth: int = 5,
+        include_distance: bool = True
+    ) -> Dict[str, Any]:
+        """
+        Expand a URI to find all its descendant classes in the ontology hierarchy.
+        
+        USE THIS TOOL WHEN:
+        - You want to EXPLORE the ontology structure itself (not query datasets)
+        - You need to see what diseases/concepts exist under a parent term
+        - You want to understand the hierarchy and see distance information
+        - The user asks questions like "what types of arthritis are there?" or "show me the disease hierarchy"
+        
+        DON'T USE THIS TOOL WHEN:
+        - You want to query datasets with ontology expansion - use the query() tool with max_depth parameter instead
+        - The user wants data/datasets - use query() which has built-in expansion
+        
+        Descendants are classes that are subclasses (direct or transitive) of the given URI.
+        This uses the rdfs:subClassOf relationship to traverse the ontology hierarchy.
+        
+        Uses depth-limited traversal (up to 5 hops) to avoid timeouts on large ontologies.
+        
+        Args:
+            uri: The full URI to expand (e.g., 'http://purl.obolibrary.org/obo/MONDO_0005178')
+            max_results: Maximum number of descendants to return (default: 2000)
+            max_depth: Maximum number of subClassOf hops to traverse (default: 5)
+            include_distance: If True (default), include the hierarchy distance from the root URI.
+                Distance=1 means direct children, distance=2 means grandchildren, etc.
+            
+        Returns:
+            Dictionary containing:
+            - uri: The input URI
+            - label: The label of the input URI (if available)
+            - max_depth: Maximum depth traversed (always 5)
+            - descendant_count: Total number of descendants found
+            - descendants: List of descendant objects with uri, label, and optionally distance
+            
+        Examples:
+            # Explore arthritis hierarchy with distance info
+            get_descendants('http://purl.obolibrary.org/obo/MONDO_0005578', include_distance=True)
+            
+            # Get comprehensive list without distance
+            get_descendants('http://purl.obolibrary.org/obo/MONDO_0005578', max_results=2000, include_distance=False)
+        """
+        
+        if include_distance:
+            # Build depth-limited query with explicit distance tracking.
+            # Each UNION branch corresponds to a specific hop count.
+            depth_branches = []
+            for depth in range(1, max_depth + 1):
+                if depth == 1:
+                    depth_branches.append(
+                        f"{{ ?descendant rdfs:subClassOf <{uri}> . BIND({depth} AS ?distance) }}"
+                    )
+                else:
+                    chain_parts = []
+                    prev_var = "?descendant"
+                    for i in range(1, depth):
+                        next_var = f"?_m{i}"
+                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
+                        prev_var = next_var
+                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
+                    chain_str = " ".join(chain_parts)
+                    depth_branches.append(
+                        f"{{ {chain_str} BIND({depth} AS ?distance) }}"
+                    )
+            
+            union_block = "\n    UNION\n    ".join(depth_branches)
+            
+            query = f"""
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            SELECT ?descendant ?label (MIN(?distance) AS ?min_distance)
+            FROM <https://purl.org/okn/frink/kg/ubergraph>
+            WHERE {{
+              {{
+                {union_block}
+              }}
+              FILTER(?descendant != <{uri}>)
+              OPTIONAL {{ ?descendant rdfs:label ?label }}
+            }}
+            GROUP BY ?descendant ?label
+            ORDER BY ?min_distance ?descendant
+            LIMIT {max_results}
+            """
+        else:
+            # Build a depth-limited query without distance tracking
+            depth_branches = []
+            for depth in range(1, max_depth + 1):
+                if depth == 1:
+                    depth_branches.append(
+                        f"{{ ?descendant rdfs:subClassOf <{uri}> }}"
+                    )
+                else:
+                    chain_parts = []
+                    prev_var = "?descendant"
+                    for i in range(1, depth):
+                        next_var = f"?_m{i}"
+                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
+                        prev_var = next_var
+                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
+                    chain_str = " ".join(chain_parts)
+                    depth_branches.append(f"{{ {chain_str} }}")
+            
+            union_block = "\n    UNION\n    ".join(depth_branches)
+            
+            query = f"""
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            SELECT DISTINCT ?descendant ?label
+            FROM <https://purl.org/okn/frink/kg/ubergraph>
+            WHERE {{
+              {{
+                {union_block}
+              }}
+              FILTER(?descendant != <{uri}>)
+              OPTIONAL {{ ?descendant rdfs:label ?label }}
+            }}
+            ORDER BY ?descendant
+            LIMIT {max_results}
+            """
+        
+        # Query for the input URI's label
+        label_query = f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        
+        SELECT ?label
+        FROM <https://purl.org/okn/frink/kg/ubergraph>
+        WHERE {{
+          <{uri}> rdfs:label ?label .
+        }}
+        """
+        
+        # Get the label of the input URI
+        try:
+            sparql_server.sparql.setQuery(label_query)
+            label_result = sparql_server.sparql.query().convert()
+            uri_label = None
+            if 'results' in label_result:
+                bindings = label_result['results'].get('bindings', [])
+                if bindings and 'label' in bindings[0]:
+                    uri_label = bindings[0]['label'].get('value', None)
+        except Exception:
+            uri_label = None
+        
+        # Get descendants
+        try:
+            sparql_server.sparql.setQuery(query)
+            raw_result = sparql_server.sparql.query().convert()
+            
+            descendants = []
+            if 'results' in raw_result:
+                for binding in raw_result['results'].get('bindings', []):
+                    desc = {
+                        'uri': binding.get('descendant', {}).get('value', ''),
+                        'label': binding.get('label', {}).get('value', None)
+                    }
+                    if include_distance and 'min_distance' in binding:
+                        desc['distance'] = int(binding['min_distance'].get('value', 0))
+                    descendants.append(desc)
+            
+            return {
+                'uri': uri,
+                'label': uri_label,
+                'max_depth': MAX_DEPTH,
+                'descendant_count': len(descendants),
+                'descendants': descendants
+            }
+        except Exception as e:
+            return {
+                'uri': uri,
+                'label': uri_label,
+                'max_depth': MAX_DEPTH,
+                'descendant_count': 0,
+                'descendants': [],
+                'error': f"Failed to fetch descendants: {str(e)}"
+            }
+
+
     # Add prompt to create chat transcripts
     @mcp.tool()
     def create_chat_transcript() -> str:
@@ -1233,7 +2039,7 @@ STEP 10-13: Present ONLY the Cleaned Diagram
 10. Copy the EXACT text returned by clean_mermaid_diagram (not your draft)
 11. Present this CLEANED diagram inline in a mermaid code block
 12. Create a .mermaid file with ONLY the CLEANED diagram code (no markdown fences)
-13. Save to /mnt/user-data/outputs/<kg_name>-schema.mermaid and call present_files
+13. Save to ~/Downloads/<kg_name>-schema.mermaid and call present_files
 
 ⛔ STOP AND CHECK - Before you respond to the user:
 □ Did I call clean_mermaid_diagram? If NO → Go back and call it now

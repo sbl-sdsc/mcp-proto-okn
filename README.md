@@ -23,6 +23,7 @@ A Model Context Protocol (MCP) server providing seamless access to SPARQL endpoi
     - 🛠️ Technology & Manufacturing
 - **⚙️ Flexible Configuration**: Support for both FRINK and custom SPARQL endpoints
 - **📚 Automatic Documentation**: Registry links and metadata for Proto-OKN knowledge graphs
+- **🌳 Ontology-driven Search Expansion**: Queries are automatically expanded using ontology hierarchies
 - **🔗 Federated Query**: Prompts can query multiple endpoints
 
 ## Architecture
@@ -136,7 +137,12 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 20. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
 
+### Ontology-Driven Search Expansion
+Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, etc.) from the [Ubergraph KG](https://frink.renci.org/registry/kgs/ubergraph/) to include all descendant concepts, ensuring comprehensive retrieval without manual enumeration. For example, searching for "arthritic joint disease" automatically includes rheumatoid arthritis, osteoarthritis, ankylosing spondylitis, and all other subtypes.
 
+1. [**Arthritic Joint Disease Datasets (nde)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nde-arthritic_joint_disease_ontology_expansion.md)
+
+2. [**Space Flight Studies Investigating Muscles (spoke-genelab)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_muscle_studies_ontology_expansion.md)
 
 ### Proto-OKN Integration Opportunities
 
