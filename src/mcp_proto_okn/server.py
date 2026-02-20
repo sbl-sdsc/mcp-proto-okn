@@ -15,9 +15,20 @@ a description pointing to the knowledge graph registry. For other endpoints, you
 provide a custom description using the --description argument.
 
 This class extends the mcp-server-sparql MCP server.
+
+Transport modes:
+  - stdio (default): For local subprocess use via ``uvx mcp-proto-okn``.
+  - streamable-http: For remote deployment over HTTP/HTTPS.
+
+Environment variables (HTTP transport):
+  MCP_PROTO_OKN_TRANSPORT  - "stdio" (default) or "streamable-http"
+  MCP_PROTO_OKN_HOST       - Bind address (default "0.0.0.0")
+  MCP_PROTO_OKN_PORT       - Bind port (default 8000)
+  MCP_PROTO_OKN_API_KEY    - Optional Bearer-token authentication
 """
 
 import os
+import sys
 import json
 import argparse
 import textwrap
@@ -1398,7 +1409,54 @@ def parse_args():
             "(For FRINK endpoints this is automatically generated)"
         ),
     )
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "streamable-http"],
+        default=None,
+        help="Transport mode (default: stdio). Override with MCP_PROTO_OKN_TRANSPORT env var.",
+    )
+    parser.add_argument(
+        "--host",
+        default=None,
+        help="Bind address for HTTP transport (default: 0.0.0.0). Override with MCP_PROTO_OKN_HOST env var.",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=None,
+        help="Bind port for HTTP transport (default: 8000). Override with MCP_PROTO_OKN_PORT env var.",
+    )
     return parser.parse_args()
+
+
+def _wrap_with_api_key_auth(app):
+    """Wrap a Starlette/ASGI app with Bearer-token authentication.
+
+    Only active when the ``MCP_PROTO_OKN_API_KEY`` environment variable is set.
+    CORS preflight (OPTIONS) requests are passed through without auth.
+    """
+    api_key = os.environ.get("MCP_PROTO_OKN_API_KEY")
+    if not api_key:
+        return app
+
+    from starlette.middleware.base import BaseHTTPMiddleware
+    from starlette.responses import JSONResponse
+
+    class APIKeyMiddleware(BaseHTTPMiddleware):
+        async def dispatch(self, request, call_next):
+            # Allow CORS preflight through
+            if request.method == "OPTIONS":
+                return await call_next(request)
+            auth_header = request.headers.get("Authorization", "")
+            if auth_header != f"Bearer {api_key}":
+                return JSONResponse(
+                    {"error": "Invalid or missing API key"},
+                    status_code=401,
+                )
+            return await call_next(request)
+
+    app.add_middleware(APIKeyMiddleware)
+    return app
 
 
 def main():
@@ -2077,8 +2135,27 @@ RENDERING REQUIREMENTS:
 - Using a separate EdgeProperties namespace instead of intermediary classes
 """
 
-    # Run MCP server over stdio
-    mcp.run(transport="stdio")
+    # Resolve transport settings: CLI args > env vars > defaults
+    transport = (args.transport if args.transport is not None
+                 else os.environ.get("MCP_PROTO_OKN_TRANSPORT", "stdio")).lower()
+    host = (args.host if args.host is not None
+            else os.environ.get("MCP_PROTO_OKN_HOST", "0.0.0.0"))
+    port = (args.port if args.port is not None
+            else int(os.environ.get("MCP_PROTO_OKN_PORT", "8000")))
+
+    if transport == "stdio":
+        mcp.run(transport="stdio")
+    elif transport == "streamable-http":
+        mcp.settings.host = host
+        mcp.settings.port = port
+        app = mcp.streamable_http_app()
+        app = _wrap_with_api_key_auth(app)
+        import uvicorn
+        print(f"mcp-proto-okn ({sparql_server.kg_name}) listening on http://{host}:{port}", file=sys.stderr)
+        uvicorn.run(app, host=host, port=port, log_level="info")
+    else:
+        print(f"Unknown transport: {transport!r}. Use 'stdio' or 'streamable-http'.", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
