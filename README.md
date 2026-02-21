@@ -174,6 +174,72 @@ mcp-proto-okn vs. SPARQL Ground-Truth Evaluation
 
 [mcp-proto-okn server API](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/api.md)
 
+## Remote Deployment
+
+The server supports two transport modes:
+
+- **stdio** (default) -- local subprocess mode, used by `uvx mcp-proto-okn`
+- **streamable-http** -- remote HTTP mode, for hosting a server that multiple clients connect to over the network
+
+### Environment Variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `MCP_PROTO_OKN_TRANSPORT` | `stdio` | `stdio` or `streamable-http` |
+| `MCP_PROTO_OKN_HOST` | `0.0.0.0` | Bind address for HTTP transport |
+| `MCP_PROTO_OKN_PORT` | `8000` | Bind port for HTTP transport |
+| `MCP_PROTO_OKN_API_KEY` | *(none)* | Optional Bearer-token auth for HTTP |
+
+CLI arguments `--transport`, `--host`, and `--port` take precedence over environment variables.
+
+### Testing Locally with Claude Code
+
+Start the server in HTTP mode:
+
+```bash
+# Terminal 1: Start the server
+MCP_PROTO_OKN_TRANSPORT=streamable-http mcp-proto-okn \
+  --endpoint https://frink.apps.renci.org/spoke/sparql
+
+# The server listens on http://localhost:8000/mcp
+```
+
+Then configure Claude Code to connect via the remote MCP URL (add to `.mcp.json` or Claude Code settings):
+
+```json
+{
+  "mcpServers": {
+    "spoke": {
+      "type": "url",
+      "url": "http://localhost:8000/mcp"
+    }
+  }
+}
+```
+
+### Claude Desktop Requirements (HTTPS + Domain)
+
+Claude Desktop requires HTTPS with a valid domain name for remote MCP servers (it does not support `http://localhost`). Steps:
+
+1. Deploy the server to a host with a domain name
+2. Set up HTTPS via a reverse proxy (e.g., nginx, Caddy) or cloud service
+3. Optionally set `MCP_PROTO_OKN_API_KEY` for authentication
+4. Configure Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "spoke": {
+      "type": "url",
+      "url": "https://your-domain.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY_HERE"
+      }
+    }
+  }
+}
+```
+
 ## Troubleshooting
 
 **MCP server not appearing in Claude Desktop:**

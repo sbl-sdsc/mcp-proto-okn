@@ -35,6 +35,7 @@ Issues = "https://github.com/sbl-sdsc/mcp-proto-okn/issues"
 
 [project.scripts]
 mcp-proto-okn = "mcp_proto_okn.server:main"
+mcp-proto-okn-unified = "mcp_proto_okn.unified_server:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -42,6 +43,14 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/mcp_proto_okn"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"config/registry.json" = "mcp_proto_okn/registry.json"
+
+[tool.pytest.ini_options]
+markers = [
+    "live: tests that require network access to frink.apps.renci.org",
+]
 
 [tool.uv]
 package = true

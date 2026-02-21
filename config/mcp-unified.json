@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "proto-okn": {
+      "command": "uvx",
+      "args": ["mcp-proto-okn-unified"]
+    }
+  }
+}
