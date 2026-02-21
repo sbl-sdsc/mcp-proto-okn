@@ -1,0 +1,48 @@
+[
+  {
+    "name": "spoke-okn",
+    "display_name": "SPOKE Open Knowledge Network",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/spoke-okn",
+    "endpoint_url": "https://frink.apps.renci.org/spoke/sparql",
+    "domain_tags": ["biology", "health", "chemistry", "environment"],
+    "description_summary": "Comprehensive biomedical KG integrating genomics, disease, compounds, and environmental data with social determinants of health.",
+    "entity_types": {
+      "classes": ["Gene", "Disease", "ChemicalEntity", "AdministrativeArea", "SDoH"],
+      "predicates": ["TREATS_CtD", "ASSOCIATES_DaG", "PREVALENCE_DpL"],
+      "has_edge_properties": true
+    },
+    "identifier_namespaces": ["Ensembl", "MONDO", "ChEBI", "InChIKey", "FIPS"],
+    "example_queries": ["What drugs treat rheumatoid arthritis?", "What genes are associated with Crohn's disease?"],
+    "aliases": ["spoke"]
+  },
+  {
+    "name": "biobricks-tox21",
+    "display_name": "BioBricks Tox21",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-tox21",
+    "endpoint_url": "https://frink.apps.renci.org/biobricks-tox21/sparql",
+    "domain_tags": ["toxicology", "chemistry"],
+    "description_summary": "Tox21 quantitative high-throughput screening data for 10,000 chemicals with CAS Registry Numbers.",
+    "entity_types": {
+      "classes": ["ChemicalIdentifier"],
+      "predicates": ["Label", "Source", "Type"],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": ["CAS"],
+    "example_queries": ["What chemicals have been tested in Tox21 assays?"]
+  },
+  {
+    "name": "dreamkg",
+    "display_name": "DREAM-KG",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/dreamkg",
+    "endpoint_url": "https://frink.apps.renci.org/dreamkg/sparql",
+    "domain_tags": ["social_services", "homelessness"],
+    "description_summary": "Service-oriented graph for social service organizations helping homeless individuals.",
+    "entity_types": {
+      "classes": ["Organization", "Service", "ServiceLocation"],
+      "predicates": ["serviceLocation", "servicePhone"],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [],
+    "example_queries": ["What social services are available for homeless individuals?"]
+  }
+]

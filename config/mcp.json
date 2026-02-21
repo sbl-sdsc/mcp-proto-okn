@@ -42,7 +42,7 @@
         },
         "gene-expression-atlas-okn": {
             "command": "uvx",
-            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/gene-expression-altlas-okn/sparql"]
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/gene-expression-atlas-okn/sparql"]
         },
         "geoconnex": {
             "command": "uvx",
@@ -92,9 +92,9 @@
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke-genelab/sparql"]
         },
-        "spoke": {
+        "spoke-okn": {
             "command": "uvx",
-            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke/sparql"]
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/spoke-okn/sparql"]
         },
         "sudokn": {
             "command": "uvx",
