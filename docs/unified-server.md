@@ -18,6 +18,7 @@ The unified server replaces all 27 separate processes with a **single server** t
 - **Cross-Graph Bridging** -- understand shared identifiers and join strategies between any two graphs
 - **Multi-Graph Queries** -- run different SPARQL queries across multiple graphs in a single call
 - **Ontology Services** -- look up URIs and explore ontology hierarchies via Ubergraph
+- **Visualization & Documentation** -- generate schema diagrams, query templates, and chat transcripts
 
 ## Architecture
 
@@ -34,19 +35,23 @@ The unified server replaces all 27 separate processes with a **single server** t
 │                    Unified MCP Server                                  │
 │                    (mcp-proto-okn-unified)                             │
 │                                                                       │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────────┐ │
-│  │  9 MCP Tools  │  │Graph Registry│  │ Identifier Mapping           │ │
-│  │              │  │              │  │                              │ │
-│  │ list_graphs  │  │ 27 graphs    │  │ Gene: Ensembl ↔ NCBI ↔      │ │
-│  │ route_query  │  │ domain tags  │  │       Symbol (via bridge)    │ │
-│  │ get_schema   │  │ entity types │  │ Chemical: CAS, InChIKey,     │ │
-│  │ get_descript.│  │ identifiers  │  │          DTXSID              │ │
-│  │ query        │  │ examples     │  │ Disease: MONDO               │ │
-│  │ multi_graph  │  │ aliases      │  │ Location: FIPS, S2Cell       │ │
-│  │ join_strategy│  │              │  │ Industry: NAICS              │ │
-│  │ lookup_uri   │  │              │  │                              │ │
-│  │ get_descend. │  │              │  │                              │ │
-│  └──────┬───────┘  └──────────────┘  └──────────────────────────────┘ │
+│  ┌───────────────┐  ┌──────────────┐  ┌──────────────────────────────┐│
+│  │  13 MCP Tools  │  │Graph Registry│  │ Identifier Mapping           ││
+│  │               │  │              │  │                              ││
+│  │ list_graphs   │  │ 27 graphs    │  │ Gene: Ensembl ↔ NCBI ↔      ││
+│  │ route_query   │  │ domain tags  │  │       Symbol (via bridge)    ││
+│  │ get_schema    │  │ entity types │  │ Chemical: CAS, InChIKey,     ││
+│  │ get_descript. │  │ identifiers  │  │          DTXSID              ││
+│  │ query         │  │ examples     │  │ Disease: MONDO               ││
+│  │ multi_graph   │  │ aliases      │  │ Location: FIPS, S2Cell       ││
+│  │ join_strategy │  │              │  │ Industry: NAICS              ││
+│  │ lookup_uri    │  │              │  │                              ││
+│  │ get_descend.  │  │              │  │                              ││
+│  │ query_template│  │              │  │                              ││
+│  │ clean_mermaid │  │              │  │                              ││
+│  │ chat_transcr. │  │              │  │                              ││
+│  │ viz_schema    │  │              │  │                              ││
+│  └──────┬────────┘  └──────────────┘  └──────────────────────────────┘│
 │         │                                                             │
 │  ┌──────▼──────────────────────────────────────────────────────────┐  │
 │  │              SPARQLServer instances (lazy-cached)                │  │
@@ -129,7 +134,7 @@ The server core that ties everything together. It:
 
 1. Loads the graph registry at startup
 2. Lazy-creates and caches `SPARQLServer` instances per graph on first use
-3. Exposes 9 MCP tools that the AI assistant calls during conversation
+3. Exposes 13 MCP tools that the AI assistant calls during conversation
 4. Handles alias resolution, validation, and error reporting
 5. Supports both stdio (local) and streamable-http (remote) transport
 
@@ -142,9 +147,9 @@ The existing per-graph query engine, reused unchanged. Each instance handles:
 - **Query analysis** -- warns about missing LIMIT, ORDER BY, or edge property patterns
 - **Result formatting** -- returns structured `{columns, data, count}` responses
 
-## The 9 MCP Tools
+## The 13 MCP Tools
 
-The AI assistant uses these tools in sequence to navigate from a natural language question to structured cross-graph results.
+The AI assistant uses these tools in sequence to navigate from a natural language question to structured cross-graph results, and to generate documentation and visualizations.
 
 ### Discovery Tools
 
@@ -161,6 +166,7 @@ The AI assistant uses these tools in sequence to navigate from a natural languag
 | `get_schema(graph_name)` | Classes, predicates, edge properties for a graph | **Always** before writing SPARQL for a graph |
 | `query(graph_name, sparql)` | Execute SPARQL with ontology expansion and analysis | Primary query tool for individual graphs |
 | `multi_graph_query(queries)` | Run different SPARQL per graph, merge results | Cross-graph analysis with `source_graph` column |
+| `get_query_template(graph_name, relationship_name)` | SPARQL template showing RDF reification pattern for edge properties | When querying relationships with properties (e.g., differential expression with log2fc, p-values) |
 
 ### Cross-Graph Tools
 
@@ -169,6 +175,14 @@ The AI assistant uses these tools in sequence to navigate from a natural languag
 | `get_join_strategy(graph_a, graph_b)` | Shared identifiers and join recommendations | Before merging results from two graphs |
 | `lookup_uri(label)` | Find ontology URI by name via Ubergraph | When you have a term name and need its URI |
 | `get_descendants(uri)` | Explore ontology hierarchy with distance | To see what subtypes exist under a concept |
+
+### Visualization and Documentation Tools
+
+| Tool | Purpose | When to Use |
+|---|---|---|
+| `visualize_schema(graph_name)` | Step-by-step workflow for generating a Mermaid class diagram of a graph's schema | When the user wants to see or save a visual schema diagram |
+| `clean_mermaid_diagram(mermaid_content)` | Clean Mermaid diagrams by removing notes, empty braces, and invalid characters | Called automatically as part of `visualize_schema` workflow; can also be used standalone |
+| `create_chat_transcript(graph_name?)` | Generate a markdown template for documenting a KG analysis session | When the user wants a reproducible record of the conversation |
 
 ## How the Components Interact
 
@@ -394,7 +408,7 @@ uv run python -m pytest tests/ -v
 
 ```
 src/mcp_proto_okn/
-├── unified_server.py      # Unified MCP server (9 tools + CLI entry point)
+├── unified_server.py      # Unified MCP server (13 tools + CLI entry point)
 ├── registry.py            # GraphRegistry + GraphInfo (graph catalog)
 ├── identifier_mapping.py  # Cross-graph identifier bridges + join strategies
 ├── server.py              # SPARQLServer (per-graph query engine, reused)
