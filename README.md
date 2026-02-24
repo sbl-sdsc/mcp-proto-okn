@@ -209,7 +209,7 @@ Then configure Claude Code to connect via the remote MCP URL (add to `.mcp.json`
 ```json
 {
   "mcpServers": {
-    "spoke": {
+    "proto-okn": {
       "type": "url",
       "url": "http://localhost:8000/mcp"
     }
@@ -229,7 +229,7 @@ Claude Desktop requires HTTPS with a valid domain name for remote MCP servers (i
 ```json
 {
   "mcpServers": {
-    "spoke": {
+    "proto-okn": {
       "type": "url",
       "url": "https://your-domain.example.com/mcp",
       "headers": {
