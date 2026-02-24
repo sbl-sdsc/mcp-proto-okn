@@ -15,9 +15,20 @@ a description pointing to the knowledge graph registry. For other endpoints, you
 provide a custom description using the --description argument.
 
 This class extends the mcp-server-sparql MCP server.
+
+Transport modes:
+  - stdio (default): For local subprocess use via ``uvx mcp-proto-okn``.
+  - streamable-http: For remote deployment over HTTP/HTTPS.
+
+Environment variables (HTTP transport):
+  MCP_PROTO_OKN_TRANSPORT  - "stdio" (default) or "streamable-http"
+  MCP_PROTO_OKN_HOST       - Bind address (default "0.0.0.0")
+  MCP_PROTO_OKN_PORT       - Bind port (default 8000)
+  MCP_PROTO_OKN_API_KEY    - Optional Bearer-token authentication
 """
 
 import os
+import sys
 import json
 import argparse
 import textwrap
@@ -1382,6 +1393,217 @@ LIMIT 10"""
             # Any other error
             return None
 
+    def lookup_uri(self, label: str, max_results: int = 2000) -> Dict[str, Any]:
+        """Look up ontology term URIs by label in Ubergraph.
+
+        Queries Ubergraph for exact label matches (rdfs:label) and exact
+        synonyms (oboInOwl:hasExactSynonym). Case-insensitive.
+
+        Args:
+            label: The term to search for (e.g., "muscle organ", "rheumatoid arthritis")
+            max_results: Maximum number of matching URIs to return (default: 2000)
+
+        Returns:
+            Dictionary with query_label, match_count, and matches list.
+        """
+        query = f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+
+        SELECT DISTINCT ?uri ?matchedLabel ?matchType
+        FROM <https://purl.org/okn/frink/kg/ubergraph>
+        WHERE {{
+          {{
+            ?uri rdfs:label ?matchedLabel .
+            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
+            BIND("exact_label" AS ?matchType)
+          }}
+          UNION
+          {{
+            ?uri oboInOwl:hasExactSynonym ?matchedLabel .
+            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
+            BIND("exact_synonym" AS ?matchType)
+          }}
+        }}
+        LIMIT {max_results}
+        """
+
+        try:
+            self.sparql.setQuery(query)
+            raw_result = self.sparql.query().convert()
+
+            matches = []
+            if 'results' in raw_result:
+                for binding in raw_result['results'].get('bindings', []):
+                    matches.append({
+                        'uri': binding.get('uri', {}).get('value', ''),
+                        'label': binding.get('matchedLabel', {}).get('value', ''),
+                        'match_type': binding.get('matchType', {}).get('value', '')
+                    })
+
+            return {
+                'query_label': label,
+                'match_count': len(matches),
+                'matches': matches
+            }
+        except Exception as e:
+            return {
+                'query_label': label,
+                'match_count': 0,
+                'matches': [],
+                'error': f"Lookup failed: {str(e)}"
+            }
+
+    def get_descendants_detailed(
+        self,
+        uri: str,
+        max_results: int = 2000,
+        max_depth: int = 5,
+        include_distance: bool = True,
+    ) -> Dict[str, Any]:
+        """Expand a URI to find all its descendant classes in the ontology hierarchy.
+
+        Uses depth-limited traversal via Ubergraph.
+
+        Args:
+            uri: The full URI to expand
+            max_results: Maximum number of descendants to return (default: 2000)
+            max_depth: Maximum number of subClassOf hops (default: 5)
+            include_distance: If True, include hierarchy distance from root URI
+
+        Returns:
+            Dictionary with uri, label, max_depth, descendant_count, descendants.
+        """
+        if include_distance:
+            depth_branches = []
+            for depth in range(1, max_depth + 1):
+                if depth == 1:
+                    depth_branches.append(
+                        f"{{ ?descendant rdfs:subClassOf <{uri}> . BIND({depth} AS ?distance) }}"
+                    )
+                else:
+                    chain_parts = []
+                    prev_var = "?descendant"
+                    for i in range(1, depth):
+                        next_var = f"?_m{i}"
+                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
+                        prev_var = next_var
+                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
+                    chain_str = " ".join(chain_parts)
+                    depth_branches.append(
+                        f"{{ {chain_str} BIND({depth} AS ?distance) }}"
+                    )
+
+            union_block = "\n    UNION\n    ".join(depth_branches)
+
+            query = f"""
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT ?descendant ?label (MIN(?distance) AS ?min_distance)
+            FROM <https://purl.org/okn/frink/kg/ubergraph>
+            WHERE {{
+              {{
+                {union_block}
+              }}
+              FILTER(?descendant != <{uri}>)
+              OPTIONAL {{ ?descendant rdfs:label ?label }}
+            }}
+            GROUP BY ?descendant ?label
+            ORDER BY ?min_distance ?descendant
+            LIMIT {max_results}
+            """
+        else:
+            depth_branches = []
+            for depth in range(1, max_depth + 1):
+                if depth == 1:
+                    depth_branches.append(
+                        f"{{ ?descendant rdfs:subClassOf <{uri}> }}"
+                    )
+                else:
+                    chain_parts = []
+                    prev_var = "?descendant"
+                    for i in range(1, depth):
+                        next_var = f"?_m{i}"
+                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
+                        prev_var = next_var
+                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
+                    chain_str = " ".join(chain_parts)
+                    depth_branches.append(f"{{ {chain_str} }}")
+
+            union_block = "\n    UNION\n    ".join(depth_branches)
+
+            query = f"""
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT DISTINCT ?descendant ?label
+            FROM <https://purl.org/okn/frink/kg/ubergraph>
+            WHERE {{
+              {{
+                {union_block}
+              }}
+              FILTER(?descendant != <{uri}>)
+              OPTIONAL {{ ?descendant rdfs:label ?label }}
+            }}
+            ORDER BY ?descendant
+            LIMIT {max_results}
+            """
+
+        # Query for the input URI's label
+        label_query = f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT ?label
+        FROM <https://purl.org/okn/frink/kg/ubergraph>
+        WHERE {{
+          <{uri}> rdfs:label ?label .
+        }}
+        """
+
+        # Get the label of the input URI
+        try:
+            self.sparql.setQuery(label_query)
+            label_result = self.sparql.query().convert()
+            uri_label = None
+            if 'results' in label_result:
+                bindings = label_result['results'].get('bindings', [])
+                if bindings and 'label' in bindings[0]:
+                    uri_label = bindings[0]['label'].get('value', None)
+        except Exception:
+            uri_label = None
+
+        # Get descendants
+        try:
+            self.sparql.setQuery(query)
+            raw_result = self.sparql.query().convert()
+
+            descendants = []
+            if 'results' in raw_result:
+                for binding in raw_result['results'].get('bindings', []):
+                    desc = {
+                        'uri': binding.get('descendant', {}).get('value', ''),
+                        'label': binding.get('label', {}).get('value', None)
+                    }
+                    if include_distance and 'min_distance' in binding:
+                        desc['distance'] = int(binding['min_distance'].get('value', 0))
+                    descendants.append(desc)
+
+            return {
+                'uri': uri,
+                'label': uri_label,
+                'max_depth': max_depth,
+                'descendant_count': len(descendants),
+                'descendants': descendants
+            }
+        except Exception as e:
+            return {
+                'uri': uri,
+                'label': uri_label,
+                'max_depth': max_depth,
+                'descendant_count': 0,
+                'descendants': [],
+                'error': f"Failed to fetch descendants: {str(e)}"
+            }
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description="MCP SPARQL Query Server")
@@ -1398,7 +1620,54 @@ def parse_args():
             "(For FRINK endpoints this is automatically generated)"
         ),
     )
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "streamable-http"],
+        default=None,
+        help="Transport mode (default: stdio). Override with MCP_PROTO_OKN_TRANSPORT env var.",
+    )
+    parser.add_argument(
+        "--host",
+        default=None,
+        help="Bind address for HTTP transport (default: 0.0.0.0). Override with MCP_PROTO_OKN_HOST env var.",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=None,
+        help="Bind port for HTTP transport (default: 8000). Override with MCP_PROTO_OKN_PORT env var.",
+    )
     return parser.parse_args()
+
+
+def _wrap_with_api_key_auth(app):
+    """Wrap a Starlette/ASGI app with Bearer-token authentication.
+
+    Only active when the ``MCP_PROTO_OKN_API_KEY`` environment variable is set.
+    CORS preflight (OPTIONS) requests are passed through without auth.
+    """
+    api_key = os.environ.get("MCP_PROTO_OKN_API_KEY")
+    if not api_key:
+        return app
+
+    from starlette.middleware.base import BaseHTTPMiddleware
+    from starlette.responses import JSONResponse
+
+    class APIKeyMiddleware(BaseHTTPMiddleware):
+        async def dispatch(self, request, call_next):
+            # Allow CORS preflight through
+            if request.method == "OPTIONS":
+                return await call_next(request)
+            auth_header = request.headers.get("Authorization", "")
+            if auth_header != f"Bearer {api_key}":
+                return JSONResponse(
+                    {"error": "Invalid or missing API key"},
+                    status_code=401,
+                )
+            return await call_next(request)
+
+    app.add_middleware(APIKeyMiddleware)
+    return app
 
 
 def main():
@@ -1709,89 +1978,43 @@ Returns:
     ) -> Dict[str, Any]:
         """
         Look up the URI for an ontology term by its label (name) in Ubergraph.
-        
+
         USE THIS TOOL WHEN:
         - You have a human-readable term like "muscle organ", "arthritis", "heart"
           and need the corresponding ontology URI
         - You need to find the URI before calling get_descendants() or query()
         - The user refers to a concept by name rather than by URI
-        
+
         DO NOT use web search to find ontology URIs — this tool queries Ubergraph directly.
-        
+
         The search is case-insensitive and matches both exact labels (rdfs:label) and
         exact synonyms (oboInOwl:hasExactSynonym).
-        
+
         Args:
             label: The term to search for (e.g., "muscle organ", "rheumatoid arthritis",
                    "heart", "glucose"). Case-insensitive.
             max_results: Maximum number of matching URIs to return (default: 2000)
-            
+
         Returns:
             Dictionary containing:
             - query_label: The search term used
             - match_count: Number of matches found
             - matches: List of matches, each with uri, label, and match_type
                        (exact_label or exact_synonym)
-            
+
         Examples:
             # Find the URI for "muscle organ"
             lookup_uri("muscle organ")
             # → UBERON:0001630 http://purl.obolibrary.org/obo/UBERON_0001630
-            
+
             # Find URI for "rheumatoid arthritis"
             lookup_uri("rheumatoid arthritis")
             # → MONDO:0005578 http://purl.obolibrary.org/obo/MONDO_0008383
-            
+
             # Then use the URI with get_descendants
             get_descendants("http://purl.obolibrary.org/obo/UBERON_0001630")
         """
-        query = f"""
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
-        
-        SELECT DISTINCT ?uri ?matchedLabel ?matchType
-        FROM <https://purl.org/okn/frink/kg/ubergraph>
-        WHERE {{
-          {{
-            ?uri rdfs:label ?matchedLabel .
-            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
-            BIND("exact_label" AS ?matchType)
-          }}
-          UNION
-          {{
-            ?uri oboInOwl:hasExactSynonym ?matchedLabel .
-            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
-            BIND("exact_synonym" AS ?matchType)
-          }}
-        }}
-        LIMIT {max_results}
-        """
-        
-        try:
-            sparql_server.sparql.setQuery(query)
-            raw_result = sparql_server.sparql.query().convert()
-            
-            matches = []
-            if 'results' in raw_result:
-                for binding in raw_result['results'].get('bindings', []):
-                    matches.append({
-                        'uri': binding.get('uri', {}).get('value', ''),
-                        'label': binding.get('matchedLabel', {}).get('value', ''),
-                        'match_type': binding.get('matchType', {}).get('value', '')
-                    })
-            
-            return {
-                'query_label': label,
-                'match_count': len(matches),
-                'matches': matches
-            }
-        except Exception as e:
-            return {
-                'query_label': label,
-                'match_count': 0,
-                'matches': [],
-                'error': f"Lookup failed: {str(e)}"
-            }
+        return sparql_server.lookup_uri(label, max_results)
 
     @mcp.tool()
     def get_descendants(
@@ -1802,29 +2025,29 @@ Returns:
     ) -> Dict[str, Any]:
         """
         Expand a URI to find all its descendant classes in the ontology hierarchy.
-        
+
         USE THIS TOOL WHEN:
         - You want to EXPLORE the ontology structure itself (not query datasets)
         - You need to see what diseases/concepts exist under a parent term
         - You want to understand the hierarchy and see distance information
         - The user asks questions like "what types of arthritis are there?" or "show me the disease hierarchy"
-        
+
         DON'T USE THIS TOOL WHEN:
         - You want to query datasets with ontology expansion - use the query() tool with max_depth parameter instead
         - The user wants data/datasets - use query() which has built-in expansion
-        
+
         Descendants are classes that are subclasses (direct or transitive) of the given URI.
         This uses the rdfs:subClassOf relationship to traverse the ontology hierarchy.
-        
+
         Uses depth-limited traversal (up to 5 hops) to avoid timeouts on large ontologies.
-        
+
         Args:
             uri: The full URI to expand (e.g., 'http://purl.obolibrary.org/obo/MONDO_0005178')
             max_results: Maximum number of descendants to return (default: 2000)
             max_depth: Maximum number of subClassOf hops to traverse (default: 5)
             include_distance: If True (default), include the hierarchy distance from the root URI.
                 Distance=1 means direct children, distance=2 means grandchildren, etc.
-            
+
         Returns:
             Dictionary containing:
             - uri: The input URI
@@ -1832,148 +2055,15 @@ Returns:
             - max_depth: Maximum depth traversed (always 5)
             - descendant_count: Total number of descendants found
             - descendants: List of descendant objects with uri, label, and optionally distance
-            
+
         Examples:
             # Explore arthritis hierarchy with distance info
             get_descendants('http://purl.obolibrary.org/obo/MONDO_0005578', include_distance=True)
-            
+
             # Get comprehensive list without distance
             get_descendants('http://purl.obolibrary.org/obo/MONDO_0005578', max_results=2000, include_distance=False)
         """
-        
-        if include_distance:
-            # Build depth-limited query with explicit distance tracking.
-            # Each UNION branch corresponds to a specific hop count.
-            depth_branches = []
-            for depth in range(1, max_depth + 1):
-                if depth == 1:
-                    depth_branches.append(
-                        f"{{ ?descendant rdfs:subClassOf <{uri}> . BIND({depth} AS ?distance) }}"
-                    )
-                else:
-                    chain_parts = []
-                    prev_var = "?descendant"
-                    for i in range(1, depth):
-                        next_var = f"?_m{i}"
-                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
-                        prev_var = next_var
-                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
-                    chain_str = " ".join(chain_parts)
-                    depth_branches.append(
-                        f"{{ {chain_str} BIND({depth} AS ?distance) }}"
-                    )
-            
-            union_block = "\n    UNION\n    ".join(depth_branches)
-            
-            query = f"""
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            
-            SELECT ?descendant ?label (MIN(?distance) AS ?min_distance)
-            FROM <https://purl.org/okn/frink/kg/ubergraph>
-            WHERE {{
-              {{
-                {union_block}
-              }}
-              FILTER(?descendant != <{uri}>)
-              OPTIONAL {{ ?descendant rdfs:label ?label }}
-            }}
-            GROUP BY ?descendant ?label
-            ORDER BY ?min_distance ?descendant
-            LIMIT {max_results}
-            """
-        else:
-            # Build a depth-limited query without distance tracking
-            depth_branches = []
-            for depth in range(1, max_depth + 1):
-                if depth == 1:
-                    depth_branches.append(
-                        f"{{ ?descendant rdfs:subClassOf <{uri}> }}"
-                    )
-                else:
-                    chain_parts = []
-                    prev_var = "?descendant"
-                    for i in range(1, depth):
-                        next_var = f"?_m{i}"
-                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
-                        prev_var = next_var
-                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
-                    chain_str = " ".join(chain_parts)
-                    depth_branches.append(f"{{ {chain_str} }}")
-            
-            union_block = "\n    UNION\n    ".join(depth_branches)
-            
-            query = f"""
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            
-            SELECT DISTINCT ?descendant ?label
-            FROM <https://purl.org/okn/frink/kg/ubergraph>
-            WHERE {{
-              {{
-                {union_block}
-              }}
-              FILTER(?descendant != <{uri}>)
-              OPTIONAL {{ ?descendant rdfs:label ?label }}
-            }}
-            ORDER BY ?descendant
-            LIMIT {max_results}
-            """
-        
-        # Query for the input URI's label
-        label_query = f"""
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        
-        SELECT ?label
-        FROM <https://purl.org/okn/frink/kg/ubergraph>
-        WHERE {{
-          <{uri}> rdfs:label ?label .
-        }}
-        """
-        
-        # Get the label of the input URI
-        try:
-            sparql_server.sparql.setQuery(label_query)
-            label_result = sparql_server.sparql.query().convert()
-            uri_label = None
-            if 'results' in label_result:
-                bindings = label_result['results'].get('bindings', [])
-                if bindings and 'label' in bindings[0]:
-                    uri_label = bindings[0]['label'].get('value', None)
-        except Exception:
-            uri_label = None
-        
-        # Get descendants
-        try:
-            sparql_server.sparql.setQuery(query)
-            raw_result = sparql_server.sparql.query().convert()
-            
-            descendants = []
-            if 'results' in raw_result:
-                for binding in raw_result['results'].get('bindings', []):
-                    desc = {
-                        'uri': binding.get('descendant', {}).get('value', ''),
-                        'label': binding.get('label', {}).get('value', None)
-                    }
-                    if include_distance and 'min_distance' in binding:
-                        desc['distance'] = int(binding['min_distance'].get('value', 0))
-                    descendants.append(desc)
-            
-            return {
-                'uri': uri,
-                'label': uri_label,
-                'max_depth': MAX_DEPTH,
-                'descendant_count': len(descendants),
-                'descendants': descendants
-            }
-        except Exception as e:
-            return {
-                'uri': uri,
-                'label': uri_label,
-                'max_depth': MAX_DEPTH,
-                'descendant_count': 0,
-                'descendants': [],
-                'error': f"Failed to fetch descendants: {str(e)}"
-            }
-
+        return sparql_server.get_descendants_detailed(uri, max_results, max_depth, include_distance)
 
     # Add prompt to create chat transcripts
     @mcp.tool()
@@ -2077,8 +2167,27 @@ RENDERING REQUIREMENTS:
 - Using a separate EdgeProperties namespace instead of intermediary classes
 """
 
-    # Run MCP server over stdio
-    mcp.run(transport="stdio")
+    # Resolve transport settings: CLI args > env vars > defaults
+    transport = (args.transport if args.transport is not None
+                 else os.environ.get("MCP_PROTO_OKN_TRANSPORT", "stdio")).lower()
+    host = (args.host if args.host is not None
+            else os.environ.get("MCP_PROTO_OKN_HOST", "0.0.0.0"))
+    port = (args.port if args.port is not None
+            else int(os.environ.get("MCP_PROTO_OKN_PORT", "8000")))
+
+    if transport == "stdio":
+        mcp.run(transport="stdio")
+    elif transport == "streamable-http":
+        mcp.settings.host = host
+        mcp.settings.port = port
+        app = mcp.streamable_http_app()
+        app = _wrap_with_api_key_auth(app)
+        import uvicorn
+        print(f"mcp-proto-okn ({sparql_server.kg_name}) listening on http://{host}:{port}", file=sys.stderr)
+        uvicorn.run(app, host=host, port=port, log_level="info")
+    else:
+        print(f"Unknown transport: {transport!r}. Use 'stdio' or 'streamable-http'.", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
