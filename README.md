@@ -291,6 +291,7 @@ If you use MCP Server Proto-OKN in your research, please cite the following work
 
 This work is in part supported by:
 - **National Science Foundation** Award [#2333819](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2333819): "Proto-OKN Theme 1: Connecting Biomedical information on Earth and in Space via the SPOKE knowledge graph"
+- **National Science Foundation** Award [#2535091](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2535091): "Proto-OKN Theme 2: OKN-Fabric"
 
 ### Related Projects
 
