@@ -1,0 +1,24 @@
+URI,Label,Description,Type
+http://schema.org/Organization,Organization,"An organization such as a school, NGO, corporation, club, etc.",Class
+http://www.w3.org/2000/01/rdf-schema#Class,Class,The class of classes.,Class
+http://www.w3.org/2002/07/owl#Class,Class,The class of OWL classes.,Class
+https://w3id.org/secure-chain/Hardware,Hardware,Represents hardware products that are part of a secure supply chain.,Class
+https://w3id.org/secure-chain/HardwareVersion,Hardware Version,Represents a specific version of a hardware product within the secure chain.,Class
+https://w3id.org/secure-chain/License,License,Represents licenses associated with software or hardware products in the secure supply chain.,Class
+https://w3id.org/secure-chain/Software,Software,Represents software applications that are part of a secure supply chain.,Class
+https://w3id.org/secure-chain/SoftwareVersion,Software Version,Represents a specific version of a software application within the secure chain.,Class
+https://w3id.org/secure-chain/Vulnerability,Vulnerability,Represents vulnerabilities that may affect software or hardware components in the secure supply chain.,Class
+https://w3id.org/secure-chain/VulnerabilityType,Vulnerability Type,"Represents types or classifications of vulnerabilities affecting secure supply chains.",Class
+http://schema.org/identifier,identifier,"The identifier property represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes, UUIDs etc.",Predicate
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate
+http://schema.org/name,name,The name of the item.,Predicate
+http://www.w3.org/2000/01/rdf-schema#domain,domain,A domain of the subject property.,Predicate
+http://www.w3.org/2000/01/rdf-schema#range,range,A range of the subject property.,Predicate
+http://www.w3.org/2000/01/rdf-schema#subClassOf,subClassOf,The subject is a subclass of a class.,Predicate
+http://www.w3.org/2002/07/owl#sameAs,sameAs,The property that determines that two given individuals are equal.,Predicate
+http://www.w3.org/2002/07/owl#unionOf,unionOf,The property that determines the collection of classes or data ranges that build a union.,Predicate
+https://w3id.org/secure-chain/cpe23,cpe23,Common Platform Enumeration (CPE) 2.3 identifier for software or hardware.,Predicate
+https://w3id.org/secure-chain/hasHardwareVersion,has Hardware Version,Indicates the relationship between a hardware product and its version.,Predicate
+https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,Predicate
+https://w3id.org/secure-chain/vulnerabilityType,vulnerability Type,Associates a vulnerability with its specific type or classification.,Predicate
+https://w3id.org/secure-chain/vulnerableTo,vulnerable To,Indicates that a particular version of software is vulnerable to a specific vulnerability.,Predicate

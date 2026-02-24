@@ -1,0 +1,132 @@
+URI,Label,Description,Type
+http://purl.org/dc/terms/source,Source,Where the information originally came from,Predicate
+http://www.opengis.net/ont/geosparql#asWKT,Geographic Coordinates,The geographic location represented in a standard format,Predicate
+http://www.geneontology.org/formats/oboInOwl#hasDbXref,Database Reference,A link to the same entity in another database,Predicate
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what kind of thing an entity is,Predicate
+http://www.w3.org/2000/01/rdf-schema#comment,Comment,A human-readable description or annotation,Predicate
+http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name for an entity,Predicate
+http://www.w3.org/2000/01/rdf-schema#seeAlso,See Also,A reference to related information,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ISA_SiS,Is Subtype Of (SDoH),Shows when one SDoH concept is a more specific type of another SDoH concept,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ISA_DiD,Is Subtype Of (Disease),Shows when one disease is a more specific type of another disease,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ISA_CiC,Is Subtype Of (Compound),Shows when one chemical compound is a more specific type of another compound,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ISA_EiE,Is Subtype Of (Environment),Shows when one environment type is a more specific type of another environment,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/PARTOF_LpL,Part Of (Location),Shows when one geographic location is contained within another location,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/PARTOF_CpC,Part Of (Compound),Shows when one chemical structure is a component of a larger compound,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/FOUNDIN_CfL,Found In (Compound in Location),Indicates where a specific chemical compound has been detected or is present in a specific geographic area,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/FOUNDIN_EfL,Found In (Environment in Location),Indicates where a specific environmental condition or feature exists,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ISOLATEDIN_OiL,Isolated In (Organism in Location),Shows which country a particular Organisms (bacterial strains) was collected or sampled,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/PREVALENCE_DpL,Disease Prevalence in Location,How common a disease is in a specific geographic area,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/PREVALENCEIN_SpL,SDoH Prevalence in Location,How common a SDoH concept is in a specific geographic area,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/MORTALITY_DmL,Disease Mortality in Location,The mortality data or rate of the disease within a specific geographic location,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ASSOCIATES_DaG,Associates (Disease with Gene),Shows the association between a disease and a gene,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ASSOCIATES_SaD,Associates (SDoH with Disease),Shows the association between a SDoH concept and a disease by analysis on MeSH term co-occurrence in MEDLINE papers ,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/TREATS_CtD,Treats (Compound treats Disease),Shows that a drug or compound is used to treat a particular disease,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/CONTRAINDICATES_CcD,Contraindicates (Compound contraindicated for Disease),Shows that a drug should not be used for a particular disease,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/INTERACTS_CiC,Interacts (Compound with Compound),Shows when two drugs or compounds affect each other when taken together,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/UPREGULATES_CuG,Upregulates (Compound increases Gene),Shows that a drug or compound increases the expression of a gene,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/DOWNREGULATES_CdG,Downregulates (Compound decreases Gene),Shows that a drug or compound decreases the activity of a gene,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/EXPRESSEDIN_GeiD,Expressed In (Gene expressed in Disease),Shows gene expression level in one cancer type or a group of cancer types,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/RESPONDS_TO_OrC,Responds To (Organism responds to Compound),Shows how an organism (bacterial strains) reacts to a drug or chemical,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/RESISTANT_TO_mGrC,Resistant To (mutantGene resistant to Compound),Shows when variants of a gene resistant to a drug,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/RESPONSE_TO_mGrC,Response To (mutantGene response to Compound),Shows when variants of a gene response to a drug,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ADVRESPONSE_TO_mGarC,Adverse Response To (mutantGene adverse response to Compound),Shows when variants of a gene adversely response to a drug,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/MARKER_POS_GmpD,Positive Marker (Gene marker for Disease),"correlation between mRNA expression of a gene and patient survival of a cancer shows the gene is ""prognostic - favorable""",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/MARKER_NEG_GmnD,Negative Marker (Gene marker against Disease),"correlation between mRNA expression of a gene and patient survival of a cancer shows the gene is ""prognostic - unfavorable""",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/RESEMBLES_DrD,Resembles (Disease resembles Disease),Shows the association between two diseases by analysis on MeSH term co-occurrence in MEDLINE papers ,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/HASROLE_ChC,Has Role (Compound has biological role),Describes the biological function or purpose of a chemical compound,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/abbr,Abbreviation,two-letter postal state abbreviation,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/act_sources,Activity Sources,Where information about biological activity came from,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/antimicrobial_resistance,Antimicrobial Resistance,ability of bacteria to resist the effects of antibiotic drugs,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/biovar,Biovar,A variant of a bacterial species based on biochemical characteristics,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/city_fips,City FIPS Code,"five-digit number, composed by three-digit county code and two-digit city code to uniquely identify a city in a state",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/code,Code,GeoNames code to uniquely identify a geographic location,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/collection_date,Collection Date,When a sample was collected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/cooccur,Co-occurrence,the number of articles in which the two terms co-occurred,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/county_fips,County FIPS Code,Three-digit number to uniquely identify a county in a state,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/data_source,Data Source,Where the data originally came from,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/data_value,Data Value,The actural value of disease prevalence in a location,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/data_value_type,Data Value Type,"Measurements or statistics used to report the disease prevalence in a location, such as age-adjusted prevalence",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/data_value_unit,Data Value Unit,"The units used to measure the data value of disease prevalence in a location, such as percentage",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/date,Date,"The date related to compound In location, with the type of date defined in Date Type ",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/date_type,Date Type,"What kind of date used to report compound in location, such as sample collection date, completion date",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ddi_risk,Drug-Drug Interaction Risk,The potential danger level when two drugs are taken together,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/disease,Disease,The disease on which the variants of a gene affected by a compound ,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/domain,Domain,The major area of social determinant of health,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/enrichment,Enrichment,Statistical measure of how much more common two terms co-occur is than expected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ensembl,Ensembl ID,A gene's identifier in Ensembl genome database,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/fisher,Fisher's Test,the p-value from Fisher's exact test for whether the observed co-occurrence exceeded that expected by chance,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/genbank_accessions,GenBank Accession,A unique identifier for a genetic sequence in the GenBank database,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/genome_size,Genome Size,The total amount of genetic material in an organism,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/ghe_code,Global Health Estimate Code,A standardized code for cause of death category used in WHO reports,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/gram_stain,Gram Stain,A classification of bacteria based on their cell wall (positive or negative),Predicate
+https://purl.org/okn/frink/kg/spoke/schema/has_amr_phenotype,Has Antimicrobial Resistance Phenotype,Whether the organism shows resistance or susceptibility to antibiotics,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/host_age,Host Age,The age of the organism from which a sample was collected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/host_gender,Host Gender,The biological sex of the organism from which a sample was collected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/host_health,Host Health,The health status of the organism from which a sample was collected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/host_is_human,Host Is Human,Whether the sample came from a human,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/host_name,Host Name,The name or type of organism from which a sample was collected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/is_resistant,Is Resistant,Whether an organism is resistant to a drug or compound,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/iso3,ISO3 Country Code,A three-letter code representing a country,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/isolation_country,Isolation Country,The country where a sample was collected,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/isolation_source,Isolation Source,The specific material or environment from which a sample was obtained,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/laboratory_typing_method,Laboratory Typing Method,The technique used to identify or classify a microorganism,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/laboratory_typing_platform,Laboratory Typing Platform,The equipment or system used for laboratory identification,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/latitude,Latitude,The north-south position on Earth's surface in degrees,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/level,Level,The level of organism in the taxonomy,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/location_name,Location Name,The name of a geographic place,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/longitude,Longitude,The east-west position on Earth's surface in degrees,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/lower,Lower Bound,The minimum value in a range,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/max_phase,Maximum Phase,The furthest stage a drug has reached in clinical trials,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/measurement_sign,Measurement Sign,"Indicates whether a value is greater than, less than, or equal to",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/measurement_unit,Measurement Unit,The units used for a measurement,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/measurement_value,Measurement Value,The numerical result of a measurement,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/media,Media,"The environment where the compound exists in location, such as air, water, soil  ",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/mesh_ids,MeSH IDs,A list of  Medical Subject Headings terms an enviroment concept maps to,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/mesh_list,MeSH List,A list of Medical Subject Headings terms a disease maps to,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/method,Method,"Measurements or statistics used to report the SDoH prevalence in a location, such as Percentage",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/metric_name,Metric Name,"Measurements or statistics used to report the disease prevalence in a location, such as Percent",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/metrics,Metrics,"Measurements or statistics used to report the compound/environment found in a location, such as maximum concentration, total applied",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/mortality_per_100k,Mortality Per 100k,"mortality rate per 100,000 population",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/motility,Motility,Whether and how an organism can move,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/odds,Odds Ratio,A statistical measure of how strongly two terms co-occur,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/omim_list,OMIM List,A list of Online Mendelian Inheritance in Man concepts a disease map to ,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/oxygen_requirement,Oxygen Requirement,amount of oxygen an organism needs to survive,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/pathovar,Pathovar,A variant of a bacterial species that infects a specific plant host,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/percent_of_place_area_in_zip,Percent of Place Area in ZIP,What percentage of a place's area falls within a ZIP code,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/percent_of_zip_area_in_place,Percent of ZIP Area in Place,What percentage of a ZIP code's area falls within a place,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/phase,Phase,The stage of clinical testing for a drug,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/population,Population,The number of people living in an area,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/resistant_phenotype,Resistant Phenotype,The observable resistance characteristics of an organism,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/salinity,Salinity,The salt content of water or environment,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/serovar,Serovar,A variant of a bacterial species based on immune response characteristics,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/short_question_text,Short Question Text,A brief version of a survey question,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/smiles,SMILES,A text representation of a chemical structure,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/sporulation,Sporulation,Whether and how an organism forms protective spores,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/standardized_smiles,Standardized SMILES,A normalized text representation of a chemical structure,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/state,State,A state or province,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/state_abbr,State Abbreviation,The two-letter abbreviation for a state,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/state_desc,State Description,The full name of a state,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/state_fips,State FIPS Code,two-digit number uniquely identify a state,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/state_name,State Name,The full name of a state,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/strain,Strain,A specific genetic variant of an organism,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/synonyms,Synonyms,Alternative names for the same entity,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/temperature_range,Temperature Range,The range of temperatures in which an organism can grow,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/testing_standard_year,Testing Standard Year,The year of the testing standards used,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/topic,Topic,The topic of the social determinant of health concept,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/total_population,Total Population,The total number of people in an area,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/unit,Unit,"The measurement unit used to describe the values of compound/environment found in a location, such as pound, ug/L",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/upper,Upper Bound,The maximum value in a range,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/usa_isolation_country,USA Isolation Country,Whether the sample was collected in the United States,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/usability,Usability,How suitable or appropriate something is for use,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/value,Value,"The measured/estimated value of a metric, used in multiple predicates, such as compound/environment found in a location, disease/SDoH prevalence in a location, Mortality in a location",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/variable,Variable,"The measured SDoH concept, some with short description ",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/vendor,Vendor,The company or organization that supplied something,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/year,Year,The year the data is reported,Predicate
+https://purl.org/okn/frink/kg/spoke/schema/zipcode_type,ZIP Code Type,"The type of a ZIP code, such as standard, PO BOX",Predicate
+https://purl.org/okn/frink/kg/spoke/schema/SDoH,Social Determinants of Health,Social and economic factors that influence health outcomes,Class
+https://schema.org/AdministrativeArea,Administrative Area,A geographic region with administrative boundaries like cities or states,Class
+https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A chemical substance or compound,Class
+https://w3id.org/biolink/vocab/Disease,Disease,A disorder or illness that affects health,Class
+https://w3id.org/biolink/vocab/EnvironmentalFeature,Environmental Feature,"An environmental entity, such as environmental quality entity ",Class
+https://w3id.org/biolink/vocab/Gene,Gene,A unit of heredity that determines biological characteristics,Class
+https://w3id.org/biolink/vocab/OrganismTaxon,Organism Taxon,A classification group for living organisms,Class

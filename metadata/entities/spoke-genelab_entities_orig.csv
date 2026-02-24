@@ -1,0 +1,48 @@
+URI,Label,Description,Type
+http://purl.obolibrary.org/obo/OBI_0000070,Assay,Unique identifier for an assay instance in the NASA Open Science Data Repository (OSDR),Class
+https://w3id.org/biolink/vocab/AnatomicalEntity,Anatomy,UBERON ontology class name of an anatomical entity examined in an assay,Class
+https://w3id.org/biolink/vocab/Cell,CellType,Cell ontology (CL) class name of a cell type examined in an assay,Class
+https://w3id.org/biolink/vocab/Gene,Gene,Unique identifier for a human or model organism gene (ENTREZ id),Class
+https://w3id.org/biolink/vocab/Study,Study,Unique identifier for a study instance in the NASA Open Science Data Repository (OSDR),Class
+https://purl.org/okn/frink/kg/spoke-genelab/schema/MethylationRegion,MethylationRegion,"Unique identifier for a 1,000 base pair genomic region (MethylationRegion) exhibiting differential methylation",Class
+https://purl.org/okn/frink/kg/spoke-genelab/schema/Mission,Mission,Unique identifier for a mission instance in the NASA Open Science Data Repository (OSDR),Class
+https://purl.org/okn/frink/kg/spoke-genelab/schema/CONDUCTED_MIcS,CONDUCTED_MIcS,Mission conducted study,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/INVESTIGATED_ASiA,INVESTIGATED_ASiA,Assay investigated anatomy,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/INVESTIGATED_ASiCT,INVESTIGATED_ASiCT,Assay investigated cell type,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/IS_ORTHOLOG_MGiG,IS_ORTHOLOG_MGiG,Model organism gene is an ortholog of a human gene,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG,MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG,Assay measured differential expressions of a model organism gene,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/MEASURED_DIFFERENTIAL_METHYLATION_ASmMR,MEASURED_DIFFERENTIAL_METHYLATION_ASmMR,Assay measured differential methylation in a methylation region,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/METHYLATED_IN_MGmMR,METHYLATED_IN_MGmMR,Model organism gene methylated in methylation region,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/PERFORMED_SpAS,PERFORMED_SpAS,Study performed assay,Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/adj_p_value,adj_p_value,"Multiple testing-corrected p-value assessing the statistical significance of each gene's differential expression after controlling the false-discovery rate (FDR). Smaller values (e.g., <= 0.05) indicate that the observed log2 fold change is unlikely to arise by chance, even after accounting for the large number of simultaneous tests performed in the experiment. (float)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/chromosome,chromosome,Name or number of the chromosome (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/dist_to_feature,dist_to_feature,Distance to feature (int),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/end,end,Ending base pair position (int),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/end_date,end_date,End date of mission (date),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/factor_space_1,factor_space_1,"Primary experimental grouping for samples used the in assay, indicating whether it was exposed to Space Flight or maintained under control conditions: Ground Control, Basal Control, or Vivarium Control (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/factor_space_2,factor_space_2,"Secondary experimental grouping for samples used in the assay, indicating whether it was exposed to Space Flight or maintained under control conditions: Ground Control, Basal Control, or Vivarium Control (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/factors_1,factors_1,"Primary experimental factor(s) applied at the assay level (independent variables intentionally varied by the investigator); often corresponds to study-level design (e.g., Space Flight). Additional factors (e.g., dose, time point, sex, strain) may also be included. (string[])",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/factors_2,factors_2,"Secondary experimental factor(s) for this assay, typically the comparative group(s) in analysis connecting this assay to differential conditions (e.g., Ground Control). (string[])",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/flight_program,flight_program,Type of flight program (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/in_exon,in_exon,Boolean flag indicating whether the methylation region overlaps with an exon (boolean),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/in_intron,in_intron,Boolean flag indicating whether the methylation region overlaps with an intron (boolean),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/in_promoter,in_promoter,Boolean flag indicating whether the methylation region overlaps with a promoter region (boolean),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/log2fc,log2fc,"Log2-transformed fold change in gene expression between the experimental condition and its reference baseline. Positive values indicate up-regulation (higher transcript abundance), while negative values denote down-regulation (lower transcript abundance) relative to the control. (float)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/material_1,material_1,"Biological material analyzed in the first assay group (e.g., tissue, cell type, organ) (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/material_2,material_2,"Biological material analyzed in the second assay group (e.g., tissue, cell type, organ) (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/material_id_1,material_id_1,"Controlled ontology identifier for the first material (e.g., UBERON code) (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/material_id_2,material_id_2,"Controlled ontology identifier for the second material (e.g., UBERON code) (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/material_name_1,material_name_1,"Preferred ontology-based name for the first material (e.g., UBERON term) (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/material_name_2,material_name_2,"Preferred ontology-based name for the second material (e.g., UBERON term) (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/measurement,measurement,"Type of data produced by the assay, describing the focus of the analysis (string)",Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/methylation_diff,methylation_diff,Percent change in methylation in base pair range (float),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/organism,organism,NCBI scientific organism name (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/project_title,project_title,Title of project (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/project_type,project_type,Type of project (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/q_value,q_value,Adjusted p-value to control for false discovery rate (float),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/space_program,space_program,Sponsor of the mission (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/start,start,Starting base pair position (int),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/start_date,start_date,Start date of mission (date),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/symbol,symbol,Gene symbol for model organism (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/taxonomy,taxonomy,NCBI taxonomy ID (string),Predicate
+https://purl.org/okn/frink/kg/spoke-genelab/schema/technology,technology,"Platform or method used to generate assay data (e.g., sequencing platform, mass spectrometry, imaging) (string)",Predicate
