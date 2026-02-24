@@ -19,9 +19,12 @@ Environment variables (HTTP transport):
 import argparse
 import os
 import sys
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from mcp.server.fastmcp import FastMCP
+
+from mcp_proto_okn import __version__
 
 from mcp_proto_okn.identifier_mapping import (
     find_common_identifiers,
@@ -459,6 +462,244 @@ IMPORTANT: For gene queries across graphs, different graphs use different gene i
         else:
             server = unified._get_server("spoke-okn")
         return server.get_descendants_detailed(uri, max_results, max_depth, include_distance)
+
+    # ── Tool 10: get_query_template ────────────────────────────────────
+
+    @mcp.tool()
+    def get_query_template(
+        graph_name: str,
+        relationship_name: str,
+    ) -> Dict[str, Any]:
+        """
+        Get a query template for a specific relationship, especially useful for edges with properties.
+
+        This tool retrieves the appropriate query template based on the schema,
+        showing the RDF reification pattern for querying relationships that have
+        edge properties (like MEASURED_DIFFERENTIAL_EXPRESSION,
+        MEASURED_DIFFERENTIAL_METHYLATION, etc.).
+
+        Args:
+            graph_name: Name of the graph (e.g., "spoke-genelab")
+            relationship_name: Name of the relationship (e.g., 'MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG')
+
+        Returns:
+            A ready-to-use SPARQL query template showing the RDF reification pattern
+            for this relationship.
+        """
+        try:
+            server = unified._get_server(graph_name)
+            template = server.get_relationship_template(relationship_name)
+            return {"graph_name": graph_name, "relationship_name": relationship_name, "template": template}
+        except ValueError as e:
+            return {"error": str(e)}
+
+    # ── Tool 11: clean_mermaid_diagram ───────────────────────────────
+
+    @mcp.tool()
+    def clean_mermaid_diagram(mermaid_content: str) -> str:
+        """
+        Clean a Mermaid class diagram by removing unwanted elements.
+
+        This tool removes:
+        - All note statements that would render as unreadable yellow boxes
+        - Empty curly braces from class definitions (handles both single-line and multi-line)
+        - Strings after newline characters (e.g., truncates "ClassName\\nextra" to "ClassName")
+        - Vertical bars | (invalid in class diagrams)
+
+        Args:
+            mermaid_content: The raw Mermaid class diagram content
+
+        Returns:
+            Cleaned Mermaid content with note statements, empty braces, and
+            post-newline strings removed.
+        """
+        import re
+
+        # First, truncate any strings after \n characters in the entire content
+        mermaid_content = re.sub(r'(\S+)\\n[^\s\n]*', r'\1', mermaid_content)
+
+        lines = mermaid_content.split('\n')
+        cleaned_lines = []
+        i = 0
+
+        while i < len(lines):
+            line = lines[i]
+            stripped = line.strip()
+
+            # Remove vertical bars, they are not allowed in class diagrams
+            stripped = stripped.replace('|', ' ')
+
+            # Skip any line containing note syntax
+            if (stripped.startswith('note ') or
+                'note for' in stripped or
+                'note left' in stripped or
+                'note right' in stripped):
+                i += 1
+                continue
+
+            # Check for empty class definitions (single-line format)
+            if re.match(r'^\s*class\s+\w+\s*\{\s*\}\s*$', line):
+                line = re.sub(r'^(\s*class\s+\w+)\s*\{\s*\}\s*$', r'\1', line)
+                cleaned_lines.append(line)
+                i += 1
+                continue
+
+            # Check for empty class definitions (multi-line format)
+            if re.match(r'^\s*class\s+\w+\s*\{\s*$', line):
+                j = i + 1
+                found_closing = False
+                has_content = False
+
+                while j < len(lines):
+                    next_line = lines[j].strip()
+                    if not next_line:
+                        j += 1
+                        continue
+                    if next_line == '}':
+                        found_closing = True
+                        break
+                    else:
+                        has_content = True
+                        break
+
+                if found_closing and not has_content:
+                    class_match = re.match(r'^(\s*class\s+\w+)\s*\{\s*$', line)
+                    if class_match:
+                        cleaned_lines.append(class_match.group(1))
+                    i = j + 1
+                    continue
+
+            cleaned_lines.append(line)
+            i += 1
+
+        return '\n'.join(cleaned_lines)
+
+    # ── Tool 12: create_chat_transcript ──────────────────────────────
+
+    @mcp.tool()
+    def create_chat_transcript(graph_name: Optional[str] = None) -> str:
+        """
+        Generate a prompt template for creating a markdown chat transcript.
+
+        Returns formatting guidelines and a template for documenting knowledge
+        graph analysis sessions as reproducible markdown transcripts.
+
+        Args:
+            graph_name: Optional graph name for the filename. If not provided,
+                        uses "proto-okn" as a default prefix.
+
+        Returns:
+            A string containing the transcript template with formatting instructions.
+        """
+        today = datetime.now().strftime("%Y-%m-%d")
+        prefix = graph_name or "proto-okn"
+
+        return f"""Create a chat transcript in .md format following the outline below.
+1. Include prompts, text responses, and visualizations preferably inline, and when not possible as a link to a document.
+2. Include mermaid diagrams inline. Do not link to the mermaid file.
+3. Do not include the prompt to create this transcript.
+4. Save the transcript to ~/Downloads/<descriptive-filename>.md
+
+## Chat Transcript
+<Title>
+
+\U0001f464 **User**
+<prompt>
+
+---
+
+\U0001f9e0 **Assistant**
+<entire text response goes here>
+
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) {__version__} on {today}*
+
+IMPORTANT:
+- After the footer above, add a line with the model string you are using).
+- Save the complete transcript to ~/Downloads/ with a descriptive filename (e.g., ~/Downloads/{prefix}-chat-transcript-{today}.md)
+- Use the present_files tool to share the transcript file with the user.
+"""
+
+    # ── Tool 13: visualize_schema ────────────────────────────────────
+
+    @mcp.tool()
+    def visualize_schema(graph_name: str) -> str:
+        """
+        Generate a comprehensive prompt for creating a Mermaid class diagram
+        of a knowledge graph schema.
+
+        Returns step-by-step instructions for generating, cleaning, and saving
+        a publication-quality schema diagram. Includes handling of edges with
+        properties as intermediary classes.
+
+        Args:
+            graph_name: Name of the graph to visualize (e.g., "spoke-genelab")
+
+        Returns:
+            A string containing the step-by-step visualization workflow.
+        """
+        try:
+            canonical = unified._validate_graph_name(graph_name)
+        except ValueError as e:
+            return str(e)
+
+        return f"""Visualize the knowledge graph schema for '{canonical}' using a Mermaid class diagram.
+
+CRITICAL WORKFLOW - Follow these steps EXACTLY IN ORDER:
+
+STEP 1-5: Generate Draft Diagram
+1. First call get_schema('{canonical}') if it has not been called to retrieve the classes and predicates
+2. Analyze the schema to identify:
+   - Node classes (entities like Gene, Study, Assay, etc.)
+   - Edge predicates (relationships between nodes)
+   - Edge properties (predicates that describe data types like float, int, string, boolean, date, etc.)
+3. Generate the raw Mermaid class diagram showing:
+   - All node classes with their properties
+   - For edges WITHOUT properties: show as labeled arrows between classes (e.g., `Mission --> Study : CONDUCTED_MIcS`)
+   - For edges WITH properties: represent the edge as an intermediary class containing the properties, with unlabeled arrows connecting source -> edge class -> target
+4. Make the diagram taller / less wide:
+   - Set the diagram direction to TB (top->bottom): `direction TB`
+5. Do not append newline characters
+
+STEP 6-9: MANDATORY CLEANING - CANNOT BE SKIPPED
+6. STOP HERE! You now have a draft diagram. DO NOT use it yet.
+7. Call clean_mermaid_diagram and pass your draft diagram as the parameter
+8. Wait for the tool to return the cleaned diagram
+9. Your draft is now OBSOLETE. Delete it from your mind. You will use ONLY the cleaned output.
+
+STEP 10-13: Present ONLY the Cleaned Diagram
+10. Copy the EXACT text returned by clean_mermaid_diagram (not your draft)
+11. Present this CLEANED diagram inline in a mermaid code block
+12. Create a .mermaid file with ONLY the CLEANED diagram code (no markdown fences)
+13. Save to ~/Downloads/{canonical}-schema.mermaid and call present_files
+
+STOP AND CHECK - Before you respond to the user:
+- Did I call clean_mermaid_diagram? If NO -> Go back and call it now
+- Am I using the cleaned output? If NO -> Replace with cleaned output
+- Does my diagram contain empty {{}} braces? If YES -> You're using your draft, use cleaned output
+- Did I call present_files? If NO -> Call it now
+
+EDGES WITH PROPERTIES - CRITICAL GUIDELINES:
+- When an edge predicate has associated properties (e.g., log2fc, adj_p_value), DO NOT use a separate namespace
+- Instead, represent the edge as an intermediary class with the original predicate name
+- Connect the source class to the edge class, then the edge class to the target class
+- Example: Instead of `Assay --> Gene : MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG` with a separate EdgeProperties namespace,
+  create:
+    class MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG {{
+        float log2fc
+        float adj_p_value
+    }}
+    Assay --> MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG
+    MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG --> Gene
+- This approach clearly shows that the properties belong to the relationship itself
+
+RENDERING REQUIREMENTS:
+- The .mermaid file MUST contain ONLY the Mermaid diagram code
+- DO NOT include markdown code fences (```mermaid) in the .mermaid file
+- DO NOT include any explanatory text in the .mermaid file
+- The file should start with "classDiagram" and contain only the diagram definition
+- ALWAYS use present_files to share the .mermaid file after creating it
+"""
 
     # ── Transport ────────────────────────────────────────────────────────
 
