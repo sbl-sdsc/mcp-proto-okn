@@ -266,7 +266,7 @@ If you use MCP Server Proto-OKN in your research, please cite the following work
 ```bibtex
 @software{rose2025mcp-proto-okn,
   title={MCP Server Proto-OKN},
-  author={Rose, P.W. and Nelson, C.A. and Saravia-Butler, A.M. and Shi, Y. and Baranzini, S.E.},
+  author={Rose, P.W. and Good, B.M. and Nelson, C.A. and Saravia-Butler, A.M. and Shi, Y. and Su, A.I. and Baranzini, S.E.},
   year={2025},
   url={https://github.com/sbl-sdsc/mcp-proto-okn}
 }
