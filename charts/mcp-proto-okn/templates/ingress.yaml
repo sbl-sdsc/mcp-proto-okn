@@ -1,0 +1,60 @@
+{{- if .Values.ingress.enabled -}}
+{{/*
+  Sub-path routing via nginx/traefik Ingress.
+
+  The basePath (default: /mcp/proto-okn) is stripped before the request
+  reaches the container.  The container's own MCP endpoint sits at /mcp,
+  so a client calls:
+
+    https://<host>/mcp/proto-okn/mcp
+
+  which is rewritten to:
+
+    http://<service>:80/mcp
+
+  nginx annotation:
+    rewrite-target: /$2   matches the capture group after the basePath prefix.
+
+  traefik users: swap the annotation block for a Middleware + IngressRoute,
+  or simply set ingress.annotations to the traefik strip-prefix middleware ref.
+*/}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "mcp-proto-okn.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "mcp-proto-okn.labels" . | nindent 4 }}
+  annotations:
+    {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- end }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host | quote }}
+      secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.host | quote }}
+      http:
+        paths:
+          {{/*
+            Pattern: <basePath>(/|$)(.*)
+            Capture group $2 is forwarded as the rewritten path.
+            This means /mcp/proto-okn        → /
+                       /mcp/proto-okn/mcp    → /mcp
+                       /mcp/proto-okn/mcp/v1 → /mcp/v1
+          */}}
+          - path: {{ .Values.basePath }}(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ include "mcp-proto-okn.fullname" . }}
+                port:
+                  name: http
+{{- end }}
