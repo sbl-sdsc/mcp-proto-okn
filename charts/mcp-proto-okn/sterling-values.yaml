@@ -1,0 +1,56 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# mcp-proto-okn — default Helm values
+# ──────────────────────────────────────────────────────────────────────────────
+
+# -- Container image configuration
+image:
+  repository: containers.renci.org/frink/okn-mcp
+  pullPolicy: IfNotPresent
+  # Defaults to the chart appVersion when blank
+  tag: "v0.0.1"
+
+
+
+# ── Application ───────────────────────────────────────────────────────────────
+
+# Server mode:
+#   "single"  → mcp-proto-okn   (requires sparqlEndpoint below)
+#   "unified" → mcp-proto-okn-unified (all 27+ Proto-OKN graphs, no endpoint needed)
+serverMode: unified
+
+
+basePath: /mcp/proto-okn
+
+ingress:
+  enabled: true
+
+  # Ingress class — set to your controller:
+  #   nginx  → kubernetes.io/ingress.class: nginx  (or ingressClassName: nginx)
+  #   traefik → ingressClassName: traefik
+  className: nginx
+
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/whitelist-source-range: 0.0.0.0/0,::/0
+    cert-manager.io/cluster-issuer: letsencrypt
+    # Strip the basePath prefix before forwarding to the container.
+    # The container's MCP endpoint is at /mcp — the rewrite-target above
+    # maps  /mcp/proto-okn(/mcp/.*)  →  /mcp/...
+
+  # Shared domain — override per environment
+  host: frink.apps.renci.org
+
+  # TLS — reference an existing cert-manager certificate or a manually created Secret
+  tls:
+    enabled: true
+    secretName: frink.apps.renci.org-tls
+
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 500Mi
+  limits:
+    cpu: 1
+    memory: 1Gi

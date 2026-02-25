@@ -23,6 +23,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 from mcp_proto_okn import __version__
 
@@ -122,9 +123,22 @@ def main():
     # Initialize unified server
     unified = UnifiedSPARQLServer(registry_path=args.registry)
 
+    # Determine transport early so we can configure security settings
+    transport = (args.transport if args.transport is not None
+                 else os.environ.get("MCP_PROTO_OKN_TRANSPORT", "stdio")).lower()
+
+    # Disable DNS rebinding protection for HTTP transport (runs behind
+    # Kubernetes service/ingress where Host header won't be localhost).
+    transport_security = None
+    if transport == "streamable-http":
+        transport_security = TransportSecuritySettings(
+            enable_dns_rebinding_protection=False,
+        )
+
     # Create MCP server
     mcp = FastMCP(
         "Proto-OKN Unified Knowledge Graph Server",
+        transport_security=transport_security,
         instructions="""You have access to 27 Proto-OKN knowledge graphs through a single unified server.
 
 WORKFLOW FOR CROSS-GRAPH ANALYSIS:
@@ -703,8 +717,7 @@ RENDERING REQUIREMENTS:
 
     # ── Transport ────────────────────────────────────────────────────────
 
-    transport = (args.transport if args.transport is not None
-                 else os.environ.get("MCP_PROTO_OKN_TRANSPORT", "stdio")).lower()
+    # `transport` was already resolved at the top of main()
     host = (args.host if args.host is not None
             else os.environ.get("MCP_PROTO_OKN_HOST", "0.0.0.0"))
     port = (args.port if args.port is not None

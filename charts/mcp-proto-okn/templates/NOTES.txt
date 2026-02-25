@@ -1,0 +1,51 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║               mcp-proto-okn  ·  Deployment summary                     ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+Release:   {{ .Release.Name }}
+Namespace: {{ .Release.Namespace }}
+Mode:      {{ .Values.serverMode }}
+
+──────────────────────────────────────────────────────────────────────────
+  MCP endpoint
+──────────────────────────────────────────────────────────────────────────
+{{- if .Values.ingress.enabled }}
+  Protocol:  {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}
+  URL:       {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}{{ .Values.basePath }}/mcp
+{{- else if .Values.gateway.enabled }}
+  Protocol:  {{ if .Values.gateway.tls.enabled }}https{{ else }}http{{ end }}
+  URL:       {{ if .Values.gateway.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.gateway.host }}{{ .Values.basePath }}/mcp
+{{- else }}
+  Ingress/Gateway is disabled.  Port-forward to access the service:
+  kubectl port-forward -n {{ .Release.Namespace }} \
+    svc/{{ include "mcp-proto-okn.fullname" . }} 8080:{{ .Values.service.port }}
+  Then:  http://localhost:8080/mcp
+{{- end }}
+
+──────────────────────────────────────────────────────────────────────────
+  Claude Desktop / VS Code integration (remote MCP)
+──────────────────────────────────────────────────────────────────────────
+  Add to your claude_desktop_config.json:
+
+  {
+    "mcpServers": {
+      "proto-okn": {
+        "transport": "http",
+        "url": "{{ if .Values.ingress.enabled }}{{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}{{ .Values.basePath }}/mcp{{ else }}http://localhost:8080/mcp{{ end }}"
+      }
+    }
+  }
+{{- if .Values.apiKey }}
+
+  ⚠  API key is configured — add an Authorization header:
+  "headers": { "Authorization": "Bearer <your-api-key>" }
+{{- end }}
+
+──────────────────────────────────────────────────────────────────────────
+  Useful kubectl commands
+──────────────────────────────────────────────────────────────────────────
+  Logs:
+    kubectl logs -n {{ .Release.Namespace }} deploy/{{ include "mcp-proto-okn.fullname" . }} -f
+
+  Status:
+    kubectl get pods -n {{ .Release.Namespace }} -l "{{ include "mcp-proto-okn.selectorLabels" . | replace "\n" "," }}"

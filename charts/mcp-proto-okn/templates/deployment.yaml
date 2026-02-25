@@ -1,0 +1,143 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mcp-proto-okn.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "mcp-proto-okn.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "mcp-proto-okn.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "mcp-proto-okn.selectorLabels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "mcp-proto-okn.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+
+      containers:
+        - name: mcp-proto-okn
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: {{ include "mcp-proto-okn.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          # ── Command ─────────────────────────────────────────────────────────
+          command:
+            {{- include "mcp-proto-okn.command" . | nindent 12 }}
+          args:
+            - --transport
+            - {{ .Values.transport }}
+            - --host
+            - "0.0.0.0"
+            - --port
+            - {{ .Values.port | quote }}
+
+          # ── Environment variables ────────────────────────────────────────────
+          env:
+            - name: MCP_PROTO_OKN_TRANSPORT
+              value: {{ .Values.transport | quote }}
+            - name: MCP_PROTO_OKN_HOST
+              value: "0.0.0.0"
+            - name: MCP_PROTO_OKN_PORT
+              value: {{ .Values.port | quote }}
+            - name: ENABLE_DNS_REBINDING_PROTECTION
+              value: "false"
+            - name: MCP_DNS_REBINDING_PROTECTION
+              value: "false"
+            - name: UVICORN_FORWARDED_ALLOW_IPS
+              value: '*'
+            - name: UVICORN_PROXY_HEADERS
+              value: 'true'
+
+            {{/* SPARQL endpoint — from inline value or external secret */}}
+            {{- if .Values.sparqlEndpointSecret }}
+            - name: MCP_PROTO_OKN_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sparqlEndpointSecret.name }}
+                  key: {{ .Values.sparqlEndpointSecret.key }}
+            {{- else if .Values.sparqlEndpoint }}
+            - name: MCP_PROTO_OKN_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mcp-proto-okn.secretName" . }}
+                  key: endpoint-url
+            {{- end }}
+
+            {{/* API key — from inline value or external secret */}}
+            {{- if .Values.apiKeySecret }}
+            - name: MCP_PROTO_OKN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.apiKeySecret.name }}
+                  key: {{ .Values.apiKeySecret.key }}
+            {{- else if .Values.apiKey }}
+            - name: MCP_PROTO_OKN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mcp-proto-okn.secretName" . }}
+                  key: api-key
+            {{- end }}
+
+            {{- with .Values.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+
+          # ── Ports ────────────────────────────────────────────────────────────
+          ports:
+            - name: http
+              containerPort: {{ .Values.port }}
+              protocol: TCP
+
+
+
+          # ── Resources ────────────────────────────────────────────────────────
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+
+          # ── Volume mounts ─────────────────────────────────────────────────────
+          volumeMounts:
+            # tmpdir needed when readOnlyRootFilesystem=true (Python needs /tmp)
+            - name: tmp
+              mountPath: /tmp
+            {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
