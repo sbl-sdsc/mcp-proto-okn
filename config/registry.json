@@ -1987,7 +1987,7 @@
     },
     "identifier_namespaces": [
       "Ensembl",
-      "MONDO",
+      "DOID",
       "ChEBI",
       "InChIKey",
       "FIPS"
