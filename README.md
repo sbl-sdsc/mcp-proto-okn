@@ -51,6 +51,8 @@ The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) an
 
 **[ChatGPT Setup](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/chatgpt-setup.md)**
 
+> If you previouly use a local installation of mcp-proto-okn, disable the services or remove them from the 
+
 -----------
 
 ## Example Queries
