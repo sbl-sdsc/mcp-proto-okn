@@ -36,47 +36,38 @@ The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) an
 
 ## Prerequisites
 
-Before installing the MCP Server Proto-OKN, ensure you have:
-
-- **Operating System**: macOS, Linux, or Windows
-- **Client Application**: One of the following:
-  - Claude Desktop with Pro or Max subscription
+- **Client Application**
+  - Claude Desktop with subscription
+  - ChatGPT with subscription
   - VS Code Insiders with GitHub Copilot subscription
+  - Other MCP-compliant applications
 
-## Installation
+## Installation and Configuration
 
-[Installation instructions for Claude Desktop and VS Code Insiders](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/installation.md)
+> **Beta Notice:** The proto-okn MCP server is currently in beta testing.  
+> We welcome feedback and bug reports. Please submit any [issues](https://github.com/sbl-sdsc/mcp-proto-okn/issues).
 
-## Quick Start
+**[Claude Desktop Setup](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/claude-setup.md)**
 
-Once configured, you can start querying knowledge graphs through natural language prompts in Claude Desktop or VS Code chat interface.
+[ChatGPT]()
 
-### Select and Configure MCP Tools (Claude Desktop)
-
-From the top menu bar:
-```
-1. Select: Claude->Settings->Connectors
-2. Click: Configure for the MCP endpoints you want to use
-3. Select Tool permissions: Always allow
-```
-
-In the prompt dialog box, click the `+` button:
-```
-1. Turn off Web search
-2. Toggle MCP services on/off as needed
-```
-
-<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/select_mcp_server.png"
-     alt="Tool Selector"
-     width="500">
-
-Use @kg_name to refer to a specific knowledge graph in chat (for example, @spoke-genelab).
-
-To create a transcript of a chat (see examples below), use the following prompt: 
-```Create a chat transcript```. 
-The transcript can then be downloaded in .md or .pdf format.
+-----------
 
 ## Example Queries
+
+- By default, the server will query all Proto-OKN KGs, e.g.,
+
+```Generate a table of all Proto-OKN Knowledge Graphs with two columns: “KG Name” and “Description.”```
+
+- To query a specific KG refer to it by ```@kg-name```, e.g.
+
+```@spoke-genelab: How many studies are in this KG?```
+
+- To create a transcript of a chat session, use the following prompt
+  
+```Create a chat transcript```
+
+The transcript can then be downloaded in .md or .pdf format. The transcript includes prompts and results from the chat session. It also includes the LLM model name and version number that was used.
 
 
 ### Knowledge Graph Overviews & Class Diagrams
