@@ -28,7 +28,7 @@
      alt="Claude add proto-okn"
      width="500">
 
-4. Once ```proto-okn``` was added, click on ```Config``` and set tool permissions to ```Always allow```
+4. Once ```proto-okn``` was added, click on ```Confige``` and set tool permissions to ```Always allow```
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/claude-configure.png"
      alt="Claude configure"
