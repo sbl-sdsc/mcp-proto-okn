@@ -1,6 +1,6 @@
 # Setup Claude Desktop and Add mcp-proto-okn Server
 
-### Download and Install Claude Desktop**
+### Download and Install Claude Desktop
 
    Visit [https://claude.ai/download](https://claude.ai/download) and install Claude Desktop for your operating system.
 
