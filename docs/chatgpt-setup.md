@@ -36,7 +36,7 @@ MCP services only work in developer mode!
 
 6. Click ```Create app`` and enter the data shown below (MCP Server URL: https://frink.apps.renci.org/mcp/proto-okn/mcp)
 
-<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-add-proto-app.png"
+<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-add-proto-okn.png"
      alt="ChatGTP add Proto-OKN service"
      width="500">
 
