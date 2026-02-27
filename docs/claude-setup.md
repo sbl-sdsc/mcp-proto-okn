@@ -14,7 +14,7 @@
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/claude-settings.png"
      alt="Claude settings"
-     width="500">
+     width="250">
 
 2. Select ```Connectors``` from the Settings menu and click ```Add custom connector```
 
