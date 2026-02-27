@@ -4,7 +4,7 @@
 > 
 > ChatGPT with a subscription
 > 
-> Use the ChatGTP web app (https://chatgpt.com/)
+> Use the ChatGPT web app (https://chatgpt.com/)
 > 
 > ChatGPT desktop does not support MCP services
 
@@ -24,19 +24,19 @@ In the **bottom-left corner** of the screen, click on your **profile name or ava
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-adv-settings.png"
      alt="ChatGPT advanced settings"
-     width="250">
+     width="500">
 
 5. Toggle on ```Developer mode```
 
 MCP services only work in developer mode!
 
-<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-dev.png"
+<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-dev-mode.png"
      alt="ChatGPT Developer mode"
      width="500">
 
 6. Click ```Create app`` and enter the data shown below (MCP Server URL: https://frink.apps.renci.org/mcp/proto-okn/mcp)
 
-<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-add-proto-okn.png"
+<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-add-proto-app.png"
      alt="ChatGTP add Proto-OKN service"
      width="500">
 
@@ -46,7 +46,7 @@ MCP services only work in developer mode!
 
 1. Create a new chat, click on the ```+``` sign, ```... More >``` and select ```proto-okn```
 
-<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgtp-add-proto-okn.png"
+<img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-add-proto-okn.png"
      alt="Claude select proto-okn"
      width="500"> 
 
