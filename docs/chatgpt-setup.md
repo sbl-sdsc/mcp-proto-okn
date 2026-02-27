@@ -60,16 +60,10 @@ MCP services only work in developer mode!
 
 ## Troubleshooting
 
-### Connector Not Appearing
+### App Not Appearing
 
--   Restart Claude Desktop
--   Confirm you are logged into a Pro or Max subscription
--   Re-add the custom connector
-
-### Permission Errors
-
--   Ensure tool permissions are set to "Always allow"
--   Confirm proto-okn is toggled on in the chat session
+-   Restart the ChatGTP web app
+-   Confirm you are logged in with a subscription
 
 ### Empty or Unexpected Results
 
