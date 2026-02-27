@@ -34,7 +34,7 @@ MCP services only work in developer mode!
      alt="ChatGPT Developer mode"
      width="500">
 
-6. Click ```Create app`` and enter the data shown below (MCP Server URL: https://frink.apps.renci.org/mcp/proto-okn/mcp)
+6. Click ```Create app``` and enter the data shown below (MCP Server URL: https://frink.apps.renci.org/mcp/proto-okn/mcp)
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/chatgpt-proto-okn-app.png"
      alt="ChatGTP add Proto-OKN service"
