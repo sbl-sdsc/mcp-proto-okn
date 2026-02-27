@@ -49,7 +49,7 @@ The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) an
 
 **[Claude Desktop Setup](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/claude-setup.md)**
 
-[ChatGPT]()
+**[ChatGPT Setup](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/chatgpt-setup.md)**
 
 -----------
 
