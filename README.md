@@ -114,7 +114,7 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 12. [**Biological Targets for PFOA (biobricks-toxcastbiobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-13. [**Bisphenol A Safety Profile (biobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/)
+13. [**Bisphenol A Safety Profile (biobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/bpa-safety-profile.md)
 
 14. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
