@@ -134,6 +134,10 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 22. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
 
+23. [**PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfas_environmental_health_kg_analysis.md)
+
+24. [**Diabetic Nephropathy Differential Expression Analysis (gene-expression-atlas-okn, ARCHS4)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/dn_differential_expression_archs4_analysis.md)
+
 ### Ontology-Driven Search Expansion
 Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, etc.) from the [Ubergraph KG](https://frink.renci.org/registry/kgs/ubergraph/) to include all descendant concepts, ensuring comprehensive retrieval without manual enumeration. For example, searching for "arthritic joint disease" automatically includes rheumatoid arthritis, osteoarthritis, ankylosing spondylitis, and all other subtypes.
 
