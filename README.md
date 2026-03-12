@@ -112,23 +112,27 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 11. [**Data about PFOA (spoke-okn, biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-12. [**Biological Targets for PFOA (biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
+12. [**Biological Targets for PFOA (biobricks-toxcastbiobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-13. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
+13. [**PFOA Safety Profile (biobricks-ice, biobricks-apowiki, sawgraph, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa-safety-profile.md)
 
-14. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
+14. [**Bisphenol A Safety Profile (biobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/bpa-safety-profile.md)
 
-15. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
+15. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-16. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
+16. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-17. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
+17. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
-18. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
+18. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-19. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+19. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-20. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
+20. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
+
+21. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+
+22. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
 
 ### Ontology-Driven Search Expansion
 Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, etc.) from the [Ubergraph KG](https://frink.renci.org/registry/kgs/ubergraph/) to include all descendant concepts, ensuring comprehensive retrieval without manual enumeration. For example, searching for "arthritic joint disease" automatically includes rheumatoid arthritis, osteoarthritis, ankylosing spondylitis, and all other subtypes.
