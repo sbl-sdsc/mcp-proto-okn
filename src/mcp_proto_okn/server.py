@@ -168,7 +168,27 @@ class QueryAnalyzer:
             )
         
         return ""
-    
+
+    @staticmethod
+    def remove_empty_filters(query: str) -> Tuple[str, List[str]]:
+        """Remove FILTER clauses with empty IN () lists that would match nothing.
+
+        Detects patterns like:
+            FILTER(?var IN ())
+            FILTER(LCASE(STR(?var)) IN ())
+            FILTER(STR(?var) IN ())
+
+        Returns:
+            Tuple of (cleaned_query, list of removed filter descriptions)
+        """
+        # Match FILTER(...IN ()) with optional LCASE/STR wrappers around the variable
+        pattern = r'FILTER\s*\(\s*(?:LCASE\s*\(\s*)?(?:STR\s*\(\s*)?\?\w+\s*\)?\s*\)?\s+IN\s*\(\s*\)\s*\)\s*\.?\s*\n?'
+        removed = []
+        for match in re.finditer(pattern, query, re.IGNORECASE):
+            removed.append(match.group(0).strip())
+        cleaned = re.sub(pattern, '', query, flags=re.IGNORECASE)
+        return cleaned, removed
+
     def analyze_query(self, query: str) -> Dict[str, Any]:
         """
         Analyze a SPARQL query for potential issues.
@@ -885,6 +905,24 @@ class SPARQLServer:
                     "max_values_per_batch": self.MAX_VALUES_PER_BATCH
                 }
         
+        # Remove empty FILTER(...IN()) clauses that would match nothing
+        cleaned_queries = []
+        all_removed_filters = []
+        for q in queries_to_execute:
+            cleaned, removed = QueryAnalyzer.remove_empty_filters(q)
+            cleaned_queries.append(cleaned)
+            all_removed_filters.extend(removed)
+        queries_to_execute = cleaned_queries
+        if all_removed_filters:
+            warnings.append({
+                "type": "empty_filters_removed",
+                "message": (
+                    f"Removed {len(all_removed_filters)} empty FILTER(... IN ()) clause(s) "
+                    "that would have matched nothing."
+                ),
+                "removed_filters": all_removed_filters
+            })
+
         # Warn if schema hasn't been fetched
         if not self._schema_fetched and analyze:
             warnings.append({
