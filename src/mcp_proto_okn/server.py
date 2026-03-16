@@ -1256,7 +1256,7 @@ WHERE {{
         """).strip()
         
         class_query = self._insert_from_clause(class_query, self.kg_name)
-        classes = self.execute(class_query, format='compact')
+        classes = self.execute(class_query)
         
         # Query for predicates
         predicate_query = textwrap.dedent("""
@@ -1268,7 +1268,7 @@ WHERE {{
         """).strip()
         
         predicate_query = self._insert_from_clause(predicate_query, self.kg_name)
-        predicates = self.execute(predicate_query, format='compact')
+        predicates = self.execute(predicate_query)
 
         # Extract URIs from compact format
         class_uris = classes.get('data', [])
