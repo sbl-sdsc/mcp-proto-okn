@@ -86,7 +86,7 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 | [biobricks-toxcast](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks-toxcast_overview.md) | [ufokn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_overview.md) |  |  |
 | [spoke-genelab](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_overview.md) | [wildlifekn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/wildlifekn_overview.md) |  |  |
 | [spoke-okn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-okn_overview.md) | [climatemodelskg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/climatemodelskg_overview.md) |  |  |
-|  | [sockg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sockg_overview.md) |  |  |
+| [prokn](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/prokn_overview.md) | [sockg](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sockg_overview.md) |  |  |
 
 ### Use Cases
 
