@@ -64,6 +64,10 @@
             "command": "uv",
             "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nikg/sparql"]
         },
+        "prokn-dev": {
+            "command": "uv",
+            "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/prokn/sparql"]
+        },
         "ruralkg-dev": {
             "command": "uv",
             "args": ["run", "--directory", "/Users/.../mcp-proto-okn", "mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ruralkg/sparql"]

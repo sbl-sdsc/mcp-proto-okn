@@ -35,6 +35,7 @@ DOMAIN_TAGS = {
     "nasa-gesdisc-kg": ["climate", "earth_science", "geospatial"],
     "nde": ["infectious_disease", "health", "data_discovery"],
     "nikg": ["public_safety", "urban_planning", "geospatial"],
+    "prokn": ["protein-centric data", "post-translational modifications", "genetic variants", "pathways"],
     "ruralkg": ["rural_health", "health", "criminal_justice"],
     "sawgraph": ["food_safety", "water_quality", "PFAS", "environment"],
     "scales": ["criminal_justice", "legal"],
@@ -66,6 +67,7 @@ IDENTIFIER_NAMESPACES = {
     "nasa-gesdisc-kg": [],
     "nde": ["PubMed"],
     "nikg": ["FIPS"],
+    "prokn": ["PubMed", "NCIT", "UNIPROT", "SMILES", "InChIKey", "TAXON", "EC Number"],
     "ruralkg": ["FIPS", "RUCC"],
     "sawgraph": ["CAS"],
     "scales": [],
@@ -73,7 +75,7 @@ IDENTIFIER_NAMESPACES = {
     "sockg": [],
     "spatialkg": ["S2Cell", "FIPS"],
     "spoke-genelab": ["NCBI_Gene", "GeneSymbol", "UBERON", "CL"],
-    "spoke-okn": ["Ensembl", "MONDO", "ChEBI", "InChIKey", "FIPS"],
+    "spoke-okn": ["Ensembl", "DOID", "TAXON", "ChEBI", "InChIKey", "FIPS"],
     "sudokn": ["NAICS"],
     "ufokn": ["S2Cell"],
     "wildlifekn": [],
@@ -152,6 +154,11 @@ EXAMPLE_QUERIES = {
     ],
     "fiokg": [
         "What regulated facilities exist in a county?",
+    ],
+    "prokn": [
+        "Find Properties and Relationships Associated with a Specific Gene(e.g., APOE)",
+        "Find protein kinases",
+        "Find Properties and Relationships Associated with a Specific Protein(e.g., APOE)",      
     ],
 }
 

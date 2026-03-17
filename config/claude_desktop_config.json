@@ -64,6 +64,10 @@
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nikg/sparql"]
         },
+        "prokn": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/prokn/sparql"]
+        },
         "ruralkg": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ruralkg/sparql"]
