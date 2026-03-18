@@ -94,9 +94,9 @@ Each link below points to a chat transcript that demonstrates how to generate a 
    
 2. [**Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-3. [**Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_differential_expression_osd-244.md)
+3. [**Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, MCP:PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_differential_expression_osd-244.md)
 
-4. [**Spaceflight Gene Expression with Open Targets MCP integration (spoke-genelab, Open Targets, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spaceflight-gene-expression-analysis-open-targets.md)
+4. [**Spaceflight Gene Expression - Disease Associations (spoke-genelab, spoke-okn, prokn, MCP:Open Targets, MCP:PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/space-flight-disease-relationships.md)
 
 5. [**Disease Prevalence in the US (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/us_county_disease_prevalence.md)
 
