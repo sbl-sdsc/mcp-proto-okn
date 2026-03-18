@@ -272,12 +272,12 @@ There are **322 genes** significantly differentially expressed (adj p ≤ 0.05) 
 ```mermaid
 quadrantChart
     title log2FC concordance: ~30 day vs ~60 day (Space Flight vs Ground Control)
-    x-axis "log2FC ~30 day" [-5, 6]
-    y-axis "log2FC ~60 day" [-4, 7]
+    x-axis "log2FC ~30 day"
+    y-axis "log2FC ~60 day"
     quadrant-1 Up both time points
-    quadrant-2 Flip (down→up)
+    quadrant-2 Flip down-up
     quadrant-3 Down both time points
-    quadrant-4 Flip (up→down)
+    quadrant-4 Flip up-down
     Sim2: [0.55, 0.85]
     Foxs1: [0.30, 0.56]
     Agt: [0.61, 0.70]
