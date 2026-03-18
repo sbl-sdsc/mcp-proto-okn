@@ -1,138 +1,163 @@
-# SPOKE GeneLab Schema Visualization
+# SPOKE GeneLab Knowledge Graph Exploration
 
-👤 **User**  
+👤 **User**
 @spoke-genelab
 
 ---
 
-🧠 **Assistant**  
-I'll help you explore the spoke-genelab knowledge graph. Let me first get some information about this resource.
-
-Great! I'm now working with the **SPOKE GeneLab** knowledge graph. This is a specialized resource that integrates omics data from NASA's Open Science Data Repository (GeneLab), focusing on spaceflight experiments.
-
-This knowledge graph includes:
-- **Transcriptional profiling** data (RNA-Seq, DNA microarray)
-- **Epigenomic profiling** data (DNA methylation)
-- **Model organisms** flown in space or maintained as ground controls
-- Pre-computed **differential expression and methylation signatures**
-- **Cross-species mapping** to human orthologs
-- Integration with **SPOKE's human biology network** (pathways, phenotypes, therapeutic targets)
-- **Cell and tissue type mappings** to standard ontologies (CL and UBERON)
-
-What would you like to explore? I can help you:
-- Understand the structure of the data (view the schema)
-- Search for specific genes, studies, or experimental conditions
-- Analyze differential expression or methylation patterns
-- Explore relationships between spaceflight conditions and biological responses
-- Compare data across different organisms or tissue types
-
-What are you interested in learning about?
+🧠 **Assistant**
+Here's an overview of the **SPOKE GeneLab** knowledge graph:
 
 ---
 
-👤 **User**  
-Visualize the schema
+## SPOKE GeneLab (`spoke-genelab`)
+
+**What it is:** A knowledge graph that integrates omics data from NASA's Open Science Data Repository (OSDR/GeneLab) — covering results from spaceflight experiments — with SPOKE's rich human biology network.
+
+**Domains:** Genomics · Space Biology · Biology
+
+**What data it contains:**
+- **Transcriptional profiling** (RNA-Seq, DNA microarray) — differential expression between spaceflight and ground controls
+- **Epigenomic profiling** (DNA methylation) — differential methylation signatures
+- **Metagenomic profiling** (amplicon sequencing) — differential abundance
+- **Ortholog mapping** — model organism genes mapped to human orthologs, enabling integration with SPOKE's pathways, phenotypes, and therapeutic targets
+- **Ontology-mapped anatomy/cell types** — using UBERON and Cell Ontology (CL)
+
+**Entity types:** Assay, Anatomy, CellType, Gene, Study, MethylationRegion, Mission, Organism
+
+**Key relationships:**
+- `MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG` — gene expression changes in assays
+- `MEASURED_DIFFERENTIAL_METHYLATION_ASmMR` — methylation changes
+- `MEASURED_DIFFERENTIAL_ABUNDANCE_ASmO` — microbial abundance changes
+- `IS_ORTHOLOG_MGiG` — cross-species gene orthology
+- `PERFORMED_SpAS` — missions → assays
+
+**Identifier namespaces:** NCBI Gene, Gene Symbol, UBERON, Cell Ontology (CL)
+
+**SPARQL endpoint:** `https://frink.apps.renci.org/spoke-genelab/sparql`
 
 ---
 
-🧠 **Assistant**  
-Let me visualize the SPOKE GeneLab schema for you. I'll start by retrieving the schema information.
+👤 **User**
+@spoke-genelab: visualize the schema
 
-Perfect! Now let me create the Mermaid class diagram:
+---
 
-Here's the SPOKE GeneLab schema visualization! The diagram shows:
-
-**Core Entities:**
-- **Mission** → **Study** → **Assay**: The organizational hierarchy of spaceflight experiments
-- **Gene**: Genetic elements from model organisms, with ortholog mappings to human genes
-- **Anatomy** & **CellType**: Biological contexts investigated in assays
-- **MethylationRegion**: Genomic regions showing differential methylation
-
-**Key Relationships with Quantitative Data** (shown as intermediary classes):
-- **MEASURED_DIFFERENTIAL_EXPRESSION**: Links assays to genes with log2 fold change and adjusted p-values
-- **MEASURED_DIFFERENTIAL_METHYLATION**: Links assays to methylation regions with methylation differences and q-values
-- **METHYLATED_IN**: Connects genes to methylation regions with detailed genomic location data (chromosome, position, overlap with exons/introns/promoters)
-
-This structure enables powerful queries to explore how spaceflight affects gene expression and DNA methylation across different organisms and tissue types!
+🧠 **Assistant**
+Here's the full schema for **SPOKE GeneLab**:
 
 ```mermaid
 classDiagram
-direction TB
+  direction TB
 
-class Mission {
-    date end_date
-    string flight_program
+  class Mission {
     string space_program
+    string flight_program
     date start_date
-}
+    date end_date
+  }
 
-class Study {
+  class Study {
     string project_title
     string project_type
-}
+  }
 
-class Assay {
+  class Assay {
+    string measurement
+    string technology
     string factor_space_1
     string factor_space_2
-    string[] factors_1
-    string[] factors_2
+    string factors_1
+    string factors_2
     string material_1
     string material_2
     string material_id_1
     string material_id_2
     string material_name_1
     string material_name_2
-    string measurement
-    string technology
-}
+  }
 
-class Anatomy
-
-class CellType
-
-class Gene {
-    string organism
+  class Gene {
     string symbol
+    string organism
     string taxonomy
-}
+  }
 
-class MethylationRegion
+  class Anatomy
 
-class MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG {
-    float adj_p_value
+  class CellType
+
+  class MethylationRegion
+
+  class Organism
+
+  class MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG {
     float log2fc
-}
+    float adj_p_value
+    float group_mean_1
+    float group_mean_2
+    float group_stdev_1
+    float group_stdev_2
+  }
 
-class METHYLATED_IN_MGmMR {
+  class MEASURED_DIFFERENTIAL_ABUNDANCE_ASmO {
+    float log2fc
+    float lnfc
+    float adj_p_value
+    float q_value
+    float group_mean_1
+    float group_mean_2
+    float group_stdev_1
+    float group_stdev_2
+  }
+
+  class MEASURED_DIFFERENTIAL_METHYLATION_ASmMR {
+    float methylation_diff
+    float q_value
+    float group_mean_1
+    float group_mean_2
+    float group_stdev_1
+    float group_stdev_2
+  }
+
+  class METHYLATED_IN_MGmMR {
     string chromosome
-    int dist_to_feature
+    int start
     int end
+    int dist_to_feature
     boolean in_exon
     boolean in_intron
     boolean in_promoter
-    int start
-}
+  }
 
-class MEASURED_DIFFERENTIAL_METHYLATION_ASmMR {
-    float methylation_diff
-    float q_value
-}
+  Mission --> Study : CONDUCTED_MIcS
+  Study --> Assay : PERFORMED_SpAS
+  Assay --> Anatomy : INVESTIGATED_ASiA
+  Assay --> CellType : INVESTIGATED_ASiCT
+  Gene --> Gene : IS_ORTHOLOG_MGiG
 
-Mission --> Study : CONDUCTED_MIcS
-Study --> Assay : PERFORMED_SpAS
-Assay --> Anatomy : INVESTIGATED_ASiA
-Assay --> CellType : INVESTIGATED_ASiCT
-Gene --> Gene : IS_ORTHOLOG_MGiG
-Assay --> MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG
-MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG --> Gene
-Gene --> METHYLATED_IN_MGmMR
-METHYLATED_IN_MGmMR --> MethylationRegion
-Assay --> MEASURED_DIFFERENTIAL_METHYLATION_ASmMR
-MEASURED_DIFFERENTIAL_METHYLATION_ASmMR --> MethylationRegion
+  Assay --> MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG
+  MEASURED_DIFFERENTIAL_EXPRESSION_ASmMG --> Gene
+
+  Assay --> MEASURED_DIFFERENTIAL_ABUNDANCE_ASmO
+  MEASURED_DIFFERENTIAL_ABUNDANCE_ASmO --> Organism
+
+  Assay --> MEASURED_DIFFERENTIAL_METHYLATION_ASmMR
+  MEASURED_DIFFERENTIAL_METHYLATION_ASmMR --> MethylationRegion
+
+  Gene --> METHYLATED_IN_MGmMR
+  METHYLATED_IN_MGmMR --> MethylationRegion
 ```
+
+A few things to note about the structure:
+
+- **Mission → Study → Assay** forms the experimental hierarchy — missions conducted studies, which performed assays.
+- **Edges with properties** (the 4 `MEASURED_*` / `METHYLATED_IN_*` relationships) are shown as intermediary classes, since they carry rich quantitative data (log2fc, p-values, methylation diff, genomic coordinates, etc.).
+- **Gene → Gene** (`IS_ORTHOLOG_MGiG`) is a self-referential edge mapping model organism genes to their human orthologs — the key bridge into SPOKE's human biology network.
+- **Assay** is the central hub, connecting out to Gene, Organism, MethylationRegion, Anatomy, and CellType.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2025-12-31*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 on 2026-03-17*
 
-Model: claude-sonnet-4-20250514
+*Model: claude-sonnet-4-6*
