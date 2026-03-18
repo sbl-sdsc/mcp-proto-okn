@@ -137,3 +137,4 @@ cython_debug/
 
 # MacOS
 .DS_Store
+.claude/settings.local.json

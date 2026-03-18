@@ -402,14 +402,25 @@ class SPARQLServer:
                 target_class = row.get('TargetClass', '').strip()
                 
                 if uri:
-                    metadata[uri] = {
-                        'label': label,
-                        'description': description,
-                        'type': entity_type,
-                        'edge_property_of': edge_property_of,
-                        'source_class': source_class,
-                        'target_class': target_class
-                    }
+                    if uri in metadata and edge_property_of:
+                        # Same URI appears for multiple parent predicates
+                        # (e.g., adj_p_value belongs to both EXPRESSION and
+                        # ABUNDANCE).  Accumulate EdgePropertyOf values with
+                        # semicolons so the downstream join finds all parents.
+                        existing = metadata[uri].get('edge_property_of', '')
+                        if existing:
+                            metadata[uri]['edge_property_of'] = f"{existing};{edge_property_of}"
+                        else:
+                            metadata[uri]['edge_property_of'] = edge_property_of
+                    else:
+                        metadata[uri] = {
+                            'label': label,
+                            'description': description,
+                            'type': entity_type,
+                            'edge_property_of': edge_property_of,
+                            'source_class': source_class,
+                            'target_class': target_class
+                        }
             
             return metadata
             
