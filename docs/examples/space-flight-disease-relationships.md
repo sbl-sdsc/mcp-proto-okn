@@ -174,7 +174,7 @@ A concordance scatter plot was generated using all 1,103 genes measured at both 
 - Gene labels for key functional genes (coagulation factors, complement, inflammatory mediators)
 - Quadrant annotations
 
-![Concordance scatter plot of log2FC at 30d vs 60d for 1,103 genes. Strong diagonal trend in upper-right quadrant shows persistent upregulation of coagulation (F5, F7, F10), complement (C4b, C2), and inflammatory genes (Alox15, Saa3, Hamp). Five discordant genes appear in the upper-left quadrant. Downregulated genes (Kcnh7, Trbv23, Nebl) cluster in lower-left.](concordance_scatter_30d_vs_60d.png)
+![Concordance scatter plot of log2FC at 30d vs 60d for 1,103 genes. Strong diagonal trend in upper-right quadrant shows persistent upregulation of coagulation (F5, F7, F10), complement (C4b, C2), and inflammatory genes (Alox15, Saa3, Hamp). Five discordant genes appear in the upper-left quadrant. Downregulated genes (Kcnh7, Trbv23, Nebl) cluster in lower-left.](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/concordance_scatter_30d_vs_60d.png)
 
 ---
 
