@@ -94,7 +94,7 @@ Each link below points to a chat transcript that demonstrates how to generate a 
    
 2. [**Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_spaceflight_analysis.md)
 
-3. [**Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd-161-sonnet-4.5.md)
+3. [**Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab_differential_expression_osd-244.md)
 
 4. [**Spaceflight Gene Expression with Open Targets MCP integration (spoke-genelab, Open Targets, PubMed)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spaceflight-gene-expression-analysis-open-targets.md)
 
