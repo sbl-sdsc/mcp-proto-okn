@@ -63,7 +63,7 @@ The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) an
 
 - To query a specific KG refer to it by ```@kg-name```, e.g.
 
-```@spoke-genelab: How many studies are in this KG?```
+```@spoke-genelab: Give a high-level overview of this knowledge graph, including its main entities, relationships, and purpose```
 
 - To create a transcript of a chat session, use the following prompt
   
