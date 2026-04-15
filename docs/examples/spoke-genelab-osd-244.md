@@ -247,7 +247,7 @@ graph LR
     style C fill:#E6F1FB,stroke:#185FA5
 ```
 
-![Concordance: OSD-244 Assay](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd244_concordance_scatter.png.png)
+![Concordance: OSD-244 Assay](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/osd244_concordance_scatter.png)
 
 ### Top 15 Concordant Upregulated Genes
 
