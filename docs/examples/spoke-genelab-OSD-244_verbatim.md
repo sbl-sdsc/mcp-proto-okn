@@ -3430,38 +3430,7 @@ Based on articles retrieved from PubMed, here are the publications most directly
 
 ## Turn 10 — 👤 User
 
-> Create a chat transcript
-
-
-### 🧠 Assistant
-
-I'll use the proto-okn transcript template to generate a clean, reproducible markdown record of this session.
-
-<details><summary>🔧 <b>Tool call:</b> <code>proto-okn:create_chat_transcript</code></summary>
-
-```json
-{ "graph_name": "spoke-genelab" }
-```
-
-</details>
-
-<details><summary>🔧 <b>Tool call:</b> <code>create_file</code></summary>
-
-```
-Created /mnt/user-data/outputs/osd244-spaceflight-gene-analysis-transcript.md — a structured summary transcript of the session.
-```
-
-</details>
-
-Transcript created. It captures the three-step analysis chain — ortholog mapping → disease associations → PubMed literature — with the key results, caveats, and reproducible SPARQL/PubMed queries.
-
-
----
-
-
-## Turn 11 — 👤 User
-
-> Also create a verbatim chat transcript with the exact prompts and outputs generated.
+> Create a verbatim chat transcript with the exact prompts and outputs generated.
 
 
 ### 🧠 Assistant
