@@ -2965,7 +2965,7 @@ Content rendered and shown to the user. Please do not duplicate the shown conten
 </details>
 
 
-<img src="https://raw.githubusercontent.com/asaravia-butler/mcp-proto-okn/refs/heads/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_sf_vs_gc_30d_60d_concordance_scatter.png" 
+<img src="spoke-genelab-OSD-244_outputs/images/osd244_sf_vs_gc_30d_60d_concordance_scatter.png" 
      alt="concordance plot of common DEGs across timepoints" 
      width="800">
      
@@ -3266,7 +3266,7 @@ TOTAL:   535 gene-disease pairs across 130 distinct genes and 93 distinct diseas
 </details>
 
 
-<img src="https://raw.githubusercontent.com/asaravia-butler/mcp-proto-okn/refs/heads/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_top_diseases_by_gene_count.png" 
+<img src="spoke-genelab-OSD-244_outputs/images/osd244_top_diseases_by_gene_count.png" 
      alt="barplot of top diseases by gene count" 
      width="800">
      
