@@ -747,7 +747,7 @@ Content rendered and shown to the user. Please do not duplicate the shown conten
 </details>
 
 
-<img src="https://raw.githubusercontent.com/asaravia-butler/mcp-proto-okn/refs/heads/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_assay_conditions_structure.svg" 
+<img src="spoke-genelab-OSD-244_outputs/images/osd244_assay_conditions_structure.svg" 
      alt="OSD-244 assay conditions diagram" 
      width="800">
      
