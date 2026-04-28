@@ -2964,6 +2964,12 @@ Content rendered and shown to the user. Please do not duplicate the shown conten
 
 </details>
 
+
+<img src="https://raw.githubusercontent.com/asaravia-butler/mcp-proto-okn/refs/heads/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_sf_vs_gc_30d_60d_concordance_scatter.png" 
+     alt="concordance plot of common DEGs across timepoints" 
+     width="800">
+     
+
 ## Concordance summary
 
 Of **3,597** significantly DE genes at ~30 day and **1,699** at ~60 day (adj. p ≤ 0.05 in each), **322 genes** are significant in both comparisons. The agreement is striking:
