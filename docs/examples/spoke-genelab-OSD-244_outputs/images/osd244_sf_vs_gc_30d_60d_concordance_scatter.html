@@ -1,0 +1,287 @@
+<style>
+.summary { display: flex; gap: 16px; margin: 0 0 12px; flex-wrap: wrap; font-size: 13px; color: var(--color-text-secondary); }
+.summary .stat { display: inline-flex; align-items: baseline; gap: 6px; }
+.summary .stat strong { color: var(--color-text-primary); font-weight: 500; font-size: 14px; }
+.legend { display: flex; gap: 16px; margin: 12px 0 0; font-size: 12px; color: var(--color-text-secondary); flex-wrap: wrap; }
+.legend .lg { display: inline-flex; align-items: center; gap: 6px; }
+.legend .sw { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+</style>
+
+<div class="summary" role="status">
+  <span class="summary-title" style="font-weight:500;color:var(--color-text-primary);font-size:14px">Common DE genes across timepoints (adj. p &le; 0.05 in both)</span>
+</div>
+<div class="summary">
+  <span class="stat"><strong>322</strong>genes in overlap</span>
+  <span class="stat"><strong>242</strong>concordant up</span>
+  <span class="stat"><strong>75</strong>concordant down</span>
+  <span class="stat"><strong>5</strong>discordant</span>
+  <span class="stat"><strong>r&nbsp;=&nbsp;0.80</strong>Pearson</span>
+</div>
+
+<div id="plot-host" style="width:100%"></div>
+
+<div class="legend">
+  <span class="lg"><span class="sw" style="background:#1D9E75"></span>concordant up (Q1)</span>
+  <span class="lg"><span class="sw" style="background:#534AB7"></span>concordant down (Q3)</span>
+  <span class="lg"><span class="sw" style="background:#D85A30"></span>discordant (Q2/Q4)</span>
+</div>
+
+<script>
+(function(){
+  const DATA = {"pts": [{"sym": "Ceacam19", "lfc30": 3.2991, "lfc60": 4.07482}, {"sym": "Rxra", "lfc30": 1.32009, "lfc60": 1.24542}, {"sym": "Nod2", "lfc30": 0.786401, "lfc60": 0.972932}, {"sym": "Fmo5", "lfc30": 1.09616, "lfc60": 1.40391}, {"sym": "Igkv17-121", "lfc30": 2.43926, "lfc60": 3.52271}, {"sym": "Rgl1", "lfc30": 1.00631, "lfc60": 1.06852}, {"sym": "Tnfrsf1b", "lfc30": 0.966844, "lfc60": 1.16237}, {"sym": "Irak2", "lfc30": 1.25082, "lfc60": 1.21739}, {"sym": "Ncf2", "lfc30": 1.16433, "lfc60": 1.47129}, {"sym": "Nav1", "lfc30": 1.05253, "lfc60": 1.09841}, {"sym": "Rem1", "lfc30": 1.54675, "lfc60": 1.32665}, {"sym": "Apol9b", "lfc30": 1.5554, "lfc60": 2.3318}, {"sym": "Tagln2", "lfc30": 1.6526, "lfc60": 1.02024}, {"sym": "Litaf", "lfc30": 1.19658, "lfc60": 1.2359}, {"sym": "Dok3", "lfc30": 1.60621, "lfc60": 1.58858}, {"sym": "St3gal1", "lfc30": 0.913356, "lfc60": 0.74885}, {"sym": "St6galnac2", "lfc30": 1.14125, "lfc60": 0.996854}, {"sym": "Tmem176a", "lfc30": 1.32048, "lfc60": 1.50023}, {"sym": "Hmgcs2", "lfc30": 1.71975, "lfc60": 2.42318}, {"sym": "Eln", "lfc30": 1.55466, "lfc60": 2.0036}, {"sym": "Gask1a", "lfc30": 1.55126, "lfc60": 1.38038}, {"sym": "Igkv8-21", "lfc30": 2.76396, "lfc60": 2.38926}, {"sym": "Dennd3", "lfc30": 1.32833, "lfc60": 0.902807}, {"sym": "Dchs1", "lfc30": 1.79865, "lfc60": 2.16015}, {"sym": "H2-D1", "lfc30": 1.16532, "lfc60": 1.06784}, {"sym": "Coro2a", "lfc30": 0.993979, "lfc60": 0.731739}, {"sym": "C2", "lfc30": 2.17027, "lfc60": 1.68211}, {"sym": "S100a6", "lfc30": 1.84962, "lfc60": 1.67091}, {"sym": "Rnf19b", "lfc30": 0.827595, "lfc60": 0.932584}, {"sym": "Dennd2a", "lfc30": 1.66374, "lfc60": 1.33702}, {"sym": "Hmga1b", "lfc30": 3.21892, "lfc60": 3.8687}, {"sym": "Fgfr1", "lfc30": 1.66553, "lfc60": 1.51465}, {"sym": "Cavin3", "lfc30": 1.83932, "lfc60": 1.99034}, {"sym": "Ltc4s", "lfc30": 2.62082, "lfc60": 2.4538}, {"sym": "Slc13a2", "lfc30": 2.55436, "lfc60": 2.57288}, {"sym": "Sec16b", "lfc30": 1.33285, "lfc60": 2.15677}, {"sym": "Pcolce", "lfc30": 1.91763, "lfc60": 1.77171}, {"sym": "Dpep2", "lfc30": 2.61385, "lfc60": 1.91717}, {"sym": "Nod1", "lfc30": 1.2779, "lfc60": 1.12325}, {"sym": "Sh2b3", "lfc30": 0.92141, "lfc60": 0.715543}, {"sym": "Asb5", "lfc30": 3.013, "lfc60": 2.97462}, {"sym": "H2-K1", "lfc30": 0.941768, "lfc60": 1.03414}, {"sym": "Tmem176b", "lfc30": 1.42174, "lfc60": 1.32771}, {"sym": "Lrrc32", "lfc30": 2.08907, "lfc60": 1.6852}, {"sym": "Kctd17", "lfc30": 1.56987, "lfc60": 1.39109}, {"sym": "Trf", "lfc30": 1.80003, "lfc60": 2.24229}, {"sym": "Csf3r", "lfc30": 1.8991, "lfc60": 0.968059}, {"sym": "Gga2", "lfc30": 0.812921, "lfc60": 0.694383}, {"sym": "Rasa3", "lfc30": 0.673771, "lfc60": 0.822817}, {"sym": "B4galt5", "lfc30": 1.30572, "lfc60": 1.01205}, {"sym": "Osr1", "lfc30": 2.34793, "lfc60": 1.89583}, {"sym": "Pdia5", "lfc30": 1.18917, "lfc60": 1.03499}, {"sym": "Xxylt1", "lfc30": 0.715397, "lfc60": 0.723189}, {"sym": "Cdr2", "lfc30": 1.26127, "lfc60": 1.06087}, {"sym": "Kirrel1", "lfc30": 1.49671, "lfc60": 1.48616}, {"sym": "Cyp2ab1", "lfc30": 2.17481, "lfc60": 1.85602}, {"sym": "Sh3tc1", "lfc30": 1.9896, "lfc60": 2.11831}, {"sym": "C1ra", "lfc30": 1.81291, "lfc60": 1.88699}, {"sym": "Pgap6", "lfc30": 0.913829, "lfc60": 0.80403}, {"sym": "Ifitm6", "lfc30": 1.7662, "lfc60": 1.62397}, {"sym": "Hlx", "lfc30": 1.58162, "lfc60": 2.12501}, {"sym": "Adam15", "lfc30": 2.01523, "lfc60": 1.50629}, {"sym": "Selp", "lfc30": 1.95253, "lfc60": 2.33074}, {"sym": "Prkag3", "lfc30": 3.06616, "lfc60": 3.1116}, {"sym": "Fam20c", "lfc30": 1.74262, "lfc60": 1.90008}, {"sym": "Cldn5", "lfc30": 2.72053, "lfc60": 2.46287}, {"sym": "Magi1|4930511A08Rik", "lfc30": 1.22968, "lfc60": 1.00244}, {"sym": "Agt", "lfc30": 3.84915, "lfc60": 4.43971}, {"sym": "F7", "lfc30": 3.37086, "lfc60": 3.39891}, {"sym": "Ptgir", "lfc30": 1.14105, "lfc60": 1.04133}, {"sym": "Smagp", "lfc30": 1.39895, "lfc60": 1.30156}, {"sym": "Stab1", "lfc30": 1.45755, "lfc60": 1.43211}, {"sym": "Khk", "lfc30": 1.35194, "lfc60": 1.67656}, {"sym": "Abhd14b", "lfc30": 1.2358, "lfc60": 1.06893}, {"sym": "Lsr", "lfc30": 1.68991, "lfc60": 1.45831}, {"sym": "Lrrk1", "lfc30": 0.746743, "lfc60": 0.961697}, {"sym": "Nfam1", "lfc30": 1.48029, "lfc60": 1.52302}, {"sym": "Csf1r", "lfc30": 1.545, "lfc60": 1.41633}, {"sym": "Apol9a", "lfc30": 1.52925, "lfc60": 2.10186}, {"sym": "Prss12", "lfc30": 1.92233, "lfc60": 1.69913}, {"sym": "Nek6", "lfc30": 1.25499, "lfc60": 1.68515}, {"sym": "Pira11|Pira6|Pira7|Pira12", "lfc30": 1.45865, "lfc60": 1.56608}, {"sym": "Itgam", "lfc30": 1.82913, "lfc60": 2.27646}, {"sym": "C5ar1", "lfc30": 1.94821, "lfc60": 2.21918}, {"sym": "Cmklr1", "lfc30": 1.8531, "lfc60": 1.55298}, {"sym": "Pck2", "lfc30": 1.38806, "lfc60": 1.10029}, {"sym": "Htra3", "lfc30": 2.39562, "lfc60": 1.97993}, {"sym": "Tubb6", "lfc30": 1.13395, "lfc60": 1.04362}, {"sym": "Bcar3", "lfc30": 1.34459, "lfc60": 1.52266}, {"sym": "Pgf", "lfc30": 1.38329, "lfc60": 1.2469}, {"sym": "Fosl2", "lfc30": 0.91216, "lfc60": 0.881826}, {"sym": "Adcy7", "lfc30": 0.484362, "lfc60": 0.487323}, {"sym": "Clec4f", "lfc30": 2.30237, "lfc60": 3.46841}, {"sym": "F5", "lfc30": 2.85818, "lfc60": 3.00944}, {"sym": "Tgfbr2", "lfc30": 1.0402, "lfc60": 0.894757}, {"sym": "Tgfbi", "lfc30": 1.4784, "lfc60": 1.46836}, {"sym": "Ptges", "lfc30": 1.60355, "lfc60": 1.56327}, {"sym": "Csf1", "lfc30": 1.10173, "lfc60": 1.08593}, {"sym": "Sdc3", "lfc30": 1.10162, "lfc60": 1.06395}, {"sym": "Robo4", "lfc30": 1.84815, "lfc60": 1.79787}, {"sym": "Wdfy4", "lfc30": 1.22862, "lfc60": 1.49227}, {"sym": "Wnt2", "lfc30": 2.46876, "lfc60": 2.21637}, {"sym": "Folr2", "lfc30": 1.98905, "lfc60": 2.00047}, {"sym": "Mpzl1", "lfc30": 0.877991, "lfc60": 0.763315}, {"sym": "Susd3", "lfc30": 1.43687, "lfc60": 1.45092}, {"sym": "Apol6", "lfc30": 2.3127, "lfc60": 2.00689}, {"sym": "Ly6g6c", "lfc30": 4.33885, "lfc60": 4.57844}, {"sym": "Cd5l", "lfc30": 1.72757, "lfc60": 1.44526}, {"sym": "Plppr3", "lfc30": 2.38732, "lfc60": 1.78207}, {"sym": "Lrg1", "lfc30": 2.24331, "lfc60": 2.51919}, {"sym": "S1pr3", "lfc30": 0.789566, "lfc60": 0.812566}, {"sym": "Hba-a1", "lfc30": 2.55124, "lfc60": 2.75499}, {"sym": "Rassf4", "lfc30": 0.898315, "lfc60": 1.42268}, {"sym": "Tlr5", "lfc30": 1.62794, "lfc60": 1.66801}, {"sym": "2900026A02Rik", "lfc30": 1.21613, "lfc60": 0.988028}, {"sym": "Alox5ap", "lfc30": 1.82077, "lfc60": 1.12167}, {"sym": "Myrf", "lfc30": 2.7755, "lfc60": 2.47258}, {"sym": "Clcf1", "lfc30": 0.931685, "lfc60": 0.93906}, {"sym": "Gsc", "lfc30": 2.881, "lfc60": 3.26218}, {"sym": "Sgsh", "lfc30": 1.10478, "lfc60": 0.884545}, {"sym": "Lbp", "lfc30": 1.86245, "lfc60": 1.75715}, {"sym": "Slc6a13", "lfc30": 2.72917, "lfc60": 2.49795}, {"sym": "C4b", "lfc30": 2.72029, "lfc60": 3.01697}, {"sym": "Fn1", "lfc30": 2.31035, "lfc60": 2.66488}, {"sym": "Sim2", "lfc30": 3.527, "lfc60": 5.59577}, {"sym": "Crb2", "lfc30": 2.95343, "lfc60": 2.13502}, {"sym": "Creb3l1", "lfc30": 2.16302, "lfc60": 2.32817}, {"sym": "Lhfpl2", "lfc30": 1.32191, "lfc60": 1.61253}, {"sym": "Ptprj", "lfc30": 1.10379, "lfc60": 1.23225}, {"sym": "Txndc5", "lfc30": 1.17687, "lfc60": 1.20834}, {"sym": "Rasl11a", "lfc30": 1.64717, "lfc60": 1.51506}, {"sym": "Mmp23", "lfc30": 1.88748, "lfc60": 2.035}, {"sym": "Clca1", "lfc30": 3.38795, "lfc60": 3.52861}, {"sym": "Rarres2", "lfc30": 2.8479, "lfc60": 2.08622}, {"sym": "Wscd2", "lfc30": 1.64585, "lfc60": 1.33644}, {"sym": "Ahsg", "lfc30": 3.18529, "lfc60": 3.55483}, {"sym": "Ssh1", "lfc30": 0.831916, "lfc60": 0.7302}, {"sym": "Tpsb2", "lfc30": 1.94846, "lfc60": 2.21645}, {"sym": "Zbtb32", "lfc30": 2.021, "lfc60": 2.10386}, {"sym": "Fcna", "lfc30": 1.6079, "lfc60": 1.46906}, {"sym": "Ltbp3", "lfc30": 1.66381, "lfc60": 1.36815}, {"sym": "Tpst1", "lfc30": 0.733492, "lfc60": 0.726334}, {"sym": "Cyb561a3", "lfc30": 0.82957, "lfc60": 0.709798}, {"sym": "Spi1", "lfc30": 1.11208, "lfc60": 1.40645}, {"sym": "Cpxm1", "lfc30": 1.85683, "lfc60": 2.25703}, {"sym": "Clec4d", "lfc30": 2.16394, "lfc60": 2.40982}, {"sym": "Sulf2", "lfc30": 1.66206, "lfc60": 1.38898}, {"sym": "Adap2", "lfc30": 0.785724, "lfc60": 0.887663}, {"sym": "Idua", "lfc30": 0.386059, "lfc60": 0.383659}, {"sym": "Il6ra", "lfc30": 1.23378, "lfc60": 1.27749}, {"sym": "Lrp1", "lfc30": 1.795, "lfc60": 1.64762}, {"sym": "Serpina3n", "lfc30": 1.79774, "lfc60": 2.5979}, {"sym": "Iffo2", "lfc30": 0.893903, "lfc60": 0.812794}, {"sym": "Igfbp4", "lfc30": 1.73316, "lfc60": 2.02012}, {"sym": "Vim", "lfc30": 1.58138, "lfc60": 1.4353}, {"sym": "Ncf4", "lfc30": 1.4152, "lfc60": 1.40995}, {"sym": "Apobr", "lfc30": 1.05607, "lfc60": 0.926045}, {"sym": "Cpne2", "lfc30": 0.780995, "lfc60": 0.726507}, {"sym": "Serping1", "lfc30": 1.92936, "lfc60": 1.9675}, {"sym": "Rab31", "lfc30": 1.14811, "lfc60": 1.10361}, {"sym": "Notch2", "lfc30": 1.03993, "lfc60": 0.814177}, {"sym": "Syt15", "lfc30": 1.54057, "lfc60": 2.35194}, {"sym": "Prg4", "lfc30": 2.4601, "lfc60": 3.43396}, {"sym": "F10", "lfc30": 3.49978, "lfc60": 3.80621}, {"sym": "Fes", "lfc30": 1.49107, "lfc60": 1.26233}, {"sym": "Npdc1", "lfc30": 1.59455, "lfc60": 1.63839}, {"sym": "Plaur", "lfc30": 1.65838, "lfc60": 2.08566}, {"sym": "Anks6", "lfc30": 1.57223, "lfc60": 1.53107}, {"sym": "St8sia2", "lfc30": 1.83418, "lfc60": 1.46196}, {"sym": "Daglb", "lfc30": 1.05572, "lfc60": 0.865862}, {"sym": "Calhm2", "lfc30": 0.821337, "lfc60": 0.767006}, {"sym": "Alox15", "lfc30": 3.0047, "lfc60": 3.83132}, {"sym": "Nid2", "lfc30": 1.43808, "lfc60": 1.69947}, {"sym": "Slc37a4", "lfc30": 0.940468, "lfc60": 0.888054}, {"sym": "Padi4", "lfc30": 1.84974, "lfc60": 1.97607}, {"sym": "Tmem106a", "lfc30": 0.799241, "lfc60": 0.794002}, {"sym": "6530402F18Rik", "lfc30": 1.05308, "lfc60": 0.906132}, {"sym": "Fgd2", "lfc30": 1.29314, "lfc60": 1.22465}, {"sym": "Cdc42ep1", "lfc30": 2.36988, "lfc60": 2.08062}, {"sym": "Itgb7", "lfc30": 1.11384, "lfc60": 1.24643}, {"sym": "Ntng2", "lfc30": 1.34815, "lfc60": 1.2283}, {"sym": "Snx8", "lfc30": 1.41559, "lfc60": 1.38346}, {"sym": "Zfp111", "lfc30": 0.58624, "lfc60": 0.659226}, {"sym": "Gfra2", "lfc30": 1.01402, "lfc60": 1.08167}, {"sym": "Sema4a", "lfc30": 0.83515, "lfc60": 0.859459}, {"sym": "Saa3", "lfc30": 2.27364, "lfc60": 3.19105}, {"sym": "Hip1", "lfc30": 1.1079, "lfc60": 1.00254}, {"sym": "C1qtnf6", "lfc30": 1.43917, "lfc60": 1.4108}, {"sym": "Anpep", "lfc30": 1.4676, "lfc60": 1.24351}, {"sym": "Mfsd7a", "lfc30": 1.20181, "lfc60": 1.35724}, {"sym": "Ccnd2", "lfc30": 0.855823, "lfc60": 0.82237}, {"sym": "Emilin2", "lfc30": 2.34135, "lfc60": 1.7805}, {"sym": "Pdgfrb", "lfc30": 1.60214, "lfc60": 1.31309}, {"sym": "Gab2", "lfc30": 1.0821, "lfc60": 0.95826}, {"sym": "Plvap", "lfc30": 2.24814, "lfc60": 2.01944}, {"sym": "Lyz1", "lfc30": 2.40375, "lfc60": 2.37521}, {"sym": "Dap", "lfc30": 1.06987, "lfc60": 0.812786}, {"sym": "Psen2", "lfc30": 1.25706, "lfc60": 1.70384}, {"sym": "Unc93b1", "lfc30": 1.28597, "lfc60": 1.49782}, {"sym": "Thbs1", "lfc30": 3.02126, "lfc60": 2.32259}, {"sym": "Mmp14", "lfc30": 0.771493, "lfc60": 0.940062}, {"sym": "Adgrd1", "lfc30": 2.03597, "lfc60": 1.99662}, {"sym": "Col6a3", "lfc30": 1.52656, "lfc60": 1.5022}, {"sym": "Col6a1", "lfc30": 1.54772, "lfc60": 1.77387}, {"sym": "Ptgs1", "lfc30": 1.30363, "lfc60": 1.10016}, {"sym": "Ttyh2", "lfc30": 1.36183, "lfc60": 1.28155}, {"sym": "B3gnt7", "lfc30": 2.12622, "lfc60": 1.7989}, {"sym": "Cfp", "lfc30": 1.38433, "lfc60": 1.13938}, {"sym": "Gstt1", "lfc30": 2.11264, "lfc60": 1.76862}, {"sym": "Napsa", "lfc30": 1.85651, "lfc60": 1.94945}, {"sym": "Ms4a8a", "lfc30": 2.11904, "lfc60": 2.27443}, {"sym": "Tspan31", "lfc30": 1.00186, "lfc60": 0.932516}, {"sym": "Ifi27l2a", "lfc30": 2.81777, "lfc60": 1.35325}, {"sym": "Gusb", "lfc30": 0.61902, "lfc60": 0.545632}, {"sym": "Ifitm3", "lfc30": 1.35999, "lfc60": 1.19884}, {"sym": "Pld4", "lfc30": 1.25317, "lfc60": 1.32692}, {"sym": "Ldlr", "lfc30": 0.747889, "lfc60": 0.854907}, {"sym": "Selenon", "lfc30": 1.56423, "lfc60": 1.13331}, {"sym": "Apoe", "lfc30": 1.49495, "lfc60": 1.78898}, {"sym": "Rrbp1", "lfc30": 0.860465, "lfc60": 0.709738}, {"sym": "Hck", "lfc30": 1.23085, "lfc60": 1.44999}, {"sym": "Alox5", "lfc30": 2.07813, "lfc60": 1.55377}, {"sym": "Hamp", "lfc30": 3.17425, "lfc60": 2.84917}, {"sym": "Cd300lb", "lfc30": 1.68741, "lfc60": 1.94101}, {"sym": "Cyp4f18", "lfc30": 2.08564, "lfc60": 1.93794}, {"sym": "Capg", "lfc30": 1.37404, "lfc60": 1.48849}, {"sym": "Nudt18", "lfc30": 1.12955, "lfc60": 0.8757}, {"sym": "Cd14", "lfc30": 2.02144, "lfc60": 2.2504}, {"sym": "Pyroxd2", "lfc30": 1.0068, "lfc60": 0.959719}, {"sym": "Fndc1", "lfc30": 2.04885, "lfc60": 1.80653}, {"sym": "Tbc1d2", "lfc30": 1.35835, "lfc60": 1.27187}, {"sym": "Mfge8", "lfc30": 1.74593, "lfc60": 1.58058}, {"sym": "Nnmt", "lfc30": 1.97239, "lfc60": 1.88241}, {"sym": "Slco2b1", "lfc30": 0.809494, "lfc60": 0.923356}, {"sym": "Rnf213", "lfc30": 0.453651, "lfc60": 0.478295}, {"sym": "Myo7a", "lfc30": 1.08118, "lfc60": 1.0232}, {"sym": "Loxl2", "lfc30": 1.7385, "lfc60": 1.66201}, {"sym": "Foxs1", "lfc30": 1.92376, "lfc60": 3.56124}, {"sym": "H3f3b", "lfc30": -0.545002, "lfc60": -0.51867}, {"sym": "Rnu12", "lfc30": -1.88579, "lfc60": -1.61191}, {"sym": "Fbxl3", "lfc30": -0.52837, "lfc60": -0.345041}, {"sym": "Snora81", "lfc30": -1.37974, "lfc60": -1.14696}, {"sym": "Slc40a1", "lfc30": -0.822136, "lfc60": -0.708662}, {"sym": "Gm23971", "lfc30": -0.959398, "lfc60": -0.961334}, {"sym": "Clcn4", "lfc30": -0.301868, "lfc60": -0.246769}, {"sym": "Amn1", "lfc30": -0.754969, "lfc60": -0.601318}, {"sym": "Hspb11", "lfc30": -0.949145, "lfc60": -0.748516}, {"sym": "Siah1a", "lfc30": -0.55445, "lfc60": -0.443938}, {"sym": "Gm25313", "lfc30": -1.75002, "lfc60": -1.63255}, {"sym": "Gm39792", "lfc30": -1.7124, "lfc60": -1.40684}, {"sym": "Med30", "lfc30": -0.784337, "lfc60": -0.688798}, {"sym": "Phf10", "lfc30": -0.719262, "lfc60": -0.554833}, {"sym": "Lipa", "lfc30": -0.783347, "lfc60": -0.545703}, {"sym": "Mr1", "lfc30": -1.06463, "lfc60": -0.770406}, {"sym": "Cep44", "lfc30": -0.781875, "lfc60": -0.657381}, {"sym": "Gm22620", "lfc30": -1.39682, "lfc60": -1.3784}, {"sym": "Cldn34c1", "lfc30": -0.682022, "lfc60": -0.681202}, {"sym": "Gm25099", "lfc30": -1.36347, "lfc60": -1.35387}, {"sym": "Kcnh7", "lfc30": -2.54622, "lfc60": -3.25418}, {"sym": "Ccne2", "lfc30": -1.26833, "lfc60": -1.11484}, {"sym": "Abhd10", "lfc30": -0.431209, "lfc60": -0.396678}, {"sym": "Fbxl14", "lfc30": -0.732681, "lfc60": -0.593384}, {"sym": "Snora23", "lfc30": -1.44193, "lfc60": -1.33281}, {"sym": "Trbv23", "lfc30": -1.66912, "lfc60": -1.47399}, {"sym": "Ppm1e", "lfc30": -1.07512, "lfc60": -0.914449}, {"sym": "H2bc21", "lfc30": -0.636401, "lfc60": -0.647878}, {"sym": "Ube2j2", "lfc30": -0.405715, "lfc60": -0.364231}, {"sym": "2310015K22Rik", "lfc30": -1.862, "lfc60": -1.75175}, {"sym": "Ccdc34", "lfc30": -1.10237, "lfc60": -0.855832}, {"sym": "A830082N09Rik", "lfc30": -1.13516, "lfc60": -0.935348}, {"sym": "Zfp607b", "lfc30": -0.666253, "lfc60": -0.555491}, {"sym": "Lin52", "lfc30": -0.480088, "lfc60": -0.322659}, {"sym": "Pigx", "lfc30": -0.930563, "lfc60": -0.690594}, {"sym": "Gm12238", "lfc30": -2.1144, "lfc60": -1.31584}, {"sym": "Ube2e3", "lfc30": -0.721349, "lfc60": -0.598169}, {"sym": "1300002E11Rik", "lfc30": -1.31497, "lfc60": -0.868126}, {"sym": "B230219D22Rik", "lfc30": -0.63233, "lfc60": -0.458836}, {"sym": "Lpar6", "lfc30": -1.47015, "lfc60": -1.04837}, {"sym": "Ap3s1", "lfc30": -1.24217, "lfc60": -0.768552}, {"sym": "A330069E16Rik", "lfc30": -0.886183, "lfc60": -0.691876}, {"sym": "Gm24871", "lfc30": -2.10193, "lfc60": -1.97298}, {"sym": "Tspyl4", "lfc30": -1.27237, "lfc60": -0.882985}, {"sym": "Atg12", "lfc30": -0.781337, "lfc60": -0.454492}, {"sym": "Abhd18", "lfc30": -0.847991, "lfc60": -0.591036}, {"sym": "Med31", "lfc30": -0.579005, "lfc60": -0.522822}, {"sym": "Thap1", "lfc30": -0.383981, "lfc60": -0.324386}, {"sym": "Gm33619", "lfc30": -2.11217, "lfc60": -1.72861}, {"sym": "Gm26130", "lfc30": -1.6107, "lfc60": -1.41671}, {"sym": "Itm2a", "lfc30": -1.8816, "lfc60": -1.15856}, {"sym": "Ostm1", "lfc30": -0.840905, "lfc60": -0.648808}, {"sym": "Bbs9", "lfc30": -0.540372, "lfc60": -0.509397}, {"sym": "Agpat5", "lfc30": -0.554009, "lfc60": -0.48115}, {"sym": "Mccc1os", "lfc30": -1.08308, "lfc60": -0.800193}, {"sym": "Hmgb1", "lfc30": -0.761812, "lfc60": -0.768091}, {"sym": "Bfar", "lfc30": -0.299165, "lfc60": -0.240549}, {"sym": "5430402O13Rik", "lfc30": -1.18072, "lfc60": -0.65246}, {"sym": "Chmp1b", "lfc30": -0.853994, "lfc60": -0.502407}, {"sym": "Lrp12", "lfc30": -0.64245, "lfc60": -0.61231}, {"sym": "Ppp2r5c", "lfc30": -0.428288, "lfc60": -0.384471}, {"sym": "Nabp1", "lfc30": -1.50007, "lfc60": -0.7958}, {"sym": "Smim13", "lfc30": -0.76416, "lfc60": -0.567026}, {"sym": "Snora36b", "lfc30": -1.81569, "lfc60": -1.57637}, {"sym": "Aste1", "lfc30": -0.621148, "lfc60": -0.478732}, {"sym": "Nebl", "lfc30": -1.72182, "lfc60": -1.22864}, {"sym": "Ptpra", "lfc30": -0.375144, "lfc60": -0.348534}, {"sym": "Gm22488", "lfc30": -1.84383, "lfc60": -1.70247}, {"sym": "Gm24451", "lfc30": -1.91691, "lfc60": -1.58388}, {"sym": "Fhl4", "lfc30": -1.06978, "lfc60": -0.83022}, {"sym": "Ppp1r10", "lfc30": -0.51954, "lfc60": -0.47566}, {"sym": "Serac1", "lfc30": -0.606695, "lfc60": -0.498766}, {"sym": "Uba2", "lfc30": -0.511844, "lfc60": -0.459956}, {"sym": "Magi3", "lfc30": -0.634591, "lfc60": -0.55175}, {"sym": "Zc3h14", "lfc30": -0.495271, "lfc60": -0.380079}, {"sym": "Gm39079", "lfc30": -4.35579, "lfc60": 3.70467}, {"sym": "Gm10319", "lfc30": -3.22772, "lfc60": 2.94713}, {"sym": "Mgam", "lfc30": -1.33089, "lfc60": 1.37093}, {"sym": "Albfm1", "lfc30": -4.00999, "lfc60": 3.43585}, {"sym": "Tmem45a2", "lfc30": -4.0091, "lfc60": 3.04877}], "labels": {"Ly6g6c": ["conc_up", "t30_up", "t60_up"], "Sim2": ["conc_up", "t30_up", "t60_up"], "Agt": ["conc_up", "t30_up", "t60_up"], "Ceacam19": ["conc_up", "t30_up", "t60_up"], "F10": ["conc_up", "t30_up", "t60_up"], "Hmga1b": ["conc_up", "t30_up", "t60_up"], "Clca1": ["conc_up", "t30_up", "t60_up"], "Alox15": ["conc_up", "t30_up", "t60_up"], "F7": ["conc_up", "t30_up"], "Ahsg": ["conc_up", "t30_up", "t60_up"], "Prkag3": ["conc_up", "t30_up"], "Gsc": ["conc_up"], "Hamp": ["conc_up", "t30_up"], "Asb5": ["conc_up", "t30_up"], "F5": ["conc_up"], "Kcnh7": ["t60_dn", "conc_dn", "t30_dn"], "Gm24871": ["t60_dn", "conc_dn", "t30_dn"], "Gm33619": ["t60_dn", "conc_dn", "t30_dn"], "2310015K22Rik": ["t60_dn", "conc_dn", "t30_dn"], "Gm22488": ["t60_dn", "conc_dn", "t30_dn"], "Rnu12": ["t60_dn", "conc_dn", "t30_dn"], "Gm24451": ["t60_dn", "conc_dn", "t30_dn"], "Snora36b": ["t60_dn", "conc_dn", "t30_dn"], "Gm25313": ["t60_dn", "conc_dn", "t30_dn"], "Gm12238": ["conc_dn", "t30_dn"], "Trbv23": ["t60_dn", "conc_dn"], "Gm39792": ["t60_dn", "conc_dn"], "Gm26130": ["t60_dn", "conc_dn"], "Itm2a": ["conc_dn", "t30_dn"], "Nebl": ["conc_dn"], "Thbs1": ["t30_up"], "Crb2": ["t30_up"], "Gm39079": ["t30_dn", "discord", "t60_up"], "Albfm1": ["t30_dn", "discord", "t60_up"], "Tmem45a2": ["t30_dn", "discord"], "Gm10319": ["t30_dn", "discord"], "Foxs1": ["t60_up"], "Igkv17-121": ["t60_up"], "Clec4f": ["t60_up"], "Prg4": ["t60_up"], "Gm22620": ["t60_dn"], "Gm25099": ["t60_dn"], "Snora23": ["t60_dn"], "Mgam": ["discord"]}, "summary": {"total_overlap": 322, "concordant_up": 242, "concordant_dn": 75, "discordant": 5}};
+
+  const W = 680, H = 540;
+  const M = { top: 20, right: 30, bottom: 50, left: 60 };
+  const PW = W - M.left - M.right;
+  const PH = H - M.top - M.bottom;
+
+  let xMin = Math.min(...DATA.pts.map(p => p.lfc30));
+  let xMax = Math.max(...DATA.pts.map(p => p.lfc30));
+  let yMin = Math.min(...DATA.pts.map(p => p.lfc60));
+  let yMax = Math.max(...DATA.pts.map(p => p.lfc60));
+  const xPad = (xMax - xMin) * 0.08;
+  const yPad = (yMax - yMin) * 0.08;
+  xMin -= xPad; xMax += xPad; yMin -= yPad; yMax += yPad;
+
+  const sx = v => M.left + (v - xMin) / (xMax - xMin) * PW;
+  const sy = v => M.top + PH - (v - yMin) / (yMax - yMin) * PH;
+
+  function cat(p) {
+    if (p.lfc30 * p.lfc60 < 0) return 'discord';
+    return p.lfc30 > 0 ? 'concup' : 'concdn';
+  }
+  const colors = { concup: '#1D9E75', concdn: '#534AB7', discord: '#D85A30' };
+  const colorsBg = { concup: '#E1F5EE', concdn: '#EEEDFE', discord: '#FAECE7' };
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('role', 'img');
+  const titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+  titleEl.textContent = 'Concordance scatter of log2 fold change at ~30 day vs ~60 day';
+  const descEl = document.createElementNS('http://www.w3.org/2000/svg', 'desc');
+  descEl.textContent = 'Each point is one gene. X axis: log2 fold change Space Flight vs Ground Control at 30 days. Y axis: same at 60 days. Quadrants Q1 and Q3 are concordant; Q2 and Q4 are discordant.';
+  svg.appendChild(titleEl); svg.appendChild(descEl);
+
+  const x0 = sx(0), y0 = sy(0);
+  function quad(x1,y1,x2,y2,fill) {
+    const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    r.setAttribute('x', Math.min(x1,x2)); r.setAttribute('y', Math.min(y1,y2));
+    r.setAttribute('width', Math.abs(x2-x1)); r.setAttribute('height', Math.abs(y2-y1));
+    r.setAttribute('fill', fill); r.setAttribute('opacity', '0.35');
+    return r;
+  }
+  svg.appendChild(quad(x0, M.top, M.left+PW, y0, colorsBg.concup));
+  svg.appendChild(quad(M.left, y0, x0, M.top+PH, colorsBg.concdn));
+  svg.appendChild(quad(M.left, M.top, x0, y0, colorsBg.discord));
+  svg.appendChild(quad(x0, y0, M.left+PW, M.top+PH, colorsBg.discord));
+
+  const ax1 = document.createElementNS('http://www.w3.org/2000/svg','line');
+  ax1.setAttribute('x1', M.left); ax1.setAttribute('y1', y0);
+  ax1.setAttribute('x2', M.left+PW); ax1.setAttribute('y2', y0);
+  ax1.setAttribute('stroke', 'var(--color-border-secondary)'); ax1.setAttribute('stroke-width','0.8');
+  svg.appendChild(ax1);
+  const ax2 = document.createElementNS('http://www.w3.org/2000/svg','line');
+  ax2.setAttribute('x1', x0); ax2.setAttribute('y1', M.top);
+  ax2.setAttribute('x2', x0); ax2.setAttribute('y2', M.top+PH);
+  ax2.setAttribute('stroke', 'var(--color-border-secondary)'); ax2.setAttribute('stroke-width','0.8');
+  svg.appendChild(ax2);
+
+  const diag = document.createElementNS('http://www.w3.org/2000/svg','line');
+  const dlo = Math.max(xMin, yMin), dhi = Math.min(xMax, yMax);
+  diag.setAttribute('x1', sx(dlo)); diag.setAttribute('y1', sy(dlo));
+  diag.setAttribute('x2', sx(dhi)); diag.setAttribute('y2', sy(dhi));
+  diag.setAttribute('stroke', 'var(--color-border-tertiary)');
+  diag.setAttribute('stroke-width','0.5'); diag.setAttribute('stroke-dasharray','3 3');
+  svg.appendChild(diag);
+
+  const fr = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  fr.setAttribute('x', M.left); fr.setAttribute('y', M.top);
+  fr.setAttribute('width', PW); fr.setAttribute('height', PH);
+  fr.setAttribute('fill','none');
+  fr.setAttribute('stroke','var(--color-border-secondary)'); fr.setAttribute('stroke-width','0.5');
+  svg.appendChild(fr);
+
+  function ticks(min, max, target) {
+    const range = max - min;
+    const step = Math.pow(10, Math.floor(Math.log10(range/target)));
+    const cs = [step, step*2, step*5, step*10];
+    let best = cs[0];
+    for (const c of cs) if (Math.abs(range/c - target) < Math.abs(range/best - target)) best = c;
+    const out = [];
+    const start = Math.ceil(min/best)*best;
+    for (let v = start; v <= max + 1e-9; v += best) out.push(Number(v.toFixed(6)));
+    return out;
+  }
+  const xTicks = ticks(xMin, xMax, 8);
+  const yTicks = ticks(yMin, yMax, 8);
+  for (const t of xTicks) {
+    if (t < xMin || t > xMax) continue;
+    const x = sx(t);
+    const tk = document.createElementNS('http://www.w3.org/2000/svg','line');
+    tk.setAttribute('x1',x); tk.setAttribute('x2',x);
+    tk.setAttribute('y1',M.top+PH); tk.setAttribute('y2',M.top+PH+4);
+    tk.setAttribute('stroke','var(--color-border-secondary)'); tk.setAttribute('stroke-width','0.5');
+    svg.appendChild(tk);
+    const lb = document.createElementNS('http://www.w3.org/2000/svg','text');
+    lb.setAttribute('x', x); lb.setAttribute('y', M.top+PH+18);
+    lb.setAttribute('text-anchor','middle');
+    lb.setAttribute('font-size','12'); lb.setAttribute('fill','var(--color-text-secondary)');
+    lb.setAttribute('font-family','var(--font-sans)');
+    lb.textContent = t.toFixed(t === Math.floor(t) ? 0 : 1);
+    svg.appendChild(lb);
+  }
+  for (const t of yTicks) {
+    if (t < yMin || t > yMax) continue;
+    const y = sy(t);
+    const tk = document.createElementNS('http://www.w3.org/2000/svg','line');
+    tk.setAttribute('x1', M.left-4); tk.setAttribute('x2', M.left);
+    tk.setAttribute('y1', y); tk.setAttribute('y2', y);
+    tk.setAttribute('stroke','var(--color-border-secondary)'); tk.setAttribute('stroke-width','0.5');
+    svg.appendChild(tk);
+    const lb = document.createElementNS('http://www.w3.org/2000/svg','text');
+    lb.setAttribute('x', M.left-8); lb.setAttribute('y', y+4);
+    lb.setAttribute('text-anchor','end');
+    lb.setAttribute('font-size','12'); lb.setAttribute('fill','var(--color-text-secondary)');
+    lb.setAttribute('font-family','var(--font-sans)');
+    lb.textContent = t.toFixed(t === Math.floor(t) ? 0 : 1);
+    svg.appendChild(lb);
+  }
+
+  const xt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  xt.setAttribute('x', M.left + PW/2); xt.setAttribute('y', H - 12);
+  xt.setAttribute('text-anchor','middle');
+  xt.setAttribute('font-size','13'); xt.setAttribute('font-weight','500');
+  xt.setAttribute('fill','var(--color-text-primary)');
+  xt.setAttribute('font-family','var(--font-sans)');
+  xt.textContent = 'log\u2082 fold change \u00B7 Space Flight \u2192 Ground Control \u00B7 ~30 day';
+  svg.appendChild(xt);
+
+  const yt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  yt.setAttribute('x', 16); yt.setAttribute('y', M.top + PH/2);
+  yt.setAttribute('text-anchor','middle');
+  yt.setAttribute('font-size','13'); yt.setAttribute('font-weight','500');
+  yt.setAttribute('fill','var(--color-text-primary)');
+  yt.setAttribute('font-family','var(--font-sans)');
+  yt.setAttribute('transform', `rotate(-90, 16, ${M.top + PH/2})`);
+  yt.textContent = 'log\u2082 fold change \u00B7 Space Flight \u2192 Ground Control \u00B7 ~60 day';
+  svg.appendChild(yt);
+
+  function qtitle(x, y, txt, color, anchor) {
+    const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('text-anchor', anchor);
+    t.setAttribute('font-size','11'); t.setAttribute('font-weight','500');
+    t.setAttribute('fill', color); t.setAttribute('opacity','0.85');
+    t.setAttribute('font-family','var(--font-sans)');
+    t.textContent = txt; svg.appendChild(t);
+  }
+  qtitle(M.left+PW-6, M.top+14, 'Up at both timepoints', '#0F6E56', 'end');
+  qtitle(M.left+6, M.top+PH-8, 'Down at both timepoints', '#3C3489', 'start');
+  qtitle(M.left+6, M.top+14, 'Down @30d, up @60d', '#993C1D', 'start');
+  qtitle(M.left+PW-6, M.top+PH-8, 'Up @30d, down @60d', '#993C1D', 'end');
+
+  const pts = DATA.pts.slice();
+  const labeledSet = new Set(Object.keys(DATA.labels));
+  pts.sort((a,b) => (labeledSet.has(a.sym)?1:0) - (labeledSet.has(b.sym)?1:0));
+
+  for (const p of pts) {
+    const c = cat(p);
+    const isLabeled = labeledSet.has(p.sym);
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx', sx(p.lfc30));
+    circle.setAttribute('cy', sy(p.lfc60));
+    circle.setAttribute('r', isLabeled ? 3.5 : 2.2);
+    circle.setAttribute('fill', colors[c]);
+    circle.setAttribute('opacity', isLabeled ? 0.95 : 0.5);
+    if (isLabeled) {
+      circle.setAttribute('stroke', 'var(--color-background-primary)');
+      circle.setAttribute('stroke-width', '0.8');
+    }
+    svg.appendChild(circle);
+  }
+
+  const placed = [];
+  const labelEntries = Object.entries(DATA.labels)
+    .map(([sym, cats]) => {
+      const pt = DATA.pts.find(q => q.sym === sym);
+      return pt ? {sym, cats, x: sx(pt.lfc30), y: sy(pt.lfc60), pt} : null;
+    })
+    .filter(Boolean);
+  labelEntries.sort((a,b) => Math.hypot(b.pt.lfc30, b.pt.lfc60) - Math.hypot(a.pt.lfc30, a.pt.lfc60));
+
+  const charW = 6.2, labelH = 12;
+  const candidates = [
+    [10, -2, 'start'], [-10, -2, 'end'], [0, -10, 'middle'], [0, 16, 'middle'],
+    [10, -10, 'start'], [-10, -10, 'end'], [10, 14, 'start'], [-10, 14, 'end'],
+    [16, -2, 'start'], [-16, -2, 'end'], [0, -16, 'middle'], [0, 22, 'middle'],
+  ];
+  function rectsOverlap(a, b) {
+    return !(a.x+a.w < b.x || b.x+b.w < a.x || a.y+a.h < b.y || b.y+b.h < a.y);
+  }
+  function bboxFor(text, x, y, anchor) {
+    const w = text.length * charW;
+    let bx = x;
+    if (anchor === 'middle') bx = x - w/2;
+    else if (anchor === 'end') bx = x - w;
+    return {x: bx, y: y - labelH + 2, w, h: labelH + 2};
+  }
+  const PB = {x: M.left+2, y: M.top+2, w: PW-4, h: PH-4};
+  function inPlot(b) {
+    return b.x >= PB.x && b.y >= PB.y && b.x + b.w <= PB.x + PB.w && b.y + b.h <= PB.y + PB.h;
+  }
+
+  for (const e of labelEntries) {
+    const isDiscord = e.cats.includes('discord');
+    let chosen = null;
+    for (const [dx, dy, anchor] of candidates) {
+      const tx = e.x + dx, ty = e.y + dy;
+      const b = bboxFor(e.sym, tx, ty, anchor);
+      if (!inPlot(b)) continue;
+      let ok = true;
+      for (const pl of placed) if (rectsOverlap({x:b.x-1, y:b.y-1, w:b.w+2, h:b.h+2}, pl)) { ok = false; break; }
+      if (ok) { chosen = {tx, ty, anchor, b}; break; }
+    }
+    if (!chosen) {
+      const ang = Math.atan2(e.pt.lfc60 || 0.01, e.pt.lfc30 || 0.01);
+      for (let r = 22; r <= 60; r += 8) {
+        const tx = e.x + Math.cos(ang) * r;
+        const ty = e.y - Math.sin(ang) * r;
+        const anchor = Math.cos(ang) > 0 ? 'start' : 'end';
+        const b = bboxFor(e.sym, tx, ty, anchor);
+        if (!inPlot(b)) continue;
+        let ok = true;
+        for (const pl of placed) if (rectsOverlap({x:b.x-1,y:b.y-1,w:b.w+2,h:b.h+2}, pl)) { ok=false; break; }
+        if (ok) { chosen = {tx, ty, anchor, b}; break; }
+      }
+    }
+    if (!chosen) continue;
+    placed.push(chosen.b);
+
+    const leaderDist = Math.hypot(chosen.tx - e.x, chosen.ty - e.y);
+    if (leaderDist > 12) {
+      const ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+      ln.setAttribute('x1', e.x); ln.setAttribute('y1', e.y);
+      ln.setAttribute('x2', chosen.tx); ln.setAttribute('y2', chosen.ty + 3);
+      ln.setAttribute('stroke', 'var(--color-text-tertiary)');
+      ln.setAttribute('stroke-width','0.4');
+      ln.setAttribute('opacity','0.7');
+      svg.appendChild(ln);
+    }
+
+    const labelTxt = document.createElementNS('http://www.w3.org/2000/svg','text');
+    labelTxt.setAttribute('x', chosen.tx);
+    labelTxt.setAttribute('y', chosen.ty);
+    labelTxt.setAttribute('text-anchor', chosen.anchor);
+    labelTxt.setAttribute('font-size','11');
+    labelTxt.setAttribute('font-style','italic');
+    labelTxt.setAttribute('font-family','var(--font-sans)');
+    labelTxt.setAttribute('fill', isDiscord ? '#993C1D' : 'var(--color-text-primary)');
+    if (isDiscord) labelTxt.setAttribute('font-weight','500');
+    labelTxt.textContent = e.sym;
+    svg.appendChild(labelTxt);
+  }
+
+  document.getElementById('plot-host').appendChild(svg);
+})();
+</script>
