@@ -3134,7 +3134,7 @@ For downstream pathway analysis, **all paralogs in the human family should be co
 - **Symbols only.** Multi-NCBI mouse entries like `Pira11|Pira6|Pira7|Pira12` mean four separate NCBI IDs all carry the same combined symbol.
 - **Direction preserved.** Both columns retain the original mouse `log2FC` from each timepoint, with the same sign convention (positive = higher in Space Flight).
 
-**Output file:** `[osd244_common_de_genes_mouse_to_human_orthologs.csv](spoke-genelab-OSD-244_outputs/osd244_common_de_genes_mouse_to_human_orthologs.csv)` — 357 rows with `mouse_symbol`, `mouse_ncbi`, `human_symbol`, `human_ncbi`, both `log2fc` values, both `adj_p` values, and an `ortholog_status` column.
+**Output file:** [osd244_common_de_genes_mouse_to_human_orthologs.csv](spoke-genelab-OSD-244_outputs/osd244_common_de_genes_mouse_to_human_orthologs.csv) — 357 rows with `mouse_symbol`, `mouse_ncbi`, `human_symbol`, `human_ncbi`, both `log2fc` values, both `adj_p` values, and an `ortholog_status` column.
 
 
 ---
