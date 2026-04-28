@@ -1,0 +1,536 @@
+gene_symbol,disease,doid
+APOE,Alzheimer's disease,DOID_10652
+IDUA,Alzheimer's disease,DOID_10652
+PSEN2,Alzheimer's disease,DOID_10652
+SERPINA3,Alzheimer's disease,DOID_10652
+SPI1,Alzheimer's disease,DOID_10652
+AGT,COVID-19,DOID_0080600
+HIP1,COVID-19,DOID_0080600
+APOE,Down syndrome,DOID_14250
+FGFR1,Klinefelter syndrome,DOID_1921
+APOE,Parkinson's disease,DOID_14330
+NOD2,Parkinson's disease,DOID_14330
+SEMA4A,Parkinson's disease,DOID_14330
+ANPEP,acute myeloid leukemia,DOID_9119
+SPI1,acute myeloid leukemia,DOID_9119
+HLA-A,alopecia areata,DOID_986
+HLA-C,alopecia areata,DOID_986
+AGT,arteriosclerosis,DOID_2349
+APOBR,arteriosclerosis,DOID_2349
+APOE,arteriosclerosis,DOID_2349
+ELN,arteriosclerosis,DOID_2349
+FN1,arteriosclerosis,DOID_2349
+LDLR,arteriosclerosis,DOID_2349
+LIPA,arteriosclerosis,DOID_2349
+SELP,arteriosclerosis,DOID_2349
+TGFBR2,arteriosclerosis,DOID_2349
+ALOX5,asthma,DOID_2841
+BBS9,asthma,DOID_2841
+C4B,asthma,DOID_2841
+FGFR1,asthma,DOID_2841
+HLA-B,asthma,DOID_2841
+HLA-G,asthma,DOID_2841
+IL6R,asthma,DOID_2841
+LRP1,asthma,DOID_2841
+MYRF,asthma,DOID_2841
+NCF4,asthma,DOID_2841
+NEK6,asthma,DOID_2841
+NOD2,asthma,DOID_2841
+PIGX,asthma,DOID_2841
+PTGES,asthma,DOID_2841
+SLCO2B1,asthma,DOID_2841
+IL6R,atopic dermatitis,DOID_3310
+LRRC32,atopic dermatitis,DOID_3310
+MYRF,atopic dermatitis,DOID_3310
+FGFR1,autism spectrum disorder,DOID_0060041
+KCTD17,avoidant personality disorder,DOID_1509
+CLCN4,bipolar disorder,DOID_3312
+FGFR1,bipolar disorder,DOID_3312
+HLA-B,bipolar disorder,DOID_3312
+PDGFRB,bipolar disorder,DOID_3312
+FN1,breast cancer,DOID_1612
+H3-3B,breast cancer,DOID_1612
+H3-5,breast cancer,DOID_1612
+SEMA4A,breast cancer,DOID_1612
+TGFBR2,breast cancer,DOID_1612
+MAGI3,breast carcinoma,DOID_3459
+NOTCH2,breast carcinoma,DOID_3459
+SEMA4A,breast carcinoma,DOID_3459
+TGFBR2,breast carcinoma,DOID_3459
+AGT,cardiomyopathy,DOID_0050700
+ANKS6,cardiomyopathy,DOID_0050700
+BBS9,cardiomyopathy,DOID_0050700
+ELN,cardiomyopathy,DOID_0050700
+FHL1,cardiomyopathy,DOID_0050700
+GUSB,cardiomyopathy,DOID_0050700
+HAMP,cardiomyopathy,DOID_0050700
+HLA-B,cardiomyopathy,DOID_0050700
+IDUA,cardiomyopathy,DOID_0050700
+LRP12,cardiomyopathy,DOID_0050700
+MMP23B,cardiomyopathy,DOID_0050700
+PSEN2,cardiomyopathy,DOID_0050700
+SELENON,cardiomyopathy,DOID_0050700
+SGSH,cardiomyopathy,DOID_0050700
+SLC40A1,cardiomyopathy,DOID_0050700
+VIM,cataract,DOID_83
+IL6R,cellulitis,DOID_3488
+NCF2,cellulitis,DOID_3488
+SPI1,cellulitis,DOID_3488
+AGT,cerebrovascular disease,DOID_6713
+APOE,cerebrovascular disease,DOID_6713
+CLDN5,cerebrovascular disease,DOID_6713
+RNF213,cerebrovascular disease,DOID_6713
+SELP,cerebrovascular disease,DOID_6713
+AGT,chronic kidney disease,DOID_784
+APOL1,chronic kidney disease,DOID_784
+FN1,chronic kidney disease,DOID_784
+HAMP,chronic kidney disease,DOID_784
+APOE,chronic obstructive pulmonary disease,DOID_3083
+COL6A3,chronic obstructive pulmonary disease,DOID_3083
+ELN,chronic obstructive pulmonary disease,DOID_3083
+GAB2,chronic obstructive pulmonary disease,DOID_3083
+NAV1,chronic obstructive pulmonary disease,DOID_3083
+NCF2,chronic obstructive pulmonary disease,DOID_3083
+NCF4,chronic obstructive pulmonary disease,DOID_3083
+NEBL,chronic obstructive pulmonary disease,DOID_3083
+SEMA4A,colon adenocarcinoma,DOID_234
+TGFBR2,colon adenocarcinoma,DOID_234
+SEMA4A,colon cancer,DOID_219
+TGFBR2,colon cancer,DOID_219
+SEMA4A,colonic benign neoplasm,DOID_235
+TGFBR2,colonic benign neoplasm,DOID_235
+FN1,colorectal cancer,DOID_9256
+PTPRJ,colorectal cancer,DOID_9256
+SEMA4A,colorectal cancer,DOID_9256
+TGFBR2,colorectal cancer,DOID_9256
+PTPRJ,colorectal carcinoma,DOID_0080199
+SEMA4A,colorectal carcinoma,DOID_0080199
+TGFBR2,colorectal carcinoma,DOID_0080199
+AGT,coronary artery disease,DOID_3393
+APOE,coronary artery disease,DOID_3393
+C2,coronary artery disease,DOID_3393
+COL6A3,coronary artery disease,DOID_3393
+DAGLB,coronary artery disease,DOID_3393
+FES,coronary artery disease,DOID_3393
+FN1,coronary artery disease,DOID_3393
+IL6R,coronary artery disease,DOID_3393
+LDLR,coronary artery disease,DOID_3393
+LIPA,coronary artery disease,DOID_3393
+LRP1,coronary artery disease,DOID_3393
+RNF213,coronary artery disease,DOID_3393
+RRBP1,coronary artery disease,DOID_3393
+SELP,coronary artery disease,DOID_3393
+SH2B3,coronary artery disease,DOID_3393
+APOE,depressive disorder,DOID_1596
+C4A,depressive disorder,DOID_1596
+C4B,depressive disorder,DOID_1596
+CLCN4,depressive disorder,DOID_1596
+CSF1R,depressive disorder,DOID_1596
+ELN,depressive disorder,DOID_1596
+FGFR1,depressive disorder,DOID_1596
+HLA-B,depressive disorder,DOID_1596
+IDUA,depressive disorder,DOID_1596
+ITGAM,depressive disorder,DOID_1596
+KCTD17,depressive disorder,DOID_1596
+MYO7A,depressive disorder,DOID_1596
+PDGFRB,depressive disorder,DOID_1596
+SEMA4A,depressive disorder,DOID_1596
+TGFBR2,depressive disorder,DOID_1596
+C4A,dermatitis,DOID_2723
+C4B,dermatitis,DOID_2723
+H3-3B,dermatitis,DOID_2723
+HLA-B,dermatitis,DOID_2723
+HLA-C,dermatitis,DOID_2723
+IL6R,dermatitis,DOID_2723
+ITGAM,dermatitis,DOID_2723
+LRRC32,dermatitis,DOID_2723
+LYZ,dermatitis,DOID_2723
+NCF2,dermatitis,DOID_2723
+NCF4,dermatitis,DOID_2723
+NOD2,dermatitis,DOID_2723
+SPI1,dermatitis,DOID_2723
+TNFRSF1B,dermatitis,DOID_2723
+AGT,diabetes mellitus,DOID_9351
+APOE,diabetes mellitus,DOID_9351
+BBS9,diabetes mellitus,DOID_9351
+ELN,diabetes mellitus,DOID_9351
+FGFR1,diabetes mellitus,DOID_9351
+FN1,diabetes mellitus,DOID_9351
+HAMP,diabetes mellitus,DOID_9351
+HBA1,diabetes mellitus,DOID_9351
+HBA2,diabetes mellitus,DOID_9351
+HMGA1,diabetes mellitus,DOID_9351
+ITGAM,diabetes mellitus,DOID_9351
+LDLR,diabetes mellitus,DOID_9351
+MGAM,diabetes mellitus,DOID_9351
+MMP14,diabetes mellitus,DOID_9351
+SEMA4A,diabetes mellitus,DOID_9351
+SH2B3,diabetes mellitus,DOID_9351
+SLC37A4,diabetes mellitus,DOID_9351
+SLC40A1,diabetes mellitus,DOID_9351
+SPI1,diabetes mellitus,DOID_9351
+C4A,encephalitis,DOID_9588
+HLA-B,encephalitis,DOID_9588
+UNC93B1,encephalitis,DOID_9588
+C4A,endocarditis,DOID_10314
+HLA-B,endocarditis,DOID_10314
+C2,endometriosis,DOID_289
+FN1,endometriosis,DOID_289
+AHSG,epilepsy,DOID_1826
+BBS9,epilepsy,DOID_1826
+C4A,epilepsy,DOID_1826
+C4B,epilepsy,DOID_1826
+CCND2,epilepsy,DOID_1826
+CLCF1,epilepsy,DOID_1826
+CLCN4,epilepsy,DOID_1826
+CRB2,epilepsy,DOID_1826
+CSF1R,epilepsy,DOID_1826
+FGFR1,epilepsy,DOID_1826
+HLA-B,epilepsy,DOID_1826
+HMGCS2,epilepsy,DOID_1826
+LRRK1,epilepsy,DOID_1826
+MMP23B,epilepsy,DOID_1826
+MYRF,epilepsy,DOID_1826
+NTNG2,epilepsy,DOID_1826
+OSTM1,epilepsy,DOID_1826
+PDGFRB,epilepsy,DOID_1826
+PRSS12,epilepsy,DOID_1826
+PSEN2,epilepsy,DOID_1826
+RNF213,epilepsy,DOID_1826
+SEMA4A,epilepsy,DOID_1826
+SERAC1,epilepsy,DOID_1826
+SGSH,epilepsy,DOID_1826
+SLC37A4,epilepsy,DOID_1826
+TGFBR2,epilepsy,DOID_1826
+UNC93B1,epilepsy,DOID_1826
+ZC3H14,epilepsy,DOID_1826
+TGFBR2,esophageal cancer,DOID_5041
+APOE,familial hypercholesterolemia,DOID_13810
+FHL1,familial hypercholesterolemia,DOID_13810
+LDLR,familial hypercholesterolemia,DOID_13810
+LIPA,familial hypercholesterolemia,DOID_13810
+CLCN4,gastroesophageal reflux disease,DOID_8534
+ELN,gastroesophageal reflux disease,DOID_8534
+FGFR1,gastroesophageal reflux disease,DOID_8534
+H3-3B,gastroesophageal reflux disease,DOID_8534
+HLA-B,gastroesophageal reflux disease,DOID_8534
+MMP23B,gastroesophageal reflux disease,DOID_8534
+SIAH1,gastroesophageal reflux disease,DOID_8534
+SLC37A4,gastroesophageal reflux disease,DOID_8534
+SEMA4A,giant cell glioblastoma,DOID_3074
+TGFBR2,giant cell glioblastoma,DOID_3074
+ELN,glaucoma,DOID_1686
+IDUA,glaucoma,DOID_1686
+NOD2,glaucoma,DOID_1686
+SEMA4A,glaucoma,DOID_1686
+SH2B3,glaucoma,DOID_1686
+SEMA4A,glioblastoma,DOID_3068
+TGFBR2,glioblastoma,DOID_3068
+APOL1,glomerulonephritis,DOID_2921
+C4A,glomerulonephritis,DOID_2921
+C4B,glomerulonephritis,DOID_2921
+CRB2,glomerulonephritis,DOID_2921
+ITGAM,glomerulonephritis,DOID_2921
+KIRREL1,glomerulonephritis,DOID_2921
+SLC37A4,glomerulonephritis,DOID_2921
+APOE,gout,DOID_13189
+SAA1,gout,DOID_13189
+SAA2,gout,DOID_13189
+SLC37A4,gout,DOID_13189
+C4B,hepatitis,DOID_2237
+HLA-B,human immunodeficiency virus infectious disease,DOID_526
+AGT,hypertension,DOID_10763
+APOE,hypertension,DOID_10763
+BBS9,hypertension,DOID_10763
+C2,hypertension,DOID_10763
+C4A,hypertension,DOID_10763
+C4B,hypertension,DOID_10763
+CREB3L1,hypertension,DOID_10763
+ELN,hypertension,DOID_10763
+FES,hypertension,DOID_10763
+FN1,hypertension,DOID_10763
+HLA-B,hypertension,DOID_10763
+IDUA,hypertension,DOID_10763
+ITGAM,hypertension,DOID_10763
+LDLR,hypertension,DOID_10763
+LY6G6C,hypertension,DOID_10763
+LYZ,hypertension,DOID_10763
+MMP14,hypertension,DOID_10763
+NOD2,hypertension,DOID_10763
+NOTCH2,hypertension,DOID_10763
+PGF,hypertension,DOID_10763
+PTPRJ,hypertension,DOID_10763
+RNF213,hypertension,DOID_10763
+SELP,hypertension,DOID_10763
+SH2B3,hypertension,DOID_10763
+SLC37A4,hypertension,DOID_10763
+SPI1,hypertension,DOID_10763
+TGFBR2,hypertension,DOID_10763
+ADCY7,inflammatory bowel disease,DOID_0050589
+BBS9,inflammatory bowel disease,DOID_0050589
+DAP,inflammatory bowel disease,DOID_0050589
+F5,inflammatory bowel disease,DOID_0050589
+FOSL2,inflammatory bowel disease,DOID_0050589
+HLA-B,inflammatory bowel disease,DOID_0050589
+ITGAM,inflammatory bowel disease,DOID_0050589
+LITAF,inflammatory bowel disease,DOID_0050589
+LYZ,inflammatory bowel disease,DOID_0050589
+MYRF,inflammatory bowel disease,DOID_0050589
+NCF2,inflammatory bowel disease,DOID_0050589
+NCF4,inflammatory bowel disease,DOID_0050589
+NOD1,inflammatory bowel disease,DOID_0050589
+NOD2,inflammatory bowel disease,DOID_0050589
+NOTCH2,inflammatory bowel disease,DOID_0050589
+SAA1,inflammatory bowel disease,DOID_0050589
+SAA2,inflammatory bowel disease,DOID_0050589
+SH2B3,inflammatory bowel disease,DOID_0050589
+SLC37A4,inflammatory bowel disease,DOID_0050589
+ST8SIA2,inflammatory bowel disease,DOID_0050589
+TGFBR2,inflammatory bowel disease,DOID_0050589
+TLR5,inflammatory bowel disease,DOID_0050589
+ELN,interstitial nephritis,DOID_1063
+SLC37A4,interstitial nephritis,DOID_1063
+HAMP,iron deficiency anemia,DOID_11758
+NOD2,kidney cancer,DOID_263
+PTPRJ,kidney cancer,DOID_263
+SAA1,kidney cancer,DOID_263
+SAA2,kidney cancer,DOID_263
+SEMA4A,kidney cancer,DOID_263
+TGFBR2,kidney cancer,DOID_263
+TGFBR2,larynx cancer,DOID_2596
+BBS9,leprosy,DOID_1024
+ANPEP,leukemia,DOID_1240
+H3-3B,leukemia,DOID_1240
+H3-5,leukemia,DOID_1240
+ITGAM,leukemia,DOID_1240
+PDGFRB,leukemia,DOID_1240
+SH2B3,leukemia,DOID_1240
+SPI1,leukemia,DOID_1240
+F5,liver cancer,DOID_3571
+SEMA4A,liver cancer,DOID_3571
+SLC37A4,liver cancer,DOID_3571
+TGFBR2,liver cancer,DOID_3571
+ANKS6,liver disease,DOID_409
+APOE,liver disease,DOID_409
+BBS9,liver disease,DOID_409
+C4B,liver disease,DOID_409
+CSF3R,liver disease,DOID_409
+ELN,liver disease,DOID_409
+F5,liver disease,DOID_409
+FHL1,liver disease,DOID_409
+FN1,liver disease,DOID_409
+GUSB,liver disease,DOID_409
+HAMP,liver disease,DOID_409
+HBA1,liver disease,DOID_409
+HBA2,liver disease,DOID_409
+HCK,liver disease,DOID_409
+HLA-B,liver disease,DOID_409
+HMGCS2,liver disease,DOID_409
+IDUA,liver disease,DOID_409
+LDLR,liver disease,DOID_409
+LIPA,liver disease,DOID_409
+LTBP3,liver disease,DOID_409
+LYZ,liver disease,DOID_409
+MMP23B,liver disease,DOID_409
+MYRF,liver disease,DOID_409
+NCF2,liver disease,DOID_409
+NCF4,liver disease,DOID_409
+NOD2,liver disease,DOID_409
+NOTCH2,liver disease,DOID_409
+OSTM1,liver disease,DOID_409
+PCK2,liver disease,DOID_409
+PDGFRB,liver disease,DOID_409
+SAA1,liver disease,DOID_409
+SEMA4A,liver disease,DOID_409
+SGSH,liver disease,DOID_409
+SH2B3,liver disease,DOID_409
+SLC37A4,liver disease,DOID_409
+SLC40A1,liver disease,DOID_409
+SPI1,liver disease,DOID_409
+STAB1,liver disease,DOID_409
+TF,liver disease,DOID_409
+TGFBR2,liver disease,DOID_409
+TNFRSF1B,liver disease,DOID_409
+FGFR1,lung cancer,DOID_1324
+FN1,lung cancer,DOID_1324
+H3-3B,lung cancer,DOID_1324
+NAPSA,lung cancer,DOID_1324
+ANPEP,lymphoid leukemia,DOID_1037
+HLA-B,major depressive disorder,DOID_1470
+LTBP3,major depressive disorder,DOID_1470
+CCDC34,male infertility,DOID_12336
+C4A,meningitis,DOID_9471
+C4B,meningitis,DOID_9471
+HLA-B,meningitis,DOID_9471
+NCF2,meningitis,DOID_9471
+NCF4,meningitis,DOID_9471
+SPI1,meningitis,DOID_9471
+C4A,migraine,DOID_6364
+HLA-B,migraine,DOID_6364
+LRP1,migraine,DOID_6364
+PDGFRB,migraine,DOID_6364
+RNF213,migraine,DOID_6364
+SEMA4A,migraine,DOID_6364
+SH2B3,migraine,DOID_6364
+TGFBR2,migraine,DOID_6364
+LRP12,motor neuron disease,DOID_231
+HLA-F,multiple sclerosis,DOID_2377
+IFITM3,multiple sclerosis,DOID_2377
+ITGAM,multiple sclerosis,DOID_2377
+NCF4,multiple sclerosis,DOID_2377
+SH2B3,multiple sclerosis,DOID_2377
+TSPAN31,multiple sclerosis,DOID_2377
+ELN,myopia,DOID_11830
+FN1,myopia,DOID_11830
+LRRC32,myopia,DOID_11830
+MYO7A,myopia,DOID_11830
+NOTCH2,myopia,DOID_11830
+TGFBI,myopia,DOID_11830
+KCTD17,narcissistic personality disorder,DOID_2745
+AGT,nervous system disease,DOID_863
+APOE,nervous system disease,DOID_863
+C2,nervous system disease,DOID_863
+CLDN5,nervous system disease,DOID_863
+COL6A3,nervous system disease,DOID_863
+CRB2,nervous system disease,DOID_863
+CSF1R,nervous system disease,DOID_863
+FGFR1,nervous system disease,DOID_863
+FN1,nervous system disease,DOID_863
+H3-3B,nervous system disease,DOID_863
+H3-5,nervous system disease,DOID_863
+HIP1,nervous system disease,DOID_863
+HLA-A,nervous system disease,DOID_863
+HLA-B,nervous system disease,DOID_863
+HMGB1,nervous system disease,DOID_863
+IL6R,nervous system disease,DOID_863
+ITGAM,nervous system disease,DOID_863
+KCTD17,nervous system disease,DOID_863
+LITAF,nervous system disease,DOID_863
+LRP12,nervous system disease,DOID_863
+MYO7A,nervous system disease,DOID_863
+PDGFRB,nervous system disease,DOID_863
+PSEN2,nervous system disease,DOID_863
+RNF213,nervous system disease,DOID_863
+SELP,nervous system disease,DOID_863
+SEMA4A,nervous system disease,DOID_863
+SERPINA3,nervous system disease,DOID_863
+TGFBI,nervous system disease,DOID_863
+THAP1,nervous system disease,DOID_863
+VIM,nervous system disease,DOID_863
+SAA1,non-Hodgkin lymphoma,DOID_0060060
+SAA2,non-Hodgkin lymphoma,DOID_0060060
+TNFRSF1B,non-Hodgkin lymphoma,DOID_0060060
+AGT,nutrition disease,DOID_374
+APOE,nutrition disease,DOID_374
+BBS9,nutrition disease,DOID_374
+LDLR,nutrition disease,DOID_374
+RARRES2,nutrition disease,DOID_374
+AGT,obesity,DOID_9970
+APOE,obesity,DOID_9970
+BBS9,obesity,DOID_9970
+CLCN4,obesity,DOID_9970
+ELN,obesity,DOID_9970
+FGFR1,obesity,DOID_9970
+FHL1,obesity,DOID_9970
+LDLR,obesity,DOID_9970
+MMP23B,obesity,DOID_9970
+RARRES2,obesity,DOID_9970
+SDC3,obesity,DOID_9970
+SEMA4A,obesity,DOID_9970
+DAGLB,osteoarthritis,DOID_8398
+PRG4,osteoarthritis,DOID_8398
+BBS9,otitis media,DOID_10754
+C4B,otitis media,DOID_10754
+ELN,otitis media,DOID_10754
+GUSB,otitis media,DOID_10754
+IDUA,otitis media,DOID_10754
+IL6R,otitis media,DOID_10754
+NCF2,otitis media,DOID_10754
+NCF4,otitis media,DOID_10754
+SLC37A4,otitis media,DOID_10754
+SPI1,otitis media,DOID_10754
+SEMA4A,ovarian cancer,DOID_2394
+TGFBR2,ovarian cancer,DOID_2394
+FN1,pancreatic cancer,DOID_1793
+PDGFRB,pancreatic cancer,DOID_1793
+SEMA4A,pancreatic cancer,DOID_1793
+TGFBR2,pancreatic cancer,DOID_1793
+APOE,pancreatitis,DOID_4989
+C4A,pancreatitis,DOID_4989
+HLA-B,pancreatitis,DOID_4989
+SLC37A4,pancreatitis,DOID_4989
+ELN,peptic ulcer disease,DOID_750
+APOE,peripheral artery disease,DOID_0050830
+CREB3L1,peripheral artery disease,DOID_0050830
+ELN,peripheral artery disease,DOID_0050830
+F5,peripheral artery disease,DOID_0050830
+LDLR,peripheral artery disease,DOID_0050830
+TGFBR2,peripheral artery disease,DOID_0050830
+BBS9,polycystic ovary syndrome,DOID_11612
+ELN,polycystic ovary syndrome,DOID_11612
+MMP14,polycystic ovary syndrome,DOID_11612
+SLC37A4,polycystic ovary syndrome,DOID_11612
+HLA-B,psoriasis,DOID_8893
+HLA-C,psoriasis,DOID_8893
+KCNH7,psoriasis,DOID_8893
+OSTM1,psoriasis,DOID_8893
+SEMA4A,rectum cancer,DOID_1993
+TGFBR2,rectum cancer,DOID_1993
+TNFRSF1B,reticulosarcoma,DOID_8538
+DAP,rheumatoid arthritis,DOID_7148
+HLA-A,rheumatoid arthritis,DOID_7148
+HLA-B,rheumatoid arthritis,DOID_7148
+HLA-G,rheumatoid arthritis,DOID_7148
+IL6R,rheumatoid arthritis,DOID_7148
+MYRF,rheumatoid arthritis,DOID_7148
+PADI4,rheumatoid arthritis,DOID_7148
+PLD4,rheumatoid arthritis,DOID_7148
+SAA1,rheumatoid arthritis,DOID_7148
+SAA2,rheumatoid arthritis,DOID_7148
+SH2B3,rheumatoid arthritis,DOID_7148
+WDFY4,rheumatoid arthritis,DOID_7148
+APOL2,schizophrenia,DOID_5419
+APOL4,schizophrenia,DOID_5419
+C4A,schizophrenia,DOID_5419
+FES,schizophrenia,DOID_5419
+FGFR1,schizophrenia,DOID_5419
+MYO7A,schizophrenia,DOID_5419
+NEBL,schizophrenia,DOID_5419
+WSCD2,schizophrenia,DOID_5419
+FGFR1,skin benign neoplasm,DOID_3165
+HLA-B,skin benign neoplasm,DOID_3165
+LRP1,skin benign neoplasm,DOID_3165
+PDGFRB,skin benign neoplasm,DOID_3165
+SEMA4A,skin benign neoplasm,DOID_3165
+SPI1,skin benign neoplasm,DOID_3165
+TGFBR2,skin benign neoplasm,DOID_3165
+TNFRSF1B,skin benign neoplasm,DOID_3165
+FGFR1,skin cancer,DOID_4159
+LRP1,skin cancer,DOID_4159
+PDGFRB,skin cancer,DOID_4159
+SEMA4A,skin cancer,DOID_4159
+SPI1,skin cancer,DOID_4159
+TGFBR2,skin cancer,DOID_4159
+TNFRSF1B,skin cancer,DOID_4159
+APOL1,sleeping sickness,DOID_10112
+PTPRJ,stomach cancer,DOID_10534
+SEMA4A,stomach cancer,DOID_10534
+TGFBR2,stomach cancer,DOID_10534
+HAMP,thalassemia,DOID_10241
+HBA1,thalassemia,DOID_10241
+HBA2,thalassemia,DOID_10241
+APOE,thyroid cancer,DOID_1781
+SEMA4A,thyroid cancer,DOID_1781
+TGFBR2,thyroid cancer,DOID_1781
+SPI1,typhoid fever,DOID_13258
+PTPRJ,urinary bladder cancer,DOID_11054
+SERPING1,urticaria,DOID_1555
+PTPRJ,uterine cancer,DOID_363
+SEMA4A,uterine cancer,DOID_363
+TGFBR2,uterine cancer,DOID_363
+WNT2,uterine fibroid,DOID_13223
+AGT,viral infectious disease,DOID_934
+HLA-A,viral infectious disease,DOID_934
+HLA-B,viral infectious disease,DOID_934
+IFITM3,viral infectious disease,DOID_934
+ITGAM,viral infectious disease,DOID_934
