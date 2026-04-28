@@ -2965,7 +2965,7 @@ Content rendered and shown to the user. Please do not duplicate the shown conten
 </details>
 
 
-<img src="spoke-genelab-OSD-244_outputs/images/osd244_sf_vs_gc_30d_60d_concordance_scatter.png" 
+<img src="https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_sf_vs_gc_30d_60d_concordance_scatter.png" 
      alt="concordance plot of common DEGs across timepoints" 
      width="800">
      
@@ -3134,7 +3134,7 @@ For downstream pathway analysis, **all paralogs in the human family should be co
 - **Symbols only.** Multi-NCBI mouse entries like `Pira11|Pira6|Pira7|Pira12` mean four separate NCBI IDs all carry the same combined symbol.
 - **Direction preserved.** Both columns retain the original mouse `log2FC` from each timepoint, with the same sign convention (positive = higher in Space Flight).
 
-**Output file:** [osd244_common_de_genes_mouse_to_human_orthologs.csv](spoke-genelab-OSD-244_outputs/osd244_common_de_genes_mouse_to_human_orthologs.csv) — 357 rows with `mouse_symbol`, `mouse_ncbi`, `human_symbol`, `human_ncbi`, both `log2fc` values, both `adj_p` values, and an `ortholog_status` column.
+**Output file:** [osd244_common_de_genes_mouse_to_human_orthologs.csv](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-OSD-244_outputs/osd244_common_de_genes_mouse_to_human_orthologs.csv) — 357 rows with `mouse_symbol`, `mouse_ncbi`, `human_symbol`, `human_ncbi`, both `log2fc` values, both `adj_p` values, and an `ortholog_status` column.
 
 
 ---
@@ -3266,7 +3266,7 @@ TOTAL:   535 gene-disease pairs across 130 distinct genes and 93 distinct diseas
 </details>
 
 
-<img src="spoke-genelab-OSD-244_outputs/images/osd244_top_diseases_by_gene_count.png" 
+<img src="https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_top_diseases_by_gene_count.png" 
      alt="barplot of top diseases by gene count" 
      width="800">
      
@@ -3305,8 +3305,8 @@ These hub genes inflate counts on multiple disease entries simultaneously.
 - **Gene-symbol joining.** Where the orthology was one-to-many (e.g. mouse `Apol9a/b` → human `APOL1/2/3/4`), each human paralog contributes its own disease associations independently.
 
 **Output files:**
-- [osd244_disease_gene_counts.csv](spoke-genelab-OSD-244_outputs/osd244_disease_gene_counts.csv) — 93 diseases with the full gene set
-- [osd244_gene_disease_associations.csv](spoke-genelab-OSD-244_outputs/osd244_gene_disease_associations.csv) — 535 long-form gene-disease pairs
+- [osd244_disease_gene_counts.csv](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-OSD-244_outputs/osd244_disease_gene_counts.csv) — 93 diseases with the full gene set
+- [osd244_gene_disease_associations.csv](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke-genelab-OSD-244_outputs/osd244_gene_disease_associations.csv) — 535 long-form gene-disease pairs
 
 A horizontal bar chart of the top 20 diseases by gene count was rendered inline (cardiovascular / metabolic / immune / inflammatory diseases highlighted in coral as spaceflight-relevant).
 
