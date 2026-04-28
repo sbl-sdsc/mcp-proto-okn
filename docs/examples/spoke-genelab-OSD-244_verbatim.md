@@ -3265,6 +3265,12 @@ TOTAL:   535 gene-disease pairs across 130 distinct genes and 93 distinct diseas
 
 </details>
 
+
+<img src="https://raw.githubusercontent.com/asaravia-butler/mcp-proto-okn/refs/heads/main/docs/examples/spoke-genelab-OSD-244_outputs/images/osd244_top_diseases_by_gene_count.png" 
+     alt="barplot of top diseases by gene count" 
+     width="800">
+     
+
 # Disease associations for the OSD-244 common DE genes
 
 ## Method note
