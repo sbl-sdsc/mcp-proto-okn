@@ -1,0 +1,81 @@
+<div style="display: flex; gap: 12px; margin: 0 0 16px; font-size: 13px; color: var(--color-text-secondary); flex-wrap: wrap;">
+  <span style="display:inline-flex;align-items:baseline;gap:6px"><strong style="color:var(--color-text-primary);font-weight:500;font-size:14px">535</strong>gene-disease associations</span>
+  <span style="display:inline-flex;align-items:baseline;gap:6px"><strong style="color:var(--color-text-primary);font-weight:500;font-size:14px">130</strong>genes (of 295 mapped)</span>
+  <span style="display:inline-flex;align-items:baseline;gap:6px"><strong style="color:var(--color-text-primary);font-weight:500;font-size:14px">93</strong>distinct diseases</span>
+</div>
+
+<div style="display: flex; gap: 16px; margin-bottom: 8px; font-size: 12px; color: var(--color-text-secondary); flex-wrap: wrap;">
+  <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#D85A30"></span>Cardiovascular / metabolic / immune (spaceflight-relevant)</span>
+  <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#888780"></span>Other</span>
+</div>
+
+<div style="position: relative; width: 100%; height: 580px;">
+  <canvas id="diseaseChart" role="img" aria-label="Horizontal bar chart of top 20 diseases by number of associated genes among mouse-to-human orthologs of OSD-244 common DE genes. Liver disease tops the list with 41 genes, followed by nervous system disease (30), epilepsy (28), hypertension (27), inflammatory bowel disease (22), and diabetes mellitus (19). Cardiovascular, metabolic, and immune-related diseases are highlighted in coral as spaceflight-relevant; others are shown in gray.">Top diseases: liver disease 41, nervous system disease 30, epilepsy 28, hypertension 27, inflammatory bowel disease 22, diabetes mellitus 19, cardiomyopathy 15, depressive disorder 15, asthma 15, coronary artery disease 15.</canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const data = [
+  {disease: 'liver disease',                          n: 41, sf: true},
+  {disease: 'nervous system disease',                 n: 30, sf: false},
+  {disease: 'epilepsy',                               n: 28, sf: false},
+  {disease: 'hypertension',                           n: 27, sf: true},
+  {disease: 'inflammatory bowel disease',             n: 22, sf: true},
+  {disease: 'diabetes mellitus',                      n: 19, sf: true},
+  {disease: 'cardiomyopathy',                         n: 15, sf: true},
+  {disease: 'depressive disorder',                    n: 15, sf: false},
+  {disease: 'asthma',                                 n: 15, sf: true},
+  {disease: 'coronary artery disease',                n: 15, sf: true},
+  {disease: 'dermatitis',                             n: 14, sf: true},
+  {disease: 'rheumatoid arthritis',                   n: 12, sf: true},
+  {disease: 'obesity',                                n: 12, sf: true},
+  {disease: 'otitis media',                           n: 10, sf: false},
+  {disease: 'arteriosclerosis',                       n:  9, sf: true},
+  {disease: 'COPD',                                   n:  8, sf: false},
+  {disease: 'skin benign neoplasm',                   n:  8, sf: false},
+  {disease: 'schizophrenia',                          n:  8, sf: false},
+  {disease: 'migraine',                               n:  8, sf: false},
+  {disease: 'gastroesophageal reflux disease',        n:  8, sf: false},
+];
+
+new Chart(document.getElementById('diseaseChart'), {
+  type: 'bar',
+  data: {
+    labels: data.map(d => d.disease),
+    datasets: [{
+      label: 'Number of associated genes',
+      data: data.map(d => d.n),
+      backgroundColor: data.map(d => d.sf ? '#D85A30' : '#888780'),
+      borderColor: data.map(d => d.sf ? '#993C1D' : '#5F5E5A'),
+      borderWidth: 0.5,
+      borderRadius: 3,
+      barThickness: 18,
+    }],
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.parsed.x} genes`,
+        },
+      },
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        title: { display: true, text: 'Number of associated genes (from 295 mapped orthologs)', font: { size: 12 } },
+        ticks: { font: { size: 11 } },
+        grid: { color: 'rgba(115,114,108,0.12)' },
+      },
+      y: {
+        ticks: { font: { size: 11 }, autoSkip: false },
+        grid: { display: false },
+      },
+    },
+  },
+});
+</script>
