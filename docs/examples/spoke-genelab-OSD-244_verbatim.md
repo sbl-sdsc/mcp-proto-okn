@@ -3305,8 +3305,8 @@ These hub genes inflate counts on multiple disease entries simultaneously.
 - **Gene-symbol joining.** Where the orthology was one-to-many (e.g. mouse `Apol9a/b` → human `APOL1/2/3/4`), each human paralog contributes its own disease associations independently.
 
 **Output files:**
-- `osd244_disease_gene_counts.csv` — 93 diseases with the full gene set
-- `osd244_gene_disease_associations.csv` — 535 long-form gene-disease pairs
+- [osd244_disease_gene_counts.csv](spoke-genelab-OSD-244_outputs/osd244_disease_gene_counts.csv) — 93 diseases with the full gene set
+- [osd244_gene_disease_associations.csv](spoke-genelab-OSD-244_outputs/osd244_gene_disease_associations.csv) — 535 long-form gene-disease pairs
 
 A horizontal bar chart of the top 20 diseases by gene count was rendered inline (cardiovascular / metabolic / immune / inflammatory diseases highlighted in coral as spaceflight-relevant).
 
