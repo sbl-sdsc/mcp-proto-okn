@@ -7,7 +7,7 @@ image:
   repository: ghcr.io/frink-okn/mcp-proto-okn
   pullPolicy: IfNotPresent
   # Defaults to the chart appVersion when blank
-  tag: ""
+  tag: "v0.0.6"
 
 imagePullSecrets: []
 
@@ -87,17 +87,36 @@ ingress:
     enabled: true
     secretName: platform-tls
 
-# ── Gateway API (alternative to Ingress) ─────────────────────────────────────
-# Set ingress.enabled=false and gateway.enabled=true to use Kubernetes Gateway API
+# ── Gateway API (alongside or instead of Ingress) ────────────────────────────
+# Both ingress.enabled and gateway.enabled may be true at the same time so
+# multiple traffic paths can coexist. On GKE the GCPBackendPolicy and
+# HealthCheckPolicy mirror the wobd chart pattern.
 gateway:
   enabled: false
-  # Name of the existing Gateway resource in the same namespace
-  gatewayName: shared-gateway
-  gatewayNamespace: ""   # leave blank for same namespace
+
+  # parentRefs list — references one or more existing Gateway resources.
+  parentRefs:
+    - name: ingress-gateway
+      namespace: ingress
+      # sectionName: https   # optional listener section
+
+  # Hostname matched by the HTTPRoute
   host: platform.example.com
-  tls:
-    enabled: true
-    secretName: platform-tls
+
+  # GKE-only: long-lived backend timeout + graceful drain on rollout
+  gcpBackendPolicy:
+    enabled: false
+    timeoutSec: 600
+    connectionDrainingTimeoutSec: 60
+
+  # GKE-only: explicit LB health check (otherwise GKE infers from readiness)
+  healthCheckPolicy:
+    enabled: false
+    checkIntervalSec: 10
+    timeoutSec: 5
+    healthyThreshold: 2
+    unhealthyThreshold: 2
+    requestPath: /health
 
 # ── Resource requests / limits ────────────────────────────────────────────────
 
@@ -146,7 +165,7 @@ securityContext:
 
 livenessProbe:
   httpGet:
-    path: /mcp
+    path: /health
     port: http
   initialDelaySeconds: 10
   periodSeconds: 30
@@ -155,7 +174,7 @@ livenessProbe:
 
 readinessProbe:
   httpGet:
-    path: /mcp
+    path: /health
     port: http
   initialDelaySeconds: 5
   periodSeconds: 10

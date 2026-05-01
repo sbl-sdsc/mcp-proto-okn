@@ -13,8 +13,8 @@ Mode:      {{ .Values.serverMode }}
   Protocol:  {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}
   URL:       {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}{{ .Values.basePath }}/mcp
 {{- else if .Values.gateway.enabled }}
-  Protocol:  {{ if .Values.gateway.tls.enabled }}https{{ else }}http{{ end }}
-  URL:       {{ if .Values.gateway.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.gateway.host }}{{ .Values.basePath }}/mcp
+  Protocol:  https (TLS terminated at the Gateway)
+  URL:       https://{{ .Values.gateway.host }}{{ .Values.basePath }}/mcp
 {{- else }}
   Ingress/Gateway is disabled.  Port-forward to access the service:
   kubectl port-forward -n {{ .Release.Namespace }} \

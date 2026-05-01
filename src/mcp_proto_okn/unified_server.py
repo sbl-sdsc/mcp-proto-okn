@@ -92,6 +92,22 @@ def parse_args():
     return parser.parse_args()
 
 
+_HEALTH_PATHS = {"/health", "/healthz", "/livez", "/readyz"}
+
+
+def _add_health_routes(app):
+    """Attach unauthenticated liveness/readiness endpoints to a Starlette app."""
+    from starlette.responses import PlainTextResponse
+    from starlette.routing import Route
+
+    async def _ok(_request):
+        return PlainTextResponse("ok")
+
+    for path in _HEALTH_PATHS:
+        app.router.routes.insert(0, Route(path, _ok, methods=["GET"]))
+    return app
+
+
 def _wrap_with_api_key_auth(app):
     """Wrap a Starlette/ASGI app with Bearer-token authentication."""
     api_key = os.environ.get("MCP_PROTO_OKN_API_KEY")
@@ -103,7 +119,7 @@ def _wrap_with_api_key_auth(app):
 
     class APIKeyMiddleware(BaseHTTPMiddleware):
         async def dispatch(self, request, call_next):
-            if request.method == "OPTIONS":
+            if request.method == "OPTIONS" or request.url.path in _HEALTH_PATHS:
                 return await call_next(request)
             auth_header = request.headers.get("Authorization", "")
             if auth_header != f"Bearer {api_key}":
@@ -729,6 +745,7 @@ RENDERING REQUIREMENTS:
         mcp.settings.host = host
         mcp.settings.port = port
         app = mcp.streamable_http_app()
+        app = _add_health_routes(app)
         app = _wrap_with_api_key_auth(app)
         import uvicorn
         print(f"mcp-proto-okn-unified listening on http://{host}:{port}", file=sys.stderr)
