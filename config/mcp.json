@@ -28,6 +28,10 @@
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biohealth/sparql"]
         },
+        "biomarkerkg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/biomarkerkg/sparql"]
+        },
         "climatemodelskg": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/climatemodelskg/sparql"]
@@ -35,6 +39,10 @@
         "dreamkg": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/dreamkg/sparql"]
+        },
+        "evoweb": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/evoweb/sparql"]
         },
         "fiokg": {
             "command": "uvx",
@@ -56,6 +64,10 @@
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nasa-gesdisc-kg/sparql"]
         },
+        "ncipidkg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/ncipidkg/sparql"]
+        },
         "nde": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nde/sparql"]
@@ -63,6 +75,14 @@
         "nikg": {
             "command": "uvx",
             "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/nikg/sparql"]
+        },
+        "oard-kg": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/oard-kg/sparql"]
+        },
+        "pankgraph": {
+            "command": "uvx",
+            "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/pankgraph/sparql"]
         },
         "prokn": {
             "command": "uvx",

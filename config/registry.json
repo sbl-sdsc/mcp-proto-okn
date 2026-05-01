@@ -5,9 +5,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-aopwiki",
     "endpoint_url": "https://frink.apps.renci.org/biobricks-aopwiki/sparql",
     "domain_tags": [
-      "toxicology",
       "biology",
-      "health"
+      "health",
+      "toxicology"
     ],
     "description_summary": "The BioBricks AOP-Wiki knowledge graph serves toxicologists, regulatory scientists, and environmental health researchers by providing structured representations of Adverse Outcome Pathways (AOPs) that link molecular initiating events to adverse health outcomes. This knowledge graph contains 493 AOPs, 1,469 key events, and 2,060 key event relationships, totaling 184,303 triples that capture the mechanistic understanding of chemical toxicity pathways. The dataset integrates chemical entities (including CHEMINF molecular descriptors), biological processes (GO terms), and organism/organ/cell-type contexts, with extensive cross-references to ChEBI, ChEMBL, PubChem, KEGG, and Wikidata through 13,692 exact matches and additional identifier mappings. Licensed under CC-BY-SA-1.0 with regular updates (last modified November 2024), the graph is derived from the collaborative AOP-Wiki project and is accessible via a SPARQL endpoint through FRINK, enabling federated queries for chemical hazard assessment and predictive toxicology applications.",
     "entity_types": {
@@ -55,8 +55,8 @@
       "CAS",
       "ChEBI",
       "ChEMBL",
-      "PubChem",
-      "InChIKey"
+      "InChIKey",
+      "PubChem"
     ],
     "example_queries": [
       "What adverse outcome pathways involve estrogen receptor activation?"
@@ -68,9 +68,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-ice",
     "endpoint_url": "https://frink.apps.renci.org/biobricks-ice/sparql",
     "domain_tags": [
-      "toxicology",
+      "biology",
       "chemistry",
-      "biology"
+      "toxicology"
     ],
     "description_summary": "BioBricks ICE (Integrated Chemical Environment) is an open knowledge graph that serves toxicologists, computational chemists, and environmental health researchers by integrating chemical safety and bioassay data from the EPA's NICEATM ICE database. The graph contains 27.4 million triples describing 206,543 chemical entities linked to over 3 million bioassay measurements across 2,063 standardized assays. Core entities include chemical substances (identified via EPA DSSTox IDs), bioassays (BAO ontology), assay measurements, and mechanistic targets with gene and UMLS identifiers. The graph employs established vocabularies including the BioAssay Ontology (BAO), Chemical Information Ontology (CHEMINF), Semanticscience Integrated Ontology (SIO), and Relation Ontology (RO). External linkages to EPA CompTox Dashboard, NCBI Gene, and UMLS enable cross-database queries. Licensed as public domain (CC0-1.0), the graph supports federation with other toxicology and biomedical knowledge graphs.",
     "entity_types": {
@@ -112,10 +112,10 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
+      "CAS",
       "DTXSID",
-      "NCBI_Gene",
       "InChIKey",
-      "CAS"
+      "NCBI_Gene"
     ],
     "example_queries": [
       "What bioassays are available for a specific chemical?",
@@ -205,8 +205,8 @@
     "endpoint_url": "https://frink.apps.renci.org/biobricks-pubchem-annotations/sparql",
     "domain_tags": [
       "chemistry",
-      "toxicology",
-      "pharmacology"
+      "pharmacology",
+      "toxicology"
     ],
     "description_summary": "BioBricks PubChem Annotations is an open knowledge graph providing structured access to chemical annotations originally sourced from PubChem's Annotations subset, targeting researchers in cheminformatics, toxicology, and environmental health. The graph contains over 10.7 million annotations (87.4 million triples total) describing chemical compounds through text-based annotations including regulatory data, physical properties, biological activities, and hazard information. Each annotation follows the W3C Web Annotation Data Model, linking PubChem compound identifiers to textual annotation bodies covering topics from state-level contaminant limits to chemical synthesis methods. The knowledge graph interoperates with the broader PubChem RDF ecosystem through shared compound URIs in the namespace. Annotations derive from multiple heterogeneous sources with varying licenses, documented in PubChem's source metadata.",
     "entity_types": {
@@ -243,9 +243,9 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "PubChem",
       "InChI",
       "InChIKey",
+      "PubChem",
       "SMILES"
     ],
     "example_queries": []
@@ -256,8 +256,8 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-tox21",
     "endpoint_url": "https://frink.apps.renci.org/biobricks-tox21/sparql",
     "domain_tags": [
-      "toxicology",
-      "chemistry"
+      "chemistry",
+      "toxicology"
     ],
     "description_summary": "BioBricks Tox21 is an open knowledge graph that transforms the Tox21 quantitative high-throughput screening (qHTS) 10K library data into structured, machine-readable RDF format. The source dataset contains over 120 million chemical assay data points across 70+ distinct assays for evaluating potential toxicity of approximately 10,000 diverse chemicals. This knowledge graph represents 8,947 chemical entities with ~27,000 triples, primarily using Chemical Information Ontology (CHEMINF) classes to describe compounds. Each chemical is identified using standardized CAS Registry Numbers through identifiers.org URIs and linked to its Tox21 source data. Developed by Insilica LLC as part of the NSF-funded BioBricks-OKG project (Award #2333728), the graph aims to harmonize chemical safety data for researchers, regulatory agencies, and pharmaceutical companies. The dataset is released under CC0-1.0 (Public Domain) license .",
     "entity_types": {
@@ -284,8 +284,8 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-toxcast",
     "endpoint_url": "https://frink.apps.renci.org/biobricks-toxcast/sparql",
     "domain_tags": [
-      "toxicology",
-      "chemistry"
+      "chemistry",
+      "toxicology"
     ],
     "description_summary": "BioBricks ToxCast is an open knowledge graph for computational toxicology researchers, regulatory scientists, and environmental health professionals seeking standardized access to EPA ToxCast high-throughput screening data. The graph contains 3.34 million bioassay screening results linking 9,542 chemical entities to 2,205 distinct assay endpoints, enabling systematic exploration of chemical-bioactivity relationships across diverse toxicological targets. Each chemical is identified by both EPA DSSTox Substance Identifiers (DTXSID) and InChIKeys, supporting cross-reference to external chemical databases. The knowledge graph employs standardized vocabularies including the BioAssay Ontology (BAO), Chemical Information Ontology (CHEMINF), and Biolink, ensuring semantic interoperability with other toxicology and biomedical knowledge graphs. Data is derived from EPA's public domain ToxCast database and released under CC0-1.0. Users can query the graph via SPARQL at the FRINK infrastructure endpoint to integrate ToxCast screening data with complementary datasets for compound prioritization, adverse outcome pathway analysis, and mechanism-based risk assessment.",
     "entity_types": {
@@ -314,9 +314,9 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
+      "CAS",
       "DTXSID",
-      "InChIKey",
-      "CAS"
+      "InChIKey"
     ],
     "example_queries": [
       "What high-throughput screening results exist for PFAS chemicals?"
@@ -339,12 +339,76 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "MONDO",
       "MeSH",
+      "MONDO",
       "UMLS"
     ],
     "example_queries": [
       "What social determinants are associated with diabetes?"
+    ]
+  },
+  {
+    "name": "biomarkerkg",
+    "display_name": "Biomarkerkg",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/biomarkerkg",
+    "endpoint_url": "https://frink.apps.renci.org/biomarkerkg/sparql",
+    "domain_tags": [
+      "biomarkers",
+      "biomedical",
+      "disease",
+      "phenotypes"
+    ],
+    "description_summary": "The Biomarker Knowledge Graph (Biomarker KG) is a biomedical RDF knowledge graph for organizing biomarker-centered evidence and analysis results. Its schema, reflected in the attached entity file, is grounded in Biolink and VoID terms, with core classes for datasets, studies, diseases, phenotypic features, disease\u2013phenotype associations, entity\u2013disease associations, and statistical analysis outputs such as concept-count and log-odds analysis results. The graph captures not only biomarker-related entities and associations, but also provenance and evidence: studies connect to analysis results, associations link to supporting studies, and results reference supporting datasets, sample sizes, counts, odds ratios, and confidence intervals. Public KG registry information describes BiomarkerKG as a resource integrating biomarker data across anatomical structures, compounds, conditions, roles, and variants to support exploration of biomarker relationships. Together, these design choices make Biomarker KG useful for biomarker discovery, cohort-level evidence review, disease-phenotype interpretation, and downstream graph analytics or machine-learning workflows.",
+    "entity_types": {
+      "classes": [
+        "Dataset",
+        "Concept Count Analysis Result",
+        "Disease",
+        "Disease To Phenotypic Feature Association",
+        "Entity To Disease Association",
+        "Log Odds Analysis Result",
+        "Phenotypic Feature",
+        "Phenotypic Feature To Phenotypic Feature Association",
+        "Study"
+      ],
+      "predicates": [
+        "modified",
+        "last updated on",
+        "version",
+        "distinct objects",
+        "distinct subjects",
+        "properties",
+        "property",
+        "property partition",
+        "triples",
+        "label",
+        "category",
+        "concept count object",
+        "concept count subject",
+        "concept pair count",
+        "dataset count",
+        "has study results",
+        "has supporting studies",
+        "log odds ratio",
+        "log odds ratio 95 ci",
+        "object",
+        "predicate",
+        "subject",
+        "supporting data set",
+        "total sample size"
+      ],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [
+      "Biolink",
+      "HPO",
+      "MONDO",
+      "VoID"
+    ],
+    "example_queries": [
+      "What biomarkers are associated with a specific disease?",
+      "Which disease-phenotype associations have supporting study evidence?",
+      "What log odds ratio evidence supports biomarker-disease associations?"
     ]
   },
   {
@@ -484,8 +548,8 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/dreamkg",
     "endpoint_url": "https://frink.apps.renci.org/dreamkg/sparql",
     "domain_tags": [
-      "social_services",
-      "homelessness"
+      "homelessness",
+      "social_services"
     ],
     "description_summary": "DREAM-KG (Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graph) is an Open Knowledge Network addressing homelessness for case workers, service providers, law enforcement, nonprofits, and people experiencing homelessness. The graph integrates 87 social service organizations with their locations, contact information, and 87 distinct service offerings, structured using Schema.org vocabulary for interoperability. It contains 32,460 triples across 1,764 entities, primarily modeling service availability (609 opening hours specifications), service categories (157 CategoryCodes), and target audiences (81 audience types). Data is extensively linked to Aunt Bertha's social services directory (1,392 external references) and employs W3C PROV ontology for provenance tracking of all entities through transformation activities. Services are geocoded with latitude/longitude, categorized by populations served (abuse survivors, adults, teens, African American communities).",
     "entity_types": {
@@ -549,14 +613,45 @@
     ]
   },
   {
+    "name": "evoweb",
+    "display_name": "Evoweb",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/evoweb",
+    "endpoint_url": "https://frink.apps.renci.org/evoweb/sparql",
+    "domain_tags": [
+      "comparative_genomics",
+      "microbial_systems_biology",
+      "protein_function",
+      "protein_interactions"
+    ],
+    "description_summary": "EvoWeb is an Open Knowledge Network knowledge graph for exploring co-evolving genes and the functional relationships among their protein products. Developed in connection with NIAID data resources and building on the EvoWeaver project, EvoWeb represents weighted protein-protein functional relations reconstructed from prior knowledge encoded in genomic sequences. The graph is designed to help researchers identify hypothetical proteins that may participate in protein complexes, linked biochemical pathway steps, or broader systems of shared evolutionary history. Its registry description highlights twelve coevolutionary signals that quantify how strongly genes appear to have evolved together, extending beyond pairwise protein analysis toward network-level interpretation. The attached entity file indicates that the KG uses lightweight semantic web structures, including SKOS collections and membership relations plus RDFS labels, to organize and describe graph content. Overall, EvoWeb supports comparative genomics, microbial systems biology, and hypothesis generation about gene function, protein interactions, and pathway organization.",
+    "entity_types": {
+      "classes": [
+        "Collection"
+      ],
+      "predicates": [
+        "member",
+        "label"
+      ],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [
+      "NCBI_Protein",
+      "RefSeq"
+    ],
+    "example_queries": [
+      "What proteins are members of a co-evolving protein group?",
+      "What co-evolving genes may participate in shared protein complexes or pathways?"
+    ]
+  },
+  {
     "name": "fiokg",
     "display_name": "Fiokg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/fiokg",
     "endpoint_url": "https://frink.apps.renci.org/fiokg/sparql",
     "domain_tags": [
       "environment",
-      "regulatory",
-      "industry"
+      "industry",
+      "regulatory"
     ],
     "description_summary": "The FIO KG  is a core component of the SAWGraph (Safe Agricultural Products and Water Graph) project, an NSF-funded Proto-OKN initiative to monitor and trace PFAS and other contaminants in the nation's food and water systems. This knowledge graph integrates comprehensive facility (i.e. industrial, federal, and utility facilities) and industry classification data for the coterminous United States (48 states) from EPA's Facility Registry Service (FRS), which provides an integrated source of environmental information about over 826,000 regulated facilities across air, water, and waste programs. The graph is built on top of the Facilities and Industries Ontology (FIO) that offers hierarchically structured NAICS industries and generalized links to facilities. The FRS KG currently contains 2.6 million entities and over 10 million triples, structuring data around facilities, environmental records (monitoring, permits, enforcement), and NAICS industry codes. Each facility is spatially indexed to S2 cells (Level 13; from the Spatial KG) and Level 3 administrative regions (county subdivisions; using DataCommons URIs) using KnowWhereGraph\u2019s spatial relations and linked to environmental interest types, compliance systems, and temporal tracking records. The dataset employs standard vocabularies including Dublin Core, PROV-O, GeoSPARQL, and Schema.org. The graph supports SPARQL queries such as for environmental compliance research, contaminant pathway analysis, and facility-industry profiling.",
     "entity_types": {
@@ -672,9 +767,9 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
+      "FIPS",
       "NAICS",
-      "S2Cell",
-      "FIPS"
+      "S2Cell"
     ],
     "example_queries": [
       "What regulated facilities exist in a county?"
@@ -686,8 +781,8 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/gene-expression-atlas-okn",
     "endpoint_url": "https://frink.apps.renci.org/gene-expression-atlas-okn/sparql",
     "domain_tags": [
-      "genomics",
       "biology",
+      "genomics",
       "health"
     ],
     "description_summary": "The Gene Expression Atlas Open Knowledge Network (gene-expression-atlas-okn) is a semantic knowledge graph containing selected studies from the EMBL-EBI Gene Expression Atlas, a curated database of gene expression experiments. This knowledge graph integrates 243 studies encompassing 797 assays that profile expression patterns across 152,879 genes. The data captures differential gene expression measurements with statistical metrics (log2 fold changes, adjusted p-values) linked to diverse biological contexts including anatomical entities, cell types, diseases, developmental life stages, and biological sex categories.\n\nBuilt using Biolink Model ontology standards, the knowledge graph connects genes to biological processes, molecular pathways, and protein domains through expression associations. Each study includes comprehensive metadata such as experimental factors, technology platforms, PubMed references, and contrast comparisons between test and reference groups. This structured representation enables systematic exploration of how gene expression varies across tissues, diseases, developmental stages, and experimental conditions, supporting integrative genomics research and cross-study meta-analyses.",
@@ -723,12 +818,12 @@
       "has_edge_properties": true
     },
     "identifier_namespaces": [
-      "NCBI_Gene",
+      "CL",
       "Ensembl",
       "GeneSymbol",
-      "UBERON",
-      "CL",
-      "GO"
+      "GO",
+      "NCBI_Gene",
+      "UBERON"
     ],
     "example_queries": [
       "What genes are differentially expressed in breast cancer?",
@@ -744,9 +839,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/geoconnex",
     "endpoint_url": "https://frink.apps.renci.org/geoconnex/sparql",
     "domain_tags": [
-      "hydrology",
+      "environment",
       "geospatial",
-      "environment"
+      "hydrology"
     ],
     "description_summary": "Geoconnex is an open, community-contribution knowledge graph designed to link hydrologic features across the United States, making water data easily discoverable, accessible, and usable for researchers, agencies, and water managers. The graph contains over 19.2 million triples describing 1.6 million hydrologic locations including monitoring sites, dams, watersheds, stream networks, and water bodies, with extensive geospatial coverage through 763,000 point geometries and 320,000 polygon features. Built on persistent identifiers and published in accordance with Spatial Data on the Web best practices, Geoconnex harvests JSON-LD metadata from water data providers using common ontologies including schema.org for general metadata, HY-Features for hydrology, and SOSA/SSN for sensor observations. The system enables federation across organizational boundaries by maintaining persistent URIs at that prevent link rot while allowing data publishers to update their resources.",
     "entity_types": {
@@ -885,8 +980,8 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/hydrologykg",
     "endpoint_url": "https://frink.apps.renci.org/hydrologykg/sparql",
     "domain_tags": [
-      "hydrology",
       "environment",
+      "hydrology",
       "water_quality"
     ],
     "description_summary": "The Hydrology KG is part of the Safe Agricultural Products and Water Graph (SAWGraph) that facilities environmental regulators, water safety officials, and PFAS researchers to trace pollutant pathways, identify upstream contamination sources, assess downstream impacts from point sources, and determine which water wells are hydrologically connected to contaminated sites. \nThe Hydrology knowledge graph integrates surface water features including stream reaches, watersheds and waterbodies (e.g. lakes), groundwater features like aquifers and wells, and hydrological connectivity data to support contaminant tracing and water quality analysis. It is built from USGS\u2019s National Hydrography Dataset (NHDPlus) and state well and aquifer datasets. \nAll features are spatially integrated with Level 13 S2 cells and Level 3 administrative regions using KnowWhereGraph topological relations and reuse of geoconnex URIs allows linking to additional details.",
@@ -1041,8 +1136,8 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "NHDPlus_COMID",
       "FIPS",
+      "NHDPlus_COMID",
       "S2Cell"
     ],
     "example_queries": [
@@ -1108,14 +1203,78 @@
     "example_queries": []
   },
   {
+    "name": "ncipidkg",
+    "display_name": "Ncipidkg",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/ncipidkg",
+    "endpoint_url": "https://frink.apps.renci.org/ncipidkg/sparql",
+    "domain_tags": [
+      "biology",
+      "biomedical",
+      "cancer",
+      "pathways"
+    ],
+    "description_summary": "The NCI-PID 2.0 Knowledge Graph (ncipidkg) is an RDF representation of the National Cancer Institute Pathway Interaction Database networks, a curated resource describing human molecular signaling, regulatory events, and cellular processes with strong relevance to cancer biology. It exposes pathway knowledge as interoperable triples centered on proteins, molecular interactions, and regulatory relationships. The attached entity model shows that ncipidkg uses standard RDF and VoID structures for statements and dataset statistics, while representing biological predicates such as regulates, molecularly interacts with, directly regulates, directly positively regulates, and directly negatively regulates. Reified RDF statements carry edge-level metadata, including evidence counts, evidence URLs, and biological process or post-translational-modification types, often linked to Gene Ontology terms. By converting NCI-PID 2.0 networks into a queryable knowledge graph enriched with INDRA/NCI-PID evidence metadata, ncipidkg supports pathway exploration, provenance-aware analysis, and integration with broader biomedical open knowledge networks through SPARQL and linked-data access.",
+    "entity_types": {
+      "classes": [
+        "Dataset",
+        "protein",
+        "Statement"
+      ],
+      "predicates": [
+        "evidence count",
+        "evidence URL",
+        "process type",
+        "datatype",
+        "datatype partition",
+        "object class partition",
+        "regulates",
+        "molecularly interacts with",
+        "directly regulates",
+        "directly positively regulates",
+        "directly negatively regulates",
+        "modified",
+        "last updated on",
+        "version",
+        "class",
+        "class partition",
+        "distinct objects",
+        "distinct subjects",
+        "entities",
+        "properties",
+        "property",
+        "property partition",
+        "triples",
+        "object",
+        "predicate",
+        "subject",
+        "label",
+        "same as"
+      ],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [
+      "GO",
+      "INDRA",
+      "NCI-PID",
+      "RDF",
+      "RO",
+      "VoID"
+    ],
+    "example_queries": [
+      "What proteins directly regulate EGFR in NCI-PID pathways?",
+      "Which molecular interactions have evidence counts and evidence URLs?",
+      "What pathway relationships are annotated with Gene Ontology process or post-translational-modification types?"
+    ]
+  },
+  {
     "name": "nde",
     "display_name": "Nde",
     "named_graph_uri": "https://purl.org/okn/frink/kg/nde",
     "endpoint_url": "https://frink.apps.renci.org/nde/sparql",
     "domain_tags": [
-      "infectious_disease",
+      "data_discovery",
       "health",
-      "data_discovery"
+      "infectious_disease"
     ],
     "description_summary": "The NIAID Data Ecosystem (NDE) Knowledge Graph provides structured metadata for infectious and immune-mediated disease (IID) research resources. Developed by the National Institute of Allergy and Infectious Diseases in collaboration with Scripps Research, this knowledge graph powers the NIAID Data Ecosystem Discovery Portal (https://data.niaid.nih.gov), which aggregates millions of datasets from over 70 sources including NIAID-funded repositories and globally-relevant IID repositories.\n\nThe knowledge graph organizes metadata using Schema.org vocabulary, enabling unified search across diverse biomedical data types including -omics data, clinical studies, epidemiological data, pathogen-host interactions, flow cytometry, and imaging datasets. It connects datasets to their authors, funding sources, research projects, publications, and key disease and pathogen terms, facilitating discovery of resources related to COVID-19, HIV, malaria, tuberculosis, and other infectious diseases. By harmonizing heterogeneous metadata formats and providing both user-friendly search interfaces and programmatic API access, the NDE knowledge graph accelerates IID research and maximizes the impact of publicly-funded scientific data.",
     "entity_types": {
@@ -1174,9 +1333,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/nikg",
     "endpoint_url": "https://frink.apps.renci.org/nikg/sparql",
     "domain_tags": [
+      "geospatial",
       "public_safety",
-      "urban_planning",
-      "geospatial"
+      "urban_planning"
     ],
     "description_summary": "The Neighborhood Information Knowledge Graph (NIKG) is a knowledge graph warehouse designed for researchers, urban planners, and public health officials analyzing neighborhood-level data. It integrates incident records (particularly crime and safety events), census tract boundaries, and geospatial location data from Philadelphia and potentially other urban areas. The graph contains structured entities including Incidents with attributes such as officer involvement, fatality status, offender demographics (race, sex, age), and precise geospatial coordinates represented as WKT geometries via GeoSPARQL. NIKG links to standard geospatial vocabularies (OGC GeoSPARQL, sf:Point) and employs Philadelphia metadata schemas for domain-specific properties.",
     "entity_types": {
@@ -1210,105 +1369,362 @@
     ]
   },
   {
+    "name": "oard-kg",
+    "display_name": "Oard Kg",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/oard-kg",
+    "endpoint_url": "https://frink.apps.renci.org/oard-kg/sparql",
+    "domain_tags": [
+      "clinical_data",
+      "health",
+      "phenotypes",
+      "rare_disease"
+    ],
+    "description_summary": "The Open Annotations for Rare Diseases (OARD) Knowledge Graph is an RDF knowledge graph that represents clinical associations between rare diseases and phenotypes derived from electronic health records. It organizes rare disease and phenotypic feature entities using Biolink classes such as Disease, PhenotypicFeature, Study, Dataset, and disease\u2013phenotype or phenotype\u2013phenotype association classes. The graph also captures supporting studies and evidence-bearing analysis results, including concept counts, dataset counts, log odds ratios, confidence intervals, and total sample sizes, enabling users to inspect both associations and their statistical support. OARD builds on real-world data approaches described for Open Annotation for Rare Diseases, where ontology mapping and natural language processing were applied to billing codes, laboratory tests, and large collections of clinical narratives to identify rare-disease-related phenotypes. By exposing these annotations through FRINK SPARQL and linked-data services, OARD-KG supports computational rare disease research, phenotype-driven diagnosis, knowledgebase enrichment, and reusable evidence synthesis from clinical data.",
+    "entity_types": {
+      "classes": [
+        "Dataset",
+        "Concept Count Analysis Result",
+        "Disease",
+        "Disease To Phenotypic Feature Association",
+        "Entity To Disease Association",
+        "Log Odds Analysis Result",
+        "Phenotypic Feature",
+        "Phenotypic Feature To Phenotypic Feature Association",
+        "Study"
+      ],
+      "predicates": [
+        "Date Modified",
+        "last Updated On",
+        "version",
+        "distinct Objects",
+        "distinct Subjects",
+        "properties",
+        "property",
+        "property Partition",
+        "triples",
+        "label",
+        "category",
+        "concept count object",
+        "concept count subject",
+        "concept pair count",
+        "dataset count",
+        "has study results",
+        "has supporting studies",
+        "log odds ratio",
+        "log odds ratio 95 ci",
+        "object",
+        "predicate",
+        "subject",
+        "supporting data set",
+        "total sample size"
+      ],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [
+      "HPO",
+      "MONDO",
+      "UMLS"
+    ],
+    "example_queries": [
+      "What phenotypes are associated with a specific rare disease?",
+      "Which rare disease associations have supporting studies with log odds ratio evidence?",
+      "What phenotype-phenotype associations are supported by clinical data?"
+    ]
+  },
+  {
+    "name": "pankgraph",
+    "display_name": "Pankgraph",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/pankgraph",
+    "endpoint_url": "https://frink.apps.renci.org/pankgraph/sparql",
+    "domain_tags": [
+      "biomedical",
+      "diabetes",
+      "genomics",
+      "pancreas",
+      "regulatory_genomics"
+    ],
+    "description_summary": "PanKgraph is the PanKbase Knowledge Graph, a biomedical KG focused on the human pancreas and diabetes research. It represents PanKbase\u2019s goal of integrating diverse type 1 diabetes datasets with expert-curated knowledge in a centralized, open-source and computation-ready resource. The attached entity model shows a Biolink- and ontology-aligned graph with 14 classes and 117 predicates, including genes, diseases, cells, cell lines, articles, Gene Ontology terms, SNPs, SNVs, open chromatin regions, datasets and RDF statements. Its relationships and edge attributes support biological interpretation across gene expression, regulatory genomics, genetic variation, fine-mapping and QTL evidence, gene-condition associations, gene-gene interactions, publication provenance and dataset metadata. PanKgraph is designed to connect previously disjointed entities such as genes, SNPs and pancreatic eQTLs, helping researchers explore mechanisms of diabetes pathogenesis. As part of the broader PanKbase/HIRN ecosystem, it supports FAIR, reproducible, collaborative analysis of pancreas multi-omics, donor-derived data and disease-relevant evidence for biomarker and therapeutic target discovery.",
+    "entity_types": {
+      "classes": [
+        "SNP",
+        "SNV",
+        "open chromatin region",
+        "Dataset",
+        "Statement",
+        "type 1 diabetes",
+        "gene ontology",
+        "Gene Ontology term",
+        "Article",
+        "Cell",
+        "Cell line",
+        "Disease",
+        "Gene",
+        "Ontology class"
+      ],
+      "predicates": [
+        "datatype",
+        "datatype partition",
+        "object class partition",
+        "modified",
+        "source",
+        "title",
+        "last updated on",
+        "version",
+        "class",
+        "class partition",
+        "distinct objects",
+        "distinct subjects",
+        "entities",
+        "properties",
+        "property",
+        "property partition",
+        "triples",
+        "object",
+        "predicate",
+        "subject",
+        "comment",
+        "label",
+        "see Also",
+        "AAB-positive OCR Gene Activity Score mean",
+        "AAB-positive OCR Gene Activity Score median",
+        "Adjusted P value",
+        "All expression 25 quantile",
+        "All expression 75 quantile",
+        "All expression max",
+        "All expression mean",
+        "All expression median",
+        "All expression min",
+        "Coding Variant Evidence",
+        "Confidence Level",
+        "Entrez ID A",
+        "Entrez ID B",
+        "Epigenome Evidence",
+        "GC percentage",
+        "Log2Fold Change",
+        "Model System Evidence",
+        "Non-diabetic expression 25 quantile",
+        "Non-diabetic expression 75 quantile",
+        "Non-diabetic expression max",
+        "Non-diabetic expression mean",
+        "Non-diabetic expression median",
+        "Non-diabetic expression min",
+        "OCR Gene Activity Score mean",
+        "OCR Gene Activity Score median",
+        "P value",
+        "Qtl Evidence",
+        "Research Method",
+        "SE of Log2Fold Change",
+        "Type 1Diabetic expression 25 quantile",
+        "Type 1Diabetic expression 75 quantile",
+        "Type 1Diabetic expression max",
+        "Type 1Diabetic expression mean",
+        "Type 1Diabetic expression median",
+        "Type 1Diabetic expression min",
+        "Up Or Down Regulation",
+        "author",
+        "biogrid id interactor a",
+        "biogrid id interactor b",
+        "biogrid interaction id",
+        "chr",
+        "consortium",
+        "credible set",
+        "credibleset",
+        "data source url",
+        "data version",
+        "directly related term",
+        "effect allele",
+        "end loc",
+        "experimental system",
+        "experimental system type",
+        "gencode annotation",
+        "gene name",
+        "id version",
+        "lbf",
+        "modification",
+        "n snp",
+        "nominal p",
+        "non diabetic OCR Gene Activity Score mean",
+        "non diabetic OCR Gene Activity Score median",
+        "official symbol interactor a",
+        "official symbol interactor b",
+        "organism id interactor a",
+        "organism id interactor b",
+        "other allele",
+        "pip",
+        "pmcid",
+        "pubdate",
+        "publication source",
+        "pubmedid",
+        "purity",
+        "qualifications",
+        "score",
+        "slope",
+        "start loc",
+        "strand",
+        "throughput",
+        "tissue id",
+        "tissue name",
+        "type",
+        "type 1 diabetes OCR Gene Activity Score mean",
+        "type 1 diabetes OCR Gene Activity Score median",
+        "type 2 diabetes OCR Gene Activity Score mean",
+        "type 2 diabetes OCR Gene Activity Score median",
+        "abstract",
+        "affects expression of",
+        "associated with",
+        "expressed in",
+        "functional association",
+        "gene associated with condition",
+        "interacts with",
+        "located in",
+        "related to",
+        "synonym"
+      ],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [
+      "BioSample",
+      "dbSNP",
+      "Ensembl",
+      "GEO",
+      "GO",
+      "HGNC",
+      "NCBI_Gene",
+      "PanKbase",
+      "PubMed",
+      "SO"
+    ],
+    "example_queries": [
+      "What genes are associated with type 1 diabetes in pancreatic islets?",
+      "Which SNPs or SNVs are linked to type 1 diabetes genes?",
+      "What eQTL or fine-mapping evidence connects variants to pancreatic gene expression?"
+    ]
+  },
+  {
     "name": "prokn",
     "display_name": "Prokn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/prokn",
     "endpoint_url": "https://frink.apps.renci.org/prokn/sparql",
     "domain_tags": [
-      "protein-centric data",
-      "post-translational modifications",
-      "genetic variants",
-      "pathways"
+      "biomedical",
+      "drug_discovery",
+      "genetic_variants",
+      "pathways",
+      "post_translational_modification",
+      "precision_medicine",
+      "protein_knowledge"
     ],
     "description_summary": "The Protein Knowledge Network (ProKN), developed by the University of Delaware as part of the NIH Common Fund Data Ecosystem (CFDE), is an integrative bioinformatics platform designed to harmonize and explore complex relationships within protein-related data. By utilizing a knowledge graph approach, ProKN links proteins with their post-translational modifications, genetic variants, and functional pathways, offering specialized tools like KSMoFinder for predicting kinase-substrate interactions, as well as services for ID mapping, variant mapping, and protein embeddings. ProKN supports the FAIR data enabling researchers to bridge disparate datasets and generate new hypotheses for precision medicine and drug discovery.",
     "entity_types": {
       "classes": [
-        "Protein",
-        "Gene",
-        "Taxon",
-        "Organism",
-        "Disease",
+        "FlyBase controlled vocabulary term",
+        "Single Cell RNA Sequencing",
         "Pathway",
-        "Annotation",
-        "Sequence",
-        "Citation",
-        "Enzyme",
-        "Subcellular Location",
-        "Structure Resource",
-        "Reviewed",
-        "PTM Annotation",
+        "Receptor",
+        "Amino Acid",
+        "Drug or Chemical",
+        "Tissue",
+        "Patient",
+        "Cell Line",
+        "assertion",
+        "natural variant site",
+        "anatomical entity",
+        "experimental condition",
+        "Disease",
+        "Gene",
         "Natural Variant Annotation",
-        "Gene (Biolink)",
-        "Protein (Biolink)",
-        "Disease (Biolink)",
-        "Drug (Biolink)",
-        "Biological Process",
-        "Molecular Activity",
-        "Cellular Component",
-        "Pathway (Biolink)",
-        "Sequence Variant",
-        "Anatomical Entity",
-        "Cell",
-        "Chemical Entity",
-        "Life Stage",
-        "Environmental Feature",
-        "Assay",
-        "Biological Process (GO)",
-        "Molecular Function (GO)",
-        "Cellular Component (GO)",
-        "Anatomical Entity (UBERON)",
-        "Sequence Feature (SO)",
-        "Drug/Chemical (NCIT)",
-        "Pathway (NCIT)",
-        "Receptor (NCIT)",
-        "FlyBase CV Term",
-        "Chemical Entity (CHEMINF)",
-        "Adverse Outcome Pathway",
-        "Key Event",
-        "Key Event Relationship",
-        "Cell Type Context",
-        "Organ Context",
-        "MeSH Descriptor",
-        "MeSH Concept",
-        "MeSH Term",
-        "MeSH Qualifier",
-        "MeSH Supplementary Concept",
-        "MeSH Tree Number",
-        "Drug (schema.org)",
-        "Defined Term",
-        "Phenotype (EFO)",
-        "Bioassay",
-        "Compound (BAO)",
-        "Target (BAO)",
-        "GO Term (ProKN)",
+        "PTM Annotation",
+        "Protein",
+        "Site Annotation",
+        "Subcellular Location",
+        "citation",
+        "Dataset",
+        "Drug",
+        "Molecular Entity",
+        "finding site",
+        "target",
+        "compound",
+        "phenotype",
+        "Statement",
+        "cell line",
+        "Cell Medoid",
+        "GO Term",
         "GTEx Expression",
+        "Antibody",
         "Experiment",
-        "Manufacturer",
-        "Manufacturing Process Capability",
-        "Material Processing Capability",
-        "Certificate",
-        "City",
-        "Country",
-        "Geopolitical Site"
+        "Image",
+        "Class",
+        "Negative Property Assertion"
       ],
       "predicates": [
+        "annotation",
+        "domain",
         "EC number",
-        "Gene identifier",
-        "Amino acid sequence variation",
-        "Protein modification",
-        "Protein variants",
+        "database name",
+        "amino acid sequence variation",
+        "protein modification",
+        "protein variants",
+        "ENSGLOSSARY 00000950000095",
+        "datatype",
+        "datatype partition",
+        "object class partition",
+        "measurement datum",
         "result value",
+        "has unit",
+        "has value",
+        "00000000000460005",
+        "BCGO 0000177",
         "part of",
+        "CLO 0037210",
         "used in",
-        "has database cross-reference",
+        "GENO 0000382",
+        "kinetochore",
+        "nucleoplasm",
+        "chromosome",
+        "nucleolus",
+        "centrosome",
+        "cytosol",
+        "plasma membrane",
+        "aggresome",
+        "midbody",
+        "vesicle",
+        "cleavage furrow",
+        "centriolar satellite",
+        "mitotic spindle",
+        "MAXO 0001495",
         "feature type",
+        "MI 0118",
+        "MI 0407",
+        "MI 2025",
         "up-regulates activity",
         "down-regulates activity",
+        "NCBITaxon species",
+        "NCIT C13258",
+        "NCIT C13344",
+        "NCIT C13430",
+        "NCIT C157517",
         "Gene Name",
+        "NCIT C173544",
+        "NCIT C17564",
+        "NCIT C210455",
         "Accession Number",
+        "NCIT C25425",
+        "NCIT C2991",
+        "NCIT C41095",
+        "NCIT C41184",
+        "NCIT C42581",
         "Gene Symbol",
-        "Efficacy Study",
+        "NCIT C47803",
+        "NCIT C48662",
+        "NCIT C68631",
+        "NCIT C82562",
+        "NCIT C93703",
+        "NCIT C94578",
+        "OBI 0000175",
+        "OMIT 0012292",
         "acronym",
+        "increased",
+        "decreased",
         "participates in",
         "has component",
         "expressed in",
@@ -1321,104 +1737,168 @@
         "enables",
         "involved in",
         "causally related to",
-        "is active in",
+        "causally upstream of",
         "interacts with",
+        "is active in",
         "molecularly interacts with",
-        "phosphorylates",
         "has evidence",
         "causally influences",
         "axiom has evidence",
         "produces",
         "correlated with condition",
-        "acts upstream of or within positive effect",
-        "acts upstream of or within negative effect",
-        "acts upstream of positive effect",
-        "acts upstream of negative effect",
+        "acts upstream of or within, positive effect",
+        "acts upstream of or within, negative effect",
+        "acts upstream of, positive effect",
+        "acts upstream of, negative effect",
+        "assertion",
+        "has evidence line",
+        "sequence variant",
+        "variant allele",
+        "related to",
+        "has database cross-reference",
         "date",
         "description",
         "identifier",
+        "modified",
         "source",
         "type",
         "PubMed ID",
-        "activity",
+        "last Updated On",
+        "version",
+        "is Cited By",
         "Alternative Sequence Annotation",
-        "annotation",
-        "category",
-        "domain",
+        "Molecule",
+        "Site Annotation",
+        "activity",
+        "citation",
+        "disease",
         "length",
         "MD5 checksum",
         "mnemonic",
-        "modification",
-        "Molecule",
+        "negative",
         "organism",
-        "part of (UniProt)",
         "partOf",
         "position",
         "scientific name",
-        "Sequence Annotation",
         "sequence",
-        "Site Annotation",
-        "source (UniProt)",
         "taxon",
         "VariO term",
-        "version",
+        "class",
+        "class partition",
+        "distinct objects",
+        "distinct subjects",
+        "entities",
+        "properties",
+        "property",
+        "property partition",
+        "triples",
         "taxon ID",
+        "Molecular Entity",
         "additional type",
-        "description (schema.org)",
+        "assesses",
+        "category",
+        "conditions of access",
         "domain includes",
-        "identifier (schema.org)",
         "name",
         "provider",
         "range includes",
-        "InChI Key",
         "SMILES",
-        "has value",
+        "status",
+        "target",
+        "InChI Key",
+        "SIO 000202",
+        "SIO 000254",
+        "SIO 000396",
         "encodes",
         "gene product of",
         "degree of involvement",
+        "finding site",
         "has assay result",
+        "count",
         "evidence",
-        "has alternative ID",
-        "has exact synonym",
         "has OBO namespace",
+        "object",
+        "predicate",
+        "subject",
         "comment",
         "is defined by",
         "label",
         "see also",
         "subclass of",
         "sub-property of",
+        "close match",
         "exact match",
+        "used",
         "was attributed to",
+        "oral",
+        "actively involved in",
         "affected by",
         "associated with",
+        "black box warning",
         "catalyzes",
+        "ChEMBL availability type",
+        "ChEMBL natural product",
+        "has sequence location",
         "has sequence variant",
         "homologous to",
+        "id",
         "provided by",
         "similar to",
-        "treats",
-        "Delta Log2 Ratio",
+        "start coordinate",
+        "structure type",
+        "target for",
+        "therapeutic response",
+        "InChI Key string",
+        "InChI string",
+        "Heart",
+        "Liver",
+        "Proteins",
+        "Kidney",
+        "Protein Isoforms",
+        "Protein Interaction Maps",
+        "High-Throughput Screening Assays",
+        "Has marker gene",
         "Has marker gene in heart",
         "Has marker gene in kidney",
         "Has marker gene in liver",
+        "Delta Log2 Ratio",
+        "Higher Level In",
+        "Is Top Prediction",
         "Log2 Ratio",
+        "Recommends Therapy",
+        "Signed Log10 P-Value",
+        "Species Group Flag",
+        "Top Class",
+        "Top Class Name",
+        "UMAP X",
+        "UMAP Y",
+        "Phase",
+        "Treatment",
+        "Well",
+        "plate",
+        "rating",
+        "reference",
+        "annotated property",
         "equivalent property"
       ],
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "PubMed",
-      "NCIT",
-      "UNIPROT",
-      "SMILES",
+      "BAO",
+      "EC_Number",
+      "Ensembl",
+      "GO",
       "InChIKey",
-      "TAXON",
-      "EC Number"
+      "NCBI_Taxon",
+      "NCIT",
+      "PubMed",
+      "SMILES",
+      "UniProt"
     ],
     "example_queries": [
-      "Find Properties and Relationships Associated with a Specific Gene(e.g., APOE)",
-      "Find protein kinases",
-      "Find Properties and Relationships Associated with a Specific Protein(e.g., APOE)"
+      "What post-translational modification annotations are available for a specific protein such as APOE?",
+      "Which protein kinases or kinase-substrate relationships are connected to a protein of interest?",
+      "What genetic variants, pathways, or disease annotations are associated with a UniProt protein?"
     ]
   },
   {
@@ -1427,9 +1907,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/ruralkg",
     "endpoint_url": "https://frink.apps.renci.org/ruralkg/sparql",
     "domain_tags": [
-      "rural_health",
+      "criminal_justice",
       "health",
-      "criminal_justice"
+      "rural_health"
     ],
     "description_summary": "The Rural Resilience Knowledge Graph (RuralKG) is a cross-domain semantic resource designed for researchers, policymakers, and public health professionals studying health disparities and justice outcomes in rural America. It integrates substance abuse data from the National Survey on Drug Use and Health (NSDUH), criminal justice incidents from the National Incident-Based Reporting System (NIBRS), mental health treatment provider locations, and geospatial administrative boundaries spanning 56 states/territories, 3,253 counties, and 31,120 cities. Each county is linked to USDA Rural-Urban Continuum Codes (RUCC) to facilitate rural-urban comparative analyses. The graph contains 815,852 triples describing 67,191 entities across 16 classes, with rich connections between treatment providers (9,037) and 176 mental health services. RuralKG uses a native ontology (sail.ua.edu/ruralkg) and provides standard SPARQL access for federated querying, supporting interdisciplinary research on rural health equity, substance abuse patterns, and justice system interactions.",
     "entity_types": {
@@ -1510,10 +1990,10 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/sawgraph",
     "endpoint_url": "https://frink.apps.renci.org/sawgraph/sparql",
     "domain_tags": [
+      "environment",
       "food_safety",
-      "water_quality",
       "PFAS",
-      "environment"
+      "water_quality"
     ],
     "description_summary": "The Safe Agricultural Products and Water Graph (SAWGraph) is an open knowledge network designed for environmental health researchers, regulatory agencies, and public health officials to help track and monitor per- and polyfluoroalkyl substances (PFAS) and other contaminants in food and water systems. \nThe SAWGraph PFAS KG employs the ContaminOSO ontology (coso:) for standardized contamination modeling to encode the sampled features (e.g. wells, water bodies, facilities, fields), environmental media (e.g. groundwater, surface water, waste water, soil, animal or plant tissue), sample locations (Level 13 S2 cells and Level 3 administrative regions), sample type classification (based on FOODON categories like meat, dairy, produce, and seafood and NCBITaxon organisms), and tested chemical (DSSTox Substance IDs (DTXSID) and CAS numbers). Observations include measurement values, detection limits, lab qualifiers, and validation levels. Currently, the graph includes data from the national WaterQualityPortal (WQP) dataset and select state datasets, in particular from Maine's EGAD drinking water monitoring program.",
     "entity_types": {
@@ -1758,8 +2238,8 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "CVE",
-      "CPE"
+      "CPE",
+      "CVE"
     ],
     "example_queries": [
       "What vulnerabilities affect a Python package?"
@@ -1772,8 +2252,8 @@
     "endpoint_url": "https://frink.apps.renci.org/sockg/sparql",
     "domain_tags": [
       "agriculture",
-      "soil_science",
-      "climate"
+      "climate",
+      "soil_science"
     ],
     "description_summary": "The Soil Organic Carbon Knowledge Graph (SOCKG) enhances robust soil carbon modeling, which is crucial for voluntary carbon markets. These markets create incentives for climate-friendly practices by encouraging the retention of carbon in soil, reducing atmospheric carbon levels. Industry sectors, like energy and transportation, purchase carbon credits to offset unavoidable emissions, while farmers and land managers are rewarded for adopting practices that increase soil organic carbon (SOC). For these markets to function effectively, it is essential to have advanced soil carbon modeling technologies that accurately measure SOC content, predict changes, and link those changes to specific agricultural practices. High-quality data is central to this process. By integrating siloed data into a cohesive knowledge graph, linking it to broader datasets, and establishing infrastructure for its sustainability, SOCKG can play a transformative role in enabling and accelerating the growth of this emerging market.",
     "entity_types": {
@@ -2005,8 +2485,8 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/spatialkg",
     "endpoint_url": "https://frink.apps.renci.org/spatialkg/sparql",
     "domain_tags": [
-      "geospatial",
-      "administrative_boundaries"
+      "administrative_boundaries",
+      "geospatial"
     ],
     "description_summary": "The SAWGraph Spatial KG is a large-scale geospatial knowledge graph developed by the SAWGraph project (funded by NSF award #2333782) for researchers and practitioners working with place-based data and spatial analytics. It supports spatial reasoning, place-based linkage, and geographic data integration.\nThe graph covers the entire 48 contiguous states in the U.S. and contains 756.9 million triples describing 16.8 million spatial entities, including 7.4 million S2 cells (Level 13 discretization) and hierarchical administrative regions across three levels: Level 1 (102 states), Level 2 (6,228 counties), Level 3 (35,458 county subdivisions such as towns and townships). The administrative entities are hierarchically linked as well as spatially integrated with the Level 13 S2 cells using the spatial:connectedTo relation. The knowledge graph leverages the KWG ontology and implements OGC GeoSPARQL standards for interoperability with other geospatial datasets.",
     "entity_types": {
@@ -2083,8 +2563,8 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "S2Cell",
-      "FIPS"
+      "FIPS",
+      "S2Cell"
     ],
     "example_queries": [
       "What administrative regions contain a specific location?"
@@ -2096,9 +2576,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/spoke-genelab",
     "endpoint_url": "https://frink.apps.renci.org/spoke-genelab/sparql",
     "domain_tags": [
+      "biology",
       "genomics",
-      "space_biology",
-      "biology"
+      "space_biology"
     ],
     "description_summary": "The spoke-genelab KG complements the spoke-okn (SPOKE Open Knowledge Network) KG and is designed to integrate omics data from NASA\u2019s Open Science Data Repository (OSDR/GeneLab), which hosts results from spaceflight experiments.\n\nThe current release includes transcriptional profiling (RNA-Seq, DNA microarray), epigenomic profiling (DNA methylation),and metagenomic profiling (Amplicon sequencing) data from model organisms flown in space or maintained as ground controls. Differential expression. methylation, and abundance signatures are pre-computed to facilitate comparisons between spaceflight and control conditions. Genes from model organisms are systematically mapped to their human orthologs, which allows integration with SPOKE\u2019s rich network of human biology, and therapeutic targets. Cell and tissue types are mapped to the Cell (CL) and Uber Anatomy Ontology (UBERON) ontology, respectively.",
     "entity_types": {
@@ -2126,10 +2606,10 @@
       "has_edge_properties": true
     },
     "identifier_namespaces": [
-      "NCBI_Gene",
+      "CL",
       "GeneSymbol",
-      "UBERON",
-      "CL"
+      "NCBI_Gene",
+      "UBERON"
     ],
     "example_queries": [
       "What genes are differentially expressed in spaceflight experiments?",
@@ -2144,10 +2624,10 @@
     "endpoint_url": "https://frink.apps.renci.org/spoke-okn/sparql",
     "domain_tags": [
       "biology",
-      "health",
       "chemistry",
       "environment",
-      "geospatial"
+      "geospatial",
+      "health"
     ],
     "description_summary": "The spoke-okn (SPOKE Open Knowledge Network) KG is a comprehensive biomedical and environmental health knowledge graph that integrates diverse data across genomics, environmental science, and public health. It encompasses multiple primary entity types, including organisms, geographic locations (from countries to ZIP codes), genes, diseases, chemical compounds, social determinants of health, and environmental contexts. With detailed hierarchical coverage of geographic information, spoke-okn supports spatial analyses of health outcomes, environmental exposures, and socioeconomic factors across a range of geographic scales.",
     "entity_types": {
@@ -2200,12 +2680,12 @@
       "has_edge_properties": true
     },
     "identifier_namespaces": [
-      "Ensembl",
-      "DOID",
-      "TAXON",
       "ChEBI",
+      "DOID",
+      "Ensembl",
+      "FIPS",
       "InChIKey",
-      "FIPS"
+      "TAXON"
     ],
     "example_queries": [
       "What drugs treat rheumatoid arthritis?",
@@ -2322,9 +2802,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/ufokn",
     "endpoint_url": "https://frink.apps.renci.org/ufokn/sparql",
     "domain_tags": [
-      "urban_flooding",
+      "emergency_response",
       "infrastructure",
-      "emergency_response"
+      "urban_flooding"
     ],
     "description_summary": "The Urban Flooding Open Knowledge Network (UF-OKN) is a geospatial knowledge graph infrastructure that integrates urban built environment data with real-time and historical hydrologic forecasts to enable flood risk assessment and emergency response. UF-OKN contains structured representations of urban infrastructure (buildings, roads, stormwater networks, power stations) derived from OpenStreetMap, linked to hydrologic features (rivers, streams) and operational forecast models including NOAA's National Water Model and local models like HEC-RAS and SWMM. The knowledge graph introduces \"Risk-Points\u2122\"\u2014locations where built and natural environments interact with potential flood impacts\u2014providing 24-year historical analysis coverage across the continental United States. UF-OKN uses schema.org vocabularies (Place, GeoShape, GeoCoordinates, Observation, PropertyValue) and STKO spatial ontologies (S2Cell) to enable SPARQL queries connecting infrastructure vulnerability to forecast conditions. The knowledge graph supports developers building custom flood information applications, emergency management systems, and risk analysis tools for planning and real-time response.",
     "entity_types": {
@@ -2368,9 +2848,9 @@
     "named_graph_uri": "https://purl.org/okn/frink/kg/wildlifekn",
     "endpoint_url": "https://frink.apps.renci.org/wildlifekn/sparql",
     "domain_tags": [
-      "wildlife",
       "biodiversity",
-      "conservation"
+      "conservation",
+      "wildlife"
     ],
     "description_summary": "Wildlife-KN is a comprehensive knowledge network designed for wildlife researchers, conservation managers, and policymakers addressing biodiversity challenges under climate change. The graph integrates data on wildlife species, habitat characteristics, environmental variables, geographic distributions, and climate projections to enable cross-domain analysis of how changing conditions affect wildlife populations and ecosystems. Built to support interdisciplinary inquiry, Wildlife-KN links biological observations with geospatial, temporal, and climatological data, facilitating queries about species vulnerability, habitat suitability shifts, and conservation prioritization. The knowledge graph employs standard semantic web vocabularies (RDFS, SKOS, Schema.org, GeoSPARQL) and cross-links to authoritative biodiversity databases, enabling federation with other OKN Theme-1 resources.",
     "entity_types": {
