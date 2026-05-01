@@ -109,6 +109,20 @@ spec:
 
 
 
+          # ── Probes ───────────────────────────────────────────────────────────
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.startupProbe }}
+          startupProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
           # ── Resources ────────────────────────────────────────────────────────
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

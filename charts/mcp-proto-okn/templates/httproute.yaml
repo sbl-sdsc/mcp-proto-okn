@@ -4,16 +4,20 @@
 
   Requires:
     - gateway.networking.k8s.io CRDs installed
-    - An existing Gateway resource (values.gateway.gatewayName)
+    - An existing Gateway resource referenced via gateway.parentRefs
 
-  Path prefix /mcp/proto-okn is matched and the prefix is stripped before
-  forwarding to the backing Service, so the container receives requests at
-  its own /mcp path.
+  Path prefix (basePath) is matched and stripped before forwarding to the
+  backing Service, so the container receives requests at its own /mcp path.
+
+  On GKE this also emits GCPBackendPolicy (timeout + connection draining)
+  and HealthCheckPolicy, matching the wobd chart pattern.
 
   Enable by setting in values.yaml:
     ingress.enabled: false
     gateway.enabled: true
-    gateway.gatewayName: <your-gateway>
+    gateway.parentRefs:
+      - name: <your-gateway>
+        namespace: <gateway-ns>
 */}}
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -24,10 +28,15 @@ metadata:
     {{- include "mcp-proto-okn.labels" . | nindent 4 }}
 spec:
   parentRefs:
-    - name: {{ .Values.gateway.gatewayName }}
-      {{- if .Values.gateway.gatewayNamespace }}
-      namespace: {{ .Values.gateway.gatewayNamespace }}
+    {{- range .Values.gateway.parentRefs }}
+    - name: {{ .name }}
+      {{- if .namespace }}
+      namespace: {{ .namespace }}
       {{- end }}
+      {{- if .sectionName }}
+      sectionName: {{ .sectionName }}
+      {{- end }}
+    {{- end }}
   hostnames:
     - {{ .Values.gateway.host | quote }}
   rules:
@@ -45,4 +54,48 @@ spec:
       backendRefs:
         - name: {{ include "mcp-proto-okn.fullname" . }}
           port: {{ .Values.service.port }}
+{{- if .Values.gateway.gcpBackendPolicy.enabled }}
+---
+apiVersion: networking.gke.io/v1
+kind: GCPBackendPolicy
+metadata:
+  name: {{ include "mcp-proto-okn.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "mcp-proto-okn.labels" . | nindent 4 }}
+spec:
+  default:
+    timeoutSec: {{ .Values.gateway.gcpBackendPolicy.timeoutSec | default 600 }}
+    connectionDraining:
+      drainingTimeoutSec: {{ .Values.gateway.gcpBackendPolicy.connectionDrainingTimeoutSec | default 60 }}
+  targetRef:
+    group: ""
+    kind: Service
+    name: {{ include "mcp-proto-okn.fullname" . }}
+{{- end }}
+{{- if .Values.gateway.healthCheckPolicy.enabled }}
+---
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: {{ include "mcp-proto-okn.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "mcp-proto-okn.labels" . | nindent 4 }}
+spec:
+  default:
+    checkIntervalSec: {{ .Values.gateway.healthCheckPolicy.checkIntervalSec | default 10 }}
+    timeoutSec: {{ .Values.gateway.healthCheckPolicy.timeoutSec | default 5 }}
+    healthyThreshold: {{ .Values.gateway.healthCheckPolicy.healthyThreshold | default 2 }}
+    unhealthyThreshold: {{ .Values.gateway.healthCheckPolicy.unhealthyThreshold | default 2 }}
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: {{ .Values.gateway.healthCheckPolicy.port | default .Values.port }}
+        requestPath: {{ .Values.gateway.healthCheckPolicy.requestPath | default "/health" }}
+  targetRef:
+    group: ""
+    kind: Service
+    name: {{ include "mcp-proto-okn.fullname" . }}
+{{- end }}
 {{- end }}

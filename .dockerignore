@@ -1,0 +1,35 @@
+# Version control
+.git
+.gitignore
+
+# Python artifacts
+__pycache__
+*.py[cod]
+*.pyo
+.pytest_cache
+.mypy_cache
+.ruff_cache
+*.egg-info
+dist/
+build/
+.venv/
+venv/
+
+# Docs & examples (not needed at runtime)
+docs/
+examples/
+metadata/
+scripts/
+
+# Tests
+tests/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Helm chart (not needed in image)
+charts/
