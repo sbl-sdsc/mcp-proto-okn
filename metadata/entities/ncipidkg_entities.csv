@@ -1,0 +1,32 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://rdfs.org/ns/void#Dataset,Dataset,"A set of RDF triples that are published, maintained, or aggregated as a single dataset.",Class,,,
+http://semanticscience.org/resource/SIO_010043,protein,A protein is an organic polymer composed of one or more linear polymers of amino acids.,Class,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,Statement,"The class of RDF statements, used for reification of subject-predicate-object triples.",Class,,,
+http://example.org/okn/evidenceCount,evidence count,NCIPIDKG edge metadata giving the number of supporting INDRA/NCI-PID evidence records for a reified relationship.,Predicate,http://purl.obolibrary.org/obo/RO_0002630,http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,
+http://example.org/okn/evidenceUrl,evidence URL,NCIPIDKG edge metadata linking a reified relationship to supporting evidence records or evidence pages.,Predicate,http://purl.obolibrary.org/obo/RO_0002630,http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,
+http://example.org/okn/processType,process type,"NCIPIDKG edge metadata indicating the biological process or post-translational-modification type associated with a relationship, often represented with a GO term.",Predicate,http://purl.obolibrary.org/obo/RO_0002578,http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,
+http://ldf.fi/void-ext#datatype,datatype,VoID extension property used in dataset statistics to identify a datatype represented in a datatype partition.,Predicate,,http://rdfs.org/ns/void#Dataset,
+http://ldf.fi/void-ext#datatypePartition,datatype partition,VoID extension property used to link a dataset or property partition to a partition grouped by RDF literal datatype.,Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://ldf.fi/void-ext#objectClassPartition,object class partition,VoID extension property used to link a property partition to a partition grouped by the RDF class of object resources.,Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://purl.obolibrary.org/obo/RO_0002211,regulates,"x regulates y if x has an effect on the frequency, rate, or extent of y.",Predicate,,http://semanticscience.org/resource/SIO_010043,http://semanticscience.org/resource/SIO_010043
+http://purl.obolibrary.org/obo/RO_0002436,molecularly interacts with,"A relation between molecular entities that directly physically interact with each other, for example through stable binding or transient interaction.",Predicate,,http://semanticscience.org/resource/SIO_010043,http://semanticscience.org/resource/SIO_010043
+http://purl.obolibrary.org/obo/RO_0002578,directly regulates,"p directly regulates q if p immediately causally affects q and regulates q, commonly through direct physical interaction between participating molecular agents.",Predicate,,http://semanticscience.org/resource/SIO_010043,http://semanticscience.org/resource/SIO_010043
+http://purl.obolibrary.org/obo/RO_0002629,directly positively regulates,p directly positively regulates q if p is immediately causally upstream of q and positively regulates q.,Predicate,,http://semanticscience.org/resource/SIO_010043,http://semanticscience.org/resource/SIO_010043
+http://purl.obolibrary.org/obo/RO_0002630,directly negatively regulates,p directly negatively regulates q if p is immediately causally upstream of q and negatively regulates q.,Predicate,,http://semanticscience.org/resource/SIO_010043,http://semanticscience.org/resource/SIO_010043
+http://purl.org/dc/terms/modified,modified,Date on which the resource was changed.,Predicate,,,
+http://purl.org/pav/lastUpdatedOn,last updated on,The date of the last update of the resource.,Predicate,,,
+http://purl.org/pav/version,version,A version number or other version designation for the resource.,Predicate,,,
+http://rdfs.org/ns/void#class,class,The RDF class used to define a class-based partition of a dataset.,Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#classPartition,class partition,A subset of a dataset containing the triples associated with instances of a particular RDF class.,Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://rdfs.org/ns/void#distinctObjects,distinct objects,"The total number of distinct objects in a dataset, linkset, or partition.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#distinctSubjects,distinct subjects,"The total number of distinct subjects in a dataset, linkset, or partition.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#entities,entities,The total number of entities described in a dataset.,Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#properties,properties,The total number of distinct properties used in a dataset.,Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#property,property,The RDF property used to define a property-based partition of a dataset.,Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#propertyPartition,property partition,A subset of a dataset containing triples that use a particular RDF property.,Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://rdfs.org/ns/void#triples,triples,"The total number of triples contained in a dataset, linkset, or partition.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#object,object,The object of an RDF statement.,Predicate,,http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate,predicate,The predicate of an RDF statement.,Predicate,,http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#subject,subject,The subject of an RDF statement.,Predicate,,http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable name for the subject resource.,Predicate,,,
+http://www.w3.org/2002/07/owl#sameAs,same as,Links an individual to another individual with the same identity.,Predicate,,,

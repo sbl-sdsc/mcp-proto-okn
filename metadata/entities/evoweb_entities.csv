@@ -1,0 +1,4 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://www.w3.org/2004/02/skos/core#Collection,Collection,"A SKOS collection representing a group of co-evolving proteins (a protein orthology cluster) in EvoWeb; each instance (e.g., Node1, Node2, ...) groups together NCBI RefSeq proteins inferred to share evolutionary history",Class,,,
+http://www.w3.org/2004/02/skos/core#member,member,"Relates a SKOS Collection to one of its member resources; in EvoWeb, links a protein group (Collection) to a constituent NCBI RefSeq protein (e.g., https://www.ncbi.nlm.nih.gov/protein/WP_xxx)",Predicate,,Collection,
+http://www.w3.org/2000/01/rdf-schema#label,label,"A human-readable label for a resource; in EvoWeb, the descriptive functional name of a protein group (e.g., 'chromosomal replication initiator protein DnaA')",Predicate,,Collection,
