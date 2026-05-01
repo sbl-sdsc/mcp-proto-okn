@@ -138,3 +138,6 @@ cython_debug/
 # MacOS
 .DS_Store
 .claude/settings.local.json
+
+# Local MCP client config (user-specific absolute paths)
+.mcp.json

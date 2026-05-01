@@ -1,18 +1,18 @@
 # Unified MCP Server for Proto-OKN Knowledge Graphs
 
-A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **27 Proto-OKN knowledge graphs** through one unified interface. The server enables AI assistants to discover graphs, understand their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources -- all through natural language conversation.
+A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **33 Proto-OKN knowledge graphs** through one unified interface. The server enables AI assistants to discover graphs, understand their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources -- all through natural language conversation.
 
 ## The Problem
 
-The [Proto-OKN](https://www.proto-okn.net/) program has produced 27 knowledge graphs spanning biology, health, toxicology, environment, justice, and manufacturing. These graphs are hosted on the [FRINK](https://frink.renci.org/) federated SPARQL platform and contain rich, interconnected data. But each graph has its own schema, its own identifier systems, and its own query patterns.
+The [Proto-OKN](https://www.proto-okn.net/) program has produced 33 knowledge graphs spanning biology, health, toxicology, environment, justice, and manufacturing. These graphs are hosted on the [FRINK](https://frink.renci.org/) federated SPARQL platform and contain rich, interconnected data. But each graph has its own schema, its own identifier systems, and its own query patterns.
 
-Previously, each graph required its own MCP server instance -- 27 separate processes, 27 separate `@mentions` in Claude Desktop, and no programmatic way to discover or navigate across them. Cross-graph analysis required the user to manually coordinate between servers, know which identifiers each graph uses, and figure out how to bridge results.
+Previously, each graph required its own MCP server instance -- 33 separate processes, 33 separate `@mentions` in Claude Desktop, and no programmatic way to discover or navigate across them. Cross-graph analysis required the user to manually coordinate between servers, know which identifiers each graph uses, and figure out how to bridge results.
 
 ## The Solution
 
-The unified server replaces all 27 separate processes with a **single server** that provides:
+The unified server replaces all 33 separate processes with a **single server** that provides:
 
-- **Graph Discovery** -- list, filter, and search all 27 graphs by domain, entity type, or natural language
+- **Graph Discovery** -- list, filter, and search all 33 graphs by domain, entity type, or natural language
 - **Schema Inspection** -- understand each graph's classes, predicates, and properties before writing queries
 - **Per-Graph Querying** -- execute SPARQL with automatic ontology expansion and FROM clause injection
 - **Cross-Graph Bridging** -- understand shared identifiers and join strategies between any two graphs
@@ -38,7 +38,7 @@ The unified server replaces all 27 separate processes with a **single server** t
 │  ┌───────────────┐  ┌──────────────┐  ┌──────────────────────────────┐│
 │  │  13 MCP Tools  │  │Graph Registry│  │ Identifier Mapping           ││
 │  │               │  │              │  │                              ││
-│  │ list_graphs   │  │ 27 graphs    │  │ Gene: Ensembl ↔ NCBI ↔      ││
+│  │ list_graphs   │  │ 33 graphs    │  │ Gene: Ensembl ↔ NCBI ↔      ││
 │  │ route_query   │  │ domain tags  │  │       Symbol (via bridge)    ││
 │  │ get_schema    │  │ entity types │  │ Chemical: CAS, InChIKey,     ││
 │  │ get_descript. │  │ identifiers  │  │          DTXSID              ││
@@ -61,7 +61,7 @@ The unified server replaces all 27 separate processes with a **single server** t
 │  │  biobricks-ice ──┤    • FROM clause injection (named graph)     │  │
 │  │  biobricks-tox21 ┤    • Ontology expansion (MONDO, UBERON, ..)  │  │
 │  │  gene-expr-atlas ┤    • Query analysis and warnings             │  │
-│  │  ... (27 total) ─┘    • Result formatting                      │  │
+│  │  ... (33 total) ─┘    • Result formatting                      │  │
 │  └──────┬──────────────────────────────────────────────────────────┘  │
 └─────────┼────────────────────────────────────────────────────────────┘
           │  SPARQL over HTTPS
@@ -77,7 +77,7 @@ The unified server replaces all 27 separate processes with a **single server** t
 │  ┌─────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐    │
 │  │sawgraph │ │dreamkg   │ │scales    │ │ruralkg   │ │securechn │    │
 │  └─────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘    │
-│                     ... 27 named graphs total ...                     │
+│                     ... 33 named graphs total ...                     │
 │                                                                       │
 │  ┌────────────────────────────────────────────────────────────────┐   │
 │  │  Ubergraph (ontology services: MONDO, UBERON, HP, GO, etc.)   │   │
@@ -89,7 +89,7 @@ The unified server replaces all 27 separate processes with a **single server** t
 
 ### Graph Registry (`registry.py` + `registry.json`)
 
-A structured catalog of all 27 knowledge graphs. Each entry contains:
+A structured catalog of all 33 knowledge graphs. Each entry contains:
 
 | Field | Description |
 |---|---|
@@ -155,7 +155,7 @@ The AI assistant uses these tools in sequence to navigate from a natural languag
 
 | Tool | Purpose | When to Use |
 |---|---|---|
-| `list_graphs(domain?, entity_type?)` | Browse all 27 graphs with metadata | First call -- understand what data exists |
+| `list_graphs(domain?, entity_type?)` | Browse all 33 graphs with metadata | First call -- understand what data exists |
 | `route_query(question)` | Match a natural language question to relevant graphs | When the user asks a question and you need to find the right graph(s) |
 | `get_description(graph_name)` | Full description, example queries, identifier namespaces | Deep dive into a specific graph before querying |
 
@@ -317,7 +317,7 @@ The unified server provided the infrastructure; the AI provided the reasoning.
 
 | Domain | Graphs |
 |---|---|
-| **Biology & Health** | spoke-okn, spoke-genelab, gene-expression-atlas-okn, biohealth, nde |
+| **Biology & Health** | spoke-okn, spoke-genelab, gene-expression-atlas-okn, biohealth, nde, prokn, biomarkerkg, evoweb, ncipidkg, oard-kg, pankgraph |
 | **Toxicology & Chemistry** | biobricks-ice, biobricks-tox21, biobricks-toxcast, biobricks-aopwiki, biobricks-pubchem-annotations, biobricks-mesh |
 | **Environment & Water** | sawgraph, hydrologykg, geoconnex, fiokg, spatialkg |
 | **Climate & Earth Science** | climatemodelskg, nasa-gesdisc-kg, sockg |
@@ -412,7 +412,7 @@ src/mcp_proto_okn/
 ├── registry.py            # GraphRegistry + GraphInfo (graph catalog)
 ├── identifier_mapping.py  # Cross-graph identifier bridges + join strategies
 ├── server.py              # SPARQLServer (per-graph query engine, reused)
-├── registry.json          # Packaged graph catalog (27 graphs)
+├── registry.json          # Packaged graph catalog (33 graphs)
 
 config/
 ├── registry.json          # Source graph catalog

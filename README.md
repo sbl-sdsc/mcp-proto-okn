@@ -170,6 +170,10 @@ mcp-proto-okn vs. SPARQL Ground-Truth Evaluation
 
 [Benchmarks](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/benchmarks.md)
 
+## Contributing a New Knowledge Graph
+
+[How to add a new graph to the unified MCP server](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/adding-a-graph.md)
+
 ## Building and Publishing (maintainers only)
 
 [Instructions for building, testing, and publishing the mcp-proto-okn package on PyPI](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/build_publish.md)
@@ -199,17 +203,98 @@ CLI arguments `--transport`, `--host`, and `--port` take precedence over environ
 
 ### Testing Locally with Claude Code
 
-Start the server in HTTP mode:
+There are four ways to connect the unified server to Claude Code. Add the chosen config to `.mcp.json` in your project root, or to `~/.claude/settings.json` for all projects.
 
-```bash
-# Terminal 1: Start the server
-MCP_PROTO_OKN_TRANSPORT=streamable-http mcp-proto-okn \
-  --endpoint https://frink.apps.renci.org/spoke/sparql
+#### Option 1: Remote HTTP — no local setup required
 
-# The server listens on http://localhost:8000/mcp
+The unified server is already deployed. Point Claude Code directly at the hosted endpoint:
+
+```json
+{
+  "mcpServers": {
+    "proto-okn": {
+      "type": "url",
+      "url": "https://frink.apps.renci.org/mcp/proto-okn/mcp"
+    }
+  }
+}
 ```
 
-Then configure Claude Code to connect via the remote MCP URL (add to `.mcp.json` or Claude Code settings):
+No installation needed. Best choice if you just want to use the server.
+
+#### Option 2: `uvx` — run the published PyPI package locally
+
+[Install `uv`](https://docs.astral.sh/uv/getting-started/installation/) if you haven't already, then add to your config:
+
+```json
+{
+  "mcpServers": {
+    "proto-okn": {
+      "command": "uvx",
+      "args": ["mcp-proto-okn-unified"]
+    }
+  }
+}
+```
+
+`uvx` downloads and runs the latest published release automatically. No repo clone required. Best choice when you want a stable local process without managing dependencies yourself.
+
+#### Option 3: `uv run` from local source — development mode
+
+Best choice for contributors or anyone who needs to test local changes (e.g. [adding a new graph](docs/adding-a-graph.md) to the unified server).
+
+**1. Clone and install dependencies:**
+
+```bash
+git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
+cd mcp-proto-okn
+uv sync
+```
+
+`uv sync` reads `pyproject.toml` and creates a `.venv` with all dependencies. This is optional — `uv run` would do it on first launch — but running it explicitly avoids a confusing 30-second pause the first time the MCP client starts the server.
+
+**2. Smoke-test the server before wiring it up to a client:**
+
+```bash
+uv run mcp-proto-okn-unified --help
+```
+
+You should see usage info listing `--registry`, `--transport`, `--host`, `--port`. If that works, the server is good to go.
+
+**3. Configure Claude Code.** Create `.mcp.json` in your project root (or `~/.claude/settings.json` for all projects):
+
+```json
+{
+  "mcpServers": {
+    "proto-okn": {
+      "command": "uv",
+      "args": ["--directory", "/path/to/mcp-proto-okn", "run", "mcp-proto-okn-unified"]
+    }
+  }
+}
+```
+
+Replace `/path/to/mcp-proto-okn` with the absolute path to your clone (e.g. `/Users/yourname/code/mcp-proto-okn`). Use an **absolute** path — `~` and relative paths will not work.
+
+**4. Verify the connection.** Start Claude Code from the directory containing `.mcp.json`, then run the `/mcp` slash command. You should see `proto-okn` listed as connected. Try a prompt like:
+
+> List the available Proto-OKN knowledge graphs.
+
+> **Note on `uv` path**: If your MCP client (especially Claude Desktop) reports `command not found: uv`, the client has a restricted PATH. Replace `"command": "uv"` with the full path returned by `which uv` (typically `/Users/yourname/.local/bin/uv` on macOS).
+
+#### Option 4: Docker — containerized local server
+
+Build and run the server as a container, then connect via HTTP:
+
+```bash
+# Build the image
+docker build -t mcp-proto-okn .
+
+# Run in HTTP mode
+docker run -p 8000:8000 \
+  -e MCP_PROTO_OKN_TRANSPORT=streamable-http \
+  mcp-proto-okn
+```
 
 ```json
 {
@@ -221,6 +306,8 @@ Then configure Claude Code to connect via the remote MCP URL (add to `.mcp.json`
   }
 }
 ```
+
+Best choice for environments where Python tooling is unavailable or when testing the production container image.
 
 ### Claude Desktop Requirements (HTTPS + Domain)
 
