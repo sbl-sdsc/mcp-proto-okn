@@ -60,7 +60,7 @@ The MCP Server Proto-OKN acts as a bridge between AI assistants (like Claude) an
 - By default, the server will query all Proto-OKN KGs, e.g.,
 
 ```Generate a table of all Proto-OKN Knowledge Graphs with two columns: “KG Name” and “Description.”```
-[List of KGs]((https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/proto-okn-overview.md)
+[List of KGs](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/proto-okn-overview.md)
 
 - To query a specific KG refer to it by ```@kg-name```, e.g.
 
