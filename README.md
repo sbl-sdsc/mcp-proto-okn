@@ -115,37 +115,41 @@ Each link below points to a chat transcript that demonstrates how to generate a 
 
 11. [**APOE Gene Info (prokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/prokn-apoe-gene.md)
 
-12. [**Protate Cancer Biomarkers (biomarkerkg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biomarkerkg-prostate-cancer.md)
+12. [**Prostate Cancer Biomarkers (biomarkerkg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biomarkerkg-prostate-cancer.md)
 
-13. [**Contamination at Superfund Sites (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
+13. [**Marfan Syndrom Phenotypes (orad-kg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/oard-kg-marfan-syndrom-phenotypes.md)
 
-14. [**PFOA in Drinking Water (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
+14. [**Pancreatic Acinar Cell Adhesion Genes (pankgraph)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pankgraph-pancreatic-acinar-cell-adhesion-genes.md)
 
-15. [**Data about PFOA (spoke-okn, biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
+15. [**Contamination at Superfund Sites (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/superfund-contaminants.md)
 
-16. [**PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfas_environmental_health_kg_analysis.md)
+16. [**PFOA in Drinking Water (spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/spoke_okn_pfoa_drinking_water.md)
 
-17. [**Biological Targets for PFOA (biobricks-toxcastbiobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
+17. [**Data about PFOA (spoke-okn, biobricks-toxcast)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
 
-18. [**PFOA Safety Profile (biobricks-ice, biobricks-apowiki, sawgraph, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa-safety-profile.md)
+18. [**PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfas_environmental_health_kg_analysis.md)
 
-19. [**Bisphenol A Safety Profile (biobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/bpa-safety-profile.md)
+19. [**Biological Targets for PFOA (biobricks-toxcastbiobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/biobricks_toxcast_PFOA_targets.md)
 
-20. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
+20. [**PFOA Safety Profile (biobricks-ice, biobricks-apowiki, sawgraph, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/pfoa-safety-profile.md)
 
-21. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
+21. [**Bisphenol A Safety Profile (biobricks-ice, biobricks-apowiki, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/bpa-safety-profile.md)
 
-22. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
+22. [**Criminal Justice Patterns (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_criminal_justice_analysis.md)
 
-23. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
+23. [**Drug Possession Charges (scales)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/scales_drug_possession.md)
 
-24. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
+24. [**Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/environmental-justice-kg-analysis.md)
 
-25. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
+25. [**Rural Health Access (ruralkg, dreamkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/rural-health-access-mapping.md)
 
-26. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+26. [**Michigan Flooding Event (ufokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/ufokn_michigan_flood.md)
 
-27. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
+27. [**Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/flooding-socioeconomic-correlation.md)
+
+28. [**Philadelphia Area Incidents (nikg)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/nikg_philadelphia_incidents.md)
+
+29. [**Mining Suppliers in North Dakota (sudokn)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/sudokn_mining_suppliers.md)
 
 ### Ontology-Driven Search Expansion
 Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, etc.) from the [Ubergraph KG](https://frink.renci.org/registry/kgs/ubergraph/) to include all descendant concepts, ensuring comprehensive retrieval without manual enumeration. For example, searching for "arthritic joint disease" automatically includes rheumatoid arthritis, osteoarthritis, ankylosing spondylitis, and all other subtypes.
