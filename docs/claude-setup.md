@@ -22,7 +22,7 @@
      alt="Claude connectors"
      width="500">
 
-3. Enter the name ```proto-okn``` and the URL ```https://frink.apps.renci.org/mcp/proto-okn/mcp```
+3. Enter the name ```proto-okn``` and the URL ```https://apps.okn.us/okn-mcp/mcp```
 
 <img src="https://raw.githubusercontent.com/sbl-sdsc/mcp-proto-okn/main/docs/images/claude-add-proto-okn.png"
      alt="Claude add proto-okn"
