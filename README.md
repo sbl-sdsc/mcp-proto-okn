@@ -166,7 +166,7 @@ Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UB
 
 3. [**Cross-KG Bio Data Exploration (Opus 4.7)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-graph-opportunities-bio-opus4.7.md)
 
-4. [**Cross-KG Bio Data Exploration (Sonnet 4.7)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-graph-opportunities-bio-sonnet4.7.md)
+4. [**Cross-KG Bio Data Exploration (Sonnet 4.6)**](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/examples/cross-graph-opportunities-bio-sonnet4.7.md)
 
 ### Cross-Platform LLM Benchmarks
 
