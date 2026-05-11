@@ -1,5 +1,7 @@
 # Replacement PFAS Are Already Everywhere -- And They Hit the Same Molecular Targets
 
+> Companion walkthrough on the WOBD platform: [apps.okn.us/wobd/mcp/pfas-compounds](https://apps.okn.us/wobd/mcp/pfas-compounds)
+
 ## Cross-Graph Evidence That Compound-by-Compound Regulation Fails to Protect Public Health
 
 **Date:** February 23, 2026 | **Platform:** Claude Code with Proto-OKN FRINK, Open Targets, PubMed, g:Profiler
