@@ -4,9 +4,12 @@ Build the graph registry (config/registry.json) from existing metadata sources.
 
 Sources:
 - metadata/descriptions/{kg_name}.txt → description_summary
-- metadata/entities/{kg_name}_entities.csv → entity_types
-- config/mcp.json → canonical list of graph names and endpoint URLs
-- Hardcoded domain tag mapping and identifier namespace mapping
+- metadata/entities/{kg_name}_entities.csv → entity_types (also defines the
+  canonical list of graph names — every graph must have an entities CSV)
+- Hardcoded domain tag, identifier namespace, and example-query mappings below
+
+Endpoint URLs are derived from the canonical graph name as
+`https://apps.okn.us/{kg_name}/sparql`.
 """
 
 import csv
@@ -169,36 +172,11 @@ EXAMPLE_QUERIES = {'biobricks-aopwiki': ['What adverse outcome pathways involve 
                'What compounds are found in water supplies in Texas?'],
  'sudokn': ['What manufacturers have specific process capabilities?']}
 
-# Aliases: map mcp.json names to entity file names
+# Aliases: alternate names that resolve to a canonical graph name. Useful when
+# a graph is commonly referred to by a short name (e.g. "spoke" → "spoke-okn").
 ALIASES = {
     "spoke": "spoke-okn",
-    "gene-expression-altlas-okn": "gene-expression-atlas-okn",  # typo in mcp.json
 }
-
-
-def load_mcp_config():
-    """Load graph names and endpoints from mcp.json."""
-    config_path = os.path.join(ROOT, "config", "mcp.json")
-    with open(config_path) as f:
-        config = json.load(f)
-
-    graphs = {}
-    for name, server in config.get("servers", {}).items():
-        args = server.get("args", [])
-        endpoint_url = None
-        for i, arg in enumerate(args):
-            if arg == "--endpoint" and i + 1 < len(args):
-                endpoint_url = args[i + 1]
-                break
-        if endpoint_url:
-            # Resolve canonical name
-            canonical = ALIASES.get(name, name)
-            if canonical not in graphs:
-                graphs[canonical] = {
-                    "endpoint_url": endpoint_url,
-                    "mcp_name": name,
-                }
-    return graphs
 
 
 def load_description(kg_name):
@@ -246,33 +224,24 @@ def load_entities(kg_name):
 
 def build_registry():
     """Build the complete registry."""
-    mcp_graphs = load_mcp_config()
     registry = []
 
-    # Collect all canonical names from entity files + mcp config
+    # Canonical graph names come from the metadata directory: every graph
+    # has either an entity file, a description file, or both.
     entity_dir = os.path.join(ROOT, "metadata", "entities")
-    entity_names = set()
+    desc_dir = os.path.join(ROOT, "metadata", "descriptions")
+    all_names = set()
     if os.path.exists(entity_dir):
         for f in os.listdir(entity_dir):
             if f.endswith("_entities.csv"):
-                name = f.replace("_entities.csv", "")
-                entity_names.add(name)
-
-    # Merge with mcp config names
-    all_names = set(mcp_graphs.keys()) | entity_names
-
-    # Remove non-FRINK endpoints
-    non_frink = set()
-    for name in all_names:
-        info = mcp_graphs.get(name, {})
-        url = info.get("endpoint_url", "")
-        if url and "frink.apps.renci.org" not in url:
-            non_frink.add(name)
-    all_names -= non_frink
+                all_names.add(f.replace("_entities.csv", ""))
+    if os.path.exists(desc_dir):
+        for f in os.listdir(desc_dir):
+            if f.endswith(".txt"):
+                all_names.add(f.replace(".txt", ""))
 
     for kg_name in sorted(all_names):
-        info = mcp_graphs.get(kg_name, {})
-        endpoint_url = info.get("endpoint_url", f"https://frink.apps.renci.org/{kg_name}/sparql")
+        endpoint_url = f"https://apps.okn.us/{kg_name}/sparql"
 
         # Build named graph URI
         named_graph_uri = f"https://purl.org/okn/frink/kg/{kg_name}"
@@ -288,14 +257,10 @@ def build_registry():
         examples = EXAMPLE_QUERIES.get(kg_name, [])
 
         # Build aliases list
-        aliases = []
-        for alias, canonical in ALIASES.items():
-            if canonical == kg_name and alias != kg_name:
-                aliases.append(alias)
-        # Also add the mcp_name if different
-        mcp_name = info.get("mcp_name")
-        if mcp_name and mcp_name != kg_name and mcp_name not in aliases:
-            aliases.append(mcp_name)
+        aliases = [
+            alias for alias, canonical in ALIASES.items()
+            if canonical == kg_name and alias != kg_name
+        ]
 
         entry = {
             "name": kg_name,

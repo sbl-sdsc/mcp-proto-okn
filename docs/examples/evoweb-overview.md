@@ -67,8 +67,8 @@ EvoWeb uses a lightweight semantic structure:
 
 ## Access
 
-- **SPARQL endpoint:** `https://frink.apps.renci.org/evoweb/sparql`
-- **TPF endpoint:** `https://frink.apps.renci.org/ldf/evoweb`
+- **SPARQL endpoint:** `https://apps.okn.us/evoweb/sparql`
+- **TPF endpoint:** `https://apps.okn.us/ldf/evoweb`
 - **Contact:** Erik Wright (WrightLabScience @ GitHub), Baylor College of Medicine
 
 In short, EvoWeb is a genomics-focused KG that represents the "evolutionary co-expression atlas" of microbial proteins — useful for functional annotation of unknown proteins and hypothesis generation about pathway or complex membership.

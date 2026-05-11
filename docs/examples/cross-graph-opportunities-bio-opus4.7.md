@@ -209,7 +209,7 @@ Scoring: Richness (entity-type breadth unlocked), Novelty (relations not in eith
 
 ## 5. Top-3 SPARQL Skeletons (Step 5)
 
-> **Federation note.** All FRINK SPARQL endpoints support `SERVICE` clauses pointing to peer endpoints (`https://frink.apps.renci.org/<graph>/sparql`). For richer joins, the `multi_graph_query` tool can also issue per-graph queries and merge in the application layer; the skeletons below show the federated form first.
+> **Federation note.** All FRINK SPARQL endpoints support `SERVICE` clauses pointing to peer endpoints (`https://apps.okn.us/<graph>/sparql`). For richer joins, the `multi_graph_query` tool can also issue per-graph queries and merge in the application layer; the skeletons below show the federated form first.
 
 ### 🥇 Opportunity #1 — Chemicals on AOPs that already have a clinical drug indication
 
@@ -231,7 +231,7 @@ PREFIX spoke:   <https://purl.org/okn/frink/kg/spoke-okn/schema/>
 SELECT ?aopLabel ?chemLabel ?inchikey ?disease ?diseaseLabel ?phase
 WHERE {
   # ---------- biobricks-aopwiki ----------
-  SERVICE <https://frink.apps.renci.org/biobricks-aopwiki/sparql> {
+  SERVICE <https://apps.okn.us/biobricks-aopwiki/sparql> {
     ?aop  a aop:AdverseOutcomePathway ;
           rdfs:label ?aopLabel ;
           aop:has_chemical_entity ?chem .                 # AOP linked to chemical stressor
@@ -242,7 +242,7 @@ WHERE {
   }
 
   # ---------- spoke-okn ----------
-  SERVICE <https://frink.apps.renci.org/spoke-okn/sparql> {
+  SERVICE <https://apps.okn.us/spoke-okn/sparql> {
     ?compound a biolink:ChemicalEntity ;
               oboInOwl:hasDbXref ?xref .                  # SPOKE chemical xref carries InChIKey
     FILTER( CONTAINS(STR(?xref), ?inchikey) )             # join on InChIKey string
@@ -281,7 +281,7 @@ SELECT ?humanGene ?ncbiId ?diseaseLabel ?gxaLog2fc ?gxaP
        ?spaceAssayLabel ?orthologGene ?tissueLabel ?spaceLog2fc ?spaceAdjP
 WHERE {
   # ---------- gene-expression-atlas-okn: human disease → DE genes ----------
-  SERVICE <https://frink.apps.renci.org/gene-expression-atlas-okn/sparql> {
+  SERVICE <https://apps.okn.us/gene-expression-atlas-okn/sparql> {
     ?study  biolink:studies      <DISEASE_URI> ;          # e.g. obo:MONDO_0007254
             biolink:has_output   ?assay .
     <DISEASE_URI> rdfs:label ?diseaseLabel .
@@ -295,7 +295,7 @@ WHERE {
   }
 
   # ---------- spoke-genelab: model-organism gene → human ortholog ----------
-  SERVICE <https://frink.apps.renci.org/spoke-genelab/sparql> {
+  SERVICE <https://apps.okn.us/spoke-genelab/sparql> {
     # Build URI from the NCBI gene literal returned above
     BIND( IRI(CONCAT("https://www.ncbi.nlm.nih.gov/gene/", ?ncbiId)) AS ?humanGeneURI )
     ?modelGene gl:IS_ORTHOLOG_MGiG ?humanGeneURI .        # model→human ortholog edge
@@ -339,7 +339,7 @@ SELECT ?drugLabel ?geneLabel ?ensembl
        ?gxaStudyTitle ?tissue ?gxaLog2fc ?gxaP
 WHERE {
   # ---------- spoke-okn: drug TREATS disease and Up/Down-regulates gene ----------
-  SERVICE <https://frink.apps.renci.org/spoke-okn/sparql> {
+  SERVICE <https://apps.okn.us/spoke-okn/sparql> {
     ?treatStmt rdf:subject   ?drug ;
                rdf:predicate spoke:TREATS_CtD ;
                rdf:object    <DISEASE_URI> ;
@@ -358,7 +358,7 @@ WHERE {
   }
 
   # ---------- gene-expression-atlas-okn: tissue expression for that Ensembl gene ----------
-  SERVICE <https://frink.apps.renci.org/gene-expression-atlas-okn/sparql> {
+  SERVICE <https://apps.okn.us/gene-expression-atlas-okn/sparql> {
     ?gxaGene gxa:ensembl_id ?ensembl .                    # join on Ensembl literal
     ?assoc a biolink:GeneExpressionMixin ;
            biolink:subject ?assay ;

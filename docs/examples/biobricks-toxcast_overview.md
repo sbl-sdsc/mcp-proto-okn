@@ -27,7 +27,7 @@ BioBricks ToxCast is an open knowledge graph for EPA ToxCast high-throughput scr
 **Data Source:**
 - Derived from EPA's public domain ToxCast database
 - Released under CC0-1.0 license
-- SPARQL endpoint: https://frink.apps.renci.org/biobricks-toxcast/sparql
+- SPARQL endpoint: https://apps.okn.us/biobricks-toxcast/sparql
 
 **Contact:**
 - Tom Luechtefeld (tom@insilica.co)
@@ -192,8 +192,8 @@ BioBricks ToxCast is useful for:
 - Relation Ontology (RO)
 
 **Access Methods:**
-- SPARQL queries at https://frink.apps.renci.org/biobricks-toxcast/sparql
-- Triple Pattern Fragments at https://frink.apps.renci.org/ldf/biobricks-toxcast
+- SPARQL queries at https://apps.okn.us/biobricks-toxcast/sparql
+- Triple Pattern Fragments at https://apps.okn.us/ldf/biobricks-toxcast
 
 **Funding:**
 - NSF Award: 2333728

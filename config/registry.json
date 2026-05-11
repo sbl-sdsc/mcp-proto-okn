@@ -3,7 +3,7 @@
     "name": "biobricks-aopwiki",
     "display_name": "Biobricks Aopwiki",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-aopwiki",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-aopwiki/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-aopwiki/sparql",
     "domain_tags": [
       "biology",
       "health",
@@ -66,7 +66,7 @@
     "name": "biobricks-ice",
     "display_name": "Biobricks Ice",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-ice",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-ice/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-ice/sparql",
     "domain_tags": [
       "biology",
       "chemistry",
@@ -126,7 +126,7 @@
     "name": "biobricks-mesh",
     "display_name": "Biobricks Mesh",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-mesh",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-mesh/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-mesh/sparql",
     "domain_tags": [
       "biology",
       "health",
@@ -202,7 +202,7 @@
     "name": "biobricks-pubchem-annotations",
     "display_name": "Biobricks Pubchem Annotations",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-pubchem-annotations",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-pubchem-annotations/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-pubchem-annotations/sparql",
     "domain_tags": [
       "chemistry",
       "pharmacology",
@@ -254,7 +254,7 @@
     "name": "biobricks-tox21",
     "display_name": "Biobricks Tox21",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-tox21",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-tox21/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-tox21/sparql",
     "domain_tags": [
       "chemistry",
       "toxicology"
@@ -282,7 +282,7 @@
     "name": "biobricks-toxcast",
     "display_name": "Biobricks Toxcast",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-toxcast",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-toxcast/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-toxcast/sparql",
     "domain_tags": [
       "chemistry",
       "toxicology"
@@ -326,7 +326,7 @@
     "name": "biohealth",
     "display_name": "Biohealth",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biohealth",
-    "endpoint_url": "https://frink.apps.renci.org/biohealth/sparql",
+    "endpoint_url": "https://apps.okn.us/biohealth/sparql",
     "domain_tags": [
       "biology",
       "health",
@@ -351,7 +351,7 @@
     "name": "biomarkerkg",
     "display_name": "Biomarkerkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biomarkerkg",
-    "endpoint_url": "https://frink.apps.renci.org/biomarkerkg/sparql",
+    "endpoint_url": "https://apps.okn.us/biomarkerkg/sparql",
     "domain_tags": [
       "biomarkers",
       "biomedical",
@@ -415,7 +415,7 @@
     "name": "climatemodelskg",
     "display_name": "Climatemodelskg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/climatemodelskg",
-    "endpoint_url": "https://frink.apps.renci.org/climatemodelskg/sparql",
+    "endpoint_url": "https://apps.okn.us/climatemodelskg/sparql",
     "domain_tags": [
       "climate",
       "environment",
@@ -546,7 +546,7 @@
     "name": "dreamkg",
     "display_name": "Dreamkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/dreamkg",
-    "endpoint_url": "https://frink.apps.renci.org/dreamkg/sparql",
+    "endpoint_url": "https://apps.okn.us/dreamkg/sparql",
     "domain_tags": [
       "homelessness",
       "social_services"
@@ -616,7 +616,7 @@
     "name": "evoweb",
     "display_name": "Evoweb",
     "named_graph_uri": "https://purl.org/okn/frink/kg/evoweb",
-    "endpoint_url": "https://frink.apps.renci.org/evoweb/sparql",
+    "endpoint_url": "https://apps.okn.us/evoweb/sparql",
     "domain_tags": [
       "comparative_genomics",
       "microbial_systems_biology",
@@ -647,7 +647,7 @@
     "name": "fiokg",
     "display_name": "Fiokg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/fiokg",
-    "endpoint_url": "https://frink.apps.renci.org/fiokg/sparql",
+    "endpoint_url": "https://apps.okn.us/fiokg/sparql",
     "domain_tags": [
       "environment",
       "industry",
@@ -779,7 +779,7 @@
     "name": "gene-expression-atlas-okn",
     "display_name": "Gene Expression Atlas Okn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/gene-expression-atlas-okn",
-    "endpoint_url": "https://frink.apps.renci.org/gene-expression-atlas-okn/sparql",
+    "endpoint_url": "https://apps.okn.us/gene-expression-atlas-okn/sparql",
     "domain_tags": [
       "biology",
       "genomics",
@@ -828,16 +828,13 @@
     "example_queries": [
       "What genes are differentially expressed in breast cancer?",
       "What tissues show high expression of BRCA1?"
-    ],
-    "aliases": [
-      "gene-expression-altlas-okn"
     ]
   },
   {
     "name": "geoconnex",
     "display_name": "Geoconnex",
     "named_graph_uri": "https://purl.org/okn/frink/kg/geoconnex",
-    "endpoint_url": "https://frink.apps.renci.org/geoconnex/sparql",
+    "endpoint_url": "https://apps.okn.us/geoconnex/sparql",
     "domain_tags": [
       "environment",
       "geospatial",
@@ -978,7 +975,7 @@
     "name": "hydrologykg",
     "display_name": "Hydrologykg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/hydrologykg",
-    "endpoint_url": "https://frink.apps.renci.org/hydrologykg/sparql",
+    "endpoint_url": "https://apps.okn.us/hydrologykg/sparql",
     "domain_tags": [
       "environment",
       "hydrology",
@@ -1148,7 +1145,7 @@
     "name": "nasa-gesdisc-kg",
     "display_name": "Nasa Gesdisc Kg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/nasa-gesdisc-kg",
-    "endpoint_url": "https://frink.apps.renci.org/nasa-gesdisc-kg/sparql",
+    "endpoint_url": "https://apps.okn.us/nasa-gesdisc-kg/sparql",
     "domain_tags": [
       "climate",
       "earth_science",
@@ -1206,7 +1203,7 @@
     "name": "ncipidkg",
     "display_name": "Ncipidkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/ncipidkg",
-    "endpoint_url": "https://frink.apps.renci.org/ncipidkg/sparql",
+    "endpoint_url": "https://apps.okn.us/ncipidkg/sparql",
     "domain_tags": [
       "biology",
       "biomedical",
@@ -1270,7 +1267,7 @@
     "name": "nde",
     "display_name": "Nde",
     "named_graph_uri": "https://purl.org/okn/frink/kg/nde",
-    "endpoint_url": "https://frink.apps.renci.org/nde/sparql",
+    "endpoint_url": "https://apps.okn.us/nde/sparql",
     "domain_tags": [
       "data_discovery",
       "health",
@@ -1331,7 +1328,7 @@
     "name": "nikg",
     "display_name": "Nikg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/nikg",
-    "endpoint_url": "https://frink.apps.renci.org/nikg/sparql",
+    "endpoint_url": "https://apps.okn.us/nikg/sparql",
     "domain_tags": [
       "geospatial",
       "public_safety",
@@ -1372,7 +1369,7 @@
     "name": "oard-kg",
     "display_name": "Oard Kg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/oard-kg",
-    "endpoint_url": "https://frink.apps.renci.org/oard-kg/sparql",
+    "endpoint_url": "https://apps.okn.us/oard-kg/sparql",
     "domain_tags": [
       "clinical_data",
       "health",
@@ -1435,7 +1432,7 @@
     "name": "pankgraph",
     "display_name": "Pankgraph",
     "named_graph_uri": "https://purl.org/okn/frink/kg/pankgraph",
-    "endpoint_url": "https://frink.apps.renci.org/pankgraph/sparql",
+    "endpoint_url": "https://apps.okn.us/pankgraph/sparql",
     "domain_tags": [
       "biomedical",
       "diabetes",
@@ -1604,7 +1601,7 @@
     "name": "prokn",
     "display_name": "Prokn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/prokn",
-    "endpoint_url": "https://frink.apps.renci.org/prokn/sparql",
+    "endpoint_url": "https://apps.okn.us/prokn/sparql",
     "domain_tags": [
       "biomedical",
       "drug_discovery",
@@ -1905,7 +1902,7 @@
     "name": "ruralkg",
     "display_name": "Ruralkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/ruralkg",
-    "endpoint_url": "https://frink.apps.renci.org/ruralkg/sparql",
+    "endpoint_url": "https://apps.okn.us/ruralkg/sparql",
     "domain_tags": [
       "criminal_justice",
       "health",
@@ -1988,7 +1985,7 @@
     "name": "sawgraph",
     "display_name": "Sawgraph",
     "named_graph_uri": "https://purl.org/okn/frink/kg/sawgraph",
-    "endpoint_url": "https://frink.apps.renci.org/sawgraph/sparql",
+    "endpoint_url": "https://apps.okn.us/sawgraph/sparql",
     "domain_tags": [
       "environment",
       "food_safety",
@@ -2069,7 +2066,7 @@
     "name": "scales",
     "display_name": "Scales",
     "named_graph_uri": "https://purl.org/okn/frink/kg/scales",
-    "endpoint_url": "https://frink.apps.renci.org/scales/sparql",
+    "endpoint_url": "https://apps.okn.us/scales/sparql",
     "domain_tags": [
       "criminal_justice",
       "legal"
@@ -2199,7 +2196,7 @@
     "name": "securechainkg",
     "display_name": "Securechainkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/securechainkg",
-    "endpoint_url": "https://frink.apps.renci.org/securechainkg/sparql",
+    "endpoint_url": "https://apps.okn.us/securechainkg/sparql",
     "domain_tags": [
       "software_security",
       "supply_chain"
@@ -2249,7 +2246,7 @@
     "name": "sockg",
     "display_name": "Sockg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/sockg",
-    "endpoint_url": "https://frink.apps.renci.org/sockg/sparql",
+    "endpoint_url": "https://apps.okn.us/sockg/sparql",
     "domain_tags": [
       "agriculture",
       "climate",
@@ -2483,7 +2480,7 @@
     "name": "spatialkg",
     "display_name": "Spatialkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/spatialkg",
-    "endpoint_url": "https://frink.apps.renci.org/spatialkg/sparql",
+    "endpoint_url": "https://apps.okn.us/spatialkg/sparql",
     "domain_tags": [
       "administrative_boundaries",
       "geospatial"
@@ -2574,7 +2571,7 @@
     "name": "spoke-genelab",
     "display_name": "Spoke Genelab",
     "named_graph_uri": "https://purl.org/okn/frink/kg/spoke-genelab",
-    "endpoint_url": "https://frink.apps.renci.org/spoke-genelab/sparql",
+    "endpoint_url": "https://apps.okn.us/spoke-genelab/sparql",
     "domain_tags": [
       "biology",
       "genomics",
@@ -2621,7 +2618,7 @@
     "name": "spoke-okn",
     "display_name": "Spoke Okn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/spoke-okn",
-    "endpoint_url": "https://frink.apps.renci.org/spoke-okn/sparql",
+    "endpoint_url": "https://apps.okn.us/spoke-okn/sparql",
     "domain_tags": [
       "biology",
       "chemistry",
@@ -2701,7 +2698,7 @@
     "name": "sudokn",
     "display_name": "Sudokn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/sudokn",
-    "endpoint_url": "https://frink.apps.renci.org/sudokn/sparql",
+    "endpoint_url": "https://apps.okn.us/sudokn/sparql",
     "domain_tags": [
       "manufacturing",
       "supply_chain"
@@ -2800,7 +2797,7 @@
     "name": "ufokn",
     "display_name": "Ufokn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/ufokn",
-    "endpoint_url": "https://frink.apps.renci.org/ufokn/sparql",
+    "endpoint_url": "https://apps.okn.us/ufokn/sparql",
     "domain_tags": [
       "emergency_response",
       "infrastructure",
@@ -2846,7 +2843,7 @@
     "name": "wildlifekn",
     "display_name": "Wildlifekn",
     "named_graph_uri": "https://purl.org/okn/frink/kg/wildlifekn",
-    "endpoint_url": "https://frink.apps.renci.org/wildlifekn/sparql",
+    "endpoint_url": "https://apps.okn.us/wildlifekn/sparql",
     "domain_tags": [
       "biodiversity",
       "conservation",

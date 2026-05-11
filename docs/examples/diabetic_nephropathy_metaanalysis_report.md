@@ -388,7 +388,7 @@ Would provide a more comprehensive understanding of diabetic nephropathy pathoge
 ## Data Availability
 
 **Source:** Gene Expression Atlas Open Knowledge Network  
-**SPARQL Endpoint:** https://frink.apps.renci.org/gene-expression-atlas-okn/sparql  
+**SPARQL Endpoint:** https://apps.okn.us/gene-expression-atlas-okn/sparql  
 **Study Accession:** E-GEOD-1009  
 **PubMed Reference:** PMID 15042541  
 **Analysis Code:** Available upon request  

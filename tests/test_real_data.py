@@ -1,17 +1,15 @@
 """
-Integration tests hitting live FRINK endpoint.
+Integration tests hitting the live OKN endpoint.
 
 These tests validate gene identifier mapping and cross-graph querying
 using known results from existing example analyses.
 
 Skip with: pytest -m "not live"
-Requires network access to frink.apps.renci.org.
+Requires network access to apps.okn.us.
 
 NOTE: The endpoint URLs used here use the canonical named-graph names
 (e.g., spoke-okn, gene-expression-atlas-okn) which match the FROM
-clauses inserted by SPARQLServer. The production mcp.json has some
-URL mismatches (e.g., "spoke" instead of "spoke-okn") that cause
-FROM clause mismatches on the federation endpoint.
+clauses inserted by SPARQLServer.
 """
 
 import pytest
@@ -24,29 +22,29 @@ pytestmark = pytest.mark.live
 
 @pytest.fixture(scope="module")
 def spoke_genelab():
-    return SPARQLServer("https://frink.apps.renci.org/spoke-genelab/sparql")
+    return SPARQLServer("https://apps.okn.us/spoke-genelab/sparql")
 
 
 @pytest.fixture(scope="module")
 def spoke_okn():
     # Use spoke-okn (not spoke) so the FROM clause matches the named graph
-    return SPARQLServer("https://frink.apps.renci.org/spoke-okn/sparql")
+    return SPARQLServer("https://apps.okn.us/spoke-okn/sparql")
 
 
 @pytest.fixture(scope="module")
 def gene_expression_atlas():
     # Use correct spelling (atlas not altlas)
-    return SPARQLServer("https://frink.apps.renci.org/gene-expression-atlas-okn/sparql")
+    return SPARQLServer("https://apps.okn.us/gene-expression-atlas-okn/sparql")
 
 
 @pytest.fixture(scope="module")
 def biobricks_tox21():
-    return SPARQLServer("https://frink.apps.renci.org/biobricks-tox21/sparql")
+    return SPARQLServer("https://apps.okn.us/biobricks-tox21/sparql")
 
 
 @pytest.fixture(scope="module")
 def biobricks_ice():
-    return SPARQLServer("https://frink.apps.renci.org/biobricks-ice/sparql")
+    return SPARQLServer("https://apps.okn.us/biobricks-ice/sparql")
 
 
 class TestSpokeGenelab:

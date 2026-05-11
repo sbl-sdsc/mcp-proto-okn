@@ -1,42 +1,23 @@
 # Adding a New Knowledge Graph
 
-This guide explains how to add a new knowledge graph to the unified MCP Proto-OKN server. The unified server reads `config/registry.json` to discover the 33 graphs it exposes, but **`registry.json` is generated** — it should not be edited by hand. Direct edits will be overwritten the next time the registry is rebuilt.
+This guide explains how to add a new knowledge graph to the unified MCP Proto-OKN server. The unified server reads [`config/registry.json`](../config/registry.json) to discover the graphs it exposes, but **`registry.json` is generated** — it should not be edited by hand. Direct edits will be overwritten the next time the registry is rebuilt.
 
-The build script `scripts/build_registry.py` assembles the registry from several sources. Adding a new graph means adding the graph to each of those sources, then re-running the build.
+The build script [`scripts/build_registry.py`](../scripts/build_registry.py) assembles the registry from the `metadata/` directory plus a few hardcoded mappings in the script itself. Adding a new graph means adding files under `metadata/` and updating those mappings, then re-running the build.
 
 ## Prerequisites
 
-- The new graph must be hosted as a SPARQL endpoint on FRINK (`https://frink.apps.renci.org/<name>/sparql`). The build script filters out non-FRINK endpoints. Third-party endpoints can still be served via the per-graph `mcp-proto-okn` server (see [installation.md](installation.md)), but they are not part of the unified server registry.
-- A working local checkout with `uv sync` completed (see [Option 3 in the README](../README.md#option-3-uv-run-from-local-source--development-mode)).
+- The new graph must be hosted as a SPARQL endpoint on the OKN platform at `https://apps.okn.us/<name>/sparql` and registered in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/). The build script derives endpoint URLs from the graph name using that pattern.
+- A working local checkout with `uv sync` completed (see [Option 2 in the README](../README.md#option-2-uv-run--local-source-development-mode)).
 
 ## Step-by-Step
 
 Substitute your graph name (kebab-case, e.g. `mygraph-okn`) for `<name>` throughout.
 
-### 1. Register the endpoint in the MCP config files
-
-Add an entry to each of the four config files in `config/`. They all follow the same per-graph pattern.
-
-**`config/mcp.json`** (source of truth for the build script — required):
-```json
-"<name>": {
-    "command": "uvx",
-    "args": ["mcp-proto-okn", "--endpoint", "https://frink.apps.renci.org/<name>/sparql"]
-}
-```
-
-The same entry, with adjusted command/args, also goes in:
-- `config/claude_desktop_config.json` (uses `"mcpServers"`, `uvx`)
-- `config/mcp-dev.json` (uses `"servers"`, `uv run --directory ...`)
-- `config/claude_desktop_config_dev.json` (uses `"mcpServers"`, `uv run --directory ...`)
-
-Look at any existing graph in those files for the exact shape.
-
-### 2. Add a description
+### 1. Add a description
 
 Create `metadata/descriptions/<name>.txt` containing 1–3 paragraphs of plain text. This text becomes the graph's `description_summary` in the registry and is what the LLM reads when deciding whether the graph is relevant to a user's question. Be specific about what the graph contains, who created it, and what kinds of questions it can answer.
 
-### 3. Add the entity inventory
+### 2. Add the entity inventory
 
 Create `metadata/entities/<name>_entities.csv` with the schema:
 
@@ -62,7 +43,7 @@ WHERE {
 
 Run a similar query for predicates (`?s ?uri ?o` pattern). Refine by hand to remove noise.
 
-### 4. Update `scripts/build_registry.py`
+### 3. Update `scripts/build_registry.py`
 
 The build script holds three hardcoded dicts keyed by graph name. Add an entry for `<name>` to each:
 
@@ -70,9 +51,9 @@ The build script holds three hardcoded dicts keyed by graph name. Add an entry f
 - **`IDENTIFIER_NAMESPACES`** — list of identifier systems used by the graph (e.g. `["MONDO", "Ensembl", "NCBI Gene"]`). This populates the cross-graph identifier bridge — see [identifier_mapping.py](../src/mcp_proto_okn/identifier_mapping.py) for the canonical names.
 - **`EXAMPLE_QUERIES`** — list of natural-language questions the graph can answer well. The unified server surfaces these to the LLM as hints; 1–3 well-chosen questions are more useful than a long list.
 
-If the name in `config/mcp.json` differs from the canonical name (e.g. typo or short alias), add a mapping to the `ALIASES` dict.
+If the graph is commonly referred to by a short alias (e.g. `spoke` → `spoke-okn`), add it to the `ALIASES` dict.
 
-### 5. Rebuild the registry
+### 4. Rebuild the registry
 
 ```bash
 uv run python scripts/build_registry.py
@@ -80,9 +61,9 @@ uv run python scripts/build_registry.py
 
 Expected output: `Built registry with 34 graphs → /path/to/config/registry.json`. Confirm the count went up by one and that your graph appears in the JSON.
 
-### 6. Test locally
+### 5. Test locally
 
-Restart Claude Code (the unified server is started by the MCP client at session start, so any registry change requires a fresh client session to be picked up). Then verify:
+Restart your MCP client (the unified server is started by the client at session start, so any registry change requires a fresh session to be picked up). Then verify in Claude Code:
 
 ```
 /mcp
@@ -98,7 +79,7 @@ The new graph should appear with its `display_name`, `domain_tags`, and `descrip
 
 The LLM will use the entity inventory and example queries to answer.
 
-### 7. (Optional) Add an overview document
+### 6. (Optional) Add an overview document
 
 If you want the new graph to appear in the README's "Knowledge Graph Overviews" table, generate an overview document:
 
@@ -111,14 +92,10 @@ Save the resulting transcript as `docs/examples/<name>_overview.md` and add a li
 Open a pull request against [sbl-sdsc/mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn). The changed files in a typical "add a graph" PR are:
 
 ```
-config/mcp.json
-config/mcp-dev.json
-config/claude_desktop_config.json
-config/claude_desktop_config_dev.json
-config/registry.json                       # regenerated
 metadata/descriptions/<name>.txt           # new
 metadata/entities/<name>_entities.csv      # new
 scripts/build_registry.py                  # 3 dict additions
+config/registry.json                       # regenerated
 docs/examples/<name>_overview.md           # optional
 README.md                                  # optional, if overview added
 ```

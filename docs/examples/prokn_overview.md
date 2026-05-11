@@ -29,7 +29,7 @@ Here's a comprehensive overview of the **ProKN (Protein Knowledge Network)** kno
 
 **Identifier namespaces:** UniProt accessions, PubMed IDs, NCIT codes, SMILES, InChIKey, NCBI Taxon IDs, and EC numbers.
 
-**Access:** SPARQL endpoint at `https://frink.apps.renci.org/prokn/sparql`, plus a portal at [research.bioinformatics.udel.edu/ProKN](https://research.bioinformatics.udel.edu/ProKN/) with REST APIs, ID mapping, variant mapping, and protein embedding tools.
+**Access:** SPARQL endpoint at `https://apps.okn.us/prokn/sparql`, plus a portal at [research.bioinformatics.udel.edu/ProKN](https://research.bioinformatics.udel.edu/ProKN/) with REST APIs, ID mapping, variant mapping, and protein embedding tools.
 
 **Example queries you can run:**
 - Find all properties and relationships for a specific gene like APOE

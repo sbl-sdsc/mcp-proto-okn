@@ -350,7 +350,7 @@ Mouse genes were mapped to human orthologs using the pre-computed `IS_ORTHOLOG_M
 
 **SPOKE GeneLab** (`spoke-genelab`)
 - **Description:** Integrates omics data from NASA's Open Science Data Repository (OSDR/GeneLab)
-- **SPARQL Endpoint:** https://frink.apps.renci.org/spoke-genelab/sparql
+- **SPARQL Endpoint:** https://apps.okn.us/spoke-genelab/sparql
 - **Principal Investigator:** Sergio Baranzini, UCSF
 - **Funding:** NSF Award #2333819
 - **Data Content:**
@@ -362,7 +362,7 @@ Mouse genes were mapped to human orthologs using the pre-computed `IS_ORTHOLOG_M
 
 **SPOKE-OKN** (`spoke-okn`)
 - **Description:** Comprehensive biomedical and environmental health knowledge graph
-- **SPARQL Endpoint:** https://frink.apps.renci.org/spoke-okn/sparql
+- **SPARQL Endpoint:** https://apps.okn.us/spoke-okn/sparql
 - **Principal Investigator:** Sergio Baranzini, UCSF
 - **Funding:** NSF Award #2333819
 - **Data Content:**

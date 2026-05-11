@@ -3,16 +3,12 @@ MCP SPARQL Server for Proto-OKN Knowledge Graphs
 
 This module provides a Model Context Protocol (MCP) server that enables querying
 of SPARQL endpoints, particularly those in the Proto-OKN (Prototype Open Knowledge Network)
-ecosystem hosted on the FRINK platform.
+ecosystem hosted on the OKN platform (https://okn.us/).
 
-The server automatically detects FRINK endpoints and provides appropriate documentation
-links to the knowledge graph registry. It supports querying various knowledge graphs
-including SPOKE, BioBricks ICE, DREAM-KG, SAWGraph, and many others in the Proto-OKN
-program.
-
-For FRINK endpoints (https://frink.apps.renci.org/*), the server automatically generates
-a description pointing to the knowledge graph registry. For other endpoints, you can
-provide a custom description using the --description argument.
+The server automatically detects OKN endpoints (https://apps.okn.us/<kg>/sparql) and
+provides appropriate documentation links to the knowledge graph registry. It supports
+querying various knowledge graphs including SPOKE, BioBricks ICE, DREAM-KG, SAWGraph,
+and many others in the Proto-OKN program.
 
 This class extends the mcp-server-sparql MCP server.
 
@@ -267,6 +263,10 @@ class SPARQLServer:
 
         # As a workaround, use the federated endpoint
         # self.sparql = SPARQLWrapper(endpoint_url)
+        # The per-graph endpoints (https://apps.okn.us/<kg>/sparql) only respond
+        # to queries that omit a FROM clause; this server always injects one to
+        # scope to the named graph. The cross-graph federation endpoint accepts
+        # FROM clauses and is currently still hosted by RENCI.
         federated_endpoint = "https://frink.apps.renci.org/federation/sparql"
         self.sparql = SPARQLWrapper(federated_endpoint)
         self.sparql.setReturnFormat(JSON)
@@ -344,8 +344,8 @@ class SPARQLServer:
         }
     
     def _get_registry_url(self) -> Optional[Tuple[str, str]]:
-        """Return (kg_name, registry_url) if this looks like a FRINK endpoint, else None."""
-        if not self.endpoint_url.startswith("https://frink.apps.renci.org/"):
+        """Return (kg_name, registry_url) if this looks like an OKN endpoint, else None."""
+        if not self.endpoint_url.startswith("https://apps.okn.us/"):
             return "", ""
 
         path_parts = urlparse(self.endpoint_url).path.strip("/").split("/")
@@ -1659,7 +1659,7 @@ def parse_args():
     parser.add_argument(
         "--endpoint",
         required=True,
-        help="SPARQL endpoint URL (e.g., https://frink.apps.renci.org/spoke/sparql)",
+        help="SPARQL endpoint URL (e.g., https://apps.okn.us/spoke-okn/sparql)",
     )
     parser.add_argument(
         "--description",

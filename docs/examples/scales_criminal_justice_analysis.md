@@ -244,7 +244,7 @@ This analysis examines patterns in criminal justice data from the SCALES (System
 ## Data Source
 
 **SCALES Knowledge Graph**
-- Endpoint: https://frink.apps.renci.org/scales/sparql
+- Endpoint: https://apps.okn.us/scales/sparql
 - PI: Danny O'Neal (danny.e.oneal@gmail.com)
 - Funding: NSF Award #2333803
 - Documentation: https://scales-okn.org/

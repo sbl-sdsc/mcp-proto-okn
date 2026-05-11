@@ -2,7 +2,7 @@
 
 ## What It Is
 
-A lightweight Python server that exposes 27 Proto-OKN knowledge graphs through a single MCP endpoint. It proxies SPARQL queries to the FRINK platform (`frink.apps.renci.org`) — it doesn't host any data, so resource requirements are minimal (a `t3.small` or equivalent is fine).
+A lightweight Python server that exposes 33 Proto-OKN knowledge graphs through a single MCP endpoint. It proxies SPARQL queries to the [OKN platform](https://okn.us/) (`apps.okn.us`) — it doesn't host any data, so resource requirements are minimal (a `t3.small` or equivalent is fine).
 
 ## Setup
 
