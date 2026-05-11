@@ -1,66 +1,84 @@
-## API Reference
+# API Reference
 
-### Available Tools
+The unified `mcp-proto-okn-unified` server exposes 13 MCP tools. Tools take the canonical graph name (e.g. `spoke-okn`) as their first argument where applicable; aliases defined in the registry are resolved automatically.
 
-#### `get_description`
-Retrieves endpoint metadata and documentation.
+## Discovery
 
-**Parameters:**
-- None
+### `list_graphs(domain?, entity_type?)`
 
-**Returns:**
-- String containing either:
-  - Registry page content prefixed with a header line identifying the registry source (for FRINK endpoints)
-  - The static/server-provided description when no registry URL applies
+Browse all 33 graphs with metadata. Call this first to understand what data is available.
 
-#### `get_schema`
-Retrieves the schema (classes, relationships, properties) for the knowledge graph endpoint.
+**Parameters**
+- `domain` (string, optional): filter by domain tag (`biology`, `health`, `toxicology`, `environment`, `geospatial`, …)
+- `entity_type` (string, optional): filter by entity class name (`Gene`, `Disease`, `ChemicalEntity`, …)
 
-> **Important:** Always call this tool FIRST before making any queries to understand what data is available in the knowledge graph.
+**Returns** `{ graph_count, graphs: [...] }` with each graph's `name`, `display_name`, `domain_tags`, `entity_types`, and `identifier_namespaces`.
 
-**Parameters:**
-- `compact` (boolean, optional): If `true` (default), returns compact URI:label mappings. If `false`, returns full metadata with descriptions.
+### `route_query(question)`
 
-**Returns:**
-- JSON object containing the endpoint's schema information in the specified format, including:
-  - Available classes (node types)
-  - Relationships/predicates (edges between nodes)
-  - Edge properties (properties that exist on relationships themselves, such as log2fc, p-values, etc.)
-  - Properties with labels and descriptions (when available)
+Match a natural-language question to the most relevant graphs using a registry keyword search.
 
-**Schema Structure:**
-The schema distinguishes between:
-- **Node classes**: Entity types (e.g., Gene, Study, Assay)
-- **Edge predicates**: Relationships between nodes (e.g., MEASURED_IN, ASSOCIATED_WITH)
-- **Edge properties**: Data stored on relationships themselves (accessed via RDF reification)
+**Parameters**
+- `question` (string, required): the user's natural-language question
 
-#### `query`
-Executes SPARQL queries against the configured endpoint with intelligent query analysis.
+**Returns** a ranked list of candidate graphs with match scores.
 
-> **Important:** You MUST call `get_schema()` first before using this query tool to understand the available classes and predicates in the knowledge graph.
+### `get_description(graph_name)`
 
-**Parameters:**
-- `query_string` (string, required): A valid SPARQL query string
-- `format` (string, optional): Output format. Options:
-  - `'compact'` (default): Columns + data arrays, no repeated keys
-  - `'simplified'`: JSON with dict rows
-  - `'full'`: Complete SPARQL JSON response
-  - `'values'`: List of dictionaries
-  - `'csv'`: CSV string format
+Full description, example queries, and identifier namespaces for a single graph. Use before writing queries to deep-dive into a specific graph.
 
-**Returns:**
-- Query results in the specified format
-- Includes automatic query analysis warnings for:
-  - LIMIT clauses without ORDER BY (suggests ordering to get meaningful results)
-  - Incorrect access to edge properties (guides toward RDF reification pattern)
+## Schema and Query
 
-**Query Analysis Features:**
-The tool automatically analyzes queries and provides warnings/suggestions:
-- **LIMIT without ORDER BY**: When a query uses LIMIT but no ORDER BY, the tool warns that results will be arbitrary and suggests an appropriate ORDER BY clause based on query context
-- **Edge property access**: When a query references predicates that have edge properties but doesn't use the RDF reification pattern, provides guidance on proper access patterns
+### `get_schema(graph_name, compact?)`
 
-**Edge Properties Access Pattern:**
-For relationships with associated data (edge properties), use the RDF reification pattern:
+Retrieves the schema (classes, predicates, edge properties, node properties) for a graph.
+
+> **Important:** Always call this tool **before** writing SPARQL for a graph.
+
+**Parameters**
+- `graph_name` (string, required)
+- `compact` (boolean, optional, default `true`): if `true`, returns compact URI:label mappings; if `false`, includes full metadata with descriptions
+
+**Returns** a JSON object with:
+- **`classes`** — node types (e.g. `Gene`, `Study`, `Assay`)
+- **`predicates`** — edges between nodes (e.g. `ASSOCIATES_DaG`, `MEASURED_IN`); includes a `has_edge_properties` flag per predicate
+- **`edge_properties`** — properties stored on relationships themselves (accessed via RDF reification — e.g. `log2fc`, `p_value`)
+- **`node_properties`** — literal properties on node classes
+
+### `query(graph_name, query_string, ...)`
+
+Execute SPARQL with automatic FROM-clause injection, ontology expansion, and query analysis.
+
+> **Important:** call `get_schema()` first.
+
+**Parameters**
+- `graph_name` (string, required)
+- `query_string` (string, required): a valid SPARQL query
+- `analyze` (boolean, default `true`): emit warnings for missing `LIMIT`/`ORDER BY`, edge-property misuse, etc.
+- `auto_expand_descendants` (boolean, default `true`): rewrite the query to also match descendants of any MONDO/UBERON/HP/GO/CL/ChEBI URI it contains, fetched from Ubergraph
+- `max_descendants` (integer, default `2000`): cap on expansion per URI
+- `max_depth` (integer, default `5`): max `rdfs:subClassOf` hops
+- `bind_expansion_to` (list, optional): variable names to bind expanded URIs to (constrains the expansion to chosen positions in the query)
+
+**Returns**
+```json
+{
+  "graph_name": "...",
+  "columns": [...],
+  "data": [[...], ...],
+  "count": N,
+  "query_analysis": { "warning": "...", "suggested_order": "..." },
+  "ontology_expansion": { "expanded": true, "original_uris": [...], "expanded_uris": {...}, "total_concepts": K }
+}
+```
+
+**Query analysis** automatically warns for:
+- **`LIMIT` without `ORDER BY`** — results are arbitrary, suggests an appropriate `ORDER BY` based on variable names
+- **Edge-property access without reification** — predicates with edge properties referenced as plain triples; provides a corrected RDF reification template
+- **Variable analysis** — prioritizes numeric variable names (`concentration`, `count`, `p_value`, `log2fc`, …) for `ORDER BY` suggestions
+
+**Edge-properties access pattern.** For relationships with associated data, use the RDF reification pattern:
+
 ```sparql
 ?stmt rdf:subject ?source ;
       rdf:predicate schema:RELATIONSHIP_NAME ;
@@ -68,64 +86,53 @@ For relationships with associated data (edge properties), use the RDF reificatio
       schema:property_name ?value .
 ```
 
-#### `clean_mermaid_diagram`
-Cleans Mermaid class diagrams by removing unwanted elements that cause rendering issues.
+### `multi_graph_query(queries)`
 
-**Parameters:**
-- `mermaid_content` (string, required): The raw Mermaid class diagram content
+Run different SPARQL across multiple graphs in a single call. Results are merged with an added `source_graph` column.
 
-**Returns:**
-- Cleaned Mermaid content with the following transformations:
-  - All note statements removed (would render as unreadable yellow boxes)
-  - Empty curly braces removed from class definitions (both single-line and multi-line formats)
-  - Strings after newline characters truncated (e.g., "ClassName\nextra" becomes "ClassName")
-  - Vertical bars (|) removed as they're not allowed in class diagrams
+**Parameters**
+- `queries` (dict, required): `{ "<graph_name>": "<sparql>", ... }`
 
-**Use Case:**
-This tool is essential for creating clean, renderable Mermaid diagrams from knowledge graph schemas. It should always be called after generating a draft diagram and before presenting the final visualization.
+**Returns** merged result rows tagged with `source_graph`.
 
-#### `create_chat_transcript`
-Generates a prompt for creating a formatted markdown chat transcript.
+### `get_query_template(graph_name, relationship_name)`
 
-**Parameters:**
-- None
+Return a SPARQL template demonstrating the RDF reification pattern for a specific relationship that has edge properties (e.g. differential expression with `log2fc`, `p_value`).
 
-**Returns:**
-- A detailed prompt string with instructions for creating a chat transcript in markdown format, including:
-  - Formatting guidelines for user prompts and assistant responses
-  - Instructions for inline inclusion of visualizations and mermaid diagrams
-  - File naming conventions and save location (~/Downloads/)
-  - Footer template with version information
+## Cross-Graph Bridging
 
-**Use Case:**
-Helps create well-formatted documentation of chat sessions exploring knowledge graphs, including queries, visualizations, and insights.
+### `get_join_strategy(graph_a, graph_b)`
 
-#### `visualize_schema`
-Generates a comprehensive prompt for creating a Mermaid class diagram visualization of the knowledge graph schema.
+Identify shared identifiers and recommend a join strategy between two graphs. May suggest a third "bridge" graph (e.g. `gene-expression-atlas-okn` between Ensembl-only and NCBI-Gene-only graphs).
 
-**Parameters:**
-- None
+### `lookup_uri(label, max_results?)`
 
-**Returns:**
-- A detailed prompt string with step-by-step instructions for:
-  - Retrieving and analyzing the schema
-  - Identifying node classes, edge predicates, and edge properties
-  - Generating a draft Mermaid class diagram
-  - **Mandatory cleaning step** using `clean_mermaid_diagram` tool
-  - Presenting the cleaned diagram inline and as a .mermaid file
-  - Proper handling of edges with properties (as intermediary classes)
+Find an ontology URI by its human-readable label via Ubergraph. Graph-independent.
 
-**Critical Workflow:**
-1. Call `get_schema()` to retrieve schema data
-2. Analyze schema to identify nodes, edges, and edge properties
-3. Generate draft Mermaid diagram
-4. **MUST call `clean_mermaid_diagram`** to clean the draft
-5. Present only the cleaned output
-6. Save to `/mnt/user-data/outputs/<kg_name>-schema.mermaid`
-7. Call `present_files` to share with user
+**Returns** `{ query_label, match_count, matches: [{ uri, label, match_type }] }`.
 
-**Edge Property Visualization:**
-Edges with properties are represented as intermediary classes:
+### `get_descendants(uri, max_results?, max_depth?, include_distance?)`
+
+Expand a URI to find all descendant classes in the ontology hierarchy. Graph-independent.
+
+**Returns** `{ uri, label, max_depth, descendant_count, descendants: [{ uri, label, distance? }] }`.
+
+> For *querying datasets* with ontology expansion, use `query(..., auto_expand_descendants=True)` instead — `get_descendants` is for exploring the ontology itself.
+
+## Visualization and Documentation
+
+### `visualize_schema(graph_name)`
+
+Returns a step-by-step prompt that walks the assistant through generating a Mermaid class diagram for the graph's schema. Workflow:
+
+1. Call `get_schema()`
+2. Identify nodes, edges, and edge properties
+3. Generate a draft Mermaid diagram
+4. **Must call `clean_mermaid_diagram`** on the draft
+5. Present the cleaned diagram
+
+Edge properties are represented as intermediary classes:
+
 ```mermaid
 classDiagram
 direction TB
@@ -138,40 +145,34 @@ Assay --> RELATIONSHIP_NAME
 RELATIONSHIP_NAME --> Gene
 ```
 
+### `clean_mermaid_diagram(mermaid_content)`
+
+Clean a Mermaid class diagram by removing notes (which would render as unreadable yellow boxes), empty braces, content after `\n` in class names, and stray vertical bars.
+
+Called automatically inside the `visualize_schema` workflow; usable standalone for ad-hoc Mermaid cleanup.
+
+### `create_chat_transcript(graph_name?)`
+
+Returns a formatted prompt instructing the assistant to package the current conversation as a markdown chat transcript (saved to `~/Downloads/`), including queries, results, visualizations, and model-version footer.
+
 ---
-### Command Line Interface
 
-**Required Parameters:**
-- `--endpoint` : SPARQL endpoint URL (e.g., `https://frink.apps.renci.org/spoke/sparql`)
+## Command-Line Interface
 
-**Optional Parameters:**
-- `--description` : Custom description for the SPARQL endpoint (auto-generated for FRINK endpoints)
-
-**Example Usage:**
+The unified server is launched via `mcp-proto-okn-unified` (installed by `uv sync` or available via `uvx`).
 
 ```bash
-uvx mcp-proto-okn --endpoint https://frink.apps.renci.org/spoke/sparql
+uv run mcp-proto-okn-unified --help
 ```
 
----
-### Query Analysis System
+Common invocations:
 
-The server includes an intelligent query analyzer that helps improve query quality:
+```bash
+# Default: stdio transport for local MCP clients
+uv run mcp-proto-okn-unified
 
-**Features:**
-- **LIMIT Analysis**: Detects queries with LIMIT but no ORDER BY and suggests appropriate ordering
-- **Edge Property Detection**: Identifies when queries attempt to access edge properties without using proper RDF reification patterns
-- **Variable Analysis**: Automatically suggests ORDER BY clauses based on variable names and context
+# HTTP transport for hosting
+uv run mcp-proto-okn-unified --transport streamable-http --host 0.0.0.0 --port 8000
+```
 
-**Automatic Suggestions:**
-The analyzer prioritizes suggestions based on:
-1. Numeric variable names (concentration, count, p_value, log2fc, etc.)
-2. Context-appropriate sorting
-3. First non-subject variable as fallback
-
-**Edge Property Warnings:**
-When a query references predicates known to have edge properties but doesn't use the reification pattern, the tool provides:
-- List of predicates with edge properties being accessed
-- Explanation of edge properties concept
-- Template for correct RDF reification access pattern
-- Reference to schema's edge_properties section
+Configurable via CLI flags or environment variables (`MCP_PROTO_OKN_TRANSPORT`, `MCP_PROTO_OKN_HOST`, `MCP_PROTO_OKN_PORT`, `MCP_PROTO_OKN_API_KEY`); see the [README's "Transport Modes" section](../README.md#transport-modes).

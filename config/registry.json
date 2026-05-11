@@ -828,9 +828,6 @@
     "example_queries": [
       "What genes are differentially expressed in breast cancer?",
       "What tissues show high expression of BRCA1?"
-    ],
-    "aliases": [
-      "gene-expression-altlas-okn"
     ]
   },
   {

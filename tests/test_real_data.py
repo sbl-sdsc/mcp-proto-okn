@@ -9,9 +9,7 @@ Requires network access to frink.apps.renci.org.
 
 NOTE: The endpoint URLs used here use the canonical named-graph names
 (e.g., spoke-okn, gene-expression-atlas-okn) which match the FROM
-clauses inserted by SPARQLServer. The production mcp.json has some
-URL mismatches (e.g., "spoke" instead of "spoke-okn") that cause
-FROM clause mismatches on the federation endpoint.
+clauses inserted by SPARQLServer.
 """
 
 import pytest

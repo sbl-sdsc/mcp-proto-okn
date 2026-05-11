@@ -14,13 +14,13 @@ uv build
 uv publish --publish-url https://test.pypi.org/legacy/ --token pypi-YOUR_TEST_PYPI_TOKEN_HERE
 
 # Test the deployment
-For testing, add the following parameters to the `args` option in the claude_desktop_config.json.
+For testing, add the following parameters to the `args` option in your MCP client config.
   "args": [
     "--index-url",
     "https://test.pypi.org/simple/",
     "--extra-index-url",
     "https://pypi.org/simple/",
-    "mcp-proto-okn"
+    "mcp-proto-okn-unified"
   ]
 
 # Publish to PyPI (production release)
