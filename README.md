@@ -5,7 +5,7 @@
 [![Model Context Protocol](https://img.shields.io/badge/MCP-Compatible-green.svg)](https://modelcontextprotocol.io/)
 [![PyPI version](https://img.shields.io/pypi/v/mcp-proto-okn?label=PyPI)](https://pypi.org/project/mcp-proto-okn/)
 
-A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **33 [Proto-OKN](https://www.proto-okn.net/) knowledge graphs** through one unified interface. The server enables AI assistants (Claude, ChatGPT, GitHub Copilot, etc.) to discover graphs, inspect their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources — all through natural-language conversation. The graphs are hosted on the [FRINK](https://frink.renci.org/) federation platform.
+A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **33 [Proto-OKN](https://www.proto-okn.net/) knowledge graphs** through one unified interface. The server enables AI assistants (Claude, ChatGPT, GitHub Copilot, etc.) to discover graphs, inspect their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources — all through natural-language conversation. The graphs are hosted on the [Open Knowledge Network (OKN)](https://okn.us/) federation platform and cataloged in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/).
 
 > **Beta:** the proto-okn MCP server is in beta. We welcome feedback and bug reports via [issues](https://github.com/sbl-sdsc/mcp-proto-okn/issues).
 
@@ -21,7 +21,7 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
 - **🧭 Per-graph SPARQL** — query any individual graph with automatic FROM-clause injection
 - **🔗 Cross-graph bridging** — built-in identifier maps (Ensembl ↔ NCBI Gene ↔ Symbol; CAS, DTXSID, InChIKey; MONDO, FIPS, NAICS, …)
 - **🧬 Multi-graph queries** — run different SPARQL across multiple graphs in a single call and merge results
-- **🌳 Ontology-driven search expansion** — queries are automatically expanded using ontology hierarchies (MONDO, UBERON, HP, GO, CL, ChEBI, …) via [Ubergraph](https://frink.renci.org/registry/kgs/ubergraph/), so a query for "arthritic joint disease" matches all of its subtypes without manual enumeration
+- **🌳 Ontology-driven search expansion** — queries are automatically expanded using ontology hierarchies (MONDO, UBERON, HP, GO, CL, ChEBI, …) via [Ubergraph](https://registry.okn.us/registry/kgs/ubergraph/), so a query for "arthritic joint disease" matches all of its subtypes without manual enumeration
 - **🖼️ Schema visualization & transcripts** — generate Mermaid class diagrams and chat transcripts directly from the conversation
 
 ## Architecture
@@ -65,8 +65,8 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
           │  SPARQL over HTTPS
           ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    FRINK Federation Platform                           │
-│                    frink.apps.renci.org                                │
+│                    OKN Federation Platform                             │
+│                    apps.okn.us                                         │
 │                                                                       │
 │  spoke-okn │ spoke-genelab │ biobricks-ice │ biobricks-tox21 │ …     │
 │  sawgraph  │ dreamkg       │ scales        │ ruralkg        │ …     │
@@ -144,7 +144,7 @@ Once the server is connected, try these conversational prompts in your client. T
 
 ### Ontology-Driven Search Expansion
 
-Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, ChEBI, …) via [Ubergraph](https://frink.renci.org/registry/kgs/ubergraph/) to include all descendant concepts. A search for "cardiovascular disease" automatically matches every subtype the data is tagged at — without you having to enumerate them.
+Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, ChEBI, …) via [Ubergraph](https://registry.okn.us/registry/kgs/ubergraph/) to include all descendant concepts. A search for "cardiovascular disease" automatically matches every subtype the data is tagged at — without you having to enumerate them.
 
 1. **[Cardiovascular Disease Datasets — full walkthrough (nde)](docs/examples/cardiovascular-disease-ontology-expansion.md)** — shows how one URI in the query expands to 1,592 descendant concepts and matches 284 disease subtypes
 2. [Arthritic Joint Disease Datasets (nde)](docs/examples/nde-arthritic_joint_disease_ontology_expansion.md)
@@ -431,7 +431,7 @@ The `gene-expression-atlas-okn` graph stores both NCBI Gene IDs and Ensembl IDs,
 # Unit tests (no network, fast)
 uv run python -m pytest tests/test_registry.py tests/test_identifier_mapping.py tests/test_unified_server.py -v
 
-# Live integration tests (requires network access to frink.apps.renci.org)
+# Live integration tests (requires network access to apps.okn.us)
 uv run python -m pytest tests/test_real_data.py -v -m live
 
 # All tests
@@ -448,7 +448,7 @@ See **[Adding a New Knowledge Graph](docs/adding-a-graph.md)** for the full step
 4. Run `uv run python scripts/build_registry.py` to regenerate `config/registry.json`.
 5. Restart your MCP client and test with `list_graphs` / `@<name>`.
 
-The graph must be hosted on FRINK at `https://frink.apps.renci.org/<name>/sparql` — the registry builder assumes that endpoint pattern.
+The graph must be hosted on the OKN platform at `https://apps.okn.us/<name>/sparql` and registered in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/) — the registry builder assumes that endpoint pattern.
 
 ## Building and Publishing
 
@@ -464,8 +464,8 @@ See **[docs/build_publish.md](docs/build_publish.md)** (maintainers only — PyP
 - For local installs, verify `uvx` is on PATH (`which uvx`); if not, use the absolute path in `command`
 
 **Connection errors**
-- Check that the FRINK endpoints are reachable: `curl https://frink.apps.renci.org/spoke-okn/sparql`
-- Some FRINK endpoints may have rate limits or temporary downtime
+- Check that the OKN endpoints are reachable: `curl https://apps.okn.us/spoke-okn/sparql`
+- Some endpoints may have rate limits or temporary downtime
 
 **Slow or hung queries**
 - Complex SPARQL can take time; break it into smaller parts
@@ -508,8 +508,8 @@ This project is licensed under the BSD 3-Clause License. See [LICENSE](LICENSE).
 ### Related Projects
 
 - [Proto-OKN Project](https://www.proto-okn.net/) — Prototype Open Knowledge Network initiative
-- [FRINK Platform](https://frink.renci.org/) — Knowledge-graph hosting infrastructure
-- [Knowledge Graph Registry](https://frink.renci.org/registry/) — Catalog of available knowledge graphs
+- [Open Knowledge Network (OKN)](https://okn.us/) — Knowledge-graph hosting infrastructure (formerly FRINK)
+- [OKN Knowledge Graph Registry](https://registry.okn.us/registry/) — Catalog of available knowledge graphs
 - [Model Context Protocol](https://modelcontextprotocol.io/) — AI-assistant integration standard
 - [Original MCP Server SPARQL](https://github.com/ekzhu/mcp-server-sparql/) — Base implementation reference
 

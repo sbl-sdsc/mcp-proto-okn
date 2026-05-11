@@ -49,7 +49,7 @@ packages = ["src/mcp_proto_okn"]
 
 [tool.pytest.ini_options]
 markers = [
-    "live: tests that require network access to frink.apps.renci.org",
+    "live: tests that require network access to apps.okn.us",
 ]
 
 [tool.uv]

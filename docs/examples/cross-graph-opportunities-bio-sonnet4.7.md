@@ -210,7 +210,7 @@ SELECT ?geneName ?ensemblId ?log2fc ?adjPval ?studyTitle ?assayLabel
 WHERE {
 
   # ── GRAPH A: spoke-okn ─────────────────────────────────────────────────
-  SERVICE <https://frink.apps.renci.org/spoke-okn/sparql> {
+  SERVICE <https://apps.okn.us/spoke-okn/sparql> {
     # Seed: genes associated with the disease of interest
     <DISEASE_URI>          # e.g. https://purl.org/okn/frink/kg/spoke-okn/…/DOID_9351
       spoke:ASSOCIATES_DaG  ?gene .
@@ -221,7 +221,7 @@ WHERE {
   }
 
   # ── GRAPH B: gene-expression-atlas-okn ────────────────────────────────
-  SERVICE <https://frink.apps.renci.org/gene-expression-atlas-okn/sparql> {
+  SERVICE <https://apps.okn.us/gene-expression-atlas-okn/sparql> {
     # Find atlas Gene node matching the same Ensembl ID (string literal JOIN)
     ?atlasGene  gea:ensembl_id  ?ensemblId .      # ← JOIN key
 
@@ -275,7 +275,7 @@ SELECT ?geneSymbol ?ncbiId ?gea_log2fc ?gea_pval
 WHERE {
 
   # ── GRAPH A: gene-expression-atlas-okn ────────────────────────────────
-  SERVICE <https://frink.apps.renci.org/gene-expression-atlas-okn/sparql> {
+  SERVICE <https://apps.okn.us/gene-expression-atlas-okn/sparql> {
     # Studies focusing on the seed disease
     ?geaStudy biolink:studies  <DISEASE_URI> ;
               biolink:has_output ?geaAssay .
@@ -294,7 +294,7 @@ WHERE {
   }
 
   # ── GRAPH B: spoke-genelab ────────────────────────────────────────────
-  SERVICE <https://frink.apps.renci.org/spoke-genelab/sparql> {
+  SERVICE <https://apps.okn.us/spoke-genelab/sparql> {
     # Gene node in genelab uses NCBI URI — extract numeric ID to compare
     ?glGene  a  biolink:Gene .
     BIND(STRAFTER(STR(?glGene), "ncbigene/") AS ?glNcbiStr)
@@ -356,7 +356,7 @@ SELECT DISTINCT ?compoundName ?inchikey
 WHERE {
 
   # ── GRAPH A: spoke-okn ─────────────────────────────────────────────────
-  SERVICE <https://frink.apps.renci.org/spoke-okn/sparql> {
+  SERVICE <https://apps.okn.us/spoke-okn/sparql> {
     # Reified TREATS_CtD edge (has optional phase/sources edge properties)
     ?treatStmt  rdf:subject    ?compound ;
                 rdf:predicate  spoke:TREATS_CtD ;
@@ -371,7 +371,7 @@ WHERE {
   }
 
   # ── GRAPH B: biobricks-aopwiki ─────────────────────────────────────────
-  SERVICE <https://frink.apps.renci.org/biobricks-aopwiki/sparql> {
+  SERVICE <https://apps.okn.us/biobricks-aopwiki/sparql> {
     # InChIKey is stored as rdfs:label on a CHEMINF_000407 (InChIKey class) instance
     ?inchikeyNode  a          cheminf:CHEMINF_000407 ;   # InChIKey class
                    rdfs:label ?inchikey .                  # ← JOIN key

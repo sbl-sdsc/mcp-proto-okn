@@ -9,7 +9,7 @@ Sources:
 - Hardcoded domain tag, identifier namespace, and example-query mappings below
 
 Endpoint URLs are derived from the canonical graph name as
-`https://frink.apps.renci.org/{kg_name}/sparql`.
+`https://apps.okn.us/{kg_name}/sparql`.
 """
 
 import csv
@@ -241,7 +241,7 @@ def build_registry():
                 all_names.add(f.replace(".txt", ""))
 
     for kg_name in sorted(all_names):
-        endpoint_url = f"https://frink.apps.renci.org/{kg_name}/sparql"
+        endpoint_url = f"https://apps.okn.us/{kg_name}/sparql"
 
         # Build named graph URI
         named_graph_uri = f"https://purl.org/okn/frink/kg/{kg_name}"

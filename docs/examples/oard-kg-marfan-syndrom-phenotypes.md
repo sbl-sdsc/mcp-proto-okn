@@ -100,7 +100,7 @@ ORDER BY DESC(xsd:decimal(?logOR))
 LIMIT 100
 ```
 
-**Data source:** [OARD-KG](https://frink.apps.renci.org/oard-kg/sparql) — Open Annotations for Rare Diseases Knowledge Graph  
+**Data source:** [OARD-KG](https://apps.okn.us/oard-kg/sparql) — Open Annotations for Rare Diseases Knowledge Graph  
 **Disease queried:** Marfan syndrome · MONDO:0007947  
 **Association metric:** Log odds ratio from LogOddsAnalysisResult nodes  
 **Ontologies:** HP (Human Phenotype Ontology), MONDO (Monarch Disease Ontology)

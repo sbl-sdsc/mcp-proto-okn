@@ -166,9 +166,9 @@ Correlations were established by:
 
 ### Technical Resources
 
-- **UF-OKN SPARQL Endpoint**: https://frink.apps.renci.org/ufokn/sparql
-- **SPOKE-OKN SPARQL Endpoint**: https://frink.apps.renci.org/spoke-okn/sparql
-- **SAWGraph Spatial KG**: https://frink.apps.renci.org/spatialkg/sparql (for spatial relationships)
+- **UF-OKN SPARQL Endpoint**: https://apps.okn.us/ufokn/sparql
+- **SPOKE-OKN SPARQL Endpoint**: https://apps.okn.us/spoke-okn/sparql
+- **SAWGraph Spatial KG**: https://apps.okn.us/spatialkg/sparql (for spatial relationships)
 
 ### Conclusion
 

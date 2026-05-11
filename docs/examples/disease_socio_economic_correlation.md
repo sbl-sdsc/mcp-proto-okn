@@ -2,7 +2,7 @@
 ## Topic: Correlation Between Disease Prevalence and Socio-Economic Factors
 
 **Date**: December 11, 2025  
-**Knowledge Graph**: SPOKE-OKN (https://frink.apps.renci.org/spoke-okn/sparql)
+**Knowledge Graph**: SPOKE-OKN (https://apps.okn.us/spoke-okn/sparql)
 
 ---
 
@@ -229,7 +229,7 @@ Teen birth rates show extremely strong association with HIV (39× enrichment), s
 ## Data Source Information
 
 **Knowledge Graph**: SPOKE-OKN  
-**SPARQL Endpoint**: https://frink.apps.renci.org/spoke-okn/sparql  
+**SPARQL Endpoint**: https://apps.okn.us/spoke-okn/sparql  
 **Data Methodology**: MeSH term co-occurrence analysis in MEDLINE research papers  
 **Statistical Approach**: Fisher's exact test for association significance
 

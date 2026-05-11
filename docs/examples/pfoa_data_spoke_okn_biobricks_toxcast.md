@@ -266,11 +266,11 @@ The **147 total positive assays (10.5% hit rate)** across the ToxCast battery su
 ## Data Sources
 
 1. **SPOKE-OKN Knowledge Graph**
-   - Endpoint: https://frink.apps.renci.org/spoke-okn/sparql
+   - Endpoint: https://apps.okn.us/spoke-okn/sparql
    - Focus: Environmental occurrence and geographic distribution
 
 2. **BioBricks-ToxCast Knowledge Graph**
-   - Endpoint: https://frink.apps.renci.org/biobricks-toxcast/sparql
+   - Endpoint: https://apps.okn.us/biobricks-toxcast/sparql
    - Focus: High-throughput toxicology screening data
 
 3. **EPA CompTox Dashboard**

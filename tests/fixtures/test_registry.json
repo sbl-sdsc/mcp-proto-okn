@@ -3,7 +3,7 @@
     "name": "spoke-okn",
     "display_name": "SPOKE Open Knowledge Network",
     "named_graph_uri": "https://purl.org/okn/frink/kg/spoke-okn",
-    "endpoint_url": "https://frink.apps.renci.org/spoke/sparql",
+    "endpoint_url": "https://apps.okn.us/spoke/sparql",
     "domain_tags": ["biology", "health", "chemistry", "environment"],
     "description_summary": "Comprehensive biomedical KG integrating genomics, disease, compounds, and environmental data with social determinants of health.",
     "entity_types": {
@@ -19,7 +19,7 @@
     "name": "biobricks-tox21",
     "display_name": "BioBricks Tox21",
     "named_graph_uri": "https://purl.org/okn/frink/kg/biobricks-tox21",
-    "endpoint_url": "https://frink.apps.renci.org/biobricks-tox21/sparql",
+    "endpoint_url": "https://apps.okn.us/biobricks-tox21/sparql",
     "domain_tags": ["toxicology", "chemistry"],
     "description_summary": "Tox21 quantitative high-throughput screening data for 10,000 chemicals with CAS Registry Numbers.",
     "entity_types": {
@@ -34,7 +34,7 @@
     "name": "dreamkg",
     "display_name": "DREAM-KG",
     "named_graph_uri": "https://purl.org/okn/frink/kg/dreamkg",
-    "endpoint_url": "https://frink.apps.renci.org/dreamkg/sparql",
+    "endpoint_url": "https://apps.okn.us/dreamkg/sparql",
     "domain_tags": ["social_services", "homelessness"],
     "description_summary": "Service-oriented graph for social service organizations helping homeless individuals.",
     "entity_types": {

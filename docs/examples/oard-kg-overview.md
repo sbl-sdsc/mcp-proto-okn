@@ -20,7 +20,7 @@ Here's a comprehensive overview of the **OARD-KG** (Open Annotations for Rare Di
 
 **What makes it useful.** Unlike curated ontology databases, OARD-KG is grounded in real patient records, so it captures rare disease–phenotype co-occurrences that appear in clinical practice rather than only those documented in the literature. The statistical evidence layer (log odds ratios with confidence intervals) lets researchers filter associations by strength and reproducibility, making it well-suited for phenotype-driven diagnosis, knowledgebase enrichment, and evidence synthesis.
 
-**Access.** SPARQL endpoint at `https://frink.apps.renci.org/oard-kg/sparql`, with a Linked Data Fragments interface at `https://frink.apps.renci.org/ldf/oard-kg`.
+**Access.** SPARQL endpoint at `https://apps.okn.us/oard-kg/sparql`, with a Linked Data Fragments interface at `https://apps.okn.us/ldf/oard-kg`.
 
 ---
 

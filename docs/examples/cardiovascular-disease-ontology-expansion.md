@@ -2,7 +2,7 @@
 
 This example shows the unified server's **automatic ontology expansion** in action: a single user question is silently rewritten to cover an entire ontology subtree, returning matches across hundreds of disease subtypes that the user never had to enumerate.
 
-The graph queried is [`nde`](https://frink.renci.org/registry/kgs/nde/) — NIAID's data discovery catalog of biomedical datasets, tagged with MONDO disease URIs.
+The graph queried is [`nde`](https://registry.okn.us/registry/kgs/nde/) — NIAID's data discovery catalog of biomedical datasets, tagged with MONDO disease URIs.
 
 ---
 
@@ -33,7 +33,7 @@ ORDER BY DESC(?datasetCount)
 
 This query, as written, would match only datasets tagged with the exact URI `MONDO_0004995` — i.e. those labeled "cardiovascular disease" at the root level. In practice, that's a small fraction of the datasets that touch the cardiovascular space.
 
-The `query()` tool detects the MONDO URI and transparently fetches its descendants from [Ubergraph](https://frink.renci.org/registry/kgs/ubergraph/), then rewrites the FILTER to also accept any of those descendants. The expansion is reported alongside the results:
+The `query()` tool detects the MONDO URI and transparently fetches its descendants from [Ubergraph](https://registry.okn.us/registry/kgs/ubergraph/), then rewrites the FILTER to also accept any of those descendants. The expansion is reported alongside the results:
 
 ```json
 "ontology_expansion": {

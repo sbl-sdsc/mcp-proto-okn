@@ -233,13 +233,13 @@ Spaceflight serves as a model for accelerated aging and stress-related diseases.
 
 **SPOKE GeneLab** (`spoke-genelab`)
 - **Description:** Integrates omics data from NASA's Open Science Data Repository (OSDR/GeneLab)
-- **SPARQL Endpoint:** https://frink.apps.renci.org/spoke-genelab/sparql
+- **SPARQL Endpoint:** https://apps.okn.us/spoke-genelab/sparql
 - **PI:** Sergio Baranzini, UCSF
 - **Funding:** NSF Award #2333819
 
 **SPOKE-OKN** (`spoke-okn`)
 - **Description:** Comprehensive biomedical and environmental health knowledge graph
-- **SPARQL Endpoint:** https://frink.apps.renci.org/spoke-okn/sparql
+- **SPARQL Endpoint:** https://apps.okn.us/spoke-okn/sparql
 - **PI:** Sergio Baranzini, UCSF
 - **Funding:** NSF Award #2333819
 

@@ -41,7 +41,7 @@ Here's an overview of the **PanKgraph** knowledge graph:
 - Tracing gene-condition associations with publication provenance
 - Multi-omics integration across genomics, epigenomics, and transcriptomics
 
-The SPARQL endpoint is at `https://frink.apps.renci.org/pankgraph/sparql`.
+The SPARQL endpoint is at `https://apps.okn.us/pankgraph/sparql`.
 
 ---
 

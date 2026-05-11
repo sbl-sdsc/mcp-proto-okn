@@ -128,7 +128,7 @@ While the knowledge graph provides prevalence data, common contributing factors 
 ## Data Source
 
 **SPOKE-OKN Knowledge Graph**
-- Endpoint: https://frink.apps.renci.org/spoke-okn/sparql
+- Endpoint: https://apps.okn.us/spoke-okn/sparql
 - Comprehensive biomedical and environmental health knowledge graph
 - Integrates genomics, environmental science, and public health data
 - Funded by NSF Award #2333819

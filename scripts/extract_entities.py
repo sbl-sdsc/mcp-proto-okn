@@ -42,7 +42,7 @@ def configure_kg(kg: str) -> None:
     KG = kg
     GRAPH_URI = f"https://purl.org/okn/frink/kg/{KG}"
     ENDPOINTS = [
-        f"https://frink.apps.renci.org/{KG}/sparql",
+        f"https://apps.okn.us/{KG}/sparql",
         "https://frink.apps.renci.org/federation/sparql",
     ]
     OUTFILE = f"{KG}_entities.csv"

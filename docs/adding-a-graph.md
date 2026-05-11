@@ -6,7 +6,7 @@ The build script [`scripts/build_registry.py`](../scripts/build_registry.py) ass
 
 ## Prerequisites
 
-- The new graph must be hosted as a SPARQL endpoint on FRINK at `https://frink.apps.renci.org/<name>/sparql`. The build script derives endpoint URLs from the graph name using that pattern.
+- The new graph must be hosted as a SPARQL endpoint on the OKN platform at `https://apps.okn.us/<name>/sparql` and registered in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/). The build script derives endpoint URLs from the graph name using that pattern.
 - A working local checkout with `uv sync` completed (see [Option 2 in the README](../README.md#option-2-uv-run--local-source-development-mode)).
 
 ## Step-by-Step

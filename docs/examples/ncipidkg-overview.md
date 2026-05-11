@@ -44,8 +44,8 @@ It's primarily focused on **human molecular signaling and regulation**, with str
 
 ## Access
 
-- **SPARQL endpoint:** `https://frink.apps.renci.org/ncipidkg/sparql`
-- **TPF endpoint:** `https://frink.apps.renci.org/ldf/ncipidkg`
+- **SPARQL endpoint:** `https://apps.okn.us/ncipidkg/sparql`
+- **TPF endpoint:** `https://apps.okn.us/ldf/ncipidkg`
 - **Source networks:** [NDEx pathway set](https://www.ndexbio.org/index.html#/networkset/7bc65b82-2a2f-11ed-ac45-0ac135e8bacf)
 - **Maintainer:** Cytoscape and NDEx Team (support@ndexbio.org)
 - **Funding:** NSF Proto-OKN, NIH NCI (5U24CA269436), NIH NHGRI Cytoscape (5U24HG012107)

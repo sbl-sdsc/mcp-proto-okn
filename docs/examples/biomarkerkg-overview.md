@@ -30,8 +30,8 @@ Here's an overview of the **BiomarkerKB Knowledge Graph (biomarkerkg)**:
 - What log odds ratio and 95% CI support a biomarker-disease association?
 
 **Access points:**
-- SPARQL endpoint: `https://frink.apps.renci.org/biomarkerkg/sparql`
-- Triple Pattern Fragments: `https://frink.apps.renci.org/ldf/biomarkerkg`
+- SPARQL endpoint: `https://apps.okn.us/biomarkerkg/sparql`
+- Triple Pattern Fragments: `https://apps.okn.us/ldf/biomarkerkg`
 
 ---
 

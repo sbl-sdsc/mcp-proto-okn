@@ -55,7 +55,7 @@ def _start_server(port, env_extra=None):
     proc = subprocess.Popen(
         [
             sys.executable, "-m", "mcp_proto_okn.server",
-            "--endpoint", "https://frink.apps.renci.org/spoke/sparql",
+            "--endpoint", "https://apps.okn.us/spoke/sparql",
         ],
         env=env,
         stdout=subprocess.PIPE,
