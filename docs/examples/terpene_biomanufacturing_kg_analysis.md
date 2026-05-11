@@ -1,6 +1,6 @@
 # Integrated Multi-KG Analysis: Genetic Parts Discovery for Terpene Biomanufacturing
 
-> Companion walkthrough on the WOBD platform: [apps.okn.us/wobd/mcp/terpene-biosynthesis](https://apps.okn.us/wobd/mcp/terpene-biosynthesis)
+> Featured as a worked example on the WOBD platform: [apps.okn.us/wobd/mcp/terpene-biosynthesis](https://apps.okn.us/wobd/mcp/terpene-biosynthesis). This transcript was produced using Claude together with the mcp-proto-okn server.
 
 *Corresponding to the WOBD scenario — executed across 6 Proto-OKN knowledge graphs, Open Targets, FRINK analysis tools, and PubMed*
 

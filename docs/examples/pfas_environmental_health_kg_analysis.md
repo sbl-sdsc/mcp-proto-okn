@@ -1,6 +1,6 @@
 # Replacement PFAS Are Already Everywhere -- And They Hit the Same Molecular Targets
 
-> Companion walkthrough on the WOBD platform: [apps.okn.us/wobd/mcp/pfas-compounds](https://apps.okn.us/wobd/mcp/pfas-compounds)
+> Featured as a worked example on the WOBD platform: [apps.okn.us/wobd/mcp/pfas-compounds](https://apps.okn.us/wobd/mcp/pfas-compounds). This transcript was produced using Claude together with the mcp-proto-okn server.
 
 ## Cross-Graph Evidence That Compound-by-Compound Regulation Fails to Protect Public Health
 

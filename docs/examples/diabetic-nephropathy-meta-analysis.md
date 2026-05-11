@@ -1,6 +1,6 @@
 # Diabetic Nephropathy Meta-Analysis Using Gene Expression Atlas Knowledge Graph
 
-> Companion walkthrough on the WOBD platform: [apps.okn.us/wobd/mcp/diabetic-nephropathy](https://apps.okn.us/wobd/mcp/diabetic-nephropathy)
+> Featured as a worked example on the WOBD platform: [apps.okn.us/wobd/mcp/diabetic-nephropathy](https://apps.okn.us/wobd/mcp/diabetic-nephropathy). This transcript was produced using Claude together with the mcp-proto-okn server.
 
 ## Chat Transcript
 

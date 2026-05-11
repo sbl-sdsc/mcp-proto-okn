@@ -84,7 +84,7 @@ This section is for people who want to **use** the unified server through an MCP
 
 **Hosted endpoint URL:** `https://apps.okn.us/okn-mcp/mcp`
 
-> **Prefer a web UI to chatting?** [WOBD (Web of Biological Data)](https://apps.okn.us/wobd) is a companion web platform built on this same server. It offers [guided query forms](https://apps.okn.us/wobd/queries) for researchers who'd rather fill in a template than write SPARQL or coach an AI assistant, plus worked-example pages for [diabetic nephropathy](https://apps.okn.us/wobd/mcp/diabetic-nephropathy), [PFAS](https://apps.okn.us/wobd/mcp/pfas-compounds), and [terpene biosynthesis](https://apps.okn.us/wobd/mcp/terpene-biosynthesis).
+> **About WOBD.** [WOBD (Web of Biological Data)](https://apps.okn.us/wobd) is the umbrella project this MCP server is part of. WOBD provides a public face for two complementary entry points into the Proto-OKN federation: this MCP server (for AI-assistant access — Claude, ChatGPT, etc.) and a [templated query UI](https://apps.okn.us/wobd/queries) (for researchers who'd rather fill in a form than chat). The case studies hosted on WOBD ([diabetic nephropathy](https://apps.okn.us/wobd/mcp/diabetic-nephropathy), [PFAS](https://apps.okn.us/wobd/mcp/pfas-compounds), [terpene biosynthesis](https://apps.okn.us/wobd/mcp/terpene-biosynthesis)) were produced using Claude together with this server.
 
 ## Connecting Your Client
 
@@ -180,7 +180,7 @@ Each link points to a chat transcript that generated an overview and class diagr
 6. [Disease Prevalence in the US (spoke-okn)](docs/examples/us_county_disease_prevalence.md)
 7. [Disease Prevalence — Socio-Economic Factors Correlation (spoke-okn)](docs/examples/disease_socio_economic_correlation.md)
 8. [NIAID Data Exploration — COVID-19 Vaccine Research (nde)](docs/examples/nde_COVID-19-Vaccine-Research.md)
-9. [Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)](docs/examples/diabetic-nephropathy-meta-analysis.md) — see also the [WOBD walkthrough](https://apps.okn.us/wobd/mcp/diabetic-nephropathy)
+9. [Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)](docs/examples/diabetic-nephropathy-meta-analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/diabetic-nephropathy)
 10. [Diabetic Nephropathy Differential Expression Analysis (gene-expression-atlas-okn, ARCHS4)](docs/examples/dn_differential_expression_archs4_analysis.md)
 11. [APOE Gene Info (prokn)](docs/examples/prokn-apoe-gene.md)
 12. [Prostate Cancer Biomarkers (biomarkerkg)](docs/examples/biomarkerkg-prostate-cancer.md)
@@ -189,7 +189,7 @@ Each link points to a chat transcript that generated an overview and class diagr
 15. [Contamination at Superfund Sites (spoke-okn)](docs/examples/superfund-contaminants.md)
 16. [PFOA in Drinking Water (spoke-okn)](docs/examples/spoke_okn_pfoa_drinking_water.md)
 17. [Data about PFOA (spoke-okn, biobricks-toxcast)](docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
-18. [PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)](docs/examples/pfas_environmental_health_kg_analysis.md) — see also the [WOBD walkthrough](https://apps.okn.us/wobd/mcp/pfas-compounds)
+18. [PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)](docs/examples/pfas_environmental_health_kg_analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/pfas-compounds)
 19. [Biological Targets for PFOA (biobricks-toxcast, biobricks-ice, biobricks-aopwiki, spoke-okn)](docs/examples/biobricks_toxcast_PFOA_targets.md)
 20. [PFOA Safety Profile (biobricks-ice, biobricks-aopwiki, sawgraph, spoke-okn)](docs/examples/pfoa-safety-profile.md)
 21. [Bisphenol A Safety Profile (biobricks-ice, biobricks-aopwiki, spoke-okn)](docs/examples/bpa-safety-profile.md)
@@ -509,7 +509,7 @@ This project is licensed under the BSD 3-Clause License. See [LICENSE](LICENSE).
 
 ### Related Projects
 
-- [WOBD — Web of Biological Data](https://apps.okn.us/wobd) — Companion web platform built on this server: guided query forms for researchers + the same MCP endpoint for AI assistants. Source: [SuLab/OKN-WOBD](https://github.com/SuLab/OKN-WOBD).
+- [WOBD — Web of Biological Data](https://apps.okn.us/wobd) — The umbrella project this MCP server is part of, providing a public face for both the templated query UI and AI-assistant access. Source: [SuLab/OKN-WOBD](https://github.com/SuLab/OKN-WOBD).
 - [Proto-OKN Project](https://www.proto-okn.net/) — Prototype Open Knowledge Network initiative
 - [Open Knowledge Network (OKN)](https://okn.us/) — Knowledge-graph hosting infrastructure (formerly FRINK)
 - [OKN Knowledge Graph Registry](https://registry.okn.us/registry/) — Catalog of available knowledge graphs
