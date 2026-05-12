@@ -225,7 +225,24 @@ This project is licensed under the BSD 3-Clause License. See [LICENSE](LICENSE).
 }
 ```
 
-## Presentations
+## Videos and Presentations
+*Note: MCP URL and installation instructions have changed. [Updated instructions](#for-users)*
+
+- **Technical Review**  
+  [Video](https://www.youtube.com/watch?v=50L-tKCoXJE) · [Presentation](https://nebigdatahub.org/wp-content/uploads/2026/01/MCP-Proto-OKN-Technical-Review.pdf)
+
+- **Project Overview of the SPOKE Project**  
+  [Video](https://www.youtube.com/watch?v=vlWXvxyxQog)
+
+- **Cross-Graph Demo: SPOKE, ProKN, BioBricks, SAWGrap**  
+  [Video](https://www.youtube.com/watch?v=dWWM0akpHSE) · [Presentation](https://www.proto-okn.net/wp-content/uploads/2026/03/Cross-KG-Demo-with-mcp-proto-okn.pdf)
+
+- **Building and Querying the SPOKE-GeneLab Knowledge Graph**  
+  [Video](https://www.youtube.com/watch?v=bCgffFYEE3M) · [Presentation](https://nebigdatahub.org/wp-content/uploads/2026/01/SPOKE-Genelab-Technical-Review.pdf)
+
+- **Knowledge Graphs for Space Life Sciences**  
+  [Video](https://drive.google.com/file/d/1GJtbq9hEkCXX8gfJ47Fw5QTOV9k7amH1/view) · [Presentation](https://docs.google.com/presentation/d/1qq9C4HgCsyYKpsRcRMWIV-U7WeSCJN9g/edit?usp=sharing&ouid=112820493940716707493&rtpof=true&sd=truehttps://docs.google.com/presentation/d/1qq9C4HgCsyYKpsRcRMWIV-U7WeSCJN9g/edit?slide=id.p1#slide=id.p1) · [Summary](https://awg.osdr.space/t/hbiss-recap-knowledge-graphs-for-space-life-sciences-peter-rose-ucsd-amanda-saravia-butler-ai4ls/3973)
+
 
 ### Related Publications
 
