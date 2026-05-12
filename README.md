@@ -10,6 +10,7 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
 > **Beta:** the proto-okn MCP server is in beta. We welcome feedback and bug reports via [issues](https://github.com/sbl-sdsc/mcp-proto-okn/issues).
 
 ### [Video introduction](https://www.youtube.com/watch?v=50L-tKCoXJE) · [Technical review presentation](https://nebigdatahub.org/wp-content/uploads/2026/01/MCP-Proto-OKN-Technical-Review.pdf)
+*Note: MCP URL and installation instructions have changed. [Updated instructions](#for-users)*
 
 ---
 
@@ -25,56 +26,7 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
 - **🖼️ Schema visualization & transcripts** — generate Mermaid class diagrams and chat transcripts directly from the conversation
 
 ## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        AI Assistant (Claude, ChatGPT, …)               │
-│                                                                       │
-│  "What genes are affected by spaceflight and what diseases             │
-│   are they associated with?"                                          │
-└───────────────────────────────┬───────────────────────────────────────┘
-                                │  MCP Protocol (stdio or HTTP)
-                                ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│                    Unified MCP Server                                  │
-│                    (mcp-proto-okn-unified)                             │
-│                                                                       │
-│  ┌───────────────┐  ┌──────────────┐  ┌──────────────────────────────┐│
-│  │ 13 MCP Tools  │  │Graph Registry│  │ Identifier Mapping           ││
-│  │ list_graphs   │  │ 33 graphs    │  │ Gene: Ensembl ↔ NCBI ↔       ││
-│  │ route_query   │  │ domain tags  │  │       Symbol (via bridge)    ││
-│  │ get_schema    │  │ entity types │  │ Chemical: CAS, InChIKey,     ││
-│  │ query         │  │ identifiers  │  │           DTXSID             ││
-│  │ multi_graph   │  │ examples     │  │ Disease: MONDO               ││
-│  │ join_strategy │  │              │  │ Location: FIPS, S2Cell       ││
-│  │ lookup_uri    │  │              │  │ Industry: NAICS              ││
-│  │ get_descend.  │  │              │  │                              ││
-│  │ query_template│  │              │  │                              ││
-│  │ viz_schema    │  │              │  │                              ││
-│  │ chat_transcr. │  │              │  │                              ││
-│  └──────┬────────┘  └──────────────┘  └──────────────────────────────┘│
-│         │                                                             │
-│  ┌──────▼──────────────────────────────────────────────────────────┐  │
-│  │  Per-graph SPARQL engine (lazy-cached SPARQLServer instances)   │  │
-│  │  • FROM clause injection (named graph)                          │  │
-│  │  • Ontology expansion (MONDO, UBERON, HP, GO, CL, ChEBI, …)     │  │
-│  │  • Query analysis and warnings                                  │  │
-│  │  • Result formatting                                            │  │
-│  └──────┬──────────────────────────────────────────────────────────┘  │
-└─────────┼────────────────────────────────────────────────────────────┘
-          │  SPARQL over HTTPS
-          ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│                    OKN Federation Platform                             │
-│                    apps.okn.us                                         │
-│                                                                       │
-│  spoke-okn │ spoke-genelab │ biobricks-ice │ biobricks-tox21 │ …     │
-│  sawgraph  │ dreamkg       │ scales        │ ruralkg        │ …     │
-│                  … 33 named graphs total …                            │
-│                                                                       │
-│  + Ubergraph (ontology services: MONDO, UBERON, HP, GO, ChEBI, …)    │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+<img src="docs/images/mcp_proto_okn_architecture.png" width="1024" alt="Architecture">
 
 ---
 
@@ -83,8 +35,6 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
 This section is for people who want to **use** the unified server through an MCP-compatible client (Claude Desktop, ChatGPT, Claude Code, VS Code Insiders with GitHub Copilot, etc.). No installation, no local setup — the server is already hosted, you just point your client at it.
 
 **Hosted endpoint URL:** `https://apps.okn.us/okn-mcp/mcp`
-
-> **About WOBD.** [WOBD (Web of Biological Data)](https://apps.okn.us/wobd) is the umbrella project this MCP server is part of. WOBD provides a public face for two complementary entry points into the Proto-OKN federation: this MCP server (for AI-assistant access — Claude, ChatGPT, etc.) and a [templated query UI](https://apps.okn.us/wobd/queries) (for researchers who'd rather fill in a form than chat). The case studies hosted on WOBD ([diabetic nephropathy](https://apps.okn.us/wobd/mcp/diabetic-nephropathy), [PFAS](https://apps.okn.us/wobd/mcp/pfas-compounds), [terpene biosynthesis](https://apps.okn.us/wobd/mcp/terpene-biosynthesis)) were produced using Claude together with this server.
 
 ## Connecting Your Client
 
@@ -144,17 +94,11 @@ Once the server is connected, try these conversational prompts in your client. T
 
   The transcript downloads as `.md` or `.pdf` and includes the model name and version.
 
-### Ontology-Driven Search Expansion
-
-Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, ChEBI, …) via [Ubergraph](https://registry.okn.us/registry/kgs/ubergraph/) to include all descendant concepts. A search for "cardiovascular disease" automatically matches every subtype the data is tagged at — without you having to enumerate them.
-
-1. **[Cardiovascular Disease Datasets — full walkthrough (nde)](docs/examples/cardiovascular-disease-ontology-expansion.md)** — shows how one URI in the query expands to 1,592 descendant concepts and matches 284 disease subtypes
-2. [Arthritic Joint Disease Datasets (nde)](docs/examples/nde-arthritic_joint_disease_ontology_expansion.md)
-3. [Space Flight Studies Investigating Muscles (spoke-genelab)](docs/examples/spoke-genelab_muscle_studies_ontology_expansion.md)
+## Use Cases
 
 ### Knowledge Graph Overviews & Class Diagrams
 
-Each link points to a chat transcript that generated an overview and class diagram for a Proto-OKN Theme 1 KG.
+Each link points to a chat transcript for generating an overview and a class diagram for a Proto-OKN KG.
 
 | 🧬 Biology & Health | 🌱 Environment | ⚖️ Justice | 🛠️ Technology & Manufacturing | NASA/NIH/ARCH(*)
 |--------------------|---------------|-----------|-------------------------------|-------------|
@@ -168,46 +112,61 @@ Each link points to a chat transcript that generated an overview and class diagr
 | [spoke-okn](docs/examples/spoke-okn_overview.md) | [climatemodelskg](docs/examples/climatemodelskg_overview.md) |  |  | [pankgraph](docs/examples/pankgraph-overview.md)
 |  | [sockg](docs/examples/sockg_overview.md) |  | | [prokn](docs/examples/prokn_overview.md)
 
-**(*) ARCH: Advancing Research Capacity in Health, NSF supplemental awards.**
+**(*) ARCH: Advancing Research Capacity in Health, NSF Proto-OKN supplemental awards.**
 
-### Use Cases
+### Space Flight Use Cases
 
-1. [Spaceflight Missions (spoke-genelab)](docs/examples/spoke-genelab_breakdown.md)
-2. [Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)](docs/examples/spoke_spaceflight_analysis.md)
-3. [Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, MCP:PubMed)](docs/examples/spoke-genelab-OSD-244_verbatim.md)
-4. [Spaceflight Gene Expression — Disease Associations (spoke-genelab, spoke-okn, prokn, MCP:Open Targets, MCP:PubMed)](docs/examples/space-flight-disease-relationships.md)
-5. [Spaceflight Microbiome Investigation (spoke-genelab, spoke-okn, MCP:PubMed)](docs/examples/spaceflight_microbiome_cross-graph_investigation.md)
-6. [Disease Prevalence in the US (spoke-okn)](docs/examples/us_county_disease_prevalence.md)
-7. [Disease Prevalence — Socio-Economic Factors Correlation (spoke-okn)](docs/examples/disease_socio_economic_correlation.md)
-8. [NIAID Data Exploration — COVID-19 Vaccine Research (nde)](docs/examples/nde_COVID-19-Vaccine-Research.md)
-9. [Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)](docs/examples/diabetic-nephropathy-meta-analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/diabetic-nephropathy)
-10. [Diabetic Nephropathy Differential Expression Analysis (gene-expression-atlas-okn, ARCHS4)](docs/examples/dn_differential_expression_archs4_analysis.md)
-11. [APOE Gene Info (prokn)](docs/examples/prokn-apoe-gene.md)
-12. [Prostate Cancer Biomarkers (biomarkerkg)](docs/examples/biomarkerkg-prostate-cancer.md)
-13. [Marfan Syndrome Phenotypes (oard-kg)](docs/examples/oard-kg-marfan-syndrom-phenotypes.md)
-14. [Pancreatic Acinar Cell Adhesion Genes (pankgraph)](docs/examples/pankgraph-pancreatic-acinar-cell-adhesion-genes.md)
-15. [Contamination at Superfund Sites (spoke-okn)](docs/examples/superfund-contaminants.md)
-16. [PFOA in Drinking Water (spoke-okn)](docs/examples/spoke_okn_pfoa_drinking_water.md)
-17. [Data about PFOA (spoke-okn, biobricks-toxcast)](docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
-18. [PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)](docs/examples/pfas_environmental_health_kg_analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/pfas-compounds)
-19. [Biological Targets for PFOA (biobricks-toxcast, biobricks-ice, biobricks-aopwiki, spoke-okn)](docs/examples/biobricks_toxcast_PFOA_targets.md)
-20. [PFOA Safety Profile (biobricks-ice, biobricks-aopwiki, sawgraph, spoke-okn)](docs/examples/pfoa-safety-profile.md)
-21. [Bisphenol A Safety Profile (biobricks-ice, biobricks-aopwiki, spoke-okn)](docs/examples/bpa-safety-profile.md)
-22. [Criminal Justice Patterns (scales)](docs/examples/scales_criminal_justice_analysis.md)
-23. [Drug Possession Charges (scales)](docs/examples/scales_drug_possession.md)
-24. [Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)](docs/examples/environmental-justice-kg-analysis.md)
-25. [Rural Health Access (ruralkg, dreamkg, spoke-okn)](docs/examples/rural-health-access-mapping.md)
-26. [Michigan Flooding Event (ufokn)](docs/examples/ufokn_michigan_flood.md)
-27. [Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)](docs/examples/flooding-socioeconomic-correlation.md)
-28. [Philadelphia Area Incidents (nikg)](docs/examples/nikg_philadelphia_incidents.md)
-29. [Mining Suppliers in North Dakota (sudokn)](docs/examples/sudokn_mining_suppliers.md)
+* [Spaceflight Missions (spoke-genelab)](docs/examples/spoke-genelab_breakdown.md)
+* [Spaceflight Gene Expression Analysis (spoke-genelab, spoke-okn)](docs/examples/spoke_spaceflight_analysis.md)
+* [Spaceflight Gene Expression with Literature Analysis (spoke-genelab, spoke-okn, MCP:PubMed)](docs/examples/spoke-genelab-OSD-244_verbatim.md)
+* [Spaceflight Gene Expression — Disease Associations (spoke-genelab, spoke-okn, prokn, MCP:Open Targets, MCP:PubMed)](docs/examples/space-flight-disease-relationships.md)
+* [Spaceflight Microbiome and Pathogen Analysis (spoke-genelab, spoke-okn, MCP:PubMed)](docs/examples/spoke-genelab_microbiome_and_pathogen_analysis.md)
+
+### Biomedical Use Cases
+* [Disease Prevalence in the US (spoke-okn)](docs/examples/us_county_disease_prevalence.md)
+* [Disease Prevalence — Socio-Economic Factors Correlation (spoke-okn)](docs/examples/disease_socio_economic_correlation.md)
+* [NIAID Data Exploration — COVID-19 Vaccine Research (nde)](docs/examples/nde_COVID-19-Vaccine-Research.md)
+* [Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)](docs/examples/diabetic-nephropathy-meta-analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/diabetic-nephropathy)
+* [Diabetic Nephropathy Differential Expression Analysis (gene-expression-atlas-okn, ARCHS4)](docs/examples/dn_differential_expression_archs4_analysis.md)
+* [APOE Gene Info (prokn)](docs/examples/prokn-apoe-gene.md)
+* [Prostate Cancer Biomarkers (biomarkerkg)](docs/examples/biomarkerkg-prostate-cancer.md)
+* [Marfan Syndrome Phenotypes (oard-kg)](docs/examples/oard-kg-marfan-syndrom-phenotypes.md)
+* [Pancreatic Acinar Cell Adhesion Genes (pankgraph)](docs/examples/pankgraph-pancreatic-acinar-cell-adhesion-genes.md)
+
+### Environmental Use Cases
+* [Contamination at Superfund Sites (spoke-okn)](docs/examples/superfund-contaminants.md)
+* [PFOA in Drinking Water (spoke-okn)](docs/examples/spoke_okn_pfoa_drinking_water.md)
+* [Data about PFOA (spoke-okn, biobricks-toxcast)](docs/examples/pfoa_data_spoke_okn_biobricks_toxcast.md)
+* [PFAS Environmental Health Analysis (sawgraph, spoke-okn, biobricks-ice)](docs/examples/pfas_environmental_health_kg_analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/pfas-compounds)
+* [Biological Targets for PFOA (biobricks-toxcast, biobricks-ice, biobricks-aopwiki, spoke-okn)](docs/examples/biobricks_toxcast_PFOA_targets.md)
+* [PFOA Safety Profile (biobricks-ice, biobricks-aopwiki, sawgraph, spoke-okn)](docs/examples/pfoa-safety-profile.md)
+* [Bisphenol A Safety Profile (biobricks-ice, biobricks-aopwiki, spoke-okn)](docs/examples/bpa-safety-profile.md)
+
+### Criminal and Environmental Justice
+* [Criminal Justice Patterns (scales)](docs/examples/scales_criminal_justice_analysis.md)
+* [Drug Possession Charges (scales)](docs/examples/scales_drug_possession.md)
+* [Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)](docs/examples/environmental-justice-kg-analysis.md)
+* [Rural Health Access (ruralkg, dreamkg, spoke-okn)](docs/examples/rural-health-access-mapping.md)
+
+### Misc. Use Cases
+* [Michigan Flooding Event (ufokn)](docs/examples/ufokn_michigan_flood.md)
+* [Flooding and Socio-Economic Factors (ufokn, spatialkg, spoke-okn)](docs/examples/flooding-socioeconomic-correlation.md)
+* [Philadelphia Area Incidents (nikg)](docs/examples/nikg_philadelphia_incidents.md)
+* [Mining Suppliers in North Dakota (sudokn)](docs/examples/sudokn_mining_suppliers.md)
+
+### Ontology-Driven Search Expansion
+Queries are automatically expanded using ontology hierarchies (MONDO, HP, GO, UBERON, ChEBI, …) via [Ubergraph](https://registry.okn.us/registry/kgs/ubergraph/) to include all descendant concepts. A search for "cardiovascular disease" automatically matches every subtype the data is tagged at — without you having to enumerate them.
+
+* **[Cardiovascular Disease Datasets — full walkthrough (nde)](docs/examples/cardiovascular-disease-ontology-expansion.md)** — shows how one URI in the query expands to 1,592 descendant concepts and matches 284 disease subtypes
+* [Arthritic Joint Disease Datasets (nde)](docs/examples/nde-arthritic_joint_disease_ontology_expansion.md)
+* [Space Flight Studies Investigating Muscles (spoke-genelab)](docs/examples/spoke-genelab_muscle_studies_ontology_expansion.md)
 
 ### Proto-OKN Integration Opportunities
 
-1. [Cross-KG Geolocation Data Exploration](docs/examples/cross-kg-geolocation-analysis.md)
-2. [Cross-KG Chemical Compound Data Exploration](docs/examples/cross-kg-compound-analysis.md)
-3. [Cross-KG Bio Data Exploration (Opus 4.7)](docs/examples/cross-graph-opportunities-bio-opus4.7.md)
-4. [Cross-KG Bio Data Exploration (Sonnet 4.6)](docs/examples/cross-graph-opportunities-bio-sonnet4.7.md)
+* [Cross-KG Geolocation Data Exploration](docs/examples/cross-kg-geolocation-analysis.md)
+* [Cross-KG Chemical Compound Data Exploration](docs/examples/cross-kg-compound-analysis.md)
+* [Cross-KG Bio Data Exploration (Opus 4.7)](docs/examples/cross-graph-opportunities-bio-opus4.7.md)
+* [Cross-KG Bio Data Exploration (Sonnet 4.6)](docs/examples/cross-graph-opportunities-bio-sonnet4.7.md)
 
 ### Cross-Platform LLM Benchmarks
 
@@ -222,239 +181,9 @@ The same prompt run across Claude Desktop and VS Code Insiders with several LLMs
 
 ---
 
-## Available Knowledge Graphs
+## For Developers
 
-| Domain | Graphs |
-|---|---|
-| **Biology & Health** | spoke-okn, spoke-genelab, gene-expression-atlas-okn, biohealth, nde, prokn, biomarkerkg, evoweb, ncipidkg, oard-kg, pankgraph |
-| **Toxicology & Chemistry** | biobricks-ice, biobricks-tox21, biobricks-toxcast, biobricks-aopwiki, biobricks-pubchem-annotations, biobricks-mesh |
-| **Environment & Water** | sawgraph, hydrologykg, geoconnex, fiokg, spatialkg |
-| **Climate & Earth Science** | climatemodelskg, nasa-gesdisc-kg, sockg |
-| **Social & Urban** | dreamkg, scales, nikg, ruralkg, ufokn |
-| **Technology & Manufacturing** | sudokn, securechainkg |
-| **Wildlife** | wildlifekn |
-
-The authoritative list is [`config/registry.json`](config/registry.json) — generated from the metadata sources described below.
-
----
-
-# For Developers
-
-This section is for people who want to **run the server locally**, **contribute code**, or **host their own copy**. The unified server is a small Python package; runtime requirements are minimal (a `t3.small` is plenty — it doesn't host data, just proxies SPARQL to FRINK).
-
-## Running Locally
-
-There are three supported ways to run the server locally — pick whichever matches your workflow.
-
-### Option 1: `uvx` — published PyPI package (no clone)
-
-[Install `uv`](https://docs.astral.sh/uv/getting-started/installation/), then add to your MCP client config:
-
-```json
-{
-  "mcpServers": {
-    "proto-okn": {
-      "command": "uvx",
-      "args": ["mcp-proto-okn-unified"]
-    }
-  }
-}
-```
-
-`uvx` downloads and runs the latest release automatically. Best when you want a stable local process without managing dependencies.
-
-### Option 2: `uv run` — local source (development mode)
-
-For contributors and anyone testing local changes.
-
-```bash
-git clone https://github.com/sbl-sdsc/mcp-proto-okn.git
-cd mcp-proto-okn
-uv sync
-uv run mcp-proto-okn-unified --help
-```
-
-Then wire it into your MCP client:
-
-```json
-{
-  "mcpServers": {
-    "proto-okn": {
-      "command": "uv",
-      "args": ["--directory", "/absolute/path/to/mcp-proto-okn", "run", "mcp-proto-okn-unified"]
-    }
-  }
-}
-```
-
-Use an **absolute path** — `~` and relative paths won't resolve correctly from inside an MCP client.
-
-> If your MCP client (especially Claude Desktop) reports `command not found: uv`, replace `"command": "uv"` with the full path from `which uv` (often `/Users/yourname/.local/bin/uv`).
-
-### Option 3: Docker
-
-```bash
-docker build -t mcp-proto-okn .
-docker run -p 8000:8000 -e MCP_PROTO_OKN_TRANSPORT=streamable-http mcp-proto-okn
-```
-
-Then point your client at the container:
-
-```json
-{
-  "mcpServers": {
-    "proto-okn": {
-      "type": "url",
-      "url": "http://localhost:8000/mcp"
-    }
-  }
-}
-```
-
-## Transport Modes
-
-The server supports two transports:
-
-- **`stdio`** (default) — local subprocess, used by `uvx mcp-proto-okn-unified`
-- **`streamable-http`** — HTTP, for hosting a server that multiple clients connect to over the network
-
-Start in HTTP mode:
-
-```bash
-uv run mcp-proto-okn-unified --transport streamable-http --port 8000
-```
-
-### Environment Variables
-
-| Variable | Default | Description |
-|---|---|---|
-| `MCP_PROTO_OKN_TRANSPORT` | `stdio` | `stdio` or `streamable-http` |
-| `MCP_PROTO_OKN_HOST` | `0.0.0.0` | Bind address for HTTP transport |
-| `MCP_PROTO_OKN_PORT` | `8000` | Bind port for HTTP transport |
-| `MCP_PROTO_OKN_API_KEY` | *(none)* | Optional Bearer-token auth for HTTP |
-
-CLI flags `--transport`, `--host`, `--port` override the environment variables.
-
-### Claude Desktop (remote / HTTPS)
-
-Claude Desktop requires HTTPS with a valid domain name for remote MCP servers (it does **not** support `http://localhost`). To host your own:
-
-1. Deploy the server to a host with a domain name
-2. Set up HTTPS via a reverse proxy (nginx, Caddy) or a managed service
-3. Optionally set `MCP_PROTO_OKN_API_KEY` for Bearer-token auth
-
-```json
-{
-  "mcpServers": {
-    "proto-okn": {
-      "type": "url",
-      "url": "https://your-domain.example.com/mcp",
-      "headers": { "Authorization": "Bearer YOUR_API_KEY_HERE" }
-    }
-  }
-}
-```
-
-For an end-to-end AWS recipe, see [Deploying on AWS](docs/deploy-aws.md).
-
-## How the Server Is Structured
-
-```
-src/mcp_proto_okn/
-├── unified_server.py      # MCP server + 13 tools + CLI entry point
-├── registry.py            # GraphRegistry + GraphInfo (graph catalog)
-├── identifier_mapping.py  # Cross-graph identifier bridges + join strategies
-├── server.py              # SPARQLServer (per-graph query engine)
-└── registry.json          # Packaged graph catalog (33 graphs)
-
-config/
-└── registry.json          # Source graph catalog (build artifact, packaged with the wheel)
-
-metadata/
-├── descriptions/<kg>.txt              # Per-graph description text
-└── entities/<kg>_entities.csv         # Per-graph class/predicate inventory
-
-scripts/
-└── build_registry.py                  # Regenerates config/registry.json from metadata
-
-tests/
-├── test_registry.py
-├── test_identifier_mapping.py
-├── test_unified_server.py
-└── test_real_data.py                  # Live FRINK endpoint tests (network required)
-```
-
-### The 13 MCP Tools
-
-The AI assistant uses these tools in sequence to navigate from a natural-language question to structured cross-graph results.
-
-| Tool | Purpose |
-|---|---|
-| `list_graphs(domain?, entity_type?)` | Browse all 33 graphs with metadata |
-| `route_query(question)` | Match a natural-language question to relevant graphs |
-| `get_description(graph_name)` | Full description, example queries, identifier namespaces |
-| `get_schema(graph_name)` | Classes, predicates, edge properties for a graph |
-| `query(graph_name, sparql)` | SPARQL with auto FROM clause and ontology expansion |
-| `multi_graph_query(queries)` | Run different SPARQL per graph; merge with `source_graph` column |
-| `get_query_template(graph_name, relationship_name)` | SPARQL template for RDF-reified edge properties |
-| `get_join_strategy(graph_a, graph_b)` | Shared identifiers and join recommendations |
-| `lookup_uri(label)` | Find ontology URI by name via Ubergraph |
-| `get_descendants(uri)` | Explore ontology hierarchy with distance |
-| `visualize_schema(graph_name)` | Step-by-step workflow for a Mermaid class diagram |
-| `clean_mermaid_diagram(mermaid_content)` | Strip notes / empty braces / invalid chars from Mermaid output |
-| `create_chat_transcript(graph_name?)` | Markdown template for documenting an analysis session |
-
-Full API reference: **[docs/api.md](docs/api.md)**.
-
-### Components
-
-**Graph Registry (`registry.py` + `registry.json`)** — a structured catalog of all 33 graphs. Each entry contains `name`, `display_name`, `endpoint_url`, `domain_tags`, `description_summary`, `entity_types`, `identifier_namespaces`, `example_queries`, and optional `aliases`. The registry enables **discovery without querying**.
-
-**Identifier Mapping (`identifier_mapping.py`)** — a static bridge table that maps identifier types to graphs and URI patterns, so the assistant can pick the right join key when bridging two graphs:
-
-| Category | Identifier Types | Graphs |
-|---|---|---|
-| **Genes** | Ensembl, NCBI Gene, Symbol | spoke-okn, spoke-genelab, gene-expression-atlas-okn, biobricks-ice |
-| **Chemicals** | CAS, DTXSID, InChIKey | biobricks-tox21, biobricks-ice, biobricks-toxcast, sawgraph, spoke-okn |
-| **Diseases** | MONDO | spoke-okn, biohealth |
-| **Locations** | FIPS, S2Cell | spoke-okn, nikg, ruralkg, spatialkg, hydrologykg, ufokn, fiokg |
-| **Biomedical** | MeSH, ChEBI, UBERON | biobricks-mesh, biohealth, spoke-okn, spoke-genelab |
-| **Industry** | NAICS | fiokg, sudokn |
-
-The `gene-expression-atlas-okn` graph stores both NCBI Gene IDs and Ensembl IDs, making it a natural bridge between graphs that use different gene-identifier systems.
-
-**SPARQLServer (`server.py`)** — the per-graph query engine. Each instance handles FROM-clause injection (auto-scoping to the named graph), ontology expansion (MONDO/UBERON/HP/GO/CL/ChEBI URIs in the query are expanded to descendants via Ubergraph), query analysis (warnings for missing `LIMIT`, `ORDER BY`, edge-property patterns), and result formatting.
-
-**Unified Server (`unified_server.py`)** — loads the registry at startup, lazy-creates and caches a `SPARQLServer` per graph on first use, exposes the 13 MCP tools, handles alias resolution, and supports both `stdio` and `streamable-http` transports.
-
-## Testing
-
-```bash
-# Unit tests (no network, fast)
-uv run python -m pytest tests/test_registry.py tests/test_identifier_mapping.py tests/test_unified_server.py -v
-
-# Live integration tests (requires network access to apps.okn.us)
-uv run python -m pytest tests/test_real_data.py -v -m live
-
-# All tests
-uv run python -m pytest tests/ -v
-```
-
-## Adding a New Knowledge Graph
-
-See **[Adding a New Knowledge Graph](docs/adding-a-graph.md)** for the full step-by-step. In brief:
-
-1. Add `metadata/descriptions/<name>.txt` (1–3 paragraph description).
-2. Add `metadata/entities/<name>_entities.csv` (classes, predicates, edge properties).
-3. Update the `DOMAIN_TAGS`, `IDENTIFIER_NAMESPACES`, and `EXAMPLE_QUERIES` dicts in [`scripts/build_registry.py`](scripts/build_registry.py).
-4. Run `uv run python scripts/build_registry.py` to regenerate `config/registry.json`.
-5. Restart your MCP client and test with `list_graphs` / `@<name>`.
-
-The graph must be hosted on the OKN platform at `https://apps.okn.us/<name>/sparql` and registered in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/) — the registry builder assumes that endpoint pattern.
-
-## Building and Publishing
-
-See **[docs/build_publish.md](docs/build_publish.md)** (maintainers only — PyPI release workflow).
+The [develop document](docs/develop.md) describes how to **run the server locally**, **contribute code**, or **host a copy**. 
 
 ---
 
@@ -462,7 +191,6 @@ See **[docs/build_publish.md](docs/build_publish.md)** (maintainers only — PyP
 
 **MCP server not appearing in Claude Desktop**
 - Completely quit and restart Claude Desktop (closing the window is not enough)
-- Validate your JSON config (attach the file to a chat and ask Claude to fix syntax errors)
 - For local installs, verify `uvx` is on PATH (`which uvx`); if not, use the absolute path in `command`
 
 **Connection errors**
@@ -471,7 +199,9 @@ See **[docs/build_publish.md](docs/build_publish.md)** (maintainers only — PyP
 
 **Slow or hung queries**
 - Complex SPARQL can take time; break it into smaller parts
-- Ontology expansion across very broad concepts (e.g. "disease") may take several seconds
+- Ontology expansion across very broad concepts (e.g. "disease") may take several minutes
+
+---
 
 ## License
 
@@ -495,6 +225,8 @@ This project is licensed under the BSD 3-Clause License. See [LICENSE](LICENSE).
 }
 ```
 
+## Presentations
+
 ### Related Publications
 
 - Nelson, C.A., Rose, P.W., Soman, K., Sanders, L.M., Gebre, S.G., Costes, S.V., Baranzini, S.E. (2025). "Nasa Genelab-Knowledge Graph Fabric Enables Deep Biomedical Analysis of Multi-Omics Datasets." *NASA Technical Reports*, 20250000723. [Link](https://ntrs.nasa.gov/citations/20250000723)
@@ -509,7 +241,7 @@ This project is licensed under the BSD 3-Clause License. See [LICENSE](LICENSE).
 
 ### Related Projects
 
-- [WOBD — Web of Biological Data](https://apps.okn.us/wobd) — The umbrella project this MCP server is part of, providing a public face for both the templated query UI and AI-assistant access. Source: [SuLab/OKN-WOBD](https://github.com/SuLab/OKN-WOBD).
+- [WOBD — Web of Biological Data](https://apps.okn.us/wobd) — The umbrella project this MCP server is part of, providing a public face for both the templated query UI and AI-assistant access. The case studies hosted on WOBD ([diabetic nephropathy](https://apps.okn.us/wobd/mcp/diabetic-nephropathy), [PFAS](https://apps.okn.us/wobd/mcp/pfas-compounds), [terpene biosynthesis](https://apps.okn.us/wobd/mcp/terpene-biosynthesis)) were produced using Claude together with this server. Source: [SuLab/OKN-WOBD](https://github.com/SuLab/OKN-WOBD).
 - [Proto-OKN Project](https://www.proto-okn.net/) — Prototype Open Knowledge Network initiative
 - [Open Knowledge Network (OKN)](https://okn.us/) — Knowledge-graph hosting infrastructure (formerly FRINK)
 - [OKN Knowledge Graph Registry](https://registry.okn.us/registry/) — Catalog of available knowledge graphs
