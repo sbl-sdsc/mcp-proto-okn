@@ -5,7 +5,7 @@
 [![Model Context Protocol](https://img.shields.io/badge/MCP-Compatible-green.svg)](https://modelcontextprotocol.io/)
 [![PyPI version](https://img.shields.io/pypi/v/mcp-proto-okn?label=PyPI)](https://pypi.org/project/mcp-proto-okn/)
 
-A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **33 [Proto-OKN](https://www.proto-okn.net/) knowledge graphs** through one unified interface. The server enables AI assistants (Claude, ChatGPT, GitHub Copilot, etc.) to discover graphs, inspect their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources — all through natural-language conversation. The graphs are hosted on the [Open Knowledge Network (OKN)](https://okn.us/) federation platform and cataloged in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/).
+A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **33 [Proto-OKN](https://www.proto-okn.net/) knowledge graphs** through one unified interface. The server enables AI assistants (Claude, ChatGPT, GitHub Copilot, etc.) to discover graphs, inspect their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources — all through natural-language conversation. The graphs are hosted on the [Open Knowledge Network (OKN)](https://registry.okn.us/) federation platform and cataloged in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/).
 
 > **Beta:** the proto-okn MCP server is in beta. We welcome feedback and bug reports via [issues](https://github.com/sbl-sdsc/mcp-proto-okn/issues).
 
