@@ -28,6 +28,9 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
 ## Architecture
 <img src="docs/images/mcp_proto_okn_architecture.png" width="1024" alt="Architecture">
 
+## Workflow Example
+<img src="docs/images/workflow_example.tiff" width="1024" alt="Workflow Example">
+
 ---
 
 # For Users
