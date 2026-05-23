@@ -7,45 +7,202 @@ The build script [`scripts/build_registry.py`](../scripts/build_registry.py) ass
 ## Prerequisites
 
 - The new graph must be hosted as a SPARQL endpoint on the OKN platform at `https://apps.okn.us/<name>/sparql` and registered in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/). The build script derives endpoint URLs from the graph name using that pattern.
-- A working local checkout with `uv sync` completed (see [Option 2 in the README](../README.md#option-2-uv-run--local-source-development-mode)).
+- A working local checkout with `uv sync` completed (see [local installation](https://github.com/sbl-sdsc/mcp-proto-okn/blob/main/docs/develop.md#option-2-uv-run--local-source-development-mode)).
 
 ## Step-by-Step
 
-Substitute your graph name (kebab-case, e.g. `mygraph-okn`) for `<name>` throughout.
+Substitute your graph name (kebab-case, e.g. `mygraph-okn`) for `<kg_name>` throughout.
 
-### 1. Add a description
+### 1. Add the entity inventory
 
-Create `metadata/descriptions/<name>.txt` containing 1–3 paragraphs of plain text. This text becomes the graph's `description_summary` in the registry and is what the LLM reads when deciding whether the graph is relevant to a user's question. Be specific about what the graph contains, who created it, and what kinds of questions it can answer.
+Create an entity inventory file at:
+
+```text
+metadata/entities/<kg_name>_entities.csv
+```
+
+This file should describe the classes and predicates used in the KG schema.
+
+To generate an initial draft, run:
+
+```bash
+python scripts/extract_entities <kg_name>
+```
+
+Review the generated file and refine it manually as needed.
+
+#### Populate entity metadata
+
+Use a chat assistant with web search enabled, such as the latest versions of Claude Sonnet, Claude Opus, or GPT, to help populate the `Label` and `Description` columns.
+
+Steps:
+
+1. Attach `metadata/entities/<kg_name>_entities.csv` to the chat session.
+2. Enable web search.
+3. Run the prompt below.
+4. Save the completed file as `metadata/entities/<kg_name>_entities.csv`.
+5. Review the result manually before committing it.
+
+#### Prompt
+
+```text
+Update the attached CSV file for kg_name = <kg_name>.
+
+Use the KG registry page as the starting point:
+
+https://registry.okn.us/registry/kgs/<kg_name>/
+
+The CSV file must contain exactly 7 columns in this order:
+
+1. URI — Full URI of the entity
+2. Label — Human-readable label for the entity
+3. Description — Comment, definition, or description of the entity
+4. Type — Either "Class" or "Predicate"
+5. EdgePropertyOf — If the entity is an edge property, specify the predicate it belongs to; otherwise leave empty
+6. SourceClass — For predicates, the source class of the relationship; otherwise leave empty
+7. TargetClass — For predicates, the target class of the relationship; otherwise leave empty
+
+Search ontology files, GitHub repositories, registry links, schema files, documentation, and other linked resources to find missing labels and descriptions.
+
+Requirements:
+
+- Preserve existing valid values.
+- Fill in missing `Label` and `Description` values where reliable information is available.
+- Do not invent labels or descriptions when no reliable source is found.
+- Do not add extra columns.
+- Do not remove columns.
+- Do not reorder columns.
+- Keep the output as a valid CSV file.
+- Return the completed CSV file.
+```
+---
+
+After the assistant updates the file, review all changes manually. Verify that labels and descriptions are accurate, concise, and consistent with the KG source materials.
+
+### 2. Add a description
+
+Create a plain-text description file at:
+
+```text
+metadata/descriptions/<kg_name>.txt
+```
+
+This file should contain 1–3 paragraphs describing the knowledge graph. The text becomes the graph's `description_summary` in the registry and is used by LLMs to determine whether the graph is relevant to a user's question.
+
+#### Generate a draft description
+
+Use a chat assistant with web search enabled, such as the latest versions of Claude Sonnet, Claude Opus, or GPT, to generate an initial draft.
+
+Steps:
+
+1. Attach `metadata/entities/<kg_name>_entities.csv` to the chat session.
+2. Enable web search.
+3. Run the prompt below.
+4. Save the completed description as `metadata/descriptions/<kg_name>.txt`.
+5. Review the result manually before committing it.
+
+#### Prompt
+
+```text
+Generate a description for kg_name = <kg_name>.
+
+Use the attached entity inventory file as the primary source.
+
+Use the KG registry page as an additional source:
+
+https://raw.githubusercontent.com/frink-okn/okn-registry/refs/heads/main/docs/registry/kgs/<kg_name>
+
+Search publicly available documentation, ontology files, GitHub repositories, registry links, schema files, and other linked resources to understand the KG.
+
+Write a plain-text description of approximately 150 words.
+
+The description should explain:
+
+1. What the knowledge graph contains
+2. What domain, entities, and relationships it covers
+3. What kinds of questions it can help answer
+
+Requirements:
+
+- Be accurate, concise, and specific.
+- Base the description only on reliable source material.
+- Do not invent unsupported claims.
+- Do not use Markdown headings, bullet points, or tables.
+- Do not include citations or URLs in the final description.
+- Return only the completed description text.
+```
+---
+
+After the assistant generates the file, review it manually. Verify that the description is accurate, concise, and consistent with the KG source materials.
 
 ### 2. Add the entity inventory
 
-Create `metadata/entities/<name>_entities.csv` with the schema:
+Create an entity inventory file at:
 
-```csv
-URI,Label,Description,Type
+```text
+metadata/entities/<kg_name>_entities.csv
 ```
 
-`Type` must be one of:
-- `Class` — RDF/OWL class (e.g. `Disease`, `Protein`)
-- `Predicate` — RDF property used for edges (e.g. `ASSOCIATES_DaG`)
-- `EdgeProperty` — a property that decorates a reified edge (e.g. `log2fc`). The mere presence of any `EdgeProperty` row sets the graph's `has_edge_properties` flag to `true`.
+This file should describe the classes and predicates used in the KG schema.
 
-The entity CSV is typically generated by querying the SPARQL endpoint for distinct classes and predicates with their `rdfs:label` and `rdfs:comment` values. A starter query:
+To generate an initial draft, run:
 
-```sparql
-SELECT DISTINCT ?uri ?label ?desc ("Class" AS ?type)
-WHERE {
-  ?s a ?uri .
-  OPTIONAL { ?uri rdfs:label ?label }
-  OPTIONAL { ?uri rdfs:comment ?desc }
-}
+```bash
+python scripts/extract_entities <kg_name>
 ```
 
-Run a similar query for predicates (`?s ?uri ?o` pattern). Refine by hand to remove noise.
+Review the generated file and refine it manually as needed.
+
+#### Populate entity metadata
+
+Use a chat assistant with web search enabled, such as the latest versions of Claude Sonnet, Claude Opus, or GPT, to help populate the `Label` and `Description` columns.
+
+Steps:
+
+1. Attach `metadata/entities/<kg_name>_entities.csv` to the chat session.
+2. Enable web search.
+3. Run the prompt below.
+4. Save the completed file as `metadata/entities/<kg_name>_entities.csv`.
+5. Review the result manually before committing it.
+
+#### Prompt
+
+```text
+Update the attached CSV file for kg_name = <kg_name>.
+
+Use the KG registry page as the starting point:
+
+https://registry.okn.us/registry/kgs/<kg_name>/
+
+The CSV file must contain exactly 7 columns in this order:
+
+1. URI — Full URI of the entity
+2. Label — Human-readable label for the entity
+3. Description — Comment, definition, or description of the entity
+4. Type — Either "Class" or "Predicate"
+5. EdgePropertyOf — If the entity is an edge property, specify the predicate it belongs to; otherwise leave empty
+6. SourceClass — For predicates, the source class of the relationship; otherwise leave empty
+7. TargetClass — For predicates, the target class of the relationship; otherwise leave empty
+
+Search ontology files, GitHub repositories, registry links, schema files, documentation, and other linked resources to find missing labels and descriptions.
+
+Requirements:
+
+- Preserve existing valid values.
+- Fill in missing `Label` and `Description` values where reliable information is available.
+- Do not invent labels or descriptions when no reliable source is found.
+- Do not add extra columns.
+- Do not remove columns.
+- Do not reorder columns.
+- Keep the output as a valid CSV file.
+- Return the completed CSV file.
+```
+
+After the assistant updates the file, review all changes manually. Verify that labels and descriptions are accurate, concise, and consistent with the KG source materials.
 
 ### 3. Update `scripts/build_registry.py`
 
-The build script holds three hardcoded dicts keyed by graph name. Add an entry for `<name>` to each:
+The build script holds three hardcoded dicts keyed by graph name. Add an entry for `<kg_name>` to each:
 
 - **`DOMAIN_TAGS`** — a list of short tags. Existing examples: `biology`, `health`, `toxicology`, `geospatial`, `climate`, `social_determinants`, `genomics`, `pathways`. Reuse existing tags where possible so the `list_graphs(domain=...)` filter remains useful.
 - **`IDENTIFIER_NAMESPACES`** — list of identifier systems used by the graph (e.g. `["MONDO", "Ensembl", "NCBI Gene"]`). This populates the cross-graph identifier bridge — see [identifier_mapping.py](../src/mcp_proto_okn/identifier_mapping.py) for the canonical names.
@@ -59,7 +216,7 @@ If the graph is commonly referred to by a short alias (e.g. `spoke` → `spoke-o
 uv run python scripts/build_registry.py
 ```
 
-Expected output: `Built registry with 34 graphs → /path/to/config/registry.json`. Confirm the count went up by one and that your graph appears in the JSON.
+Expected output: `Built registry with <n> graphs → /path/to/config/registry.json`. Confirm the count went up by one and that your graph appears in the JSON.
 
 ### 5. Test locally
 
@@ -71,11 +228,11 @@ Restart your MCP client (the unified server is started by the client at session 
 
 `proto-okn` should still be connected. Then ask:
 
-> List the available Proto-OKN knowledge graphs. Highlight any with `<name>` in the name.
+> List the available Proto-OKN knowledge graphs.
 
 The new graph should appear with its `display_name`, `domain_tags`, and `description_summary`. Try a follow-up such as:
 
-> What can I ask the `<name>` graph about?
+> What can I ask the `<kg_name>` graph about?
 
 The LLM will use the entity inventory and example queries to answer.
 
@@ -83,7 +240,7 @@ The LLM will use the entity inventory and example queries to answer.
 
 If you want the new graph to appear in the README's "Knowledge Graph Overviews" table, generate an overview document:
 
-> @<name>: Give a high-level overview of this knowledge graph, including its main entities, relationships, and purpose. Then create a chat transcript.
+> @<kg_name>: Give a high-level overview of this knowledge graph, including its main entities, relationships, and purpose. Then create a chat transcript.
 
 Save the resulting transcript as `docs/examples/<name>_overview.md` and add a link to the appropriate domain column in the README's overview table.
 

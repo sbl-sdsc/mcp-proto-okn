@@ -1,0 +1,25 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://medicaldevice.com/ontology/MAUDEReport,MAUDE Report,"A Medical Device Report (MDR) in the FDA Manufacturer and User Facility Device Experience (MAUDE) adverse event reporting system.",Class,,,
+http://medicaldevice.com/ontology/MedicalDevice,Medical Device,"A medical device that is the subject of an adverse event report in the FDA MAUDE database.",Class,,,
+http://rdfs.org/ns/void#Dataset,dataset,"A set of RDF triples that are published, maintained or aggregated by a single provider.",Class,,,
+http://ldf.fi/void-ext#datatype,datatype,"The datatype that is required of literals to be included into a datatype-based partition.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://ldf.fi/void-ext#datatypePartition,object datatype partition,"A subset of a void:Dataset that contains only literals that have a certain datatype.",Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://ldf.fi/void-ext#objectClassPartition,object class partition,"A subset of a void:Dataset that contains only entities of a certain rdfs:Class that occur in the object position of triples in the dataset.",Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://medicaldevice.com/ontology/dateOfEvent,date of event,"The date on which the adverse event involving the medical device occurred.",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,
+http://medicaldevice.com/ontology/dateReceived,date received,"The date on which the MAUDE adverse event report was received by the FDA.",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,
+http://medicaldevice.com/ontology/eventType,event type,"The type of adverse event reported in the MAUDE report (e.g., injury, malfunction, death).",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,
+http://medicaldevice.com/ontology/involvesDevice,involves device,"Links a MAUDE adverse event report to the medical device involved in the event.",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,http://medicaldevice.com/ontology/MedicalDevice
+http://medicaldevice.com/ontology/label,label,"A human-readable label for the medical device resource.",Predicate,,http://medicaldevice.com/ontology/MedicalDevice,
+http://medicaldevice.com/ontology/productCode,product code,"The FDA product code that classifies the medical device by its intended use and indication.",Predicate,,http://medicaldevice.com/ontology/MedicalDevice,
+http://purl.org/dc/terms/modified,Date Modified,"Date on which the resource was changed.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://purl.org/pav/lastUpdatedOn,last updated on,"The date this resource was last updated.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://purl.org/pav/version,version,"The version of the resource.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#class,class,"The rdfs:Class that is the rdf:type of all entities in a class-based partition.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#classPartition,class partition,"A subset of a void:Dataset that contains only the entities of a certain rdfs:Class.",Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://rdfs.org/ns/void#distinctObjects,distinct objects,"The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#distinctSubjects,distinct subjects,"The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#entities,number of entities,"The total number of entities that are described in a void:Dataset.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#properties,number of properties,"The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#property,property,"The rdf:Property that is the predicate of all triples in a property-based partition.",Predicate,,http://rdfs.org/ns/void#Dataset,
+http://rdfs.org/ns/void#propertyPartition,property partition,"A subset of a void:Dataset that contains only the triples of a certain rdf:Property.",Predicate,,http://rdfs.org/ns/void#Dataset,http://rdfs.org/ns/void#Dataset
+http://rdfs.org/ns/void#triples,number of triples,"The total number of triples contained in a void:Dataset.",Predicate,,http://rdfs.org/ns/void#Dataset,

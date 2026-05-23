@@ -5,18 +5,20 @@
 [![Model Context Protocol](https://img.shields.io/badge/MCP-Compatible-green.svg)](https://modelcontextprotocol.io/)
 [![PyPI version](https://img.shields.io/pypi/v/mcp-proto-okn?label=PyPI)](https://pypi.org/project/mcp-proto-okn/)
 
-A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **33 [Proto-OKN](https://www.proto-okn.net/) knowledge graphs** through one unified interface. The server enables AI assistants (Claude, ChatGPT, GitHub Copilot, etc.) to discover graphs, inspect their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources — all through natural-language conversation. The graphs are hosted on the [Open Knowledge Network (OKN)](https://registry.okn.us/) federation platform and cataloged in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/).
+A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes **30+ [Proto-OKN](https://www.proto-okn.net/) knowledge graphs** through one unified interface. The server enables AI assistants (Claude, ChatGPT, GitHub Copilot, etc.) to discover graphs, inspect their schemas, query them with SPARQL, bridge identifiers across graphs, and combine results from multiple sources — all through natural-language conversation. The graphs are hosted on the [Open Knowledge Network (OKN)](https://registry.okn.us/) federation platform and cataloged in the [OKN Knowledge Graph Registry](https://registry.okn.us/registry/).
 
 > **Beta:** the proto-okn MCP server is in beta. We welcome feedback and bug reports via [issues](https://github.com/sbl-sdsc/mcp-proto-okn/issues).
 
-### [Video introduction](https://www.youtube.com/watch?v=50L-tKCoXJE) · [Technical review presentation](https://nebigdatahub.org/wp-content/uploads/2026/01/MCP-Proto-OKN-Technical-Review.pdf)
+### Cross-Graph Demo: SPOKE, ProKN, BioBricks, SAWGraph
+  [Video](https://www.youtube.com/watch?v=dWWM0akpHSE) · [Presentation](https://www.proto-okn.net/wp-content/uploads/2026/03/Cross-KG-Demo-with-mcp-proto-okn.pdf) 
+  
 *Note: MCP URL and installation instructions have changed. [Updated instructions](#for-users)*
 
 ---
 
 ## Features
 
-- **🌐 Unified access** — one MCP server, 33 knowledge graphs, one endpoint
+- **🌐 Unified access** — one MCP server, 30+ knowledge graphs, one endpoint
 - **🔎 Graph discovery** — list, filter, and search graphs by domain, entity type, or natural language
 - **📐 Schema inspection** — understand each graph's classes, predicates, and properties before writing queries
 - **🧭 Per-graph SPARQL** — query any individual graph with automatic FROM-clause injection
@@ -105,15 +107,17 @@ Each link points to a chat transcript for generating an overview and a class dia
 
 | 🧬 Biology & Health | 🌱 Environment | ⚖️ Justice | 🛠️ Technology & Manufacturing | NASA/NIH/ARCH(*)
 |--------------------|---------------|-----------|-------------------------------|-------------|
-| [biobricks-aopwiki](docs/examples/biobricks-aopwiki_overview.md) | [sawgraph](docs/examples/sawgraph_overview.md) | [ruralkg](docs/examples/ruralkg_overview.md) | [securechainkg](docs/examples/securechainkg_overview.md) | [nasa-gesdisc-kg](docs/examples/nasa-gesdisc-kg_overview.md) |
-| [biobricks-ice](docs/examples/biobricks-ice_overview.md) | [fiokg](docs/examples/fiokg_overview.md) | [scales](docs/examples/scales_overview.md) | [sudokn](docs/examples/sudokn_overview.md) | [nde](docs/examples/nde_overview.md)
+| [biobricks-aopwiki](docs/examples/biobricks-aopwiki_overview.md) | [sawgraph](docs/examples/sawgraph_overview.md) | [ruralkg](docs/examples/ruralkg_overview.md) | [securechainkg](docs/examples/securechainkg_overview.md) | [biomarkerkg](docs/examples/biomarkerkg-overview.md) |
+| [biobricks-ice](docs/examples/biobricks-ice_overview.md) | [fiokg](docs/examples/fiokg_overview.md) | [scales](docs/examples/scales_overview.md) | [sudokn](docs/examples/sudokn_overview.md) | [evoweb](docs/examples/evoweb-overview.md)
 | [biobricks-mesh](docs/examples/biobricks-mesh_overview.md) | [geoconnex](docs/examples/geoconnex_overview.md) | [nikg](docs/examples/nikg_overview.md) | | [gene-expression-atlas-okn](docs/examples/gene-expression-atlas-okn_overview.md) |
-| [biobricks-pubchem-annotations](docs/examples/biobricks-pubchem-annotations_overview.md) | [spatialkg](docs/examples/spatialkg_overview.md) | [dreamkg](docs/examples/dreamkg_overview.md) |  | [biomarkerkg](docs/examples/biomarkerkg-overview.md)
-| [biobricks-tox21](docs/examples/biobricks-tox21_overview.md) | [hydrologykg](docs/examples/hydrologykg_overview.md) |  |  | [evoweb](docs/examples/evoweb-overview.md)
-| [biobricks-toxcast](docs/examples/biobricks-toxcast_overview.md) | [ufokn](docs/examples/ufokn_overview.md) |  |  | [oard-kg](docs/examples/oard-kg-overview.md)
-| [spoke-genelab](docs/examples/spoke-genelab_overview.md) | [wildlifekn](docs/examples/wildlifekn_overview.md) |  |  | [ncipidkg](docs/examples/ncipidkg-overview.md)
-| [spoke-okn](docs/examples/spoke-okn_overview.md) | [climatemodelskg](docs/examples/climatemodelskg_overview.md) |  |  | [pankgraph](docs/examples/pankgraph-overview.md)
-|  | [sockg](docs/examples/sockg_overview.md) |  | | [prokn](docs/examples/prokn_overview.md)
+| [biobricks-pubchem-annotations](docs/examples/biobricks-pubchem-annotations_overview.md) | [spatialkg](docs/examples/spatialkg_overview.md) | [dreamkg](docs/examples/dreamkg_overview.md) |  | [maudekg](docs/examples/maudekg-overview.md)
+| [biobricks-tox21](docs/examples/biobricks-tox21_overview.md) | [hydrologykg](docs/examples/hydrologykg_overview.md) |  |  | [nasa-gesdisc-kg](docs/examples/nasa-gesdisc-kg_overview.md) |
+| [biobricks-toxcast](docs/examples/biobricks-toxcast_overview.md) | [ufokn](docs/examples/ufokn_overview.md) |  |  | [nde](docs/examples/nde_overview.md) |
+| [spoke-genelab](docs/examples/spoke-genelab_overview.md) | [wildlifekn](docs/examples/wildlifekn_overview.md) |  |  | [ncipidkg](docs/examples/ncipidkg-overview.md) |
+| [spoke-okn](docs/examples/spoke-okn_overview.md) | [climatemodelskg](docs/examples/climatemodelskg_overview.md) |  |  | [oard-kg](docs/examples/oard-kg-overview.md) |
+|  | [sockg](docs/examples/sockg_overview.md) |  | | [pankgraph](docs/examples/pankgraph-overview.md) |
+|  | | | | [phaseskg](docs/examples/phaseskg-overview.md) |
+|  | | | | [prokn](docs/examples/prokn_overview.md) |
 
 **(*) ARCH: Advancing Research Capacity in Health, NSF Proto-OKN supplemental awards.**
 
@@ -186,7 +190,7 @@ The same prompt run across Claude Desktop and VS Code Insiders with several LLMs
 
 ## For Developers
 
-The [develop document](docs/develop.md) describes how to **run the server locally**, **contribute code**, or **host a copy**. 
+The [developer document](docs/develop.md) describes how to **run the server locally**, **contribute code**, or **host a copy**. 
 
 ---
 
@@ -197,7 +201,7 @@ The [develop document](docs/develop.md) describes how to **run the server locall
 - For local installs, verify `uvx` is on PATH (`which uvx`); if not, use the absolute path in `command`
 
 **Connection errors**
-- Check that the OKN endpoints are reachable: `curl https://apps.okn.us/spoke-okn/sparql`
+- Check that the OKN endpoints are reachable: `curl https://apps.okn.us/spoke-okn/sparql`. Returns "Unknown path" when connected.
 - Some endpoints may have rate limits or temporary downtime
 
 **Slow or hung queries**
