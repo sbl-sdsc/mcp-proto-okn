@@ -9,7 +9,7 @@ The graph queried is [`nde`](https://registry.okn.us/registry/kgs/nde/) — NIAI
 ## The User's Prompt
 
 👤 **User**
-> For cardiovascular disease, list the diseases studied and the number of datasets covering each. Show the top 20 by dataset count.
+> @NDE For cardiovascular disease, list the diseases studied and the number of datasets covering each. Show the top 20 by dataset count.
 
 ---
 
