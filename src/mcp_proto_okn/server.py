@@ -283,25 +283,14 @@ class SPARQLServer:
         Example insert:
             FROM <https://purl.org/okn/frink/kg/{kg_name}>
         """
-        from_line = f"FROM <https://purl.org/okn/frink/kg/{kg_name}>\n"
-    
-        lines = query_string.split("\n")
-        new_lines = []
-        select_seen = False
-    
-        for line in lines:
-            new_lines.append(line)
-            # Detect SELECT but not WHERE yet
-            if line.strip().startswith("SELECT"):
-                select_seen = True
-                continue
-            
-            if select_seen and line.strip().startswith("WHERE"):
-                # Insert FROM just before WHERE
-                new_lines.insert(-1, from_line)
-                select_seen = False  # only insert once
-    
-        return "\n".join(new_lines)
+        from_clause = f"FROM <https://purl.org/okn/frink/kg/{kg_name}>"
+        # Insert FROM before WHERE clause
+        return re.sub(
+            r'(?i)\bWHERE\s*\{',
+            f"{from_clause}\nWHERE {{",
+            query_string,
+            count=1
+        )
 
     def _extract_values(self, result: Any, var: str) -> List[str]:
         """Extract variable bindings from a SPARQL JSON result."""
