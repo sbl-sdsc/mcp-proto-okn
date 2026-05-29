@@ -136,6 +136,7 @@ Each link points to a chat transcript for generating an overview and a class dia
 * [Diabetic Nephropathy Meta-Analysis (gene-expression-atlas-okn)](docs/examples/diabetic-nephropathy-meta-analysis.md) — featured on WOBD as a [worked example](https://apps.okn.us/wobd/mcp/diabetic-nephropathy)
 * [Diabetic Nephropathy Differential Expression Analysis (gene-expression-atlas-okn, ARCHS4)](docs/examples/dn_differential_expression_archs4_analysis.md)
 * [APOE Gene Info (prokn)](docs/examples/prokn-apoe-gene.md)
+* [Protein - Rare Disease Associations (prokn, oard-kg)](docs/examples/prokn-oard-kg-proteins-associated-rare-diseases.md)
 * [Prostate Cancer Biomarkers (biomarkerkg)](docs/examples/biomarkerkg-prostate-cancer.md)
 * [Marfan Syndrome Phenotypes (oard-kg)](docs/examples/oard-kg-marfan-syndrom-phenotypes.md)
 * [Pancreatic Acinar Cell Adhesion Genes (pankgraph)](docs/examples/pankgraph-pancreatic-acinar-cell-adhesion-genes.md)

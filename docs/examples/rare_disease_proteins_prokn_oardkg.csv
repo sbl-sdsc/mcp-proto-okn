@@ -1,0 +1,354 @@
+rare_disease_name,oardkg_disease_id,prokn_disease_id,uniprot_accession,gene_symbols
+"muscular dystrophy-dystroglycanopathy, type A",MONDO:0000171,OMIM:236670,Q9Y6A1,POMT1
+familial juvenile hyperuricemic nephropathy,MONDO:0000608,OMIM:613092,P00797,REN
+glycogen storage disease I,MONDO:0002413,OMIM:232240,O43826,SLC37A4
+glycogen storage disease I,MONDO:0002413,OMIM:232220,O43826,SLC37A4
+glycogen storage disease I,MONDO:0002413,OMIM:232200,P35575,G6PC1
+Jervell and Lange-Nielsen syndrome,MONDO:0002441,OMIM:220400,P51787,KCNQ1
+hepatic porphyria,MONDO:0002520,OMIM:612740,P13716,ALAD
+amyotrophic lateral sclerosis,MONDO:0004976,OMIM:105500,Q96QT4,TRPM7
+retinopathy of prematurity,MONDO:0006952,OMIM:133780,O75197,LRP5
+retinopathy of prematurity,MONDO:0006952,OMIM:133780,Q9ULV1,FZD4
+retinopathy of prematurity,MONDO:0006952,OMIM:133780,Q9ULV1-PRO_0000012985,FZD4
+subvalvular aortic stenosis,MONDO:0006987,OMIM:185500,P15502,ELN
+neurofibromatosis type 2,MONDO:0007039,OMIM:101000,P35240,NF2
+Alzheimer disease type 1,MONDO:0007088,OMIM:104300,O95185,UNC5C
+Alzheimer disease type 1,MONDO:0007088,OMIM:104300,P05067,AD1; A4; APP
+Alzheimer disease type 1,MONDO:0007088,OMIM:104300,P05067-PRO_0000000088,AD1; APP; A4
+Alzheimer disease type 1,MONDO:0007088,OMIM:104300,Q16643,DBN1
+Alzheimer disease type 1,MONDO:0007088,OMIM:104300,Q92673,SORL1; C11orf32
+Alzheimer disease type 1,MONDO:0007088,OMIM:104300,Q9BRN9,TM2D3
+Finnish type amyloidosis,MONDO:0007097,OMIM:105120,P06396,GSN
+familial amyloid neuropathy,MONDO:0007100,OMIM:105210,P02766,TTR
+epidermolytic hyperkeratosis,MONDO:0007239,OMIM:113800,P04264,KRT1
+"progressive familial heart block, type 1A",MONDO:0007240,OMIM:113900,Q14524,SCN5A
+dilated cardiomyopathy 1A,MONDO:0007269,OMIM:115200,P02545,LMNA
+Charcot-Marie-Tooth disease type 1A,MONDO:0007309,OMIM:118220,Q01453,PMP22
+chondrocalcinosis 2,MONDO:0007319,OMIM:118600,Q9HCJ1,ANKH
+inherited Creutzfeldt-Jakob disease,MONDO:0007403,OMIM:123400,P04156,PRP; PRNP; PRIP; ALTPRP
+Crouzon syndrome,MONDO:0007405,OMIM:123500,P21802,FGFR2
+Darier disease,MONDO:0007417,OMIM:124200,P16615,ATP2A2
+maturity-onset diabetes of the young type 1,MONDO:0007452,OMIM:125850,P41235,HNF4A
+Duane retraction syndrome,MONDO:0007473,OMIM:607323,Q9UJQ4,SALL4
+Leri-Weill dyschondrosteosis,MONDO:0007481,OMIM:127300,O15266,SHOX
+early-onset generalized limb-onset dystonia,MONDO:0007492,OMIM:128100,O14656,TOR1A
+dystonia 12,MONDO:0007496,OMIM:128235,P13637,ATP1A3
+Beckwith-Wiedemann syndrome,MONDO:0007534,OMIM:130650,P49918,CDKN1C
+Beckwith-Wiedemann syndrome,MONDO:0007534,OMIM:130650,Q96L73,NSD1
+multiple endocrine neoplasia type 1,MONDO:0007540,OMIM:131100,O00255,MEN1
+primary erythermalgia,MONDO:0007571,OMIM:133020,Q15858,SCN9A
+primary familial polycythemia due to EPO receptor mutation,MONDO:0007572,OMIM:133100,P19235,EPOR
+Coffin-Siris syndrome 1,MONDO:0007617,OMIM:135900,Q8NFD5,ARID1B
+hereditary diffuse gastric adenocarcinoma,MONDO:0007648,OMIM:137215,P12830,CDH1
+spondyloepiphyseal dysplasia with congenital joint dislocations,MONDO:0007738,OMIM:143095,Q7LGC8,CHST3
+hyperlipoproteinemia type V,MONDO:0007762,OMIM:144650,Q6Q788,APOA5
+hyperlipoproteinemia type V,MONDO:0007762,OMIM:144650,Q6Q788-PRO_0000001981,APOA5
+nonpapillary renal cell carcinoma,MONDO:0007763,OMIM:144700,O15527,OGG1
+nonpapillary renal cell carcinoma,MONDO:0007763,OMIM:144700,P40337,VHL
+nonpapillary renal cell carcinoma,MONDO:0007763,OMIM:144700,Q86U86,PBRM1
+nonpapillary renal cell carcinoma,MONDO:0007763,OMIM:144700,Q8NFG4,FLCN
+nonpapillary renal cell carcinoma,MONDO:0007763,OMIM:144700,Q8WU17,RNF139
+nonpapillary renal cell carcinoma,MONDO:0007763,OMIM:144700,Q9BYW2,SETD2
+hyperparathyroidism 2 with jaw tumors,MONDO:0007768,OMIM:145001,Q6P1J9,CDC73
+multiple system atrophy,MONDO:0007803,OMIM:146500,Q96H96,COQ2
+Hyper-IgE recurrent infection syndrome 1,MONDO:0007818,OMIM:147060,P40763,STAT3
+Hyper-IgE recurrent infection syndrome 1,MONDO:0007818,OMIM:243700,Q8NF50,DOCK8
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,O95267,RASGRP1
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,P0C0L4,C4A; CO4; CPAMD2
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,P0C0L5,CPAMD3; CO4; C4B_2; C4B
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,P16410,CTLA4
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,P23510,TNFSF4
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,P24855,DNASE1
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,P31994,FCGR2B
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,Q8NDB2,BANK1
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,Q9NSU2,TREX1
+systemic lupus erythematosus,MONDO:0007915,OMIM:152700,Q9Y2R2,PTPN22
+vitelliform macular dystrophy 2,MONDO:0007931,OMIM:153700,O76090,BEST1
+Bethlem myopathy,MONDO:0008029,OMIM:158810,P12109,COL6A1
+myotonic dystrophy type 1,MONDO:0008056,OMIM:602668,P62633,CNBP
+myotonic dystrophy type 1,MONDO:0008056,OMIM:160900,Q09013,DMPK
+myotonic dystrophy type 1,MONDO:0008056,OMIM:160900,Q9NR56,MBNL1
+nonsyndromic congenital nail disorder 1,MONDO:0008060,OMIM:161050,O60353,FZD6
+nonsyndromic congenital nail disorder 1,MONDO:0008060,OMIM:161050,O60353-PRO_0000012994,FZD6
+familial juvenile hyperuricemic nephropathy type 1,MONDO:0008073,OMIM:162000,P07911,UMOD
+multiple endocrine neoplasia type 2B,MONDO:0008082,OMIM:162300,P07949,RET
+spinocerebellar ataxia type 7,MONDO:0008120,OMIM:164500,O15265,ATXN7
+optic atrophy 3,MONDO:0008133,OMIM:165300,Q9H6K4,OPA3
+southeast Asian ovalocytosis,MONDO:0008165,OMIM:166900,P02730,SLC4A1
+paramyotonia congenita of Von Eulenburg,MONDO:0008195,OMIM:168300,P35499,SCN4A
+Andersen-Tawil syndrome,MONDO:0008222,OMIM:170390,P63252,KCNJ2
+hyperkalemic periodic paralysis,MONDO:0008224,OMIM:170500,P35499,SCN4A
+polysyndactyly 4,MONDO:0008272,OMIM:174700,P10071,GLI3
+acute intermittent porphyria,MONDO:0008294,OMIM:176000,P08397,HMBS
+Liddle syndrome,MONDO:0008323,OMIM:177200,P51168,SCNN1B
+Roussy-Levy syndrome,MONDO:0008392,OMIM:180800,P25189,MPZ
+Silver-Russell syndrome,MONDO:0008394,OMIM:180860,P01344,IGF2
+aplasia of lacrimal and salivary glands,MONDO:0008397,OMIM:180920,O15520,FGF10
+hereditary spastic paraplegia 3A,MONDO:0008437,OMIM:182600,Q8WXF7,ATL1
+hereditary spastic paraplegia 4,MONDO:0008438,OMIM:182601,Q9UBP0,SPAST
+thrombocytopenia 2,MONDO:0008555,OMIM:188000,Q9UPS8,ANKRD26
+tuberous sclerosis 1,MONDO:0008612,OMIM:191100,Q92574,TSC1
+von Hippel-Lindau disease,MONDO:0008667,OMIM:193300,P40337,VHL
+acrodermatitis enteropathica,MONDO:0008713,OMIM:201100,Q6P5W5,SLC39A4
+congenital isolated adrenocorticotropic hormone deficiency,MONDO:0008720,OMIM:201400,O60806,TBX19
+medium chain acyl-CoA dehydrogenase deficiency,MONDO:0008721,OMIM:201450,P11310,ACADM
+short chain acyl-CoA dehydrogenase deficiency,MONDO:0008722,OMIM:201470,P16219,ACADS
+congenital lipoid adrenal hyperplasia due to STAR deficency,MONDO:0008725,OMIM:201710,P49675,STAR
+classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency,MONDO:0008728,OMIM:201910,P08686,CYP21A2
+congenital adrenal hyperplasia due to 17-alpha-hydroxylase deficiency,MONDO:0008730,OMIM:202110,P05093,CYP17A1
+Alexander disease,MONDO:0008752,OMIM:203450,P14136,GFAP
+IRIDA syndrome,MONDO:0008788,OMIM:206200,Q8IU80,TMPRSS6
+camptodactyly-arthropathy-coxa vara-pericarditis syndrome,MONDO:0008828,OMIM:208250,Q92954,PRG4
+aspartylglucosaminuria,MONDO:0008830,OMIM:208400,P20933,AGA
+ataxia telangiectasia,MONDO:0008840,OMIM:208900,Q13315,ATM
+Bardet-Biedl syndrome 1,MONDO:0008854,OMIM:615988,Q13049,TRIM32
+Bloom syndrome,MONDO:0008876,OMIM:210900,P54132,BLM
+progressive familial intrahepatic cholestasis type 1,MONDO:0008892,OMIM:211600,O43520,ATP8B1
+PMM2-CDG,MONDO:0008907,OMIM:212065,O15305,PMM2
+systemic primary carnitine deficiency disease,MONDO:0008919,OMIM:212140,O76082,SLC22A5
+bilateral striopallidodentate calcinosis,MONDO:0008947,OMIM:213600,Q08357,SLC20A2
+chordoma,MONDO:0008978,OMIM:215400,O15178,TBXT
+citrullinemia type I,MONDO:0008988,OMIM:215700,P00966,ASS1
+complement component 2 deficiency,MONDO:0009006,OMIM:217000,P06681,C2
+macular corneal dystrophy,MONDO:0009020,OMIM:217800,Q9GZX3,CHST6
+Costello syndrome,MONDO:0009026,OMIM:218040,P01112,HRAS
+cytochrome-c oxidase deficiency disease,MONDO:0009068,OMIM:220110,P00395,MT-CO1
+cytochrome-c oxidase deficiency disease,MONDO:0009068,OMIM:220110,P00403,MT-CO2
+cytochrome-c oxidase deficiency disease,MONDO:0009068,OMIM:220110,P00414,MT-CO3
+cytochrome-c oxidase deficiency disease,MONDO:0009068,OMIM:220110,Q15526,SURF1
+congenital sucrase-isomaltase deficiency,MONDO:0009114,OMIM:222900,P14410,SI
+recessive dystrophic epidermolysis bullosa,MONDO:0009179,OMIM:226600,Q02388,COL7A1
+congenital factor V deficiency,MONDO:0009210,OMIM:227400,P12259,F5
+classic galactosemia,MONDO:0009258,OMIM:230400,P07902,GALT
+GM1 gangliosidosis type 1,MONDO:0009260,OMIM:230500,P16278,GLB1
+Bernard-Soulier syndrome,MONDO:0009276,OMIM:231200,P07359,GP1BA
+Bernard-Soulier syndrome,MONDO:0009276,OMIM:231200,P13224,GP1BB
+Bernard-Soulier syndrome,MONDO:0009276,OMIM:231200,P14770,GP9
+multiple acyl-CoA dehydrogenase deficiency,MONDO:0009282,OMIM:231680,P13804,ETFA
+multiple acyl-CoA dehydrogenase deficiency,MONDO:0009282,OMIM:231680,P38117,ETFB
+multiple acyl-CoA dehydrogenase deficiency,MONDO:0009282,OMIM:231680,Q16134,ETFDH
+glycogen storage disease II,MONDO:0009290,OMIM:232300,P10253,GAA
+glycogen storage disease II,MONDO:0009290,OMIM:232400,P35573,AGL
+glycogen storage disease III,MONDO:0009291,OMIM:232400,P35573,AGL
+glycogen storage disease due to glycogen branching enzyme deficiency,MONDO:0009292,OMIM:232500,Q04446,GBE1
+glycogen storage disease V,MONDO:0009293,OMIM:232600,P11217,PYGM
+glycogen storage disease VI,MONDO:0009294,OMIM:232700,P06737,PYGL
+familial renal glucosuria,MONDO:0009297,OMIM:233100,P31639,SLC5A2
+pulmonary venoocclusive disease 2,MONDO:0009329,OMIM:234810,Q9P2K8,EIF2AK4
+Mowat-Wilson syndrome,MONDO:0009341,OMIM:235730,O60315,ZEB2
+homocystinuria due to methylene tetrahydrofolate reductase deficiency,MONDO:0009353,OMIM:236250,P42898,MTHFR
+normal pressure hydrocephalus,MONDO:0009366,OMIM:236690,Q8NDM7,CFAP43
+carbamoyl phosphate synthetase I deficiency disease,MONDO:0009376,OMIM:237300,P31327,CPS1
+transient familial neonatal hyperbilirubinemia,MONDO:0009383,OMIM:237900,P22309,UGT1A1
+familial lipoprotein lipase deficiency,MONDO:0009387,OMIM:238600,P06858,LPL
+autoimmune polyendocrine syndrome type 1,MONDO:0009411,OMIM:240300,O43918,AIRE
+Krabbe disease,MONDO:0009499,OMIM:245200,P54803,GALC
+Landau-Kleffner syndrome,MONDO:0009509,OMIM:245570,Q12879,GRIN2A
+severe early-childhood-onset retinal dystrophy,MONDO:0009549,OMIM:248200,P78363,ABCA4
+severe early-childhood-onset retinal dystrophy,MONDO:0009549,OMIM:248200,Q9NQW8,CNGB3
+maple syrup urine disease,MONDO:0009563,OMIM:248600,P12694,BCKDHA
+mast syndrome,MONDO:0009568,OMIM:248900,Q9NZD8,SPG21
+neurocutaneous melanocytosis,MONDO:0009578,OMIM:249400,P01111,NRAS
+mucolipidosis type II,MONDO:0009650,OMIM:252500,Q3T906,GNPTA; GNPTAB; KIAA1208
+Sanfilippo syndrome type A,MONDO:0009655,OMIM:252900,P51688,SGSH
+biotinidase deficiency,MONDO:0009665,OMIM:253260,P43251,BTD
+autosomal recessive limb-girdle muscular dystrophy type 2A,MONDO:0009675,OMIM:253600,P20807,CAPN3
+autosomal recessive limb-girdle muscular dystrophy type 2C,MONDO:0009677,OMIM:253700,Q13326,SGCG
+Miyoshi myopathy,MONDO:0009685,OMIM:254130,O75923,DYSF
+juvenile myoclonic epilepsy,MONDO:0009696,OMIM:607628,P51788,CLCN2
+juvenile myoclonic epilepsy,MONDO:0009696,OMIM:254770,Q5JVL4,EFHC1
+Lafora disease,MONDO:0009697,OMIM:254780,O95278,EPM2A
+carnitine palmitoyl transferase 1A deficiency,MONDO:0009705,OMIM:255120,P50416,CPT1A
+Leigh syndrome,MONDO:0009723,OMIM:256000,P00846,MT-ATP6
+Leigh syndrome,MONDO:0009723,OMIM:256000,P03891,MT-ND2
+Leigh syndrome,MONDO:0009723,OMIM:256000,P03897,MT-ND3
+Leigh syndrome,MONDO:0009723,OMIM:256000,P03915,MT-ND5
+Leigh syndrome,MONDO:0009723,OMIM:256000,P03923,MT-ND6
+Leigh syndrome,MONDO:0009723,OMIM:256000,P31040,SDHA
+Leigh syndrome,MONDO:0009723,OMIM:256000,P54098,POLG
+"congenital nephrotic syndrome, Finnish type",MONDO:0009732,OMIM:256300,O60500,NPHS1
+Netherton syndrome,MONDO:0009735,OMIM:256500,Q9NQ38,SPINK5
+neuronal ceroid lipofuscinosis 1,MONDO:0009744,OMIM:256730,P50897,PPT1
+Niemann-Pick disease type A,MONDO:0009756,OMIM:257200,P17405,SMPD1
+primary hyperoxaluria type 1,MONDO:0009823,OMIM:259900,P21549,AGXT
+Shwachman-Diamond syndrome,MONDO:0009833,OMIM:260400,Q9Y3A5,SBDS
+hyperimmunoglobulinemia D with periodic fever,MONDO:0009849,OMIM:260920,Q03426,MVK
+phenylketonuria,MONDO:0009861,OMIM:261600,P00439,PAH
+glycogen storage disease due to phosphoglycerate mutase deficiency,MONDO:0009865,OMIM:261670,P15259,PGAM2
+isolated growth hormone deficiency type IA,MONDO:0009876,OMIM:262400,P01241,GH1
+autosomal recessive polycystic kidney disease,MONDO:0009889,OMIM:263200,P08F94,PKHD1
+adult polyglucosan body disease,MONDO:0009897,OMIM:263570,Q04446,GBE1
+Gitelman syndrome,MONDO:0009904,OMIM:263800,P55017,SLC12A3
+autosomal recessive inherited pseudoxanthoma elasticum,MONDO:0009925,OMIM:264800,O95255,ABCC6
+autosomal recessive inherited pseudoxanthoma elasticum,MONDO:0009925,OMIM:264800,Q86Y38,XYLT1
+autosomal recessive inherited pseudoxanthoma elasticum,MONDO:0009925,OMIM:264800,Q9H1B5,XYLT2
+Smith-Lemli-Opitz syndrome,MONDO:0010035,OMIM:270400,Q9UBM7,DHCR7
+hereditary spastic paraplegia 5A,MONDO:0010047,OMIM:270800,O75881,CYP7B1
+"spinal muscular atrophy, type IV",MONDO:0010056,OMIM:271150,Q16637,SMN2; SMN1
+Canavan disease,MONDO:0010079,OMIM:271900,P45381,ASPA
+Tay-Sachs disease,MONDO:0010100,OMIM:272800,P06865,HEXA
+"thyroid hormone resistance, generalized, autosomal recessive",MONDO:0010131,OMIM:274300,P10828,THRB
+isolated thyroid-stimulating hormone deficiency,MONDO:0010139,OMIM:275100,P01222,TSHB
+mismatch repair cancer syndrome 1,MONDO:0010159,OMIM:276300,P40692,MLH1
+Usher syndrome type 1,MONDO:0010168,OMIM:276900,Q13402,MYO7A
+familial isolated deficiency of vitamin E,MONDO:0010188,OMIM:277460,P49638,TTPA
+X-linked adrenal hypoplasia congenita,MONDO:0010264,OMIM:300200,P51843,NR0B1
+Danon disease,MONDO:0010281,OMIM:300257,P13473,LAMP2
+"developmental and epileptic encephalopathy, 36",MONDO:0010472,OMIM:300884,Q9NP73,ALG13
+Wiskott-Aldrich syndrome,MONDO:0010518,OMIM:301000,P42768,WAS
+Barth syndrome,MONDO:0010543,OMIM:302060,Q16635,TAFAZZIN
+glycogen storage disease IXa,MONDO:0010598,OMIM:306000,P46019,PHKA2
+hemophilia B,MONDO:0010604,OMIM:306900,P00740,F9
+CHILD syndrome,MONDO:0010621,OMIM:308050,Q15738,NSDHL
+hyper-IgM syndrome type 1,MONDO:0010626,OMIM:308230,P29965,CD40LG
+pyruvate dehydrogenase E1-alpha deficiency,MONDO:0010717,OMIM:312170,P08559,PDHA1
+Rett syndrome,MONDO:0010726,OMIM:312750,P51608,MECP2
+hereditary spastic paraplegia 2,MONDO:0010733,OMIM:312920,P60201,PLP1
+Kennedy disease,MONDO:0010735,OMIM:313200,P10275,AR
+"cardiac valvular dysplasia, X-linked",MONDO:0010753,OMIM:314400,P21333,FLNA
+NARP syndrome,MONDO:0010794,OMIM:551500,P00846,MT-ATP6
+childhood absence epilepsy,MONDO:0010826,OMIM:607681,P18507,GABRG2
+low phospholipid associated cholelithiasis,MONDO:0010939,OMIM:600803,P21439,ABCB4
+Timothy syndrome,MONDO:0010979,OMIM:618447,Q13936,CACNA1C
+early-onset non-syndromic cataract,MONDO:0011060,OMIM:604219,P02489,CRYAA
+early-onset non-syndromic cataract,MONDO:0011060,OMIM:115700,P07320,CRYGD
+retinitis pigmentosa 19,MONDO:0011137,OMIM:601718,P78363,ABCA4
+childhood apraxia of speech,MONDO:0011184,OMIM:602081,O15409,FOXP2
+amyotrophic lateral sclerosis type 4,MONDO:0011223,OMIM:602433,Q7Z333,SETX
+myotonic dystrophy type 2,MONDO:0011266,OMIM:168300,P35499,SCN4A
+retinitis pigmentosa 25,MONDO:0011272,OMIM:602772,Q5T1H1,EYS
+alpha thalassemia,MONDO:0011399,OMIM:604131,P69905,HBA1; HBA2
+MASS syndrome,MONDO:0011431,OMIM:604308,P35555,FBN; FBN1
+hereditary spastic paraplegia 11,MONDO:0011445,OMIM:604360,Q96JI7,SPG11
+Bohring-Opitz syndrome,MONDO:0011510,OMIM:605039,Q8IXJ9,ASXL1
+late-onset retinal degeneration,MONDO:0011579,OMIM:605670,Q9BXJ0,UNQ303/PRO344; C1QTNF5; CTRP5
+GNE myopathy,MONDO:0011603,OMIM:605820,Q9Y223,GNE
+glycine encephalopathy,MONDO:0011612,OMIM:605899,P23378,GLDC
+lymphangioleiomyomatosis,MONDO:0011705,OMIM:606690,P49815,TSC2
+lymphangioleiomyomatosis,MONDO:0011705,OMIM:606690,Q92574,TSC1
+encephalopathy due to GLUT1 deficiency,MONDO:0011724,OMIM:606777,P11166,SLC2A1
+Scheie syndrome,MONDO:0011760,OMIM:607016,P35475,IDUA
+sweet syndrome,MONDO:0011959,OMIM:608068,O15553,MEFV
+MUTYH-related attenuated familial adenomatous polyposis,MONDO:0012041,OMIM:608456,Q9UIF7,MUTYH
+myopia 6,MONDO:0012154,OMIM:608908,O43819,SCO2
+long chain 3-hydroxyacyl-CoA dehydrogenase deficiency,MONDO:0012173,OMIM:609016,P40939,HADHA
+idiopathic aplastic anemia,MONDO:0012197,OMIM:609135,O14746,TERT
+idiopathic aplastic anemia,MONDO:0012197,OMIM:609135,O60934,NBN
+idiopathic aplastic anemia,MONDO:0012197,OMIM:609135,P01579,IFNG
+Kostmann syndrome,MONDO:0012548,OMIM:610738,O00165,HAX1
+Pitt-Hopkins syndrome,MONDO:0012589,OMIM:610954,P15884,TCF4
+long QT syndrome 9,MONDO:0012736,OMIM:192500,P51787,KCNQ1
+Brugada syndrome 3,MONDO:0012742,OMIM:611875,Q13936,CACNA1C
+glycogen storage disease due to aldolase A deficiency,MONDO:0012747,OMIM:611881,P04075,ALDOA
+amyotrophic lateral sclerosis type 10,MONDO:0012790,OMIM:612069,Q13148,TARDBP
+"mitochondrial DNA depletion syndrome, encephalomyopathic form with methylmalonic aciduria",MONDO:0012791,OMIM:612073,Q9P2R7,SUCLA2
+"thrombophilia due to protein S deficiency, autosomal dominant",MONDO:0012868,OMIM:612336,P07225,PROS1
+amyotrophic lateral sclerosis type 11,MONDO:0012945,OMIM:612577,Q92562,FIG4
+glycogen storage disease due to muscle beta-enolase deficiency,MONDO:0013046,OMIM:612932,P13929,ENO3
+congenital diarrhea 5 with tufting enteropathy,MONDO:0013184,OMIM:613217,P16422,EPCAM
+tuberous sclerosis 2,MONDO:0013199,OMIM:613254,P49815,TSC2
+"microcephaly, seizures, and developmental delay",MONDO:0013254,OMIM:613402,Q96T60,PNKP
+alpha 1-antitrypsin deficiency,MONDO:0013282,OMIM:613490,P01009,SERPINA1
+long QT syndrome 2,MONDO:0013367,OMIM:613688,Q12809,KCNH2
+long QT syndrome 5,MONDO:0013372,OMIM:613688,Q12809,KCNH2
+retinitis pigmentosa 4,MONDO:0013395,OMIM:613731,P08100,RHO
+aneurysm-osteoarthritis syndrome,MONDO:0013426,OMIM:613795,P84022,SMAD3
+autosomal systemic lupus erythematosus type 16,MONDO:0013743,OMIM:614420,Q13609,DNASE1L3
+congenital diarrhea 6,MONDO:0013825,OMIM:614616,P25092,GUCY2C
+PGM1-CDG,MONDO:0013968,OMIM:614921,P36871,PGM1
+severe combined immunodeficiency due to CORO1A deficiency,MONDO:0014168,OMIM:615401,P31146,CORO1A
+combined immunodeficiency due to MALT1 deficiency,MONDO:0014197,OMIM:615468,Q9UDY8,MALT1
+severe early-onset pulmonary alveolar proteinosis due to MARS deficiency,MONDO:0014206,OMIM:615486,P56192,MARS1
+combined immunodeficiency due to CD3gamma deficiency,MONDO:0014276,OMIM:615607,P09693,CD3G
+familial dysfibrinogenemia,MONDO:0014452,OMIM:616004,P02671,FGA
+familial dysfibrinogenemia,MONDO:0014452,OMIM:616004,P02675,FGB
+familial dysfibrinogenemia,MONDO:0014452,OMIM:616004,P02679,PRO2061; FGG
+atrial conduction disease,MONDO:0014500,OMIM:616117,Q59H18,TNNI3K
+thrombocytopenia 6,MONDO:0014837,OMIM:616937,P12931,SRC
+Brugada syndrome,MONDO:0015263,OMIM:601144,Q14524,SCN5A
+butyrylcholinesterase deficiency,MONDO:0015270,OMIM:617936,P06276,BCHE
+craniosynostosis,MONDO:0015469,OMIM:123100,Q15672,TWIST1
+common variable immunodeficiency,MONDO:0015517,OMIM:607594,Q9Y6W8,ICOS
+Dent disease,MONDO:0015612,OMIM:310468,P51795,CLCN5
+Charcot-Marie-Tooth disease,MONDO:0015626,OMIM:118200,P25189,MPZ
+rhizomelic chondrodysplasia punctata,MONDO:0015776,OMIM:215100,O00628,PEX7
+macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss,MONDO:0015912,OMIM:155100,P35579,MYH9
+interstitial lung disease,MONDO:0015925,OMIM:616414,P53621,COPA
+citrullinemia,MONDO:0015991,OMIM:215700,P00966,ASS1
+"Ehlers-Danlos syndrome, kyphoscoliotic type 1",MONDO:0016002,OMIM:225400,Q02809,PLOD1
+erythromelalgia,MONDO:0016028,OMIM:133020,Q15858,SCN9A
+cleft palate,MONDO:0016064,OMIM:119540,Q9UPW6,SATB2
+primary ciliary dyskinesia,MONDO:0016575,OMIM:244400,Q9UI46,DNAI1
+conotruncal heart malformations,MONDO:0016581,OMIM:217095,A6NCS4,NKX2-6
+conotruncal heart malformations,MONDO:0016581,OMIM:217095,O43435,TBX1
+conotruncal heart malformations,MONDO:0016581,OMIM:217095,P27539,GDF1
+conotruncal heart malformations,MONDO:0016581,OMIM:217095,P52952,NKX2-5
+conotruncal heart malformations,MONDO:0016581,OMIM:217095,Q8WW38,ZFPM2
+conotruncal heart malformations,MONDO:0016581,OMIM:217095,Q92908,GATA6
+oligodendroglioma,MONDO:0016695,OMIM:137800,O75874,IDH1
+oligodendroglioma,MONDO:0016695,OMIM:137800,P04626,ERBB2
+oligodendroglioma,MONDO:0016695,OMIM:137800,P37231,PPARG
+oligodendroglioma,MONDO:0016695,OMIM:137800,P48735,IDH2
+oligodendroglioma,MONDO:0016695,OMIM:137800,P68431,H3C7; H3C12; H3C10; H3C11; H3C2; H3C6; H3C8; H3C4; H3C1; H3C3
+oligodendroglioma,MONDO:0016695,OMIM:137800,P84243,H3-3B; H3-3A
+oligodendroglioma,MONDO:0016695,OMIM:137800,Q8N653,LZTR1
+oligodendroglioma,MONDO:0016695,OMIM:137800,Q9UGM3,GP340; DMBT1
+gestational trophoblastic disease,MONDO:0016784,OMIM:231090,Q8WX94,NLRP7
+dopa-responsive dystonia,MONDO:0016812,OMIM:128230,P30793,GCH1
+neuroacanthocytosis,MONDO:0016987,OMIM:200150,Q96RL7,VPS13A
+Opitz G/BBB syndrome,MONDO:0017138,OMIM:145420,Q69YQ0,SPECC1L
+frontotemporal dementia,MONDO:0017276,OMIM:600274,P10636,MAPT
+frontotemporal dementia,MONDO:0017276,OMIM:600274,P49768,AD3; PS1; PSEN1; PSNL1
+"Ehlers-Danlos syndrome, vascular type",MONDO:0017314,OMIM:130050,P02461,COL3A1
+juvenile polyposis syndrome,MONDO:0017380,OMIM:174900,P36894,BMPR1A
+juvenile polyposis syndrome,MONDO:0017380,OMIM:174900,Q13485,SMAD4
+multiple pterygium syndrome,MONDO:0017415,OMIM:163950,Q06124,PTPN11
+mitochondrial neurogastrointestinal encephalomyopathy,MONDO:0017575,OMIM:603041,P19971,TYMP
+epidermolysis bullosa simplex,MONDO:0017610,OMIM:601001,P02533,KRT14
+junctional epidermolysis bullosa,MONDO:0017612,OMIM:226650,Q13751,LAMB3
+catecholaminergic polymorphic ventricular tachycardia,MONDO:0017990,OMIM:604772,Q92736,RYR2
+congenital factor XIII deficiency,MONDO:0018029,OMIM:613225,P00488,F13A1
+ataxia - telangiectasia variant,MONDO:0018266,OMIM:208900,Q13315,ATM
+peripheral primitive neuroectodermal tumor,MONDO:0018271,OMIM:612219,P11308,ERG
+peripheral primitive neuroectodermal tumor,MONDO:0018271,OMIM:612219,P50549,ETV1
+peripheral primitive neuroectodermal tumor,MONDO:0018271,OMIM:612219,Q01543,FLI1
+peripheral primitive neuroectodermal tumor,MONDO:0018271,OMIM:612219,Q01844,EWSR1
+peripheral primitive neuroectodermal tumor,MONDO:0018271,OMIM:612219,Q92570,NR4A3
+hyperlipoproteinemia type 3,MONDO:0018473,OMIM:617347,P02649,APOE
+malignant hyperthermia of anesthesia,MONDO:0018493,OMIM:145600,P21817,RYR1
+hypophosphatasia,MONDO:0018570,OMIM:241510,P05186,ALPL
+Joubert syndrome,MONDO:0018772,OMIM:213300,Q9NRR6,INPP5E
+metachromatic leukodystrophy,MONDO:0018868,OMIM:250100,P15289,ARSA
+Li-Fraumeni syndrome,MONDO:0018875,OMIM:151623,P04637,TP53
+McCune-Albright syndrome,MONDO:0018919,OMIM:174800,P63092,GNAS
+muscle-eye-brain disease,MONDO:0018939,OMIM:236670,Q9Y6A1,POMT1
+distal myopathy,MONDO:0018949,OMIM:600334,Q8WZ42,TTN
+Niemann-Pick disease type C,MONDO:0018982,OMIM:257220,O15118,NPC1
+Charcot-Marie-Tooth disease type 1,MONDO:0019011,OMIM:118200,P25189,MPZ
+androgen insensitivity syndrome,MONDO:0019154,OMIM:300068,P10275,AR
+pyruvate dehydrogenase deficiency,MONDO:0019169,OMIM:312170,P08559,PDHA1
+hereditary hemorrhagic telangiectasia,MONDO:0019180,OMIM:187300,P17813,ENG
+retinitis pigmentosa,MONDO:0019200,OMIM:612712,Q96NR8,RDH12
+congenital non-bullous ichthyosiform erythroderma,MONDO:0019306,OMIM:242300,P22735,TGM1
+beta thalassemia,MONDO:0019402,OMIM:613985,P68871,HBB
+Zellweger spectrum disorders,MONDO:0019609,OMIM:214100,O43933,PEX1
+persistent hyperplastic primary vitreous,MONDO:0019631,OMIM:221900,Q8N100,ATOH7
+pseudohypoparathyroidism,MONDO:0019992,OMIM:603233,O14662,STX16
+pseudohypoparathyroidism,MONDO:0019992,OMIM:603233,O95467,GNAS
+pseudohypoparathyroidism,MONDO:0019992,OMIM:603233,P63092,GNAS
+pseudohypoparathyroidism,MONDO:0019992,OMIM:603233,P84996,GNAS
+pseudohypoparathyroidism,MONDO:0019992,OMIM:603233,Q5JWF2,GNAS
+progressive myoclonus epilepsy,MONDO:0020074,OMIM:254900,Q14108,SCARB2
+juvenile open angle glaucoma,MONDO:0020367,OMIM:231300,Q16678,CYP1B1
+juvenile open angle glaucoma,MONDO:0020367,OMIM:231300,Q99972,MYOC
+subcortical band heterotopia,MONDO:0020491,OMIM:300067,O43602,DCX
+"migraine, familial hemiplegic, 1",MONDO:0020756,OMIM:141500,O00555,CACNA1A
+hemochromatosis type 1,MONDO:0021001,OMIM:235200,Q30201,HFE
+"Emery-Dreifuss muscular dystrophy 2, autosomal dominant",MONDO:0021569,OMIM:181350,P02545,LMNA
+X-linked lymphoproliferative disease due to SH2D1A deficiency,MONDO:0024551,OMIM:308240,O60880,SH2D1A
+hereditary angioedema with C1Inh deficiency,MONDO:0033946,OMIM:106100,P05155,SERPING1
+migraine with brainstem aura,MONDO:0043219,OMIM:602481,P50993,ATP1A2
+mitochondrial myopathy-cerebellar ataxia-pigmentary retinopathy syndrome,MONDO:0044714,OMIM:617675,Q9BUK6,MSTO1
+pityriasis rubra pilaris,MONDO:0100017,OMIM:173200,Q9BXL6,CARD14
+Friedreich ataxia,MONDO:0100339,OMIM:229300,Q16595,FXN
+paroxysmal nonkinesigenic dyskinesia 1,MONDO:0700089,OMIM:118800,Q8N490,PNKD
