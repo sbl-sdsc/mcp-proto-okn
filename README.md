@@ -153,7 +153,7 @@ Each link points to a chat transcript for generating an overview and a class dia
 ### Criminal and Environmental Justice
 * [Criminal Justice Patterns (scales)](docs/examples/scales_criminal_justice_analysis.md)
 * [Drug Possession Charges (scales)](docs/examples/scales_drug_possession.md)
-* [Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)](docs/examples/environmental-justice-kg-analysis.md)
+* [Environmental Justice (sawgraph, scales, spatialkg, spoke-okn)](docs/examples/environmental-justice-analysis.md)
 * [Rural Health Access (ruralkg, dreamkg, spoke-okn)](docs/examples/rural-health-access-mapping.md)
 
 ### Misc. Use Cases
