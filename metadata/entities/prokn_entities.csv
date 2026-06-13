@@ -1,279 +1,262 @@
 URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
-http://purl.obolibrary.org/obo/FBcv_0003016,FlyBase controlled vocabulary term,A controlled vocabulary term from FlyBase used for biological annotations.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C178092,Single Cell RNA Sequencing,A sequencing assay that measures RNA expression at single-cell resolution.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C19398,Pathway,A biological pathway from the NCI Thesaurus.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C20130,Receptor,A receptor protein or receptor-related concept from the NCI Thesaurus.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C231,Amino Acid,An organic molecule that is a building block of proteins.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C43366,Drug or Chemical,A drug or chemical compound from the NCI Thesaurus.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C48182,Tissue,An aggregate of cells with a shared structure or function.,Class,,,
-http://purl.obolibrary.org/obo/NCIT_C61154,Patient,"A person who receives medical attention, care, or treatment.",Class,,,
-http://purl.obolibrary.org/obo/NCIT_C73619,Cell Line,A population of cultured cells maintained for experimental use.,Class,,,
-http://purl.obolibrary.org/obo/SEPIO_0000001,assertion,A statement or proposition made as part of scientific evidence or interpretation.,Class,,,
-http://purl.obolibrary.org/obo/SO_0001147,natural variant site,A sequence feature describing a naturally occurring variant site.,Class,,,
-http://purl.obolibrary.org/obo/UBERON_0001062,anatomical entity,A material anatomical entity from UBERON.,Class,,,
-http://purl.obolibrary.org/obo/XCO_0000000,experimental condition,A controlled experimental condition or exposure.,Class,,,
-http://purl.uniprot.org/core/Disease,Disease,A disease annotation from UniProt.,Class,,,
-http://purl.uniprot.org/core/Gene,Gene,A gene entity from the UniProt knowledge base.,Class,,,
-http://purl.uniprot.org/core/Natural_Variant_Annotation,Natural Variant Annotation,A natural variant annotation in UniProt.,Class,,,
-http://purl.uniprot.org/core/PTM_Annotation,PTM Annotation,A post-translational modification annotation.,Class,,,
-http://purl.uniprot.org/core/Pathway,Pathway,A biological pathway annotation.,Class,,,
-http://purl.uniprot.org/core/Protein,Protein,A protein entity from the UniProt knowledge base.,Class,,,
-http://purl.uniprot.org/core/Site_Annotation,Site Annotation,A UniProt core class representing site annotation entities in PROKN.,Class,,,
-http://purl.uniprot.org/core/Subcellular_Location,Subcellular Location,A subcellular location annotation.,Class,,,
-http://purl.uniprot.org/core/annotation,annotation,An annotation on a UniProt entry.,Predicate,,Protein,Annotation
-http://purl.uniprot.org/core/citation,citation,A UniProt core class representing citation entities in PROKN.,Class,,,
-http://purl.uniprot.org/core/domain,domain,A protein domain annotation.,Predicate,,Protein,
-http://rdfs.org/ns/void#Dataset,Dataset,A VoID dataset resource describing an RDF dataset.,Class,,,
-http://schema.org/Drug,Drug,"A substance used in the diagnosis, treatment, or prevention of disease.",Class,,,
-http://schema.org/MolecularEntity,Molecular Entity,A chemical or molecular entity as described by schema.org.,Class,,,
-http://snomed.info/id/276239002,finding site,A SNOMED CT concept representing a site associated with a clinical finding.,Class,,,
-http://www.bioassayontology.org/bao#BAO_0002646,target,A target entity from the BioAssay Ontology.,Class,,,
-http://www.bioassayontology.org/bao#BAO_0003059,compound,A compound entity from the BioAssay Ontology.,Class,,,
-http://www.ebi.ac.uk/efo/EFO_0000651,phenotype,A phenotype or disease term from the Experimental Factor Ontology.,Class,,,
-http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,Statement,"An RDF reified statement, used to attach properties to an asserted triple.",Class,,,
-https://biolink.github.io/biolink-model/CellLine,cell line,A cultured cell population maintained for study.,Class,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/CellMedioid,Cell Medoid,A representative cell within a cluster whose feature vector minimizes distance to other cells in the cluster.,Class,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm,GO Term,A Gene Ontology term entity in ProKN.,Class,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/GTExEXP,GTEx Expression,A GTEx gene expression entity in ProKN.,Class,,,
-https://w3id.org/evorao/Antibody,Antibody,An antibody reagent or antibody-related entity.,Class,,,
-https://w3id.org/reproduceme#Experiment,Experiment,An experiment entity from the ReproduceME ontology.,Class,,,
-https://w3id.org/reproduceme#Image,Image,An image resource associated with an experiment or dataset.,Class,,,
-https://www.w3.org/2002/07/owl#Class,Class,The OWL class construct used to define a set of individuals.,Class,,,
-https://www.w3.org/2002/07/owl#NegativePropertyAssertion,Negative Property Assertion,An OWL construct stating that a property assertion does not hold.,Class,,,
-http://edamontology.org/data_1011,EC number,Enzyme Commission number identifier.,Predicate,,Protein,
-http://edamontology.org/data_1049,database name,Name of a database or data resource.,Predicate,,,
-http://edamontology.org/data_1519,amino acid sequence variation,An amino acid sequence variation annotation.,Predicate,,Protein,
-http://edamontology.org/data_1756,protein modification,Post-translational modification of a protein.,Predicate,,PTM Annotation,
-http://edamontology.org/topic_3120,protein variants,Topic or annotation relating to protein variants.,Predicate,,Natural Variant Annotation,
-http://ensembl.org/glossary/ENSGLOSSARY_00000950000095,ENSGLOSSARY 00000950000095,Predicate used in the PROKN knowledge graph: ENSGLOSSARY 00000950000095.,Predicate,,,
-http://ldf.fi/void-ext#datatype,datatype,Datatype associated with values in an RDF dataset partition.,Predicate,,,
-http://ldf.fi/void-ext#datatypePartition,datatype partition,A VoID extension partition grouping values by datatype.,Predicate,,,
-http://ldf.fi/void-ext#objectClassPartition,object class partition,A VoID extension partition grouping triples by object class.,Predicate,,,
-http://purl.allotrope.org/ontologies/result#AFR_0002229,measurement datum,A datum or item associated with an Allotrope experimental result.,Predicate,,,
-http://purl.allotrope.org/ontologies/result#AFR_0003142,result value,A result value from an experimental measurement.,Predicate,http://purl.obolibrary.org/obo/RO_0002436,,
-http://purl.allotrope.org/ontologies/result#AFX_0000408,has unit,Associates a result or measurement with its unit.,Predicate,,,
-http://purl.allotrope.org/ontologies/result#AFX_0000684,has value,Associates a result or measurement with its value.,Predicate,,,
-http://purl.bioontology.org/ontology/SNOMEDCT/00000000000460005,00000000000460005,Predicate used in the PROKN knowledge graph: 00000000000460005.,Predicate,,,
-http://purl.obolibrary.org/obo/BCGO_0000177,BCGO 0000177,Gene Ontology term used as a predicate or qualifier in PROKN: BCGO 0000177.,Predicate,,,
-http://purl.obolibrary.org/obo/BFO_0000050,part of,Relates an entity to something it is part of.,Predicate,,Protein; GO Term; Cell; Anatomical Entity; Pathway,GO Term; Anatomical Entity; Cellular Component; Biological Process
-http://purl.obolibrary.org/obo/CLO_0037210,CLO 0037210,Predicate used in the PROKN knowledge graph: CLO 0037210.,Predicate,,,
-http://purl.obolibrary.org/obo/ECO_9000000,used in,Indicates that an evidence or entity is used in an assertion or experiment.,Predicate,,Drug/Chemical; Compound,
-http://purl.obolibrary.org/obo/GENO_0000382,GENO 0000382,Predicate used in the PROKN knowledge graph: GENO 0000382.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0000776,kinetochore,Gene Ontology term used as a predicate or qualifier in PROKN: kinetochore.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0005654,nucleoplasm,Gene Ontology term used as a predicate or qualifier in PROKN: nucleoplasm.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0005694,chromosome,Gene Ontology term used as a predicate or qualifier in PROKN: chromosome.,Predicate,https://biolink.github.io/biolink-model/target_for,,
-http://purl.obolibrary.org/obo/GO_0005730,nucleolus,Gene Ontology term used as a predicate or qualifier in PROKN: nucleolus.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0005813,centrosome,Gene Ontology term used as a predicate or qualifier in PROKN: centrosome.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0005829,cytosol,Gene Ontology term used as a predicate or qualifier in PROKN: cytosol.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0005886,plasma membrane,Gene Ontology term used as a predicate or qualifier in PROKN: plasma membrane.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0016235,aggresome,Gene Ontology term used as a predicate or qualifier in PROKN: aggresome.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0030496,midbody,Gene Ontology term used as a predicate or qualifier in PROKN: midbody.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0031982,vesicle,Gene Ontology term used as a predicate or qualifier in PROKN: vesicle.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0032154,cleavage furrow,Gene Ontology term used as a predicate or qualifier in PROKN: cleavage furrow.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0034451,centriolar satellite,Gene Ontology term used as a predicate or qualifier in PROKN: centriolar satellite.,Predicate,,,
-http://purl.obolibrary.org/obo/GO_0072686,mitotic spindle,Gene Ontology term used as a predicate or qualifier in PROKN: mitotic spindle.,Predicate,,,
-http://purl.obolibrary.org/obo/MAXO_0001495,MAXO 0001495,Predicate used in the PROKN knowledge graph: MAXO 0001495.,Predicate,,,
-http://purl.obolibrary.org/obo/MI_0116,feature type,A molecular interaction feature type.,Predicate,,PTM Annotation,
-http://purl.obolibrary.org/obo/MI_0118,MI 0118,Predicate used in the PROKN knowledge graph: MI 0118.,Predicate,,,
-http://purl.obolibrary.org/obo/MI_0407,MI 0407,Predicate used in the PROKN knowledge graph: MI 0407.,Predicate,http://purl.obolibrary.org/obo/RO_0002436,,
-http://purl.obolibrary.org/obo/MI_2025,MI 2025,Predicate used in the PROKN knowledge graph: MI 2025.,Predicate,,,
-http://purl.obolibrary.org/obo/MI_2236,up-regulates activity,Indicates up-regulation of molecular activity.,Predicate,,PTM Annotation,Protein
-http://purl.obolibrary.org/obo/MI_2241,down-regulates activity,Indicates down-regulation of molecular activity.,Predicate,,PTM Annotation,Protein
-http://purl.obolibrary.org/obo/NCBITaxon_species,NCBITaxon species,Predicate used in the PROKN knowledge graph: NCBITaxon species.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C13258,NCIT C13258,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C13258.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C13344,NCIT C13344,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C13344.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C13430,NCIT C13430,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C13430.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C157517,NCIT C157517,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C157517.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C164806,Gene Name,The name of a gene.,Predicate,,Protein; Target,
-http://purl.obolibrary.org/obo/NCIT_C173544,NCIT C173544,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C173544.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C17564,NCIT C17564,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C17564.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C210455,NCIT C210455,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C210455.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C25402,Accession Number,An accession number identifier.,Predicate,,Protein; PTM Annotation,
-http://purl.obolibrary.org/obo/NCIT_C25425,NCIT C25425,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C25425.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C2991,NCIT C2991,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C2991.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C41095,NCIT C41095,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C41095.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C41184,NCIT C41184,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C41184.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C42581,NCIT C42581,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C42581.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C43568,Gene Symbol,The official or preferred symbol for a gene.,Predicate,,Protein,
-http://purl.obolibrary.org/obo/NCIT_C47803,NCIT C47803,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C47803.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C48662,NCIT C48662,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C48662.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C68631,NCIT C68631,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C68631.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C82562,NCIT C82562,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C82562.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C93703,NCIT C93703,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C93703.,Predicate,,,
-http://purl.obolibrary.org/obo/NCIT_C94578,NCIT C94578,NCI Thesaurus term used as a predicate or qualifier in PROKN: NCIT C94578.,Predicate,,,
-http://purl.obolibrary.org/obo/OBI_0000175,OBI 0000175,Predicate used in the PROKN knowledge graph: OBI 0000175.,Predicate,https://biolink.github.io/biolink-model/affected_by,,
-http://purl.obolibrary.org/obo/OMIT_0012292,OMIT 0012292,Predicate used in the PROKN knowledge graph: OMIT 0012292.,Predicate,http://purl.obolibrary.org/obo/PATO_0000627,,
-http://purl.obolibrary.org/obo/OMO_0003012,acronym,An acronym for an entity.,Predicate,,,
-http://purl.obolibrary.org/obo/PATO_0000627,increased,A quality indicating increased magnitude or degree.,Predicate,,,
-http://purl.obolibrary.org/obo/PATO_0000642,decreased,A quality indicating decreased magnitude or degree.,Predicate,,,
-http://purl.obolibrary.org/obo/RO_0000056,participates in,A relation between a continuant and a process in which it participates.,Predicate,,Protein; Chemical Entity,Bioassay; GO Term; Pathway
-http://purl.obolibrary.org/obo/RO_0002180,has component,Relates a whole to a component part.,Predicate,,Pathway,Protein
-http://purl.obolibrary.org/obo/RO_0002206,expressed in,A relation indicating expression in an anatomical entity.,Predicate,,Gene; GTEx Expression,Anatomical Entity
-http://purl.obolibrary.org/obo/RO_0002212,negatively regulates,A relation in which one entity negatively regulates another.,Predicate,,Drug/Chemical; GO Term; Compound,Gene; GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0002213,positively regulates,A relation in which one entity positively regulates another.,Predicate,,Drug/Chemical; GO Term; Compound,Gene; GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0002263,acts upstream of,A relation in which a gene product acts upstream of a process.,Predicate,,Protein,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0002264,acts upstream of or within,A relation in which a gene product acts upstream of or within a process.,Predicate,,Protein; Target,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0002325,colocalizes with,A relation between entities that colocalize.,Predicate,,Protein,GO Term; Cellular Component
-http://purl.obolibrary.org/obo/RO_0002326,contributes to,A relation between a gene product and a process it contributes to.,Predicate,,Protein; Target,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0002327,enables,A relation between a gene product and a molecular function it enables.,Predicate,,Protein; Target,GO Term; Molecular Activity
-http://purl.obolibrary.org/obo/RO_0002331,involved in,A relation between a gene product and a biological process it is involved in.,Predicate,,Protein; Target,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0002410,causally related to,A relation where one entity is causally related to another.,Predicate,,GO Term; Defined Term; Cell; Anatomical Entity; Disease; Variant,GO Term; Biological Process; Cell Context; Organ Context; Disease; Chemical Entity
-http://purl.obolibrary.org/obo/RO_0002411,causally upstream of,A causal relation where one entity is upstream of another.,Predicate,,,
-http://purl.obolibrary.org/obo/RO_0002431,interacts with,A relation indicating interaction between entities.,Predicate,,,
-http://purl.obolibrary.org/obo/RO_0002432,is active in,A relation between a gene product and a cellular component where it is active.,Predicate,,Protein; Target,GO Term; Cellular Component
-http://purl.obolibrary.org/obo/RO_0002434,interacts with,A symmetric relation between entities that physically interact.,Predicate,,Protein; Drug,Protein; Target
-http://purl.obolibrary.org/obo/RO_0002436,molecularly interacts with,A direct molecular interaction between two entities.,Predicate,,Drug/Chemical; Drug,Protein; Receptor
-http://purl.obolibrary.org/obo/RO_0002558,has evidence,Relates an assertion to supporting evidence.,Predicate,http://purl.uniprot.org/core/partOf,,
-http://purl.obolibrary.org/obo/RO_0002566,causally influences,A relation where one entity causally influences another.,Predicate,,Gene,Drug/Chemical
-http://purl.obolibrary.org/obo/RO_0002612,axiom has evidence,An axiom-level evidence relation.,Predicate,http://purl.uniprot.org/core/partOf,,
-http://purl.obolibrary.org/obo/RO_0003000,produces,A relation between a process and a material entity it produces.,Predicate,,Anatomical Entity; Cell; Organ Context,Drug/Chemical; Compound; Gene
-http://purl.obolibrary.org/obo/RO_0003308,correlated with condition,A relation indicating correlation with a condition.,Predicate,,Drug/Chemical,Phenotype; Disease
-http://purl.obolibrary.org/obo/RO_0004032,"acts upstream of or within, positive effect",Acts upstream of or within a process with positive effect.,Predicate,,Protein,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0004033,"acts upstream of or within, negative effect",Acts upstream of or within a process with negative effect.,Predicate,,Protein,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0004034,"acts upstream of, positive effect",Acts upstream of a process with positive effect.,Predicate,,Protein,GO Term; Biological Process
-http://purl.obolibrary.org/obo/RO_0004035,"acts upstream of, negative effect",Acts upstream of a process with negative effect.,Predicate,,Protein,GO Term; Biological Process
-http://purl.obolibrary.org/obo/SEPIO_0000001,assertion,A statement or proposition made as part of scientific evidence or interpretation.,Predicate,,,
-http://purl.obolibrary.org/obo/SEPIO_0000403,has evidence line,Associates an assertion with a supporting evidence line.,Predicate,,,
-http://purl.obolibrary.org/obo/SO_0001685,sequence variant,A sequence feature representing a variant.,Predicate,,,
-http://purl.obolibrary.org/obo/SO_0001762,variant allele,An allele that differs from a reference sequence.,Predicate,,,
-http://purl.obolibrary.org/obo/bto#related_to,related to,A broad related-to relation from the BRENDA Tissue Ontology context.,Predicate,,,
-http://purl.obolibrary.org/obo/has_dbxref,has database cross-reference,A cross-reference to another database or identifier.,Predicate,,,
-http://purl.org/dc/terms/date,date,A date associated with the resource.,Predicate,http://purl.uniprot.org/core/partOf,,
-http://purl.org/dc/terms/description,description,A textual description of the resource.,Predicate,,,
-http://purl.org/dc/terms/identifier,identifier,An unambiguous identifier for the resource.,Predicate,,,
-http://purl.org/dc/terms/modified,modified,Predicate used in the PROKN knowledge graph: modified.,Predicate,,,
-http://purl.org/dc/terms/source,source,A related resource from which the described resource is derived.,Predicate,https://www.w3.org/2002/07/owl#annotatedProperty,,
-http://purl.org/dc/terms/type,type,The nature or genre of the resource.,Predicate,,,
-http://purl.org/ontology/bibo/pmid,PubMed ID,A PubMed identifier for a publication.,Predicate,https://biolink.github.io/biolink-model/has_sequence_variant,,
-http://purl.org/pav/lastUpdatedOn,last Updated On,Predicate used in the PROKN knowledge graph: last Updated On.,Predicate,,,
-http://purl.org/pav/version,version,Predicate used in the PROKN knowledge graph: version.,Predicate,,,
-http://purl.org/spar/cito/isCitedBy,is Cited By,Predicate used in the PROKN knowledge graph: is Cited By.,Predicate,,,
-http://purl.uniprot.org/core/Alternative_Sequence_Annotation,Alternative Sequence Annotation,UniProt core property used in PROKN: Alternative Sequence Annotation.,Predicate,,,
-http://purl.uniprot.org/core/Molecule,Molecule,UniProt core property used in PROKN: Molecule.,Predicate,,,
-http://purl.uniprot.org/core/Site_Annotation,Site Annotation,UniProt core property used in PROKN: Site Annotation.,Predicate,,,
-http://purl.uniprot.org/core/activity,activity,The catalytic activity of an enzyme.,Predicate,,Protein,
-http://purl.uniprot.org/core/annotation,annotation,An annotation on a UniProt entry.,Predicate,http://purl.uniprot.org/core/partOf,Protein,Annotation
-http://purl.uniprot.org/core/citation,citation,UniProt core property used in PROKN: citation.,Predicate,,,
-http://purl.uniprot.org/core/disease,disease,UniProt core property used in PROKN: disease.,Predicate,,,
-http://purl.uniprot.org/core/domain,domain,A protein domain annotation.,Predicate,,Protein,
-http://purl.uniprot.org/core/length,length,The length of a protein sequence.,Predicate,,Sequence,
-http://purl.uniprot.org/core/md5Checksum,MD5 checksum,MD5 checksum of a protein sequence.,Predicate,,Sequence,
-http://purl.uniprot.org/core/mnemonic,mnemonic,The mnemonic identifier for a UniProt entry.,Predicate,,Protein,
-http://purl.uniprot.org/core/negative,negative,UniProt core property used in PROKN: negative.,Predicate,,,
-http://purl.uniprot.org/core/organism,organism,The source organism of a protein.,Predicate,,Protein,Taxon
-http://purl.uniprot.org/core/partOf,partOf,Membership in a UniProt reference proteome or collection.,Predicate,,Protein,
-http://purl.uniprot.org/core/part_of,part of,Part-of relation in UniProt.,Predicate,,Pathway,Pathway
-http://purl.uniprot.org/core/position,position,A sequence position annotation.,Predicate,,PTM Annotation; Natural Variant Annotation,
-http://purl.uniprot.org/core/scientificName,scientific name,The scientific name of an organism.,Predicate,,Taxon,
-http://purl.uniprot.org/core/sequence,sequence,The amino acid sequence of a protein.,Predicate,,Protein,Sequence
-http://purl.uniprot.org/core/source,source,The source database of an annotation.,Predicate,,,
-http://purl.uniprot.org/core/taxon,taxon,The taxonomic classification of an organism.,Predicate,,Protein,Taxon
-http://purl.uniprot.org/core/variO_term,VariO term,A Variation Ontology term for a variant.,Predicate,,Natural Variant Annotation,
-http://purl.uniprot.org/core/version,version,The version number of a UniProt entry.,Predicate,,Protein,
-http://rdfs.org/ns/void#class,class,The class associated with a VoID class partition.,Predicate,,,
-http://rdfs.org/ns/void#classPartition,class partition,A VoID partition describing triples involving a class.,Predicate,,,
-http://rdfs.org/ns/void#distinctObjects,distinct objects,The number of distinct objects in a VoID dataset or partition.,Predicate,,,
-http://rdfs.org/ns/void#distinctSubjects,distinct subjects,The number of distinct subjects in a VoID dataset or partition.,Predicate,,,
-http://rdfs.org/ns/void#entities,entities,The number of entities in a VoID dataset.,Predicate,,,
-http://rdfs.org/ns/void#properties,properties,The number of distinct properties in a VoID dataset.,Predicate,,,
-http://rdfs.org/ns/void#property,property,The property associated with a VoID property partition.,Predicate,,,
-http://rdfs.org/ns/void#propertyPartition,property partition,A VoID partition describing triples involving a property.,Predicate,,,
-http://rdfs.org/ns/void#triples,triples,The number of triples in a VoID dataset or partition.,Predicate,,,
-http://rs.tdwg.org/dwc/terms/taxonID,taxon ID,Predicate used in the PROKN knowledge graph: taxon ID.,Predicate,,,
-http://schema.org/MolecularEntity,Molecular Entity,A chemical or molecular entity as described by schema.org.,Predicate,,,
-http://schema.org/additionalType,additional type,An additional type for the entity.,Predicate,https://biolink.github.io/biolink-model/associated_with,,
-http://schema.org/assesses,assesses,"Relates an assay, test, or assessment to what it evaluates.",Predicate,,,
-http://schema.org/category,category,A category for the item.,Predicate,,,
-http://schema.org/conditionsOfAccess,conditions of access,Conditions that affect access to an item or resource.,Predicate,https://biolink.github.io/biolink-model/affected_by,,
-http://schema.org/description,description,A description of the entity.,Predicate,,,
-http://schema.org/domainIncludes,domain includes,Indicates the domain of a property.,Predicate,,,
-http://schema.org/identifier,identifier,An identifier for the entity.,Predicate,https://www.w3.org/2002/07/owl#annotatedProperty,,
-http://schema.org/name,name,The name of the entity.,Predicate,,,
-http://schema.org/provider,provider,The provider of the entity.,Predicate,https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_LIVER,,
-http://schema.org/rangeIncludes,range includes,Indicates the range of a property.,Predicate,,,
-http://schema.org/smiles,SMILES,A SMILES chemical structure string.,Predicate,,,
-http://schema.org/status,status,"The status of an entity, process, or resource.",Predicate,,,
-http://schema.org/target,target,"A target entity for an action, drug, assay, or process.",Predicate,,,
-http://schema.org/type,type,The type or category of an entity.,Predicate,,,
-http://semanticscience.org/resource/CHEMINF_000007,InChI Key,International Chemical Identifier Key.,Predicate,,Experiment; Drug/Chemical; Compound,
-http://semanticscience.org/resource/CHEMINF_000032,SMILES,Simplified Molecular Input Line Entry System notation.,Predicate,,Experiment; Drug/Chemical; Compound,
-http://semanticscience.org/resource/SIO_000202,SIO 000202,Predicate used in the PROKN knowledge graph: SIO 000202.,Predicate,,,
-http://semanticscience.org/resource/SIO_000254,SIO 000254,Predicate used in the PROKN knowledge graph: SIO 000254.,Predicate,,,
-http://semanticscience.org/resource/SIO_000272,has value,A relation between an entity and its value.,Predicate,,Protein; Target,
-http://semanticscience.org/resource/SIO_000396,SIO 000396,Predicate used in the PROKN knowledge graph: SIO 000396.,Predicate,,,
-http://semanticscience.org/resource/SIO_001077,encodes,A relation where one entity encodes another.,Predicate,,GTEx Expression,Gene
-http://semanticscience.org/resource/SIO_010078,gene product of,A gene product relationship linking a gene to a protein.,Predicate,,Gene,Protein
-http://snomed.info/id/257544000,degree of involvement,Degree of involvement of a compound in an interaction.,Predicate,http://purl.obolibrary.org/obo/RO_0002436,,
-http://snomed.info/id/276239002,finding site,A SNOMED CT concept representing a site associated with a clinical finding.,Predicate,,,
-http://www.bioassayontology.org/bao#BAO_0002646,target,A target entity from the BioAssay Ontology.,Class,,,
-http://www.bioassayontology.org/bao#BAO_0003063,has assay result,A bioassay result measure.,Predicate,,PTM Annotation,
-http://www.ebi.ac.uk/efo/EFO_0000651,phenotype,A phenotype or disease term from the Experimental Factor Ontology.,Class,,,
-http://www.geneontology.org/formats/oboInOwl#count,count,Predicate used in the PROKN knowledge graph: count.,Predicate,,,
-http://www.geneontology.org/formats/oboInOwl#evidence,evidence,Evidence code or evidence annotation for an ontology assertion.,Predicate,https://biolink.github.io/biolink-model/similar_to,,
-http://www.geneontology.org/formats/oboInOwl#hasOBONamespace,has OBO namespace,The OBO namespace of a term.,Predicate,,,
-http://www.w3.org/1999/02/22-rdf-syntax-ns#object,object,The object component of an RDF reified statement.,Predicate,,Statement,
-http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate,predicate,The predicate component of an RDF reified statement.,Predicate,,Statement,
-http://www.w3.org/1999/02/22-rdf-syntax-ns#subject,subject,The subject component of an RDF reified statement.,Predicate,,Statement,
-http://www.w3.org/2000/01/rdf-schema#comment,comment,A human-readable comment or description.,Predicate,https://biolink.github.io/biolink-model/associated_with,,
-http://www.w3.org/2000/01/rdf-schema#isDefinedBy,is defined by,Indicates the resource that defines the entity.,Predicate,,,
-http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,Predicate,http://purl.obolibrary.org/obo/NCIT_C41184,,
-http://www.w3.org/2000/01/rdf-schema#seeAlso,see also,A reference to a related resource.,Predicate,https://biolink.github.io/biolink-model/target_for,,
-http://www.w3.org/2000/01/rdf-schema#subClassOf,subclass of,Indicates a superclass in the class hierarchy.,Predicate,,,
-http://www.w3.org/2000/01/rdf-schema#subPropertyOf,sub-property of,Indicates a superproperty in the property hierarchy.,Predicate,,,
-http://www.w3.org/2004/02/skos/core#closeMatch,close match,A close match to another concept.,Predicate,,,
-http://www.w3.org/2004/02/skos/core#exactMatch,exact match,An exact match to another concept.,Predicate,,,
-http://www.w3.org/ns/prov#used,used,A PROV relation indicating an entity used another entity or activity.,Predicate,,,
-http://www.w3.org/ns/prov#wasAttributedTo,was attributed to,Attribution of an entity to an agent.,Predicate,,,
-https://biolink.github.io/biolink-model/DrugDeliveryEnum#oral,oral,An oral route or delivery enumeration value.,Predicate,,,
-https://biolink.github.io/biolink-model/actively_involved_in,actively involved in,A relation indicating active involvement in a process.,Predicate,,,
-https://biolink.github.io/biolink-model/affected_by,affected by,A relation where an entity is affected by another entity or perturbation.,Predicate,,Experiment,Sequence Feature
-https://biolink.github.io/biolink-model/associated_with,associated with,A general association between two entities.,Predicate,,Gene; Protein; Natural Variant Annotation,Phenotype; Disease; Defined Term
-https://biolink.github.io/biolink-model/black_box_warning,black box warning,A property indicating a black-box warning associated with a drug.,Predicate,,,
-https://biolink.github.io/biolink-model/catalyzes,catalyzes,A relation where a gene product catalyzes a reaction.,Predicate,,Protein,PTM Annotation
-https://biolink.github.io/biolink-model/chembl_availability_type,ChEMBL availability type,A ChEMBL property indicating drug availability type.,Predicate,,,
-https://biolink.github.io/biolink-model/chembl_natural_product,ChEMBL natural product,A ChEMBL property indicating natural-product status.,Predicate,,,
-https://biolink.github.io/biolink-model/has_sequence_location,has sequence location,Relates an entity to a location on a biological sequence.,Predicate,,,
-https://biolink.github.io/biolink-model/has_sequence_variant,has sequence variant,A relation between a protein and its sequence variants.,Predicate,,Protein,Natural Variant Annotation
-https://biolink.github.io/biolink-model/homologous_to,homologous to,A relation indicating homology between biological entities.,Predicate,http://purl.uniprot.org/core/part_of,,
-https://biolink.github.io/biolink-model/id,id,An identifier property.,Predicate,,,
-https://biolink.github.io/biolink-model/provided_by,provided by,Indicates the data source or provider of a statement.,Predicate,http://purl.uniprot.org/core/partOf,,
-https://biolink.github.io/biolink-model/similar_to,similar to,A relation indicating similarity between entities.,Predicate,,Drug/Chemical; Compound,Drug/Chemical; Compound
-https://biolink.github.io/biolink-model/start_coordinate,start coordinate,The start coordinate of a sequence feature.,Predicate,,,
-https://biolink.github.io/biolink-model/structure_type,structure type,A property indicating the type of molecular or biological structure.,Predicate,,,
-https://biolink.github.io/biolink-model/target_for,target for,A relation indicating an entity is a target for another entity.,Predicate,,,
-https://biolink.github.io/biolink-model/therapeutic_response,therapeutic response,A property describing a therapeutic response.,Predicate,,,
-https://chemkg.github.io/chemrof/inchi_key_string,InChI Key string,A string representation of an International Chemical Identifier Key.,Predicate,,,
-https://chemkg.github.io/chemrof/inchi_string,InChI string,A string representation of an International Chemical Identifier.,Predicate,,,
-https://id.nlm.nih.gov/mesh/D006056,Heart,"A hollow, muscular organ that maintains blood circulation.",Predicate,,,
-https://id.nlm.nih.gov/mesh/D008247,Liver,A large glandular organ involved in metabolism and detoxification.,Predicate,,,
-https://id.nlm.nih.gov/mesh/D011992,Proteins,Large biomolecules composed of amino acid chains.,Predicate,,,
-https://id.nlm.nih.gov/mesh/D020675,Kidney,An organ that filters blood and produces urine.,Predicate,,,
-https://id.nlm.nih.gov/mesh/D022001,Protein Isoforms,Different forms of a protein produced from related genetic or post-translational processes.,Predicate,,,
-https://id.nlm.nih.gov/mesh/D046650,Protein Interaction Maps,Maps or networks representing interactions between proteins.,Predicate,,,
-https://id.nlm.nih.gov/mesh/D066292,High-Throughput Screening Assays,Assays designed to test many samples or compounds rapidly.,Predicate,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm,GO Term,A Gene Ontology term entity in ProKN.,Class,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/GTExEXP,GTEx Expression,A GTEx gene expression entity in ProKN.,Class,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE,Has marker gene,Associates a cell type or tissue context with a marker gene.,Predicate,,,Gene
-https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_HEART,Has marker gene in heart,Associates a cell or anatomical context with marker gene expression in heart tissue.,Predicate,,Anatomical Entity; Cell; Cell Type Context,Gene
-https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_KIDNEY,Has marker gene in kidney,Associates a cell or anatomical context with marker gene expression in kidney tissue.,Predicate,,Anatomical Entity; Cell; Cell Type Context,Gene
-https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_LIVER,Has marker gene in liver,Associates a cell or anatomical context with marker gene expression in liver tissue.,Predicate,,Anatomical Entity; Cell; Cell Type Context,Gene
-https://research.bioinformatics.udel.edu/ProKN/rdf/deltaLog2Ratio,Delta Log2 Ratio,Delta log2 fold-change ratio between conditions.,Predicate,https://biolink.github.io/biolink-model/affected_by,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/higherLevelIn,Higher Level In,Higher-level grouping or context for a treatment effect.,Predicate,https://biolink.github.io/biolink-model/affected_by,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/isTopPrediction,Is Top Prediction,Flag indicating whether this subcellular localization is the top-ranked prediction.,Predicate,http://purl.obolibrary.org/obo/PATO_0000627,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/log2Ratio,Log2 Ratio,Log2 ratio of expression between conditions.,Predicate,https://biolink.github.io/biolink-model/affected_by,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/recommendsTherapy,Recommends Therapy,A relation indicating that an assertion recommends a therapy.,Predicate,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/signedLog10PValue,Signed Log10 P-Value,Signed log10 p-value for a treatment effect.,Predicate,https://biolink.github.io/biolink-model/affected_by,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/speciesGroupFlag,Species Group Flag,Flag indicating whether a complex or family is a species group.,Predicate,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/topClass,Top Class,Top class identifier assigned to a cell medoid.,Predicate,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/topClassName,Top Class Name,Top class name assigned to a cell medoid.,Predicate,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/umapX,UMAP X,UMAP x-coordinate for cell medoids.,Predicate,,,
-https://research.bioinformatics.udel.edu/ProKN/rdf/umapY,UMAP Y,UMAP y-coordinate for cell medoids.,Predicate,,,
-https://w3id.org/evorao/Antibody,Antibody,An antibody reagent or antibody-related entity.,Class,,,
-https://w3id.org/reproduceme#Phase,Phase,A phase of an experiment or protocol.,Predicate,http://purl.obolibrary.org/obo/NCIT_C41184,,
-https://w3id.org/reproduceme#Treatment,Treatment,A treatment condition or intervention in an experiment.,Predicate,https://www.w3.org/2002/07/owl#annotatedProperty,,
-https://w3id.org/reproduceme#Well,Well,A well in a microplate or plate-based experiment.,Predicate,,,
-https://w3id.org/reproduceme#plate,plate,A plate used in an experiment.,Predicate,,,
-https://w3id.org/reproduceme#rating,rating,A rating value associated with an experiment or observation.,Predicate,,,
-https://w3id.org/reproduceme#reference,reference,A reference to a related resource or publication.,Predicate,,,
-https://www.w3.org/2002/07/owl#annotatedProperty,annotated property,The property being annotated in an OWL annotation axiom.,Predicate,,,
-https://www.w3.org/2002/07/owl#equivalentProperty,equivalent property,Indicates two properties are equivalent.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,Statement,"The class of RDF statements (reified triples), each with a subject, predicate, and object.",Class,,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/GTExEXP,GTEx Experiment,"Associates a gene with a GTEx expression experiment measuring tissue and cell-specific expression and regulation across individuals, development, and species",Class,,,
+http://purl.obolibrary.org/obo/NCIT_C43366,Compound,A substance formed by chemical union of two or more elements or ingredients in definite proportion by weight.,Class,,,
+http://purl.uniprot.org/core/Site_Annotation,Site Annotation,An annotation describing a specific site (residue position) on a protein sequence.,Class,,,
+http://purl.uniprot.org/core/PTM_Annotation,PTM Annotation,An annotation describing a post-translational modification of a protein.,Class,,,
+http://purl.uniprot.org/core/Protein,Protein,A protein resource as defined by the UniProt core ontology.,Class,,,
+http://purl.obolibrary.org/obo/SO_0001147,natural_variant_site,"Describes the natural sequence variants due to polymorphisms, disease-associated mutations, RNA editing and variations between strains, isolates or cultivars.",Class,,,
+http://purl.uniprot.org/core/Natural_Variant_Annotation,Natural Variant Annotation,An annotation describing a natural sequence variant of a protein.,Class,,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm,GO Term,"Associates a biological entity with a Gene Ontology term describing molecular function, biological process, or cellular component",Class,,,
+http://purl.uniprot.org/core/Gene,Gene,A gene resource as defined by the UniProt core ontology.,Class,,,
+http://www.ebi.ac.uk/efo/EFO_0000651,phenotype,,Class,,,
+http://purl.obolibrary.org/obo/NCIT_C19398,Complex,A molecular entity formed by loose association involving two or more component molecular entities. The bonding between the components is normally weaker than in a covalent bond.,Class,,,
+https://w3id.org/reproduceme#Image,Image,"An image or picture generated in an experiment by a device. For example, a microscopic image with metadata.",Class,,,
+http://purl.obolibrary.org/obo/NCIT_C48182,Gene Signature,A form of gene expression profiling that is indicative of the biological behavior of a tumor or cancer. This pattern of expression is comprised of unique clusters of genes that display differential levels of expression. The technology is based on microarray analysis and allows for accurate prognostication based upon these criteria.,Class,,,
+http://purl.uniprot.org/core/Disease,Disease,A disease resource as defined by the UniProt core ontology.,Class,,,
+http://purl.obolibrary.org/obo/NCIT_C61154,Metabolite,"Any substance involved in metabolism, either as a product of metabolism or as necessary for metabolism.",Class,,,
+http://schema.org/Drug,Drug,"A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.",Class,,,
+http://www.bioassayontology.org/bao#BAO_0002646,isoform,"A quality of a protein that harbors a variation from the native protein (called canonical form), which could arise due to alternative promoter usage, alternative splicing, alternative translation initiation and ribosomal frameshifting.",Class,,,
+http://purl.obolibrary.org/obo/NCIT_C178092,Clinical Evidence,Documentation supporting direct medical treatment or testing.,Class,,,
+http://purl.uniprot.org/core/Pathway,Pathway,A biological pathway as defined by the UniProt core ontology.,Class,,,
+http://purl.uniprot.org/core/domain,domain,A structural or functional domain of a protein.,Class,,,
+https://w3id.org/reproduceme#Experiment,Experiment,Experiment is an entity which describes the collective activity conducted in a science lab.,Class,,,
+http://purl.uniprot.org/core/citation,citation,A bibliographic citation associated with a UniProt entity.,Class,,,
+http://schema.org/MolecularEntity,MolecularEntity,"Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",Class,,,
+http://purl.uniprot.org/core/annotation,annotation,An annotation describing a feature or property of a UniProt entity.,Class,,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/CellMedioid,cell medioid,A representative cell within a cluster whose feature vector minimizes the distance to all other cells in the cluster (alternative spelling).,Class,,,
+http://purl.obolibrary.org/obo/XCO_0000000,experimental conditions,"A state of being, an external or environmental factor or a treatment observed or administered prior to or concurrent with an investigative procedure such as an assessment of a morphological or physiological state or property in a single individual or sample or in a group of individuals or samples, especially a state, factor or treatment which has the potential to influence the outcome of such an assessment.",Class,,,
+https://www.w3.org/2002/07/owl#NegativePropertyAssertion,NegativePropertyAssertion,"The class of negative property assertions, stating that an individual does not have a given property value.",Class,,,
+https://w3id.org/evorao/Antibody,,,Class,,,
+http://snomed.info/id/276239002,Therapy,,Class,,,
+http://purl.obolibrary.org/obo/NCIT_C20130,Protein Family,Collection of proteins that are evolutionarily related.  This is reflected in the structural and functional similarities as well as in the extent of sequence conservation or residue identity. (from SCOP),Class,,,
+http://purl.obolibrary.org/obo/UBERON_0001062,anatomical entity,Biological entity that is either an individual member of a biological species or constitutes the structural organization of an individual member of a biological species.,Class,,,
+http://purl.obolibrary.org/obo/SEPIO_0000001,assertion,"A statement made by a particular agent on a particular occasion that a particular proposition is true, based on the evaluation of one or more lines of evidence.",Class,,,
+http://www.bioassayontology.org/bao#BAO_0003059,perturbagen,"The role of a molecular entity (small molecule, siRNA/shRNA, etc.) in altering the activity of proteins that serve as targets in a bioassay.",Class,,,
+http://purl.obolibrary.org/obo/NCIT_C73619,Feature,"A prominent or identifiable aspect, region, or site of interest.",Class,,,
+http://purl.obolibrary.org/obo/FBcv_0003016,protein complex group,Genes whose protein products form a macromolecular complex (GO:0043234).,Class,,,
+http://purl.uniprot.org/core/Subcellular_Location,Subcellular Location,A subcellular location to which a protein is localized.,Class,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,Property,The class of RDF properties.,Class,,,
+http://purl.obolibrary.org/obo/NCIT_C231,Amino Acid,"Any organic compounds containing amino (-NH2) and carboxyl (-COOH) groups.  In biochemistry, used to refer to the twenty-plus L-alpha-amino acids found in proteins.",Class,,,
+https://www.w3.org/2002/07/owl#Class,Class,The class of OWL classes.,Class,,,
+https://biolink.github.io/biolink-model/CellLine,cell line,"A cultured cell population that is genetically stable and homogeneous, sharing a common propagation history through successive passages in culture.",Class,,,
+http://purl.org/dc/terms/source,Source,A related resource from which the described resource is derived.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type,type,The subject is an instance of a class.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#object,object,The object of the reified RDF statement.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#subject,subject,The subject of the reified RDF statement.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate,predicate,The predicate of the reified RDF statement.,Predicate,,,
+http://schema.org/provider,provider,"The service provider, service operator, or service performer; the goods producer.",Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002206,expressed in,"x expressed in y if and only if there is a gene expression process (GO:0010467) that occurs in y, and one of the following holds: (i) x is a gene, and x is transcribed into a transcript as part of the gene expression process (ii) x is a transcript, and the transcription of x is part of the gene expression process (iii) x is a mature gene product such as a protein, and x was translated or otherwise processed from a transcript that was transcribed as part of this gene expression process",Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/UBERON_0001062
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable name for the subject.,Predicate,,,
+http://www.geneontology.org/formats/oboInOwl#evidence,evidence,An evidence code or annotation supporting an assertion.,Predicate,,,
+http://www.w3.org/2000/01/rdf-schema#seeAlso,seeAlso,Further information about the subject resource.,Predicate,,,
+http://semanticscience.org/resource/SIO_001077,gene expression value,A gene expression value is a measured value obtained from a gene expression experiment.,Predicate,,,
+http://www.w3.org/2000/01/rdf-schema#comment,comment,A description of the subject resource.,Predicate,,,
+http://purl.org/ontology/bibo/pmid,PubMed ID,The PubMed identifier (PMID) of a referenced publication.,Predicate,,,
+https://biolink.github.io/biolink-model/associated_with,associated with,"Expresses a relationship between two named things where the relationship is typically generated statistically (though not in all cases), and is weaker than its child, 'correlated with', but stronger than its parent, 'related to'.",Predicate,,http://purl.uniprot.org/core/Gene,http://www.ebi.ac.uk/efo/EFO_0000651
+https://biolink.github.io/biolink-model/target_for,target for,A gene is a target of a disease when its products are druggable and when a drug interaction with the gene product could have a therapeutic effect,Predicate,,http://purl.obolibrary.org/obo/NCIT_C48182,http://purl.uniprot.org/core/Gene
+http://purl.obolibrary.org/obo/RO_0002434,interacts with,A relationship that holds between two entities in which the processes executed by the two entities are causally connected.,Predicate,,http://purl.uniprot.org/core/Protein,http://purl.uniprot.org/core/Protein
+http://purl.obolibrary.org/obo/RO_0002558,has evidence,inverse of is evidence for,Predicate,,,
+http://purl.org/dc/terms/date,Date,A point or period of time associated with an event in the lifecycle of the resource.,Predicate,,,
+https://biolink.github.io/biolink-model/provided_by,provided by,The value in this node property represents the knowledge provider that created or assembled the node and all of its attributes.,Predicate,,,
+http://purl.uniprot.org/core/position,position,The sequence position of a feature or site.,Predicate,,,
+http://edamontology.org/data_1756,Protein residue,Data on a single amino acid residue position in a protein structure.,Predicate,,,
+http://purl.org/dc/terms/type,Type,The nature or genre of the resource.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002431,involved in or involved in regulation of,c involved in or regulates p if and only if either (i) c is involved in p or (ii) c is involved in regulation of p,Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/NCIT_C48182
+http://purl.uniprot.org/core/Site_Annotation,Site Annotation,An annotation describing a specific site (residue position) on a protein sequence.,Predicate,,http://purl.uniprot.org/core/PTM_Annotation,http://purl.uniprot.org/core/Site_Annotation
+http://purl.uniprot.org/core/activity,activity,Relates a catalytic activity or enzyme to the protein that carries it out.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.uniprot.org/core/Protein
+http://purl.obolibrary.org/obo/RO_0002612,axiom has evidence,A relationship between a sentence and an instance of a piece of evidence in which the evidence supports the axiom,Predicate,,,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,Predicate,,,
+https://biolink.github.io/biolink-model/therapeutic_response,therapeutic response,A positive response to a treatment or intervention,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C13344,Topical,,Predicate,,,
+http://purl.obolibrary.org/obo/MAXO_0001495,parenteral administration,Administration of drugs or other substances by routes other than the digestive tract.,Predicate,,,
+https://biolink.github.io/biolink-model/black_box_warning,black box warning,,Predicate,,,
+https://biolink.github.io/biolink-model/chembl_natural_product,chembl natural product,Flag indicating if a chemical entity is a natural product.,Predicate,,,
+https://biolink.github.io/biolink-model/DrugDeliveryEnum#oral,oral,,Predicate,,,
+https://biolink.github.io/biolink-model/structure_type,structure type,,Predicate,,,
+http://purl.obolibrary.org/obo/MI_2025,molecular weight,"Molecular weight in g/mol, determined from molecular formula or sequence.",Predicate,,,
+http://schema.org/smiles,smiles,A specification in form of a line notation for describing the structure of chemical species using short ASCII strings (SMILES).,Predicate,,,
+https://chemkg.github.io/chemrof/inchi_key_string,InChI key string,"A hashed, fixed-length form of the IUPAC International Chemical Identifier (InChI key) for a chemical structure.",Predicate,,,
+http://www.w3.org/2004/02/skos/core#exactMatch,exactMatch,Links two concepts with a high degree of confidence that they can be used interchangeably.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.obolibrary.org/obo/NCIT_C43366
+https://biolink.github.io/biolink-model/chembl_availability_type,chembl availability type,Text indicating the availability type of the chemical entity.,Predicate,,,
+https://biolink.github.io/biolink-model/has_sequence_location,has sequence location,"holds between two nucleic acid entities when the subject can be localized in sequence coordinates on the object. For example, between an exon and a chromosome/contig.",Predicate,,http://purl.uniprot.org/core/Protein,http://purl.uniprot.org/core/Site_Annotation
+http://schema.org/description,description,A description of the item.,Predicate,,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/log2Ratio,Log2 Ratio,Log2 ratio of expression between conditions,Predicate,https://biolink.github.io/biolink-model/affected_by,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/deltaLog2Ratio,Delta Log2 Ratio,Delta log2 fold-change ratio between conditions,Predicate,https://biolink.github.io/biolink-model/affected_by,,
+https://biolink.github.io/biolink-model/affected_by,affected by,describes an entity of which the state or quality is affected by another existing entity.,Predicate,,http://purl.uniprot.org/core/PTM_Annotation,https://w3id.org/reproduceme#Experiment
+http://www.bioassayontology.org/bao#BAO_0003063,Adenosine triphosphate,,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0000056,participates in,"a relation between a continuant and a process, in which the continuant is somehow involved in the process",Predicate,,http://purl.uniprot.org/core/Protein,http://purl.obolibrary.org/obo/NCIT_C19398
+http://purl.uniprot.org/core/Molecule,Molecule,A molecule resource as defined by the UniProt core ontology.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C164806,Gene Name,,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002331,involved in,"c involved_in p if and only if c enables some process p', and p' is part of p",Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://purl.uniprot.org/core/organism,organism,The organism in which the entity occurs.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C25402,Accession Number,A control number unique to an object.  It is used to identify the object among other objects in a collection.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002212,negatively regulates,"p negatively regulates q iff p regulates q, and p decreases the rate or magnitude of execution of q.",Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.uniprot.org/core/Gene
+http://purl.obolibrary.org/obo/RO_0002213,positively regulates,"p positively regulates q iff p regulates q, and p increases the rate or magnitude of execution of q.",Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.uniprot.org/core/Gene
+http://purl.uniprot.org/core/taxon,taxon,The taxonomic classification of an organism.,Predicate,,,
+http://purl.uniprot.org/core/mnemonic,mnemonic,A short mnemonic identifier for a UniProt entry.,Predicate,,,
+http://purl.uniprot.org/core/sequence,sequence,The amino acid or nucleotide sequence of the entity.,Predicate,,,
+http://purl.uniprot.org/core/length,length,The length of a sequence.,Predicate,,,
+http://edamontology.org/data_1519,Peptide molecular weights,"List of molecular weight(s) of one or more proteins or peptides, for example cut by proteolytic enzymes or reagents.",Predicate,,,
+https://w3id.org/reproduceme#Phase,Phase,,Predicate,http://purl.obolibrary.org/obo/NCIT_C41184,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE,Has marker gene,Associates a gene or protein with marker gene expression,Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/NCIT_C48182
+http://purl.obolibrary.org/obo/RO_0002327,enables,c enables p iff c is capable of p and c acts to execute p.,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://purl.obolibrary.org/obo/GENO_0000382,has_variant_part,"A relation between a sequence entity (i.e. a sequence, feature, or qualified feature) and a part of this entity that is variant in terms of its sequence, position, or expression.",Predicate,,http://purl.uniprot.org/core/Natural_Variant_Annotation,http://purl.obolibrary.org/obo/SO_0001147
+http://schema.org/category,category,A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.,Predicate,,,
+https://biolink.github.io/biolink-model/has_sequence_variant,has sequence variant,Holds between a genomic entity and a sequence variant of it.,Predicate,,http://purl.uniprot.org/core/Protein,http://purl.uniprot.org/core/Natural_Variant_Annotation
+http://purl.obolibrary.org/obo/NCIT_C173544,Molecular Sequence Variation Type,The category or type of variation or abnormality present in an amino acid or nucleic acid sequence.,Predicate,,,
+http://purl.uniprot.org/core/Alternative_Sequence_Annotation,Alternative Sequence Annotation,An annotation describing an alternative sequence (e.g. splice variant) of a protein.,Predicate,,,
+https://w3id.org/reproduceme#Treatment,Treatment,,Predicate,,,
+http://purl.uniprot.org/core/partOf,part of,Relates an entity to a larger entity of which it is a part.,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://www.w3.org/2000/01/rdf-schema#subClassOf,subClassOf,The subject is a subclass of a class.,Predicate,,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://purl.org/dc/terms/description,Description,An account of the resource.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0003000,produces,"a produces b if some process that occurs_in a has_output b, where a and b are material entities. Examples: hybridoma cell line produces monoclonal antibody reagent; chondroblast produces avascular GAG-rich matrix.",Predicate,,http://purl.obolibrary.org/obo/UBERON_0001062,http://purl.obolibrary.org/obo/NCIT_C61154
+http://purl.obolibrary.org/obo/NCIT_C41184,Indication,"A sign, signal, circumstance, or symptom which serves to indicate or point out the cause, pathology, treatment, or issue of an attack of disease; the basis for initiation of a treatment for a disease or of a diagnostic test (causal, or symptomatic, or disease-specific indication).",Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.uniprot.org/core/Disease
+http://purl.obolibrary.org/obo/MI_0116,feature type,Property of a subsequence that may interfere with the binding of a molecule.,Predicate,,,
+http://purl.uniprot.org/core/annotation,annotation,An annotation describing a feature or property of a UniProt entity.,Predicate,,,
+http://purl.obolibrary.org/obo/PATO_0000627,localized,A spatial pattern quality inhering in a bearer by virtue of the bearer's being confined or restricted to a particular location.,Predicate,,https://research.bioinformatics.udel.edu/ProKN/rdf/CellMedioid,http://purl.uniprot.org/core/Subcellular_Location
+https://research.bioinformatics.udel.edu/ProKN/rdf/isTopPrediction,Is Top Prediction,Flag indicating whether this subcellular localization is the top-ranked prediction for the entity,Predicate,http://purl.obolibrary.org/obo/PATO_0000627,,
+http://purl.obolibrary.org/obo/OMIT_0012292,,,Predicate,http://purl.obolibrary.org/obo/PATO_0000627,,
+http://www.geneontology.org/formats/oboInOwl#hasOBONamespace,has OBO namespace,The OBO namespace to which a term belongs.,Predicate,,,
+http://purl.uniprot.org/core/domain,domain,A structural or functional domain of a protein.,Predicate,,http://purl.uniprot.org/core/domain,http://purl.uniprot.org/core/Protein
+https://biolink.github.io/biolink-model/similar_to,similar to,holds between an entity and some other entity with similar features.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.obolibrary.org/obo/NCIT_C43366
+http://edamontology.org/data_1011,EC number,An Enzyme Commission (EC) number of an enzyme.,Predicate,,,
+https://biolink.github.io/biolink-model/catalyzes,catalyzes,"Holds between a macromolecular machine (typically an enzyme or ribozyme) and a biochemical reaction or process whose rate it accelerates, without itself being consumed, by lowering the activation energy.",Predicate,,http://purl.uniprot.org/core/Protein,http://purl.uniprot.org/core/PTM_Annotation
+http://snomed.info/id/257544000,,,Predicate,http://purl.obolibrary.org/obo/RO_0002436,,
+http://purl.allotrope.org/ontologies/result#AFX_0000408,,,Predicate,,https://w3id.org/reproduceme#Image,http://purl.obolibrary.org/obo/XCO_0000000
+http://purl.obolibrary.org/obo/CLO_0037210,,,Predicate,,https://w3id.org/reproduceme#Image,https://biolink.github.io/biolink-model/CellLine
+http://purl.obolibrary.org/obo/NCIT_C94578,Stained Appearance,Marked or discolored by foreign material.,Predicate,,https://w3id.org/reproduceme#Image,https://w3id.org/evorao/Antibody
+https://w3id.org/reproduceme#Well,Well,A Well is a component of the Well/Plate/Screen construct to describe screening applications. A Well has a number of WellSample elements that link to the Images collected in this well.,Predicate,,,
+https://w3id.org/reproduceme#plate,,,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0005694,chromosome,A structure composed of a very long molecule of DNA and associated proteins (e.g. histones) that carries hereditary information.,Predicate,https://biolink.github.io/biolink-model/target_for,,
+http://purl.obolibrary.org/obo/BFO_0000050,part of,a core relation that holds between a part and its whole,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://edamontology.org/data_1049,Directory name,The name of a directory.,Predicate,,,
+http://semanticscience.org/resource/SIO_000272,is variant of,"is variant of: a relationship indicating that two entities are different (by some measure), but either achieve the same objectives in different ways or are permutations of one another (temporal, logical or otherwise)",Predicate,,http://purl.uniprot.org/core/Protein,http://purl.uniprot.org/core/Protein
+http://purl.obolibrary.org/obo/SEPIO_0000403,supporting,An evidence direction indicating that an evidence line provides an argument that supports the validity of a target assertion.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C178092,http://schema.org/MolecularEntity
+http://semanticscience.org/resource/SIO_010078,encodes,"A relation between two objects, in which the first object contains information that is used to produce the second object.",Predicate,,http://purl.uniprot.org/core/Gene,http://purl.uniprot.org/core/Protein
+http://purl.allotrope.org/ontologies/result#AFR_0003142,,,Predicate,http://purl.obolibrary.org/obo/RO_0002436,,
+http://purl.obolibrary.org/obo/MI_0407,direct interaction,Interaction between molecules that are in direct contact with each other.,Predicate,http://purl.obolibrary.org/obo/RO_0002436,,
+http://purl.obolibrary.org/obo/BCGO_0000177,,,Predicate,,http://purl.obolibrary.org/obo/NCIT_C48182,http://purl.uniprot.org/core/Gene
+http://purl.obolibrary.org/obo/NCIT_C48662,Marked,A prominent or noticeable characteristic.,Predicate,,,
+http://purl.obolibrary.org/obo/OMO_0003012,acronym,"A synonym type for describing abbreviations that are a part of the full name's words, such as initialisms or alphabetisms.",Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C47803,Isoform,Refers to variants of the same protein which can be separated on special conducting media using electrophoresis. The differences may arise from genetically determined differences in primary structure or by modification of the same primary sequence.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002566,causally influences,"The entity or characteristic A is causally upstream of the entity or characteristic B, A having an effect on B. An entity corresponds to any biological type of entity as long as a mass is measurable. A characteristic corresponds to a particular specificity of an entity (e.g., phenotype, shape, size).",Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/NCIT_C61154
+http://purl.obolibrary.org/obo/RO_0002432,is active in,"c executes activity in d if and only if c enables p and p occurs_in d.  Assuming no action at a distance by gene products, if a gene product enables (is capable of) a process that occurs in some structure, it must have at least some part in that structure.",Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+https://biolink.github.io/biolink-model/id,id,A unique identifier for an entity. Must be either a CURIE shorthand for a URI or a complete URI,Predicate,,,
+http://schema.org/MolecularEntity,MolecularEntity,"Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C82562,Clinical Significance,A finding that has treatment or management implications for a patient's condition.,Predicate,,,
+http://ensembl.org/glossary/ENSGLOSSARY_00000950000095,,,Predicate,,,
+http://purl.obolibrary.org/obo/SO_0001762,variant_origin,A quality inhering in a variant by virtue of its origin.,Predicate,,,
+http://purl.org/spar/cito/isCitedBy,is cited by,The cited entity is cited by the citing entity.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C178092,http://purl.uniprot.org/core/citation
+http://purl.uniprot.org/core/citation,citation,A bibliographic citation associated with a UniProt entity.,Predicate,,,
+http://purl.uniprot.org/core/disease,disease,Relates an entity to a disease it is associated with.,Predicate,,,
+https://w3id.org/reproduceme#rating,,,Predicate,,,
+http://purl.obolibrary.org/obo/bto#related_to,,,Predicate,,http://purl.obolibrary.org/obo/NCIT_C178092,http://purl.uniprot.org/core/Disease
+http://purl.obolibrary.org/obo/RO_0002436,molecularly interacts with,An interaction relationship in which the two partners are molecular entities that directly physically interact with each other for example via a stable binding interaction or a brief interaction during which one modifies the other.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C43366,http://purl.uniprot.org/core/Protein
+http://www.bioassayontology.org/bao#BAO_0002646,isoform,"A quality of a protein that harbors a variation from the native protein (called canonical form), which could arise due to alternative promoter usage, alternative splicing, alternative translation initiation and ribosomal frameshifting.",Predicate,,,
+https://chemkg.github.io/chemrof/inchi_string,InChI string,An IUPAC International Chemical Identifier (InChI) string describing a chemical structure.,Predicate,,,
+http://purl.obolibrary.org/obo/MI_2236,up-regulates activity,"The effect of a modulator entity A on a modulated entity B that increases the frequency, rate or extent of the molecular function of B, an elemental biological activity occurring at the molecular level, such as catalysis or binding (GO:0044093).",Predicate,,http://purl.uniprot.org/core/PTM_Annotation,http://purl.uniprot.org/core/Protein
+http://purl.obolibrary.org/obo/RO_0003308,correlated with condition,A relationship between an entity and a condition (phenotype or disease) with which it exhibits a statistical dependence relationship.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C61154,http://www.ebi.ac.uk/efo/EFO_0000651
+https://biolink.github.io/biolink-model/actively_involved_in,actively involved in,"holds between a continuant and a process or function, where the continuant actively contributes to part or all of the process or function it realizes",Predicate,,http://purl.obolibrary.org/obo/NCIT_C178092,http://snomed.info/id/276239002
+http://purl.obolibrary.org/obo/NCIT_C43568,Gene Symbol,A unique gene name approved by an organism specific nomenclature committee.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C25425,Approval,Acceptance as satisfactory by an authoritative body; established by authority; given authoritative approval.,Predicate,,,
+http://semanticscience.org/resource/SIO_000254,is annotation of,is annotation of is a relation between some textual entity and the entity that it annotates.,Predicate,,http://purl.uniprot.org/core/annotation,http://purl.uniprot.org/core/Subcellular_Location
+http://purl.obolibrary.org/obo/MI_2241,down-regulates activity,"The effect of a modulator entity A on a modulated entity B that decreases the frequency, rate or extent of the molecular function of B, an elemental biological activity occurring at the molecular level, such as catalysis or binding (GO:0044093).",Predicate,,http://purl.uniprot.org/core/PTM_Annotation,http://purl.uniprot.org/core/Protein
+http://snomed.info/id/276239002,Therapy,,Predicate,,,
+https://biolink.github.io/biolink-model/homologous_to,homologous to,holds between two biological entities that have common evolutionary origin,Predicate,,,
+http://semanticscience.org/resource/CHEMINF_000032,isomeric SMILES descriptor,An isomeric SMILES descriptor is a SMILES descriptor that is written with isotopic and chiral specifications.,Predicate,,,
+http://purl.obolibrary.org/obo/ECO_9000000,used_in,A relation connecting an evidence type to an assertion method where the assertion method describes the type of process employed to evaluate the evidence.,Predicate,,http://www.bioassayontology.org/bao#BAO_0003059,https://w3id.org/reproduceme#Experiment
+http://purl.obolibrary.org/obo/RO_0002264,acts upstream of or within,"c acts upstream of or within p if c is enables f, and f is causally upstream of or within p. c is a material entity and p is an process.",Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://schema.org/status,status,The status of the study (enumerated).,Predicate,,,
+http://www.geneontology.org/formats/oboInOwl#count,count,A count value annotation in oboInOwl.,Predicate,,,
+http://purl.obolibrary.org/obo/SO_0001685,score,The score of an experimentally derived feature such as a p-value.,Predicate,,,
+https://id.nlm.nih.gov/mesh/D066292,Lipid Droplets,"Dynamic cytoplasmic organelles found in almost all cells. They consist of a central core of LIPIDS surrounded by a phospholipid monolayer studded with surface proteins, and are involved in LIPID METABOLISM and storage.",Predicate,,,
+https://id.nlm.nih.gov/mesh/D022001,Focal Adhesions,"An anchoring junction of the cell to a non-cellular substrate. It is composed of a specialized area of the plasma membrane where bundles of the ACTIN CYTOSKELETON terminate and attach to the transmembrane linkers, INTEGRINS, which in turn attach through their extracellular domains to EXTRACELLULAR MATRIX PROTEINS.",Predicate,,,
+https://id.nlm.nih.gov/mesh/D020675,Peroxisomes,"Microbodies which occur in animal and plant cells and in certain fungi and protozoa. They contain peroxidase, catalase, and allied enzymes. (From Singleton and Sainsbury, Dictionary of Microbiology and Molecular Biology, 2nd ed)",Predicate,,,
+https://id.nlm.nih.gov/mesh/D006056,Golgi Apparatus,"A stack of flattened vesicles that functions in posttranslational processing and sorting of proteins, receiving them from the rough ENDOPLASMIC RETICULUM and directing them to secretory vesicles, LYSOSOMES, or the CELL MEMBRANE. The movement of proteins takes place by transfer vesicles that bud off from the rough endoplasmic reticulum or Golgi apparatus and fuse with the Golgi, lysosomes or cell membrane. (From Glick, Glossary of Biochemistry and Molecular Biology, 1990)",Predicate,,,
+http://purl.obolibrary.org/obo/GO_0000776,kinetochore,A multisubunit complex that is located at the centromeric region of DNA and provides an attachment point for the spindle microtubules.,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0005654,nucleoplasm,That part of the nuclear content other than the chromosomes or the nucleolus.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C13430,Mitotic Chromosome,Condensed chromosomes observed during the M phase of the cell cycle.  Individual chromosomes can be discerned and differentiated morphologically.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C13258,Mitochondrion,"Semiautonomous, self-reproducing organelles that occur in the cytoplasm of all cells of most, but not all, eukaryotes. Mitochondria are the principal energy source of the cell and contain the cytochrome enzymes of terminal electron transport and the enzymes of the citric acid cycle, fatty acid oxidation, and oxidative phosphorylation.",Predicate,,,
+http://purl.uniprot.org/core/negative,negative,Indicates that an annotation or assertion is negated.,Predicate,,,
+https://id.nlm.nih.gov/mesh/D011992,Endosomes,Cytoplasmic vesicles formed when COATED VESICLES shed their CLATHRIN coat. Endosomes internalize macromolecules bound by receptors on the cell surface.,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0005730,nucleolus,"A small, dense body one or more of which are present in the nucleus of eukaryotic cells. It is rich in RNA and protein, is not bounded by a limiting membrane, and is not seen during mitosis.",Predicate,,,
+https://id.nlm.nih.gov/mesh/D008247,Lysosomes,"A class of morphologically heterogeneous cytoplasmic particles in animal and plant tissues characterized by their content of hydrolytic enzymes and the structure-linked latency of these enzymes. The intracellular functions of lysosomes depend on their lytic potential. The single unit membrane of the lysosome acts as a barrier between the enzymes enclosed in the lysosome and the external substrate. The activity of the enzymes contained in lysosomes is limited or nil unless the vesicle in which they are enclosed is ruptured or undergoes MEMBRANE FUSION. (From Rieger et al., Glossary of Genetics: Classical and Molecular, 5th ed).",Predicate,,,
+http://purl.obolibrary.org/obo/GO_0072686,mitotic spindle,A spindle that forms as part of mitosis. Mitotic and meiotic spindles contain distinctive complements of proteins associated with microtubules.,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0005886,plasma membrane,The membrane surrounding a cell that separates the cell from its external environment. It consists of a phospholipid bilayer and associated proteins.,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0005813,centrosome,"A structure comprised of a core structure (in most organisms, a pair of centrioles) and peripheral material from which a microtubule-based structure, such as a spindle apparatus, is organized.",Predicate,,,
+http://purl.obolibrary.org/obo/GO_0005829,cytosol,"The part of the cytoplasm that does not contain organelles but which does contain other particulate matter, such as protein complexes.",Predicate,,,
+http://purl.obolibrary.org/obo/GO_0016235,aggresome,An inclusion body formed by dynein-dependent retrograde transport of an aggregated protein on microtubules.,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0030496,midbody,"A thin cytoplasmic bridge formed between daughter cells at the end of cytokinesis. The midbody forms where the contractile ring constricts, and may persist for some time before finally breaking to complete cytokinesis.",Predicate,,,
+http://purl.obolibrary.org/obo/GO_0031982,vesicle,"Any small, fluid-filled, spherical organelle enclosed by membrane.",Predicate,,,
+http://purl.obolibrary.org/obo/GO_0032154,cleavage furrow,The cleavage furrow is a plasma membrane invagination at the cell division site. The cleavage furrow begins as a shallow groove and eventually deepens to divide the cytoplasm.,Predicate,,,
+http://purl.obolibrary.org/obo/GO_0034451,centriolar satellite,A small (70-100 nm) cytoplasmic granule that contains a number of centrosomal proteins; centriolar satellites traffic toward microtubule minus ends and are enriched near the centrosome.,Predicate,,,
+https://www.w3.org/2002/07/owl#annotatedProperty,annotatedProperty,The property being annotated in an OWL axiom or annotation.,Predicate,,https://w3id.org/reproduceme#Image,http://purl.uniprot.org/core/annotation
+https://id.nlm.nih.gov/mesh/D046650,Medical Subject Headings,Controlled vocabulary thesaurus produced by the NATIONAL LIBRARY OF MEDICINE. It consists of sets of terms naming descriptors in a hierarchical structure that permits searching at various levels of specificity.,Predicate,,,
+http://purl.uniprot.org/core/part_of,part of,Relates an entity to a larger entity of which it is a part.,Predicate,,http://purl.uniprot.org/core/Protein,http://purl.obolibrary.org/obo/NCIT_C20130
+https://research.bioinformatics.udel.edu/ProKN/rdf/topClass,Top Class,Top class ID for cell medoids,Predicate,,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/umapX,UMAP X,UMAP X coordinate for cell medoids,Predicate,,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/umapY,UMAP Y,UMAP Y coordinate for cell medoids,Predicate,,,
+https://w3id.org/evorao/Antibody,,,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002411,causally upstream of,"p is causally upstream of q iff p is causally related to q, the end of p precedes the end of q, and p is not an occurrent part of q.",Predicate,,https://w3id.org/reproduceme#Image,https://research.bioinformatics.udel.edu/ProKN/rdf/CellMedioid
+http://purl.uniprot.org/core/source,source,The source of the information about the entity.,Predicate,,,
+http://schema.org/name,name,The name of the item.,Predicate,,,
+http://rs.tdwg.org/dwc/terms/taxonID,taxonID,An identifier for the set of taxon information (a Darwin Core taxon).,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002180,has component,"w 'has component' p if w 'has part' p and w is such that it can be directly disassembled into n parts p, p2, p3, ..., pn, where these parts are of similar type.",Predicate,,http://purl.obolibrary.org/obo/NCIT_C19398,http://purl.uniprot.org/core/Protein
+http://purl.obolibrary.org/obo/OBI_0000175,p-value,"A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone.",Predicate,https://biolink.github.io/biolink-model/affected_by,,
+http://schema.org/conditionsOfAccess,conditionsOfAccess,"Conditions that affect the availability of, or method(s) of access to, an item.",Predicate,https://biolink.github.io/biolink-model/affected_by,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/signedLog10PValue,Signed Log10 P-Value,Signed log10 p-value for a treatment effect,Predicate,https://biolink.github.io/biolink-model/affected_by,,
+https://research.bioinformatics.udel.edu/ProKN/rdf/higherLevelIn,Higher Level In,Higher level in relation for a treatment effect,Predicate,https://biolink.github.io/biolink-model/affected_by,,
+http://www.ebi.ac.uk/efo/EFO_0000651,phenotype,,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002326,contributes to,,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://purl.obolibrary.org/obo/NCIT_C41095,Gene Alias,This object holds alternative names for a gene.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002325,colocalizes with,a colocalizes_with b if and only if  a is transiently or peripherally associated with b[GO].,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+https://research.bioinformatics.udel.edu/ProKN/rdf/speciesGroupFlag,Species Group Flag,Flag indicating if a complex or family is a species group,Predicate,,,
+http://www.w3.org/ns/prov#wasAttributedTo,wasAttributedTo,Attribution is the ascribing of an entity to an agent.,Predicate,,http://purl.obolibrary.org/obo/SEPIO_0000001,http://schema.org/MolecularEntity
+http://purl.obolibrary.org/obo/NCIT_C157517,Therapy Used at Visit,An indication of the type of therapy used during a visit.,Predicate,,,
+http://purl.org/dc/terms/identifier,Identifier,An unambiguous reference to the resource within a given context.,Predicate,,,
+http://purl.uniprot.org/core/scientificName,scientific name,The scientific name of an organism.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002263,acts upstream of,"c acts upstream of p if and only if c enables some f that is involved in p' and p' occurs chronologically before p, is not part of p, and affects the execution of p. c is a material entity and f, p, p' are processes.",Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_KIDNEY,Has marker gene in kidney,Associates a gene or protein with marker gene expression in kidney tissue,Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/UBERON_0002113
+http://purl.obolibrary.org/obo/NCIT_C42581,Summary,"A shortened version of a speech or written text, containing only the main points.",Predicate,,,
+http://semanticscience.org/resource/SIO_000396,file,A file is an information-bearing object that contains a physical embodiment of some information using a particular character encoding.,Predicate,,,
+http://semanticscience.org/resource/SIO_000202,contains,"A contains B iff the spatial region occupied by A has the spatial region occupied by B as a part, and B is not part of A.",Predicate,,http://schema.org/MolecularEntity,http://purl.uniprot.org/core/Natural_Variant_Annotation
+http://purl.obolibrary.org/obo/has_dbxref,database cross-reference,A database cross-reference relating a term to an equivalent or related entry in an external database.,Predicate,,,
+http://schema.org/additionalType,additionalType,"An additional type for the item, typically used for adding more specific types from external vocabularies.",Predicate,,,
+http://purl.obolibrary.org/obo/RO_0002410,causally related to,"relation that links two events, processes, states, or objects such that one event, process, state, or object (a cause) contributes to the production of another event, process, state, or object (an effect) where the cause is partly or wholly responsible for the effect, and the effect is partly or wholly dependent on the cause.",Predicate,,http://purl.uniprot.org/core/Natural_Variant_Annotation,http://purl.uniprot.org/core/Disease
+https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_LIVER,Has marker gene in liver,Associates a gene or protein with marker gene expression in liver tissue,Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/UBERON_0002107
+https://research.bioinformatics.udel.edu/ProKN/rdf/HAS_MARKER_GENE_IN_HEART,Has marker gene in heart,Associates a gene or protein with marker gene expression in heart tissue,Predicate,,http://purl.uniprot.org/core/Gene,http://purl.obolibrary.org/obo/UBERON_0000948
+https://biolink.github.io/biolink-model/start_coordinate,start coordinate,The position at which the subject genomic entity starts on the chromosome or other entity to which it is located on. (ie: the start of the sequence being referenced is 1).,Predicate,,,
+http://purl.obolibrary.org/obo/SEPIO_0000001,assertion,"A statement made by a particular agent on a particular occasion that a particular proposition is true, based on the evaluation of one or more lines of evidence.",Predicate,,,
+http://semanticscience.org/resource/CHEMINF_000007,canonical SMILES descriptor,A canonical SMILES descriptor is a SMILES descriptor that is produced using a canonicalization algorithm which results in one special generic SMILES among all valid possibilities.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0004034,"acts upstream of, positive effect","c 'acts upstream of, positive effect' p if c is enables f, and f is causally upstream of p, and the direction of f is positive",Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+https://w3id.org/reproduceme#reference,reference,An entity which has used another entity as reference.,Predicate,,,
+http://edamontology.org/topic_3120,Protein variants,"Protein sequence variants produced e.g. from alternative splicing, alternative promoter usage, alternative initiation and ribosomal frameshifting.",Predicate,,,
+http://purl.obolibrary.org/obo/MI_0118,mutation,"A change in a sequence or structure in comparison to a reference entity due to a  insertion, deletion or substitution event.",Predicate,,,
+http://purl.obolibrary.org/obo/RO_0004032,"acts upstream of or within, positive effect",,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://purl.obolibrary.org/obo/PATO_0000642,fused with,A structural quality inhering in a bearer by virtue of the bearer's being merged with another entity.,Predicate,,http://purl.obolibrary.org/obo/NCIT_C73619,http://purl.obolibrary.org/obo/NCIT_C73619
+http://purl.obolibrary.org/obo/RO_0004035,"acts upstream of, negative effect","c 'acts upstream of, negative effect' p if c is enables f, and f is causally upstream of p, and the direction of f is negative",Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://purl.allotrope.org/ontologies/result#AFX_0000684,,,Predicate,,,
+http://www.w3.org/2004/02/skos/core#closeMatch,closeMatch,Links two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications.,Predicate,,http://purl.uniprot.org/core/Subcellular_Location,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+https://research.bioinformatics.udel.edu/ProKN/rdf/recommendsTherapy,Recommends Therapy,An assertion recommends a particular therapy,Predicate,,http://purl.obolibrary.org/obo/SEPIO_0000001,http://snomed.info/id/276239002
+http://purl.obolibrary.org/obo/NCIT_C17564,Guideline,"A systematic statement of policy rules or principles. Guidelines may be developed by government agencies at any level, institutions, professional societies, governing boards, or by convening expert panels.",Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C93703,Version Number Text,A numeric character string that identifies a form or variant of a type or original.,Predicate,,,
+http://schema.org/rangeIncludes,rangeIncludes,Relates a property to a class that constitutes (one of) the expected type(s) for values of the property.,Predicate,,,
+http://schema.org/domainIncludes,domainIncludes,Relates a property to a class that is (one of) the type(s) the property is expected to be used on.,Predicate,,,
+http://www.w3.org/ns/prov#used,used,Usage is the beginning of utilizing an entity by an activity.,Predicate,,,
+http://purl.uniprot.org/core/variO_term,VariO term,A Variation Ontology term associated with a sequence variant.,Predicate,,,
+http://purl.obolibrary.org/obo/RO_0004033,"acts upstream of or within, negative effect",,Predicate,,http://purl.uniprot.org/core/Protein,https://research.bioinformatics.udel.edu/ProKN/rdf/GOTerm
+http://www.w3.org/2000/01/rdf-schema#subPropertyOf,subPropertyOf,The subject is a subproperty of a property.,Predicate,,,
+http://schema.org/assesses,assesses,The item being described is intended to assess the competency or learning outcome defined by the referenced term.,Predicate,,,
+http://purl.uniprot.org/core/version,version,The version of the entity or record.,Predicate,,,
+https://www.w3.org/2002/07/owl#equivalentProperty,equivalentProperty,The property that the subject property is equivalent to.,Predicate,,,
+http://purl.bioontology.org/ontology/SNOMEDCT/00000000000460005,,,Predicate,,,
+http://www.w3.org/2000/01/rdf-schema#isDefinedBy,isDefinedBy,The definition of the subject resource.,Predicate,,,
+http://purl.uniprot.org/core/md5Checksum,MD5 checksum,An MD5 checksum of the sequence.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C68631,Study Name,The name applied to a scientific investigation.,Predicate,,,
+http://schema.org/target,target,"Indicates a target EntryPoint, or url, for an Action.",Predicate,,,
+http://purl.allotrope.org/ontologies/result#AFR_0002229,,,Predicate,,,
+http://schema.org/type,type,The type of the item.,Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C2991,Disease or Disorder,"Any abnormal condition of the body or mind that causes discomfort, dysfunction, or distress to the person affected or those in contact with the person. The term is often used broadly to include injuries, disabilities, syndromes, symptoms, deviant behaviors, and atypical variations of structure and function.",Predicate,,,
+http://purl.obolibrary.org/obo/NCIT_C210455,Analytical Fraction,The portion of a specimen that was isolated from the whole and collected via a fractionation process to be subjected to further analysis.,Predicate,,,
+http://purl.obolibrary.org/obo/NCBITaxon_species,species,The species rank in the NCBI Taxonomy.,Predicate,,,
