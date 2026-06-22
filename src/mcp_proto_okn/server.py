@@ -274,7 +274,6 @@ class SPARQLServer:
         self.sparql.setMethod("GET")
         self.sparql.addCustomHttpHeader("Accept", "application/sparql-results+json")
         self.sparql.setTimeout(300)
-#        self.sparql.setTimeout(120)
 
     # ---------------------- Internal helpers ---------------------- #
     def _insert_from_clause(self, query_string, kg_name):
@@ -355,7 +354,7 @@ class SPARQLServer:
             if not self.registry_url:
                 return None
 
-            with urlopen(self.registry_url, timeout=5) as resp:
+            with urlopen(self.registry_url, timeout=30) as resp:
                 raw = resp.read()
                 text = raw.decode("utf-8", errors="replace")
                 return text.strip()
@@ -374,7 +373,7 @@ class SPARQLServer:
         url = f"{self.github_base_url}/{filename}"
         
         try:
-            with urlopen(url, timeout=5) as response:
+            with urlopen(url, timeout=30) as response:
                 content = response.read().decode('utf-8')
                 
             # Parse CSV
@@ -1420,7 +1419,7 @@ LIMIT 10"""
         )
         
         try:
-            with urlopen(description_url, timeout=5) as resp:
+            with urlopen(description_url, timeout=30) as resp:
                 raw = resp.read()
                 text = raw.decode("utf-8", errors="replace")
                 return text.strip()
