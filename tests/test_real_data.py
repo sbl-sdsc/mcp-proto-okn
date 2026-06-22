@@ -130,19 +130,19 @@ class TestSpokeOkn:
 class TestGeneExpressionAtlas:
     """Tests for Gene Expression Atlas bridge capabilities."""
 
-    def test_gene_expression_atlas_dual_ids(self, gene_expression_atlas):
-        """Query gene-expression-atlas-okn for a gene.
+    def test_gene_expression_atlas_ensembl_ids(self, gene_expression_atlas):
+        """Query gene-expression-atlas-okn for genes.
 
-        Verify it returns both NCBI Gene ID and Ensembl ID for the same gene.
+        Genes are identified by Ensembl IDs: the gene URI is an
+        identifiers.org/ensembl IRI and biolink:id holds the Ensembl
+        accession, with an optional gene symbol.
         """
         query = """
-        PREFIX glab: <https://spoke.ucsf.edu/genelab/>
         PREFIX biolink: <https://w3id.org/biolink/vocab/>
-        SELECT ?gene ?ncbi_gene_id ?ensembl_id ?symbol
+        SELECT ?gene ?id ?symbol
         WHERE {
           ?gene a biolink:Gene .
-          ?gene glab:ncbi_gene_id ?ncbi_gene_id .
-          ?gene glab:ensembl_id ?ensembl_id .
+          ?gene biolink:id ?id .
           OPTIONAL { ?gene biolink:symbol ?symbol }
         }
         LIMIT 5
@@ -150,9 +150,11 @@ class TestGeneExpressionAtlas:
         result = gene_expression_atlas.execute(query, analyze=False, auto_expand_descendants=False)
         assert "count" in result, f"Query returned error: {result.get('error', 'unknown')}"
         assert result["count"] > 0
-        # Verify both ID columns present
-        assert "ncbi_gene_id" in result["columns"]
-        assert "ensembl_id" in result["columns"]
+        assert "id" in result["columns"]
+        # Genes are Ensembl-based
+        gene_col = result["columns"].index("gene")
+        genes = [row[gene_col] for row in result["data"]]
+        assert any("ensembl" in gene.lower() for gene in genes)
 
     def test_gene_expression_atlas_symbol_lookup(self, gene_expression_atlas):
         """Query by gene symbol, verify correct gene returned."""
