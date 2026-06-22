@@ -159,14 +159,12 @@ class TestGeneExpressionAtlas:
     def test_gene_expression_atlas_symbol_lookup(self, gene_expression_atlas):
         """Query by gene symbol, verify correct gene returned."""
         query = """
-        PREFIX glab: <https://spoke.ucsf.edu/genelab/>
         PREFIX biolink: <https://w3id.org/biolink/vocab/>
-        SELECT ?gene ?symbol ?ncbi_gene_id ?ensembl_id
+        SELECT ?gene ?symbol ?id
         WHERE {
           ?gene a biolink:Gene .
           ?gene biolink:symbol ?symbol .
-          OPTIONAL { ?gene glab:ncbi_gene_id ?ncbi_gene_id }
-          OPTIONAL { ?gene glab:ensembl_id ?ensembl_id }
+          OPTIONAL { ?gene biolink:id ?id }
           FILTER(?symbol = "FOS")
         }
         LIMIT 5
