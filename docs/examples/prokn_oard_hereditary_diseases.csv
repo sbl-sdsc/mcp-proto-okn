@@ -1,0 +1,324 @@
+mondo_id,mondo_curie,disease_label
+MONDO_0007037,MONDO:0007037,achondroplasia
+MONDO_0008713,MONDO:0008713,acrodermatitis enteropathica
+MONDO_0008294,MONDO:0008294,acute intermittent porphyria
+MONDO_0018544,MONDO:0018544,adrenoleukodystrophy
+MONDO_0009897,MONDO:0009897,adult polyglucosan body disease
+MONDO_0043209,MONDO:0043209,albinism
+MONDO_0008752,MONDO:0008752,Alexander disease
+MONDO_0013282,MONDO:0013282,alpha 1-antitrypsin deficiency
+MONDO_0011399,MONDO:0011399,alpha thalassemia
+MONDO_0018965,MONDO:0018965,Alport syndrome
+MONDO_0016241,MONDO:0016241,alternating hemiplegia of childhood
+MONDO_0007088,MONDO:0007088,Alzheimer disease type 1
+MONDO_0012790,MONDO:0012790,amyotrophic lateral sclerosis type 10
+MONDO_0012945,MONDO:0012945,amyotrophic lateral sclerosis type 11
+MONDO_0011223,MONDO:0011223,amyotrophic lateral sclerosis type 4
+MONDO_0008222,MONDO:0008222,Andersen-Tawil syndrome
+MONDO_0019154,MONDO:0019154,androgen insensitivity syndrome
+MONDO_0013426,MONDO:0013426,aneurysm-osteoarthritis syndrome
+MONDO_0008397,MONDO:0008397,aplasia of lacrimal and salivary glands
+MONDO_0008815,MONDO:0008815,argininosuccinic aciduria
+MONDO_0008830,MONDO:0008830,aspartylglucosaminuria
+MONDO_0018266,MONDO:0018266,ataxia - telangiectasia variant
+MONDO_0008840,MONDO:0008840,ataxia telangiectasia
+MONDO_0014500,MONDO:0014500,atrial conduction disease
+MONDO_0020290,MONDO:0020290,atrioventricular septal defect
+MONDO_0016244,MONDO:0016244,atypical hemolytic-uremic syndrome
+MONDO_0009411,MONDO:0009411,autoimmune polyendocrine syndrome type 1
+MONDO_0009925,MONDO:0009925,autosomal recessive inherited pseudoxanthoma elasticum
+MONDO_0009675,MONDO:0009675,autosomal recessive limb-girdle muscular dystrophy type 2A
+MONDO_0009677,MONDO:0009677,autosomal recessive limb-girdle muscular dystrophy type 2C
+MONDO_0009889,MONDO:0009889,autosomal recessive polycystic kidney disease
+MONDO_0013743,MONDO:0013743,autosomal systemic lupus erythematosus type 16
+MONDO_0008854,MONDO:0008854,Bardet-Biedl syndrome 1
+MONDO_0010543,MONDO:0010543,Barth syndrome
+MONDO_0010311,MONDO:0010311,Becker muscular dystrophy
+MONDO_0007534,MONDO:0007534,Beckwith-Wiedemann syndrome
+MONDO_0009276,MONDO:0009276,Bernard-Soulier syndrome
+MONDO_0019402,MONDO:0019402,beta thalassemia
+MONDO_0008029,MONDO:0008029,Bethlem myopathy
+MONDO_0008947,MONDO:0008947,bilateral striopallidodentate calcinosis
+MONDO_0009665,MONDO:0009665,biotinidase deficiency
+MONDO_0008876,MONDO:0008876,Bloom syndrome
+MONDO_0011510,MONDO:0011510,Bohring-Opitz syndrome
+MONDO_0015263,MONDO:0015263,Brugada syndrome
+MONDO_0012742,MONDO:0012742,Brugada syndrome 3
+MONDO_0015270,MONDO:0015270,butyrylcholinesterase deficiency
+MONDO_0008828,MONDO:0008828,camptodactyly-arthropathy-coxa vara-pericarditis syndrome
+MONDO_0010079,MONDO:0010079,Canavan disease
+MONDO_0009376,MONDO:0009376,carbamoyl phosphate synthetase I deficiency disease
+MONDO_0010753,MONDO:0010753,"cardiac valvular dysplasia, X-linked"
+MONDO_0009705,MONDO:0009705,carnitine palmitoyl transferase 1A deficiency
+MONDO_0015564,MONDO:0015564,Castleman disease
+MONDO_0017990,MONDO:0017990,catecholaminergic polymorphic ventricular tachycardia
+MONDO_0015626,MONDO:0015626,Charcot-Marie-Tooth disease
+MONDO_0019011,MONDO:0019011,Charcot-Marie-Tooth disease type 1
+MONDO_0007309,MONDO:0007309,Charcot-Marie-Tooth disease type 1A
+MONDO_0010621,MONDO:0010621,CHILD syndrome
+MONDO_0010826,MONDO:0010826,childhood absence epilepsy
+MONDO_0011184,MONDO:0011184,childhood apraxia of speech
+MONDO_0007319,MONDO:0007319,chondrocalcinosis 2
+MONDO_0018305,MONDO:0018305,chronic granulomatous disease
+MONDO_0015991,MONDO:0015991,citrullinemia
+MONDO_0008988,MONDO:0008988,citrullinemia type I
+MONDO_0008728,MONDO:0008728,classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency
+MONDO_0009258,MONDO:0009258,classic galactosemia
+MONDO_0009348,MONDO:0009348,classic Hodgkin lymphoma
+MONDO_0016064,MONDO:0016064,cleft palate
+MONDO_0007617,MONDO:0007617,Coffin-Siris syndrome 1
+MONDO_0014276,MONDO:0014276,combined immunodeficiency due to CD3gamma deficiency
+MONDO_0014197,MONDO:0014197,combined immunodeficiency due to MALT1 deficiency
+MONDO_0015517,MONDO:0015517,common variable immunodeficiency
+MONDO_0009006,MONDO:0009006,complement component 2 deficiency
+MONDO_0018479,MONDO:0018479,congenital adrenal hyperplasia
+MONDO_0008730,MONDO:0008730,congenital adrenal hyperplasia due to 17-alpha-hydroxylase deficiency
+MONDO_0013184,MONDO:0013184,congenital diarrhea 5 with tufting enteropathy
+MONDO_0013825,MONDO:0013825,congenital diarrhea 6
+MONDO_0009210,MONDO:0009210,congenital factor V deficiency
+MONDO_0008720,MONDO:0008720,congenital isolated adrenocorticotropic hormone deficiency
+MONDO_0008725,MONDO:0008725,congenital lipoid adrenal hyperplasia due to STAR deficency
+MONDO_0009732,MONDO:0009732,"congenital nephrotic syndrome, Finnish type"
+MONDO_0019306,MONDO:0019306,congenital non-bullous ichthyosiform erythroderma
+MONDO_0009114,MONDO:0009114,congenital sucrase-isomaltase deficiency
+MONDO_0009026,MONDO:0009026,Costello syndrome
+MONDO_0015469,MONDO:0015469,craniosynostosis
+MONDO_0007405,MONDO:0007405,Crouzon syndrome
+MONDO_0009061,MONDO:0009061,cystic fibrosis
+MONDO_0009067,MONDO:0009067,cystinuria
+MONDO_0010281,MONDO:0010281,Danon disease
+MONDO_0007417,MONDO:0007417,Darier disease
+MONDO_0015612,MONDO:0015612,Dent disease
+MONDO_0010472,MONDO:0010472,"developmental and epileptic encephalopathy, 36"
+MONDO_0015253,MONDO:0015253,Diamond-Blackfan anemia
+MONDO_0007269,MONDO:0007269,dilated cardiomyopathy 1A
+MONDO_0018949,MONDO:0018949,distal myopathy
+MONDO_0007473,MONDO:0007473,Duane retraction syndrome
+MONDO_0010679,MONDO:0010679,Duchenne muscular dystrophy
+MONDO_0007496,MONDO:0007496,dystonia 12
+MONDO_0007492,MONDO:0007492,early-onset generalized limb-onset dystonia
+MONDO_0011060,MONDO:0011060,early-onset non-syndromic cataract
+MONDO_0020066,MONDO:0020066,Ehlers-Danlos syndrome
+MONDO_0016002,MONDO:0016002,"Ehlers-Danlos syndrome, kyphoscoliotic type 1"
+MONDO_0017314,MONDO:0017314,"Ehlers-Danlos syndrome, vascular type"
+MONDO_0021569,MONDO:0021569,"Emery-Dreifuss muscular dystrophy 2, autosomal dominant"
+MONDO_0011724,MONDO:0011724,encephalopathy due to GLUT1 deficiency
+MONDO_0017610,MONDO:0017610,epidermolysis bullosa simplex
+MONDO_0007239,MONDO:0007239,epidermolytic hyperkeratosis
+MONDO_0016028,MONDO:0016028,erythromelalgia
+MONDO_0010526,MONDO:0010526,Fabry disease
+MONDO_0007100,MONDO:0007100,familial amyloid neuropathy
+MONDO_0010188,MONDO:0010188,familial isolated deficiency of vitamin E
+MONDO_0000608,MONDO:0000608,familial juvenile hyperuricemic nephropathy
+MONDO_0008073,MONDO:0008073,familial juvenile hyperuricemic nephropathy type 1
+MONDO_0009387,MONDO:0009387,familial lipoprotein lipase deficiency
+MONDO_0019171,MONDO:0019171,familial long QT syndrome
+MONDO_0018088,MONDO:0018088,familial Mediterranean fever
+MONDO_0009297,MONDO:0009297,familial renal glucosuria
+MONDO_0007606,MONDO:0007606,fibrodysplasia ossificans progressiva
+MONDO_0007097,MONDO:0007097,Finnish type amyloidosis
+MONDO_0100339,MONDO:0100339,Friedreich ataxia
+MONDO_0017276,MONDO:0017276,frontotemporal dementia
+MONDO_0005321,MONDO:0005321,Fuchs' endothelial dystrophy
+MONDO_0017719,MONDO:0017719,gangliosidosis
+MONDO_0011719,MONDO:0011719,gastrointestinal stromal tumor
+MONDO_0018150,MONDO:0018150,Gaucher disease
+MONDO_0009904,MONDO:0009904,Gitelman syndrome
+MONDO_0011612,MONDO:0011612,glycine encephalopathy
+MONDO_0002412,MONDO:0002412,glycogen storage disease
+MONDO_0012747,MONDO:0012747,glycogen storage disease due to aldolase A deficiency
+MONDO_0009292,MONDO:0009292,glycogen storage disease due to glycogen branching enzyme deficiency
+MONDO_0013046,MONDO:0013046,glycogen storage disease due to muscle beta-enolase deficiency
+MONDO_0009865,MONDO:0009865,glycogen storage disease due to phosphoglycerate mutase deficiency
+MONDO_0002413,MONDO:0002413,glycogen storage disease I
+MONDO_0009290,MONDO:0009290,glycogen storage disease II
+MONDO_0009291,MONDO:0009291,glycogen storage disease III
+MONDO_0010598,MONDO:0010598,glycogen storage disease IXa
+MONDO_0009293,MONDO:0009293,glycogen storage disease V
+MONDO_0009294,MONDO:0009294,glycogen storage disease VI
+MONDO_0018149,MONDO:0018149,GM1 gangliosidosis
+MONDO_0009260,MONDO:0009260,GM1 gangliosidosis type 1
+MONDO_0011603,MONDO:0011603,GNE myopathy
+MONDO_0021001,MONDO:0021001,hemochromatosis type 1
+MONDO_0010602,MONDO:0010602,hemophilia A
+MONDO_0010604,MONDO:0010604,hemophilia B
+MONDO_0019623,MONDO:0019623,hereditary angioedema
+MONDO_0033946,MONDO:0033946,hereditary angioedema with C1Inh deficiency
+MONDO_0007648,MONDO:0007648,hereditary diffuse gastric adenocarcinoma
+MONDO_0019180,MONDO:0019180,hereditary hemorrhagic telangiectasia
+MONDO_0011445,MONDO:0011445,hereditary spastic paraplegia 11
+MONDO_0010733,MONDO:0010733,hereditary spastic paraplegia 2
+MONDO_0008437,MONDO:0008437,hereditary spastic paraplegia 3A
+MONDO_0008438,MONDO:0008438,hereditary spastic paraplegia 4
+MONDO_0010047,MONDO:0010047,hereditary spastic paraplegia 5A
+MONDO_0019312,MONDO:0019312,Hermansky-Pudlak syndrome
+MONDO_0009353,MONDO:0009353,homocystinuria due to methylene tetrahydrofolate reductase deficiency
+MONDO_0018328,MONDO:0018328,homozygous familial hypercholesterolemia
+MONDO_0007739,MONDO:0007739,Huntington disease
+MONDO_0007818,MONDO:0007818,Hyper-IgE recurrent infection syndrome 1
+MONDO_0010626,MONDO:0010626,hyper-IgM syndrome type 1
+MONDO_0009849,MONDO:0009849,hyperimmunoglobulinemia D with periodic fever
+MONDO_0008224,MONDO:0008224,hyperkalemic periodic paralysis
+MONDO_0018473,MONDO:0018473,hyperlipoproteinemia type 3
+MONDO_0007762,MONDO:0007762,hyperlipoproteinemia type V
+MONDO_0007768,MONDO:0007768,hyperparathyroidism 2 with jaw tumors
+MONDO_0017774,MONDO:0017774,hypobetalipoproteinemia
+MONDO_0018555,MONDO:0018555,hypogonadotropic hypogonadism
+MONDO_0018570,MONDO:0018570,hypophosphatasia
+MONDO_0019052,MONDO:0019052,inborn errors of metabolism
+MONDO_0007403,MONDO:0007403,inherited Creutzfeldt-Jakob disease
+MONDO_0008788,MONDO:0008788,IRIDA syndrome
+MONDO_0009876,MONDO:0009876,isolated growth hormone deficiency type IA
+MONDO_0010139,MONDO:0010139,isolated thyroid-stimulating hormone deficiency
+MONDO_0002441,MONDO:0002441,Jervell and Lange-Nielsen syndrome
+MONDO_0018772,MONDO:0018772,Joubert syndrome
+MONDO_0017612,MONDO:0017612,junctional epidermolysis bullosa
+MONDO_0009696,MONDO:0009696,juvenile myoclonic epilepsy
+MONDO_0020367,MONDO:0020367,juvenile open angle glaucoma
+MONDO_0017380,MONDO:0017380,juvenile polyposis syndrome
+MONDO_0018800,MONDO:0018800,Kallmann syndrome
+MONDO_0010735,MONDO:0010735,Kennedy disease
+MONDO_0015486,MONDO:0015486,keratoconus
+MONDO_0012548,MONDO:0012548,Kostmann syndrome
+MONDO_0009499,MONDO:0009499,Krabbe disease
+MONDO_0009697,MONDO:0009697,Lafora disease
+MONDO_0009509,MONDO:0009509,Landau-Kleffner syndrome
+MONDO_0011579,MONDO:0011579,late-onset retinal degeneration
+MONDO_0010788,MONDO:0010788,Leber hereditary optic neuropathy
+MONDO_0009723,MONDO:0009723,Leigh syndrome
+MONDO_0016532,MONDO:0016532,Lennox-Gastaut syndrome
+MONDO_0007481,MONDO:0007481,Leri-Weill dyschondrosteosis
+MONDO_0018875,MONDO:0018875,Li-Fraumeni syndrome
+MONDO_0008323,MONDO:0008323,Liddle syndrome
+MONDO_0016971,MONDO:0016971,limb-girdle muscular dystrophy
+MONDO_0012173,MONDO:0012173,long chain 3-hydroxyacyl-CoA dehydrogenase deficiency
+MONDO_0013367,MONDO:0013367,long QT syndrome 2
+MONDO_0013372,MONDO:0013372,long QT syndrome 5
+MONDO_0012736,MONDO:0012736,long QT syndrome 9
+MONDO_0010939,MONDO:0010939,low phospholipid associated cholelithiasis
+MONDO_0019313,MONDO:0019313,lymphatic malformation
+MONDO_0016537,MONDO:0016537,lymphoproliferative syndrome
+MONDO_0005835,MONDO:0005835,Lynch syndrome
+MONDO_0015912,MONDO:0015912,macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss
+MONDO_0009020,MONDO:0009020,macular corneal dystrophy
+MONDO_0018493,MONDO:0018493,malignant hyperthermia of anesthesia
+MONDO_0009563,MONDO:0009563,maple syrup urine disease
+MONDO_0007947,MONDO:0007947,Marfan syndrome
+MONDO_0011431,MONDO:0011431,MASS syndrome
+MONDO_0009568,MONDO:0009568,mast syndrome
+MONDO_0007452,MONDO:0007452,maturity-onset diabetes of the young type 1
+MONDO_0018919,MONDO:0018919,McCune-Albright syndrome
+MONDO_0008721,MONDO:0008721,medium chain acyl-CoA dehydrogenase deficiency
+MONDO_0018868,MONDO:0018868,metachromatic leukodystrophy
+MONDO_0013254,MONDO:0013254,"microcephaly, seizures, and developmental delay"
+MONDO_0020756,MONDO:0020756,"migraine, familial hemiplegic, 1"
+MONDO_0010159,MONDO:0010159,mismatch repair cancer syndrome 1
+MONDO_0012791,MONDO:0012791,"mitochondrial DNA depletion syndrome, encephalomyopathic form with methylmalonic aciduria"
+MONDO_0044714,MONDO:0044714,mitochondrial myopathy-cerebellar ataxia-pigmentary retinopathy syndrome
+MONDO_0017575,MONDO:0017575,mitochondrial neurogastrointestinal encephalomyopathy
+MONDO_0009685,MONDO:0009685,Miyoshi myopathy
+MONDO_0009341,MONDO:0009341,Mowat-Wilson syndrome
+MONDO_0009650,MONDO:0009650,mucolipidosis type II
+MONDO_0019249,MONDO:0019249,mucopolysaccharidosis
+MONDO_0001586,MONDO:0001586,mucopolysaccharidosis type 1
+MONDO_0018937,MONDO:0018937,mucopolysaccharidosis type 3
+MONDO_0009282,MONDO:0009282,multiple acyl-CoA dehydrogenase deficiency
+MONDO_0007540,MONDO:0007540,multiple endocrine neoplasia type 1
+MONDO_0008082,MONDO:0008082,multiple endocrine neoplasia type 2B
+MONDO_0018939,MONDO:0018939,muscle-eye-brain disease
+MONDO_0020121,MONDO:0020121,muscular dystrophy
+MONDO_0000171,MONDO:0000171,"muscular dystrophy-dystroglycanopathy, type A"
+MONDO_0012041,MONDO:0012041,MUTYH-related attenuated familial adenomatous polyposis
+MONDO_0012154,MONDO:0012154,myopia 6
+MONDO_0016107,MONDO:0016107,myotonic dystrophy
+MONDO_0008056,MONDO:0008056,myotonic dystrophy type 1
+MONDO_0011266,MONDO:0011266,myotonic dystrophy type 2
+MONDO_0010794,MONDO:0010794,NARP syndrome
+MONDO_0009735,MONDO:0009735,Netherton syndrome
+MONDO_0016987,MONDO:0016987,neuroacanthocytosis
+MONDO_0009578,MONDO:0009578,neurocutaneous melanocytosis
+MONDO_0018975,MONDO:0018975,neurofibromatosis type 1
+MONDO_0007039,MONDO:0007039,neurofibromatosis type 2
+MONDO_0009744,MONDO:0009744,neuronal ceroid lipofuscinosis 1
+MONDO_0009756,MONDO:0009756,Niemann-Pick disease type A
+MONDO_0018982,MONDO:0018982,Niemann-Pick disease type C
+MONDO_0008060,MONDO:0008060,nonsyndromic congenital nail disorder 1
+MONDO_0009366,MONDO:0009366,normal pressure hydrocephalus
+MONDO_0017138,MONDO:0017138,Opitz G/BBB syndrome
+MONDO_0008133,MONDO:0008133,optic atrophy 3
+MONDO_0019019,MONDO:0019019,osteogenesis imperfecta
+MONDO_0017198,MONDO:0017198,osteopetrosis
+MONDO_0011972,MONDO:0011972,ovarian hyperstimulation syndrome
+MONDO_0008195,MONDO:0008195,paramyotonia congenita of Von Eulenburg
+MONDO_0700089,MONDO:0700089,paroxysmal nonkinesigenic dyskinesia 1
+MONDO_0019631,MONDO:0019631,persistent hyperplastic primary vitreous
+MONDO_0013968,MONDO:0013968,PGM1-CDG
+MONDO_0009861,MONDO:0009861,phenylketonuria
+MONDO_0015643,MONDO:0015643,photosensitive epilepsy
+MONDO_0012589,MONDO:0012589,Pitt-Hopkins syndrome
+MONDO_0008907,MONDO:0008907,PMM2-CDG
+MONDO_0008272,MONDO:0008272,polysyndactyly 4
+MONDO_0008300,MONDO:0008300,Prader-Willi syndrome
+MONDO_0016575,MONDO:0016575,primary ciliary dyskinesia
+MONDO_0007571,MONDO:0007571,primary erythermalgia
+MONDO_0007572,MONDO:0007572,primary familial polycythemia due to EPO receptor mutation
+MONDO_0002474,MONDO:0002474,primary hyperoxaluria
+MONDO_0009823,MONDO:0009823,primary hyperoxaluria type 1
+MONDO_0007240,MONDO:0007240,"progressive familial heart block, type 1A"
+MONDO_0008892,MONDO:0008892,progressive familial intrahepatic cholestasis type 1
+MONDO_0020074,MONDO:0020074,progressive myoclonus epilepsy
+MONDO_0019037,MONDO:0019037,progressive supranuclear palsy
+MONDO_0011628,MONDO:0011628,propionic acidemia
+MONDO_0019992,MONDO:0019992,pseudohypoparathyroidism
+MONDO_0009329,MONDO:0009329,pulmonary venoocclusive disease 2
+MONDO_0015597,MONDO:0015597,pustulosis palmaris et plantaris
+MONDO_0019169,MONDO:0019169,pyruvate dehydrogenase deficiency
+MONDO_0010717,MONDO:0010717,pyruvate dehydrogenase E1-alpha deficiency
+MONDO_0009179,MONDO:0009179,recessive dystrophic epidermolysis bullosa
+MONDO_0019200,MONDO:0019200,retinitis pigmentosa
+MONDO_0011137,MONDO:0011137,retinitis pigmentosa 19
+MONDO_0011272,MONDO:0011272,retinitis pigmentosa 25
+MONDO_0013395,MONDO:0013395,retinitis pigmentosa 4
+MONDO_0006952,MONDO:0006952,retinopathy of prematurity
+MONDO_0010726,MONDO:0010726,Rett syndrome
+MONDO_0015776,MONDO:0015776,rhizomelic chondrodysplasia punctata
+MONDO_0008392,MONDO:0008392,Roussy-Levy syndrome
+MONDO_0010006,MONDO:0010006,Sandhoff disease
+MONDO_0009655,MONDO:0009655,Sanfilippo syndrome type A
+MONDO_0011760,MONDO:0011760,Scheie syndrome
+MONDO_0015974,MONDO:0015974,severe combined immunodeficiency
+MONDO_0014168,MONDO:0014168,severe combined immunodeficiency due to CORO1A deficiency
+MONDO_0009549,MONDO:0009549,severe early-childhood-onset retinal dystrophy
+MONDO_0014206,MONDO:0014206,severe early-onset pulmonary alveolar proteinosis due to MARS deficiency
+MONDO_0008722,MONDO:0008722,short chain acyl-CoA dehydrogenase deficiency
+MONDO_0009833,MONDO:0009833,Shwachman-Diamond syndrome
+MONDO_0011382,MONDO:0011382,sickle cell anemia
+MONDO_0008394,MONDO:0008394,Silver-Russell syndrome
+MONDO_0010035,MONDO:0010035,Smith-Lemli-Opitz syndrome
+MONDO_0008165,MONDO:0008165,southeast Asian ovalocytosis
+MONDO_0009672,MONDO:0009672,"spinal muscular atrophy, type III"
+MONDO_0010056,MONDO:0010056,"spinal muscular atrophy, type IV"
+MONDO_0007738,MONDO:0007738,spondyloepiphyseal dysplasia with congenital joint dislocations
+MONDO_0019353,MONDO:0019353,Stargardt disease
+MONDO_0008501,MONDO:0008501,Sturge-Weber syndrome
+MONDO_0011959,MONDO:0011959,sweet syndrome
+MONDO_0008919,MONDO:0008919,systemic primary carnitine deficiency disease
+MONDO_0010100,MONDO:0010100,Tay-Sachs disease
+MONDO_0008555,MONDO:0008555,thrombocytopenia 2
+MONDO_0014837,MONDO:0014837,thrombocytopenia 6
+MONDO_0012868,MONDO:0012868,"thrombophilia due to protein S deficiency, autosomal dominant"
+MONDO_0010131,MONDO:0010131,"thyroid hormone resistance, generalized, autosomal recessive"
+MONDO_0010979,MONDO:0010979,Timothy syndrome
+MONDO_0009383,MONDO:0009383,transient familial neonatal hyperbilirubinemia
+MONDO_0008612,MONDO:0008612,tuberous sclerosis 1
+MONDO_0013199,MONDO:0013199,tuberous sclerosis 2
+MONDO_0019499,MONDO:0019499,Turner syndrome
+MONDO_0004739,MONDO:0004739,urea cycle disorder
+MONDO_0010168,MONDO:0010168,Usher syndrome type 1
+MONDO_0007931,MONDO:0007931,vitelliform macular dystrophy 2
+MONDO_0008667,MONDO:0008667,von Hippel-Lindau disease
+MONDO_0010200,MONDO:0010200,Wilson disease
+MONDO_0010518,MONDO:0010518,Wiskott-Aldrich syndrome
+MONDO_0010264,MONDO:0010264,X-linked adrenal hypoplasia congenita
+MONDO_0024551,MONDO:0024551,X-linked lymphoproliferative disease due to SH2D1A deficiency
+MONDO_0019609,MONDO:0019609,Zellweger spectrum disorders
