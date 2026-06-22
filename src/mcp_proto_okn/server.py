@@ -259,14 +259,7 @@ class SPARQLServer:
         os.environ.setdefault("SSL_CERT_FILE", certifi.where())
         os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
         
-        # Initialize SPARQLWrapper with only the query endpoint
-
-        # As a workaround, use the federated endpoint
-        # self.sparql = SPARQLWrapper(endpoint_url)
-        # The per-graph endpoints (https://apps.okn.us/<kg>/sparql) only respond
-        # to queries that omit a FROM clause; this server always injects one to
-        # scope to the named graph. The cross-graph federation endpoint accepts
-        # FROM clauses.
+        # Initialize SPARQLWrapper
         federated_endpoint = "https://apps.okn.us/federation/sparql"
         self.sparql = SPARQLWrapper(federated_endpoint)
         self.sparql.setReturnFormat(JSON)
