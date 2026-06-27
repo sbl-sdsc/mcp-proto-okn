@@ -55,14 +55,11 @@ Entity --> Entity : predisposes_to_condition
 Entity --> Entity : preventative_for_condition
 Entity --> Entity : ADMINISTERED_TO / MEASURES
 Entity --> Entity : OCCURS_IN / PRODUCES / USES
-Entity --> Entity : NEG_TREATS / NEG_CAUSES (negated)
+Entity --> Entity : NEG_TREATS / NEG_CAUSES
 
-Statement --> Entity : rdf:subject
-Statement --> Entity : rdf:object
-Statement ..> Entity : rdf:predicate (relationship IRI)
-
-note for Statement "Reification of one asserted edge.\ndc:source = PubMed, MIMIC, or both."
-note for Entity "UMLS CUI node.\n64 relationship predicates total:\n17 Biolink + 16 custom + 31 NEG_*"
+Statement --> Entity : rdf_subject
+Statement --> Entity : rdf_object
+Statement ..> Entity : rdf_predicate
 ```
 
 **Reading the diagram.** `Entity → Entity` edges are the asserted biomedical relationships (only a representative subset of the 64 predicates is labeled). For every such edge there is a parallel `Statement` whose `rdf:subject`/`rdf:object` point back to the same two entities and whose `dc:source` records whether the assertion came from PubMed literature, MIMIC clinical data, or both — the mechanism Bio-Health KG uses for provenance tracking.
