@@ -115,7 +115,7 @@ Each link points to a chat transcript for generating an overview and a class dia
 | [biobricks-toxcast](docs/examples/biobricks-toxcast_overview.md) | [ufokn](docs/examples/ufokn_overview.md) |  |  | [nde](docs/examples/nde_overview.md) |
 | [spoke-genelab](docs/examples/spoke-genelab_overview.md) | [wildlifekn](docs/examples/wildlifekn_overview.md) |  |  | [ncipidkg](docs/examples/ncipidkg-overview.md) |
 | [spoke-okn](docs/examples/spoke-okn_overview.md) | [climatemodelskg](docs/examples/climatemodelskg_overview.md) |  |  | [oard-kg](docs/examples/oard-kg-overview.md) |
-|  | [sockg](docs/examples/sockg_overview.md) |  | | [pankgraph](docs/examples/pankgraph-overview.md) |
+| [biohealth](docs/examples/biohealth_overview.md) | [sockg](docs/examples/sockg_overview.md) |  | | [pankgraph](docs/examples/pankgraph-overview.md) |
 |  | | | | [phaseskg](docs/examples/phaseskg-overview.md) |
 |  | | | | [prokn](docs/examples/prokn_overview.md) |
 
