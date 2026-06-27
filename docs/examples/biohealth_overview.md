@@ -48,18 +48,80 @@ class Statement {
   string source
 }
 
-Entity --> Entity : treats / causes / affects
-Entity --> Entity : coexists_with / location_of
-Entity --> Entity : interacts_with / part_of
-Entity --> Entity : predisposes_to_condition
-Entity --> Entity : preventative_for_condition
-Entity --> Entity : ADMINISTERED_TO / MEASURES
-Entity --> Entity : OCCURS_IN / PRODUCES / USES
-Entity --> Entity : NEG_TREATS / NEG_CAUSES
-
+%% Reified-statement structure and provenance
 Statement --> Entity : rdf_subject
 Statement --> Entity : rdf_object
 Statement ..> Entity : rdf_predicate
+
+%% Biolink relationship predicates (17)
+Entity --> Entity : affects
+Entity --> Entity : associated_with
+Entity --> Entity : causes
+Entity --> Entity : coexists_with
+Entity --> Entity : decreases_amount_or_activity_of
+Entity --> Entity : diagnoses
+Entity --> Entity : disrupts
+Entity --> Entity : increases_amount_or_activity_of
+Entity --> Entity : interacts_with
+Entity --> Entity : location_of
+Entity --> Entity : manifestation_of
+Entity --> Entity : part_of
+Entity --> Entity : precedes
+Entity --> Entity : predisposes_to_condition
+Entity --> Entity : preventative_for_condition
+Entity --> Entity : subclass_of
+Entity --> Entity : treats
+
+%% Custom biohealthkg schema predicates (16)
+Entity --> Entity : ADMINISTERED_TO
+Entity --> Entity : COMPLICATES
+Entity --> Entity : CONVERTS_TO
+Entity --> Entity : LOCATION_OF(SPEC)
+Entity --> Entity : MEASUREMENT_OF
+Entity --> Entity : MEASURES
+Entity --> Entity : METHOD_OF
+Entity --> Entity : OCCURS_IN
+Entity --> Entity : PROCESS_OF
+Entity --> Entity : PRODUCES
+Entity --> Entity : STIMULATES
+Entity --> Entity : USES
+Entity --> Entity : compared_with
+Entity --> Entity : higher_than
+Entity --> Entity : lower_than
+Entity --> Entity : same_as
+
+%% Negated (NEG_) assertions (31, shown dashed)
+Entity ..> Entity : NEG_ADMINISTERED_TO
+Entity ..> Entity : NEG_AFFECTS
+Entity ..> Entity : NEG_ASSOCIATED_WITH
+Entity ..> Entity : NEG_AUGMENTS
+Entity ..> Entity : NEG_CAUSES
+Entity ..> Entity : NEG_COEXISTS_WITH
+Entity ..> Entity : NEG_COMPLICATES
+Entity ..> Entity : NEG_CONVERTS_TO
+Entity ..> Entity : NEG_DIAGNOSES
+Entity ..> Entity : NEG_DISRUPTS
+Entity ..> Entity : NEG_INHIBITS
+Entity ..> Entity : NEG_INTERACTS_WITH
+Entity ..> Entity : NEG_ISA
+Entity ..> Entity : NEG_LOCATION_OF
+Entity ..> Entity : NEG_MANIFESTATION_OF
+Entity ..> Entity : NEG_MEASUREMENT_OF
+Entity ..> Entity : NEG_MEASURES
+Entity ..> Entity : NEG_METHOD_OF
+Entity ..> Entity : NEG_OCCURS_IN
+Entity ..> Entity : NEG_PART_OF
+Entity ..> Entity : NEG_PRECEDES
+Entity ..> Entity : NEG_PREDISPOSES
+Entity ..> Entity : NEG_PREVENTS
+Entity ..> Entity : NEG_PROCESS_OF
+Entity ..> Entity : NEG_PRODUCES
+Entity ..> Entity : NEG_STIMULATES
+Entity ..> Entity : NEG_TREATS
+Entity ..> Entity : NEG_USES
+Entity ..> Entity : NEG_higher_than
+Entity ..> Entity : NEG_lower_than
+Entity ..> Entity : NEG_same_as
 ```
 
-**Reading the diagram.** `Entity → Entity` edges are the asserted biomedical relationships (only a representative subset of the 64 predicates is labeled). For every such edge there is a parallel `Statement` whose `rdf:subject`/`rdf:object` point back to the same two entities and whose `dc:source` records whether the assertion came from PubMed literature, MIMIC clinical data, or both — the mechanism Bio-Health KG uses for provenance tracking.
+**Reading the diagram.** The diagram is complete: all 70 predicates appear. The `Entity → Entity` edges are the 64 asserted biomedical relationships — 17 Biolink predicates, 16 custom `biohealthkg` schema predicates, and 31 negated `NEG_*` assertions (drawn dashed). The `Statement` class carries the reified-statement structure: `rdf_subject` and `rdf_object` point back to the two entities of an asserted edge, `rdf_predicate` records which relationship was asserted, and the `source` member (`dc:source`) records whether the assertion came from PubMed literature, MIMIC clinical data, or both — the mechanism Bio-Health KG uses for provenance tracking.
