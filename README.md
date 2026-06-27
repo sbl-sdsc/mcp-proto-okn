@@ -118,6 +118,7 @@ Each link points to a chat transcript for generating an overview and a class dia
 | [biohealth](docs/examples/biohealth_overview.md) | [sockg](docs/examples/sockg_overview.md) |  | | [pankgraph](docs/examples/pankgraph-overview.md) |
 |  | | | | [phaseskg](docs/examples/phaseskg-overview.md) |
 |  | | | | [prokn](docs/examples/prokn_overview.md) |
+|  | | | | [digcfdekg](docs/examples/digcfdekg_overview.md) |
 
 **(*) ARCH: Advancing Research Capacity in Health, NSF Proto-OKN supplemental awards.**
 
