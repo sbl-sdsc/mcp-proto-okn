@@ -107,19 +107,19 @@ Each link points to a chat transcript for generating an overview and a class dia
 
 | 🧬 Biology & Health | 🌱 Environment | ⚖️ Justice | 🛠️ Technology & Manufacturing | NASA/NIH/ARCH(*)
 |--------------------|---------------|-----------|-------------------------------|-------------|
-| [biobricks-aopwiki](docs/examples/biobricks-aopwiki_overview.md) | [sawgraph](docs/examples/sawgraph_overview.md) | [ruralkg](docs/examples/ruralkg_overview.md) | [securechainkg](docs/examples/securechainkg_overview.md) | [biomarkerkg](docs/examples/biomarkerkg-overview.md) |
-| [biobricks-ice](docs/examples/biobricks-ice_overview.md) | [fiokg](docs/examples/fiokg_overview.md) | [scales](docs/examples/scales_overview.md) | [sudokn](docs/examples/sudokn_overview.md) | [evoweb](docs/examples/evoweb-overview.md)
-| [biobricks-mesh](docs/examples/biobricks-mesh_overview.md) | [geoconnex](docs/examples/geoconnex_overview.md) | [nikg](docs/examples/nikg_overview.md) | | [gene-expression-atlas-okn](docs/examples/gene-expression-atlas-okn_overview.md) |
-| [biobricks-pubchem-annotations](docs/examples/biobricks-pubchem-annotations_overview.md) | [spatialkg](docs/examples/spatialkg_overview.md) | [dreamkg](docs/examples/dreamkg_overview.md) |  | [maudekg](docs/examples/maudekg-overview.md)
-| [biobricks-tox21](docs/examples/biobricks-tox21_overview.md) | [hydrologykg](docs/examples/hydrologykg_overview.md) |  |  | [nasa-gesdisc-kg](docs/examples/nasa-gesdisc-kg_overview.md) |
-| [biobricks-toxcast](docs/examples/biobricks-toxcast_overview.md) | [ufokn](docs/examples/ufokn_overview.md) |  |  | [nde](docs/examples/nde_overview.md) |
-| [spoke-genelab](docs/examples/spoke-genelab_overview.md) | [wildlifekn](docs/examples/wildlifekn_overview.md) |  |  | [ncipidkg](docs/examples/ncipidkg-overview.md) |
-| [spoke-okn](docs/examples/spoke-okn_overview.md) | [climatemodelskg](docs/examples/climatemodelskg_overview.md) |  |  | [oard-kg](docs/examples/oard-kg-overview.md) |
-| [biohealth](docs/examples/biohealth_overview.md) | [sockg](docs/examples/sockg_overview.md) |  | | [pankgraph](docs/examples/pankgraph-overview.md) |
-|  | | | | [phaseskg](docs/examples/phaseskg-overview.md) |
-|  | | | | [prokn](docs/examples/prokn_overview.md) |
-|  | | | | [digcfdekg](docs/examples/digcfdekg_overview.md) |
-|  | | | | [rdkg](docs/examples/rdkg_overview.md) |
+| [biobricks-aopwiki](docs/examples/biobricks-aopwiki_overview.md) | [climatemodelskg](docs/examples/climatemodelskg_overview.md) | [dreamkg](docs/examples/dreamkg_overview.md) | [securechainkg](docs/examples/securechainkg_overview.md) | [biomarkerkg](docs/examples/biomarkerkg-overview.md) |
+| [biobricks-ice](docs/examples/biobricks-ice_overview.md) | [fiokg](docs/examples/fiokg_overview.md) | [nikg](docs/examples/nikg_overview.md) | [sudokn](docs/examples/sudokn_overview.md) | [digcfdekg](docs/examples/digcfdekg_overview.md) |
+| [biobricks-mesh](docs/examples/biobricks-mesh_overview.md) | [geoconnex](docs/examples/geoconnex_overview.md) | [ruralkg](docs/examples/ruralkg_overview.md) |  | [evoweb](docs/examples/evoweb-overview.md) |
+| [biobricks-pubchem-annotations](docs/examples/biobricks-pubchem-annotations_overview.md) | [hydrologykg](docs/examples/hydrologykg_overview.md) | [scales](docs/examples/scales_overview.md) |  | [gene-expression-atlas-okn](docs/examples/gene-expression-atlas-okn_overview.md) |
+| [biobricks-tox21](docs/examples/biobricks-tox21_overview.md) | [sawgraph](docs/examples/sawgraph_overview.md) |  |  | [maudekg](docs/examples/maudekg-overview.md) |
+| [biobricks-toxcast](docs/examples/biobricks-toxcast_overview.md) | [sockg](docs/examples/sockg_overview.md) |  |  | [nasa-gesdisc-kg](docs/examples/nasa-gesdisc-kg_overview.md) |
+| [biohealth](docs/examples/biohealth_overview.md) | [spatialkg](docs/examples/spatialkg_overview.md) |  |  | [ncipidkg](docs/examples/ncipidkg-overview.md) |
+| [spoke-genelab](docs/examples/spoke-genelab_overview.md) | [ufokn](docs/examples/ufokn_overview.md) |  |  | [nde](docs/examples/nde_overview.md) |
+| [spoke-okn](docs/examples/spoke-okn_overview.md) | [wildlifekn](docs/examples/wildlifekn_overview.md) |  |  | [oard-kg](docs/examples/oard-kg-overview.md) |
+|  |  |  |  | [pankgraph](docs/examples/pankgraph-overview.md) |
+|  |  |  |  | [phaseskg](docs/examples/phaseskg-overview.md) |
+|  |  |  |  | [prokn](docs/examples/prokn_overview.md) |
+|  |  |  |  | [rdkg](docs/examples/rdkg_overview.md) |
 
 **(*) ARCH: Advancing Research Capacity in Health, NSF Proto-OKN supplemental awards.**
 
