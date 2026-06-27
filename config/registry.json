@@ -2315,6 +2315,72 @@
     ]
   },
   {
+    "name": "rdkg",
+    "display_name": "Rdkg",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/rdkg",
+    "endpoint_url": "https://apps.okn.us/rdkg/sparql",
+    "domain_tags": [
+      "biomedical",
+      "disease",
+      "genomics",
+      "phenotypes",
+      "rare_disease"
+    ],
+    "description_summary": "The Rare Disease Knowledge Graph (RDKG) is an open knowledge graph that harmonizes rare disease entities and their cross-references across major biomedical terminologies, including the MONDO Disease Ontology, Orphanet/ORDO, OMIM phenotypic series, and UMLS. It is designed to support rare disease knowledge discovery, entity linking across sources, and downstream analytics for evidence synthesis. The graph models diseases together with the genes, sequence variants, phenotypes, drugs, treatments, anatomical locations, biological processes, and chemical exposures connected to them, using Biolink Model classes and predicates. Relationships include gene_associated_with_condition, causes_condition, has_gene, has_phenotype, has_mode_of_inheritance, has_onset, disease_has_location, treats, contraindicated_for, prevented_by, and subclass_of disease hierarchies. Diseases are identified through MONDO, Orphanet, OMIM, and UMLS, genes through NCBI Gene, and phenotypes and inheritance patterns through the Human Phenotype Ontology. It can answer questions about rare disease genes and variants, phenotypes and inheritance, treatments and contraindications, and cross-terminology disease mappings.",
+    "entity_types": {
+      "classes": [
+        "Anatomical Entity",
+        "Biological Process",
+        "Chemical Entity",
+        "Chemical Exposure",
+        "Disease",
+        "Drug",
+        "Exposure Event",
+        "Gene",
+        "Phenotypic Feature",
+        "Sequence Variant",
+        "Treatment"
+      ],
+      "predicates": [
+        "comment",
+        "label",
+        "versionInfo",
+        "prefLabel",
+        "Associated With",
+        "category",
+        "Causes Condition",
+        "Contraindicated For",
+        "Contributes To",
+        "Disease Has Location",
+        "Gene Associated With Condition",
+        "Genetic Association",
+        "Has Gene",
+        "Has Mode Of Inheritance",
+        "Has Onset",
+        "Has Phenotype",
+        "id",
+        "Prevented By",
+        "Related To",
+        "Subclass Of",
+        "Treats"
+      ],
+      "has_edge_properties": false
+    },
+    "identifier_namespaces": [
+      "MONDO",
+      "Orphanet",
+      "OMIM",
+      "UMLS",
+      "NCBI_Gene",
+      "HPO"
+    ],
+    "example_queries": [
+      "What genes are associated with a specific rare disease?",
+      "What phenotypes and mode of inheritance are linked to a rare disease?",
+      "How is a rare disease cross-referenced across MONDO, Orphanet, and OMIM?"
+    ]
+  },
+  {
     "name": "ruralkg",
     "display_name": "Ruralkg",
     "named_graph_uri": "https://purl.org/okn/frink/kg/ruralkg",

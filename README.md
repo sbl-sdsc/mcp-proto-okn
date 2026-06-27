@@ -119,6 +119,7 @@ Each link points to a chat transcript for generating an overview and a class dia
 |  | | | | [phaseskg](docs/examples/phaseskg-overview.md) |
 |  | | | | [prokn](docs/examples/prokn_overview.md) |
 |  | | | | [digcfdekg](docs/examples/digcfdekg_overview.md) |
+|  | | | | [rdkg](docs/examples/rdkg_overview.md) |
 
 **(*) ARCH: Advancing Research Capacity in Health, NSF Proto-OKN supplemental awards.**
 

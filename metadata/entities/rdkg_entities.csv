@@ -1,0 +1,33 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+https://w3id.org/biolink/vocab/AnatomicalEntity,Anatomical Entity,An anatomical structure or body part.,Class,,,
+https://w3id.org/biolink/vocab/BiologicalProcess,Biological Process,A biological process.,Class,,,
+https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A chemical substance or entity.,Class,,,
+https://w3id.org/biolink/vocab/ChemicalExposure,Chemical Exposure,"An exposure to a chemical, represented as a risk or contributing factor for disease.",Class,,,
+https://w3id.org/biolink/vocab/Disease,Disease,"A rare disease or disorder, harmonized across MONDO, Orphanet/ORDO, OMIM, and UMLS identifiers.",Class,,,
+https://w3id.org/biolink/vocab/Drug,Drug,A drug or pharmaceutical agent used to treat disease.,Class,,,
+https://w3id.org/biolink/vocab/ExposureEvent,Exposure Event,An exposure event associated with disease.,Class,,,
+https://w3id.org/biolink/vocab/Gene,Gene,"A gene associated with disease, identified by its NCBI Gene identifier.",Class,,,
+https://w3id.org/biolink/vocab/PhenotypicFeature,Phenotypic Feature,"A phenotype or clinical feature, such as a sign, symptom, mode of inheritance, or onset (HPO terms).",Class,,,
+https://w3id.org/biolink/vocab/SequenceVariant,Sequence Variant,A genomic sequence variant.,Class,,,
+https://w3id.org/biolink/vocab/Treatment,Treatment,A treatment or therapeutic intervention.,Class,,,
+http://www.w3.org/2000/01/rdf-schema#comment,comment,A descriptive comment or definition for an entity.,Predicate,,,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label for an entity.,Predicate,,,
+http://www.w3.org/2002/07/owl#versionInfo,versionInfo,Version information for the knowledge graph.,Predicate,,,
+http://www.w3.org/2004/02/skos/core#prefLabel,prefLabel,The preferred human-readable label for an entity.,Predicate,,,
+https://w3id.org/biolink/vocab/associated_with,Associated With,A general association between a disease and a related entity such as a treatment.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/Treatment
+https://w3id.org/biolink/vocab/category,category,The Biolink category assigned to an entity.,Predicate,,,
+https://w3id.org/biolink/vocab/causes_condition,Causes Condition,Relates a variant to the disease it causes.,Predicate,,https://w3id.org/biolink/vocab/SequenceVariant,https://w3id.org/biolink/vocab/Disease
+https://w3id.org/biolink/vocab/contraindicated_for,Contraindicated For,Indicates a drug or treatment that is contraindicated for a disease.,Predicate,,https://w3id.org/biolink/vocab/Drug|https://w3id.org/biolink/vocab/Treatment,https://w3id.org/biolink/vocab/Disease
+https://w3id.org/biolink/vocab/contributes_to,Contributes To,"Relates a contributing factor, such as a chemical exposure or gene, to a disease.",Predicate,,https://w3id.org/biolink/vocab/ChemicalExposure|https://w3id.org/biolink/vocab/Gene,https://w3id.org/biolink/vocab/Disease
+https://w3id.org/biolink/vocab/disease_has_location,Disease Has Location,Relates a disease to the anatomical structure or biological process where it manifests.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/AnatomicalEntity|https://w3id.org/biolink/vocab/BiologicalProcess
+https://w3id.org/biolink/vocab/gene_associated_with_condition,Gene Associated With Condition,Relates a gene to a disease condition.,Predicate,,https://w3id.org/biolink/vocab/Gene,https://w3id.org/biolink/vocab/Disease
+https://w3id.org/biolink/vocab/genetic_association,Genetic Association,A genetic association between a disease and a gene.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/Gene
+https://w3id.org/biolink/vocab/has_gene,Has Gene,Relates a variant to its gene.,Predicate,,https://w3id.org/biolink/vocab/SequenceVariant,https://w3id.org/biolink/vocab/Gene
+https://w3id.org/biolink/vocab/has_mode_of_inheritance,Has Mode Of Inheritance,Relates a disease to its mode of inheritance (an HPO inheritance term).,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/PhenotypicFeature
+https://w3id.org/biolink/vocab/has_onset,Has Onset,Relates a disease to its age or type of onset.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/PhenotypicFeature
+https://w3id.org/biolink/vocab/has_phenotype,Has Phenotype,Relates a disease to its associated phenotypes.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/PhenotypicFeature
+https://w3id.org/biolink/vocab/id,id,The compact identifier (CURIE) of an entity.,Predicate,,,
+https://w3id.org/biolink/vocab/prevented_by,Prevented By,Relates a disease to a treatment that prevents it.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/Treatment
+https://w3id.org/biolink/vocab/related_to,Related To,A general association between entities.,Predicate,,https://w3id.org/biolink/vocab/Disease,
+https://w3id.org/biolink/vocab/subclass_of,Subclass Of,Indicates a hierarchical relationship between diseases.,Predicate,,https://w3id.org/biolink/vocab/Disease,https://w3id.org/biolink/vocab/Disease
+https://w3id.org/biolink/vocab/treats,Treats,Relates a drug to the disease it treats.,Predicate,,https://w3id.org/biolink/vocab/Drug|https://w3id.org/biolink/vocab/Treatment,https://w3id.org/biolink/vocab/Disease
