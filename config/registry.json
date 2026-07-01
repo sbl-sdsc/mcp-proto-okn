@@ -753,7 +753,9 @@
       ],
       "predicates": [
         "member",
-        "label"
+        "label",
+        "connected to",
+        "secondary component"
       ],
       "has_edge_properties": false
     },
