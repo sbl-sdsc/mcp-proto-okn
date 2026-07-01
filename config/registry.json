@@ -430,22 +430,23 @@
       "biomarkers",
       "biomedical",
       "disease",
-      "phenotypes"
+      "genomics"
     ],
-    "description_summary": "The Biomarker Knowledge Graph (Biomarker KG) is a biomedical RDF knowledge graph for organizing biomarker-centered evidence and analysis results. Its schema, reflected in the attached entity file, is grounded in Biolink and VoID terms, with core classes for datasets, studies, diseases, phenotypic features, disease\u2013phenotype associations, entity\u2013disease associations, and statistical analysis outputs such as concept-count and log-odds analysis results. The graph captures not only biomarker-related entities and associations, but also provenance and evidence: studies connect to analysis results, associations link to supporting studies, and results reference supporting datasets, sample sizes, counts, odds ratios, and confidence intervals. Public KG registry information describes BiomarkerKG as a resource integrating biomarker data across anatomical structures, compounds, conditions, roles, and variants to support exploration of biomarker relationships. Together, these design choices make Biomarker KG useful for biomarker discovery, cohort-level evidence review, disease-phenotype interpretation, and downstream graph analytics or machine-learning workflows.",
+    "description_summary": "The Biomarker Knowledge Graph (BiomarkerKG) is a biomedical RDF knowledge graph derived from the BiomarkerKB/Clinical Biomarkers resource that organizes clinically relevant biomarkers and their relationships to diseases, biological entities, and anatomical sources. Its schema is grounded in the Ontology for Biomarkers of Clinical Interest (OBCI). Each biomarker is linked to a disease or condition through relationships that capture its clinical role, following the BEST classification system: diagnostic for, prognostic for, monitors status of, and indicates risk of developing. Biomarkers are further connected to their assessed entities, such as genes and chemical compounds that are present or that show above-normal or below-normal levels, and to the anatomical structures from which measurement samples are taken. Diseases use Disease Ontology and OMIM identifiers, genes and compounds use PubChem and NCBI Gene identifiers, and anatomy uses UBERON. The graph supports questions about which biomarkers are diagnostic, prognostic, or risk indicators for specific diseases, which molecular entities underlie them, and what tissues are sampled to measure them.",
     "entity_types": {
       "classes": [
-        "Dataset",
-        "Concept Count Analysis Result",
-        "Disease",
-        "Disease To Phenotypic Feature Association",
-        "Entity To Disease Association",
-        "Log Odds Analysis Result",
-        "Phenotypic Feature",
-        "Phenotypic Feature To Phenotypic Feature Association",
-        "Study"
+        "Dataset"
       ],
       "predicates": [
+        "diagnostic for",
+        "monitors status of",
+        "prognostic for",
+        "indicates risk of developing",
+        "indicated by above normal level of",
+        "has BEST classification",
+        "indicated by below normal level of",
+        "indicated by presence of",
+        "determined using sample from",
         "modified",
         "last updated on",
         "version",
@@ -454,35 +455,22 @@
         "properties",
         "property",
         "property partition",
-        "triples",
-        "label",
-        "category",
-        "concept count object",
-        "concept count subject",
-        "concept pair count",
-        "dataset count",
-        "has study results",
-        "has supporting studies",
-        "log odds ratio",
-        "log odds ratio 95 ci",
-        "object",
-        "predicate",
-        "subject",
-        "supporting data set",
-        "total sample size"
+        "triples"
       ],
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "Biolink",
-      "HPO",
-      "MONDO",
-      "VoID"
+      "DOID",
+      "NCBI_Gene",
+      "OBCI",
+      "OMIM",
+      "PubChem",
+      "UBERON"
     ],
     "example_queries": [
-      "What biomarkers are associated with a specific disease?",
-      "Which disease-phenotype associations have supporting study evidence?",
-      "What log odds ratio evidence supports biomarker-disease associations?"
+      "What biomarkers are diagnostic for a specific disease?",
+      "Which genes or compounds indicate the risk of developing a disease?",
+      "What tissue or anatomical sample is used to measure a biomarker?"
     ]
   },
   {
