@@ -32,6 +32,23 @@ PREFIX biolink: <https://w3id.org/biolink/vocab/>
 
 DESCRIPTION_PREDICATES = "rdfs:comment|skos:definition|dct:description|dc:description"
 
+# VoID dataset self-description metadata emitted by the FRINK endpoints' auto-generated
+# summaries. These describe the dataset itself (its size, partitions, version, and update
+# time), not the KG's data schema, so they are excluded from the entity inventory.
+VOID_METADATA_NAMESPACES = (
+    "http://rdfs.org/ns/void#",   # VoID core (void:Dataset, void:triples, void:propertyPartition, ...)
+    "http://ldf.fi/void-ext#",    # VoID extension (datatype/language/objectClass partitions, ...)
+    "http://purl.org/pav/",       # Provenance/versioning (pav:version, pav:lastUpdatedOn, ...)
+)
+VOID_METADATA_URIS = frozenset({
+    "http://purl.org/dc/terms/modified",  # dataset last-modified timestamp in the VoID summary
+})
+
+
+def is_void_metadata(uri: str) -> bool:
+    """True if the URI is VoID dataset self-description metadata, not part of the KG data schema."""
+    return uri in VOID_METADATA_URIS or uri.startswith(VOID_METADATA_NAMESPACES)
+
 
 def configure_kg(kg: str) -> None:
     """Configure graph, endpoints, and output file for the command-line KG argument."""
@@ -362,6 +379,14 @@ def main():
     endpoint = pick_endpoint()
     classes = get_classes(endpoint)
     predicates = get_predicates(endpoint)
+
+    # Drop VoID dataset self-description metadata; it is not part of the KG data schema.
+    classes = {c for c in classes if not is_void_metadata(c)}
+    predicates = {p: io for p, io in predicates.items() if not is_void_metadata(p)}
+    for io in predicates.values():
+        io["sources"] = {s for s in io["sources"] if not is_void_metadata(s)}
+        io["targets"] = {t for t in io["targets"] if not is_void_metadata(t)}
+
     uris = set(classes) | set(predicates.keys())
     metadata = metadata_for(uris, endpoint)
     edge_props = detect_edge_properties(endpoint, predicates)
