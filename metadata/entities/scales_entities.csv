@@ -1,110 +1,303 @@
-URI,Label,Description,Type
-http://release.niem.gov/niem/domains/jxdm/7.2/Arrest,Arrest,An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/ArrestCharge,Arrest Charge,A formal allegation of a violation of a statute and/or ordinance in association with an arrest,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Attorney,Attorney,An attorney,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Booking,Booking,An administrative step taken after an arrested subject is brought to a police station or detention facility,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/BookingFacility,Booking Facility,A facility where a subject is detained as a result of booking,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefendantParty,Case Defendant Party,An entity being charged or sued in a court of law,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefenseAttorney,Case Defense Attorney,An attorney who defends a subject in a case,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingAttorney,Case Initiating Attorney,An attorney who initiated a case,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingParty,Case Initiating Party,An entity that initiated a case,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseJudge,Case Judge,A judge associated with a case,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Charge,Charge,A formal allegation that a specific person has committed a specific offense,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Court,Court,A court or a unit of a court responsible for trying justice proceedings,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Judge,Judge,An official who hears and decides cases brought before a court of law,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/LawEnforcementOfficial,Law Enforcement Official,A peace official who has the authority to enforce the law,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/RegisterAction,Register Action,An entry in a register of actions in a case,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/RegisterOfActions,Register Of Actions,A chronological list of filings in a case,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Release,Release,A release of a subject from booking or from booking detention,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/Sentence,Sentence,A punishment imposed on a person convicted of a crime,Class
-http://release.niem.gov/niem/domains/jxdm/7.2/SentenceTerm,Sentence Term,A duration of a sentence,Class
-http://release.niem.gov/niem/niem-core/5.0/Person,Person,A human being,Class
-http://schemas.scales-okn.org/rdf/scales#CivilCase,Civil Case,A civil court case in the SCALES knowledge graph,Class
-http://schemas.scales-okn.org/rdf/scales#CriminalCase,Criminal Case,A criminal court case in the SCALES knowledge graph,Class
-http://schemas.scales-okn.org/rdf/scales#Firm,Firm,Links to a law firm entity,Class
-http://schemas.scales-okn.org/rdf/scales#Party,Party,Links to a party entity,Class
-http://fbi.gov/cjis/nibrs/2023.0/NIBRSReportCategoryCode,NIBRS report category code,FBI National Incident-Based Reporting System (NIBRS) report category code,Predicate
-http://fbi.gov/cjis/nibrs/2023.0/OffenseUCRCode,offense UCR code,FBI Uniform Crime Reporting (UCR) offense code,Predicate
-http://release.niem.gov/niem/codes/fips/5.0/CountyCode,county code,FIPS code identifying a US county,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ArrestOfficial,arrest official,A peace official who makes an arrest,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/Attorney,attorney,An attorney,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/BondAmount,bond amount,A monetary amount approved for bond,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/BondType,bond type,"A kind of bond (e.g., cash, surety)",Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/BookingFacility,booking facility,A facility where a subject is detained as a result of booking,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/BookingRelease,booking release,Details about a release of a subject from booking or detention,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/Case,case,An aggregation of information about a set of related activities and events,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseCharge,case charge,A charge or accusation a person is being tried for in a court of law,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseCourt,case court,A court in which a case is being tried,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefendantParty,case defendant party,An entity being charged or sued in a court of law,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseDefenseAttorney,case defense attorney,An attorney who defends a subject in a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingAttorney,case initiating attorney,An attorney who initiated a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseInitiatingParty,case initiating party,An entity that initiated a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseJudge,case judge,A judge associated with a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CaseOfficialRoleText,case official role text,A role played by an official in a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeBooking,charge booking,A booking associated with a charge,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeDisposition,charge disposition,The final outcome or result of a charge,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeDispositionCategoryText,charge disposition category text,"A kind of charge disposition (e.g., dismissed, guilty plea)",Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSentence,charge sentence,A sentence given to a person convicted of a charge,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSequenceID,charge sequence ID,A unique identifier for a charge in a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSeverityLevelCode,charge severity level code,"A level of severity of a charge (e.g., felony, misdemeanor)",Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeSubject,charge subject,A person alleged or found to have committed a crime,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ChargeText,charge text,A text description of a charge,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CourtCategoryCode,court category code,"A kind of court (e.g., appellate, circuit, district)",Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/CourtName,court name,A name of a court unit,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/DrugCategoryCode,drug category code,"A kind of drug (e.g., narcotic, stimulant)",Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/JudicialOfficialCategoryText,judicial official category text,"A kind of judicial official (e.g., judge, magistrate)",Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/ParticipantRoleCategoryText,participant role category text,A kind of role played by a participant in a case,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/PersonCharge,person charge,A charge associated with a person,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/PersonSexCode,person sex code,A code identifying the gender or sex of a person,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/RegisterActionDate,register action date,A date a register of actions entry was filed,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/RegisterActionDescriptionText,register action description text,A description of an entry in the docket or register of actions,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/Sentence,sentence,A punishment imposed on a person convicted of a crime,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/SentenceDescriptionText,sentence description text,A description of the sentence imposed,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/SentenceTerm,sentence term,A duration of a sentence,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/StatuteKeywordText,statute keyword text,A keyword or phrase describing a statute,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/SubjectBooking,subject booking,A booking of a subject,Predicate
-http://release.niem.gov/niem/domains/jxdm/7.2/TermDuration,term duration,A specific length of time,Predicate
-http://release.niem.gov/niem/niem-core/5.0/ActivityDate,activity date,A date of an activity,Predicate
-http://release.niem.gov/niem/niem-core/5.0/AddressPostalCode,address postal code,A postal code or ZIP code,Predicate
-http://release.niem.gov/niem/niem-core/5.0/AdministrativeID,administrative ID,An identifier assigned for administrative purposes,Predicate
-http://release.niem.gov/niem/niem-core/5.0/CaseDocketID,case docket ID,An identifier used to reference a case in a docket,Predicate
-http://release.niem.gov/niem/niem-core/5.0/CaseGeneralCategoryText,case general category text,A broadly defined kind of case,Predicate
-http://release.niem.gov/niem/niem-core/5.0/CaseSubCategoryText,case sub category text,A more specific classification of a kind of case,Predicate
-http://release.niem.gov/niem/niem-core/5.0/ContactMailingAddress,contact mailing address,A postal mailing address for contact purposes,Predicate
-http://release.niem.gov/niem/niem-core/5.0/CourtName,court name,A name of a court or court unit,Predicate
-http://release.niem.gov/niem/niem-core/5.0/CourtPostalCode,court postal code,A postal code for the location of a court,Predicate
-http://release.niem.gov/niem/niem-core/5.0/EndDate,end date,An end date of an activity or event,Predicate
-http://release.niem.gov/niem/niem-core/5.0/EntityName,entity name,A name of an entity,Predicate
-http://release.niem.gov/niem/niem-core/5.0/FacilityName,facility name,A name of a facility,Predicate
-http://release.niem.gov/niem/niem-core/5.0/JurisdictionText,jurisdiction text,An area in which an organization or person has some kind of authoritative capacity or responsibility,Predicate
-http://release.niem.gov/niem/niem-core/5.0/LocaleCensusBlockID,locale census block ID,A census block identifier,Predicate
-http://release.niem.gov/niem/niem-core/5.0/OrganizationName,organization name,A name of an organization,Predicate
-http://release.niem.gov/niem/niem-core/5.0/PersonFullName,person full name,A complete name of a person,Predicate
-http://release.niem.gov/niem/niem-core/5.0/PersonID,person ID,A unique identifier assigned to a person,Predicate
-http://release.niem.gov/niem/niem-core/5.0/PersonRaceText,person race text,A classification of a person based on physical characteristics,Predicate
-http://release.niem.gov/niem/niem-core/5.0/PersonSexText,person sex text,A gender or sex of a person,Predicate
-http://release.niem.gov/niem/niem-core/5.0/StartDate,start date,A start date of an activity or event,Predicate
-http://release.niem.gov/niem/niem-core/5.0/StatusDescriptionText,status description text,A description of a status,Predicate
-http://schemas.scales-okn.org/rdf/scales#BirthYear,birth year,The year in which a person was born,Predicate
-http://schemas.scales-okn.org/rdf/scales#BookingCase,booking case,Links a booking event to a criminal case,Predicate
-http://schemas.scales-okn.org/rdf/scales#DocketEntry,docket entry,A specific entry in the court docket,Predicate
-http://schemas.scales-okn.org/rdf/scales#DocketTable,docket table,The table of docket entries for a case,Predicate
-http://schemas.scales-okn.org/rdf/scales#Firm,firm,Links to a law firm entity,Predicate
-http://schemas.scales-okn.org/rdf/scales#OntologyLabel,ontology label,A label from the ontology vocabulary,Predicate
-http://schemas.scales-okn.org/rdf/scales#Party,party,Links to a party entity,Predicate
-http://schemas.scales-okn.org/rdf/scales#appointedByParty,appointed by party,Indicates which party appointed an attorney,Predicate
-http://schemas.scales-okn.org/rdf/scales#assignedToDefendant,assigned to defendant,Indicates assignment of an attorney to a defendant,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasChargeType,has charge type,Specifies the type of criminal or civil charge,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasCommissionDate,has commission date,The date on which a judge was commissioned,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasExtraInfo,has extra info,Additional information not captured in other fields,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasFJCNodeID,has FJC node ID,Federal Judicial Center node identifier,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasHighestOffenseLevelOpening,has highest offense level opening,The highest offense level at case opening,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasHighestOffenseLevelTerminated,has highest offense level terminated,The highest offense level at case termination,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasIfpJudgeAttribution,has IFP judge attribution,In forma pauperis (IFP) judge attribution information,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasIfpLabel,has IFP label,In forma pauperis (IFP) status label,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasMemberCase,has member case,Links to a member case in a consolidated case,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasReferenceToOtherEntry,has reference to other entry,References another docket entry,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasRelatedCase,has related case,Links to a related case,Predicate
-http://schemas.scales-okn.org/rdf/scales#hasUVAJudgeDirID,has UVA judge dir ID,University of Virginia Judge Directory identifier,Predicate
-http://schemas.scales-okn.org/rdf/scales#isInCircuit,is in circuit,Indicates which federal circuit a court is in,Predicate
-http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,Arrest,"An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance, an outstanding arrest warrant, or probable cause information.",Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,Attorney,A person admitted to practice law in his or her respective state and authorized to perform both civil and criminal legal functions for clients.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Booking,Booking,"An administrative step taken after an arrested subject is brought to a police station or detention facility, which involves entry of the subject's name and other relevant facts on the police blotter, and which may also include photographing.",Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#BookingSubject,Booking Subject,A person who is booked.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseDefendantParty,Case Defendant Party,An entity being charged or sued in a court of law.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseDefenseAttorney,Case Defense Attorney,An attorney who defends a case.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseInitiatingAttorney,Case Initiating Attorney,"An attorney in a court case representing the party that filed a petition for a court order or writ requiring the respondent to take some action, halt an activity, or obey a court's direction.",Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseInitiatingParty,Case Initiating Party,An entity that brings charges or a suit against another in a court of law. Can be either a victim in a criminal case or a plaintiff in a civil case.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseJudge,Case Judge,A judicial official assigned to a case.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,Charge,A formal allegation that a specific person has committed a specific offense.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeSubject,Charge Subject,A person accused of committing a specific offense.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Court,Court,A court or a unit of a court responsible for trying justice proceedings.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,Judge,An official who hears and decides a case or who rules over a case proceeding.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#LawEnforcementOfficial,Law Enforcement Official,A peace official who has the authority to enforce the law,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,Register Action,A history of action for a case.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Sentence,Sentence,A punishment resulting from conviction of charges in a court case.,Class,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#SentenceTerm,Sentence Term,A duration of a sentence. Specified as either a specific term in days-months-years or as a minimum-maximum range.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#CourtCase,Court Case,A court case.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#Incident,Incident,An occurrence or an event that may require a response.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#Location,Location,A geospatial location.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#Person,Person,A human being.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,Relative Location,A location identified by its proximity to another location.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,Relative Location Distance Measure,A measurement of the distance of a location from a starting point.,Class,,,
+http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationReferencePoint,Relative Location Reference Point,A starting point used as a basis to determine the location of another point.,Class,,,
+http://schemas.scales-okn.org/rdf/scales#CivilCase,Civil Case,A case litigated in a civil court.,Class,,,
+http://schemas.scales-okn.org/rdf/scales#CriminalCase,Criminal Case,A case being litigated in a criminal court.,Class,,,
+http://schemas.scales-okn.org/rdf/scales#LawFirm,Law Firm,A law firm or other office offering legal services.,Class,,,
+http://schemas.scales-okn.org/rdf/scales#Party,Party,A party to a court case.,Class,,,
+http://fbi.gov/cjis/nibrs/2023.0/NIBRSReportCategoryCode,NIBRS report category code,A top-level NIBRS offense category (group A offense or group B offense) to which a given charge belongs.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
+http://fbi.gov/cjis/nibrs/2023.0/OffenseUCRCode,offense UCR code,"A specific NIBRS offense category (Animal Cruelty, Arson, Assault Offenses...) to which a given charge belongs.",Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
+http://release.niem.gov/niem/codes/occs/5.0/#FacilityFunctionCode,Facility Function Code,A purpose or use of a facility.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,Arrest,"An apprehension of a subject by a peace official based on an observed or a reported violation of a law or ordinance, an outstanding arrest warrant, or probable cause information.",Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest
+http://release.niem.gov/niem/domains/jxdm/7.2/#ArrestAgency,Arrest Agency,An agency which employs the arresting official.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ArrestCharge,Arrest Charge,A formal allegation of a violation of a statute and/or ordinance in association with an arrest.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge
+http://release.niem.gov/niem/domains/jxdm/7.2/#ArrestOfficial,arrest official,A peace official who makes an arrest.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,http://release.niem.gov/niem/domains/jxdm/7.2/#LawEnforcementOfficial
+http://release.niem.gov/niem/domains/jxdm/7.2/#ArrestSubject,Arrest Subject,A person who is arrested.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,http://release.niem.gov/niem/niem-core/5.0/#Person
+http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,attorney,A person admitted to practice law in his or her respective state and authorized to perform both civil and criminal legal functions for clients.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#BondAmount,bond amount,A monetary amount approved for bond,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#BondType,bond type,"A kind of bond (e.g., cash, surety)",Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Booking,Booking,"An administrative step taken after an arrested subject is brought to a police station or detention facility, which involves entry of the subject's name and other relevant facts on the police blotter, and which may also include photographing.",Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#BookingFacility,booking facility,A police station or a detention facility where a booking occurs.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Booking,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseCharge,case charge,A charge or accusation a person is being tried for in a court of law.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseCourt,case court,A court of law in which the case is being tried.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/domains/jxdm/7.2/#Court
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseDefendantParty,case defendant party,An entity being charged or sued in a court of law.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://schemas.scales-okn.org/rdf/scales#Party
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseDefenseAttorney,case defense attorney,An attorney who defends a case.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseInitiatingAttorney,case initiating attorney,"An attorney in a court case representing the party that filed a petition for a court order or writ requiring the respondent to take some action, halt an activity, or obey a court's direction.",Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseInitiatingParty,case initiating party,An entity that brings charges or a suit against another in a court of law. Can be either a victim in a criminal case or a plaintiff in a civil case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://schemas.scales-okn.org/rdf/scales#Party
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseJudge,case judge,A judicial official assigned to a case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseOfficialRoleText,case official role text,A role a justice official played in a court case.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeDisposition,charge disposition,A result or processing of a charge.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeDispositionCategoryText,charge disposition category text,"A kind of charge disposition (e.g., dismissed, guilty plea)",Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeFiledCase,Charge Filed Case,A case in which a charge is filed.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeSentence,charge sentence,A sentence given to a person convicted of a charge.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,http://release.niem.gov/niem/domains/jxdm/7.2/#Sentence
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeSequenceID,charge sequence ID,A sequentially assigned identifier for charge tracking purposes.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeSeverityLevelCode,charge severity level code,"A level of severity of a charge (e.g., felony, misdemeanor)",Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeSubject,charge subject,A person accused of committing a specific offense.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,http://release.niem.gov/niem/niem-core/5.0/#Person
+http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeText,charge text,A text of a charge.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CourtCategoryCode,court category code,A kind of court.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Court,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CourtName,court name,A name of a unit of a court.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Court,
+http://release.niem.gov/niem/domains/jxdm/7.2/#DrugCategoryCode,drug category code,A kind of drug.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
+http://release.niem.gov/niem/domains/jxdm/7.2/#IncidentArrest,Incident Arrest,An arrest made because of an incident.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Incident,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest
+http://release.niem.gov/niem/domains/jxdm/7.2/#JudicialOfficialCategoryText,judicial official category text,A kind of judicial official.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://release.niem.gov/niem/domains/jxdm/7.2/#OrganizationCategoryNLETSCode,Organization Category NLETSCode,A functional kind of an organization.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#ParticipantRoleCategoryText,participant role category text,A kind of role of a participant.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://release.niem.gov/niem/domains/jxdm/7.2/#PersonCharge,person charge,A sequence of charges against a person.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge
+http://release.niem.gov/niem/domains/jxdm/7.2/#PersonSexCode,person sex code,A code set identifying a gender or sex of a person.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,Register Action,A history of action for a case.,Predicate,,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction
+http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterActionDate,register action date,A date an action took place in a register of actions.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterActionDescriptionText,register action description text,A description of something that happened in a case in a register of actions entry.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://release.niem.gov/niem/domains/jxdm/7.2/#Sentence,sentence,A punishment resulting from conviction of charges in a court case.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#SentenceDescriptionText,sentence description text,A description of the sentence being imposed.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Sentence,
+http://release.niem.gov/niem/domains/jxdm/7.2/#SentenceTerm,sentence term,A duration of a sentence. Specified as either a specific term in days-months-years or as a minimum-maximum range.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Sentence,http://release.niem.gov/niem/domains/jxdm/7.2/#SentenceTerm
+http://release.niem.gov/niem/domains/jxdm/7.2/#StatuteKeywordText,statute keyword text,A brief description of a Statute which makes use of catchwords.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/domains/jxdm/7.2/#TermDuration,term duration,A specific range or duration of a term.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#SentenceTerm,
+http://release.niem.gov/niem/niem-core/5.0/#ActivityDate,activity date,A date of an activity.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,
+http://release.niem.gov/niem/niem-core/5.0/#AddressPostalCode,address postal code,An identifier of a post office-assigned zone for an address.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Court,
+http://release.niem.gov/niem/niem-core/5.0/#AdministrativeID,administrative ID,An identifier generated locally within a processing system used to identify sub-records within an entity-of-interest record.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://release.niem.gov/niem/niem-core/5.0/#CaseDocketID,case docket ID,An identifier used to reference a case docket.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#CaseGeneralCategoryText,case general category text,A broadly defined kind of case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#CaseSubCategoryText,case sub category text,A more specific classification of a kind of case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#ContactMailingAddress,contact mailing address,A postal address by which a person or organization may be contacted.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,
+http://release.niem.gov/niem/niem-core/5.0/#DocumentSequenceID,Document Sequence ID,An identifier that determines the document order in a set of related documents.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://release.niem.gov/niem/niem-core/5.0/#EndDate,end date,An end date.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#EntityName,entity name,A name of an entity.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://release.niem.gov/niem/niem-core/5.0/#FacilityName,facility name,A name of a facility.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#Incident,Incident,An occurrence or an event that may require a response.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,http://release.niem.gov/niem/niem-core/5.0/#Incident
+http://release.niem.gov/niem/niem-core/5.0/#JurisdictionText,jurisdiction text,An area in which an organization or person has some kind of authoritative capacity or responsibility over.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#Location,Location,A geospatial location.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,http://release.niem.gov/niem/niem-core/5.0/#Location
+http://release.niem.gov/niem/niem-core/5.0/#MeasureDecimalValue,Measure Decimal Value,A decimal measurement value.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,
+http://release.niem.gov/niem/niem-core/5.0/#MeasureUnitText,Measure Unit Text,A unit that qualifies the measurement value.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,
+http://release.niem.gov/niem/niem-core/5.0/#OrganizationLocation,Organization Location,A location of an organization.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#OrganizationName,organization name,A name of an organization.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#PersonFullName,person full name,A complete name of a person.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#PersonID,person ID,A unique identifier assigned to a person,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#PersonRaceText,person race text,A classification of a person based on factors such as geographical locations and genetics.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#PersonSexText,person sex text,A gender or sex of a person.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://release.niem.gov/niem/niem-core/5.0/#PhysicalAddress,Physical Address,A physical address for a location. This may or may not be the same as the location's mailing address.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,Relative Location,A location identified by its proximity to another location.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Location,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation
+http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,Relative Location Distance Measure,A measurement of the distance of a location from a starting point.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure
+http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationReferencePoint,Relative Location Reference Point,A starting point used as a basis to determine the location of another point.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,http://release.niem.gov/niem/niem-core/5.0/#Location
+http://release.niem.gov/niem/niem-core/5.0/#StartDate,start date,A date on which something begins.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#StatusDescriptionText,status description text,A description of a status or condition of something or someone.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#URLID,URLID,An identifier representing a universal resource locator (URL).,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://sail.ua.edu/ruralkg/treatmentprovider/TreatmentProvider,Treatment Provider,"An entity, such as a clinic or hospital, that offers treatment.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Location,
+http://schemas.scales-okn.org/rdf/scales#BirthYear,birth year,The year a person was born.,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#LawFirm,Law Firm,A law firm or other office offering legal services.,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#OntologyLabel,ontology label,An event label or attribute label from the SCALES Litigation Ontology that applies to a given docket entry.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://schemas.scales-okn.org/rdf/scales#Party,party,A party to a court case.,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#appointedByParty,appointed by party,Indicates which party appointed an attorney,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#assignedToDefendant,assigned to defendant,Indicates assignment of an attorney to a defendant,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#containsNeighborhood,contains Neighborhood,Links a geographic area to a neighborhood located within it.,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#hasChargeType,has charge type,Specifies the type of criminal or civil charge,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#hasCommissionDate,has commission date,The date on which the US president signed the commission formalizing the appointment of a given judge.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://schemas.scales-okn.org/rdf/scales#hasEntityReference,has Entity Reference,A disambiguated entity referenced in the given text.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://schemas.scales-okn.org/rdf/scales#hasExtraInfo,has extra info,Additional information not captured in other fields,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#hasFJCJudgeDirID,has FJCJudge Dir ID,A unique ID that specifies a judge in the Federal Judicial Center's database of biographical data about federal judges.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://schemas.scales-okn.org/rdf/scales#hasHighestOffenseLevelOpening,has highest offense level opening,"The highest offense level (felony, misdemeanor) applicable to a given PACER party at the time their associated criminal case was opened.",Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://schemas.scales-okn.org/rdf/scales#hasHighestOffenseLevelTerminated,has highest offense level terminated,"The highest offense level (felony, misdemeanor) applicable to a given PACER party at the time they were terminated from their associated criminal case.",Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://schemas.scales-okn.org/rdf/scales#hasIdbAmtrec,has Idb Amtrec,Dollar amount received (in thousands) when appropriate.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbAppcd,has Idb Appcd,A code indicating the event by which a defendant appeared before a judicial officer in the district court where a charge was pending.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbAppdate,has Idb Appdate,The date when a defendant first appeared before a judicial officer in the district court where a charge was pending.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbArbit,has Idb Arbit,Method of participation in the Formal Arbitration Program.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCaslgky,has Idb Caslgky,"A concatenation of district, office, docket number, case type, and reopen sequence number.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCircuit,has Idb Circuit,The code of the federal judicial circuit where the case was located.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbClassact,has Idb Classact,"Indicates whether the case involves an allegation by the plaintiff that the complaint meets the prerequisites of a ""Class Action"" as provided in Rule 23 - FRCVP.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCounty,has Idb County,The FIPS code used to indicate the county or parish where an offense was committed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtdef,has Idb Ctdef,A unique number assigned to each defendant in a case which can be modified by the court.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtfil,has Idb Ctfil,A count of defendants filed excluding inter-district transfers.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtfilr,has Idb Ctfilr,"A count of defendants filed whose proceedings commenced by reopen, remand, appeal, or retrial.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtfiltrn,has Idb Ctfiltrn,A count of defendants filed including inter-district transfers.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtfilwor,has Idb Ctfilwor,A count of original proceedings commenced.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtpn,has Idb Ctpn,A count of defendants pending as of the last day of the period including long term fugitives.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCtpnwof,has Idb Ctpnwof,A count of defendants pending as of the last day of the period excluding long term fugitives.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCttr,has Idb Cttr,A count of defendants terminated excluding inter- district transfers.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCttrr,has Idb Cttrr,"A count of defendants terminated whose proceedings commenced by reopen, remand, appeal, or retrial.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCttrtrn,has Idb Cttrtrn,A count of defendants terminated including inter- district transfers.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbCttrwor,has Idb Cttrwor,A count of original proceedings terminated.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2foffcd1,has Idb D2foffcd1,The four digit D2 offense code associated with FTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2foffcd2,has Idb D2foffcd2,The four digit D2 offense code associated with FTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2foffcd3,has Idb D2foffcd3,The four digit D2 offense code associated with FTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2foffcd4,has Idb D2foffcd4,The four digit D2 offense code associated with FTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2foffcd5,has Idb D2foffcd5,The four digit D2 offense code associated with FTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2toffcd1,has Idb D2toffcd1,The four digit D2 offense code associated with TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2toffcd2,has Idb D2toffcd2,The four digit D2 offense code associated with TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2toffcd3,has Idb D2toffcd3,The four digit D2 offense code associated with TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2toffcd4,has Idb D2toffcd4,The four digit D2 offense code associated with TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbD2toffcd5,has Idb D2toffcd5,The four digit D2 offense code associated with TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDef,has Idb Def,A unique number assigned to each defendant in a case which can be modified by the court.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDeflgky,has Idb Deflgky,"A concatenation of district, office, docket number, case type, defendant number, and reopen sequence number.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDefno,has Idb Defno,A unique number assigned to each defendant in a case which cannot be modified by the court.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDemanded,has Idb Demanded,The monetary amount sought by plaintiff (in thousands).,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDisp,has Idb Disp,The manner in which the case was disposed of.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDisp1,has Idb Disp1,The code indicating the nature or type of disposition associated with TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDisp2,has Idb Disp2,The code indicating the nature or type of disposition associated with TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDisp3,has Idb Disp3,The code indicating the nature or type of disposition associated with TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDisp4,has Idb Disp4,The code indicating the nature or type of disposition associated with TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDisp5,has Idb Disp5,The code indicating the nature or type of disposition associated with TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDispdate,has Idb Dispdate,The date upon which judicial proceedings before the court concluded.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDistrict,has Idb District,The code of the federal judicial district where the case was located.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDjoined,has Idb Djoined,This term is defined in the IDB documentation as 'Data rarely entered in the past; this field is no longer being used.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbDocket,has Idb Docket,Docket number assigned by the district to the case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFcounsel,has Idb Fcounsel,A code indicating the type of legal counsel assigned to a defendant.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFdateuse,has Idb Fdateuse,This field is used to identify cases within a given statistical or fiscal year of filing as counted by the AO in published reports.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFgenddate,has Idb Fgenddate,The date upon which a fugitive defendant was taken into custody.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFgstrtdate,has Idb Fgstrtdate,The date upon which a defendant became a fugitive.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFiledate,has Idb Filedate,The date when a case was first docketed in the district court.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFineamt1,has Idb Fineamt1,The fine imposed upon the defendant at sentencing under TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFineamt2,has Idb Fineamt2,The fine imposed upon the defendant at sentencing under TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFineamt3,has Idb Fineamt3,The fine imposed upon the defendant at sentencing under TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFineamt4,has Idb Fineamt4,The fine imposed upon the defendant at sentencing under TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFineamt5,has Idb Fineamt5,The fine imposed upon the defendant at sentencing under TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFinetot,has Idb Finetot,The total fine imposed at sentencing for all offenses of which the defendant was convicted and a fine was imposed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFiscalyr,has Idb Fiscalyr,The fiscal year of the data file obtained from the AOUSC.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFoffcd1,has Idb Foffcd1,The four digit AO offense code associated with FTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFoffcd2,has Idb Foffcd2,The four digit AO offense code associated with FTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFoffcd3,has Idb Foffcd3,The four digit AO offense code associated with FTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFoffcd4,has Idb Foffcd4,The four digit AO offense code associated with FTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFoffcd5,has Idb Foffcd5,The four digit AO offense code associated with FTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFofflvl1,has Idb Fofflvl1,A code indicating the level of offense associated with FTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFofflvl2,has Idb Fofflvl2,A code indicating the level of offense associated with FTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFofflvl3,has Idb Fofflvl3,A code indicating the level of offense associated with FTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFofflvl4,has Idb Fofflvl4,A code indicating the level of offense associated with FTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFofflvl5,has Idb Fofflvl5,A code indicating the level of offense associated with FTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFsev1,has Idb Fsev1,A code indicating the severity associated with FTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFsev2,has Idb Fsev2,A code indicating the severity associated with FTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFsev3,has Idb Fsev3,A code indicating the severity associated with FTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFsev4,has Idb Fsev4,A code indicating the severity associated with FTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFsev5,has Idb Fsev5,A code indicating the severity associated with FTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFtitle1,has Idb Ftitle1,The title and section of the U.S. Code applicable to the offense committed which carried the highest severity.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFtitle2,has Idb Ftitle2,The title and section of the U.S. Code applicable to the offense committed which carried the second highest severity.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFtitle3,has Idb Ftitle3,The title and section of the U.S. Code applicable to the offense committed which carried the third highest severity.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFtitle4,has Idb Ftitle4,The title and section of the U.S. Code applicable to the offense committed which carried the fourth highest severity.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFtitle5,has Idb Ftitle5,The title and section of the U.S. Code applicable to the offense committed which carried the fifth highest severity.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbFugstat,has Idb Fugstat,A code indicating the fugitive status of a defendant.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbIfp,has Idb Ifp,In forma pauperis code.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbInt1,has Idb Int1,The number of days from the earlier of filing date or first appearance date to proceeding date.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbInt2,has Idb Int2,The number of days from proceeding date to disposition date.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbInt3,has Idb Int3,The number of days from disposition date to sentencing date.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbIs_stub,has Idb Is stub,Indicates whether the case is a stub (placeholder) record in the Federal Judicial Center Integrated Database (IDB).,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#hasIdbJudgment,has Idb Judgment,Indicates the party in whose favor the case was disposed of by entry of a final judgment.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbJuris,has Idb Juris,The code which provides the basis for the US district court jurisdiction in the case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbJury,has Idb Jury,Indicates the party or parties demanding a jury trial.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbLoaddate,has Idb Loaddate,The date the record was loaded into the AOUSC’s NewSTATS database.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbMagdef,has Idb Magdef,A unique number assigned to each defendant in a magistrate case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbMagdock,has Idb Magdock,The docket number originally given to a case assigned to a magistrate judge and subsequently merged into a criminal case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbMdldock,has Idb Mdldock,A 4-digit multi district litigation docket number.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbNoj,has Idb Noj,"For cases disposed of by an entry of a final judgment, indicates the nature of the judgment.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbNos,has Idb Nos,A 3 digit statistical code representing the nature of the action filed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbOffice,has Idb Office,The code of the district office where the case was located.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbOrigin,has Idb Origin,A single digit code describing the manner in which the case was filed in the district.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPlt,has Idb Plt,First listed plaintiff.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPretrial,has Idb Pretrial,This term is defined in the IDB documentation as 'Data rarely entered in the past; this field is no longer being used.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPriscd1,has Idb Priscd1,A code indicating whether the prison sentence associated with TTITLE1 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPriscd2,has Idb Priscd2,A code indicating whether the prison sentence associated with TTITLE2 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPriscd3,has Idb Priscd3,A code indicating whether the prison sentence associated with TTITLE3 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPriscd4,has Idb Priscd4,A code indicating whether the prison sentence associated with TTITLE4 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPriscd5,has Idb Priscd5,A code indicating whether the prison sentence associated with TTITLE5 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPristim1,has Idb Pristim1,The number of months a defendant was sentenced to prison under TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPristim2,has Idb Pristim2,The number of months a defendant was sentenced to prison under TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPristim3,has Idb Pristim3,The number of months a defendant was sentenced to prison under TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPristim4,has Idb Pristim4,The number of months a defendant was sentenced to prison under TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPristim5,has Idb Pristim5,The number of months a defendant was sentenced to prison under TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbPristot,has Idb Pristot,The total prison time for all offenses of which the defendant was convicted and prison time was imposed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbcd1,has Idb Probcd1,A code indicating whether the probation sentence associated with TTITLE1 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbcd2,has Idb Probcd2,A code indicating whether the probation sentence associated with TTITLE2 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbcd3,has Idb Probcd3,A code indicating whether the probation sentence associated with TTITLE3 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbcd4,has Idb Probcd4,A code indicating whether the probation sentence associated with TTITLE4 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbcd5,has Idb Probcd5,A code indicating whether the probation sentence associated with TTITLE5 was concurrent or consecutive in relation to the other counts in the indictment or information or multiple counts of the same charge.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbmon1,has Idb Probmon1,1 The number of months of probation imposed upon a defendant under TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbmon2,has Idb Probmon2,2 The number of months of probation imposed upon a defendant under TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbmon3,has Idb Probmon3,3 The number of months of probation imposed upon a defendant under TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbmon4,has Idb Probmon4,4 The number of months of probation imposed upon a defendant under TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbmon5,has Idb Probmon5,5 The number of months of probation imposed upon a defendant under TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProbtot,has Idb Probtot,The total probation time for all offenses of which the defendant was convicted and probation was imposed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProccd,has Idb Proccd,A code used to identify the nature of the proceeding.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProcdate,has Idb Procdate,"The date upon which proceedings in a case commenced on charges pending in the district court where the defendant appeared, or the date of the defendant’s felony-waiver of indictment.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProcprog,has Idb Procprog,The point to which the case had progressed when it was disposed of.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbProse,has Idb Prose,Pro se code.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbReopseq,has Idb Reopseq,A sequential number indicating whether a case is an original proceeding or a reopen.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbResidenc,has Idb Residenc,"For cases that involve diversity of citizenship for the plaintiff and defendant, indicates the citizenship of the plaintiff and defendant.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSection,has Idb Section,This term is defined in the IDB documentation as 'This field is optional.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSentdate,has Idb Sentdate,The date upon which the final sentence is recorded on the docket.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbStatuscd,has Idb Statuscd,The status of the defendant as assigned by the AOUSC.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSubsect,has Idb Subsect,This term is defined in the IDB documentation as 'This field is optional.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSupvrel1,has Idb Supvrel1,A period of supervised release imposed upon a defendant under TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSupvrel2,has Idb Supvrel2,A period of supervised release imposed upon a defendant under TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSupvrel3,has Idb Supvrel3,A period of supervised release imposed upon a defendant under TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSupvrel4,has Idb Supvrel4,A period of supervised release imposed upon a defendant under TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbSupvrel5,has Idb Supvrel5,A period of supervised release imposed upon a defendant under TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTapeyear,has Idb Tapeyear,Statistical year.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTcounsel,has Idb Tcounsel,A code indicating the type of legal counsel assigned to a defendant at the time the case was closed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTdateuse,has Idb Tdateuse,This field is used to identify cases within a given statistical or fiscal year of termination as counted by the AO in published reports.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTermdate,has Idb Termdate,The date upon which the case was closed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTermoff,has Idb Termoff,The code of the district office where the case was terminated.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTitl,has Idb Titl,This term is defined in the IDB documentation as 'This field is optional.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbToffcd1,has Idb Toffcd1,The four digit AO offense code associated with TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbToffcd2,has Idb Toffcd2,The four digit AO offense code associated with TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbToffcd3,has Idb Toffcd3,The four digit AO offense code associated with TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbToffcd4,has Idb Toffcd4,The four digit AO offense code associated with TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbToffcd5,has Idb Toffcd5,The four digit AO offense code associated with TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTofflvl1,has Idb Tofflvl1,A code indicating the level of offense associated with TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTofflvl2,has Idb Tofflvl2,A code indicating the level of offense associated with TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTofflvl3,has Idb Tofflvl3,A code indicating the level of offense associated with TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTofflvl4,has Idb Tofflvl4,A code indicating the level of offense associated with TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTofflvl5,has Idb Tofflvl5,A code indicating the level of offense associated with TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTrandef,has Idb Trandef,The unique number originally assigned to a defendant by the district in which an intra- district transfer took place.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTrandist,has Idb Trandist,The code of the judicial district in which an intra- district transfer took place.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTrandock,has Idb Trandock,The docket number originally assigned by the district in which an intra-district transfer took place.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTranoff,has Idb Tranoff,The code of the district office from which an intra-district transfer took place.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTransdat,has Idb Transdat,The date when the papers were received in the receiving district for a transferred case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTransdoc,has Idb Transdoc,The docket number of the case in the losing district.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTransoff,has Idb Transoff,The office number of the district losing the case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTransorg,has Idb Transorg,The origin number of the case in the losing district.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTrclact,has Idb Trclact,A code that indicates a case involving allegations of class action.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTrialend,has Idb Trialend,This term is defined in the IDB documentation as 'Data rarely entered in the past; this field is no longer being used.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTribegan,has Idb Tribegan,This term is defined in the IDB documentation as 'Data rarely entered in the past; this field is no longer being used.',Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTrmarb,has Idb Trmarb,Termination arbitration code.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTsev1,has Idb Tsev1,A code indicating the severity associated with TTITLE1.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTsev2,has Idb Tsev2,A code indicating the severity associated with TTITLE2.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTsev3,has Idb Tsev3,A code indicating the severity associated with TTITLE3.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTsev4,has Idb Tsev4,A code indicating the severity associated with TTITLE4.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTsev5,has Idb Tsev5,A code indicating the severity associated with TTITLE5.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTtitle1,has Idb Ttitle1,The title and section of the U.S. Code applicable to the offense that carried the most severe disposition and penalty under which the defendant was disposed.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTtitle2,has Idb Ttitle2,The title and section of the U.S. Code applicable to the offense under which the defendant was disposed that carried the second most severe disposition and penalty.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTtitle3,has Idb Ttitle3,The title and section of the U.S. Code applicable to the offense under which the defendant was disposed that carried the third most severe disposition and penalty.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTtitle4,has Idb Ttitle4,The title and section of the U.S. Code applicable to the offense under which the defendant was disposed that carried the fourth most severe disposition and penalty.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTtitle5,has Idb Ttitle5,The title and section of the U.S. Code applicable to the offense under which the defendant was disposed that carried the fifth most severe disposition and penalty.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTypemag,has Idb Typemag,Case type associated with a magistrate case if the current case was merged from a magistrate case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTypereg,has Idb Typereg,Case type associated with the current defendant record.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbTypetrn,has Idb Typetrn,Case type associated with the originating case if the current case was a transfer.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbUpdate,has Idb Update,The date of the last action taken on the record.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIdbVer,has Idb Ver,A sequential number indicating the iteration of the defendant record.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://schemas.scales-okn.org/rdf/scales#hasIfpJudgeAttribution,has IFP judge attribution,"The judge presiding over a case at the time a given docket entry was entered on a docket sheet that includes ""in forma pauperis"" (IFP) activity.",Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://schemas.scales-okn.org/rdf/scales#hasIfpLabel,has IFP label,"A SCALES IFP label (application, grant, deny, other) that applies to a given docket entry on a docket sheet that includes ""in forma pauperis"" (IFP) activity.",Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
+http://schemas.scales-okn.org/rdf/scales#hasMemberCase,has member case,"In multi-district litigation (MDL), a case listed in the ""PACER Member Cases"" header section on the docket sheet for a given lead case.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/niem-core/5.0/#CourtCase
+http://schemas.scales-okn.org/rdf/scales#hasReferenceToOtherEntry,has reference to other entry,A hyperlink to another docket entry within the text of a given PACER docket entry.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction
+http://schemas.scales-okn.org/rdf/scales#hasRelatedCase,has related case,"A case listed in the PACER ""Related Cases"" header section on the docket sheet for a given case.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/niem-core/5.0/#CourtCase
+http://schemas.scales-okn.org/rdf/scales#hasUVAJudgeDirID,has UVA judge dir ID,A unique ID that specifies a judge in the University of Virginia's directory of bankruptcy and magistrate judges.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://schemas.scales-okn.org/rdf/scales#hasUnknownExtraInfo,has Unknown Extra Info,Additional information of an unspecified type associated with an entity.,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#isInCircuit,is in circuit,Indicates which federal circuit a court is in,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_2,Administrative Region 2,"A level-2 KnowWhereGraph region, denoting a county, district, or equivalent administrative area.",Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Court,
