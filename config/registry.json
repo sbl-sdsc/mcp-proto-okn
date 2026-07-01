@@ -1555,8 +1555,8 @@
     "description_summary": "The Open Annotations for Rare Diseases (OARD) Knowledge Graph is an RDF knowledge graph that represents clinical associations between rare diseases and phenotypes derived from electronic health records. It organizes rare disease and phenotypic feature entities using Biolink classes such as Disease, PhenotypicFeature, Study, Dataset, and disease\u2013phenotype or phenotype\u2013phenotype association classes. The graph also captures supporting studies and evidence-bearing analysis results, including concept counts, dataset counts, log odds ratios, confidence intervals, and total sample sizes, enabling users to inspect both associations and their statistical support. OARD builds on real-world data approaches described for Open Annotation for Rare Diseases, where ontology mapping and natural language processing were applied to billing codes, laboratory tests, and large collections of clinical narratives to identify rare-disease-related phenotypes. By exposing these annotations through FRINK SPARQL and linked-data services, OARD-KG supports computational rare disease research, phenotype-driven diagnosis, knowledgebase enrichment, and reusable evidence synthesis from clinical data.",
     "entity_types": {
       "classes": [
-        "Dataset",
         "Concept Count Analysis Result",
+        "Dataset",
         "Disease",
         "Disease To Phenotypic Feature Association",
         "Entity To Disease Association",
@@ -1566,15 +1566,7 @@
         "Study"
       ],
       "predicates": [
-        "Date Modified",
-        "last Updated On",
-        "version",
-        "distinct Objects",
-        "distinct Subjects",
-        "properties",
-        "property",
-        "property Partition",
-        "triples",
+        "in subset",
         "label",
         "category",
         "concept count object",
