@@ -47,7 +47,8 @@ http://release.niem.gov/niem/domains/jxdm/7.2/#CaseDefenseAttorney,case defense 
 http://release.niem.gov/niem/domains/jxdm/7.2/#CaseInitiatingAttorney,case initiating attorney,"An attorney in a court case representing the party that filed a petition for a court order or writ requiring the respondent to take some action, halt an activity, or obey a court's direction.",Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney
 http://release.niem.gov/niem/domains/jxdm/7.2/#CaseInitiatingParty,case initiating party,An entity that brings charges or a suit against another in a court of law. Can be either a victim in a criminal case or a plaintiff in a civil case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://schemas.scales-okn.org/rdf/scales#Party
 http://release.niem.gov/niem/domains/jxdm/7.2/#CaseJudge,case judge,A judicial official assigned to a case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge
-http://release.niem.gov/niem/domains/jxdm/7.2/#CaseOfficialRoleText,case official role text,A role a justice official played in a court case.,Predicate,,,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseOfficialRoleText,case official role text,A role a justice official played in a court case.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://release.niem.gov/niem/domains/jxdm/7.2/#CaseOfficialRoleText,case official role text,A role a justice official played in a court case.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,
 http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeDisposition,charge disposition,A result or processing of a charge.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge,
 http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeDispositionCategoryText,charge disposition category text,"A kind of charge disposition (e.g., dismissed, guilty plea)",Predicate,,,
 http://release.niem.gov/niem/domains/jxdm/7.2/#ChargeFiledCase,Charge Filed Case,A case in which a charge is filed.,Predicate,,,
@@ -64,8 +65,10 @@ http://release.niem.gov/niem/domains/jxdm/7.2/#JudicialOfficialCategoryText,judi
 http://release.niem.gov/niem/domains/jxdm/7.2/#OrganizationCategoryNLETSCode,Organization Category NLETSCode,A functional kind of an organization.,Predicate,,,
 http://release.niem.gov/niem/domains/jxdm/7.2/#ParticipantRoleCategoryText,participant role category text,A kind of role of a participant.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
 http://release.niem.gov/niem/domains/jxdm/7.2/#PersonCharge,person charge,A sequence of charges against a person.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,http://release.niem.gov/niem/domains/jxdm/7.2/#Charge
-http://release.niem.gov/niem/domains/jxdm/7.2/#PersonSexCode,person sex code,A code set identifying a gender or sex of a person.,Predicate,,,
-http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,Register Action,A history of action for a case.,Predicate,,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction
+http://release.niem.gov/niem/domains/jxdm/7.2/#PersonSexCode,person sex code,A code set identifying a gender or sex of a person.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://release.niem.gov/niem/domains/jxdm/7.2/#PersonSexCode,person sex code,A code set identifying a gender or sex of a person.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Person,
+http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,Register Action,A history of action for a case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction
+http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,Register Action,A history of action for a case.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction
 http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterActionDate,register action date,A date an action took place in a register of actions.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
 http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterActionDescriptionText,register action description text,A description of something that happened in a case in a register of actions entry.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
 http://release.niem.gov/niem/domains/jxdm/7.2/#Sentence,sentence,A punishment resulting from conviction of charges in a court case.,Predicate,,,
@@ -81,7 +84,8 @@ http://release.niem.gov/niem/niem-core/5.0/#CaseGeneralCategoryText,case general
 http://release.niem.gov/niem/niem-core/5.0/#CaseSubCategoryText,case sub category text,A more specific classification of a kind of case.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
 http://release.niem.gov/niem/niem-core/5.0/#ContactMailingAddress,contact mailing address,A postal address by which a person or organization may be contacted.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,
 http://release.niem.gov/niem/niem-core/5.0/#DocumentSequenceID,Document Sequence ID,An identifier that determines the document order in a set of related documents.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
-http://release.niem.gov/niem/niem-core/5.0/#EndDate,end date,An end date.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#EndDate,end date,An end date.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#EndDate,end date,An end date.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Booking,
 http://release.niem.gov/niem/niem-core/5.0/#EntityName,entity name,A name of an entity.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
 http://release.niem.gov/niem/niem-core/5.0/#FacilityName,facility name,A name of a facility.,Predicate,,,
 http://release.niem.gov/niem/niem-core/5.0/#Incident,Incident,An occurrence or an event that may require a response.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Arrest,http://release.niem.gov/niem/niem-core/5.0/#Incident
@@ -90,20 +94,26 @@ http://release.niem.gov/niem/niem-core/5.0/#Location,Location,A geospatial locat
 http://release.niem.gov/niem/niem-core/5.0/#MeasureDecimalValue,Measure Decimal Value,A decimal measurement value.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,
 http://release.niem.gov/niem/niem-core/5.0/#MeasureUnitText,Measure Unit Text,A unit that qualifies the measurement value.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,
 http://release.niem.gov/niem/niem-core/5.0/#OrganizationLocation,Organization Location,A location of an organization.,Predicate,,,
-http://release.niem.gov/niem/niem-core/5.0/#OrganizationName,organization name,A name of an organization.,Predicate,,,
-http://release.niem.gov/niem/niem-core/5.0/#PersonFullName,person full name,A complete name of a person.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#OrganizationName,organization name,A name of an organization.,Predicate,,http://schemas.scales-okn.org/rdf/scales#LawFirm,
+http://release.niem.gov/niem/niem-core/5.0/#OrganizationName,organization name,A name of an organization.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#ArrestAgency,
+http://release.niem.gov/niem/niem-core/5.0/#PersonFullName,person full name,A complete name of a person.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://release.niem.gov/niem/niem-core/5.0/#PersonFullName,person full name,A complete name of a person.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,
 http://release.niem.gov/niem/niem-core/5.0/#PersonID,person ID,A unique identifier assigned to a person,Predicate,,,
-http://release.niem.gov/niem/niem-core/5.0/#PersonRaceText,person race text,A classification of a person based on factors such as geographical locations and genetics.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#PersonRaceText,person race text,A classification of a person based on factors such as geographical locations and genetics.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://release.niem.gov/niem/niem-core/5.0/#PersonRaceText,person race text,A classification of a person based on factors such as geographical locations and genetics.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://release.niem.gov/niem/niem-core/5.0/#PersonRaceText,person race text,A classification of a person based on factors such as geographical locations and genetics.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Person,
 http://release.niem.gov/niem/niem-core/5.0/#PersonSexText,person sex text,A gender or sex of a person.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
 http://release.niem.gov/niem/niem-core/5.0/#PhysicalAddress,Physical Address,A physical address for a location. This may or may not be the same as the location's mailing address.,Predicate,,,
 http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,Relative Location,A location identified by its proximity to another location.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Location,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation
 http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure,Relative Location Distance Measure,A measurement of the distance of a location from a starting point.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationDistanceMeasure
 http://release.niem.gov/niem/niem-core/5.0/#RelativeLocationReferencePoint,Relative Location Reference Point,A starting point used as a basis to determine the location of another point.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#RelativeLocation,http://release.niem.gov/niem/niem-core/5.0/#Location
-http://release.niem.gov/niem/niem-core/5.0/#StartDate,start date,A date on which something begins.,Predicate,,,
+http://release.niem.gov/niem/niem-core/5.0/#StartDate,start date,A date on which something begins.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
+http://release.niem.gov/niem/niem-core/5.0/#StartDate,start date,A date on which something begins.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Booking,
 http://release.niem.gov/niem/niem-core/5.0/#StatusDescriptionText,status description text,A description of a status or condition of something or someone.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#CourtCase,
 http://release.niem.gov/niem/niem-core/5.0/#URLID,URLID,An identifier representing a universal resource locator (URL).,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
 http://sail.ua.edu/ruralkg/treatmentprovider/TreatmentProvider,Treatment Provider,"An entity, such as a clinic or hospital, that offers treatment.",Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Location,
-http://schemas.scales-okn.org/rdf/scales#BirthYear,birth year,The year a person was born.,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#BirthYear,birth year,The year a person was born.,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://schemas.scales-okn.org/rdf/scales#BirthYear,birth year,The year a person was born.,Predicate,,http://release.niem.gov/niem/niem-core/5.0/#Person,
 http://schemas.scales-okn.org/rdf/scales#LawFirm,Law Firm,A law firm or other office offering legal services.,Predicate,,,
 http://schemas.scales-okn.org/rdf/scales#OntologyLabel,ontology label,An event label or attribute label from the SCALES Litigation Ontology that applies to a given docket entry.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#RegisterAction,
 http://schemas.scales-okn.org/rdf/scales#Party,party,A party to a court case.,Predicate,,,
@@ -299,5 +309,8 @@ http://schemas.scales-okn.org/rdf/scales#hasRelatedCase,has related case,"A case
 http://schemas.scales-okn.org/rdf/scales#hasUVAJudgeDirID,has UVA judge dir ID,A unique ID that specifies a judge in the University of Virginia's directory of bankruptcy and magistrate judges.,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
 http://schemas.scales-okn.org/rdf/scales#hasUnknownExtraInfo,has Unknown Extra Info,Additional information of an unspecified type associated with an entity.,Predicate,,,
 http://schemas.scales-okn.org/rdf/scales#isInCircuit,is in circuit,Indicates which federal circuit a court is in,Predicate,,,
-http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate,,,
+http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Judge,
+http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate,,http://schemas.scales-okn.org/rdf/scales#Party,
+http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate,,http://schemas.scales-okn.org/rdf/scales#LawFirm,
+http://schemas.scales-okn.org/rdf/scales#isInstanceOfEntity,is instance of entity,Indicates the entity type of an instance,Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Attorney,
 http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_2,Administrative Region 2,"A level-2 KnowWhereGraph region, denoting a county, district, or equivalent administrative area.",Predicate,,http://release.niem.gov/niem/domains/jxdm/7.2/#Court,
