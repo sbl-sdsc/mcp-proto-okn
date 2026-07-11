@@ -1267,43 +1267,27 @@
     ]
   },
   {
-    "name": "maudekg",
-    "display_name": "Maudekg",
-    "named_graph_uri": "https://purl.org/okn/frink/kg/maudekg",
-    "endpoint_url": "https://apps.okn.us/maudekg/sparql",
+    "name": "medical-device-kg",
+    "display_name": "Medical Device Kg",
+    "named_graph_uri": "https://purl.org/okn/frink/kg/medical-device-kg",
+    "endpoint_url": "https://apps.okn.us/medical-device-kg/sparql",
     "domain_tags": [
       "adverse_events",
       "medical_devices"
     ],
-    "description_summary": "The FDA MAUDE Adverse Event Knowledge Graph (maudekg) represents medical device safety reports from the U.S. Food and Drug Administration\u2019s Manufacturer and User Facility Device Experience (MAUDE) system. The OKN registry describes it as a knowledge graph constructed from FDA MAUDE adverse event reports using standardized FDA product codes. Its entity model centers on two domain classes: MAUDE Report, a medical device report in the adverse event reporting system, and Medical Device, the device involved in a reported event. Key predicates capture the date of event, date received by FDA, event type such as injury, malfunction, or death, the involved device, device label, and FDA product code. Because MAUDE contains mandatory and voluntary reports submitted by manufacturers, importers, user facilities, clinicians, patients, and consumers, maudekg can support structured querying of postmarket device safety signals while preserving the limitations of passive surveillance data.",
+    "description_summary": "The FDA MAUDE Adverse Event Knowledge Graph (medical-device-kg) represents medical device safety reports from the U.S. Food and Drug Administration\u2019s Manufacturer and User Facility Device Experience (MAUDE) system. The OKN registry describes it as a knowledge graph constructed from FDA MAUDE adverse event reports using standardized FDA product codes. Its entity model centers on two domain classes: MAUDE Report, a medical device report in the adverse event reporting system, and Medical Device, the device involved in a reported event. Key predicates capture the date of event, date received by FDA, event type such as injury, malfunction, or death, the involved device, device label, and FDA product code. Because MAUDE contains mandatory and voluntary reports submitted by manufacturers, importers, user facilities, clinicians, patients, and consumers, medical-device-kg can support structured querying of postmarket device safety signals while preserving the limitations of passive surveillance data.",
     "entity_types": {
       "classes": [
         "MAUDE Report",
-        "Medical Device",
-        "dataset"
+        "Medical Device"
       ],
       "predicates": [
-        "datatype",
-        "object datatype partition",
-        "object class partition",
         "date of event",
         "date received",
         "event type",
         "involves device",
         "label",
-        "product code",
-        "Date Modified",
-        "last updated on",
-        "version",
-        "class",
-        "class partition",
-        "distinct objects",
-        "distinct subjects",
-        "number of entities",
-        "number of properties",
-        "property",
-        "property partition",
-        "number of triples"
+        "product code"
       ],
       "has_edge_properties": false
     },

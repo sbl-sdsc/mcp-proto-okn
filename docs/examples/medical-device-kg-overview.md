@@ -6,7 +6,7 @@ Give a high-level overview of this knowledge graph
 ---
 
 🧠 **Assistant**
-Here's a high-level overview of **maudekg** — the FDA MAUDE Adverse Event Knowledge Graph:
+Here's a high-level overview of **medical-device-kg** — the FDA MAUDE Adverse Event Knowledge Graph:
 
 ---
 

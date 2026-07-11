@@ -111,7 +111,7 @@ Each link points to a chat transcript for generating an overview and a class dia
 | [biobricks-ice](docs/examples/biobricks-ice_overview.md) | [fiokg](docs/examples/fiokg_overview.md) | [nikg](docs/examples/nikg_overview.md) | [sudokn](docs/examples/sudokn_overview.md) | [digcfdekg](docs/examples/digcfdekg_overview.md) |
 | [biobricks-mesh](docs/examples/biobricks-mesh_overview.md) | [geoconnex](docs/examples/geoconnex_overview.md) | [ruralkg](docs/examples/ruralkg_overview.md) |  | [evoweb](docs/examples/evoweb-overview.md) |
 | [biobricks-pubchem-annotations](docs/examples/biobricks-pubchem-annotations_overview.md) | [hydrologykg](docs/examples/hydrologykg_overview.md) | [scales](docs/examples/scales_overview.md) |  | [gene-expression-atlas-okn](docs/examples/gene-expression-atlas-okn_overview.md) |
-| [biobricks-tox21](docs/examples/biobricks-tox21_overview.md) | [sawgraph](docs/examples/sawgraph_overview.md) |  |  | [maudekg](docs/examples/maudekg-overview.md) |
+| [biobricks-tox21](docs/examples/biobricks-tox21_overview.md) | [sawgraph](docs/examples/sawgraph_overview.md) |  |  | [medical-device-kg](docs/examples/medical-device-kg-overview.md) |
 | [biobricks-toxcast](docs/examples/biobricks-toxcast_overview.md) | [sockg](docs/examples/sockg_overview.md) |  |  | [nasa-gesdisc-kg](docs/examples/nasa-gesdisc-kg_overview.md) |
 | [biohealth](docs/examples/biohealth_overview.md) | [spatialkg](docs/examples/spatialkg_overview.md) |  |  | [ncipidkg](docs/examples/ncipidkg-overview.md) |
 | [spoke-genelab](docs/examples/spoke-genelab_overview.md) | [ufokn](docs/examples/ufokn_overview.md) |  |  | [nde](docs/examples/nde_overview.md) |

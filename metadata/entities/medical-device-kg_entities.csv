@@ -1,0 +1,9 @@
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://medicaldevice.com/ontology/MAUDEReport,MAUDE Report,"A Medical Device Report (MDR) in the FDA Manufacturer and User Facility Device Experience (MAUDE) adverse event reporting system.",Class,,,
+http://medicaldevice.com/ontology/MedicalDevice,Medical Device,"A medical device that is the subject of an adverse event report in the FDA MAUDE database.",Class,,,
+http://medicaldevice.com/ontology/dateOfEvent,date of event,"The date on which the adverse event involving the medical device occurred.",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,
+http://medicaldevice.com/ontology/dateReceived,date received,"The date on which the MAUDE adverse event report was received by the FDA.",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,
+http://medicaldevice.com/ontology/eventType,event type,"The type of adverse event reported in the MAUDE report (e.g., injury, malfunction, death).",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,
+http://medicaldevice.com/ontology/involvesDevice,involves device,"Links a MAUDE adverse event report to the medical device involved in the event.",Predicate,,http://medicaldevice.com/ontology/MAUDEReport,http://medicaldevice.com/ontology/MedicalDevice
+http://medicaldevice.com/ontology/label,label,"A human-readable label for the medical device resource.",Predicate,,http://medicaldevice.com/ontology/MedicalDevice,
+http://medicaldevice.com/ontology/productCode,product code,"The FDA product code that classifies the medical device by its intended use and indication.",Predicate,,http://medicaldevice.com/ontology/MedicalDevice,

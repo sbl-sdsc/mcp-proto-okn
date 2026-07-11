@@ -34,7 +34,7 @@ There are **35 knowledge graphs** available in the Proto-OKN network. Here's a s
 ### 🏥 Health & Clinical
 | Name | Description |
 |---|---|
-| **maudekg** | FDA MAUDE adverse event reports for medical devices |
+| **medical-device-kg** | FDA MAUDE adverse event reports for medical devices |
 | **nde** | NIAID Data Ecosystem — infectious & immune-mediated disease datasets |
 | **oard-kg** | Open Annotations for Rare Diseases — clinical phenotype associations |
 | **phaseskg** | Solitude, aging, and gerotranscendence (healthy aging research) |
