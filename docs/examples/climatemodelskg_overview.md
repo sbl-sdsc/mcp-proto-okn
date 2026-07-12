@@ -13,38 +13,41 @@ Great! I now have access to the **Climate Models Knowledge Graph**, which is des
 
 ### About Climate Models KG
 
-This knowledge graph integrates structured information about climate models, experiments, and research outputs. It contains:
+This knowledge graph integrates structured information about climate models, experiments, research outputs, and the scientific literature that describes them. It contains:
 
-- **1.4 million triples** describing **55,890 entities** across **48 classes**
-- Focus on climate model documentation, linking models to experiments, institutes, variables, and geographic coverage
+- **~1.7 million triples** describing **~112,500 entities** across **51 classes**
+- Focus on climate model documentation, linking models to experiments, institutes, variables, instruments, and geographic coverage
 - **394 Sources** (GCMs, RCMs) linked to **481 Experiments** conducted by **132 Institutes**
-- **2,907 climate Variables** measured across extensive geographic coverage:
+- **3,144 climate Variables** measured by **1,490 Instruments** across extensive geographic coverage:
   - 30,062 Cities
   - 252 Countries
   - 3,893 subdivisions
-- ~400,000 geographic locations for regional climate models
+- A **literature layer** of **2,000 Papers** written by **10,437 Authors** published across **373 Venues**, connected to **16,141 Results** assessed with **7,366 evaluation metrics**
 - Supports CMIP6-related research and regional climate modeling studies
 
 ### Key Entity Types
 
-The knowledge graph includes 47 different classes, such as:
+The knowledge graph includes 51 different classes, such as:
 - **Climate Models**: Source, Model, RCM (Regional Climate Models)
 - **Experiments**: Experiment, ExperimentFamily, SubExperiment
-- **Geographic Entities**: City, Country, Country_Subdivision, Continent
+- **Geographic Entities**: City, Country, Country_Subdivision, Continent, ClimateZone
 - **Climate Variables**: Temperature, precipitation, and other measurable quantities
-- **Research Outputs**: Paper, Result, Method
+- **Observation**: Instrument, Platform, ObservationalDataset
+- **Research Outputs**: Paper, Result, Method, EvaluationMetric
+- **Literature & People**: Author, Venue, Keyword, Field
 - **Model Components**: PhysicalScheme, SourceComponent, Realm
-- **Analysis Tools**: Metric, Instrument, ObservationalDataset
+
+> Note: the **Model** class is defined in the ontology, but in the current data the model role is carried by **Source** — the `MODEL_*` predicates and `PAPER_USES_MODEL` link to `Source` instances.
 
 ### What Can I Help You With?
 
 I can help you:
 1. **Explore climate models** - Find information about specific GCMs or RCMs
 2. **Query experiments** - Discover which experiments were conducted, by whom, and with what models
-3. **Analyze variables** - Find climate variables, their units, and relationships
-4. **Research papers** - Search for papers by topic, method, or model
+3. **Analyze variables** - Find climate variables, their units, and the instruments that measure them
+4. **Research papers** - Search for papers by topic, method, model, author, or venue
 5. **Geographic queries** - Find models or experiments covering specific regions
-6. **Relationships** - Explore how models, experiments, institutes, and variables connect
+6. **Relationships** - Explore how models, experiments, institutes, variables, and publications connect
 
 What would you like to explore in the Climate Models Knowledge Graph?
 
@@ -68,11 +71,12 @@ classDiagram
     
     class Model {
         +name
-        Computational climate representation
+        Computational climate representation (ontology only)
     }
     
     class RCM {
         +name
+        +rcm_version
         Regional Climate Model
     }
     
@@ -151,6 +155,17 @@ classDiagram
         Spatial/temporal granularity
     }
     
+    %% Observation
+    class Instrument {
+        +name
+        Measurement device
+    }
+    
+    class Platform {
+        +name
+        Observation/computational platform
+    }
+    
     %% Physical and Environmental
     class PhysicalScheme {
         +name
@@ -180,11 +195,15 @@ classDiagram
     %% Geographic Classes
     class City {
         +name
+        +latitude
+        +longitude
         Urban settlement
     }
     
     class Country {
         +name
+        +iso3
+        +population
         Sovereign nation
     }
     
@@ -198,6 +217,11 @@ classDiagram
         Major landmass
     }
     
+    class ClimateZone {
+        +name
+        Climate classification zone
+    }
+    
     class Water_Bodies {
         +name
         Lakes, rivers, seas, oceans
@@ -205,15 +229,32 @@ classDiagram
     
     %% Research and Analysis
     class Paper {
-        +id
         +title
-        +paper_id
+        +doi
+        +abstract
+        +publication_year
         Scientific publication
+    }
+    
+    class Author {
+        +name
+        Publication author
+    }
+    
+    class Venue {
+        +name
+        +type
+        Journal or conference
     }
     
     class Method {
         +name
         Computational/analytical technique
+    }
+    
+    class EvaluationMetric {
+        +name
+        Model/method evaluation measure
     }
     
     class Metric {
@@ -296,23 +337,12 @@ classDiagram
         Grid configuration identifier
     }
     
-    class Instrument {
-        +name
-        Measurement device
-    }
-    
-    class Platform {
-        +name
-        Computational infrastructure
-    }
-    
     %% Core Model Relationships
     Source --|> RCM : specialization
-    Model --> Source : CORRESPONDS_TO
     Source --> SourceComponent : HAS_SOURCE_COMPONENT
     Source --> SourceType : IS_OF_TYPE
     Source --> Source : INHERITED_FROM
-    Source --> SourceComponent : HAS_SUBSEQUENT_VERSION
+    Source --> Source : HAS_SUBSEQUENT_VERSION
     
     %% Model Configuration
     Source --> Realm : APPLIES_TO_REALM
@@ -344,10 +374,12 @@ classDiagram
     RCM --> Water_Bodies : COVERS_REGION
     RCM --> Source : DRIVEN_BY_SOURCE
     
-    %% Variables and Data
-    SourceComponent --> Variable : PRODUCES_VARIABLE
+    %% Variables and Observation
+    Source --> Variable : PRODUCES_VARIABLE
     Variable --> Resolution : HAS_SPATIAL_RESOLUTION
     Source --> Frequency : SAMPLED_AT_FREQUENCY
+    Instrument --> Variable : MEASURES_VARIABLE
+    Instrument --> Platform : MOUNTED_ON
     
     %% Activities
     Source --> Activity : GENERATED_BY_ACTIVITY
@@ -358,41 +390,40 @@ classDiagram
     Country --> Continent : IN_CONTINENT
     
     %% Paper Relationships
+    Paper --> Author : PAPER_AUTHORED_BY
+    Paper --> Venue : PAPER_PUBLISHED_IN_VENUE
+    Paper --> Source : PAPER_USES_MODEL
     Paper --> Method : PAPER_APPLIES_METHOD
-    Paper --> Model : PAPER_HAS_MODEL
     Paper --> Result : PAPER_HAS_RESULT
     Paper --> Innovation : PAPER_HAS_INNOVATION
     Paper --> Problem : PAPER_SOLVES_PROBLEM
     Paper --> Task : PAPER_WORKS_ON_TASK
-    Paper --> Metric : PAPER_USES_METRIC
+    Paper --> EvaluationMetric : PAPER_USES_METRIC
     Paper --> Field : PAPER_BELONGS_TO_FIELD
     Paper --> Keyword : PAPER_HAS_KEYWORD
     Paper --> ObservationalDataset : PAPER_EXPERIMENTS_ON_OBSERVATIONAL_DATASET
     Paper --> Natural_Hazard : PAPER_MENTIONS
     
     %% Method Relationships
-    Method --> Model : METHOD_USES_MODEL
     Method --> Result : METHOD_HAS_RESULT
     Method --> Innovation : METHOD_HAS_INNOVATION
     Method --> Problem : METHOD_SOLVES_PROBLEM
     Method --> Task : METHOD_WORKS_ON_TASK
-    Method --> Metric : METHOD_USES_METRIC
+    Method --> EvaluationMetric : METHOD_USES_METRIC
     Method --> ObservationalDataset : METHOD_EXPERIMENTS_ON_OBSERVATIONAL_DATASET
     
-    %% Model Relationships
-    Model --> Result : MODEL_HAS_RESULT
-    Model --> Problem : MODEL_SOLVES_PROBLEM
-    Model --> Task : MODEL_WORKS_FOR_TASK
-    Model --> Metric : MODEL_USES_METRIC
-    Model --> ObservationalDataset : MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATASET
+    %% Model Relationships (carried by Source)
+    Source --> Result : MODEL_HAS_RESULT
+    Source --> EvaluationMetric : MODEL_USES_METRIC
+    Source --> ObservationalDataset : MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATASET
     
     %% Task Relationships
     Task --> Problem : TASK_FACES_PROBLEM
-    Task --> Metric : TASK_USES_METRIC
+    Task --> EvaluationMetric : TASK_USES_METRIC
     Task --> ObservationalDataset : TASK_EXPERIMENTS_ON_OBSERVATIONAL_DATASET
     
     %% Result Relationships
-    Result --> Metric : RESULT_HAS_METRIC
+    Result --> EvaluationMetric : RESULT_HAS_METRIC
 ```
 
 I've created a comprehensive visualization of the Climate Models KG schema! The diagram shows:
@@ -402,6 +433,7 @@ I've created a comprehensive visualization of the Climate Models KG schema! The 
 **1. Core Model Classes**
    - Source, Model, RCM (Regional Climate Models)
    - SourceComponent, SourceType
+   - The `Model` class is ontology-only; in the data the model role is carried by `Source`
 
 **2. Experiment Infrastructure**
    - Experiments, ExperimentFamily, SubExperiment
@@ -410,8 +442,9 @@ I've created a comprehensive visualization of the Climate Models KG schema! The 
 **3. Institutions & Organization**
    - Institute, Project, MIPEra (Model Intercomparison Project eras)
 
-**4. Variables & Data**
+**4. Variables & Observation**
    - Variable (with climate measurements)
+   - Instrument and Platform (MEASURES_VARIABLE, MOUNTED_ON)
    - ObservationalDataset, Frequency, Resolution
 
 **5. Physical Components**
@@ -419,20 +452,25 @@ I've created a comprehensive visualization of the Climate Models KG schema! The 
    - Domain, Forcing, PhysicalFeature
 
 **6. Geographic Entities**
-   - City, Country, Country_Subdivision, Continent
-   - Water_Bodies
+   - City, Country, Country_Subdivision, Continent, ClimateZone
+   - Water_Bodies (enriched with GeoNames attributes: latitude/longitude, population, ISO codes, bounding boxes)
 
-**7. Research & Analysis**
-   - Paper, Method, Metric, Result
+**7. Research & Literature**
+   - Paper, Author, Venue (PAPER_AUTHORED_BY, PAPER_PUBLISHED_IN_VENUE)
+   - Method, EvaluationMetric, Result
    - Task, Problem, Innovation, Field, Keyword
 
 **8. Events & Phenomena**
    - Natural_Hazard, Weather_Event
    - Teleconnection, Ocean_Circulation
 
-The relationships show how everything connects - from climate models being used in experiments conducted by institutes, to papers that apply methods to solve problems using specific models and producing results.
+The relationships show how everything connects - from climate models (Source) being used in experiments conducted by institutes, to papers that apply methods, cite models, and are written by authors published in venues, producing results assessed with evaluation metrics.
 
+---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-17*
+👤 **User**  
+Create transcript
 
-Model: claude-sonnet-4-20250514
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) using claude-opus-4-8 on 2026-07-12*
