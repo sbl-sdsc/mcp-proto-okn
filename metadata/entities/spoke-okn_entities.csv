@@ -1,39 +1,50 @@
 URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement,Statement,An RDF statement (reified triple) capturing a subject-predicate-object assertion.,Class,,,
+https://purl.org/okn/frink/kg/spoke-okn/schema/SDoH,Social Determinants of Health,Social and economic factors that influence health outcomes,Class,,,
+https://schema.org/AdministrativeArea,Administrative Area,A geographic region with administrative boundaries like cities or states,Class,,,
+https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A chemical substance or compound,Class,,,
+https://w3id.org/biolink/vocab/Disease,Disease,A disorder or illness that affects health,Class,,,
+https://w3id.org/biolink/vocab/EnvironmentalFeature,Environmental Feature,"An environmental entity, such as environmental quality entity ",Class,,,
+https://w3id.org/biolink/vocab/Gene,Gene,A unit of heredity that determines biological characteristics,Class,,,
+https://w3id.org/biolink/vocab/OrganismTaxon,Organism Taxon,A classification group for living organisms,Class,,,
 http://purl.org/dc/terms/source,Source,Where the information originally came from,Predicate,,,
-http://www.opengis.net/ont/geosparql#asWKT,Geographic Coordinates,The geographic location represented in a standard format,Predicate,,,
 http://www.geneontology.org/formats/oboInOwl#hasDbXref,Database Reference,A link to the same entity in another database,Predicate,,,
+http://www.opengis.net/ont/geosparql#asWKT,Geographic Coordinates,The geographic location represented in a standard format,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#object,object,The object of a reified RDF statement.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate,predicate,The predicate of a reified RDF statement.,Predicate,,,
+http://www.w3.org/1999/02/22-rdf-syntax-ns#subject,subject,The subject of a reified RDF statement.,Predicate,,,
 http://www.w3.org/1999/02/22-rdf-syntax-ns#type,Type,Specifies what kind of thing an entity is,Predicate,,,
 http://www.w3.org/2000/01/rdf-schema#comment,Comment,A human-readable description or annotation,Predicate,,,
 http://www.w3.org/2000/01/rdf-schema#label,Label,A human-readable name for an entity,Predicate,,,
 http://www.w3.org/2000/01/rdf-schema#seeAlso,See Also,A reference to related information,Predicate,,,
-https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_SiS,Is Subtype Of (SDoH),Shows when one SDoH concept is a more specific type of another SDoH concept,Predicate,,SDoH,SDoH
-https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_DiD,Is Subtype Of (Disease),Shows when one disease is a more specific type of another disease,Predicate,,Disease,Disease
-https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_CiC,Is Subtype Of (Compound),Shows when one chemical compound is a more specific type of another compound,Predicate,,ChemicalEntity,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_EiE,Is Subtype Of (Environment),Shows when one environment type is a more specific type of another environment,Predicate,,EnvironmentalFeature,EnvironmentalFeature
-https://purl.org/okn/frink/kg/spoke-okn/schema/PARTOF_LpL,Part Of (Location),Shows when one geographic location is contained within another location,Predicate,,AdministrativeArea,AdministrativeArea
-https://purl.org/okn/frink/kg/spoke-okn/schema/PARTOF_CpC,Part Of (Compound),Shows when one chemical structure is a component of a larger compound,Predicate,,ChemicalEntity,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/FOUNDIN_CfL,Found In (Compound in Location),Indicates where a specific chemical compound has been detected or is present in a specific geographic area,Predicate,,ChemicalEntity,AdministrativeArea
-https://purl.org/okn/frink/kg/spoke-okn/schema/FOUNDIN_EfL,Found In (Environment in Location),Indicates where a specific environmental condition or feature exists,Predicate,,EnvironmentalFeature,AdministrativeArea
-https://purl.org/okn/frink/kg/spoke-okn/schema/ISOLATEDIN_OiL,Isolated In (Organism in Location),Shows which country a particular Organisms (bacterial strains) was collected or sampled,Predicate,,OrganismTaxon,AdministrativeArea
-https://purl.org/okn/frink/kg/spoke-okn/schema/PREVALENCE_DpL,Disease Prevalence in Location,How common a disease is in a specific geographic area,Predicate,,Disease,AdministrativeArea
-https://purl.org/okn/frink/kg/spoke-okn/schema/PREVALENCEIN_SpL,SDoH Prevalence in Location,How common a SDoH concept is in a specific geographic area,Predicate,,SDoH,AdministrativeArea
-https://purl.org/okn/frink/kg/spoke-okn/schema/MORTALITY_DmL,Disease Mortality in Location,The mortality data or rate of the disease within a specific geographic location,Predicate,,Disease,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/ADVRESPONSE_TO_mGarC,Adverse Response To (mutantGene adverse response to Compound),Shows when variants of a gene adversely response to a drug,Predicate,,Gene,ChemicalEntity
 https://purl.org/okn/frink/kg/spoke-okn/schema/ASSOCIATES_DaG,Associates (Disease with Gene),Shows the association between a disease and a gene,Predicate,,Disease,Gene
 https://purl.org/okn/frink/kg/spoke-okn/schema/ASSOCIATES_SaD,Associates (SDoH with Disease),Shows the association between a SDoH concept and a disease by analysis on MeSH term co-occurrence in MEDLINE papers ,Predicate,,SDoH,Disease
-https://purl.org/okn/frink/kg/spoke-okn/schema/TREATS_CtD,Treats (Compound treats Disease),Shows that a drug or compound is used to treat a particular disease,Predicate,,ChemicalEntity,Disease
 https://purl.org/okn/frink/kg/spoke-okn/schema/CONTRAINDICATES_CcD,Contraindicates (Compound contraindicated for Disease),Shows that a drug should not be used for a particular disease,Predicate,,ChemicalEntity,Disease
-https://purl.org/okn/frink/kg/spoke-okn/schema/INTERACTS_CiC,Interacts (Compound with Compound),Shows when two drugs or compounds affect each other when taken together,Predicate,,ChemicalEntity,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/UPREGULATES_CuG,Upregulates (Compound increases Gene),Shows that a drug or compound increases the expression of a gene,Predicate,,ChemicalEntity,Gene
 https://purl.org/okn/frink/kg/spoke-okn/schema/DOWNREGULATES_CdG,Downregulates (Compound decreases Gene),Shows that a drug or compound decreases the activity of a gene,Predicate,,ChemicalEntity,Gene
 https://purl.org/okn/frink/kg/spoke-okn/schema/EXPRESSEDIN_GeiD,Expressed In (Gene expressed in Disease),Shows gene expression level in one cancer type or a group of cancer types,Predicate,,Gene,Disease
-https://purl.org/okn/frink/kg/spoke-okn/schema/RESPONDS_TO_OrC,Responds To (Organism responds to Compound),Shows how an organism (bacterial strains) reacts to a drug or chemical,Predicate,,OrganismTaxon,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/RESISTANT_TO_mGrC,Resistant To (mutantGene resistant to Compound),Shows when variants of a gene resistant to a drug,Predicate,,Gene,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/RESPONSE_TO_mGrC,Response To (mutantGene response to Compound),Shows when variants of a gene response to a drug,Predicate,,Gene,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/ADVRESPONSE_TO_mGarC,Adverse Response To (mutantGene adverse response to Compound),Shows when variants of a gene adversely response to a drug,Predicate,,Gene,ChemicalEntity
-https://purl.org/okn/frink/kg/spoke-okn/schema/MARKER_POS_GmpD,Positive Marker (Gene marker for Disease),"correlation between mRNA expression of a gene and patient survival of a cancer shows the gene is ""prognostic - favorable""",Predicate,,Gene,Disease
-https://purl.org/okn/frink/kg/spoke-okn/schema/MARKER_NEG_GmnD,Negative Marker (Gene marker against Disease),"correlation between mRNA expression of a gene and patient survival of a cancer shows the gene is ""prognostic - unfavorable""",Predicate,,Gene,Disease
-https://purl.org/okn/frink/kg/spoke-okn/schema/RESEMBLES_DrD,Resembles (Disease resembles Disease),Shows the association between two diseases by analysis on MeSH term co-occurrence in MEDLINE papers ,Predicate,,Disease,Disease
+https://purl.org/okn/frink/kg/spoke-okn/schema/FOUNDIN_CfL,Found In (Compound in Location),Indicates where a specific chemical compound has been detected or is present in a specific geographic area,Predicate,,ChemicalEntity,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/FOUNDIN_EfL,Found In (Environment in Location),Indicates where a specific environmental condition or feature exists,Predicate,,EnvironmentalFeature,AdministrativeArea
 https://purl.org/okn/frink/kg/spoke-okn/schema/HASROLE_ChC,Has Role (Compound has biological role),Describes the biological function or purpose of a chemical compound,Predicate,,ChemicalEntity,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/INTERACTS_CiC,Interacts (Compound with Compound),Shows when two drugs or compounds affect each other when taken together,Predicate,,ChemicalEntity,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_CiC,Is Subtype Of (Compound),Shows when one chemical compound is a more specific type of another compound,Predicate,,ChemicalEntity,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_DiD,Is Subtype Of (Disease),Shows when one disease is a more specific type of another disease,Predicate,,Disease,Disease
+https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_EiE,Is Subtype Of (Environment),Shows when one environment type is a more specific type of another environment,Predicate,,EnvironmentalFeature,EnvironmentalFeature
+https://purl.org/okn/frink/kg/spoke-okn/schema/ISA_SiS,Is Subtype Of (SDoH),Shows when one SDoH concept is a more specific type of another SDoH concept,Predicate,,SDoH,SDoH
+https://purl.org/okn/frink/kg/spoke-okn/schema/ISOLATEDIN_OiL,Isolated In (Organism in Location),Shows which country a particular Organisms (bacterial strains) was collected or sampled,Predicate,,OrganismTaxon,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/MARKER_NEG_GmnD,Negative Marker (Gene marker against Disease),"correlation between mRNA expression of a gene and patient survival of a cancer shows the gene is ""prognostic - unfavorable""",Predicate,,Gene,Disease
+https://purl.org/okn/frink/kg/spoke-okn/schema/MARKER_POS_GmpD,Positive Marker (Gene marker for Disease),"correlation between mRNA expression of a gene and patient survival of a cancer shows the gene is ""prognostic - favorable""",Predicate,,Gene,Disease
+https://purl.org/okn/frink/kg/spoke-okn/schema/MORTALITY_DmL,Disease Mortality in Location,The mortality data or rate of the disease within a specific geographic location,Predicate,,Disease,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/PARTOF_CpC,Part Of (Compound),Shows when one chemical structure is a component of a larger compound,Predicate,,ChemicalEntity,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/PARTOF_LpL,Part Of (Location),Shows when one geographic location is contained within another location,Predicate,,AdministrativeArea,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/PREVALENCEIN_SpL,SDoH Prevalence in Location,How common a SDoH concept is in a specific geographic area,Predicate,,SDoH,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/PREVALENCE_DpL,Disease Prevalence in Location,How common a disease is in a specific geographic area,Predicate,,Disease,AdministrativeArea
+https://purl.org/okn/frink/kg/spoke-okn/schema/RESEMBLES_DrD,Resembles (Disease resembles Disease),Shows the association between two diseases by analysis on MeSH term co-occurrence in MEDLINE papers ,Predicate,,Disease,Disease
+https://purl.org/okn/frink/kg/spoke-okn/schema/RESISTANT_TO_mGrC,Resistant To (mutantGene resistant to Compound),Shows when variants of a gene resistant to a drug,Predicate,,Gene,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/RESPONDS_TO_OrC,Responds To (Organism responds to Compound),Shows how an organism (bacterial strains) reacts to a drug or chemical,Predicate,,OrganismTaxon,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/RESPONSE_TO_mGrC,Response To (mutantGene response to Compound),Shows when variants of a gene response to a drug,Predicate,,Gene,ChemicalEntity
+https://purl.org/okn/frink/kg/spoke-okn/schema/TREATS_CtD,Treats (Compound treats Disease),Shows that a drug or compound is used to treat a particular disease,Predicate,,ChemicalEntity,Disease
+https://purl.org/okn/frink/kg/spoke-okn/schema/UPREGULATES_CuG,Upregulates (Compound increases Gene),Shows that a drug or compound increases the expression of a gene,Predicate,,ChemicalEntity,Gene
 https://purl.org/okn/frink/kg/spoke-okn/schema/abbr,Abbreviation,two-letter postal state abbreviation,NodeProperty,,AdministrativeArea,
 https://purl.org/okn/frink/kg/spoke-okn/schema/act_sources,Activity Sources,Where information about biological activity came from,EdgeProperty,CONTRAINDICATES_CcD; TREATS_CtD,,
 https://purl.org/okn/frink/kg/spoke-okn/schema/antimicrobial_resistance,Antimicrobial Resistance,ability of bacteria to resist the effects of antibiotic drugs,NodeProperty,,OrganismTaxon,
@@ -123,10 +134,3 @@ https://purl.org/okn/frink/kg/spoke-okn/schema/variable,Variable,"The measured S
 https://purl.org/okn/frink/kg/spoke-okn/schema/vendor,Vendor,The company or organization that supplied something,EdgeProperty,RESPONDS_TO_OrC,,
 https://purl.org/okn/frink/kg/spoke-okn/schema/year,Year,The year the data is reported,EdgeProperty,FOUNDIN_CfL; FOUNDIN_EfL; PREVALENCE_DpL; PREVALENCEIN_SpL,,
 https://purl.org/okn/frink/kg/spoke-okn/schema/zipcode_type,ZIP Code Type,"The type of a ZIP code, such as standard, PO BOX",NodeProperty,,AdministrativeArea,
-https://purl.org/okn/frink/kg/spoke-okn/schema/SDoH,Social Determinants of Health,Social and economic factors that influence health outcomes,Class,,,
-https://schema.org/AdministrativeArea,Administrative Area,A geographic region with administrative boundaries like cities or states,Class,,,
-https://w3id.org/biolink/vocab/ChemicalEntity,Chemical Entity,A chemical substance or compound,Class,,,
-https://w3id.org/biolink/vocab/Disease,Disease,A disorder or illness that affects health,Class,,,
-https://w3id.org/biolink/vocab/EnvironmentalFeature,Environmental Feature,"An environmental entity, such as environmental quality entity ",Class,,,
-https://w3id.org/biolink/vocab/Gene,Gene,A unit of heredity that determines biological characteristics,Class,,,
-https://w3id.org/biolink/vocab/OrganismTaxon,Organism Taxon,A classification group for living organisms,Class,,,

@@ -1,119 +1,96 @@
-URI,Label,Description,Type
-http://geosciences.ca/def/groundwater#GW_AquiferSystem,Aquifer System,A system of one or more aquifer units that function as a hydrologic system.,Class
-http://geosciences.ca/def/groundwater#GW_AquiferUnit,Aquifer Unit,A hydrogeologic unit that is capable of storing and transmitting water in economically significant quantities.,Class
-http://geosciences.ca/def/groundwater#GW_HydrogeoUnit,Hydrogeologic Unit,A body of rock or sediment distinguished and characterized by its porosity and permeability in relation to groundwater flow.,Class
-http://geosciences.ca/def/groundwater#GW_Well,Water Well,A borehole or excavation drilled into the ground to access groundwater.,Class
-http://geosciences.ca/def/groundwater#gwAquiferSystem,groundwater aquifer system,Links a feature to the aquifer system it is associated with.,Predicate
-http://geosciences.ca/def/hydraulic#contains,contains,Indicates that one hydrologic feature contains another.,Predicate
-http://purl.org/dc/terms/conformsTo,conforms to,An established standard to which the resource conforms.,Predicate
-http://purl.org/dc/terms/format,format,"The file format, media type, or dimensions of the resource.",Predicate
-http://rdfs.org/ns/void#Dataset,VoID Dataset,"A set of RDF triples that are published, maintained or aggregated by a single provider.",Class
-http://rdfs.org/ns/void#LinkSet,Link Set,A collection of RDF links between two datasets.,Class
-http://rdfs.org/ns/void#Linkset,Linkset,A collection of RDF links between two datasets.,Class
-http://rdfs.org/ns/void#property,property,The property used to link resources in a linkset.,Predicate
-http://rdfs.org/ns/void#target,target,The target dataset of a linkset.,Predicate
-http://schema.org/EntryPoint,Entry Point,An entry point for an API or action.,Class
-http://schema.org/ListItem,List Item,An item in a list.,Class
-http://schema.org/NewsArticle,News Article,A news article or piece of journalism.,Class
-http://schema.org/Organization,Organization,"An organized entity such as a company, government agency, or institution.",Class
-http://schema.org/Person,Person,An individual human being.,Class
-http://schema.org/SearchAction,Search Action,An action to perform a search query.,Class
-http://schema.org/WebPage,Web Page,A single page on a website.,Class
-http://schema.org/WebSite,Web Site,A website or web presence.,Class
-http://www.opengis.net/ont/geosparql#asWKT,as WKT,The WKT (Well-Known Text) serialization of a geometry.,Predicate
-http://www.opengis.net/ont/geosparql#crs,coordinate reference system,The coordinate reference system used by the geometry.,Predicate
-http://www.opengis.net/ont/geosparql#hasGeometry,has geometry,Links a feature to its geometric representation.,Predicate
-http://www.opengis.net/ont/sf#GeometryCollection,Geometry Collection,A collection of heterogeneous geometric primitives.,Class
-http://www.opengis.net/ont/sf#LineString,Line String,A one-dimensional geometric primitive consisting of a sequence of points.,Class
-http://www.opengis.net/ont/sf#Point,Point,A zero-dimensional geometric primitive representing a position in space.,Class
-http://www.opengis.net/ont/sf#Polygon,Polygon,A two-dimensional geometric primitive bounded by an exterior boundary and zero or more interior boundaries.,Class
-http://www.w3.org/ns/sosa/ObservationCollection,Observation Collection,A collection of observations.,Class
-http://www.w3.org/ns/sosa/hasFeatureOfInterest,has feature of interest,Links an observation to the feature that was observed.,Predicate
-https://geoconnex.ca/id/connectedTo,connected to,Indicates that two hydrologic features are connected.,Predicate
-https://opengeospatial.github.io/SELFIE/DataNode_FeatureCatalog,Feature Catalog,A catalog of feature types and their properties.,Class
-https://opengeospatial.github.io/SELFIE/DataNode_FeatureLinkSet,Feature Link Set,A set of links between features in different datasets.,Class
-https://schema.org/DataDownload,Data Download,A dataset in downloadable form.,Class
-https://schema.org/GeoCoordinates,Geographic Coordinates,Geographic coordinates specifying latitude and longitude.,Class
-https://schema.org/GeoShape,Geographic Shape,A geographic shape such as a polygon or line.,Class
-https://schema.org/Organization,Organization,"An organized entity such as a company, government agency, or institution.",Class
-https://schema.org/PropertyValue,Property Value,A property-value pair for structured data.,Class
-https://schema.org/about,about,The subject matter of the content.,Predicate
-https://schema.org/contentUrl,content URL,The direct URL to access the content.,Predicate
-https://schema.org/description,description,A textual description of the entity.,Predicate
-https://schema.org/distribution,distribution,A downloadable form of the dataset.,Predicate
-https://schema.org/encodingFormat,encoding format,The file format or media type of the resource.,Predicate
-https://schema.org/geo,geographic location,The geographic coordinates of the entity.,Predicate
-https://schema.org/geoIntersects,geo intersects,Indicates that this geographic feature spatially intersects with another.,Predicate
-https://schema.org/geoWithin,geo within,Indicates that this geographic feature is spatially contained within another.,Predicate
-https://schema.org/identifier,identifier,A unique identifier for the entity.,Predicate
-https://schema.org/isBasedOn,is based on,Indicates a resource from which this resource is derived.,Predicate
-https://schema.org/latitude,latitude,The latitude of the location.,Predicate
-https://schema.org/line,line,A line string representing a linear geographic feature.,Predicate
-https://schema.org/location,location,The location of the entity.,Predicate
-https://schema.org/longitude,longitude,The longitude of the location.,Predicate
-https://schema.org/measurementMethod,measurement method,The method used to perform measurements.,Predicate
-https://schema.org/measurementTechnique,measurement technique,The technique or method used to make measurements.,Predicate
-https://schema.org/name,name,The name of the entity.,Predicate
-https://schema.org/polygon,polygon,A polygon representing the geographic boundary.,Predicate
-https://schema.org/propertyID,property ID,A commonly used identifier for the property.,Predicate
-https://schema.org/provider,provider,The organization or person that provides the resource.,Predicate
-https://schema.org/publisher,publisher,The organization or person that published the resource.,Predicate
-https://schema.org/sameAs,same as,Indicates that this entity is the same as another entity (used for linking).,Predicate
-https://schema.org/subjectOf,subject of,A resource that describes this entity.,Predicate
-https://schema.org/supersededBy,superseded by,Indicates that this resource has been replaced by another resource.,Predicate
-https://schema.org/temporalCoverage,temporal coverage,The time period covered by the dataset or content.,Predicate
-https://schema.org/unitText,unit text,The unit of measurement in text form.,Predicate
-https://schema.org/url,URL,The URL of the resource.,Predicate
-https://schema.org/value,value,The value of a property.,Predicate
-https://schema.org/variableMeasured,variable measured,The variable that was measured in the dataset.,Predicate
-https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment,Catchment (Application Schema),Application schema implementation of a catchment feature.,Class
-https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentDivide,Catchment Divide,The boundary that separates adjacent catchments; a drainage divide.,Class
-https://www.opengis.net/def/appschema/hy_features/hyf/HY_HydrometricFeature,Hydrometric Feature (Application Schema),Application schema implementation of a hydrometric feature.,Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_Catchment,Catchment,"A physiographic unit with hydrological significance, having defined extent (a catchment boundary) and runoff characteristics. A catchment may be dendritic or non-dendritic.",Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_CatchmentAggregate,Catchment Aggregate,An aggregation of multiple catchments treated as a single hydrologic unit.,Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_DendriticCatchment,Dendritic Catchment,"A catchment with a tree-like drainage pattern, having a single outflow point.",Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_Flowpath,Flow Path,A linear hydrologic feature representing the path of water flow through a catchment or water body.,Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_HydroNetwork,Hydrologic Network,A network of connected hydrologic features such as flow paths and nexuses.,Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_HydroNexus,Hydrologic Nexus,A hydrologic determination (not a hydrographic feature) representing the place where a hydrologic phenomena occurs; a nexus is a point-location where a flow path is logically joined.,Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_HydroloLocation,Hydrologic Location,"A location on or related to a hydrologic feature, such as a position along a river or within a catchment.",Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_HydrometricFeature,Hydrometric Feature,"A hydrologic feature where hydrometric observations or measurements are made, such as a gauging station.",Class
-https://www.opengis.net/def/hy_features/ontology/hyf/HY_HydrometricNetwork,Hydrometric Network,A network of hydrometric features for systematic observation and measurement of hydrologic phenomena.,Class
-https://www.opengis.net/def/hy_features/ontology/hyf/catchmentRealization,catchment realization,Links a catchment to its geometric or hydrographic realization.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/contributingCatchment,contributing catchment,Links a catchment to another catchment that contributes flow to it.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/encompassingCatchment,encompassing catchment,Links a catchment to a larger catchment that contains it.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/exorheicDrainage,exorheic drainage,Indicates that a catchment has drainage to the ocean or sea.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/hydrometricNetwork,hydrometric network,Links a hydrometric feature to the network it belongs to.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/inflow,inflow,Links a catchment or water body to a feature from which water flows into it.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/lowerCatchment,lower catchment,Links a catchment to another catchment that is downstream and directly connected to it.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/networkStation,network station,Links a hydrometric network to a hydrometric feature (station) that is part of the network.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/nexusRealization,nexus realization,Links a hydrologic nexus to its geometric realization.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/outflow,outflow,Links a catchment or water body to a feature to which water flows out from it.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/realizedCatchment,realized catchment,Links a geometric or hydrographic feature to the catchment it realizes.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/realizedNexus,realized nexus,Links a geometric feature to the hydrologic nexus it realizes.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/receivingCatchment,receiving catchment,Links a catchment to another catchment that receives flow from it.,Predicate
-https://www.opengis.net/def/hy_features/ontology/hyf/upperCatchment,upper catchment,Links a catchment to another catchment that is upstream and directly connected to it.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/HY_DistanceDescription,distance description,A description of distance along a hydrologic feature.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/HY_DistanceFromReferent,distance from referent,The distance from a reference point along a hydrologic feature.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/HY_HydroLocation,Hydrologic Location (Schema),Schema definition of a hydrologic location.,Class
-https://www.opengis.net/def/schema/hy_features/hyf/HY_HydroLocationType,hydrologic location type,"Specifies the type of hydrologic location (e.g., stream, canal, estuary).",Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/HY_IndirectPosition,indirect position,A position defined indirectly through a linear referencing system.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/containingCatchment,containing catchment,Links a feature to the catchment that contains it.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/distanceDescription,distance description,Provides a textual description of distance along a hydrologic feature.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/distanceExpression,distance expression,Provides a numerical expression of distance along a hydrologic feature.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/interpolative,interpolative,Indicates whether a position is interpolated along a linear feature.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/linearElement,linear element,Links a hydrologic location to the linear element (flow path) it references.,Predicate
-https://www.opengis.net/def/schema/hy_features/hyf/referencedPosition,referenced position,Links a hydrologic location to a position along a linear referencing system.,Predicate
-https://www.wikidata.org/wiki/Property:P2043,length,The length of a geographic feature (Wikidata property).,Predicate
-https://www.wikidata.org/wiki/Property:P2053,width,The width of a geographic feature (Wikidata property).,Predicate
-https://www.wikidata.org/wiki/Property:P403,mouth of watercourse,The body of water into which the watercourse drains (Wikidata property).,Predicate
-https://www.wikidata.org/wiki/Property:P885,origin of watercourse,The source or origin of a watercourse (Wikidata property).,Predicate
-locType:Atmosphere,Atmosphere,"Locations in the atmospheric environment, such as precipitation measurement sites.",Class
-locType:Canal,Canal,"An artificial waterway constructed for navigation, drainage, or water conveyance.",Class
-locType:Ditch,Ditch,An artificial channel for drainage or irrigation.,Class
-locType:Diversion,Diversion,A location where water is diverted from its natural course.,Class
-locType:Estuary,Estuary,A partially enclosed coastal water body where freshwater from rivers meets and mixes with saltwater from the ocean.,Class
-locType:Ocean,Ocean,Marine water bodies and oceanic features.,Class
-locType:Shore,Shore,The land along the edge of a body of water.,Class
-locType:Sinkhole,Sinkhole,"A depression or hole in the ground caused by collapse of the surface layer, often associated with karst topography.",Class
-locType:Stream,Stream,A natural watercourse flowing on or under the earth surface.,Class
-locType:Subsurface,Subsurface,"A location below the earth's surface, typically referring to groundwater features.",Class
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+http://rdfs.org/ns/void#Dataset,VoID Dataset,"A set of RDF triples that are published, maintained or aggregated by a single provider.",Class,,,
+http://www.opengis.net/ont/geosparql#Geometry,geo:Geometry,A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS).,Class,,,
+http://www.opengis.net/ont/sf#GeometryCollection,Geometry Collection,A collection of heterogeneous geometric primitives.,Class,,,
+http://www.opengis.net/ont/sf#LineString,Line String,A one-dimensional geometric primitive consisting of a sequence of points.,Class,,,
+http://www.opengis.net/ont/sf#MultiPolygon,MultiPolygon,A geometry made up of multiple polygons.,Class,,,
+http://www.opengis.net/ont/sf#Point,Point,A zero-dimensional geometric primitive representing a position in space.,Class,,,
+http://www.opengis.net/ont/sf#Polygon,Polygon,A two-dimensional geometric primitive bounded by an exterior boundary and zero or more interior boundaries.,Class,,,
+https://schema.org/DataDownload,Data Download,A dataset in downloadable form.,Class,,,
+https://schema.org/Dataset,Dataset,A body of structured information describing some topic(s).,Class,,,
+https://schema.org/GeoCoordinates,Geographic Coordinates,Geographic coordinates specifying latitude and longitude.,Class,,,
+https://schema.org/GeoShape,Geographic Shape,A geographic shape such as a polygon or line.,Class,,,
+https://schema.org/GovernmentOrganization,Government Organization,A governmental organization or agency.,Class,,,
+https://schema.org/Organization,Organization,"An organized entity such as a company, government agency, or institution.",Class,,,
+https://schema.org/Place,Place,An entity that has a somewhat fixed physical extent.,Class,,,
+https://schema.org/PropertyValue,Property Value,A property-value pair for structured data.,Class,,,
+https://schema.org/State,State,A state or province.,Class,,,
+https://schema.org/WebPage,Web Page,A web page.,Class,,,
+https://www.opengis.net/def/appschema/hy_features/hyf/HY_HydroLocation,HY Hydro Location,A location of hydrologic significance on a network.,Class,,,
+https://www.opengis.net/def/appschema/hy_features/hyf/HY_HydrometricFeature,Hydrometric Feature (Application Schema),Application schema implementation of a hydrometric feature.,Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_FlowPath,hyf:HY_FlowPath,"The HY_Flowpath feature type realizes a catchment specifically as a path connecting the inflow and outflow of the catchment it realizes. HY_Flowpath specializes HY_CatchmentRealization with respect to an implied linear geometric representation including a straight or curved line. Topologically, the flowpath connects the inflow and outflow of the catchment, and is understood as an edge bounded by an inflow node and an outflow node, and corresponding to left-bank and right-bank catchment faces. Hydrologically, the flowpath is a line describing a moving particle of water.  Through generalization, HY_Flowpath inherits the shape and the realizedCatchment properties. The optional shape of the flowpath is usually a single curve.",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_HydroLocation,ReferenceLocation,"The HY_HydroLocation feature type (Figure 35) conceptualizes the idea that a hydro nexus can be realized by practically any feature of interest. The hydro nexus concept is used to define the hydrologic determination of a catchment but, like the catchment concept, does not have inherent realization(s). Any hydrologically significant feature that can be identified as (said to be) the outlet of a catchment may realize the hydro nexus. Typically, this will be a permanent, stable location that is fixed and/or referenced by coordinates.  Landmarks such as confluences, points corresponding to vertical sections, or the position of a monitoring station on a river are typical realizations of the hydro nexus. Other kinds of hydro nexus realizations that don't carry normal surface water characteristics as defined in this standard, e.g. a spring where groundwater enters the surface, an arbitrary point projected onto the surface, or a nexus that collects many disjoint locations may use or specialize the general HY_HydroLocation type.  Topologically, the HY_HydroLocation should be understood to be the boundary of the corresponding catchment, and always of lower topological dimension than the catchment. Even though the topological realization of a hydro nexus is typically as a node between catchment edges, a nexus realization may also have any geometric representation, including a single point. In many cases, HY_HydroLocations are known but corresponding catchments and hydro nexuses are not defined. For example, stream gages that are part of a catchment dataset whose hydro nexus features are realized by confluences. Both the stream gages and confluences are HY_HydroLocations, but the stream gages’ hydro nexus features are not defined. Using this concept, HY_HydroLocation is expected to be used to link between datasets that have catchments delineated for different HY_HydroLocations. HY_HydroLocation carries two attributes: shape and hydroLocationType. It has referencedPosition and realizedNexus associations implying the hydro-complex feature collection.",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_HydrometricFeature,HY Hydrometric Feature,A feature at which hydrometric measurements are made.,Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_WaterBody,hyf:HY_WaterBody,"A waterbody is part of the hydrographic network and is either standing in a depression or flowing in a channel, which are parts of the channel network",Class,,,
+http://purl.org/dc/terms/conformsTo,conforms to,An established standard to which the resource conforms.,Predicate,,,
+http://purl.org/dc/terms/created,created,Date of creation of the resource.,Predicate,,,
+http://rdfs.org/ns/void#property,property,The property used to link resources in a linkset.,Predicate,,,
+http://www.opengis.net/ont/geosparql#asWKT,as WKT,The WKT (Well-Known Text) serialization of a geometry.,Predicate,,,
+http://www.opengis.net/ont/geosparql#crs,coordinate reference system,The coordinate reference system used by the geometry.,Predicate,,,
+http://www.opengis.net/ont/geosparql#hasGeometry,geo:hasGeometry,A spatial representation for a given Feature.,Predicate,,geo:Feature,geo:Geometry
+http://www.opengis.net/ont/geosparql#sfWithin,sfWithin,Simple-features spatial 'within' relation between geometries or features.,Predicate,,,
+https://schema.org/AdministrativeArea,Administrative Area,A geographical region under the jurisdiction of a government.,Predicate,,,
+https://schema.org/about,about,The subject matter of the content.,Predicate,,,
+https://schema.org/alternateName,alternate Name,An alias for the item.,Predicate,,,
+https://schema.org/containedInPlace,contained In Place,The basic containment relation between a place and one that contains it.,Predicate,,,
+https://schema.org/contentUrl,content URL,The direct URL to access the content.,Predicate,,,
+https://schema.org/dateCreated,date Created,The date on which the item was created.,Predicate,,,
+https://schema.org/dateModified,date Modified,The date on which the item was most recently modified.,Predicate,,,
+https://schema.org/dateUpdated,date Updated,The date on which the item was last updated.,Predicate,,,
+https://schema.org/description,description,A textual description of the entity.,Predicate,,,
+https://schema.org/distribution,distribution,A downloadable form of the dataset.,Predicate,,,
+https://schema.org/duration,duration,A time period.,Predicate,,,
+https://schema.org/elevation,elevation,The elevation of a location above sea level.,Predicate,,,
+https://schema.org/email,email,An email address.,Predicate,,,
+https://schema.org/encodingFormat,encoding format,The file format or media type of the resource.,Predicate,,,
+https://schema.org/frequency,frequency,The frequency at which the dataset is updated.,Predicate,,,
+https://schema.org/geo,geographic location,The geographic coordinates of the entity.,Predicate,,,
+https://schema.org/geoWithin,geo within,Indicates that this geographic feature is spatially contained within another.,Predicate,,,
+https://schema.org/head_nhdpv1_comid,head nhdpv1 comid,,Predicate,,,
+https://schema.org/head_rf1id,head rf1id,,Predicate,,,
+https://schema.org/identifier,identifier,A unique identifier for the entity.,Predicate,,,
+https://schema.org/image,image,An image of the item.,Predicate,,,
+https://schema.org/isAccessibleForFree,is Accessible For Free,Whether the item is accessible for free.,Predicate,,,
+https://schema.org/isBasedOn,is based on,Indicates a resource from which this resource is derived.,Predicate,,,
+https://schema.org/keywords,keywords,Keywords or tags describing the item.,Predicate,,,
+https://schema.org/latitude,latitude,The latitude of the location.,Predicate,,,
+https://schema.org/line,line,A line string representing a linear geographic feature.,Predicate,,,
+https://schema.org/longitude,longitude,The longitude of the location.,Predicate,,,
+https://schema.org/measurementMethod,measurement method,The method used to perform measurements.,Predicate,,,
+https://schema.org/measurementTechnique,measurement technique,The technique or method used to make measurements.,Predicate,,,
+https://schema.org/name,name,The name of the entity.,Predicate,,,
+https://schema.org/outlet_nhdpv1_comid,outlet nhdpv1 comid,,Predicate,,,
+https://schema.org/outlet_rf1id,outlet rf1id,,Predicate,,,
+https://schema.org/polygon,polygon,A polygon representing the geographic boundary.,Predicate,,,
+https://schema.org/propertyID,property ID,A commonly used identifier for the property.,Predicate,,,
+https://schema.org/provider,provider,The organization or person that provides the resource.,Predicate,,,
+https://schema.org/publisher,publisher,The organization or person that published the resource.,Predicate,,,
+https://schema.org/sameAs,same as,Indicates that this entity is the same as another entity (used for linking).,Predicate,,,
+https://schema.org/sname,sname,,Predicate,,,
+https://schema.org/subjectOf,subject of,A resource that describes this entity.,Predicate,,,
+https://schema.org/supersededBy,superseded by,Indicates that this resource has been replaced by another resource.,Predicate,,,
+https://schema.org/temporalCoverage,temporal coverage,The time period covered by the dataset or content.,Predicate,,,
+https://schema.org/unitCode,unit Code,The unit of measurement.,Predicate,,,
+https://schema.org/unitText,unit text,The unit of measurement in text form.,Predicate,,,
+https://schema.org/url,URL,The URL of the resource.,Predicate,,,
+https://schema.org/value,value,The value of a property.,Predicate,,,
+https://schema.org/variableMeasured,variable measured,The variable that was measured in the dataset.,Predicate,,,
+https://www.opengis.net/def/appschema/hy_features/hyf/HY_HydroLocationType,HY Hydro Location Type,A classification of a hydrologic location.,Predicate,,,
+https://www.opengis.net/def/appschema/hy_features/hyf/HydroLocationType,Hydro Location Type,A classification of a hydrologic location.,Predicate,,,
+https://www.opengis.net/def/appschema/hy_features/hyf/containingCatchment,containing Catchment,The catchment containing this feature.,Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_DistanceDescription,distance description,"list of general terms commonly used in hydrology to describe a spatial relationship between two locations. If required, an implementation should use terms from this code list, defined specifically to conform to a terminology common in the hydrology domain. Note that alternative code lists may be used but should be related to the terms in but should be related to the terms in this code list using an appropriate formalism.",Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_DistanceFromReferent,distance from referent,"The HY_DistanceFromReferent data type provides the distance from a located referent as an absolute or interpolative value, including simple statements on accuracy and precision of the measured position.",Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_HydroLocationType,hydrologic location type,"terms identifying a Hydro Location determined to realize the conceptual nexus. If required, an implementation should use terms from this code list, defined specifically to conform to a terminology common in the hydrology domain. Note that alternative code lists may be used but should be related to the terms in but should be related to the terms in this code list using an appropriate formalism.",Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_IndirectPosition,indirect position,"The HY_IndirectPosition feature type defines the location referenced along an axis, without the necessity of a geometric realization. Indirect position uses a catchment-specific reference system which defines the flowpath as the required linear element along which the position is determined. The indirect position is then expressed as the distance from the upstream and/or downstream end of the flowpath, or from a referent that is already located on that flowpath.  The (indirect) position of an outflow node referenced along an upstream oriented flowpath can be expressed as the distance from an upstream inflow node located on that flowpath, while the (indirect) position of an inflow node referenced along a downstream oriented flowpath can be expressed as distance from a downstream outflow node located on the flowpath. An ‘intermediate’ position referencing known inflow and outflow nodes bounding a flowpath at both ends can be expressed as part of the distance along the entire flowpath, measured from the upstream end of an upstream flowpath, and/or from the downstream end of a downstream flowpath. A position referencing an already referenced location on the flowpath can be expressed as part of the distance along the entire flowpath, measured from the ‘located referent’.   HY_IndirectPosition carries the distanceExpression, and distanceDescription attributes, and has linearElement, locatedReferent and a referenceLocation associations. A point-referent constraint emphasizes the topological relationship between the linear element and point representation of the reference location; a measure-along-flowpath constraint defines the flowpath as the linear element to be used whenever a position is expressed as a distance from a referent.",Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HydroLocationType,Hydro Location Type,A classification of a hydrologic location.,Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/containingCatchment,containing catchment,catchment nesting contained catchments.,Predicate,,,hyf:HY_Catchment
+https://www.opengis.net/def/schema/hy_features/hyf/distanceDescription,distance description,"term describing the distance from the feature being used as a reference. An implementation may use the HY_DistanceDescription code list. Alternatively, the types described in ISO 19103: Conceptual Schema may be used.",Predicate,,,HY_DistanceDescription
+https://www.opengis.net/def/schema/hy_features/hyf/distanceExpression,distance expression,"absolute or interpolative value of the distance from the feature being used as a reference, including an indication of accuracy and precision of the absolute value. An implementation may use the HY_DistanceFromReferent (data type) referencing basic types. Alternatively, the types described in ISO 19103: Conceptual Schema may be used.",Predicate,,,HY_DistanceFromReferent
+https://www.opengis.net/def/schema/hy_features/hyf/downstreamWaterbody,downstream Waterbody,The water body immediately downstream of a feature.,Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/encompassingCatchment,encompassing Catchment,The catchment that encompasses this feature.,Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/interpolative,interpolative,interpolative expression (percentage) of the distance from a located referent. An implementation may use the types described in ISO 19103: Conceptual Schema.,Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/linearElement,linear element,"identifies a flowpath used as the linear element along which a position is assigned to a hydro-location, or any feature of interest.",Predicate,,,hyf:HY_FlowPath
+https://www.opengis.net/def/schema/hy_features/hyf/referencedPosition,referenced position,"position expressed as measured or otherwise described distance from a known, already located referent. Commonly, this is used to locate a feature of interest such as a hydrometric station in relation to a catchment's outlet fixed by co-ordinates.",Predicate,,,HY_IndirectPosition
+https://www.wikidata.org/wiki/Property:P2043,length,The length of a geographic feature (Wikidata property).,Predicate,,,
+https://www.wikidata.org/wiki/Property:P403,mouth of watercourse,The body of water into which the watercourse drains (Wikidata property).,Predicate,,,
+https://www.wikidata.org/wiki/Property:P885,origin of watercourse,The source or origin of a watercourse (Wikidata property).,Predicate,,,
