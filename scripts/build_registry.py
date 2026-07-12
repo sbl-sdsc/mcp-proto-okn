@@ -77,7 +77,7 @@ IDENTIFIER_NAMESPACES = {'biobricks-aopwiki': ['CAS', 'ChEBI', 'ChEMBL', 'InChIK
  'biobricks-toxcast': ['CAS', 'DTXSID', 'InChIKey'],
  'biohealth': ['MeSH', 'MONDO', 'UMLS'],
  'biomarkerkg': ['DOID', 'NCBI_Gene', 'OBCI', 'OMIM', 'PubChem', 'UBERON'],
- 'climatemodelskg': ['GeoNames'],
+ 'climatemodelskg': ['GeoNames', 'DOI'],
  'digcfdekg': ['NCBI_Gene', 'Orphanet', 'EFO', 'MONDO', 'HPO'],
  'dreamkg': [],
  'evoweb': ['NCBI_Protein', 'RefSeq'],
@@ -220,6 +220,13 @@ EXAMPLE_QUERIES = {'biobricks-aopwiki': ['What adverse outcome pathways involve 
                'What compounds are found in water supplies in Texas?'],
  'sudokn': ['What manufacturers have specific process capabilities?']}
 
+# Display names: human-friendly labels overriding the default title-cased graph
+# name. Add an entry when the auto-generated name reads poorly (e.g. acronyms or
+# multi-word graph names collapsed into one token).
+DISPLAY_NAMES = {
+    "climatemodelskg": "Climate Models KG",
+}
+
 # Aliases: alternate names that resolve to a canonical graph name. Useful when
 # a graph is commonly referred to by a short name (e.g. "spoke" → "spoke-okn").
 ALIASES = {
@@ -295,7 +302,7 @@ def build_registry():
         named_graph_uri = f"https://purl.org/okn/frink/kg/{kg_name}"
 
         # Build display name
-        display_name = kg_name.replace("-", " ").title()
+        display_name = DISPLAY_NAMES.get(kg_name, kg_name.replace("-", " ").title())
 
         # Load metadata
         description = load_description(kg_name)

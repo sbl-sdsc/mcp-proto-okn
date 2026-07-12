@@ -475,7 +475,7 @@
   },
   {
     "name": "climatemodelskg",
-    "display_name": "Climatemodelskg",
+    "display_name": "Climate Models KG",
     "named_graph_uri": "https://purl.org/okn/frink/kg/climatemodelskg",
     "endpoint_url": "https://apps.okn.us/climatemodelskg/sparql",
     "domain_tags": [
@@ -602,7 +602,8 @@
       "has_edge_properties": false
     },
     "identifier_namespaces": [
-      "GeoNames"
+      "GeoNames",
+      "DOI"
     ],
     "example_queries": [
       "What climate models cover a specific region?"
