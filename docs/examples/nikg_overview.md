@@ -63,7 +63,7 @@ classDiagram
     class CensusTract
     class BlockGroup
     class MeSHCategory {
-        mesh_D005842 …
+    mesh_D005842
     }
     class Geometry
 

@@ -47,17 +47,17 @@ Here's the live schema of the BioBricks PubChem Annotations knowledge graph. It 
 ```mermaid
 classDiagram
     class Annotation {
-        oa:Annotation
+        Annotation
     }
     class Body {
-        +dc:format
-        +rdf:value
+        +format
+        +value
     }
     class PubChemCompound
     class PubChemSubstance
 
-    Annotation --> PubChemCompound : hasTarget / dc:subject
-    Annotation --> PubChemSubstance : hasTarget / dc:subject
+    Annotation --> PubChemCompound : hasTarget / subject
+    Annotation --> PubChemSubstance : hasTarget / subject
     Annotation --> Body : hasBody
 ```
 

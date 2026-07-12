@@ -53,7 +53,7 @@ classDiagram
     Amphibian_name --> Location : OBSERVED_AT
     Statement --> Bird_name : subject
     Statement --> Location : object
-    Statement --> Location : predicate (OBSERVED_AT)
+    Statement --> Location : predicate OBSERVED_AT
 ```
 
 **Key insights from the schema:**
