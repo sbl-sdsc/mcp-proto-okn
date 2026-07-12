@@ -1,4 +1,6 @@
-# Rural Resilience Knowledge Graph - Exploration Session
+# Rural Resilience Knowledge Graph (RuralKG) Exploration
+
+## Chat Transcript
 
 👤 **User**  
 @ruralkg
@@ -6,37 +8,27 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore the Rural Knowledge Graph! Let me start by getting some information about it.
+I'll help you explore the ruralkg (Rural Resilience Knowledge Graph) graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-The **Rural Resilience Knowledge Graph** is a cross-domain knowledge graph to integrate health and justice for rural resilience.
+**RuralKG** is a cross-domain resource for studying health disparities and justice outcomes in rural America. It integrates substance-use survey data (**NSDUH**), criminal-justice incident data (**NIBRS**), mental-health **treatment providers**, and county-level **rural–urban classification** (USDA Rural-Urban Continuum Codes). It uses a native ontology (`sail.ua.edu/ruralkg`) for its survey/treatment model and **schema.org** for provider locations.
 
-The Rural Resilience Knowledge Graph (RuralKG) is a cross-domain semantic resource designed for researchers, policymakers, and public health professionals studying health disparities and justice outcomes in rural America. It integrates substance abuse data from the National Survey on Drug Use and Health (NSDUH), criminal justice incidents from the National Incident-Based Reporting System (NIBRS), mental health treatment provider locations, and geospatial administrative boundaries spanning 56 states/territories, 3,253 counties, and 31,120 cities. Each county is linked to USDA Rural-Urban Continuum Codes (RUCC) to facilitate rural-urban comparative analyses. The graph contains 815,852 triples describing 67,191 entities across 16 classes, with rich connections between treatment providers (9,037) and 176 mental health services. RuralKG uses a native ontology (sail.ua.edu/ruralkg) and provides standard SPARQL access for federated querying, supporting interdisciplinary research on rural health equity, substance abuse patterns, and justice system interactions.
+Live class counts:
+- **~14,923 `NSDUHAnswer`** and **~2,464 `NSDUH`** — survey variables and their response values
+- **~2,258 `NIBRSAnswer`** and **~469 `NIBRS`** — incident-report variables and values
+- **~9,037 `TreatmentProvider`** with **176 `MentalHealthService`** across **21 `MentalHealthServiceCategory`**
+- **~3,234 `CountyStatus`** and **10 `RUCC`** — per-county status linked to Rural-Urban Continuum Codes
+- **23 `Substance`** and **17 `SubstanceRelatedIncident`**
 
-## What's in this Knowledge Graph?
+**Main relationships:**
+- `hasVariable` / `hasAnswer` — a dataset (`NSDUH` / `NIBRS`) has variables, and each variable has coded answers (`answerCode`, `answerContent`)
+- `providesService` / `containsService` — a `TreatmentProvider` provides `MentalHealthService`s grouped into categories
+- `censusCounty` / `hasRUCC` — link county status to its census county and RUCC rural–urban code
+- schema.org `name`, `address`, `latitude`, `longitude`, `postalCode`, `telephone`, `containedInPlace`, `serviceLocation` — provider descriptors and geolocation
 
-The Rural Resilience KG integrates several key datasets:
-
-**Key Data Domains:**
-- **Geographic Areas**: 56 states/territories, 3,253 counties, and 31,120 cities with FIPS codes and coordinates
-- **Substance Abuse Data**: From the National Survey on Drug Use and Health (NSDUH)
-- **Criminal Justice**: Incident data from the National Incident-Based Reporting System (NIBRS)
-- **Mental Health Services**: 9,037 treatment providers offering 176 different mental health services
-- **Rural-Urban Classification**: Counties linked to USDA Rural-Urban Continuum Codes (RUCC) for comparative analyses
-
-**The Graph Contains:**
-- 815,852 triples describing 67,191 entities across 16 classes
-- Rich connections between treatment providers, services, geographic areas, and incident data
-
-## What Can You Explore?
-
-I can help you query this knowledge graph to answer questions like:
-- Where are mental health treatment providers located in rural vs urban counties?
-- What substance abuse patterns exist in different geographic areas?
-- How do criminal justice incidents relate to substance abuse and treatment availability?
-- What services are available in specific counties or cities?
-- How do rural-urban continuum codes correlate with health outcomes?
-
-**Would you like to explore any specific aspect of rural health, justice, or treatment services?** For example, I could help you find treatment providers in a specific state, analyze substance abuse patterns, or compare rural vs urban areas.
+Would you like me to:
+1. Visualize the schema structure?
+2. Compare substance-use survey responses across rural vs urban counties (via RUCC)?
+3. Map mental-health treatment providers by county?
 
 ---
 
@@ -46,145 +38,74 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
+Here's the live schema of RuralKG — survey and incident datasets with coded answers, treatment providers and services, and county rural–urban classification:
 
 ```mermaid
 classDiagram
-    class State {
-        +name
-        +abbreviation
-        +fips
-    }
-    
-    class County {
-        +name
-        +fips
-        +latitude
-        +longitude
-        +population
-    }
-    
-    class City {
-        +name
-        +latitude
-        +longitude
-    }
-    
-    class RUCC {
-        +code
-        +description
+    class NSDUH {
         +year
+        +code
     }
-    
-    class CountyStatus {
-        +censusCounty
+    class NIBRS {
         +year
-    }
-    
-    class TreatmentProvider {
-        +name
-        +address
-        +phone
-        +zipcode
-        +year
-    }
-    
-    class MentalHealthService {
         +code
-        +name
-        +description
     }
-    
-    class MentalHealthServiceCategory {
-        +code
-        +description
-    }
-    
-    class Substance {
-        +code
-        +name
-        +description
+    class Variable {
         +conceptType
         +domainCategory
-        +hierarchyLevel
     }
-    
-    class SubstanceRelatedIncident {
-        +identifier
-        +year
-        +fromDataset
-    }
-    
-    class NSDUH {
-        +code
-        +content
-        +description
-        +fromDataset
-        +year
-    }
-    
     class NSDUHAnswer {
         +answerCode
         +answerContent
     }
-    
-    class NIBRS {
-        +code
-        +content
-        +description
-        +fromDataset
-        +year
-    }
-    
     class NIBRSAnswer {
         +answerCode
         +answerContent
     }
+    class TreatmentProvider {
+        +name
+        +address
+        +latitude
+        +longitude
+        +telephone
+    }
+    class MentalHealthService
+    class MentalHealthServiceCategory
+    class Substance
+    class SubstanceRelatedIncident
+    class CountyStatus {
+        +population
+    }
+    class RUCC {
+        +code
+    }
 
-    State --> County : containsPlace
-    County --> City : containsPlace
-    County --> RUCC : hasRUCC
-    County --> CountyStatus : censusCounty
-    
-    TreatmentProvider --> City : inCity
-    TreatmentProvider --> County : primaryCounty
+    NSDUH --> Variable : hasVariable
+    NIBRS --> Variable : hasVariable
+    Variable --> NSDUHAnswer : hasAnswer
+    Variable --> NIBRSAnswer : hasAnswer
     TreatmentProvider --> MentalHealthService : providesService
-    
     MentalHealthService --> MentalHealthServiceCategory : containsService
-    
-    SubstanceRelatedIncident --> NIBRS : hasVariable
-    SubstanceRelatedIncident --> NSDUH : hasVariable
-    
-    NSDUH --> NSDUHAnswer : hasAnswer
-    NIBRS --> NIBRSAnswer : hasAnswer
+    TreatmentProvider --> CountyStatus : censusCounty
+    CountyStatus --> RUCC : hasRUCC
+    SubstanceRelatedIncident --> Substance : reportsSubstance
 ```
 
-## Schema Overview
+**Key insights from the schema:**
 
-The Rural Resilience Knowledge Graph has four main interconnected domains:
+1. **Two survey/incident backbones.** `NSDUH` (substance-use survey) and `NIBRS` (incident reporting) are each modeled as datasets with `Variable`s and coded `Answer`s (`answerCode` / `answerContent`), so responses can be sliced by variable and value.
 
-**1. Geographic Hierarchy** (State → County → City)
-- States contain counties, counties contain cities
-- Counties are classified by RUCC (Rural-Urban Continuum Codes) for rural-urban analysis
+2. **Treatment-provider network.** ~9,037 `TreatmentProvider`s offer `MentalHealthService`s (grouped by category) and are geolocated via schema.org properties (`address`, `latitude`, `longitude`, `postalCode`, `telephone`) — enabling provider mapping and access analysis.
 
-**2. Treatment & Services**
-- Treatment providers are located in cities and counties
-- Providers offer mental health services organized into categories
+3. **Rural–urban classification.** County-level `CountyStatus` links to USDA `RUCC` codes through `hasRUCC` and to census counties via `censusCounty`, the key axis for rural-vs-urban comparisons. (Earlier native `County`/`City`/`State` classes and predicates such as `fips`, `containsPlace`, `primaryCounty`, and `inCity` have been superseded by this county-status model plus schema.org locations.)
 
-**3. Substance Abuse Data**
-- Substance entities with hierarchical classifications
-- Substance-related incidents tracked with NSDUH and NIBRS variables
-
-**4. Survey & Incident Variables**
-- **NSDUH** (National Survey on Drug Use and Health) variables with answer values
-- **NIBRS** (National Incident-Based Reporting System) variables with answer values
-
-This structure enables research on how geographic location (especially rural vs urban), treatment availability, and substance abuse patterns intersect with criminal justice outcomes.
+4. **Interdisciplinary joins.** Substance-use, justice, treatment, and geography share the county axis, supporting questions that connect rural status to substance-use patterns, incident rates, and treatment availability.
 
 ---
 
 👤 **User**  
-create transcript
+Create transcript
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 using claude-sonnet-4-20250514 on 2025-12-21*
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

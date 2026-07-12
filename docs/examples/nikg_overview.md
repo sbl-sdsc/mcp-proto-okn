@@ -1,7 +1,6 @@
-# Chat Transcript
-## Exploring the Neighborhood Information Knowledge Graph (NIKG)
+# Neighborhood Information Knowledge Graph (NIKG) Exploration
 
----
+## Chat Transcript
 
 👤 **User**  
 @nikg
@@ -9,63 +8,31 @@
 ---
 
 🧠 **Assistant**  
-Hello! I can help you explore the **Neighborhood Information Knowledge Graph (NIKG)** — a knowledge graph warehouse designed for analyzing neighborhood-level data.
+I'll help you explore the nikg (Neighborhood Information Knowledge Graph) graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-NIKG integrates:
-- **Incident records** (particularly crime and safety events) with attributes like officer involvement, fatality status, and offender demographics
-- **Census tract boundaries**
-- **Geospatial location data** from Philadelphia and potentially other urban areas
+**NIKG** integrates neighborhood-level public-safety data for Philadelphia (sourced from `metadata.phila.gov`). It centers on **incidents** — individual events such as shootings — described by rich attributes and linked to the **locations** where they occurred, which are in turn nested within census geographies. Incident types are categorized with **MeSH** descriptor codes.
 
-It's designed for researchers, urban planners, and public health officials analyzing neighborhood-level information.
+Live class counts:
+- **~103,669 `Incident`** — individual public-safety events
+- **~60,178 `Location`** — geolocated points where incidents occurred
+- **~30,089 `mesh_D005842`** and **~1,142 `mesh_D000091368`** — incidents classified by MeSH descriptor (e.g. firearm-related categories)
+- **~2,284 `CensusTract`** and **~480 `BlockGroup`** — U.S. Census geographies
+
+**Incident attributes:**
+- `date_of`, `time_of` — when the incident occurred (replacing the earlier single `happened_at` timestamp)
+- `type_of` — the incident/MeSH category
+- `IsArrest`, `IsDomestic`, `is_fatal` — event flags
+- `age_of`, `OffenderSex`, `OffenderRace`, `OffenderWound`, `OffenderInjured`, `OffenderDeceased`, `OfficerInvolved` — participant details
+
+**Main relationships:**
+- `location` — links an `Incident` to the `Location` where it happened
+- `sfWithin` — a `Location` lies within a `CensusTract` / `BlockGroup`
+- `hasGeometry` — attaches a geometry to a spatial feature
 
 Would you like me to:
-1. **Show you the schema** — see what classes, relationships, and properties are available
-2. **Run some queries** — explore specific data like incidents by location, demographics, or time
-3. **Visualize the schema** — create a diagram of how the data is organized
-
-What would you like to explore?
-
----
-
-👤 **User**  
-Show the schema
-
----
-
-🧠 **Assistant**  
-Here's the schema for the **Neighborhood Information Knowledge Graph (NIKG)**:
-
-## Classes (6)
-
-| Class | Description |
-|-------|-------------|
-| **Incident** | An event or occurrence, typically related to public safety or emergency services |
-| **Location** | A geographic location or place within the Philadelphia region |
-| **Census Tract** | A small geographic subdivision used for presenting statistical data |
-| **Block Group** | A census block group, a geographic subdivision used for statistical purposes |
-| **Point** | A geometric object representing a single location with x,y coordinates (GeoSPARQL) |
-| **Class** | RDF Schema class definition |
-
-## Properties (10)
-
-| Property | Description |
-|----------|-------------|
-| **happened_at** | Links an incident to the location where it occurred |
-| **is_fatal** | Boolean indicating whether an incident resulted in a fatality |
-| **age_of** | Age of a person involved in an incident |
-| **OfficerInvolved** | Whether a law enforcement officer was involved |
-| **OffenderRace** | Race of an offender involved in an incident |
-| **OffenderSex** | Sex/gender of an offender involved in an incident |
-| **OffenderInjured** | Whether an offender was injured |
-| **OffenderDeceased** | Whether an offender was deceased |
-| **hasGeometry** | Links a spatial feature to its geometric representation |
-| **asWKT** | Serializes geometry as Well-Known Text (WKT) format |
-
----
-
-The data is centered around **Incidents** that link to **Locations**, which in turn connect to **Census Tracts** and **Block Groups** with precise **Point** geometries.
-
-Would you like me to visualize this as a diagram, or run some queries to explore the data?
+1. Visualize the schema structure?
+2. Aggregate incidents by census tract?
+3. Break down incidents by type, arrest status, or fatality?
 
 ---
 
@@ -75,42 +42,53 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-Here's a visual representation of the NIKG schema:
+Here's the live schema of NIKG — incidents linked to locations nested within census geographies, categorized by MeSH descriptors:
 
 ```mermaid
 classDiagram
     class Incident {
-        is_fatal : boolean
-        age_of : integer
-        OfficerInvolved : boolean
-        OffenderRace : string
-        OffenderSex : string
-        OffenderInjured : boolean
-        OffenderDeceased : boolean
+        +date_of
+        +time_of
+        +type_of
+        +IsArrest
+        +IsDomestic
+        +is_fatal
+        +age_of
+        +OffenderSex
+        +OffenderRace
+        +OffenderWound
+        +OfficerInvolved
     }
     class Location
-    class CensusTract["Census Tract"]
-    class BlockGroup["Block Group"]
-    class Point {
-        asWKT : WKTLiteral
+    class CensusTract
+    class BlockGroup
+    class MeSHCategory {
+        mesh_D005842 …
     }
-    
-    Incident --> Location : happened_at
-    Location --> Point : hasGeometry
-    Location --> CensusTract : in
-    Location --> BlockGroup : in
-    CensusTract --> Point : hasGeometry
-    BlockGroup --> Point : hasGeometry
+    class Geometry
+
+    Incident --> Location : location
+    Incident --> MeSHCategory : type_of
+    Location --> CensusTract : sfWithin
+    Location --> BlockGroup : sfWithin
+    Location --> Geometry : hasGeometry
 ```
 
-The diagram shows how:
-- **Incidents** are the central entity with detailed attributes about fatality, officer involvement, and offender demographics
-- Each incident **happened_at** a **Location**
-- Locations are associated with **Census Tracts** and **Block Groups** for statistical analysis
-- All geographic entities have **Point** geometries stored in Well-Known Text (WKT) format for GeoSPARQL queries
+**Key insights from the schema:**
 
-Would you like me to run some queries to explore the actual data?
+1. **Incident-centric.** The graph is organized around ~104 K `Incident` records, each carrying event attributes (timing, type, arrest/domestic/fatality flags) and offender/officer details — a compact model for querying public-safety events.
+
+2. **Spatial nesting via simple-features.** Incidents attach to `Location` points, which are related to census `CensusTract` and `BlockGroup` polygons through `sfWithin`, and to geometries through `hasGeometry`. (The previous model's `asWKT` literal and `sf:Point` class are no longer used; geometry is reached via `hasGeometry`.)
+
+3. **MeSH categorization.** Incidents are typed against MeSH descriptor codes (e.g. `mesh_D005842`), enabling semantic grouping of incident/injury categories and joins to biomedical vocabularies.
+
+4. **Split timestamps.** Timing is now expressed as separate `date_of` and `time_of` attributes rather than a single `happened_at` value, giving finer control for temporal filtering.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 using claude-opus-4-5-20251101 on 2025-12-20*
+👤 **User**  
+Create transcript
+
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

@@ -1,4 +1,4 @@
-# SPOKE-OKN Schema Visualization
+# SPOKE-OKN Knowledge Graph Exploration
 
 ## Chat Transcript
 
@@ -8,23 +8,32 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore the SPOKE-OKN knowledge graph! Let me first get some information about this resource.
+I'll help you explore the spoke-okn knowledge graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-Great! I can help you work with the **SPOKE-OKN (SPOKE Open Knowledge Network)** knowledge graph. This is a comprehensive biomedical and environmental health knowledge graph that integrates diverse data across genomics, environmental science, and public health.
+**SPOKE-OKN** connects biomedical entities — genes, compounds, diseases, and organisms — with **social determinants of health (SDoH)** and **geography**, with an emphasis on location-based epidemiology and antimicrobial-resistance surveillance. Entities use the **Biolink Model**; edges are **reified as `rdf:Statement`s** so that relationships can carry their own properties (data source, measurement values, dates).
 
-**Key features of SPOKE-OKN:**
-- Integrates data on organisms, genes, diseases, chemical compounds, social determinants of health, and environmental contexts
-- Includes detailed geographic information (countries down to ZIP codes)
-- Supports spatial analyses of health outcomes, environmental exposures, and socioeconomic factors
-- Maintained by the Baranzini Lab at UCSF
+Live class counts:
+- **~4.3 million `rdf:Statement`** — reified edges carrying edge properties
+- **~321 K `OrganismTaxon`** — organism isolates (with antimicrobial-resistance and host/isolation metadata)
+- **~114 K `AdministrativeArea`** — geographic areas (with FIPS codes, lat/long)
+- **~16 K `Gene`**, **1,426 `SDoH`**, **798 `ChemicalEntity`**, **180 `Disease`**, `EnvironmentalFeature`
 
-**What would you like to explore?** I can help you:
-- Understand what types of data are available (genes, diseases, locations, environmental factors, etc.)
-- Search for specific information (e.g., genes related to diseases, environmental exposures in certain areas)
-- Analyze relationships between different entities
-- Visualize the knowledge graph structure
+**Main relationships (biomedical):**
+- `Treats` / `Contraindicates` — Compound ↔ Disease
+- `Upregulates` / `Downregulates` — Compound ↔ Gene
+- `Associates` — Disease ↔ Gene, and SDoH ↔ Disease
+- `Positive Marker` / `Negative Marker` — Gene ↔ Disease
+- `Interacts`, `Has Role`, `Is Subtype Of`, `Resembles`, `Resistant To`, `Responds To`
 
-Would you like me to show you the schema to see what kinds of data and relationships are available, or do you have a specific question you'd like to explore?
+**Main relationships (geographic / epidemiological):**
+- `Isolated In` — Organism ↔ AdministrativeArea
+- `Found In` — Compound / Environment ↔ AdministrativeArea
+- `Disease Prevalence in Location`, `Disease Mortality in Location`, `SDoH Prevalence in Location`
+
+Would you like me to:
+1. Visualize the schema structure?
+2. Explore SDoH–disease associations by location?
+3. Query antimicrobial-resistance phenotypes of organism isolates?
 
 ---
 
@@ -34,256 +43,54 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-I'll visualize the schema for you. Let me first get the schema information and then create a visual diagram.
+Here's the live schema of SPOKE-OKN — biomedical entities linked to each other and to geography/SDoH through reified relationships:
 
 ```mermaid
 classDiagram
-direction TB
+    class Gene
+    class ChemicalEntity {
+        +SMILES
+    }
+    class Disease
+    class OrganismTaxon {
+        +antimicrobialResistance
+        +isolationSource
+        +hostName
+    }
+    class SDoH
+    class AdministrativeArea {
+        +stateFIPS
+        +latitude
+        +longitude
+    }
+    class EnvironmentalFeature
 
-class SDoH {
-    data_source
-    domain
-    mesh_ids
-    topic
-}
-
-class AdministrativeArea {
-    abbr
-    city_fips
-    code
-    county_fips
-    iso3
-    latitude
-    longitude
-    state
-    state_fips
-    state_name
-    zipcode_type
-}
-
-class ChemicalEntity {
-    max_phase
-    smiles
-    standardized_smiles
-    synonyms
-}
-
-class Disease {
-    mesh_list
-    omim_list
-}
-
-class EnvironmentalFeature {
-    synonyms
-}
-
-class Gene {
-    ensembl
-}
-
-class OrganismTaxon {
-    antimicrobial_resistance
-    biovar
-    collection_date
-    disease
-    genbank_accessions
-    genome_size
-    gram_stain
-    has_amr_phenotype
-    host_age
-    host_gender
-    host_health
-    host_is_human
-    host_name
-    is_resistant
-    isolation_country
-    isolation_source
-    level
-    motility
-    oxygen_requirement
-    pathovar
-    salinity
-    serovar
-    sporulation
-    strain
-    temperature_range
-    usa_isolation_country
-}
-
-class CONTRAINDICATES_CcD {
-    Activity Sources
-}
-
-class TREATS_CtD {
-    Activity Sources
-    Phase
-}
-
-class ASSOCIATES_SaD {
-    Co-occurrence
-    Enrichment
-    Fisher's Test
-    Odds Ratio
-}
-
-class RESEMBLES_DrD {
-    Co-occurrence
-    Enrichment
-    Fisher's Test
-    Odds Ratio
-}
-
-class PREVALENCE_DpL {
-    Data Value
-    Data Value Type
-    Data Value Unit
-    Location Name
-    Lower Bound
-    Metric Name
-    Short Question Text
-    State Abbreviation
-    State Description
-    Total Population
-    Upper Bound
-    Value
-    Year
-}
-
-class FOUNDIN_CfL {
-    Date
-    Date Type
-    Media
-    Metrics
-    Unit
-    Value
-    Year
-}
-
-class INTERACTS_CiC {
-    Drug-Drug Interaction Risk
-}
-
-class MORTALITY_DmL {
-    Global Health Estimate Code
-    Mortality Per 100k
-    Population
-    Usability
-    Value
-}
-
-class RESPONDS_TO_OrC {
-    Laboratory Typing Method
-    Laboratory Typing Platform
-    Measurement Sign
-    Measurement Unit
-    Measurement Value
-    Resistant Phenotype
-    Testing Standard Year
-    Vendor
-}
-
-class PREVALENCEIN_SpL {
-    Method
-    Value
-    Variable
-    Year
-}
-
-class FOUNDIN_EfL {
-    Metrics
-    Unit
-    Value
-    Year
-}
-
-class PARTOF_LpL {
-    Percent of Place Area in ZIP
-    Percent of ZIP Area in Place
-}
-
-SDoH --> SDoH : ISA_SiS
-Disease --> Disease : ISA_DiD
-ChemicalEntity --> ChemicalEntity : ISA_CiC
-EnvironmentalFeature --> EnvironmentalFeature : ISA_EiE
-AdministrativeArea --> AdministrativeArea : PARTOF_LpL_simple
-ChemicalEntity --> ChemicalEntity : PARTOF_CpC
-
-ChemicalEntity --> FOUNDIN_CfL
-FOUNDIN_CfL --> AdministrativeArea
-
-EnvironmentalFeature --> FOUNDIN_EfL
-FOUNDIN_EfL --> AdministrativeArea
-
-OrganismTaxon --> AdministrativeArea : ISOLATEDIN_OiL
-
-Disease --> PREVALENCE_DpL
-PREVALENCE_DpL --> AdministrativeArea
-
-SDoH --> PREVALENCEIN_SpL
-PREVALENCEIN_SpL --> AdministrativeArea
-
-Disease --> MORTALITY_DmL
-MORTALITY_DmL --> AdministrativeArea
-
-Disease --> Gene : ASSOCIATES_DaG
-
-SDoH --> ASSOCIATES_SaD
-ASSOCIATES_SaD --> Disease
-
-ChemicalEntity --> TREATS_CtD
-TREATS_CtD --> Disease
-
-ChemicalEntity --> CONTRAINDICATES_CcD
-CONTRAINDICATES_CcD --> Disease
-
-ChemicalEntity --> INTERACTS_CiC
-INTERACTS_CiC --> ChemicalEntity
-
-ChemicalEntity --> Gene : UPREGULATES_CuG
-ChemicalEntity --> Gene : DOWNREGULATES_CdG
-
-Gene --> Disease : EXPRESSEDIN_GeiD
-
-OrganismTaxon --> RESPONDS_TO_OrC
-RESPONDS_TO_OrC --> ChemicalEntity
-
-Gene --> ChemicalEntity : RESISTANT_TO_mGrC
-Gene --> ChemicalEntity : RESPONSE_TO_mGrC
-Gene --> ChemicalEntity : ADVRESPONSE_TO_mGarC
-
-Gene --> Disease : MARKER_POS_GmpD
-Gene --> Disease : MARKER_NEG_GmnD
-
-Disease --> RESEMBLES_DrD
-RESEMBLES_DrD --> Disease
-
-ChemicalEntity --> ChemicalEntity : HASROLE_ChC
-
-AdministrativeArea --> PARTOF_LpL
-PARTOF_LpL --> AdministrativeArea
+    ChemicalEntity --> Disease : Treats / Contraindicates
+    ChemicalEntity --> Gene : Upregulates / Downregulates
+    Disease --> Gene : Associates
+    SDoH --> Disease : Associates
+    Gene --> Disease : Positive/Negative Marker
+    OrganismTaxon --> AdministrativeArea : Isolated In
+    ChemicalEntity --> AdministrativeArea : Found In
+    Disease --> AdministrativeArea : Prevalence / Mortality in Location
+    SDoH --> AdministrativeArea : Prevalence in Location
 ```
 
-Here's a visual representation of the SPOKE-OKN knowledge graph schema! 
+**Key insights from the schema:**
 
-**Key Components:**
+1. **Reified edges carry data.** With ~4.3 million `rdf:Statement`s, every relationship can be annotated (source, measurement value/unit, date, method) — essential for the graph's quantitative prevalence/mortality edges. Traverse via `rdf:subject` / `rdf:predicate` / `rdf:object`.
 
-**7 Main Entity Types:**
-- **SDoH** (Social Determinants of Health) - social and economic factors affecting health
-- **AdministrativeArea** - geographic locations (countries, states, counties, ZIP codes)
-- **ChemicalEntity** - drugs and chemical compounds
-- **Disease** - disorders and illnesses
-- **EnvironmentalFeature** - environmental quality entities
-- **Gene** - units of heredity
-- **OrganismTaxon** - bacterial strains and organisms
+2. **Biomedical core + geography.** The Biolink classes (Gene, ChemicalEntity, Disease, OrganismTaxon) are linked to `AdministrativeArea` so biomedical facts can be grounded in place — e.g. disease prevalence or organism isolation by county/state.
 
-**Relationship Types:**
-- **Simple arrows** show direct relationships (e.g., Gene → Disease, Chemical → Gene)
-- **Box-shaped relationships** contain edge properties - these store quantitative data on the relationships themselves (like disease prevalence values, drug interaction risk levels, mortality rates, etc.)
+3. **SDoH integration.** `SDoH` entities associate with diseases and carry prevalence-in-location edges, letting queries relate social determinants to health outcomes geographically.
 
-The diagram shows how SPOKE-OKN integrates biomedical, environmental, and geographic data to support research on health outcomes, environmental exposures, and social determinants of health.
+4. **AMR surveillance.** `OrganismTaxon` isolates carry rich host/isolation and antimicrobial-resistance metadata (`Has Antimicrobial Resistance Phenotype`, `Isolation Country/Source`, `Resistant To` compounds), supporting resistance-surveillance questions.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 on 2025-12-31*
+👤 **User**  
+Create transcript
 
-Model: claude-sonnet-4-20250514
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

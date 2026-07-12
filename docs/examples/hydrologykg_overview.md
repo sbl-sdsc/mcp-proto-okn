@@ -1,5 +1,6 @@
-# Chat Transcript
-Exploring the SAWGraph Hydrology Knowledge Graph
+# SAWGraph Hydrology Knowledge Graph Exploration
+
+## Chat Transcript
 
 👤 **User**  
 @hydrologykg
@@ -7,43 +8,28 @@ Exploring the SAWGraph Hydrology Knowledge Graph
 ---
 
 🧠 **Assistant**  
-I'll help you explore the hydrologykg knowledge graph. Let me first get information about what this knowledge graph contains.
+I'll help you explore the hydrologykg knowledge graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-The **SAWGraph Hydrology KG** is now accessible. This knowledge graph integrates surface and groundwater data to help trace pollutant pathways and understand water connectivity. Here's what you can explore:
+**HydrologyKG** is the SAWGraph representation of surface- and subsurface-water features and drinking-water infrastructure. It combines **public water systems** (from SDWIS), **wells** and **aquifers** (e.g. Maine Geological Survey), OGC **HY_Features** hydrography, and a dense **S2-cell** spatial index, with measurements expressed in **QUDT** quantities. It reuses GroundWaterML2 (`gwml2`), a hydro-feature ontology (`hyfo`), NHDPlus v2, STKO spatial classes, and GeoSPARQL.
 
-## Key Features:
+Live class counts (largest first):
+- **~7.4 million `S2Cell` / `Region`** (STKO Level-13 discrete global grid) — the spatial index features attach to
+- **~8.5 million `geo:Feature`** / **~9.1M `geo:SpatialObject`** — geospatial features and geometries
+- **~434 K `HY_FlowPath` / `HY_CatchmentRealization`** with **`nhdplusv2:FlowPathLength`** and **`qudt:QuantityValue`** measures
+- **Public Water Systems**: `Community Water System`, `Non-Community` / `Non-Transient Non-Community Water System`, `PWS Groundwater` / `PWS Surface Water`, with `PWS Service Area` and `PWS Source Water Type`
+- **Wells & aquifers**: `Maine Geological Survey Well` (depth/yield/purpose/type/use), `gwml2:GW_Aquifer`, `gwml2:GW_AquiferSystem`, `hyfo` surface/subsurface/aquifer water features
 
-**Surface Water:**
-- Rivers, streams, lakes, and catchments from NHDPlus
-- Flow paths and hydrological connectivity (upstream/downstream relationships)
-- Water bodies like canals, estuaries, lagoons, and impoundments
+**Main relationships:**
+- `serviceArea` / `serviceAreaType` — a Public Water System's service area and its type
+- `primarySourceType` — the PWS's source water (ground vs surface); `populationServed`
+- `gwAquiferSystem` — links a `GW_Aquifer` to its `GW_AquiferSystem`
+- `hasFlowPathLength` / `hasQuantityKind` / `quantityValue` — QUDT-typed measurements on flow paths and features
+- `geo:hasGeometry` / `geo:defaultGeometry` — geometry, with features indexed to S2 cells
 
-**Groundwater:**
-- Wells from Maine and Illinois geological surveys
-- Aquifers and aquifer systems
-- Well depths, purposes, yields, and types
-
-**Public Water Systems:**
-- Community and non-community water systems
-- Water sources (groundwater vs. surface water)
-- Service connections and population served
-
-**Spatial Integration:**
-- S2 cells (Level 13) for precise location
-- Administrative regions (counties, states)
-- ZIP code areas
-- Topological relationships (contains, touches, crosses, overlaps)
-
-## What would you like to explore?
-
-Some example queries you could ask:
-- Find wells in a specific county or state
-- Trace upstream or downstream flow paths from a location
-- Find public water systems and their sources
-- Identify aquifers and connected wells
-- Explore water features in specific catchments
-
-What interests you?
+Would you like me to:
+1. Visualize the schema structure?
+2. Find public water systems by source type in a region?
+3. Trace flow paths and connected catchments?
 
 ---
 
@@ -53,186 +39,53 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-I'll create a visual diagram of the SAWGraph Hydrology KG schema using Mermaid.
-
-Here's the SAWGraph Hydrology KG schema visualization:
+Here's the live schema of HydrologyKG — public water systems, wells, aquifers, and hydrography over an S2 spatial grid:
 
 ```mermaid
 classDiagram
-direction TB
+    class PublicWaterSystem {
+        +populationServed
+    }
+    class PWSServiceArea
+    class PWSSourceWaterType
+    class Well {
+        +wellDepth
+        +wellYield
+        +wellPurpose
+    }
+    class GW_Aquifer
+    class GW_AquiferSystem
+    class SurfaceWaterFeature
+    class HY_FlowPath {
+        +flowPathLength
+    }
+    class QuantityValue
+    class S2Cell
 
-%% Core Water Feature Classes
-class WaterFeature {
-  <<abstract>>
-}
-class SurfaceWaterFeature
-class SubsurfaceWaterFeature
-class WaterFeatureRepresentation
-
-%% Surface Water Features
-class HY_HydroFeature {
-  <<abstract>>
-}
-class HY_WaterBody
-class HY_Lake
-class HY_River
-class HY_Estuary
-class HY_Lagoon
-class HY_Impoundment
-class HY_Canal
-class HY_MainStem
-
-%% Flow Paths and Catchments
-class HY_FlowPath
-class HY_ElementaryFlowPath
-class HY_Catchment
-class HY_CatchmentRealization
-
-%% Groundwater Features
-class GW_Aquifer {
-  +aquiferType
-}
-class AquiferWaterFeature
-class MGS-Well {
-  +wellDepth
-  +wellOverburden
-  +wellType
-  +wellUse
-}
-class ISGS-Well {
-  +wellDepth
-  +wellPurpose
-  +wellYield
-  +owner
-  +ISWSId
-}
-
-%% Public Water Systems
-class PublicWaterSystem {
-  +populationServed
-  +serviceConnections
-  +ownership
-  +firstReport
-  +lastReport
-  +deactivationDate
-}
-class PublicWaterSystem-CWS
-class PublicWaterSystem-NCWS
-class PublicWaterSystem-NTNCWS
-class PublicWaterSystem-TNCWS
-class PublicWaterSystem-GW
-class PublicWaterSystem-SW
-class PWS-SubFeature {
-  +activity
-  +type
-  +method
-}
-class PWS-ServiceArea {
-  +serviceAreaType
-}
-class CombinedDistributionSystem
-
-%% Spatial Classes
-class Feature
-class SpatialObject
-class Geometry
-class Polygon
-class MultiPolygon
-class S2Cell
-class S2Cell_Level13
-class Region
-class AdministrativeRegion
-class ZipCodeArea
-class RoadSegment
-
-%% Measurement Classes
-class QuantityValue {
-  +numericValue
-  +unit
-}
-class QuantityKind
-class Unit
-class FlowPathLength
-
-%% Inheritance Relationships
-WaterFeature <|-- SurfaceWaterFeature
-WaterFeature <|-- SubsurfaceWaterFeature
-SubsurfaceWaterFeature <|-- AquiferWaterFeature
-HY_HydroFeature <|-- HY_WaterBody
-HY_WaterBody <|-- HY_Lake
-HY_WaterBody <|-- HY_River
-HY_WaterBody <|-- HY_Estuary
-HY_WaterBody <|-- HY_Lagoon
-HY_WaterBody <|-- HY_Impoundment
-HY_River <|-- HY_MainStem
-HY_HydroFeature <|-- HY_Canal
-HY_HydroFeature <|-- HY_FlowPath
-HY_FlowPath <|-- HY_ElementaryFlowPath
-HY_HydroFeature <|-- HY_Catchment
-
-PublicWaterSystem <|-- PublicWaterSystem-CWS
-PublicWaterSystem <|-- PublicWaterSystem-NCWS
-PublicWaterSystem-NCWS <|-- PublicWaterSystem-NTNCWS
-PublicWaterSystem-NCWS <|-- PublicWaterSystem-TNCWS
-PublicWaterSystem <|-- PublicWaterSystem-GW
-PublicWaterSystem <|-- PublicWaterSystem-SW
-
-SpatialObject <|-- Feature
-SpatialObject <|-- Geometry
-Feature <|-- Region
-Region <|-- AdministrativeRegion
-Feature <|-- Cell
-Cell <|-- S2Cell
-S2Cell <|-- S2Cell_Level13
-Geometry <|-- Polygon
-Geometry <|-- MultiPolygon
-
-%% Key Relationships
-HY_FlowPath --> HY_FlowPath : downstreamFlowPath
-HY_FlowPath --> HY_FlowPath : upstreamFlowPath
-HY_FlowPath --> HY_FlowPath : downstreamFlowPathTC
-HY_Catchment --> HY_CatchmentRealization : realizedCatchment
-HY_HydroFeature --> HY_Catchment : encompassingCatchment
-HY_FlowPath --> FlowPathLength : hasFlowPathLength
-
-GW_Aquifer --> GW_Aquifer : gwAquiferSystemPart
-GW_Aquifer --> GW_Aquifer : gwAquiferSystem
-
-PublicWaterSystem --> PWS-SubFeature : hasPart
-PublicWaterSystem --> PWS-ServiceArea : serviceArea
-PublicWaterSystem --> PublicWaterSystem : buysFrom
-PublicWaterSystem --> PublicWaterSystem : sellsTo
-PublicWaterSystem --> CombinedDistributionSystem : inCombinedSystem
-PWS-SubFeature --> PublicWaterSystem : partOf
-
-Feature --> Geometry : hasGeometry
-Feature --> Geometry : hasDefaultGeometry
-
-S2Cell_Level13 --> Feature : sfContains
-S2Cell_Level13 --> Feature : sfWithin
-AdministrativeRegion --> Feature : sfContains
-
-QuantityValue --> Unit : hasUnit
-QuantityValue --> QuantityKind : hasQuantityKind
-FlowPathLength --> QuantityValue : quantityValue
-MGS-Well --> QuantityValue : wellDepth
-MGS-Well --> QuantityValue : wellOverburden
-ISGS-Well --> QuantityValue : wellDepth
-ISGS-Well --> QuantityValue : wellYield
+    PublicWaterSystem --> PWSServiceArea : serviceArea
+    PWSServiceArea --> PWSSourceWaterType : sourceType
+    PublicWaterSystem --> PWSSourceWaterType : primarySourceType
+    GW_Aquifer --> GW_AquiferSystem : gwAquiferSystem
+    HY_FlowPath --> QuantityValue : hasFlowPathLength
+    Well --> S2Cell : sfWithin
+    SurfaceWaterFeature --> S2Cell : sfWithin
 ```
 
-The diagram shows the main components of the SAWGraph Hydrology KG organized into five major categories:
+**Key insights from the schema:**
 
-1. **Water Features** - Abstract hierarchy for surface and subsurface water
-2. **Surface Water** - Rivers, lakes, flow paths, and catchments with upstream/downstream connectivity
-3. **Groundwater** - Aquifers and wells from Maine (MGS) and Illinois (ISGS) surveys
-4. **Public Water Systems** - Community and non-community systems with their sources and service areas
-5. **Spatial Integration** - S2 cells and administrative regions for geospatial queries
+1. **Drinking-water infrastructure.** Public Water Systems (community, non-community, non-transient) are described with their service areas, source-water type (ground vs surface), and population served — supporting source-to-tap and exposure analyses.
 
-Key relationships enable tracing water flow and contamination pathways throughout the hydrological network.
+2. **Wells and aquifers.** Well records (depth, yield, purpose, type, use) and GroundWaterML2 aquifers/aquifer systems capture subsurface water, linked through `gwAquiferSystem`.
+
+3. **Hydrography + measurements.** HY_Features flow paths and catchment realizations carry NHDPlus lengths and other QUDT-typed quantities, so hydrologic networks can be traversed and measured.
+
+4. **S2 spatial backbone.** A ~7.4-million-cell STKO S2 grid (Level 13) indexes every feature, making this graph a spatial join hub with the other SAWGraph water/contaminant/facility graphs.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for hydrologykg on 2025-12-24*
+👤 **User**  
+Create transcript
 
-claude-sonnet-4-20250514
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

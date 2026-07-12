@@ -1,4 +1,6 @@
-# Chat Transcript: SAWGraph PFAS Knowledge Graph Exploration
+# SAWGraph PFAS / Contaminant Knowledge Graph Exploration
+
+## Chat Transcript
 
 👤 **User**  
 @sawgraph
@@ -6,36 +8,29 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore the sawgraph knowledge graph! Let me start by getting information about this knowledge graph.
+I'll help you explore the sawgraph knowledge graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-Great! I now have access to the **SAWGraph PFAS Knowledge Graph** - a specialized knowledge graph for tracking PFAS (per- and polyfluoroalkyl substances) and other contaminants in food and water systems.
+**SAWGraph** represents environmental **contaminant observations and samples** — with a focus on PFAS — using the **Contaminant Observation and Samples Ontology (ContaminOSO / `coso`)** together with SOSA/SSN observations, QUDT quantities, and GeoSPARQL geometry. It integrates federal **Water Quality Portal (WQP)** results and Maine **EGAD** monitoring data over a shared observation/measurement model.
 
-## What I can help you with:
+Live class counts:
+- **~705 K `ContaminantObservation` / `ContaminantSampleObservation`** and matching **`sosa:Observation` / `sosa:Result`**
+- **~834 K `qudt:Quantity` / `stad:Datapoint`** and **~705 K `ContaminantMeasurement`** (absolute / relative) with `QuantityValue`s
+- **Material samples** of many kinds: `Water Sample` (drinking/ground/raw/filtered), `Soil Sample`, `Sediment Sample`, animal (blood/milk/organ/tissue) and plant samples, `Biota Sample`
+- Features & limits: `Feature`, `Monitored Feature`, `Release Feature`, `Sample Point`, `Detection Limit`, `Quantitation Limit`, `Contamination Property`
+- Source-specific classes from **WQP** (`WQP - Characteristic`, `WQP - Sample`, `WQP - Project`, `WQP - Location Type`) and **Maine EGAD**
 
-**Data Available:**
-- PFAS contamination measurements from Maine's EGAD drinking water monitoring and the national Water Quality Portal
-- Chemical substance information (with DSSTox IDs and CAS numbers)
-- Geographic locations and sampled features (wells, water bodies, facilities, fields)
-- Environmental media (groundwater, surface water, wastewater, soil, tissue)
-- Food products categorized by FOODON taxonomy (meat, dairy, produce, seafood)
-- Measurement values, detection limits, and validation levels
+**Main relationships:**
+- `has result` — a `ContaminantObservation` yields a `ContaminantMeasurement` (with `measurement value`, `measurement unit`, `has result qualifier`)
+- `analyzed sample` — a `ContaminantSampleObservation` analyzes a `Material Sample`
+- `observed property` / `of substance` — the contamination property and chemical substance observed
+- `is sample of` / `from sample point` / `sample of material type` — sample provenance
+- `observed at sample point` / `observed at point` — where the observation was made
+- WQP/EGAD predicates (e.g. `wqp - characteristic group name`, `wqp - has project id`, `egad - method detection limit`, `egad - reporting limit`)
 
-**Example Queries I Can Run:**
-- Find PFAS observations in specific locations
-- Analyze concentration levels of specific chemicals
-- Compare contamination across different environmental media
-- Track substances by their CAS numbers or substance IDs
-- Explore food safety data for different product types
-- Investigate spatial patterns of contamination
-
-What would you like to explore? For example, I could:
-1. Show you the highest PFAS concentrations detected
-2. Find observations from specific geographic areas
-3. Analyze contamination in specific food types
-4. Search for specific chemical substances
-5. Explore contamination in different water sources
-
-Just let me know what interests you!
+Would you like me to:
+1. Visualize the schema structure?
+2. Find PFAS measurements above a detection limit in a region?
+3. Compare contaminant levels across sample media (water, soil, biota)?
 
 ---
 
@@ -45,96 +40,49 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-I've created a visualization of the SAWGraph schema! The diagram shows the key classes and their relationships in the knowledge graph.
+Here's the live schema of SAWGraph — contaminant observations producing measurements from analyzed material samples, integrating WQP and EGAD data:
 
 ```mermaid
 classDiagram
-direction TB
+    class ContaminantObservation
+    class ContaminantSampleObservation
+    class ContaminantMeasurement {
+        +measurementValue
+        +measurementUnit
+    }
+    class MaterialSample
+    class SamplePoint
+    class SampledFeature
+    class ContaminationProperty
+    class ResultQualifier
+    class DetectionLimit
 
-class ContaminantObservation {
-  +observedTime
-}
-class ContaminantSampleObservation
-class ContaminantMeasurement
-class SingleContaminantMeasurement
-class AggregateContaminantMeasurement
-class ContaminantRelativeMeasurement
-class QuantityValue {
-  +measurementValue
-  +measurementUnit
-}
-class DetectQuantityValue
-class NonDetectQuantityValue
-class DetectionLimit
-class QuantitationLimit
-class Substance {
-  +substanceID
-  +casNumber
-}
-class SubstanceCollection
-class MaterialSample
-class SampledFeature
-class Feature
-class Point
-class SamplePoint
-class SampleMaterialType
-class AnalysisMethod
-class ContaminationProperty
-class ObservationAnnotation
-class SampleAnnotation
-class ResultQualifier
-class Observation
-class Sample
-class FeatureOfInterest
-class Result
-class Procedure
-
-ContaminantObservation --|> Observation
-ContaminantSampleObservation --|> ContaminantObservation
-ContaminantMeasurement --|> Result
-SingleContaminantMeasurement --|> ContaminantMeasurement
-AggregateContaminantMeasurement --|> ContaminantMeasurement
-ContaminantRelativeMeasurement --|> ContaminantMeasurement
-DetectQuantityValue --|> QuantityValue
-NonDetectQuantityValue --|> QuantityValue
-DetectionLimit --|> QuantityValue
-QuantitationLimit --|> QuantityValue
-SampledFeature --|> Feature
-SamplePoint --|> Point
-MaterialSample --|> Sample
-
-ContaminantObservation --> ContaminantMeasurement : hasResult
-ContaminantObservation --> Substance : ofSubstance
-ContaminantObservation --> Feature : hasFeatureOfInterest
-ContaminantObservation --> Point : observedAtPoint
-ContaminantObservation --> ObservationAnnotation : observationAnnotation
-ContaminantSampleObservation --> MaterialSample : analyzedSample
-ContaminantSampleObservation --> SamplePoint : observedAtSamplePoint
-MaterialSample --> SamplePoint : fromSamplePoint
-MaterialSample --> SampleMaterialType : sampleOfMaterialType
-MaterialSample --> SampleAnnotation : sampleAnnotation
-MaterialSample --> SampledFeature : isSampleOf
-Point --> Feature : pointFromFeature
-ContaminantMeasurement --> ResultQualifier : resultAnnotation
-Observation --> FeatureOfInterest : hasFeatureOfInterest
-Observation --> Result : hasResult
-Observation --> ContaminationProperty : observedProperty
-Observation --> Procedure : usedProcedure
+    ContaminantSampleObservation --|> ContaminantObservation
+    ContaminantObservation --> ContaminantMeasurement : hasResult
+    ContaminantObservation --> ContaminationProperty : observedProperty
+    ContaminantObservation --> SamplePoint : observedAtSamplePoint
+    ContaminantSampleObservation --> MaterialSample : analyzedSample
+    MaterialSample --> SampledFeature : isSampleOf
+    MaterialSample --> SamplePoint : fromSamplePoint
+    ContaminantMeasurement --> ResultQualifier : hasResultQualifier
+    ContaminantMeasurement --> DetectionLimit : compared to
 ```
 
-**Key components:**
+**Key insights from the schema:**
 
-- **Observations**: `ContaminantObservation` and `ContaminantSampleObservation` track when and where contaminants were detected
-- **Measurements**: Different types like `SingleContaminantMeasurement` and `AggregateContaminantMeasurement` store the actual values
-- **Substances**: Chemical substances with identifiers (CAS numbers, substance IDs)
-- **Samples**: `MaterialSample` represents physical samples with associated metadata
-- **Locations**: `Point`, `SamplePoint`, `Feature`, and `SampledFeature` capture geographic information
-- **Quality control**: `DetectionLimit`, `QuantitationLimit`, and various annotations ensure data quality
+1. **Observation → measurement → sample.** The COSO core: a `ContaminantObservation` (often a `ContaminantSampleObservation`) `has result` a `ContaminantMeasurement`, and analyzes a `Material Sample` taken from a `Sampled Feature` at a `Sample Point` — a clean chain from field sample to reported value.
 
-The diagram is now available as a downloadable .mermaid file that will render interactively!
+2. **Media-typed samples.** Samples are richly subtyped (drinking/ground/raw/filtered water, soil, sediment, animal blood/milk/organ/tissue, plant, biota), enabling exposure analysis by medium — central to PFAS contamination studies.
+
+3. **Detection handling.** `Detection Limit` / `Quantitation Limit` and `Result Qualifier` (with detect vs non-detect quantity values) make censored measurements explicit, so queries can distinguish true detections from non-detects.
+
+4. **Multi-source integration.** Federal WQP and Maine EGAD data are aligned onto the same COSO model (via the `us-wqp` and `me-egad` vocabularies), and shared DSSTox substance and S2/geometry identifiers make SAWGraph joinable to the facility (FIO) and hydrology graphs.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for sawgraph on 2024-12-24*
+👤 **User**  
+Create transcript
 
-claude-sonnet-4-20250514
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

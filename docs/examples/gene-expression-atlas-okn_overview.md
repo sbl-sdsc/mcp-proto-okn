@@ -1,4 +1,6 @@
-# Gene Expression Atlas Knowledge Graph Exploration
+# Gene Expression Atlas OKN Knowledge Graph Exploration
+
+## Chat Transcript
 
 👤 **User**  
 @gene-expression-atlas-okn
@@ -6,193 +8,97 @@
 ---
 
 🧠 **Assistant**  
-I'll help you explore the gene expression atlas knowledge graph. Let me first get some information about what's available in this resource.
+I'll help you explore the gene-expression-atlas-okn knowledge graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-Great! I can help you explore the **Gene Expression Atlas** knowledge graph, which contains selected studies from the EMBL-EBI Gene Expression Atlas. This resource includes:
+The **Gene Expression Atlas OKN** is a semantic knowledge graph of differential gene-expression results derived from the EMBL-EBI Gene Expression Atlas. It represents which genes change expression in which assays, together with the statistical measures of that change and the biological context of each study. Its entities follow the **Biolink Model**, while the quantitative expression measures are carried on the expression associations through the graph's own measurement vocabulary.
 
-- **243 studies** with 797 assays
-- Expression data for **152,879 genes**
-- Differential expression measurements with statistical metrics
-- Links to anatomical entities, cell types, diseases, developmental stages, and biological sex categories
+Live class counts show the graph is dominated by expression associations over genes:
+- **~8.8 million `GeneExpressionMixin`** — individual differential-expression associations (assay ↔ gene)
+- **~833 K `Gene`** and **~288 K `Association`** records
+- **~14,850 `Assay`** and **~4,668 `Study`** — the experiments and their component assays
+- Context classes: **`Pathway`** (4,862), **`ProteinDomain`** (3,367), **`AnatomicalEntity`** (1,088), **`Cell`** (932), **`Disease`** (869), **`LifeStage`** (690), **`BiologicalSex`**, **`PopulationOfIndividualOrganisms`**, **`OrganismTaxon`**
 
-Let me get the schema to show you what kinds of data and relationships are available:
+**Main relationships:**
+- `has_output` — links a `Study` to its `Assay`s
+- `studies` — links a `Study` to the `Disease` studied
+- `has_attribute` / `in_taxon` — link a study to its population and organism
+- `subject` / `object` / `predicate` — a `GeneExpressionMixin` association links its subject `Assay` to its object `Gene` (predicate typically *affects_expression_of*)
 
-Perfect! Here's what you can explore in this knowledge graph:
+**Expression measures** (carried on the association, in the `wobd` vocabulary):
+- `log2fc` — log2 fold change (positive = up-regulated, negative = down-regulated)
+- `p_value`, `adj_p_value` — raw and FDR-adjusted significance
+- `effect_size`, `direction` — magnitude and direction of change
 
-## Main Entity Types:
-- **Study** - 243 gene expression studies from the Atlas
-- **Assay** - 797 individual assays/experiments  
-- **Gene** - 152,879 genes with expression data
-- **AnatomicalEntity** - Tissue/organ locations
-- **Cell** - Cell types
-- **Disease** - Disease conditions
-- **BiologicalSex** - Sex-specific data
-- **LifeStage** - Developmental stages
-- **BiologicalProcess**, **Pathway**, **ProteinDomain** - Functional annotations
-
-## Key Relationships:
-- Studies contain assays (has_output)
-- Assays measure gene expression with statistical metrics
-- Studies can be linked to diseases, populations, and organisms
-
-## Important Properties:
-- **Statistical metrics**: p_value, effect_size, genes_significant
-- **Study metadata**: project_title, pubmed_id, experimental_factors
-- **Assay details**: technology, array_design, test/reference groups
-- **Gene identifiers**: ncbi_gene_id, ensembl_id, symbol
-
-## What would you like to explore?
-
-I can help you:
-1. Search for genes and their expression patterns
-2. Find studies related to specific diseases or tissues
-3. Analyze differential expression data
-4. Explore experimental factors and contrasts
-5. Visualize the knowledge graph structure
-
-What interests you?
+Would you like me to:
+1. Visualize the schema structure?
+2. Find genes differentially expressed in a specific disease?
+3. Compare fold changes across studies for a gene?
 
 ---
 
 👤 **User**  
-Visualize schema
+Visualize the schema
 
 ---
 
 🧠 **Assistant**  
-I'll create a visual schema diagram for you. Let me generate the Mermaid class diagram showing all the entity types and their relationships.
+Here's the live schema of the Gene Expression Atlas OKN — studies and assays producing gene-expression associations, with the differential-expression statistics carried on each association:
 
 ```mermaid
 classDiagram
-direction TB
+    class Study {
+        +project_title
+        +pubmed_id
+        +experimental_factors
+        +technology
+        +secondary_accessions
+    }
+    class Assay {
+        +array_design
+        +description
+    }
+    class GeneExpressionMixin {
+        +log2fc
+        +p_value
+        +adj_p_value
+        +effect_size
+        +direction
+    }
+    class Gene {
+        +symbol
+    }
+    class Disease
+    class Pathway
+    class ProteinDomain
+    class AnatomicalEntity
+    class Cell
+    class LifeStage
+    class BiologicalSex
+    class PopulationOfIndividualOrganisms
 
-class Study {
-    string id
-    string project_title
-    string project_type
-    string pubmed_id
-    string experimental_factors
-    string secondary_accessions
-    string source
-    string submitter_name
-    string submitter_email
-    string submitter_affiliation
-}
-
-class Assay {
-    string id
-    string description
-    string study_id
-    string technology
-    string array_design
-    string measurement
-    string factors_1
-    string factors_2
-    string test_group_id
-    string test_group_label
-    string reference_group_id
-    string reference_group_label
-}
-
-class Gene {
-    string id
-    string symbol
-    string category
-    string ncbi_gene_id
-    string ensembl_id
-    string id_source
-}
-
-class AnatomicalEntity {
-    string id
-    string name
-    string uri
-}
-
-class Cell {
-    string id
-    string name
-}
-
-class Disease {
-    string id
-    string name
-}
-
-class BiologicalSex {
-    string id
-    string name
-}
-
-class LifeStage {
-    string id
-    string name
-}
-
-class BiologicalProcess {
-    string id
-    string name
-}
-
-class Pathway {
-    string id
-    string name
-}
-
-class ProteinDomain {
-    string id
-    string name
-}
-
-class PopulationOfIndividualOrganisms {
-    string id
-    string name
-}
-
-class Association {
-    string contrast_id
-    string experiment_accession
-    string term_id
-    float p_value
-    float effect_size
-    int genes_significant
-    int genes_total
-    string enrichment_type
-}
-
-class GeneExpressionMixin {
-    string id
-}
-
-Study --> Assay : has_output
-Study --> Disease : studies
-Study --> PopulationOfIndividualOrganisms : has_attribute
-Assay --> Disease : has_input
-GeneExpressionMixin --> Assay : subject
-GeneExpressionMixin --> Gene : object
-Association --> ProteinDomain : participates_in
+    Study --> Assay : has_output
+    Study --> Disease : studies
+    Study --> PopulationOfIndividualOrganisms : has_attribute
+    Study --> OrganismTaxon : in_taxon
+    GeneExpressionMixin --> Assay : subject
+    GeneExpressionMixin --> Gene : object
 ```
 
-Here's the schema visualization for the Gene Expression Atlas knowledge graph! The diagram shows:
+**Key insights from the schema:**
 
-**Core Structure:**
-- **Study** entities contain multiple **Assay** experiments
-- **GeneExpressionMixin** connects assays to genes, representing the actual expression measurements
-- **Association** entities capture enrichment and statistical relationships
+1. **Associations are the core.** ~8.8 million `GeneExpressionMixin` records are the workhorse — each connects an assay (its `subject`) to a gene (its `object`) and carries the differential-expression statistics as properties, so a single query pattern retrieves fold changes and p-values.
 
-**Biological Context:**
-- Studies can be linked to **Disease** conditions and **PopulationOfIndividualOrganisms**
-- The schema includes entities for anatomical locations, cell types, life stages, biological sex, pathways, and protein domains
+2. **Study → Assay → Association hierarchy.** A `Study` groups `Assay`s via `has_output`; each assay contributes many gene-level associations. Study metadata (`project_title`, `pubmed_id`, `experimental_factors`, `technology`) supports provenance and meta-analysis.
 
-**Key Properties:**
-- Studies have metadata like titles, PubMed IDs, and experimental factors
-- Assays track technology platforms, test/reference groups, and measurement types
-- Genes have multiple identifiers (NCBI, Ensembl) and symbols
-- Associations include statistical measures (p-values, effect sizes)
+3. **Biolink classes, `wobd` measures.** Entities (Gene, Assay, Study, Disease, anatomical/cell/life-stage/sex contexts) use Biolink classes; the quantitative measures (`log2fc`, `p_value`, `adj_p_value`, `effect_size`, `direction`) come from the graph's `wobd` vocabulary rather than Biolink edge properties.
 
-The downloadable .mermaid file is ready for you to use in documentation or presentations!
+4. **Rich biological context.** Studies link to disease, organism, and population; genes connect to pathways and protein domains — enabling questions like "which genes are up-regulated in a disease across studies" and cross-study meta-analyses.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.5.0 on 2026-01-15*
-*Model: Claude Sonnet 4.5 (claude-sonnet-4-5-20250929)*
+👤 **User**  
+Create transcript
+
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

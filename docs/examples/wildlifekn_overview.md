@@ -1,46 +1,33 @@
 # Wildlife-KN Knowledge Graph Exploration
 
+## Chat Transcript
+
 👤 **User**  
-@wildlifekg
+@wildlifekn
 
 ---
 
 🧠 **Assistant**  
-I'll help you explore the wildlife knowledge graph! Let me start by getting information about this knowledge graph.
+I'll help you explore the wildlifekn knowledge graph. Let me fetch its schema and probe the live endpoint for the classes and predicates in use.
 
-Great! I can now help you explore the **Wildlife-KN** (Wildlife Knowledge Network). This is a comprehensive knowledge graph designed for wildlife researchers, conservation managers, and policymakers to address biodiversity challenges under climate change.
+**Wildlife-KN** records **wildlife species observations by location** — which bird and amphibian species were observed where, and how often. Observations are **reified as `rdf:Statement`s** so each species-at-location observation can carry a date and an observation count.
 
-## About Wildlife-KN
+Live class counts:
+- **~5,205 `rdf:Statement`** — reified species-observation records
+- **657 `Location`** — geographic places where observations occurred
+- **303 `Bird_name`** and **97 `Amphibian_name`** — observed species (by common/scientific name)
 
-This knowledge network integrates data on:
-- Wildlife species (amphibians and birds)
-- Geographic locations and distributions
-- Observation data (when and where species were observed)
-- Habitat characteristics and environmental variables
+**Main relationships:**
+- `OBSERVED_AT` — links a species (`Bird_name` / `Amphibian_name`) to the `Location` where it was observed
+- `rdf:subject` / `rdf:predicate` / `rdf:object` — the reified observation statement's parts
+- `date` — when the observation was recorded
+- `observed_times` — how many times the species was observed at that location
+- `rdfs:label`, `schema:subjectOf` — labels and links to source records
 
-The graph connects biological observations with geospatial and temporal data to support queries about species distributions, habitat patterns, and conservation needs.
-
-## Available Data
-
-The schema shows three main classes:
-- **Amphibian Name** - Scientific/common names of amphibian species
-- **Bird Name** - Scientific/common names of bird species  
-- **Location** - Geographic places where observations occur
-
-Key relationships include:
-- Species observations linked to locations (OBSERVED_AT)
-- Observation frequencies (observed_times)
-- Temporal information (dates)
-
-## What would you like to explore?
-
-I can help you with queries like:
-- Which species have been observed at specific locations?
-- How many times has a particular species been observed?
-- What amphibians or birds are in the dataset?
-- Geographic distribution patterns of species
-
-What aspect of the wildlife data interests you?
+Would you like me to:
+1. Visualize the schema structure?
+2. List species observed at a given location?
+3. Rank locations by observation counts for a species?
 
 ---
 
@@ -50,50 +37,40 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-Here's the Wildlife-KN schema visualization:
+Here's the live schema of Wildlife-KN — species observed at locations, with each observation reified to carry a date and count:
 
 ```mermaid
 classDiagram
-    class Amphibian_name {
-        +rdfs:label: Label
-        +dcterms:date: Date
-        +observed_times: Observed Times
+    class Bird_name
+    class Amphibian_name
+    class Location
+    class Statement {
+        +date
+        +observed_times
     }
-    
-    class Bird_name {
-        +rdfs:label: Label
-        +dcterms:date: Date
-        +observed_times: Observed Times
-    }
-    
-    class Location {
-        +rdfs:label: Label
-    }
-    
-    Amphibian_name --> Location : OBSERVED_AT
+
     Bird_name --> Location : OBSERVED_AT
-    Amphibian_name --> CreativeWork : subjectOf
-    Bird_name --> CreativeWork : subjectOf
-    
-    class CreativeWork {
-        <<external>>
-    }
+    Amphibian_name --> Location : OBSERVED_AT
+    Statement --> Bird_name : subject
+    Statement --> Location : object
+    Statement --> Location : predicate (OBSERVED_AT)
 ```
 
-## Schema Overview
+**Key insights from the schema:**
 
-The diagram shows a straightforward structure:
+1. **Species → location observations.** The graph is a compact bipartite structure: `Bird_name` and `Amphibian_name` species link to `Location`s via `OBSERVED_AT`, capturing where each species has been seen.
 
-**Main Classes:**
-- **Amphibian_name** and **Bird_name** - Wildlife species with observation data including labels, dates, and observation frequencies
-- **Location** - Geographic places where species are observed
+2. **Reification carries the detail.** Each observation is an `rdf:Statement` (subject = species, predicate = `OBSERVED_AT`, object = location) annotated with `date` and `observed_times`, so the *when* and *how many* live on the edge rather than being lost in a plain triple.
 
-**Key Relationships:**
-- **OBSERVED_AT** - Links species observations to their geographic locations
-- **subjectOf** - Connects species to external creative works (research papers, articles, etc.)
+3. **Two taxa, extensible.** Birds and amphibians are modeled as parallel species classes; the pattern generalizes to additional taxa by adding species classes that reuse the same `OBSERVED_AT` / reification structure.
 
-Both amphibian and bird species share the same property structure, tracking when and how often they were observed at different locations. This enables analysis of species distributions and temporal patterns across geographic areas.
+4. **Occurrence analysis.** With observation counts and dates on every edge, the graph supports species-richness-by-location, hotspot, and temporal-trend queries.
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 using claude-sonnet-4-20250514 on 2025-12-22*
+👤 **User**  
+Create transcript
+
+---
+
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*

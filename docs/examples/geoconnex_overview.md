@@ -1,5 +1,6 @@
+# Geoconnex Knowledge Graph Exploration
+
 ## Chat Transcript
-GEOCONNEX Knowledge Graph Exploration
 
 👤 **User**  
 @geoconnex
@@ -7,62 +8,32 @@ GEOCONNEX Knowledge Graph Exploration
 ---
 
 🧠 **Assistant**  
-I'll help you explore the geoconnex knowledge graph! Let me start by getting some basic information about it.
+I'll help you explore the geoconnex knowledge graph. Let me fetch its schema and probe the live endpoint for the classes and predicates actually in use.
 
-Perfect! Now I have a good understanding of the **GEOCONNEX** knowledge graph. Let me summarize what's available:
+**Geoconnex** is a geospatial reference and cataloging system for U.S. water data. It mints persistent, linked-data identifiers for hydrologic features — monitoring locations, water bodies, and flow paths — and catalogs the datasets published about them, with geometries and connectivity to the National Hydrography Dataset (NHD) river network. It is built primarily on **schema.org**, the **OGC HY_Features (hyf)** hydrologic feature model, **GeoSPARQL / Simple Features** geometries, and **GNIS** place identifiers.
 
-## GEOCONNEX Knowledge Graph
+The graph is dominated by a dataset catalog layered over hydrologic features:
+- **~25 million `schema:Dataset`** records and **~23 million `schema:DataDownload`** distributions — the catalog of water data available about each feature
+- **~2.4 million `hyf:HY_HydroLocation`** and **~2.4 million `hyf:HY_HydrometricFeature`** — hydrologic locations and monitoring features
+- **`hyf:HY_WaterBody`** and **`hyf:HY_FlowPath`** — lakes/rivers and the flow paths connecting them
+- **~2.7 million `sf:Point`** geometries plus `sf:MultiPolygon`, `sf:LineString`, `sf:Polygon`, and `geosparql:Geometry`
+- **`gnis:Feature`**, `gnis:County`, `gnis:State` — GNIS-identified named places
+- **`schema:Place`**, `schema:AdministrativeArea`, `schema:State`, `schema:GovernmentOrganization`, `schema:Organization`
 
-**GEOCONNEX** is an open, community-driven knowledge graph linking U.S. hydrologic features to enable seamless water data discovery, access, and collaborative monitoring.
+Monitoring features are further categorized by **USGS site-type** classes (e.g. `…/site-types/items/GW` groundwater, `ST` stream, `SP` spring, `LK` lake, and many `FA-*`, `LA-*`, `SB-*` facility/land/subsurface categories).
 
-### Key Statistics
-- **19.2 million triples** describing hydrologic data
-- **1.6 million hydrologic locations** including:
-  - Monitoring sites
-  - Dams
-  - Watersheds
-  - Stream networks
-  - Water bodies
-- **763,000 point geometries**
-- **320,000 polygon features**
+**Main relationships:**
+- `geo:hasGeometry` / `geo:asWKT` — attach geometry (WKT) to a feature
+- `geo:sfWithin`, `schema:containedInPlace`, `schema:geoWithin` — spatial containment (feature → place / administrative area)
+- `schema:distribution` → `schema:DataDownload`, with `schema:contentUrl`, `schema:encodingFormat` — the downloadable data for a dataset
+- `schema:about` / `schema:subjectOf` — link a dataset to the hydrologic feature it describes
+- `head_nhdpv1_comid` / `outlet_nhdpv1_comid` (and `head_rf1id` / `outlet_rf1id`) — connectivity of flow paths to NHDPlus v1 / RF1 river-network reaches
+- `schema:name`, `schema:identifier`, `schema:description`, `schema:latitude`, `schema:longitude`, `schema:elevation` — feature descriptors
 
-### Main Feature Types
-
-The knowledge graph includes:
-
-1. **Hydrologic Features**:
-   - Catchments (watersheds)
-   - Flow paths and stream networks
-   - Hydrologic nexuses (junction points)
-   - Hydrometric features (monitoring stations)
-
-2. **Water Body Types**:
-   - Streams, canals, ditches
-   - Estuaries and ocean features
-   - Lakes and water bodies
-   - Sinkholes
-
-3. **Groundwater Features**:
-   - Wells
-   - Aquifer systems and units
-   - Hydrogeologic units
-
-4. **Monitoring & Observations**:
-   - Sensor observations
-   - Hydrometric networks
-   - Measurement data
-
-### What Can You Explore?
-
-I can help you query this knowledge graph to:
-- Find hydrologic features by location or name
-- Explore watershed relationships (upstream/downstream connections)
-- Discover monitoring stations and their observations
-- Analyze catchment networks and drainage patterns
-- Find geographic features and their geometries
-- Explore groundwater systems
-
-**What would you like to explore?** For example, I can help you find monitoring stations in a specific area, trace upstream/downstream relationships, or search for specific hydrologic features.
+Would you like me to:
+1. Visualize the schema structure?
+2. Find monitoring locations of a given USGS site-type in a state?
+3. Trace flow paths and connected water bodies along the river network?
 
 ---
 
@@ -72,183 +43,66 @@ Visualize the schema
 ---
 
 🧠 **Assistant**  
-Perfect! Here's the GEOCONNEX knowledge graph schema visualization:
+Here's the live schema of the geoconnex knowledge graph — a dataset catalog over HY_Features hydrologic features with geometries, places, and NHD connectivity:
 
 ```mermaid
 classDiagram
-direction TB
+    class Dataset {
+        +name
+        +description
+        +identifier
+        +keywords
+    }
+    class DataDownload {
+        +contentUrl
+        +encodingFormat
+    }
+    class HY_HydroLocation {
+        +name
+        +latitude
+        +longitude
+        +elevation
+    }
+    class HY_HydrometricFeature {
+        +siteType
+    }
+    class HY_WaterBody
+    class HY_FlowPath {
+        +head_nhdpv1_comid
+        +outlet_nhdpv1_comid
+    }
+    class Geometry {
+        +asWKT
+    }
+    class Place {
+        +containedInPlace
+    }
+    class GNIS_Feature
+    class GovernmentOrganization
 
-class Catchment {
-  +name
-  +description
-  +identifier
-}
-
-class DendriticCatchment {
-  +name
-  +description
-}
-
-class CatchmentAggregate {
-  +name
-  +description
-}
-
-class FlowPath {
-  +name
-  +description
-  +length
-  +width
-}
-
-class HydroNexus {
-  +name
-  +description
-}
-
-class HydrometricFeature {
-  +name
-  +description
-  +identifier
-}
-
-class HydrometricNetwork {
-  +name
-  +description
-}
-
-class HydroNetwork {
-  +name
-  +description
-}
-
-class HydroLocation {
-  +name
-  +description
-}
-
-class WaterWell {
-  +name
-  +description
-}
-
-class AquiferSystem {
-  +name
-  +description
-}
-
-class AquiferUnit {
-  +name
-  +description
-}
-
-class HydrogeoUnit {
-  +name
-  +description
-}
-
-class Point {
-  +coordinates
-}
-
-class Polygon {
-  +coordinates
-}
-
-class LineString {
-  +coordinates
-}
-
-class GeoCoordinates {
-  +latitude
-  +longitude
-}
-
-class GeoShape {
-  +polygon
-  +line
-}
-
-class ObservationCollection {
-  +name
-  +description
-}
-
-class Organization {
-  +name
-  +url
-}
-
-class Stream
-class Canal
-class Estuary
-class Ocean
-class Subsurface
-class Ditch
-class Diversion
-
-Catchment --|> DendriticCatchment : subclass
-Catchment --|> CatchmentAggregate : subclass
-Catchment --> Catchment : upperCatchment
-Catchment --> Catchment : lowerCatchment
-Catchment --> Catchment : contributingCatchment
-Catchment --> Catchment : receivingCatchment
-Catchment --> Catchment : encompassingCatchment
-Catchment --> Point : hasGeometry
-Catchment --> Polygon : hasGeometry
-Catchment --> HydroNexus : inflow
-Catchment --> HydroNexus : outflow
-Catchment --> FlowPath : catchmentRealization
-
-HydrometricFeature --> HydrometricNetwork : hydrometricNetwork
-HydrometricFeature --> HydroLocation : location
-HydrometricFeature --> Point : hasGeometry
-HydrometricFeature --> ObservationCollection : hasFeatureOfInterest
-
-HydrometricNetwork --> HydrometricFeature : networkStation
-
-HydroNetwork --> FlowPath : contains
-HydroNetwork --> HydroNexus : contains
-
-FlowPath --> LineString : hasGeometry
-FlowPath --> HydroNexus : inflow
-FlowPath --> HydroNexus : outflow
-
-HydroNexus --> Point : nexusRealization
-
-HydroLocation --> Catchment : containingCatchment
-HydroLocation --> FlowPath : linearElement
-HydroLocation --> Stream : type
-HydroLocation --> Canal : type
-HydroLocation --> Estuary : type
-HydroLocation --> Ocean : type
-HydroLocation --> Subsurface : type
-
-WaterWell --> AquiferSystem : gwAquiferSystem
-WaterWell --> Point : hasGeometry
-
-AquiferSystem --> AquiferUnit : contains
-AquiferUnit --|> HydrogeoUnit : subclass
-
-Point --> GeoCoordinates : geo
-Polygon --> GeoShape : geo
-LineString --> GeoShape : geo
-
-HydrometricFeature --> Organization : provider
-Catchment --> Organization : provider
+    Dataset --> DataDownload : distribution
+    Dataset --> HY_HydroLocation : about / subjectOf
+    Dataset --> HY_HydrometricFeature : about / subjectOf
+    HY_HydroLocation --> Geometry : hasGeometry
+    HY_HydrometricFeature --> Geometry : hasGeometry
+    HY_WaterBody --> Geometry : hasGeometry
+    HY_FlowPath --> HY_WaterBody : downstreamWaterbody
+    HY_HydroLocation --> Place : sfWithin / containedInPlace
+    GNIS_Feature --> Geometry : hasGeometry
+    HY_HydrometricFeature --> GovernmentOrganization : provider
 ```
 
-The diagram shows the core structure of the GEOCONNEX knowledge graph, including:
+**Key insights from the schema:**
 
-**Key Entity Groups:**
-- **Catchments & Watersheds** - hierarchical relationships showing upstream/downstream connections
-- **Flow Paths & Networks** - the stream and river networks
-- **Hydrometric Features** - monitoring stations and observation points
-- **Groundwater** - wells, aquifers, and hydrogeologic units
-- **Location Types** - streams, canals, estuaries, subsurface features
-- **Geometries** - points, polygons, and lines for spatial representation
+1. **A catalog, not just features.** The bulk of the graph is `schema:Dataset` + `schema:DataDownload` — geoconnex indexes *what data exists* about each hydrologic feature and where to download it, making it an entry point to distributed water-data services.
 
-The relationships show how water flows through the system, how catchments connect to each other, and how monitoring features relate to the hydrologic network.
+2. **HY_Features backbone.** Real-world hydrology is modeled with OGC HY_Features: `HY_HydroLocation` and `HY_HydrometricFeature` (monitoring points), `HY_WaterBody` (lakes/rivers), and `HY_FlowPath` (river reaches). Flow paths carry NHDPlus/RF1 `comid`/`rf1id` head and outlet references, so features can be traced along the national river network.
+
+3. **Geometry and place everywhere.** Features attach WKT geometry via `geo:hasGeometry`/`geo:asWKT` (Points, LineStrings, Polygons) and are located within places (`schema:Place`, `AdministrativeArea`, `State`, and GNIS counties/states) through `geo:sfWithin` / `schema:containedInPlace`.
+
+4. **USGS site-type categorization.** Monitoring features are typed by USGS site-type codes (groundwater `GW`, stream `ST`, spring `SP`, lake `LK`, and many facility/land-subsurface categories), supporting filtering of monitoring locations by kind.
+
+5. **Federation key.** Persistent geoconnex identifiers, NHD `comid`s, and GNIS ids make this graph a spatial join hub — linking water-quality, hydrology, and administrative datasets to a common set of hydrologic feature and place identifiers.
 
 ---
 
@@ -257,6 +111,4 @@ Create transcript
 
 ---
 
-*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.4.0 for geoconnex on 2024-12-24*
-
-claude-sonnet-4-20250514
+*Created by [mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn) 0.6.0 using claude-opus-4-8 on 2026-07-12*
