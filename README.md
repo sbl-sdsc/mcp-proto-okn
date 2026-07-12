@@ -123,6 +123,8 @@ Each link points to a chat transcript for generating an overview and a class dia
 
 **(*) ARCH: Advancing Research Capacity in Health, NSF Proto-OKN supplemental awards.**
 
+See also: [Knowledge Graph Versions & Update Dates](docs/examples/okn-kg-versions-transcript.md) — a federation-wide snapshot of each KG's version and last-updated date from the VoID provenance metadata.
+
 ### Space Flight Use Cases
 
 * [Spaceflight Missions (spoke-genelab)](docs/examples/spoke-genelab_breakdown.md)
