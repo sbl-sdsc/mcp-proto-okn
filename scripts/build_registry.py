@@ -91,7 +91,7 @@ IDENTIFIER_NAMESPACES = {'biobricks-aopwiki': ['CAS', 'ChEBI', 'ChEMBL', 'InChIK
              'MedicalDevice_Ontology',
              'PAV',
              'VOID'],
- 'nasa-gesdisc-kg': [],
+ 'nasa-gesdisc-kg': ['DOI', 'GCMD', 'NASA_CMR', 'OpenAlex', 'ORCID', 'ROR'],
  'ncipidkg': ['GO', 'INDRA', 'NCI-PID', 'RDF', 'RO', 'VoID'],
  'nde': ['PubMed'],
  'nikg': ['FIPS'],
@@ -177,6 +177,9 @@ EXAMPLE_QUERIES = {'biobricks-aopwiki': ['What adverse outcome pathways involve 
  'geoconnex': ['What monitoring sites exist in a watershed?'],
  'hydrologykg': ['What is the hydrological connectivity between surface water features?'],
  'medical-device-kg': ['What event types are reported for a specific medical device?'],
+ 'nasa-gesdisc-kg': ['Which datasets does a specific NASA data center or DAAC distribute?',
+                     'What platform and instrument collected a given dataset, and which project is it part of?',
+                     'Which publications and authors use a specific dataset, and what other datasets are frequently used with it?'],
  'ncipidkg': ['What proteins directly regulate EGFR in NCI-PID pathways?',
               'Which molecular interactions have evidence counts and evidence URLs?',
               'What pathway relationships are annotated with Gene Ontology process or '
