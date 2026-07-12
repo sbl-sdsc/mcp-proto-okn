@@ -18,24 +18,24 @@ The schema relationship used for the integration:
 ```mermaid
 classDiagram
     class OARD_Disease {
-        URI: MONDO_xxxxxxx
-        biolink:category = biolink:Disease
-        rdfs:label
+        URI MONDO_xxxxxxx
+        category = Disease
+        label
     }
     class ProKN_Disease {
-        URI: OMIM / DOID
-        a upcore:Disease
-        rdfs:seeAlso -> MONDO
+        URI OMIM / DOID
+        a Disease
+        seeAlso -> MONDO
     }
     class ProKN_Protein {
-        a upcore:Protein
-        upcore:organism = "Homo sapiens"
-        obo:NCIT_C25402 = UniProt accession
-        obo:NCIT_C164806 = gene symbol
+        a Protein
+        organism = Homo sapiens
+        NCIT_C25402 = UniProt accession
+        NCIT_C164806 = gene symbol
     }
-    ProKN_Protein --> ProKN_Disease : biolink:associated_with
-    ProKN_Disease --> OARD_Disease : rdfs:seeAlso (MONDO)
-    ProKN_Protein ..> OARD_Disease : biolink:associated_with (direct, UNION branch)
+    ProKN_Protein --> ProKN_Disease : associated_with
+    ProKN_Disease --> OARD_Disease : seeAlso MONDO
+    ProKN_Protein ..> OARD_Disease : associated_with direct UNION branch
 ```
 
 **Step 1 — Count of diseases in OARD-KG.** Counting distinct entities with `biolink:category biolink:Disease`:
