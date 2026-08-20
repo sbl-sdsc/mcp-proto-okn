@@ -16,12 +16,16 @@ Browse all 33 graphs with metadata. Call this first to understand what data is a
 
 ### `route_query(question)`
 
-Match a natural-language question to the most relevant graphs using a registry keyword search.
+Rank the graphs by keyword overlap between the question and the registry metadata.
+
+This is a **lexical prefilter, not a learned or semantic router.** The question is lowercased and split on whitespace, and each term is substring-matched against each graph's description summary, domain tags, entity classes, predicates, example queries, identifier namespaces, and name; per-field weights are summed into `relevance_score`. There is no embedding model, stemming, or synonym expansion, so vocabulary mismatch (asking about "cancer" when the registry says "neoplasm") scores zero.
+
+Accordingly the tool returns **all** graphs ranked rather than a filtered top-k — the score orders which graphs to inspect first, and the calling model performs the actual selection using this output together with `get_description` / `get_schema`. A `relevance_score` of 0 means no literal term overlap, not "irrelevant".
 
 **Parameters**
 - `question` (string, required): the user's natural-language question
 
-**Returns** a ranked list of candidate graphs with match scores.
+**Returns** a ranked list of **all** candidate graphs with keyword match scores.
 
 ### `get_description(graph_name)`
 

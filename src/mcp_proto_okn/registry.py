@@ -117,7 +117,15 @@ class GraphRegistry:
         ]
 
     def search(self, query: str) -> List[Dict[str, Any]]:
-        """Search all graphs by keyword matching. Returns all graphs sorted by relevance."""
+        """Rank all graphs by weighted keyword overlap with the query.
+
+        Lexical only: the query is lowercased and split on whitespace, and each
+        term is substring-matched against the metadata fields below. No
+        stemming, stopword removal, synonym expansion, or embeddings are used,
+        so a score of 0 means "no literal term overlap", not "not relevant".
+        Every graph is returned (sorted by score, then name) so the caller can
+        still consider zero-scoring graphs.
+        """
         query_lower = query.lower()
         terms = query_lower.split()
 

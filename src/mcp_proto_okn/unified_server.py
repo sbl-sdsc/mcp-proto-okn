@@ -2,8 +2,8 @@
 Unified MCP Server for Proto-OKN Knowledge Graphs.
 
 Exposes all Proto-OKN knowledge graphs through a single MCP server instance.
-Provides graph discovery, natural-language routing, per-graph querying,
-and cross-graph result aggregation with identifier mapping.
+Provides graph discovery, lexical (keyword) routing over registry metadata,
+per-graph querying, and cross-graph result aggregation with identifier mapping.
 
 Transport modes:
   - stdio (default): For local subprocess use via ``uvx mcp-proto-okn-unified``.
@@ -208,11 +208,21 @@ IMPORTANT: For gene queries across graphs, different graphs use different gene i
     @mcp.tool()
     def route_query(question: str) -> Dict[str, Any]:
         """
-        Route a natural language question to the most relevant knowledge graphs.
+        Rank knowledge graphs by lexical overlap with a question.
 
-        Takes a natural language question and performs keyword matching against
-        all graph metadata (descriptions, domain tags, entity types, example queries).
-        Returns ALL graphs sorted by relevance score.
+        This is a keyword (bag-of-words) prefilter, NOT a learned or semantic
+        router. The question is lowercased and split on whitespace; each term is
+        substring-matched against registry metadata (description summary, domain
+        tags, entity classes, predicates, example queries, identifier namespaces,
+        graph name), with per-field weights summed into `relevance_score`. There
+        is no embedding model, no synonym or stemming expansion, and no training.
+        A question phrased with vocabulary absent from the registry (e.g.
+        "cancer" where the registry says "neoplasm") will score zero.
+
+        Because of that, ALL graphs are returned ranked rather than filtered to a
+        top-k: the score is a hint to order inspection, and the calling model is
+        expected to make the actual graph selection from the returned metadata
+        (and from get_description / get_schema).
 
         Args:
             question: Natural language question (e.g., "What drugs treat diabetes?",
@@ -220,7 +230,8 @@ IMPORTANT: For gene queries across graphs, different graphs use different gene i
 
         Returns:
             Dictionary with question, candidate_count, and candidates list
-            sorted by relevance_score (highest first).
+            sorted by relevance_score (highest first). A score of 0 means no
+            keyword overlap, not "irrelevant".
         """
         results = unified.registry.search(question)
         return {

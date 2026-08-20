@@ -151,7 +151,7 @@ The AI assistant uses these tools in sequence to navigate from a natural-languag
 | Tool | Purpose |
 |---|---|
 | `list_graphs(domain?, entity_type?)` | Browse all 33 graphs with metadata |
-| `route_query(question)` | Match a natural-language question to relevant graphs |
+| `route_query(question)` | Rank all graphs by keyword overlap with the question (lexical prefilter, not a semantic router) |
 | `get_description(graph_name)` | Full description, example queries, identifier namespaces |
 | `get_schema(graph_name)` | Classes, predicates, edge properties for a graph |
 | `query(graph_name, sparql)` | SPARQL with auto FROM clause and ontology expansion |

@@ -19,7 +19,7 @@ A single [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server
 ## Features
 
 - **🌐 Unified access** — one MCP server, 30+ knowledge graphs, one endpoint
-- **🔎 Graph discovery** — list, filter, and search graphs by domain, entity type, or natural language
+- **🔎 Graph discovery** — list and filter graphs by domain or entity type, or rank them by keyword overlap with a question (a lexical prefilter over registry metadata; the assistant makes the final selection)
 - **📐 Schema inspection** — understand each graph's classes, predicates, and properties before writing queries
 - **🧭 Per-graph SPARQL** — query any individual graph with automatic FROM-clause injection
 - **🔗 Cross-graph bridging** — built-in identifier maps (Ensembl ↔ NCBI Gene ↔ Symbol; CAS, DTXSID, InChIKey; MONDO, FIPS, NAICS, …)
