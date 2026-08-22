@@ -92,7 +92,6 @@ uv run mcp-proto-okn-unified --transport streamable-http --port 8000
 | `MCP_PROTO_OKN_HOST` | `0.0.0.0` | Bind address for HTTP transport |
 | `MCP_PROTO_OKN_PORT` | `8000` | Bind port for HTTP transport |
 | `MCP_PROTO_OKN_API_KEY` | *(none)* | Optional Bearer-token auth for HTTP |
-| `MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION` | *(unset)* | Set to `1` to switch ontology expansion off entirely — `query(auto_expand_descendants=True)` becomes a no-op and `get_descendants` returns nothing. Same as `--no-ontology-expansion` |
 
 CLI flags `--transport`, `--host`, `--port` override the environment variables.
 

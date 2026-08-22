@@ -204,18 +204,6 @@ uv run mcp-proto-okn-unified
 
 # HTTP transport for hosting
 uv run mcp-proto-okn-unified --transport streamable-http --host 0.0.0.0 --port 8000
-
-# Run with ontology expansion switched off entirely
-uv run mcp-proto-okn-unified --no-ontology-expansion
 ```
 
-Configurable via CLI flags or environment variables (`MCP_PROTO_OKN_TRANSPORT`, `MCP_PROTO_OKN_HOST`, `MCP_PROTO_OKN_PORT`, `MCP_PROTO_OKN_API_KEY`, `MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION`); see the [developer doc's "Transport Modes" section](develop.md#transport-modes).
-
-### `--no-ontology-expansion`
-
-Off by default. Intended for controlled comparisons that need the capability *absent* rather than merely unused — withholding the tools is not enough on its own, because expansion is also reachable as a parameter on `query()`. The flag closes both routes at once:
-
-- `get_descendants` returns an empty `descendants` list with an `error` explaining that this is a server setting, not an empty hierarchy
-- `query(..., auto_expand_descendants=True)` runs the query exactly as written, over the URIs named and no descendants, and adds an `ontology_expansion_disabled` key to the result so a narrower answer is not read as narrower data
-
-Set via the flag or `MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION=1`.
+Configurable via CLI flags or environment variables (`MCP_PROTO_OKN_TRANSPORT`, `MCP_PROTO_OKN_HOST`, `MCP_PROTO_OKN_PORT`, `MCP_PROTO_OKN_API_KEY`); see the [developer doc's "Transport Modes" section](develop.md#transport-modes).

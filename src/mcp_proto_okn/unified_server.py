@@ -89,40 +89,7 @@ def parse_args():
         default=None,
         help="Bind port for HTTP transport (default: 8000). Override with MCP_PROTO_OKN_PORT env var.",
     )
-    parser.add_argument(
-        "--no-ontology-expansion",
-        action="store_true",
-        default=None,
-        help=(
-            "Refuse ontology expansion entirely: query(auto_expand_descendants=True) "
-            "becomes a no-op and get_descendants returns nothing. For controlled "
-            "comparisons that need the capability absent rather than merely unused -- "
-            "withholding the tools is not enough on its own, because expansion is also "
-            "reachable as a parameter on query(). Override with "
-            "MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION=1."
-        ),
-    )
     return parser.parse_args()
-
-
-#: Set from --no-ontology-expansion at startup. Module-level because the tool
-#: functions are closures registered before main() runs and never see `args`.
-_NO_ONTOLOGY_EXPANSION = False
-
-
-def _expansion_disabled() -> bool:
-    """Is ontology expansion switched off for this process?
-
-    Checked in one place so the flag and the env var cannot disagree, and so the
-    answer is the same for every path that can expand -- the `query` parameter
-    and the `get_descendants` tool alike. A run that leaves only one of those
-    open has not turned the feature off, it has moved it.
-    """
-    if _NO_ONTOLOGY_EXPANSION:
-        return True
-    return os.environ.get("MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION", "").strip().lower() in (
-        "1", "true", "yes", "on",
-    )
 
 
 _HEALTH_PATHS = {"/health", "/healthz", "/livez", "/readyz"}
@@ -167,10 +134,7 @@ def _wrap_with_api_key_auth(app):
 
 
 def main():
-    global _NO_ONTOLOGY_EXPANSION
     args = parse_args()
-    if args.no_ontology_expansion:
-        _NO_ONTOLOGY_EXPANSION = True
 
     # Initialize unified server
     unified = UnifiedSPARQLServer(registry_path=args.registry)
@@ -373,24 +337,10 @@ IMPORTANT: For gene queries across graphs, different graphs use different gene i
             result = server.execute(
                 query_string,
                 analyze=analyze,
-                auto_expand_descendants=(
-                    auto_expand_descendants and not _expansion_disabled()
-                ),
+                auto_expand_descendants=auto_expand_descendants,
                 max_descendants=max_descendants,
                 bind_expansion_to=bind_expansion_to,
             )
-            if auto_expand_descendants and _expansion_disabled():
-                # Say it out loud. An expansion that silently did not happen is
-                # indistinguishable from one that found nothing, and the caller
-                # would read a narrower result as the data being narrow.
-                result = {
-                    **result,
-                    "ontology_expansion_disabled": (
-                        "Ontology expansion is switched off for this server "
-                        "(--no-ontology-expansion). The query ran exactly as "
-                        "written, over the URIs you named and no descendants."
-                    ),
-                }
             return {"graph_name": graph_name, **result}
         except ValueError as e:
             return {"error": str(e)}
@@ -545,21 +495,6 @@ IMPORTANT: For gene queries across graphs, different graphs use different gene i
             Dictionary with uri, label, descendant_count, total_count, truncated,
             descendants. `truncated` is True when max_results cut the list.
         """
-        if _expansion_disabled():
-            return {
-                "uri": uri,
-                "label": None,
-                "descendant_count": 0,
-                "total_count": None,
-                "truncated": False,
-                "descendants": [],
-                "error": (
-                    "Ontology expansion is switched off for this server "
-                    "(--no-ontology-expansion). This is a server setting, not a "
-                    "property of the ontology: the term may well have descendants. "
-                    "Do not read this as an empty hierarchy."
-                ),
-            }
         if unified._servers:
             server = next(iter(unified._servers.values()))
         else:
