@@ -92,6 +92,7 @@ uv run mcp-proto-okn-unified --transport streamable-http --port 8000
 | `MCP_PROTO_OKN_HOST` | `0.0.0.0` | Bind address for HTTP transport |
 | `MCP_PROTO_OKN_PORT` | `8000` | Bind port for HTTP transport |
 | `MCP_PROTO_OKN_API_KEY` | *(none)* | Optional Bearer-token auth for HTTP |
+| `MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION` | *(unset)* | Set to `1` to switch ontology expansion off entirely — `query(auto_expand_descendants=True)` becomes a no-op and `get_descendants` returns nothing. Same as `--no-ontology-expansion` |
 
 CLI flags `--transport`, `--host`, `--port` override the environment variables.
 
@@ -154,12 +155,12 @@ The AI assistant uses these tools in sequence to navigate from a natural-languag
 | `route_query(question)` | Rank all graphs by keyword overlap with the question (lexical prefilter, not a semantic router) |
 | `get_description(graph_name)` | Full description, example queries, identifier namespaces |
 | `get_schema(graph_name)` | Classes, predicates, edge properties for a graph |
-| `query(graph_name, sparql)` | SPARQL with auto FROM clause and ontology expansion |
+| `query(graph_name, sparql)` | SPARQL with auto `FROM`/`FROM NAMED` scoping and ontology expansion |
 | `multi_graph_query(queries)` | Run different SPARQL per graph; merge with `source_graph` column |
 | `get_query_template(graph_name, relationship_name)` | SPARQL template for RDF-reified edge properties |
 | `get_join_strategy(graph_a, graph_b)` | Shared identifiers and join recommendations |
 | `lookup_uri(label)` | Find ontology URI by name via Ubergraph |
-| `get_descendants(uri)` | Explore ontology hierarchy with distance |
+| `get_descendants(uri)` | Explore the full descendant subtree of an ontology term |
 | `visualize_schema(graph_name)` | Step-by-step workflow for a Mermaid class diagram |
 | `clean_mermaid_diagram(mermaid_content)` | Strip notes / empty braces / invalid chars from Mermaid output |
 | `create_chat_transcript(graph_name?)` | Markdown template for documenting an analysis session |
@@ -183,7 +184,7 @@ Full API reference: **[docs/api.md](api.md)**.
 
 The `gene-expression-atlas-okn` graph stores both NCBI Gene IDs and Ensembl IDs, making it a natural bridge between graphs that use different gene-identifier systems.
 
-**SPARQLServer (`server.py`)** — the per-graph query engine. Each instance handles FROM-clause injection (auto-scoping to the named graph), ontology expansion (MONDO/UBERON/HP/GO/CL/ChEBI URIs in the query are expanded to descendants via Ubergraph), query analysis (warnings for missing `LIMIT`, `ORDER BY`, edge-property patterns), and result formatting.
+**SPARQLServer (`server.py`)** — the per-graph query engine. Each instance handles dataset-clause injection (`FROM` to auto-scope the default graph, plus a matching `FROM NAMED` for every graph the query addresses with `GRAPH <iri>`, without which those blocks would silently match the empty graph), ontology expansion (MONDO/UBERON/HP/GO/CL/ChEBI URIs in the query are expanded to their full descendant subtree via the federation's `ubergraph` graph), enforcement of the federation boundary on `SERVICE` clauses, query analysis (warnings for missing `LIMIT`, `ORDER BY`, edge-property patterns), and result formatting.
 
 **Unified Server (`unified_server.py`)** — loads the registry at startup, lazy-creates and caches a `SPARQLServer` per graph on first use, exposes the 13 MCP tools, handles alias resolution, and supports both `stdio` and `streamable-http` transports.
 

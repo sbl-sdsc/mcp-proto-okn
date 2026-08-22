@@ -85,7 +85,7 @@ One URI in, **1,592 URIs out**. The user wrote nothing about specific cardiovasc
 
 Without ontology expansion, a query for "cardiovascular disease" against `nde` returns only the 447 datasets tagged with the exact root MONDO URI. With expansion, it returns **10,000+ dataset–condition pairs** spanning every subtype the data curators chose to tag at — without the user (or the LLM) having to know what those subtypes are called or what URI each one has.
 
-The expansion is bounded (`max_depth=5`, `max_descendants=2000` by default), batched to keep the SPARQL endpoint happy, and reported back to the assistant so it can mention the breadth of the search when summarizing results. It works on any URI from MONDO, UBERON, HP, GO, CL, CHEBI, and the other Ubergraph ontologies, applied automatically to whichever graphs use those identifier systems.
+The expansion covers the full descendant subtree (bounded only by `max_descendants=2000` per URI by default), batched to keep the SPARQL endpoint happy, and reported back to the assistant so it can mention the breadth of the search when summarizing results. It works on any URI from MONDO, UBERON, HP, GO, CL, CHEBI, and the other Ubergraph ontologies, applied automatically to whichever graphs use those identifier systems.
 
 ---
 

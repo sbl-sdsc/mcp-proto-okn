@@ -38,6 +38,8 @@ This yields **445** diseases shared by both graphs.
 
 The MONDO term for hereditary disease is **MONDO:0003847**. Ontology expansion of this term timed out (the subtree is very large), so I added a second `SERVICE` call to **Ubergraph**, whose materialized `subClassOf` closure lets a direct `subClassOf` edge stand in for the full transitive descendant set:
 
+> **Note (transcript recorded before the ontology-tool repair).** Two things in this session no longer apply. The expansion timeout was a server bug — `get_descendants` built a depth-bounded `UNION` that recomputed the same rows per branch — and is fixed; expansion of a large subtree now works. And the external `SERVICE <https://ubergraph.apps.renci.org/sparql>` call below would now be **refused**: a `SERVICE` clause may only address the OKN federation, since a result fetched from outside cannot be reproduced from the graphs this server serves. The same closure is available in-federation as `GRAPH <https://purl.org/okn/frink/kg/ubergraph>`, which holds 1,592 descendants for `MONDO:0004995` where the external endpoint returned 1,628. The cross-`GRAPH` query above that "returned 0" is also suspect for the same period: the server emitted `FROM` without a matching `FROM NAMED`, which leaves the dataset with no named graphs, so any `GRAPH <iri>` block matched the empty graph and returned zero rows silently. That is now fixed too. See [docs/api.md](../api.md#querygraph_name-query_string-) for all three rules.
+
 ```sparql
 SELECT DISTINCT ?mondo ?label WHERE {
   ?d a <http://purl.uniprot.org/core/Disease> ;

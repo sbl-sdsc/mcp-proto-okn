@@ -51,7 +51,7 @@ Retrieves the schema (classes, predicates, edge properties, node properties) for
 
 ### `query(graph_name, query_string, ...)`
 
-Execute SPARQL with automatic FROM-clause injection, ontology expansion, and query analysis.
+Execute SPARQL with automatic dataset scoping, ontology expansion, and query analysis.
 
 > **Important:** call `get_schema()` first.
 
@@ -59,9 +59,8 @@ Execute SPARQL with automatic FROM-clause injection, ontology expansion, and que
 - `graph_name` (string, required)
 - `query_string` (string, required): a valid SPARQL query
 - `analyze` (boolean, default `true`): emit warnings for missing `LIMIT`/`ORDER BY`, edge-property misuse, etc.
-- `auto_expand_descendants` (boolean, default `true`): rewrite the query to also match descendants of any MONDO/UBERON/HP/GO/CL/ChEBI URI it contains, fetched from Ubergraph
+- `auto_expand_descendants` (boolean, default `true`): rewrite the query to also match descendants of any MONDO/UBERON/HP/GO/CL/ChEBI URI it contains, fetched from the federation's `ubergraph` graph. Expansion always covers the **full subtree** — there is no depth setting (see [`get_descendants`](#get_descendantsuri-max_results-include_distance))
 - `max_descendants` (integer, default `2000`): cap on expansion per URI
-- `max_depth` (integer, default `5`): max `rdfs:subClassOf` hops
 - `bind_expansion_to` (list, optional): variable names to bind expanded URIs to (constrains the expansion to chosen positions in the query)
 
 **Returns**
@@ -90,6 +89,25 @@ Execute SPARQL with automatic FROM-clause injection, ontology expansion, and que
       schema:property_name ?value .
 ```
 
+**Dataset scoping (`FROM` / `FROM NAMED`).** The server inserts `FROM <https://purl.org/okn/frink/kg/{graph_name}>` before `WHERE`, so bare triple patterns resolve inside the chosen graph. When the query *also* names other graphs explicitly with `GRAPH <iri>`, a matching `FROM NAMED <iri>` is emitted for each of them.
+
+That second line is not decoration. In SPARQL, `FROM` builds the default graph and `FROM NAMED` decides which named graphs the dataset contains — a query carrying only `FROM` has **no** named graphs, so every `GRAPH <other>` block matches the empty graph and returns zero rows with no error and no warning. With both clauses emitted, a cross-graph query written the ordinary way behaves the same through this server as it does against the endpoint directly:
+
+```sparql
+SELECT ?dataset ?d WHERE {
+  ?dataset schema:healthCondition ?d .
+  GRAPH <https://purl.org/okn/frink/kg/ubergraph> {
+    ?d rdfs:subClassOf* <http://purl.obolibrary.org/obo/MONDO_0004995> .
+  }
+}
+```
+
+Two cases are left alone: a query that already carries its own `FROM`/`FROM NAMED` is scoping itself and is not second-guessed, and a query using a variable graph (`GRAPH ?g`) cannot have its named graphs enumerated statically, so nothing is injected.
+
+**Federation boundary (`SERVICE`).** A `SERVICE` clause may only address the OKN federation (`apps.okn.us`). A query targeting any other host is refused before execution and returns `{ "error": "...", "refused_service_endpoints": [...] }`; a variable endpoint (`SERVICE ?e`) is refused too, since it cannot be checked statically. A result fetched from outside cannot be reproduced from the graphs this server serves, and is not attributable to them — an external Ubergraph endpoint, for instance, returned 1,628 descendants for a MONDO term where the federation's own copy holds 1,592.
+
+In-federation `SERVICE <https://apps.okn.us/<graph>/sparql>` still works as documented, and everything the ontology tools use is reachable in-federation as a named graph: `GRAPH <https://purl.org/okn/frink/kg/ubergraph>` does what an external Ubergraph `SERVICE` would.
+
 ### `multi_graph_query(queries)`
 
 Run different SPARQL across multiple graphs in a single call. Results are merged with an added `source_graph` column.
@@ -111,15 +129,24 @@ Identify shared identifiers and recommend a join strategy between two graphs. Ma
 
 ### `lookup_uri(label, max_results?)`
 
-Find an ontology URI by its human-readable label via Ubergraph. Graph-independent.
+Find an ontology URI by its human-readable label in the federation's `ubergraph` graph — exact `rdfs:label` and `oboInOwl:hasExactSynonym` matches. Graph-independent.
+
+Casings are enumerated on the *query* side (the term as given, lowercased, uppercased, title case, and first-letter-capitalised) rather than lowercasing the stored label, which no index can serve and which scanned every label in ubergraph. Matching therefore covers every realistic spelling rather than literally every one: a deliberately mixed-case string like `mUsClE oRgAn` will miss, while `Muscle Organ`, `muscle organ`, and `MUSCLE ORGAN` all hit.
 
 **Returns** `{ query_label, match_count, matches: [{ uri, label, match_type }] }`.
 
-### `get_descendants(uri, max_results?, max_depth?, include_distance?)`
+### `get_descendants(uri, max_results?, include_distance?)`
 
-Expand a URI to find all descendant classes in the ontology hierarchy. Graph-independent.
+Expand a URI to find all descendant classes in the ontology hierarchy, via `rdfs:subClassOf*` against the federation's `ubergraph` graph. Graph-independent.
 
-**Returns** `{ uri, label, max_depth, descendant_count, descendants: [{ uri, label, distance? }] }`.
+**Parameters**
+- `uri` (string, required): the full URI to expand (e.g. `http://purl.obolibrary.org/obo/MONDO_0005178`)
+- `max_results` (integer, default `2000`): cap on returned descendants
+- `include_distance` (boolean, default `true`): include a `distance` field per descendant
+
+**Returns** `{ uri, label, descendant_count, total_count, truncated, descendants: [{ uri, label, distance? }] }`. `total_count` is the size of the full subtree regardless of `max_results`, and `truncated` is `true` when `max_results` cut the list — so a partial answer cannot be mistaken for a complete one.
+
+> **There is no `max_depth`.** The federation's `ubergraph` copy ships a *materialized* closure: every descendant is asserted as a direct `rdfs:subClassOf` of every ancestor, so one hop already returns the whole subtree. The previous depth-bounded implementation recomputed the same rows in every branch and stopped answering at all past ~6 hops, so the parameter has been removed from both `get_descendants` and `query`. For the same reason `distance` is always `1`: a materialized closure keeps no hop counts and cannot tell a child from a great-grandchild.
 
 > For *querying datasets* with ontology expansion, use `query(..., auto_expand_descendants=True)` instead — `get_descendants` is for exploring the ontology itself.
 
@@ -177,6 +204,18 @@ uv run mcp-proto-okn-unified
 
 # HTTP transport for hosting
 uv run mcp-proto-okn-unified --transport streamable-http --host 0.0.0.0 --port 8000
+
+# Run with ontology expansion switched off entirely
+uv run mcp-proto-okn-unified --no-ontology-expansion
 ```
 
-Configurable via CLI flags or environment variables (`MCP_PROTO_OKN_TRANSPORT`, `MCP_PROTO_OKN_HOST`, `MCP_PROTO_OKN_PORT`, `MCP_PROTO_OKN_API_KEY`); see the [README's "Transport Modes" section](../README.md#transport-modes).
+Configurable via CLI flags or environment variables (`MCP_PROTO_OKN_TRANSPORT`, `MCP_PROTO_OKN_HOST`, `MCP_PROTO_OKN_PORT`, `MCP_PROTO_OKN_API_KEY`, `MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION`); see the [developer doc's "Transport Modes" section](develop.md#transport-modes).
+
+### `--no-ontology-expansion`
+
+Off by default. Intended for controlled comparisons that need the capability *absent* rather than merely unused — withholding the tools is not enough on its own, because expansion is also reachable as a parameter on `query()`. The flag closes both routes at once:
+
+- `get_descendants` returns an empty `descendants` list with an `error` explaining that this is a server setting, not an empty hierarchy
+- `query(..., auto_expand_descendants=True)` runs the query exactly as written, over the URIs named and no descendants, and adds an `ontology_expansion_disabled` key to the result so a narrower answer is not read as narrower data
+
+Set via the flag or `MCP_PROTO_OKN_NO_ONTOLOGY_EXPANSION=1`.

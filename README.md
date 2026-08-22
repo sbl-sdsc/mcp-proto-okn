@@ -211,7 +211,12 @@ The [developer document](docs/develop.md) describes how to **run the server loca
 
 **Slow or hung queries**
 - Complex SPARQL can take time; break it into smaller parts
-- Ontology expansion across very broad concepts (e.g. "disease") may take several minutes
+- Ontology expansion across very broad concepts (e.g. "disease") pulls a large descendant set into the query and may take several minutes against the target graph; narrow the concept or set `auto_expand_descendants=False` to query the exact URI only
+
+**"Query refused: SERVICE may only address the OKN federation"**
+- A `SERVICE` clause pointing outside `apps.okn.us` is rejected, because its result cannot be reproduced from the graphs this server serves
+- Ontology lookups do not need an external endpoint: the ontology hub is available in-federation as `GRAPH <https://purl.org/okn/frink/kg/ubergraph>`
+- Peer graphs are reachable as `SERVICE <https://apps.okn.us/<graph>/sparql>` as before
 
 ---
 
