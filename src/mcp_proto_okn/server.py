@@ -44,6 +44,55 @@ from mcp.server.fastmcp import FastMCP
 
 from . import __version__
 
+#: Hosts a SERVICE clause may federate to. Everything the server exposes lives
+#: behind apps.okn.us, including the ontology hub as the named graph
+#: <https://purl.org/okn/frink/kg/ubergraph>, so this covers every legitimate
+#: use and nothing else.
+FEDERATION_SERVICE_HOSTS = ("apps.okn.us",)
+
+#: `SERVICE <iri>` / `SERVICE SILENT <iri>` / `SERVICE ?var`, wherever it appears.
+_SERVICE_RE = re.compile(
+    r"\bSERVICE\s+(?:SILENT\s+)?(?:<\s*([^>]*?)\s*>|(\?[A-Za-z_][A-Za-z0-9_]*))",
+    re.IGNORECASE,
+)
+
+
+#: ``GRAPH <iri>`` — a named graph the query addresses explicitly.
+_GRAPH_IRI_RE = re.compile(r"\bGRAPH\s*<\s*([^>]*?)\s*>", re.IGNORECASE)
+
+#: ``GRAPH ?var`` — a named graph chosen at runtime, which cannot be enumerated.
+_GRAPH_VAR_RE = re.compile(r"\bGRAPH\s*\?[A-Za-z_][A-Za-z0-9_]*", re.IGNORECASE)
+
+#: A dataset clause the caller wrote themselves.
+_HAS_DATASET_CLAUSE_RE = re.compile(r"(?i)\bFROM\s+(?:NAMED\s+)?<")
+
+
+def external_service_targets(query: str) -> List[str]:
+    """SERVICE endpoints in ``query`` that are outside the OKN federation.
+
+    Reaching outside is a reproducibility hole rather than a convenience. An
+    agent that answers via `SERVICE <https://ubergraph.apps.renci.org/sparql>`
+    has produced a result the federation cannot reproduce, sourced from a host
+    that can drift, throttle or vanish independently — and the answer is no
+    longer attributable to the graphs the server is serving. Observed in the
+    wild: an episode reached that endpoint directly for a MONDO closure and got
+    1,628 descendants, against the 1,592 the federation's own ubergraph holds.
+
+    A variable endpoint (``SERVICE ?e``) is reported too. It cannot be checked
+    statically, and a rule that silently passes what it cannot verify is not a
+    rule.
+    """
+    targets: List[str] = []
+    for iri, var in _SERVICE_RE.findall(query):
+        if var:
+            targets.append(var)
+            continue
+        host = urlparse(iri).hostname or ""
+        if host.lower() not in FEDERATION_SERVICE_HOSTS:
+            targets.append(iri)
+    return targets
+
+
 class QueryAnalyzer:
     """Analyzes SPARQL queries for common issues with LIMIT and ORDER BY."""
     
@@ -270,16 +319,51 @@ class SPARQLServer:
 
     # ---------------------- Internal helpers ---------------------- #
     def _insert_from_clause(self, query_string, kg_name):
+        """Scope a query to ``kg_name`` without breaking its GRAPH blocks.
+
+        Inserts ``FROM <.../{kg_name}>`` before WHERE, so a caller can write
+        ``?s ?p ?o`` and mean "in this KG" -- and, when the query names other
+        graphs explicitly, a matching ``FROM NAMED`` for each of them.
+
+        The FROM NAMED lines are not decoration. In SPARQL, ``FROM`` builds the
+        default graph and ``FROM NAMED`` decides which named graphs the dataset
+        contains; a query carrying only ``FROM`` has NO named graphs, so every
+        ``GRAPH <other>`` block matches the empty graph and returns nothing.
+        Silently: no error, no warning, just zero rows. Measured against
+        apps.okn.us on the cardiovascular closure:
+
+            GRAPH <.../ubergraph> { ?d rdfs:subClassOf* <MONDO_0004995> }
+              no FROM at all ................................. 1592
+              FROM <.../nde>  (what this used to emit) .......    0
+              FROM <.../nde> + FROM NAMED <.../ubergraph> .... 1592
+
+        That made every cross-graph query written the ordinary way -- default
+        graph for one KG, GRAPH blocks for the others -- return nothing through
+        this server, while the identical text answered correctly against the
+        endpoint directly.
+
+        Two cases are left alone. A query that already carries its own
+        ``FROM``/``FROM NAMED`` is scoping itself and is not second-guessed. A
+        query using a VARIABLE graph (``GRAPH ?g``) cannot have its named graphs
+        enumerated statically, so nothing is injected: the endpoint's own default
+        dataset is the union of every graph and exposes them all as named, which
+        is what such a query needs.
         """
-        Inserts a FROM line after the SELECT clause and before WHERE.
-        Example insert:
-            FROM <https://purl.org/okn/frink/kg/{kg_name}>
-        """
-        from_clause = f"FROM <https://purl.org/okn/frink/kg/{kg_name}>"
-        # Insert FROM before WHERE clause
+        if _HAS_DATASET_CLAUSE_RE.search(query_string):
+            return query_string
+        if _GRAPH_VAR_RE.search(query_string):
+            return query_string
+
+        lines = [f"FROM <https://purl.org/okn/frink/kg/{kg_name}>"]
+        seen = set()
+        for iri in _GRAPH_IRI_RE.findall(query_string):
+            if iri not in seen:
+                seen.add(iri)
+                lines.append(f"FROM NAMED <{iri}>")
+
         return re.sub(
             r'(?i)\bWHERE\s*\{',
-            f"{from_clause}\nWHERE {{",
+            "\n".join(lines) + "\nWHERE {",
             query_string,
             count=1
         )
@@ -454,51 +538,33 @@ class SPARQLServer:
         
         return list(set(detected_uris))  # Remove duplicates
     
-    def _fetch_descendants_for_uri(self, uri: str, max_results: int = 2000, max_depth: int = 5) -> List[str]:
+    def _fetch_descendants_for_uri(self, uri: str, max_results: int = 2000) -> List[str]:
         """
-        Fetch descendant URIs for a given ontology URI using the ubergraph,
-        with depth limiting to avoid runaway traversals.
-        
-        Uses a bounded property path (up to max_depth hops) instead of unbounded
-        rdfs:subClassOf* to prevent timeouts on large ontologies.
-        
+        Fetch descendant URIs for a given ontology URI using the ubergraph.
+
+        Uses the transitive path rdfs:subClassOf*, which the endpoint answers
+        from a precomputed index.
+
+        `max_depth` is gone. The federation's ubergraph copy ships a
+        MATERIALIZED closure -- every descendant is asserted as a direct
+        rdfs:subClassOf of every ancestor -- so depth 1 already returns
+        everything and deeper branches only re-find the same rows at
+        exponential cost. See `get_descendants_detailed` for the measurements.
+
         Args:
             uri: The ontology URI to expand
             max_results: Maximum number of descendants to retrieve
-            max_depth: Maximum number of subClassOf hops to traverse (default: 5)
-            
+
         Returns:
             List of descendant URIs (including the original URI)
         """
-        # Build a depth-limited query using UNION of explicit path lengths.
-        # This avoids unbounded rdfs:subClassOf* which can timeout on large ontologies.
-        # Each UNION branch adds one more hop: ?d subClassOf ?mid1 . ?mid1 subClassOf <uri> etc.
-        depth_patterns = []
-        for depth in range(1, max_depth + 1):
-            if depth == 1:
-                depth_patterns.append(f"{{ ?descendant rdfs:subClassOf <{uri}> }}")
-            else:
-                # Chain: ?descendant -> ?m1 -> ?m2 -> ... -> <uri>
-                chain_parts = []
-                prev_var = "?descendant"
-                for i in range(1, depth):
-                    next_var = f"?_mid{i}"
-                    chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
-                    prev_var = next_var
-                chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
-                depth_patterns.append("{ " + " ".join(chain_parts) + " }")
-        
-        union_block = "\n    UNION\n    ".join(depth_patterns)
-        
         query = f"""
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        
+
         SELECT DISTINCT ?descendant
         FROM <https://purl.org/okn/frink/kg/ubergraph>
         WHERE {{
-          {{
-            {union_block}
-          }}
+          ?descendant rdfs:subClassOf* <{uri}> .
         }}
         LIMIT {max_results}
         """
@@ -518,7 +584,7 @@ class SPARQLServer:
             # If expansion fails, just return the original URI
             return [uri]
     
-    def _expand_query_with_descendants(self, query_string: str, ontology_uris: List[str], max_descendants: int = 100, max_depth: int = 5, bind_variables: Optional[List[str]] = None) -> Tuple[Union[str, List[str]], Dict[str, List[str]]]:
+    def _expand_query_with_descendants(self, query_string: str, ontology_uris: List[str], max_descendants: int = 100, bind_variables: Optional[List[str]] = None) -> Tuple[Union[str, List[str]], Dict[str, List[str]]]:
         """
         Rewrite a SPARQL query to include descendants of detected ontology URIs.
         
@@ -534,7 +600,6 @@ class SPARQLServer:
             query_string: Original SPARQL query
             ontology_uris: List of ontology URIs detected in the query
             max_descendants: Maximum descendants to fetch per URI
-            max_depth: Maximum hierarchy depth to traverse (default: 5)
             bind_variables: Optional list of variable names (with or without '?') that should
                            be constrained to the expanded ontology concepts. For example, if
                            you expand mondo:0005578 and want ?disease to only match those
@@ -561,7 +626,7 @@ class SPARQLServer:
         
         # Fetch all descendants first
         for uri in ontology_uris:
-            descendants = self._fetch_descendants_for_uri(uri, max_results=max_descendants, max_depth=max_depth)
+            descendants = self._fetch_descendants_for_uri(uri, max_results=max_descendants)
             uri_to_descendants[uri] = descendants
             
             if len(descendants) <= 1:
@@ -782,7 +847,7 @@ class SPARQLServer:
         """
         return self.execute(query_string, analyze=analyze, auto_expand_descendants=auto_expand)
     
-    def execute(self, query_string: str, analyze: bool = True, auto_expand_descendants: bool = True, max_descendants: int = 2000, max_depth: int = 5, bind_expansion_to: Optional[List[str]] = None) -> Dict[str, Any]:
+    def execute(self, query_string: str, analyze: bool = True, auto_expand_descendants: bool = True, max_descendants: int = 2000, bind_expansion_to: Optional[List[str]] = None) -> Dict[str, Any]:
         """Execute SPARQL query and return results in compact format.
         
         Args:
@@ -794,11 +859,7 @@ class SPARQLServer:
                 Set to False when you want only the exact concepts mentioned in your query.
             max_descendants: Maximum descendants to fetch per ontology URI (default: 100).
                 Increase for comprehensive coverage of large ontology branches.
-            max_depth: Maximum hierarchy depth to traverse when expanding (default: 5 hops).
                 Controls how deep to traverse the subClassOf hierarchy:
-                - max_depth=1: Direct children only (e.g., osteoarthritis, rheumatoid arthritis)
-                - max_depth=2: Children and grandchildren
-                - max_depth=5: Up to 5 levels deep in the hierarchy
                 Decrease for faster queries on very large/deep ontologies, increase for deeper coverage.
             bind_expansion_to: Optional list of variable names (with or without '?') that should be
                 replaced with the expanded ontology variable. This is useful for GROUP BY queries
@@ -843,7 +904,6 @@ class SPARQLServer:
             query('SELECT ?dataset WHERE { ?dataset schema:healthCondition <MONDO_0005578> }')
             
             # Query for direct children only
-            query('SELECT ?dataset WHERE { ... }', max_depth=1)
             
             # Query without expansion - only exact matches
             query('SELECT ?dataset WHERE { ... }', auto_expand_descendants=False)
@@ -857,8 +917,27 @@ class SPARQLServer:
                     ?disease schema:name ?diseaseLabel .
                 }
                 GROUP BY ?disease ?diseaseLabel
-            ''', max_depth=1, bind_expansion_to=['disease'])
+            ''', bind_expansion_to=['disease'])
         """
+        # Refuse to leave the federation before doing anything else.
+        outside = external_service_targets(query_string)
+        if outside:
+            return {
+                "error": (
+                    "Query refused: SERVICE may only address the OKN federation "
+                    f"({', '.join(FEDERATION_SERVICE_HOSTS)}), but this query targets "
+                    f"{', '.join(outside)}. A result fetched from outside cannot be "
+                    "reproduced from the graphs this server serves, and is not "
+                    "attributable to them. Everything here is reachable in-federation "
+                    "as a named graph -- the ontology hub is "
+                    "GRAPH <https://purl.org/okn/frink/kg/ubergraph>, so "
+                    "`?d rdfs:subClassOf* <term>` inside that GRAPH block does what an "
+                    "external Ubergraph SERVICE would, from the data this server is "
+                    "actually serving."
+                ),
+                "refused_service_endpoints": outside,
+            }
+
         # Analyze query before execution if requested
         analysis = None
         warnings = []
@@ -875,7 +954,7 @@ class SPARQLServer:
                 # Pre-fetch descendants from ubergraph with depth limiting,
                 # then inject them as VALUES clauses into the user's query
                 expanded_result, uri_to_descendants = self._expand_query_with_descendants(
-                    query_string, ontology_uris, max_descendants, max_depth, bind_expansion_to
+                    query_string, ontology_uris, max_descendants, bind_expansion_to
                 )
                 
                 # Check if result is a single query or multiple batched queries
@@ -1427,7 +1506,7 @@ LIMIT 10"""
         """Look up ontology term URIs by label in Ubergraph.
 
         Queries Ubergraph for exact label matches (rdfs:label) and exact
-        synonyms (oboInOwl:hasExactSynonym). Case-insensitive.
+        synonyms (oboInOwl:hasExactSynonym), across common casings of the term.
 
         Args:
             label: The term to search for (e.g., "muscle organ", "rheumatoid arthritis")
@@ -1436,7 +1515,30 @@ LIMIT 10"""
         Returns:
             Dictionary with query_label, match_count, and matches list.
         """
-        query = f"""
+        # Matched by enumerating casings, not by lowercasing the stored label.
+        #
+        # The obvious form -- FILTER(LCASE(?matchedLabel) = LCASE(label)) -- puts
+        # a function on the stored side, which no index can serve: the endpoint
+        # scans every label in ubergraph, twice (rdfs:label and hasExactSynonym).
+        # Measured at ~16s and frequently failing outright with HTTP 429, and
+        # max_results does not help because LIMIT applies after the scan, so
+        # asking for 10 matches costs exactly what asking for 2000 costs.
+        #
+        # Instead put the variants on the QUERY side, where VALUES stays an
+        # indexed lookup: ~0.3s. OBO labels are conventionally lower case, so
+        # the handful of casings below covers real input -- the term as given,
+        # lowercased, uppercased, title case, and first-letter-capitalised.
+        # Matching is therefore case-insensitive for every realistic spelling
+        # rather than literally every one; a deliberately mixed-case string like
+        # "mUsClE oRgAn" will miss. That is the right trade: the alternative is
+        # a 30s hang that can take the session down with it.
+        variants = []
+        for form in (label, label.lower(), label.upper(), label.title(), label.capitalize()):
+            if form not in variants:
+                variants.append(form)
+        values_block = " ".join(json.dumps(v) for v in variants)
+
+        exact_query = f"""
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
@@ -1445,31 +1547,34 @@ LIMIT 10"""
         WHERE {{
           {{
             ?uri rdfs:label ?matchedLabel .
-            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
+            VALUES ?matchedLabel {{ {values_block} }}
             BIND("exact_label" AS ?matchType)
           }}
           UNION
           {{
             ?uri oboInOwl:hasExactSynonym ?matchedLabel .
-            FILTER(LCASE(STR(?matchedLabel)) = LCASE("{label}"))
+            VALUES ?matchedLabel {{ {values_block} }}
             BIND("exact_synonym" AS ?matchType)
           }}
         }}
         LIMIT {max_results}
         """
 
-        try:
+        def _run(query: str) -> List[Dict[str, str]]:
             self.sparql.setQuery(query)
             raw_result = self.sparql.query().convert()
-
-            matches = []
+            found = []
             if 'results' in raw_result:
                 for binding in raw_result['results'].get('bindings', []):
-                    matches.append({
+                    found.append({
                         'uri': binding.get('uri', {}).get('value', ''),
                         'label': binding.get('matchedLabel', {}).get('value', ''),
                         'match_type': binding.get('matchType', {}).get('value', '')
                     })
+            return found
+
+        try:
+            matches = _run(exact_query)
 
             return {
                 'query_label': label,
@@ -1488,89 +1593,84 @@ LIMIT 10"""
         self,
         uri: str,
         max_results: int = 2000,
-        max_depth: int = 5,
-        include_distance: bool = True,
+        include_distance: bool = False,
     ) -> Dict[str, Any]:
         """Expand a URI to find all its descendant classes in the ontology hierarchy.
 
-        Uses depth-limited traversal via Ubergraph.
+        Uses rdfs:subClassOf*, which the endpoint answers from an index.
+
+        There is deliberately NO max_depth. The federation's ubergraph copy
+        ships a fully MATERIALIZED closure: every descendant is asserted as a
+        direct rdfs:subClassOf of every ancestor. Measured on MONDO_0004995
+        (cardiovascular disorder) against apps.okn.us:
+
+            ?d rdfs:subClassOf <uri>            -> 1592   (one hop, no path op)
+            ?d rdfs:subClassOf* <uri>           -> 1592
+            exactly-two-hops-but-not-one        ->    0
+
+        So depth 1 already returns everything, and there is no deeper structure
+        to reach. This code used to build a UNION of explicit join chains, one
+        branch per depth up to max_depth, to "avoid unbounded rdfs:subClassOf*
+        which can timeout on large ontologies". Every branch past the first was
+        computing rows the first had already found, at exponential cost:
+
+            rdfs:subClassOf*                     0.4-0.5s
+            UNION, max_depth=5                   0.7-0.9s
+            UNION, max_depth=10                  TIMES OUT (~45s, "Join on ?_m1")
+            UNION, max_depth=15                  TIMES OUT
+
+        The parameter's only achievable effects were to slow the query down and,
+        past depth ~6, to break it -- and an agent raising it to be thorough hit
+        that every time. It is gone rather than deprecated: keeping a knob whose
+        best case is "no change" and whose worst case is "no answer" invites
+        exactly the failure it caused.
+
+        `include_distance` is retained but reports a CONSTANT 1 for every
+        descendant, for the same reason: a materialized closure preserves no
+        hop counts. It cannot tell a child from a great-grandchild. Prefer
+        leaving it off; recovering true distance would need a predicate that
+        keeps the asserted direct-parent structure, which this graph does not
+        expose on rdfs:subClassOf.
 
         Args:
             uri: The full URI to expand
-            max_results: Maximum number of descendants to return (default: 2000)
-            max_depth: Maximum number of subClassOf hops (default: 5)
-            include_distance: If True, include hierarchy distance from root URI
+            max_results: Maximum number of descendants to return (default: 2000).
+                Truncation is reported -- see `truncated` and `total_count` in
+                the result, which exist so a cut-off list cannot be mistaken for
+                a complete one.
+            include_distance: If True, include a `distance` field. See above for
+                why it is always 1 against this data.
 
         Returns:
-            Dictionary with uri, label, max_depth, descendant_count, descendants.
+            Dictionary with uri, label, descendant_count, total_count,
+            truncated, descendants.
         """
         if include_distance:
-            depth_branches = []
-            for depth in range(1, max_depth + 1):
-                if depth == 1:
-                    depth_branches.append(
-                        f"{{ ?descendant rdfs:subClassOf <{uri}> . BIND({depth} AS ?distance) }}"
-                    )
-                else:
-                    chain_parts = []
-                    prev_var = "?descendant"
-                    for i in range(1, depth):
-                        next_var = f"?_m{i}"
-                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
-                        prev_var = next_var
-                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
-                    chain_str = " ".join(chain_parts)
-                    depth_branches.append(
-                        f"{{ {chain_str} BIND({depth} AS ?distance) }}"
-                    )
-
-            union_block = "\n    UNION\n    ".join(depth_branches)
-
+            # One hop is the whole closure here (see the docstring), so this is
+            # the single-branch form of what used to be a depth UNION. Every
+            # descendant comes back at distance 1 because that is what a
+            # materialized graph can say.
             query = f"""
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-            SELECT ?descendant ?label (MIN(?distance) AS ?min_distance)
+            SELECT DISTINCT ?descendant ?label (1 AS ?min_distance)
             FROM <https://purl.org/okn/frink/kg/ubergraph>
             WHERE {{
-              {{
-                {union_block}
-              }}
+              ?descendant rdfs:subClassOf <{uri}> .
               FILTER(?descendant != <{uri}>)
               OPTIONAL {{ ?descendant rdfs:label ?label }}
             }}
-            GROUP BY ?descendant ?label
-            ORDER BY ?min_distance ?descendant
+            ORDER BY ?descendant
             LIMIT {max_results}
             """
         else:
-            depth_branches = []
-            for depth in range(1, max_depth + 1):
-                if depth == 1:
-                    depth_branches.append(
-                        f"{{ ?descendant rdfs:subClassOf <{uri}> }}"
-                    )
-                else:
-                    chain_parts = []
-                    prev_var = "?descendant"
-                    for i in range(1, depth):
-                        next_var = f"?_m{i}"
-                        chain_parts.append(f"{prev_var} rdfs:subClassOf {next_var} .")
-                        prev_var = next_var
-                    chain_parts.append(f"{prev_var} rdfs:subClassOf <{uri}> .")
-                    chain_str = " ".join(chain_parts)
-                    depth_branches.append(f"{{ {chain_str} }}")
-
-            union_block = "\n    UNION\n    ".join(depth_branches)
-
             query = f"""
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
             SELECT DISTINCT ?descendant ?label
             FROM <https://purl.org/okn/frink/kg/ubergraph>
             WHERE {{
-              {{
-                {union_block}
-              }}
+              ?descendant rdfs:subClassOf* <{uri}> .
               FILTER(?descendant != <{uri}>)
               OPTIONAL {{ ?descendant rdfs:label ?label }}
             }}
@@ -1601,6 +1701,30 @@ LIMIT 10"""
         except Exception:
             uri_label = None
 
+        # How many there are in total, independent of max_results. Without this a
+        # caller asking for 100 of 1,591 gets `descendant_count: 100` and no way
+        # to tell it was cut -- the same silent lossiness the depth bound used to
+        # have, moved to a different parameter.
+        total_count = None
+        try:
+            count_query = f"""
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT (COUNT(DISTINCT ?descendant) AS ?n)
+            FROM <https://purl.org/okn/frink/kg/ubergraph>
+            WHERE {{
+              ?descendant rdfs:subClassOf* <{uri}> .
+              FILTER(?descendant != <{uri}>)
+            }}
+            """
+            self.sparql.setQuery(count_query)
+            count_result = self.sparql.query().convert()
+            bindings = count_result.get('results', {}).get('bindings', [])
+            if bindings:
+                total_count = int(bindings[0]['n']['value'])
+        except Exception:
+            total_count = None
+
         # Get descendants
         try:
             self.sparql.setQuery(query)
@@ -1620,16 +1744,20 @@ LIMIT 10"""
             return {
                 'uri': uri,
                 'label': uri_label,
-                'max_depth': max_depth,
                 'descendant_count': len(descendants),
+                'total_count': total_count,
+                'truncated': (
+                    total_count is not None and len(descendants) < total_count
+                ),
                 'descendants': descendants
             }
         except Exception as e:
             return {
                 'uri': uri,
                 'label': uri_label,
-                'max_depth': max_depth,
                 'descendant_count': 0,
+                'total_count': total_count,
+                'truncated': False,
                 'descendants': [],
                 'error': f"Failed to fetch descendants: {str(e)}"
             }
@@ -1761,14 +1889,12 @@ descendants were found.
 
 CONTROLLING EXPANSION DEPTH:
 - max_descendants: Maximum number of descendants to fetch per ontology URI (default: 2000)
-- max_depth: Maximum hierarchy depth to traverse (default: 5 hops)
-  - max_depth=1: DIRECT CHILDREN ONLY (one level down). Use when the user asks for "direct descendants"
-  - max_depth=2: Children and grandchildren
-  - max_depth=5: Up to 5 levels deep (default, good balance)
+- Expansion always covers the FULL subtree. The ubergraph copy is a materialized
+  closure, so there is no depth to tune and no partial-depth option.
   - Increase for deeper ontologies, decrease to 1-3 for faster queries on very large hierarchies
 
-WHEN TO USE get_descendants() vs max_depth:
-- Use max_depth parameter: When you want to query datasets/data with controlled hierarchy depth
+WHEN TO USE get_descendants() vs auto_expand_descendants:
+- Use auto_expand_descendants: When you want to query datasets/data with the subtree folded in
 - Use get_descendants() tool: When you want to EXPLORE the ontology structure itself (see what diseases 
   exist, understand the hierarchy, get distance information). This is useful for answering questions like
   "what are the types of arthritis?" or "show me the disease hierarchy"
@@ -1809,7 +1935,6 @@ Args:
     analyze: If True (default), analyzes query and warns if LIMIT is used without ORDER BY, and checks for edge property issues
     auto_expand_descendants: If True (default), automatically expands ontology URIs by pre-fetching descendants from ubergraph (depth-limited) and injecting as VALUES clauses. Set to False to query only the exact URIs mentioned.
     max_descendants: Maximum number of descendants to fetch per ontology URI (default: 100). Increase for comprehensive coverage.
-    max_depth: Controls hierarchy depth (default: 5 hops). Set to 1 for direct children only, 2-3 for faster queries, 5+ for deep coverage.
     bind_expansion_to: Optional list of variable names (with or without '?') that should be replaced 
         with the expanded ontology variable. This is useful for GROUP BY queries where you want to 
         count/aggregate per descendant concept rather than per dataset.
@@ -1835,7 +1960,7 @@ Args:
                 ?disease schema:name ?label .
             }}
             GROUP BY ?disease ?label
-        ''', max_depth=1, bind_expansion_to=['disease'])
+        ''', bind_expansion_to=['disease'])
         ```
         Result: Only rheumatoid arthritis (2006 datasets), osteoarthritis (424 datasets), etc.
         
@@ -1852,7 +1977,6 @@ Returns:
         analyze: bool = True,
         auto_expand_descendants: bool = True,
         max_descendants: int = 2000,
-        max_depth: int = 5,
         bind_expansion_to: Optional[List[str]] = None
     ) -> Dict[str, Any]:
         return sparql_server.execute(
@@ -1860,7 +1984,6 @@ Returns:
             analyze=analyze,
             auto_expand_descendants=auto_expand_descendants,
             max_descendants=max_descendants,
-            max_depth=max_depth,
             bind_expansion_to=bind_expansion_to
         )
 
@@ -2066,7 +2189,6 @@ Returns:
     def get_descendants(
         uri: str,
         max_results: int = 2000,
-        max_depth: int = 5,
         include_distance: bool = True
     ) -> Dict[str, Any]:
         """
@@ -2079,7 +2201,7 @@ Returns:
         - The user asks questions like "what types of arthritis are there?" or "show me the disease hierarchy"
 
         DON'T USE THIS TOOL WHEN:
-        - You want to query datasets with ontology expansion - use the query() tool with max_depth parameter instead
+        - You want to query datasets with ontology expansion - use the query() tool with auto_expand_descendants instead
         - The user wants data/datasets - use query() which has built-in expansion
 
         Descendants are classes that are subclasses (direct or transitive) of the given URI.
@@ -2090,7 +2212,6 @@ Returns:
         Args:
             uri: The full URI to expand (e.g., 'http://purl.obolibrary.org/obo/MONDO_0005178')
             max_results: Maximum number of descendants to return (default: 2000)
-            max_depth: Maximum number of subClassOf hops to traverse (default: 5)
             include_distance: If True (default), include the hierarchy distance from the root URI.
                 Distance=1 means direct children, distance=2 means grandchildren, etc.
 
@@ -2098,7 +2219,6 @@ Returns:
             Dictionary containing:
             - uri: The input URI
             - label: The label of the input URI (if available)
-            - max_depth: Maximum depth traversed (always 5)
             - descendant_count: Total number of descendants found
             - descendants: List of descendant objects with uri, label, and optionally distance
 
@@ -2109,7 +2229,7 @@ Returns:
             # Get comprehensive list without distance
             get_descendants('http://purl.obolibrary.org/obo/MONDO_0005578', max_results=2000, include_distance=False)
         """
-        return sparql_server.get_descendants_detailed(uri, max_results, max_depth, include_distance)
+        return sparql_server.get_descendants_detailed(uri, max_results, include_distance)
 
     # Add prompt to create chat transcripts
     @mcp.tool()
