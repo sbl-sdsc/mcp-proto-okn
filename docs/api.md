@@ -2,6 +2,8 @@
 
 The unified `mcp-proto-okn-unified` server exposes 13 MCP tools. Tools take the canonical graph name (e.g. `spoke-okn`) as their first argument where applicable; aliases defined in the registry are resolved automatically.
 
+For how these tools work internally — the query pipeline, ontology expansion, and cross-graph identifier mapping — see the [pseudocode specification](README.md).
+
 ## Discovery
 
 ### `list_graphs(domain?, entity_type?)`

@@ -166,6 +166,8 @@ The AI assistant uses these tools in sequence to navigate from a natural-languag
 
 Full API reference: **[docs/api.md](api.md)**.
 
+Pseudocode specification of the internals: **[docs/README.md](README.md)**.
+
 ### Components
 
 **Graph Registry (`registry.py` + `registry.json`)** — a structured catalog of all 33 graphs. Each entry contains `name`, `display_name`, `endpoint_url`, `domain_tags`, `description_summary`, `entity_types`, `identifier_namespaces`, `example_queries`, and optional `aliases`. The registry enables **discovery without querying**.
