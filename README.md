@@ -197,6 +197,8 @@ The same prompt run across Claude Desktop and VS Code Insiders with several LLMs
 
 The [developer document](docs/develop.md) describes how to **run the server locally**, **contribute code**, or **host a copy**. 
 
+The [pseudocode specification](docs/README.md) describes **how the server works**: the query pipeline, ontology expansion, identifier mapping, and join strategies, written as pseudocode with a map back to the implementing source. A one-page summary of the core concepts and control flow is in [README-brief.md](docs/README-brief.md).
+
 ---
 
 ## Troubleshooting
