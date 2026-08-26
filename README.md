@@ -189,7 +189,7 @@ The same prompt run across Claude Desktop and VS Code Insiders with several LLMs
 | **Spaceflight Missions** | [link](docs/examples/spacex-missions-sonnet-4.5-claude.md) | [link](docs/examples/spacex-missions-sonnet-4.5-vs-studio.md) | [link](docs/examples/spacex-missions-Gemini-3-Pro.md) | [link](docs/examples/spacex-missions-Gorc-Code-Fast-1.md) | [link](docs/examples/spacex-missions-GPT-5.2.md) |
 | **Gene Expression Analysis** | [link](docs/examples/OSD-161-sonnet-4.5-claude.md) | [link](docs/examples/OSD-161-sonnet-4.5-vs-studio.md) | [link](docs/examples/OSD-161_Gemini-3-ProPreview-vs-studio.md) | [link](docs/examples/OSD-161-Groc-Code-Fact-1-vs-studio.md) | [link](docs/examples/OSD-161-GPT-5.2-vs-studio.md) |
 
-[Benchmarks (in progress)](docs/benchmarks.md) — mcp-proto-okn vs. SPARQL ground-truth evaluation.
+[Benchmarks (in progress)](https://github.com/sbl-sdsc/mcp-proto-okn-benchmark) — mcp-proto-okn vs. SPARQL ground-truth evaluation.
 
 ---
 
