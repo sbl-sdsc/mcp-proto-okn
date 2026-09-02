@@ -50,11 +50,17 @@ https://climatepub4kg.github.io/ontology#Variable,Variable,"A measurable climate
 https://climatepub4kg.github.io/ontology#Venue,Venue,"A publication venue, such as a journal or conference, in which a paper is published.",Class,,,
 https://climatepub4kg.github.io/ontology#Water_Bodies,Water_Bodies,"Bodies of water such as lakes, rivers, seas, or oceans",Class,,,
 https://climatepub4kg.github.io/ontology#Weather_Event,Weather_Event,A specific meteorological occurrence or phenomenon,Class,,,
+https://climatepub4kg.github.io/ontology#AFFECTED_REGION,AFFECTED_REGION,Relates a natural hazard to a geographic region it affected.,Predicate,,Natural_Hazard,City
+https://climatepub4kg.github.io/ontology#AFFECTED_REGION,AFFECTED_REGION,Relates a natural hazard to a geographic region it affected.,Predicate,,Natural_Hazard,Continent
+https://climatepub4kg.github.io/ontology#AFFECTED_REGION,AFFECTED_REGION,Relates a natural hazard to a geographic region it affected.,Predicate,,Natural_Hazard,Country
+https://climatepub4kg.github.io/ontology#AFFECTED_REGION,AFFECTED_REGION,Relates a natural hazard to a geographic region it affected.,Predicate,,Natural_Hazard,Country_Subdivision
+https://climatepub4kg.github.io/ontology#AFFECTED_REGION,AFFECTED_REGION,Relates a natural hazard to a geographic region it affected.,Predicate,,Natural_Hazard,No_Country_Region
 https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,Indicates which Earth system realm an entity applies to or operates within,Predicate,,Experiment,Realm
 https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,Indicates which Earth system realm an entity applies to or operates within,Predicate,,Source,Realm
 https://climatepub4kg.github.io/ontology#APPLIES_TO_REALM,APPLIES_TO_REALM,Indicates which Earth system realm an entity applies to or operates within,Predicate,,SourceComponent,Realm
 https://climatepub4kg.github.io/ontology#ASSOCIATED_WITH_MEMBER,ASSOCIATED_WITH_MEMBER,Links a source to a specific ensemble member,Predicate,,Source,Member
 https://climatepub4kg.github.io/ontology#BELONGS_TO_MIP_ERA,BELONGS_TO_MIP_ERA,Indicates which MIP era a source belongs to,Predicate,,Source,MIPEra
+https://climatepub4kg.github.io/ontology#CITED_BY,CITED_BY,"Relates a publication to another publication that cites it, as recorded in the bibliographic reference data.",Predicate,,Paper,Paper
 https://climatepub4kg.github.io/ontology#COVERS_DOMAIN,COVERS_DOMAIN,Indicates the spatial domain covered by an entity,Predicate,,Project,Domain
 https://climatepub4kg.github.io/ontology#COVERS_DOMAIN,COVERS_DOMAIN,Indicates the spatial domain covered by an entity,Predicate,,RCM,Domain
 https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies the geographic region covered or affected,Predicate,,RCM,City
@@ -65,6 +71,7 @@ https://climatepub4kg.github.io/ontology#COVERS_REGION,COVERS_REGION,Specifies t
 https://climatepub4kg.github.io/ontology#DRIVEN_BY_SOURCE,DRIVEN_BY_SOURCE,Indicates which source provides driving data or boundary conditions,Predicate,,RCM,Source
 https://climatepub4kg.github.io/ontology#FOCUSES_ON_REALM,FOCUSES_ON_REALM,Specifies which realm is the primary focus of an activity,Predicate,,Activity,Realm
 https://climatepub4kg.github.io/ontology#GENERATED_BY_ACTIVITY,GENERATED_BY_ACTIVITY,Links output or results to the activity that produced them,Predicate,,Source,Activity
+https://climatepub4kg.github.io/ontology#HAS_CLIMATE_ZONE,HAS_CLIMATE_ZONE,Relates a geographic region to a climate zone it falls in.,Predicate,,No_Country_Region,ClimateZone
 https://climatepub4kg.github.io/ontology#HAS_METRIC,HAS_METRIC,Associates a metric used for evaluation or measurement,Predicate,,Source,Metric
 https://climatepub4kg.github.io/ontology#HAS_PHYSICAL_FEATURE,HAS_PHYSICAL_FEATURE,Links to relevant physical geographic features,Predicate,,Source,PhysicalFeature
 https://climatepub4kg.github.io/ontology#HAS_SIMULATION_TYPE,HAS_SIMULATION_TYPE,Specifies the type or category of simulation,Predicate,,Source,SimulationType
@@ -76,8 +83,18 @@ https://climatepub4kg.github.io/ontology#HAS_SPATIAL_RESOLUTION,HAS_SPATIAL_RESO
 https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,Indicates version progression or updates,Predicate,,Source,Source
 https://climatepub4kg.github.io/ontology#HAS_SUBSEQUENT_VERSION,HAS_SUBSEQUENT_VERSION,Indicates version progression or updates,Predicate,,SourceComponent,SourceComponent
 https://climatepub4kg.github.io/ontology#HAS_SUB_EXPERIMENT,HAS_SUB_EXPERIMENT,Links to sub-experiments or variants,Predicate,,Experiment,SubExperiment
+https://climatepub4kg.github.io/ontology#IMPACTED_REGION,IMPACTED_REGION,Relates a weather or climate event to a geographic region it impacted.,Predicate,,Weather_Event,City
+https://climatepub4kg.github.io/ontology#IMPACTED_REGION,IMPACTED_REGION,Relates a weather or climate event to a geographic region it impacted.,Predicate,,Weather_Event,Continent
+https://climatepub4kg.github.io/ontology#IMPACTED_REGION,IMPACTED_REGION,Relates a weather or climate event to a geographic region it impacted.,Predicate,,Weather_Event,Country
+https://climatepub4kg.github.io/ontology#IMPACTED_REGION,IMPACTED_REGION,Relates a weather or climate event to a geographic region it impacted.,Predicate,,Weather_Event,Country_Subdivision
+https://climatepub4kg.github.io/ontology#IMPACTED_REGION,IMPACTED_REGION,Relates a weather or climate event to a geographic region it impacted.,Predicate,,Weather_Event,No_Country_Region
 https://climatepub4kg.github.io/ontology#INCLUDES_ENSEMBLE_MEMBER,INCLUDES_ENSEMBLE_MEMBER,Indicates ensemble members included in an experiment,Predicate,,Experiment,Ensemble
 https://climatepub4kg.github.io/ontology#INCLUDES_EXPERIMENT,INCLUDES_EXPERIMENT,Links to experiments included within a family,Predicate,,ExperimentFamily,Experiment
+https://climatepub4kg.github.io/ontology#INFLUENCES_REGION,INFLUENCES_REGION,Relates a teleconnection pattern to a geographic region whose climate it influences.,Predicate,,Teleconnection,City
+https://climatepub4kg.github.io/ontology#INFLUENCES_REGION,INFLUENCES_REGION,Relates a teleconnection pattern to a geographic region whose climate it influences.,Predicate,,Teleconnection,Continent
+https://climatepub4kg.github.io/ontology#INFLUENCES_REGION,INFLUENCES_REGION,Relates a teleconnection pattern to a geographic region whose climate it influences.,Predicate,,Teleconnection,Country
+https://climatepub4kg.github.io/ontology#INFLUENCES_REGION,INFLUENCES_REGION,Relates a teleconnection pattern to a geographic region whose climate it influences.,Predicate,,Teleconnection,Country_Subdivision
+https://climatepub4kg.github.io/ontology#INFLUENCES_REGION,INFLUENCES_REGION,Relates a teleconnection pattern to a geographic region whose climate it influences.,Predicate,,Teleconnection,No_Country_Region
 https://climatepub4kg.github.io/ontology#INHERITED_FROM,INHERITED_FROM,Indicates inheritance or derivation from a previous version or source,Predicate,,Source,Source
 https://climatepub4kg.github.io/ontology#IN_CONTINENT,IN_CONTINENT,Specifies which continent a location is in,Predicate,,Country,Continent
 https://climatepub4kg.github.io/ontology#IN_COUNTRY,IN_COUNTRY,Specifies which country a location is in,Predicate,,City,Country
@@ -95,6 +112,10 @@ https://climatepub4kg.github.io/ontology#MODEL_EXPERIMENTS_ON_OBSERVATIONAL_DATA
 https://climatepub4kg.github.io/ontology#MODEL_HAS_RESULT,MODEL_HAS_RESULT,Associates results produced by a model,Predicate,,Source,Result
 https://climatepub4kg.github.io/ontology#MODEL_USES_METRIC,MODEL_USES_METRIC,Links models to evaluation metrics,Predicate,,Source,EvaluationMetric
 https://climatepub4kg.github.io/ontology#MOUNTED_ON,MOUNTED_ON,Indicates the platform on which an instrument is mounted.,Predicate,,Instrument,Platform
+https://climatepub4kg.github.io/ontology#OBSERVED_IN_REGION,OBSERVED_IN_REGION,Relates an ocean circulation feature to a geographic region it is observed in.,Predicate,,Ocean_Circulation,Continent
+https://climatepub4kg.github.io/ontology#OBSERVED_IN_REGION,OBSERVED_IN_REGION,Relates an ocean circulation feature to a geographic region it is observed in.,Predicate,,Ocean_Circulation,Country
+https://climatepub4kg.github.io/ontology#OBSERVED_IN_REGION,OBSERVED_IN_REGION,Relates an ocean circulation feature to a geographic region it is observed in.,Predicate,,Ocean_Circulation,Country_Subdivision
+https://climatepub4kg.github.io/ontology#OBSERVED_IN_REGION,OBSERVED_IN_REGION,Relates an ocean circulation feature to a geographic region it is observed in.,Predicate,,Ocean_Circulation,No_Country_Region
 https://climatepub4kg.github.io/ontology#PAPER_APPLIES_METHOD,PAPER_APPLIES_METHOD,Indicates a method applied in a paper.,Predicate,,Paper,Method
 https://climatepub4kg.github.io/ontology#PAPER_AUTHORED_BY,PAPER_AUTHORED_BY,Links a paper to one of its authors.,Predicate,,Paper,Author
 https://climatepub4kg.github.io/ontology#PAPER_BELONGS_TO_FIELD,PAPER_BELONGS_TO_FIELD,Assigns a paper to a scientific field or discipline.,Predicate,,Paper,Field
@@ -132,6 +153,7 @@ https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,Source
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,SourceComponent
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,SourceType
+https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,SubExperiment
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,Teleconnection
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,Variable
 https://climatepub4kg.github.io/ontology#PAPER_MENTIONS,PAPER_MENTIONS,Indicates an entity mentioned or referenced in a paper.,Predicate,,Paper,Weather_Event
@@ -164,13 +186,11 @@ https://climatepub4kg.github.io/ontology#abstract,abstract,The abstract text of 
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Instrument,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Metric,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Natural_Hazard,
-https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Ocean_Circulation,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,PhysicalFeature,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,PhysicalScheme,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Platform,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,SimulationType,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,SourceComponent,
-https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Teleconnection,
 https://climatepub4kg.github.io/ontology#added_from_paper_id,added_from_paper_id,Identifier of the paper from which this entity was extracted.,NodeProperty,,Weather_Event,
 https://climatepub4kg.github.io/ontology#admin1_code,admin1_code,GeoNames first-level administrative division (admin1) code for the location.,NodeProperty,,City,
 https://climatepub4kg.github.io/ontology#admin1_code,admin1_code,GeoNames first-level administrative division (admin1) code for the location.,NodeProperty,,No_Country_Region,
@@ -212,6 +232,14 @@ https://climatepub4kg.github.io/ontology#feature_class,feature_class,The GeoName
 https://climatepub4kg.github.io/ontology#feature_code,feature_code,The GeoNames feature code categorizing the location.,NodeProperty,,City,
 https://climatepub4kg.github.io/ontology#feature_code,feature_code,The GeoNames feature code categorizing the location.,NodeProperty,,No_Country_Region,
 https://climatepub4kg.github.io/ontology#fips,fips,The FIPS code of the country.,NodeProperty,,Country,
+https://climatepub4kg.github.io/ontology#gcmd_uri,gcmd_uri,IRI of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Instrument,
+https://climatepub4kg.github.io/ontology#gcmd_uri,gcmd_uri,IRI of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Ocean_Circulation,
+https://climatepub4kg.github.io/ontology#gcmd_uri,gcmd_uri,IRI of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Platform,
+https://climatepub4kg.github.io/ontology#gcmd_uri,gcmd_uri,IRI of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Teleconnection,
+https://climatepub4kg.github.io/ontology#gcmd_uuid,gcmd_uuid,UUID of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Instrument,
+https://climatepub4kg.github.io/ontology#gcmd_uuid,gcmd_uuid,UUID of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Ocean_Circulation,
+https://climatepub4kg.github.io/ontology#gcmd_uuid,gcmd_uuid,UUID of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Platform,
+https://climatepub4kg.github.io/ontology#gcmd_uuid,gcmd_uuid,UUID of the matching concept in the NASA GCMD keyword vocabularies.,NodeProperty,,Teleconnection,
 https://climatepub4kg.github.io/ontology#geonameid,geonameid,The unique GeoNames identifier for the location.,NodeProperty,,City,
 https://climatepub4kg.github.io/ontology#geonameid,geonameid,The unique GeoNames identifier for the location.,NodeProperty,,Continent,
 https://climatepub4kg.github.io/ontology#geonameid,geonameid,The unique GeoNames identifier for the location.,NodeProperty,,Country,
@@ -277,24 +305,6 @@ https://climatepub4kg.github.io/ontology#name,name,The name or label of the enti
 https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Variable,
 https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Venue,
 https://climatepub4kg.github.io/ontology#name,name,The name or label of the entity,NodeProperty,,Weather_Event,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Activity,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Domain,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Ensemble,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Experiment,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,ExperimentFamily,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Forcing,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Frequency,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Institute,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,MIPEra,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Member,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Project,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,RCM,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Realm,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Resolution,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Source,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,SourceType,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,SubExperiment,
-https://climatepub4kg.github.io/ontology#names,names,Alternate names or aliases associated with the entity.,NodeProperty,,Variable,
 https://climatepub4kg.github.io/ontology#neighbours,neighbours,"Neighboring countries of the country, by country code.",NodeProperty,,Country,
 https://climatepub4kg.github.io/ontology#north,north,The northern latitude of the location's bounding box.,NodeProperty,,Country,
 https://climatepub4kg.github.io/ontology#north,north,The northern latitude of the location's bounding box.,NodeProperty,,Country_Subdivision,
@@ -312,6 +322,10 @@ https://climatepub4kg.github.io/ontology#postal_code_format,postal_code_format,T
 https://climatepub4kg.github.io/ontology#postal_code_regex,postal_code_regex,A regular expression matching valid postal codes in the country.,NodeProperty,,Country,
 https://climatepub4kg.github.io/ontology#publication_year,publication_year,The year in which the publication was published.,NodeProperty,,Paper,
 https://climatepub4kg.github.io/ontology#rcm_version,rcm_version,The version identifier of the regional climate model.,NodeProperty,,RCM,
+https://climatepub4kg.github.io/ontology#source_uri,source_uri,"IRI of the entity in the upstream bibliographic source, such as its OpenAlex record.",NodeProperty,,Author,
+https://climatepub4kg.github.io/ontology#source_uri,source_uri,"IRI of the entity in the upstream bibliographic source, such as its OpenAlex record.",NodeProperty,,Keyword,
+https://climatepub4kg.github.io/ontology#source_uri,source_uri,"IRI of the entity in the upstream bibliographic source, such as its OpenAlex record.",NodeProperty,,Paper,
+https://climatepub4kg.github.io/ontology#source_uri,source_uri,"IRI of the entity in the upstream bibliographic source, such as its OpenAlex record.",NodeProperty,,Venue,
 https://climatepub4kg.github.io/ontology#south,south,The southern latitude of the location's bounding box.,NodeProperty,,Country,
 https://climatepub4kg.github.io/ontology#south,south,The southern latitude of the location's bounding box.,NodeProperty,,Country_Subdivision,
 https://climatepub4kg.github.io/ontology#south,south,The southern latitude of the location's bounding box.,NodeProperty,,No_Country_Region,
