@@ -5,8 +5,8 @@ description: >
   Exposes a Model Context Protocol endpoint for querying
   Proto-OKN knowledge graphs via SPARQL.
 type: application
-version: 0.1.0
-appVersion: "1.0.0"
+version: 0.1.1
+appVersion: "v0.6.1"
 
 keywords:
   - mcp
