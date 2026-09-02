@@ -24,8 +24,8 @@ LABEL org.opencontainers.image.title="mcp-proto-okn" \
       org.opencontainers.image.description="MCP server for Proto-OKN SPARQL endpoints" \
       org.opencontainers.image.source="https://github.com/frink-okn/mcp-proto-okn"
 
-# Install curl for the HEALTHCHECK (must use Host: localhost to satisfy
-# the MCP SDK's TrustedHostMiddleware, which rejects pod-IP Host headers)
+# Install curl for the HEALTHCHECK (hits the unauthenticated /healthz route
+# added by _add_health_routes, not /mcp)
 RUN apt-get update && apt-get install -y --no-install-recommends curl \
  && rm -rf /var/lib/apt/lists/*
 
@@ -56,8 +56,10 @@ ENV MCP_PROTO_OKN_TRANSPORT=streamable-http \
 
 EXPOSE 8000
 
+# GET /mcp answers 406 (the MCP SDK requires an SSE Accept header) and every
+# POST to it opens a new session, so probe the plain /healthz route instead.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD curl -sf http://localhost:8000/mcp || exit 1
+    CMD curl -sf http://localhost:8000/healthz || exit 1
 
 # Default: single-endpoint server.
 # Override CMD in helm values to use 'mcp-proto-okn-unified' instead.

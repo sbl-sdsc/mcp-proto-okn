@@ -376,7 +376,7 @@ cli = [
 [package.metadata]
 requires-dist = [
     { name = "certifi", specifier = ">=2024.0.0" },
-    { name = "mcp", specifier = ">=1.6.0" },
+    { name = "mcp", specifier = ">=1.6.0,<2" },
     { name = "mcp", extras = ["cli"], marker = "extra == 'cli'" },
     { name = "sparqlwrapper", specifier = ">=2.0.0" },
     { name = "typer", marker = "extra == 'cli'", specifier = ">=0.12" },

@@ -152,17 +152,18 @@ def main():
         )
 
     # Create MCP server
+    graph_count = len(unified.registry.list_all())
     mcp = FastMCP(
         "Proto-OKN Unified Knowledge Graph Server",
         transport_security=transport_security,
-        instructions="""You have access to 27 Proto-OKN knowledge graphs through a single unified server.
+        instructions=f"""You have access to {graph_count} Proto-OKN knowledge graphs through a single unified server.
 
 WORKFLOW FOR CROSS-GRAPH ANALYSIS:
 1. Use list_graphs() or route_query() to discover relevant graphs
 2. Use get_schema(graph) to understand each graph's structure before writing SPARQL
 3. Use query(graph, sparql) to query individual graphs with graph-specific SPARQL
 4. Use get_join_strategy(graph_a, graph_b) to understand how to merge results
-5. Use multi_graph_query({graph1: sparql1, graph2: sparql2}) to run queries across graphs
+5. Use multi_graph_query({{graph1: sparql1, graph2: sparql2}}) to run queries across graphs
 
 IMPORTANT: Each graph has its own schema. Always call get_schema() before writing SPARQL for a graph.
 IMPORTANT: For gene queries across graphs, different graphs use different gene identifiers

@@ -11,7 +11,7 @@ authors = [
     { name = "Eric Zhu", email = "ekzhu@users.noreply.github.com" }
 ]
 dependencies = [
-    "mcp>=1.6.0",
+    "mcp>=1.6.0,<2",
     "sparqlwrapper>=2.0.0",
     "certifi>=2024.0.0",
 ]
