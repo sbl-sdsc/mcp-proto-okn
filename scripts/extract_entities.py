@@ -2,7 +2,12 @@
 """
 Generate a <kg>_entities.csv using the FRINK SPARQL endpoint.
 
-Supports both the KG-specific endpoint and the federation endpoint with FROM <graph>.
+Queries the FEDERATION endpoint (scoped with FROM <graph>) by default, because that
+is what mcp_proto_okn.server actually runs every query against. The KG-specific
+endpoint at apps.okn.us/<kg>/sparql can serve a DIFFERENT, usually newer release --
+ncipidkg served v0.0.3 there while the federation still held v0.0.2, with different
+predicate namespaces and classes -- so an inventory extracted from it can describe a
+graph the server cannot query. Pass --per-kg to target the KG endpoint anyway.
 """
 
 import csv
@@ -59,8 +64,8 @@ def configure_kg(kg: str) -> None:
     KG = kg
     GRAPH_URI = f"https://purl.org/okn/frink/kg/{KG}"
     ENDPOINTS = [
-        f"https://apps.okn.us/{KG}/sparql",
         "https://apps.okn.us/federation/sparql",
+        f"https://apps.okn.us/{KG}/sparql",
     ]
     OUTFILE = f"{KG}_entities.csv"
 
@@ -139,20 +144,88 @@ def select_query(body: str, endpoint: str, select: str = "*", distinct: bool = T
     return PREFIXES + f"\nSELECT {distinct_s}{select} WHERE {{\n{body}\n}}"
 
 
-def pick_endpoint() -> str:
-    for endpoint in ENDPOINTS:
-        probes = [
-            PREFIXES + "\nASK WHERE { ?s ?p ?o }",
-            PREFIXES + f"\nASK WHERE {{ GRAPH <{GRAPH_URI}> {{ ?s ?p ?o }} }}",
-        ]
+def is_federation(endpoint: str) -> bool:
+    return endpoint.endswith("/federation/sparql")
+
+
+def pick_endpoint(endpoints: List[str]) -> str:
+    for endpoint in endpoints:
+        # The federation must be probed through the KG's named graph. A bare
+        # ASK { ?s ?p ?o } there succeeds against the whole federation even when this
+        # KG is not loaded, which would silently produce an inventory of everything.
+        probes = (
+            [PREFIXES + f"\nASK WHERE {{ GRAPH <{GRAPH_URI}> {{ ?s ?p ?o }} }}"]
+            if is_federation(endpoint)
+            else [
+                PREFIXES + "\nASK WHERE { ?s ?p ?o }",
+                PREFIXES + f"\nASK WHERE {{ GRAPH <{GRAPH_URI}> {{ ?s ?p ?o }} }}",
+            ]
+        )
         for q in probes:
             try:
                 if run_ask(q, endpoint):
                     print(f"Using endpoint: {endpoint}", file=sys.stderr)
+                    if not is_federation(endpoint):
+                        print(
+                            "Warning: extracting from the KG-specific endpoint. The server queries "
+                            "the federation, so this inventory may not match what users can query.",
+                            file=sys.stderr,
+                        )
                     return endpoint
             except Exception as e:
                 print(f"Endpoint probe failed for {endpoint}: {e}", file=sys.stderr)
+        if is_federation(endpoint):
+            print(
+                f"Warning: {GRAPH_URI} is not loaded in the federation; falling back to the "
+                "KG-specific endpoint.",
+                file=sys.stderr,
+            )
     raise RuntimeError("No endpoint responded to ASK probe")
+
+
+def report_version_skew() -> None:
+    """Warn when the federation and the KG endpoint hold different releases."""
+    # The federation records each KG's release in the okn-void meta-graph, keyed by named
+    # graph URI -- not inside the KG's own graph. The KG endpoint carries it inline.
+    # A graph can carry SEVERAL pav:version statements -- the FRINK release tag on the
+    # named-graph URI, plus the upstream dataset's own version (nestkg has three). Bind
+    # ?dataset to the named-graph URI first and only then fall back, or an unordered
+    # LIMIT 1 compares the FRINK tag on one endpoint against an upstream string on the
+    # other and reports skew that does not exist.
+    version_body = f"""
+  {{ ?dataset pav:version ?version . FILTER(?dataset = <{GRAPH_URI}>) BIND(0 AS ?rank) }}
+  UNION {{ ?dataset pav:version ?version . FILTER(?dataset != <{GRAPH_URI}>) BIND(1 AS ?rank) }}
+"""
+    # okn-void is keyed by named-graph URI, so scope that branch to this KG alone --
+    # an unscoped ?dataset there matches every OTHER KG's release record.
+    federation_q = PREFIXES + f"""
+PREFIX pav: <http://purl.org/pav/>
+SELECT ?version WHERE {{
+  {{ GRAPH <https://purl.org/okn/frink/kg/okn-void> {{
+       <{GRAPH_URI}> pav:version ?version . BIND(0 AS ?rank) }} }}
+  UNION {{ GRAPH <{GRAPH_URI}> {{ {version_body} }} }}
+}} ORDER BY ?rank LIMIT 1
+"""
+    kg_q = PREFIXES + f"""
+PREFIX pav: <http://purl.org/pav/>
+SELECT ?version WHERE {{ {version_body} }} ORDER BY ?rank LIMIT 1
+"""
+    seen = {}
+    for endpoint in ENDPOINTS:
+        try:
+            rows = run_select_tsv(federation_q if is_federation(endpoint) else kg_q, endpoint, timeout=60)
+            seen[endpoint] = rows[0]["version"] if rows else None
+        except Exception:
+            seen[endpoint] = None
+    versions = {v for v in seen.values() if v}
+    for endpoint, version in seen.items():
+        print(f"  pav:version at {endpoint}: {version or 'unknown'}", file=sys.stderr)
+    if len(versions) > 1:
+        print(
+            f"Warning: {KG} version skew between endpoints ({', '.join(sorted(versions))}). "
+            "The federation is authoritative for the entities CSV; ask FRINK to reload the graph.",
+            file=sys.stderr,
+        )
 
 
 def label_from_uri(uri: str) -> str:
@@ -365,18 +438,22 @@ def write_csv(classes: Set[str], predicates: Dict[str, Dict[str, Set[str]]], met
 
 
 def main():
-    if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} <kg>", file=sys.stderr)
-        print("Example: create_entities.py rdkg", file=sys.stderr)
+    args = [a for a in sys.argv[1:] if a != "--per-kg"]
+    per_kg = "--per-kg" in sys.argv[1:]
+    if len(args) != 1:
+        print(f"Usage: {sys.argv[0]} <kg> [--per-kg]", file=sys.stderr)
+        print("Example: extract_entities.py rdkg", file=sys.stderr)
+        print("  --per-kg  query apps.okn.us/<kg>/sparql instead of the federation", file=sys.stderr)
         sys.exit(2)
 
     try:
-        configure_kg(sys.argv[1])
+        configure_kg(args[0])
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(2)
 
-    endpoint = pick_endpoint()
+    report_version_skew()
+    endpoint = pick_endpoint(list(reversed(ENDPOINTS)) if per_kg else ENDPOINTS)
     classes = get_classes(endpoint)
     predicates = get_predicates(endpoint)
 

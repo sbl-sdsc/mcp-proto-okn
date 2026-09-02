@@ -26,10 +26,25 @@ This file should describe the classes and predicates used in the KG schema.
 To generate an initial draft, run:
 
 ```bash
-python scripts/extract_entities <kg_name>
+python scripts/extract_entities.py <kg_name>
 ```
 
 Review the generated file and refine it manually as needed.
+
+The inventory must describe the graph as loaded in the **federation** endpoint
+(`https://apps.okn.us/federation/sparql`, scoped to
+`https://purl.org/okn/frink/kg/<kg_name>`), because that is the only endpoint the server
+queries. The per-KG endpoint at `https://apps.okn.us/<kg_name>/sparql` can serve a
+different, usually newer release: ncipidkg served v0.0.3 there while the federation still
+held v0.0.2, with different edge-metadata namespaces, an extra pathway layer, and
+different instantiated classes. An inventory taken from the per-KG endpoint would then
+describe a graph nobody can query, and `get_schema` would hand the model predicates that
+return nothing.
+
+`extract_entities.py` targets the federation by default and prints each endpoint's
+`pav:version`, warning when they disagree. When they do, keep the CSV on the federation's
+release and ask FRINK to reload the graph. Use `--per-kg` only to preview what a pending
+reload will bring.
 
 #### Populate entity metadata
 
