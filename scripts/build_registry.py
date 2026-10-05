@@ -21,7 +21,8 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Domain tag mapping (from README domain table and analysis)
-DOMAIN_TAGS = {'biobricks-aopwiki': ['biology', 'health', 'toxicology'],
+DOMAIN_TAGS = {'bio101': ['biology', 'chemistry', 'education', 'ontology'],
+ 'biobricks-aopwiki': ['biology', 'health', 'toxicology'],
  'biobricks-ice': ['biology', 'chemistry', 'toxicology'],
  'biobricks-mesh': ['biology', 'health', 'vocabulary'],
  'biobricks-pubchem-annotations': ['chemistry', 'pharmacology', 'toxicology'],
@@ -70,7 +71,8 @@ DOMAIN_TAGS = {'biobricks-aopwiki': ['biology', 'health', 'toxicology'],
  'wildlifekn': ['biodiversity', 'conservation', 'wildlife']}
 
 # Identifier namespace mapping
-IDENTIFIER_NAMESPACES = {'biobricks-aopwiki': ['CAS', 'ChEBI', 'ChEMBL', 'InChIKey', 'PubChem'],
+IDENTIFIER_NAMESPACES = {'bio101': ['AURA'],
+ 'biobricks-aopwiki': ['CAS', 'ChEBI', 'ChEMBL', 'InChIKey', 'PubChem'],
  'biobricks-ice': ['CAS', 'DTXSID', 'InChIKey', 'NCBI_Gene'],
  'biobricks-mesh': ['MeSH'],
  'biobricks-pubchem-annotations': ['InChI', 'InChIKey', 'PubChem', 'SMILES'],
@@ -169,7 +171,10 @@ IDENTIFIER_NAMESPACES = {'biobricks-aopwiki': ['CAS', 'ChEBI', 'ChEMBL', 'InChIK
  'wildlifekn': []}
 
 # Example queries per graph
-EXAMPLE_QUERIES = {'biobricks-aopwiki': ['What adverse outcome pathways involve estrogen receptor activation?'],
+EXAMPLE_QUERIES = {'bio101': ['What are the parts of a mitochondrion, and what processes take place there?',
+            'What are the steps, inputs and products of glycolysis?',
+            'What is the function of a ribosome, and which cell types have one?'],
+ 'biobricks-aopwiki': ['What adverse outcome pathways involve estrogen receptor activation?'],
  'biobricks-ice': ['What bioassays are available for a specific chemical?',
                    'What is the toxicity profile of bisphenol A?'],
  'biobricks-tox21': ['What chemicals have been tested in Tox21 assays?'],
@@ -248,6 +253,7 @@ EXAMPLE_QUERIES = {'biobricks-aopwiki': ['What adverse outcome pathways involve 
 # name. Add an entry when the auto-generated name reads poorly (e.g. acronyms or
 # multi-word graph names collapsed into one token).
 DISPLAY_NAMES = {
+    "bio101": "KB Bio 101",
     "climatemodelskg": "Climate Models KG",
     "nestkg": "NeST KG",
 }
