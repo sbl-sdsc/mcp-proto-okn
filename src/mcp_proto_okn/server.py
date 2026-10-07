@@ -309,7 +309,7 @@ class SPARQLServer:
         os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
         
         # Initialize SPARQLWrapper
-        federated_endpoint = "https://apps.okn.us/federation/sparql"
+        federated_endpoint = os.environ.get("FEDERATION_SERVER_URL", "https://apps.okn.us/federation/sparql")
         self.sparql = SPARQLWrapper(federated_endpoint)
         self.sparql.setReturnFormat(JSON)
 
