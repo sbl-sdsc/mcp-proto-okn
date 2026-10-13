@@ -168,7 +168,7 @@ IDENTIFIER_NAMESPACES = {'bio101': ['AURA'],
  'spoke-okn': ['ChEBI', 'DOID', 'Ensembl', 'FIPS', 'InChIKey', 'TAXON'],
  'sudokn': ['NAICS'],
  'ufokn': ['S2Cell'],
- 'wildlifekn': []}
+ 'wildlifekn': ['FIPS', 'IUCN', 'Wikidata']}
 
 # Example queries per graph
 EXAMPLE_QUERIES = {'bio101': ['What are the parts of a mitochondrion, and what processes take place there?',
@@ -250,7 +250,10 @@ EXAMPLE_QUERIES = {'bio101': ['What are the parts of a mitochondrion, and what p
                "What genes are associated with Crohn's disease?",
                'What is the prevalence of diabetes in California counties?',
                'What compounds are found in water supplies in Texas?'],
- 'sudokn': ['What manufacturers have specific process capabilities?']}
+ 'sudokn': ['What manufacturers have specific process capabilities?'],
+ 'wildlifekn': ['Which species were observed most often, and from which source dataset?',
+                'What densities of a fish species were measured, and with which sampling method and effort?',
+                'What annual temperature and precipitation are recorded for observations of a given species?']}
 
 # Display names: human-friendly labels overriding the default title-cased graph
 # name. Add an entry when the auto-generated name reads poorly (e.g. acronyms or

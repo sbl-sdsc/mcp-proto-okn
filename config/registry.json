@@ -5140,27 +5140,47 @@
       "conservation",
       "wildlife"
     ],
-    "description_summary": "Wildlife-KN is a comprehensive knowledge network designed for wildlife researchers, conservation managers, and policymakers addressing biodiversity challenges under climate change. The graph integrates data on wildlife species, habitat characteristics, environmental variables, geographic distributions, and climate projections to enable cross-domain analysis of how changing conditions affect wildlife populations and ecosystems. Built to support interdisciplinary inquiry, Wildlife-KN links biological observations with geospatial, temporal, and climatological data, facilitating queries about species vulnerability, habitat suitability shifts, and conservation prioritization. The knowledge graph employs standard semantic web vocabularies (RDFS, SKOS, Schema.org, GeoSPARQL) and cross-links to authoritative biodiversity databases, enabling federation with other OKN Theme-1 resources.",
+    "description_summary": "Wildlife-KN is a knowledge network for wildlife researchers, conservation managers, and policymakers addressing biodiversity challenges under climate change. The release in the FRINK federation holds about 9.4 million triples built around 420,000 observations made between 1981 and 2025. Each observation links to the organism observed, a species or genus placed in a taxonomy of about 14,600 species, 4,000 genera, 780 families, 220 orders and 36 classes, to one of 70,000 sites given by coordinates, and to its source dataset: iNaturalist occurrence records, and fish and benthic macroinvertebrate density surveys from the EPA National Rivers and Streams Assessment and USGS BioData obtained through finsyncR. The link to the organism is reified and carries the measurement type, result and unit together with the sampling method and effort. Observations also carry PRISM annual mean temperature and precipitation. Counties and states have FIPS codes, boundary polygons and KnowWhereGraph region IRIs for joining with other spatial graphs, and some species carry Wikidata and IUCN identifiers. An older layer of about 5,200 bird and amphibian sightings by named location is kept alongside.",
     "entity_types": {
       "classes": [
+        "Feature",
         "Statement",
+        "County",
+        "Dataset",
+        "Family",
+        "Genus",
+        "Observation",
+        "Order",
+        "Site",
+        "Species",
+        "State",
+        "Taxonomic Class",
         "Amphibian Name",
         "Bird Name",
         "Location"
       ],
       "predicates": [
-        "Date",
         "object",
         "predicate",
         "subject",
-        "Label",
-        "Subject Of",
-        "Observed At",
-        "Observed Times"
+        "Belongs To",
+        "From Dataset",
+        "In State",
+        "Observed In",
+        "Observed Organism",
+        "Observed At"
       ],
-      "has_edge_properties": false
+      "has_edge_properties": true
     },
-    "identifier_namespaces": [],
-    "example_queries": []
+    "identifier_namespaces": [
+      "FIPS",
+      "IUCN",
+      "Wikidata"
+    ],
+    "example_queries": [
+      "Which species were observed most often, and from which source dataset?",
+      "What densities of a fish species were measured, and with which sampling method and effort?",
+      "What annual temperature and precipitation are recorded for observations of a given species?"
+    ]
   }
 ]
