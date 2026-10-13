@@ -5001,10 +5001,8 @@
         "County",
         "Business Description",
         "Certificate",
-        "Postal Address",
         "Email Address",
         "Web Address",
-        "Address Line",
         "US Postal Code",
         "Two Dimensional Cartesian Spatial Coordinate Datum",
         "NAICS Classifier",
@@ -5016,7 +5014,6 @@
         "Material Processing Capability",
         "Quality Management Capability",
         "Machining Capability",
-        "Welding Capability",
         "Casting Capability",
         "Coating Capability",
         "Fabricating Capability",
@@ -5045,14 +5042,19 @@
         "Organization",
         "Material Product",
         "Capability",
+        "IOF Geospatial Location",
+        "IOF Geospatial Site",
+        "Industry",
         "Geospatial Location",
         "Geospatial Site",
-        "Industry"
+        "Virtual Location Identifier",
+        "Feature",
+        "Geometry",
+        "Place"
       ],
       "predicates": [
         "attests to",
         "classified by product category",
-        "has address part",
         "has business description",
         "has certificate",
         "has email address",
@@ -5071,7 +5073,9 @@
         "located in county",
         "located in state",
         "manufactures",
-        "supplies to industry"
+        "supplies to industry",
+        "organization located in",
+        "has geometry"
       ],
       "has_edge_properties": false
     },
