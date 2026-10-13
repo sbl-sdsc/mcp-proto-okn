@@ -1,22 +1,36 @@
 URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
 http://gwml2.org/def/gwml2#GW_Aquifer,gwml2:GW_Aquifer,"A body of ground that contains, potentially contains or potentially contained sufficient saturated permeable material to yield significant quantities of water to wells and springs (after Lohman and others, 1972).",Class,,,
 http://gwml2.org/def/gwml2#GW_AquiferSystem,gwml2:GW_AquiferSystem,"Aquifer system - A body of permeable and poorly permeable material that functions regionally as a water-yielding unit; it comprises two or more permeable beds separated at least locally by confining beds that impede groundwater movement but do not greatly affect the regional hydraulic continuity of the system; includes both saturated and unsaturated parts of permeable material (after ASCE, 1985).",Class,,,
-http://hyfo.spatialai.org/v1/hyfo#AquiferWaterFeature,hyfo:AquiferWaterFeature,"An aquifer water feature including water, container, and void",Class,,,
-http://hyfo.spatialai.org/v1/hyfo#SubsurfaceWaterFeature,hyfo:SubsurfaceWaterFeature,"A complete subsurface water feature including water, container, and void (for example, aquifer, well, et al.)",Class,,,
-http://hyfo.spatialai.org/v1/hyfo#SurfaceWaterFeature,hyfo:SurfaceWaterFeature,"A complete surface water feature including water, container, and void (for example: lake, river, marsh, et al.)",Class,,,
-http://hyfo.spatialai.org/v1/hyfo#WaterFeature,hyfo:WaterFeature,"A complete water feature including water, container, and void; includes surface and subsurface water features",Class,,,
+http://hyfo.spatialai.org/v1/hyfo#AquiferWaterFeature,hyfo:AquiferWaterFeature,"An aquifer water feature including water, container, and void Declared in the schema but not populated in the current release.",Class,,,
+http://hyfo.spatialai.org/v1/hyfo#SubsurfaceWaterFeature,hyfo:SubsurfaceWaterFeature,"A complete subsurface water feature including water, container, and void (for example, aquifer, well, et al.) Declared in the schema but not populated in the current release.",Class,,,
+http://hyfo.spatialai.org/v1/hyfo#SurfaceWaterFeature,hyfo:SurfaceWaterFeature,"A complete surface water feature including water, container, and void (for example: lake, river, marsh, et al.) Declared in the schema but not populated in the current release.",Class,,,
+http://hyfo.spatialai.org/v1/hyfo#WaterFeature,hyfo:WaterFeature,"A complete water feature including water, container, and void; includes surface and subsurface water features Declared in the schema but not populated in the current release.",Class,,,
 http://hyfo.spatialai.org/v1/hyfo#WaterFeatureRepresentation,hyfo:WaterFeatureRepresentation,"A representation of a water feature (for example, a line or polygon)",Class,,,
 http://nhdplusv2.spatialai.org/v1/nhdplusv2#FlowPathLength,nhdplusv2:FlowPathLength,The length of a flowpath,Class,,,
-http://qudt.org/schema/qudt/IntervalScale,IntervalScale,A measurement scale with ordered values and meaningful differences but no true zero.,Class,,,
-http://qudt.org/schema/qudt/NominalScale,NominalScale,A measurement scale whose values are unordered categories.,Class,,,
-http://qudt.org/schema/qudt/NumericUnion,NumericUnion,A union datatype covering numeric value types.,Class,,,
-http://qudt.org/schema/qudt/OrdinalScale,OrdinalScale,A measurement scale whose values are ordered but not numerically spaced.,Class,,,
+http://purl.obolibrary.org/obo/OBI_0200000,data transformation,A planned process that produces output data from input data (OBI). Here the type of the six algorithms used to compute the dataset summaries.,Class,,,
+http://purl.org/spatialai/stad/v2/core/DataTransformation,stad:DataTransformation,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/Datapoint,stad:Datapoint,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/Dataset,stad:Dataset,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/DatasetDescription,stad:DatasetDescription,The extended stad:DatasetDescription class for describing datasets.,Class,,,
+http://purl.org/spatialai/stad/v2/core/QualityKind,stad:QualityKind,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/QuantitativeDatapoint,stad:QuantitativeDatapoint,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/QuantitativeValue,stad:QuantitativeValue,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/SingleData,stad:SingleData,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/core/StatisticalAggregateDatapoint,stad:StatisticalAggregateDatapoint,STAD term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/mls/Algorithm,stad-mls:Algorithm,STAD machine-learning term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/mls/AlgorithmExecution,stad-mls:AlgorithmExecution,STAD machine-learning term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://purl.org/spatialai/stad/v2/mls/Implementation,stad-mls:Implementation,STAD machine-learning term used in the dataset-summary layer; the graph gives it no definition.,Class,,,
+http://qudt.org/schema/qudt/IntervalScale,IntervalScale,A measurement scale with ordered values and meaningful differences but no true zero. Declared in the schema but not populated in the current release.,Class,,,
+http://qudt.org/schema/qudt/NominalScale,NominalScale,A measurement scale whose values are unordered categories. Declared in the schema but not populated in the current release.,Class,,,
+http://qudt.org/schema/qudt/NumericUnion,NumericUnion,A union datatype covering numeric value types. Declared in the schema but not populated in the current release.,Class,,,
+http://qudt.org/schema/qudt/OrdinalScale,OrdinalScale,A measurement scale whose values are ordered but not numerically spaced. Declared in the schema but not populated in the current release.,Class,,,
 http://qudt.org/schema/qudt/Quantity,qudt:Quantity,An observable quantity with a value and a unit.,Class,,,
 http://qudt.org/schema/qudt/QuantityKind,qudt:QuantityKind,"The type or kind of quantity being measured (e.g., length, volume, flow rate).",Class,,,
 http://qudt.org/schema/qudt/QuantityValue,qudt:QuantityValue,A measured or calculated value with an associated unit.,Class,,,
-http://qudt.org/schema/qudt/RatioScale,RatioScale,"A measurement scale with ordered values, meaningful differences, and a true zero.",Class,,,
-http://qudt.org/schema/qudt/Scale,Scale,A measurement scale relating quantity values to reference points.,Class,,,
-http://qudt.org/schema/qudt/Unit,qudt:Unit,"A unit of measurement (e.g., meter, liter, cubic foot per second).",Class,,,
+http://qudt.org/schema/qudt/RatioScale,RatioScale,"A measurement scale with ordered values, meaningful differences, and a true zero. Declared in the schema but not populated in the current release.",Class,,,
+http://qudt.org/schema/qudt/Scale,Scale,A measurement scale relating quantity values to reference points. Declared in the schema but not populated in the current release.,Class,,,
+http://qudt.org/schema/qudt/Unit,qudt:Unit,"A unit of measurement (e.g., meter, liter, cubic foot per second). Declared in the schema but not populated in the current release.",Class,,,
+http://sawgraph.spatialai.org/v1/il-isgs#ISGS-Well,Illinois State Geological Survey Well,A well documented by the Illinois State Geological Survey.,Class,,,
 http://sawgraph.spatialai.org/v1/il-isgs#WellDepthInFt,Well Depth in Feet (IL),The depth of an Illinois well measured in feet.,Class,,,
 http://sawgraph.spatialai.org/v1/il-isgs#WellPurpose,Well Purpose,The intended purpose or use of a well.,Class,,,
 http://sawgraph.spatialai.org/v1/il-isgs#WellYield,Well Yield,The rate at which water can be withdrawn from a well.,Class,,,
@@ -25,12 +39,11 @@ http://sawgraph.spatialai.org/v1/me-mgs#WellDepthInFt,Well Depth in Feet,The dep
 http://sawgraph.spatialai.org/v1/me-mgs#WellOverburdenThicknessInFt,Well Overburden Thickness in Feet,"The thickness of overburden (unconsolidated material) above bedrock at a well location, measured in feet.",Class,,,
 http://sawgraph.spatialai.org/v1/me-mgs#WellType,Well Type,"The type classification of a well (e.g., drilled, dug, driven).",Class,,,
 http://sawgraph.spatialai.org/v1/me-mgs#WellUse,Well Use,"The purpose for which a well is used (e.g., domestic, irrigation, industrial).",Class,,,
-http://sawgraph.spatialai.org/v1/me_mgs#meMgsAqId,Maine MGS aquifer ID,The Maine Geological Survey identifier for an aquifer.,Class,,,
-http://sawgraph.spatialai.org/v1/me_mgs#meSawAqSysId,Maine SAW aquifer system ID,The SAWGraph identifier for a Maine aquifer system.,Class,,,
+http://sawgraph.spatialai.org/v1/us-sdwis#CombinedDistributionSystem,Combined Distribution System,A distribution system that combines water from multiple public water systems. Declared in the schema but not populated in the current release.,Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PWS-ServiceArea,PWS Service Area,The geographic area served by a public water system.,Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PWS-ServiceAreaType,PWS Service Area Type,The type classification of a public water system service area.,Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SourceWaterType,PWS Source Water Type,"The type of water source used by a public water system (surface water, groundwater, etc.).",Class,,,
-http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeature,PWS SubFeature,"A component of a public water system (e.g., well, intake, treatment plant).",Class,,,
+http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeature,PWS SubFeature,"A component of a public water system (e.g., well, intake, treatment plant). Declared in the schema but not populated in the current release.",Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeatureActivity,PWS SubFeature Activity,The operational activity status of a public water system component.,Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PWS-SubFeatureType,PWS SubFeature Type,The type classification of a public water system component.,Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem,Public Water System (PWS),"All PWS have some water source, even if unidentified",Class,,,
@@ -40,39 +53,90 @@ http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-NCWS,Non-Community W
 http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-NTNCWS,Non-Transient Non-Community Water System,"A public water system that regularly serves at least 25 of the same people for 6+ months per year (e.g., schools, factories).",Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-SW,PWS Surface Water,A public water system that draws water from surface water sources.,Class,,,
 http://sawgraph.spatialai.org/v1/us-sdwis#PublicWaterSystem-TNCWS,Transient Non-Community Water System,"A public water system that serves the public but not the same people year-round (e.g., rest stops, campgrounds).",Class,,,
-http://sawgraph.spatialai.org/v1/us-sdwis#pwsName,pwsName,The name of the public water system.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion,Administrative Region,Administrative regions as defined by GADM.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_0,Administrative Region Level 0,GADM level 0 administrative regions (countries). Declared in the schema but not populated in the current release.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_1,Administrative Region Level 1,"GADM level 1 administrative regions (states, provinces).",Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_2,Administrative Region Level 2,GADM level 2 administrative regions (counties).,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_3,Administrative Region Level 3,GADM level 3 administrative regions (county subdivisions).,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_4,Administrative Region Level 4,GADM level 4 administrative regions. Declared in the schema but not populated in the current release.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_5,Administrative Region Level 5,GADM level 5 administrative regions. Declared in the schema but not populated in the current release.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_6,Administrative Region Level 6,GADM level 6 administrative regions. Declared in the schema but not populated in the current release.,Class,,,
 http://stko-kwg.geog.ucsb.edu/lod/ontology/Cell,Cell,A spatial cell.,Class,,,
 http://stko-kwg.geog.ucsb.edu/lod/ontology/Region,Region,A spatial region.,Class,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/RoadSegment,Road Segment,A segment of a road network.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/RoadSegment,Road Segment,A segment of a road network. Declared in the schema but not populated in the current release.,Class,,,
 http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell,S2 Cell,A cell from the S2 discrete global grid system.,Class,,,
 http://stko-kwg.geog.ucsb.edu/lod/ontology/S2Cell_Level13,S2 Cell Level 13,An S2 cell at zoom level 13.,Class,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/ZipCodeArea,ZIP Code Area,A geographic area defined by a postal ZIP code.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/StatisticalArea,Statistical Area,A geographic area for statistical data collection. Declared in the schema but not populated in the current release.,Class,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/ZipCodeArea,ZIP Code Area,A geographic area defined by a postal ZIP code. Declared in the schema but not populated in the current release.,Class,,,
 http://www.opengis.net/ont/geosparql#Feature,geo:Feature,A discrete spatial phenomenon in a universe of discourse.,Class,,,
-http://www.opengis.net/ont/geosparql#FeatureCollection,FeatureCollection,A collection of spatial features.,Class,,,
+http://www.opengis.net/ont/geosparql#FeatureCollection,FeatureCollection,A collection of spatial features. Declared in the schema but not populated in the current release.,Class,,,
 http://www.opengis.net/ont/geosparql#Geometry,geo:Geometry,A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS).,Class,,,
 http://www.opengis.net/ont/geosparql#SpatialObject,geo:SpatialObject,"Anything spatial (being or having a shape, position or an extent).",Class,,,
 http://www.opengis.net/ont/sf#MultiPolygon,Multi-Polygon,A collection of polygons (Simple Features).,Class,,,
 http://www.opengis.net/ont/sf#Polygon,Polygon,A two-dimensional geometric primitive (Simple Features).,Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_Canal,hyf:HY_Canal,"a body of surface water, participating in a hydrographic network, that is special due to its artificial origin (man-made)",Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_Catchment,hyf:HY_Catchment,"The Catchment model conceptualizes the hydrologic determination of a catchment through inflow and outflow hydro nexus features with the role of getting flow from a contributing catchment, or providing inflow to a receiving catchment (Figure 25 and Figure 26). Conceptually, each catchment has an outflow hydro nexus, and any hydro nexus has a corresponding catchment, even if catchment and/or hydro nexus may not be present in a particular application. A catchment interacts with upper and lower catchments via associated hydro nexuses, and ultimately contributes flow to the hydro nexus of a containing catchment. The catchment should be understood as the logical link between two hydro nexuses. The HY_Catchment feature type captures the union of catchment and hydro nexus, and the multiple realizations of the holistic catchment concept. These realizations include both topological realizations, as well as their geometric representation. HY_Catchment may be further specialized with respect to catchment interaction.  The HY_Catchment feature type (Figure 26) specializes the general HY_HydroFeature type. Through generalization, HY_Catchment inherits the name property. It carries a code attribute and the associations: outflow, inflow, containingCatchment, containedCatchment, conjointCatchment, upperCatchment, lowerCatchment, catchmentRealization.",Class,,,
+http://www.semanticweb.org/efive/AggregateIntervalVariable,efive:AggregateIntervalVariable,The interval variable of interest for a :StatisticalSummary.,Class,,,
+http://www.semanticweb.org/efive/AggregateNominalVariable,efive:AggregateNominalVariable,The nominal variable of interest for a :StatisticalSummary.,Class,,,
+http://www.semanticweb.org/efive/AggregateOrdinalVariable,efive:AggregateOrdinalVariable,The ordinal variable of interest for a :StatisticalSummary.,Class,,,
+http://www.semanticweb.org/efive/AggregateRatioVariable,efive:AggregateRatioVariable,The ratio variable of interest for a :StatisticalSummary.,Class,,,
+http://www.semanticweb.org/efive/AggregateVariable,efive:AggregateVariable,The variable of interest for a :StatisticalSummary.,Class,,,
+http://www.semanticweb.org/efive/DecileSet,efive:DecileSet,"A specific collection of percentiles: P0, P10, P20, P30, P40, P50, P60, P70, P80, P90, P100.",Class,,,
+http://www.semanticweb.org/efive/GIQR,efive:GIQR,Generalized interquantile range (UpperHinge - LowerHinge),Class,,,
+http://www.semanticweb.org/efive/HingesType,efive:HingesType,"The type of hinges in use for a given statistical summary (e.g., QuartileHinges, QuintileHinges, etc.)",Class,,,
+http://www.semanticweb.org/efive/LowerFence,efive:LowerFence,Values in a dataset less than its lower fence may be classified as outliers. Calculation: LowerHinge - 1.5 * IQR.,Class,,,
+http://www.semanticweb.org/efive/LowerHinge,efive:LowerHinge,"Depending on the hinge type, this can be related to P5, P10, P20, or P25.",Class,,,
+http://www.semanticweb.org/efive/Maximum,efive:Maximum,A maximumm value from a dataset.,Class,,,
+http://www.semanticweb.org/efive/MeasurementScale,efive:MeasurementScale,A superclass for all measurement scales.,Class,,,
+http://www.semanticweb.org/efive/Median,efive:Median,A median value from a dataset.,Class,,,
+http://www.semanticweb.org/efive/Minimum,efive:Minimum,A minimum value from a dataset.,Class,,,
+http://www.semanticweb.org/efive/OrderedE5Summary,efive:OrderedE5Summary,"The five number summary class for data that can be ordered (suitable for ordinal, interval, or ratio scale data)",Class,,,
+http://www.semanticweb.org/efive/P0,efive:P0,A 0th percentile (minimum),Class,,,
+http://www.semanticweb.org/efive/P10,efive:P10,A 10th percentile.,Class,,,
+http://www.semanticweb.org/efive/P100,efive:P100,A 100th percentile (maximum),Class,,,
+http://www.semanticweb.org/efive/P20,efive:P20,A 20th percentile.,Class,,,
+http://www.semanticweb.org/efive/P25,efive:P25,A 25th percentile.,Class,,,
+http://www.semanticweb.org/efive/P40,efive:P40,A 40th percentile (median),Class,,,
+http://www.semanticweb.org/efive/P5,efive:P5,A 5th percentile.,Class,,,
+http://www.semanticweb.org/efive/P50,efive:P50,A 50th percentile (median),Class,,,
+http://www.semanticweb.org/efive/P60,efive:P60,A 60th percentile (median),Class,,,
+http://www.semanticweb.org/efive/P75,efive:P75,A 75th percentile.,Class,,,
+http://www.semanticweb.org/efive/P80,efive:P80,An 80th percentile.,Class,,,
+http://www.semanticweb.org/efive/P90,efive:P90,A 90th percentile.,Class,,,
+http://www.semanticweb.org/efive/P95,efive:P95,A 95th percentile.,Class,,,
+http://www.semanticweb.org/efive/Percentile,efive:Percentile,Superclass for all percentiles.,Class,,,
+http://www.semanticweb.org/efive/PositionSet,efive:PositionSet,"A collection of regularly spaced percentiles (e.g., quartiles, quintiles, deciles, or twentiles) along with P0 and P100.",Class,,,
+http://www.semanticweb.org/efive/QuantitativeE5Summary,efive:QuantitativeE5Summary,Quantitative class for five number summaries (suitable for interval or ratio scale data),Class,,,
+http://www.semanticweb.org/efive/QuartileSet,efive:QuartileSet,"A specific collection of percentiles: P0, P25, P50, P75, and P100.",Class,,,
+http://www.semanticweb.org/efive/QuintileSet,efive:QuintileSet,"A specific collection of percentiles: P0, P20, P40, P60, P80, and P100.",Class,,,
+http://www.semanticweb.org/efive/StatisticalSummary,efive:StatisticalSummary,"Superclass for all summaries within EFive (suitable for nominal, ordinal, interval, or ratio scale data)",Class,,,
+http://www.semanticweb.org/efive/SummaryDescription,efive:SummaryDescription,A description of a :StatisticalSummary (not its dataset),Class,,,
+http://www.semanticweb.org/efive/TwentileSet,efive:TwentileSet,"A specific collection of percentiles: P0, P5, P10, P15, P20, P25, P30, P35, P40, P45, P50, P55, P60, P65, P70, P75, P80, P85, P90, P95, P100.",Class,,,
+http://www.semanticweb.org/efive/UpperFence,efive:UpperFence,Values in a dataset greater than its upper fence may be classified as outliers. Calculation: UpperHinge + 1.5 * IQR.,Class,,,
+http://www.semanticweb.org/efive/UpperHinge,efive:UpperHinge,"Depending on the hinge type, this can be related to P75, P80, P90, or P95.",Class,,,
+http://www.semanticweb.org/efive/VariationDatapoint,efive:VariationDatapoint,A statistical aggregate datapoint associated with variation.,Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Canal,hyf:HY_Canal,"a body of surface water, participating in a hydrographic network, that is special due to its artificial origin (man-made) Declared in the schema but not populated in the current release.",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Catchment,hyf:HY_Catchment,"The Catchment model conceptualizes the hydrologic determination of a catchment through inflow and outflow hydro nexus features with the role of getting flow from a contributing catchment, or providing inflow to a receiving catchment (Figure 25 and Figure 26). Conceptually, each catchment has an outflow hydro nexus, and any hydro nexus has a corresponding catchment, even if catchment and/or hydro nexus may not be present in a particular application. A catchment interacts with upper and lower catchments via associated hydro nexuses, and ultimately contributes flow to the hydro nexus of a containing catchment. The catchment should be understood as the logical link between two hydro nexuses. The HY_Catchment feature type captures the union of catchment and hydro nexus, and the multiple realizations of the holistic catchment concept. These realizations include both topological realizations, as well as their geometric representation. HY_Catchment may be further specialized with respect to catchment interaction.  The HY_Catchment feature type (Figure 26) specializes the general HY_HydroFeature type. Through generalization, HY_Catchment inherits the name property. It carries a code attribute and the associations: outflow, inflow, containingCatchment, containedCatchment, conjointCatchment, upperCatchment, lowerCatchment, catchmentRealization. Declared in the schema but not populated in the current release.",Class,,,
 https://www.opengis.net/def/schema/hy_features/hyf/HY_CatchmentRealization,hyf:HY_CatchmentRealization,"The HY_CatchmentRealization feature type (Figure 34) is based on the idea that there are multiple hydrology-specific perspectives of the holistic catchment concept that are used to describe a catchment as a unit of study shared across sub-domains and studies.  A given catchment realization exists within a hydrologic complex in that, if a catchment realization exists, it exists in the same hydrologic complex as the catchment it realizes. In this way, any realization of a catchment has the same hydrologic determination of the catchment it realizes. If a catchment is connected with other catchments via inflow and/or outflow hydro nexuses, its realizations are also connected. A realization of the logical catchment is always of higher topological dimension than the realization of the corresponding hydro nexus topological boundary. For example, a linear flowpath realizing a catchment may be understood as an edge between inflow and outflow nodes; the areal realization of a catchment as a face bounded by linear inflow and outflow. The catchment realization features defined in this standard refer to objects on the land surface for the purpose of surface water hydrology. In other contexts, other types of catchment realization may exist. Catchment realizations that do not conform to those defined in this standard, for instance realizations in 3- or 4-dimensional perspectives, may be implemented using the general HY_CatchmentRealization type. HY_CatchmentRealization carries a shape attribute and as a realizedCatchment association.",Class,,,
 https://www.opengis.net/def/schema/hy_features/hyf/HY_ElementaryFlowPath,Elementary Flow Path,An indivisible flow path segment in a hydrologic network.,Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_Estuary,hyf:HY_Estuary,"a body of surface water, participating in a hydrographic network, made special due to branching and its interaction with the open sea",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Estuary,hyf:HY_Estuary,"a body of surface water, participating in a hydrographic network, made special due to branching and its interaction with the open sea Declared in the schema but not populated in the current release.",Class,,,
 https://www.opengis.net/def/schema/hy_features/hyf/HY_FlowPath,hyf:HY_FlowPath,"The HY_Flowpath feature type realizes a catchment specifically as a path connecting the inflow and outflow of the catchment it realizes. HY_Flowpath specializes HY_CatchmentRealization with respect to an implied linear geometric representation including a straight or curved line. Topologically, the flowpath connects the inflow and outflow of the catchment, and is understood as an edge bounded by an inflow node and an outflow node, and corresponding to left-bank and right-bank catchment faces. Hydrologically, the flowpath is a line describing a moving particle of water.  Through generalization, HY_Flowpath inherits the shape and the realizedCatchment properties. The optional shape of the flowpath is usually a single curve.",Class,,,
 https://www.opengis.net/def/schema/hy_features/hyf/HY_HydroFeature,hyf:HY_HydroFeature,basic feature to reflect the properties that all hydrologic features have.,Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_Impoundment,hyf:HY_Impoundment,"a body of surface water, participating in a hydrographic network, seen as being special due to being formed by collecting water, for example in the case of a dam",Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_Lagoon,hyf:HY_Lagoon,"a body of surface water, participating in a hydrographic network, which is special due to its shallow depth and interaction with the open sea",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Impoundment,hyf:HY_Impoundment,"a body of surface water, participating in a hydrographic network, seen as being special due to being formed by collecting water, for example in the case of a dam Declared in the schema but not populated in the current release.",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_Lagoon,hyf:HY_Lagoon,"a body of surface water, participating in a hydrographic network, which is special due to its shallow depth and interaction with the open sea Declared in the schema but not populated in the current release.",Class,,,
 https://www.opengis.net/def/schema/hy_features/hyf/HY_Lake,hyf:HY_Lake,"a body of surface water, participating in a hydrographic network, made special due to its considerable size",Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_MainStem,Main Stem,The principal course of a river or stream.,Class,,,
-https://www.opengis.net/def/schema/hy_features/hyf/HY_River,hyf:HY_River,"a body of surface water, participating in a hydrographic network, which is special due to its property to permanently or temporarily flow",Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_MainStem,Main Stem,The principal course of a river or stream. Declared in the schema but not populated in the current release.,Class,,,
+https://www.opengis.net/def/schema/hy_features/hyf/HY_River,hyf:HY_River,"a body of surface water, participating in a hydrographic network, which is special due to its property to permanently or temporarily flow Declared in the schema but not populated in the current release.",Class,,,
 https://www.opengis.net/def/schema/hy_features/hyf/HY_WaterBody,hyf:HY_WaterBody,"A waterbody is part of the hydrographic network and is either standing in a depression or flowing in a channel, which are parts of the channel network",Class,,,
 http://gwml2.org/def/gwml2#gwAquiferSystem,gwml2:gwAquiferSystem,Relates an aquifer system to an aquifer unit,Predicate,,gwml2:GW_Aquifer,gwml2:GW_AquiferSystem
-http://gwml2.org/def/gwml2#gwAquiferSystemPart,gwml2:gwAquiferSystemPart,Relates to the parts of an aquifer system,Predicate,,,
-http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasCOMID,nhdplusv2:hasCOMID,Relates an NHDPlusV2 feature to its COMID,Predicate,,,
-http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFCODE,nhdplusv2:hasFCODE,Relates an NHDPlusV2 feature to its FCODE (see also nhdplusv2:hasFTYPE),Predicate,,,
-http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFTYPE,nhdplusv2:hasFTYPE,Relates an NHDPlusV2 feature to its FTYPE (see also nhdplusv2:hasFCODE),Predicate,,,
-http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFlowPathLength,nhdplusv2:hasFlowPathLength,"Relates any flowpath to its length, represented as, for example, a qudt:Quantity object",Predicate,,,qudt:Quantity
-http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasReachCode,nhdplusv2:hasReachCode,Relates an NHDPlusV2 feature to its ReachCode,Predicate,,,
+http://gwml2.org/def/gwml2#gwAquiferSystemPart,gwml2:gwAquiferSystemPart,Relates to the parts of an aquifer system,Predicate,,gwml2:GW_AquiferSystem,gwml2:GW_Aquifer
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasCOMID,nhdplusv2:hasCOMID,Relates an NHDPlusV2 feature to its COMID,Predicate,,hyf:HY_FlowPath,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasCOMID,nhdplusv2:hasCOMID,Relates an NHDPlusV2 feature to its COMID,Predicate,,hyf:HY_WaterBody,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFCODE,nhdplusv2:hasFCODE,Relates an NHDPlusV2 feature to its FCODE (see also nhdplusv2:hasFTYPE),Predicate,,hyf:HY_FlowPath,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFCODE,nhdplusv2:hasFCODE,Relates an NHDPlusV2 feature to its FCODE (see also nhdplusv2:hasFTYPE),Predicate,,hyf:HY_WaterBody,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFTYPE,nhdplusv2:hasFTYPE,Relates an NHDPlusV2 feature to its FTYPE (see also nhdplusv2:hasFCODE),Predicate,,hyf:HY_FlowPath,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFTYPE,nhdplusv2:hasFTYPE,Relates an NHDPlusV2 feature to its FTYPE (see also nhdplusv2:hasFCODE),Predicate,,hyf:HY_WaterBody,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasFlowPathLength,nhdplusv2:hasFlowPathLength,"Relates any flowpath to its length, represented as, for example, a qudt:Quantity object",Predicate,,Elementary Flow Path,nhdplusv2:FlowPathLength
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasReachCode,nhdplusv2:hasReachCode,Relates an NHDPlusV2 feature to its ReachCode,Predicate,,hyf:HY_FlowPath,
+http://nhdplusv2.spatialai.org/v1/nhdplusv2#hasReachCode,nhdplusv2:hasReachCode,Relates an NHDPlusV2 feature to its ReachCode,Predicate,,hyf:HY_WaterBody,
 http://purl.org/dc/elements/1.1/source,source,A related resource from which the described resource is derived.,Predicate,,,
 http://purl.org/dc/terms/contributor,contributor,An entity responsible for contributions to the resource.,Predicate,,,
 http://purl.org/dc/terms/created,date created,Date of creation of the resource.,Predicate,,,
@@ -81,63 +145,176 @@ http://purl.org/dc/terms/description,description,An account of the resource.,Pre
 http://purl.org/dc/terms/modified,date modified,Date on which the resource was changed.,Predicate,,,
 http://purl.org/dc/terms/publisher,publisher,An entity responsible for making the resource available.,Predicate,,,
 http://purl.org/dc/terms/title,title,A name given to the resource.,Predicate,,,
-http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,,
-http://purl.org/spatialai/spatial/spatial-full#spatiallyRelatedTo,topological connection (spatial contact) (sawgraph),A general topological connection or spatial contact.,Predicate,,,
-http://qudt.org/schema/qudt/hasQuantityKind,qudt:hasQuantityKind,Links a quantity or unit to its quantity kind.,Predicate,,,qudt:QuantityKind
-http://qudt.org/schema/qudt/hasUnit,qudt:hasUnit,Links a quantity value to its unit of measurement.,Predicate,,,
-http://qudt.org/schema/qudt/numericValue,numeric value,The numerical component of a quantity value.,Predicate,,,
-http://qudt.org/schema/qudt/quantityValue,qudt:quantityValue,Links a quantity to its measured or calculated value.,Predicate,,,Quantity Value
-http://qudt.org/schema/qudt/unit,unit,Specifies the unit of measurement.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il-isgs#ISGS-Well,Illinois State Geological Survey Well,A well documented by the Illinois State Geological Survey.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il-isgs#hasISWSId,has ISWS ID,Links a well to its Illinois State Water Survey identifier.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il-isgs#hasOwner,has owner,Links a well to its owner.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il-isgs#wellDepth,well depth (IL),Links an Illinois well to its depth measurement.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il-isgs#wellPurpose,well purpose,Links a well to its purpose classification.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il-isgs#wellYield,well yield,Links a well to its yield measurement.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il_isgs#ilSawAqId,Illinois SAW aquifer ID,The SAWGraph identifier for an Illinois aquifer.,Predicate,,,
-http://sawgraph.spatialai.org/v1/il_isgs#ilSawAqSysId,Illinois SAW aquifer system ID,The SAWGraph identifier for an Illinois aquifer system.,Predicate,,,
-http://sawgraph.spatialai.org/v1/me-mgs#hasUse,has use,Links a well to its use classification.,Predicate,,,
-http://sawgraph.spatialai.org/v1/me-mgs#ofWellType,of well type,Links a well to its type classification.,Predicate,,,
-http://sawgraph.spatialai.org/v1/me-mgs#wellDepth,well depth,Links a well to its depth measurement.,Predicate,,,
-http://sawgraph.spatialai.org/v1/me-mgs#wellOverburden,well overburden,Links a well to its overburden thickness measurement.,Predicate,,,
-http://sawgraph.spatialai.org/v1/saw_water#aquiferType,aquifer type,"The type classification of an aquifer (e.g., confined, unconfined, perched).",Predicate,,,
-http://sawgraph.spatialai.org/v1/us-sdwis#CombinedDistributionSystem,Combined Distribution System,A distribution system that combines water from multiple public water systems.,Predicate,,,
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Administrative Region Level 2,Public Water System (PWS)
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Administrative Region Level 3,Illinois State Geological Survey Well
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Administrative Region Level 3,Maine Geological Survey Well
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Administrative Region Level 3,PWS Service Area
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Administrative Region Level 3,gwml2:GW_Aquifer
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Illinois State Geological Survey Well,Administrative Region Level 3
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Illinois State Geological Survey Well,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Maine Geological Survey Well,Administrative Region Level 3
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Maine Geological Survey Well,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,PWS Service Area,Administrative Region Level 3
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,PWS Service Area,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,Public Water System (PWS),Administrative Region Level 2
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,Illinois State Geological Survey Well
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,Maine Geological Survey Well
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,PWS Service Area
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,gwml2:GW_Aquifer
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,gwml2:GW_AquiferSystem
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,hyf:HY_FlowPath
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,S2 Cell Level 13,hyf:HY_WaterBody
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,gwml2:GW_Aquifer,Administrative Region Level 3
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,gwml2:GW_Aquifer,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,gwml2:GW_AquiferSystem,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,hyf:HY_FlowPath,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,hyf:HY_FlowPath,hyf:HY_WaterBody
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,hyf:HY_WaterBody,S2 Cell Level 13
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,topological connection (spatial contact) (sawgraph),Indicates a topological connection or spatial contact.,Predicate,,hyf:HY_WaterBody,hyf:HY_FlowPath
+http://purl.org/spatialai/spatial/spatial-full#spatiallyRelatedTo,spatially related to (sawgraph),A general topological connection or spatial contact. It holds the same triples as spatial:connectedTo in this graph; see that predicate for the classes it links.,Predicate,,,
+http://purl.org/spatialai/stad/v2/core/generatedBy,stad:generatedBy,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:QuantitativeDatapoint,stad-mls:AlgorithmExecution
+http://purl.org/spatialai/stad/v2/core/generatedBy,stad:generatedBy,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:StatisticalAggregateDatapoint,stad-mls:AlgorithmExecution
+http://purl.org/spatialai/stad/v2/core/hasBaseDataset,stad:hasBaseDataset,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,,
+http://purl.org/spatialai/stad/v2/core/hasDatasetDescription,stad:hasDatasetDescription,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:Dataset,stad:DatasetDescription
+http://purl.org/spatialai/stad/v2/core/hasQualityKind,stad:hasQualityKind,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:QuantitativeDatapoint,
+http://purl.org/spatialai/stad/v2/core/hasQualityKind,stad:hasQualityKind,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:StatisticalAggregateDatapoint,
+http://purl.org/spatialai/stad/v2/core/hasQuantitativeValue,stad:hasQuantitativeValue,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:QuantitativeDatapoint,stad:QuantitativeValue
+http://purl.org/spatialai/stad/v2/core/hasQuantitativeValue,stad:hasQuantitativeValue,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:StatisticalAggregateDatapoint,stad:QuantitativeValue
+http://purl.org/spatialai/stad/v2/core/hasTransformationKind,stad:hasTransformationKind,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:QuantitativeDatapoint,stad:DataTransformation
+http://purl.org/spatialai/stad/v2/core/hasTransformationKind,stad:hasTransformationKind,STAD term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad:StatisticalAggregateDatapoint,stad:DataTransformation
+http://purl.org/spatialai/stad/v2/mls/executes,stad-mls:executes,STAD machine-learning term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad-mls:AlgorithmExecution,stad-mls:Implementation
+http://purl.org/spatialai/stad/v2/mls/implements,stad-mls:implements,STAD machine-learning term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad-mls:Implementation,stad:DataTransformation
+http://purl.org/spatialai/stad/v2/mls/realizes,stad-mls:realizes,STAD machine-learning term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,stad-mls:AlgorithmExecution,stad:DataTransformation
+http://qudt.org/schema/qudt/hasQuantityKind,qudt:hasQuantityKind,Links a quantity or unit to its quantity kind.,Predicate,,qudt:Quantity,qudt:QuantityKind
+http://qudt.org/schema/qudt/hasUnit,qudt:hasUnit,Links a quantity value to its unit of measurement.,Predicate,,qudt:QuantityValue,
+http://qudt.org/schema/qudt/numericValue,numeric value,The numerical component of a quantity value.,Predicate,,qudt:QuantityValue,
+http://qudt.org/schema/qudt/numericValue,numeric value,The numerical component of a quantity value.,Predicate,,stad:QuantitativeValue,
+http://qudt.org/schema/qudt/numericValue,numeric value,The numerical component of a quantity value.,Predicate,,stad:SingleData,
+http://qudt.org/schema/qudt/quantityValue,qudt:quantityValue,Links a quantity to its measured or calculated value.,Predicate,,nhdplusv2:FlowPathLength,qudt:QuantityValue
+http://qudt.org/schema/qudt/unit,unit,Specifies the unit of measurement.,Predicate,,stad:QuantitativeValue,
+http://qudt.org/schema/qudt/unit,unit,Specifies the unit of measurement.,Predicate,,stad:SingleData,
+http://sawgraph.spatialai.org/v1/il-isgs#hasISWSId,has ISWS ID,Links a well to its Illinois State Water Survey identifier.,Predicate,,Illinois State Geological Survey Well,
+http://sawgraph.spatialai.org/v1/il-isgs#hasOwner,has owner,Links a well to its owner.,Predicate,,Illinois State Geological Survey Well,
+http://sawgraph.spatialai.org/v1/il-isgs#wellDepth,well depth (IL),Links an Illinois well to its depth measurement.,Predicate,,Illinois State Geological Survey Well,Well Depth in Feet (IL)
+http://sawgraph.spatialai.org/v1/il-isgs#wellPurpose,well purpose,Links a well to its purpose classification.,Predicate,,Illinois State Geological Survey Well,Well Purpose
+http://sawgraph.spatialai.org/v1/il-isgs#wellYield,well yield,Links a well to its yield measurement.,Predicate,,Illinois State Geological Survey Well,Well Yield
+http://sawgraph.spatialai.org/v1/il_isgs#ilSawAqId,Illinois SAW aquifer ID,The SAWGraph identifier for an Illinois aquifer.,Predicate,,gwml2:GW_Aquifer,
+http://sawgraph.spatialai.org/v1/il_isgs#ilSawAqSysId,Illinois SAW aquifer system ID,The SAWGraph identifier for an Illinois aquifer system.,Predicate,,gwml2:GW_AquiferSystem,
+http://sawgraph.spatialai.org/v1/me-mgs#hasUse,has use,Links a well to its use classification.,Predicate,,Maine Geological Survey Well,Well Use
+http://sawgraph.spatialai.org/v1/me-mgs#ofWellType,of well type,Links a well to its type classification.,Predicate,,Maine Geological Survey Well,Well Type
+http://sawgraph.spatialai.org/v1/me-mgs#wellDepth,well depth,Links a well to its depth measurement.,Predicate,,Maine Geological Survey Well,Well Depth in Feet
+http://sawgraph.spatialai.org/v1/me-mgs#wellOverburden,well overburden,Links a well to its overburden thickness measurement.,Predicate,,Maine Geological Survey Well,Well Overburden Thickness in Feet
+http://sawgraph.spatialai.org/v1/me_mgs#meMgsAqId,Maine MGS aquifer ID,The Maine Geological Survey identifier for an aquifer.,Predicate,,gwml2:GW_Aquifer,
+http://sawgraph.spatialai.org/v1/me_mgs#meSawAqSysId,Maine SAW aquifer system ID,The SAWGraph identifier for a Maine aquifer system.,Predicate,,gwml2:GW_AquiferSystem,
+http://sawgraph.spatialai.org/v1/saw_water#aquiferType,aquifer type,"The type classification of an aquifer (e.g., confined, unconfined, perched).",Predicate,,gwml2:GW_Aquifer,
 http://sawgraph.spatialai.org/v1/us-sdwis#deactivationDate,deactivationDate,The date when a public water system was deactivated.,Predicate,,Public Water System (PWS),
-http://sawgraph.spatialai.org/v1/us-sdwis#firstReport,firstReport,The date of the first report for a public water system.,Predicate,,,
-http://sawgraph.spatialai.org/v1/us-sdwis#hasActivity,has activity,Links a PWS sub-feature to its activity status.,Predicate,,,
+http://sawgraph.spatialai.org/v1/us-sdwis#firstReport,firstReport,The date of the first report for a public water system.,Predicate,,Public Water System (PWS),
+http://sawgraph.spatialai.org/v1/us-sdwis#hasActivity,has activity,Links a PWS sub-feature to its activity status.,Predicate,,Public Water System (PWS),
 http://sawgraph.spatialai.org/v1/us-sdwis#hasMethod,hasMethod,Specifies the method used by a PWS feature.,Predicate,,PWS Service Area,
-http://sawgraph.spatialai.org/v1/us-sdwis#hasOwnership,hasOwnership,Specifies the ownership type of a public water system.,Predicate,,,
-http://sawgraph.spatialai.org/v1/us-sdwis#lastReport,lastReport,The date of the most recent report for a public water system.,Predicate,,,
+http://sawgraph.spatialai.org/v1/us-sdwis#hasOwnership,hasOwnership,Specifies the ownership type of a public water system.,Predicate,,Public Water System (PWS),
+http://sawgraph.spatialai.org/v1/us-sdwis#lastReport,lastReport,The date of the most recent report for a public water system.,Predicate,,Public Water System (PWS),
 http://sawgraph.spatialai.org/v1/us-sdwis#populationServed,populationServed,The number of people served by the public water system.,Predicate,,Public Water System (PWS),
 http://sawgraph.spatialai.org/v1/us-sdwis#primarySourceType,primarySourceType,The primary type of water source used by the system.,Predicate,,Public Water System (PWS),PWS Source Water Type
+http://sawgraph.spatialai.org/v1/us-sdwis#pwsName,pwsName,The name of the public water system.,Predicate,,Public Water System (PWS),
 http://sawgraph.spatialai.org/v1/us-sdwis#serviceArea,serviceArea,Links a public water system to its service area.,Predicate,,Public Water System (PWS),PWS Service Area
 http://sawgraph.spatialai.org/v1/us-sdwis#serviceAreaType,serviceAreaType,Specifies the type of service area.,Predicate,,PWS Service Area,PWS Service Area Type
-http://sawgraph.spatialai.org/v1/us-sdwis#serviceConnections,service connections,The number of service connections provided by the public water system.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion,Administrative Region,Administrative regions as defined by GADM.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_0,Administrative Region Level 0,GADM level 0 administrative regions (countries).,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_1,Administrative Region Level 1,"GADM level 1 administrative regions (states, provinces).",Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_2,Administrative Region Level 2,GADM level 2 administrative regions (counties).,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_3,Administrative Region Level 3,GADM level 3 administrative regions (county subdivisions).,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_4,Administrative Region Level 4,GADM level 4 administrative regions.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_5,Administrative Region Level 5,GADM level 5 administrative regions.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/AdministrativeRegion_6,Administrative Region Level 6,GADM level 6 administrative regions.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/StatisticalArea,Statistical Area,A geographic area for statistical data collection.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates features cross each other.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,Indicates features touch at boundaries.,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,,
-http://stko-kwg.geog.ucsb.edu/lod/ontology/spatialRelation,spatial relation,A spatial relationship between features.,Predicate,,,
+http://sawgraph.spatialai.org/v1/us-sdwis#serviceConnections,service connections,The number of service connections provided by the public water system.,Predicate,,Public Water System (PWS),
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,Administrative Region Level 3,Illinois State Geological Survey Well
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,Administrative Region Level 3,Maine Geological Survey Well
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,Administrative Region Level 3,PWS Service Area
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,Administrative Region Level 3,gwml2:GW_Aquifer
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,PWS Service Area,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,S2 Cell Level 13,Illinois State Geological Survey Well
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,S2 Cell Level 13,Maine Geological Survey Well
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,gwml2:GW_Aquifer,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,gwml2:GW_Aquifer,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,gwml2:GW_AquiferSystem,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,hyf:HY_WaterBody,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,Indicates spatial containment.,Predicate,,hyf:HY_WaterBody,hyf:HY_FlowPath
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates features cross each other.,Predicate,,S2 Cell Level 13,hyf:HY_FlowPath
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates features cross each other.,Predicate,,hyf:HY_FlowPath,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates features cross each other.,Predicate,,hyf:HY_FlowPath,hyf:HY_WaterBody
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfCrosses,spatially crosses,Indicates features cross each other.,Predicate,,hyf:HY_WaterBody,hyf:HY_FlowPath
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,Administrative Region Level 2,Public Water System (PWS)
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,Administrative Region Level 3,PWS Service Area
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,Administrative Region Level 3,gwml2:GW_Aquifer
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,PWS Service Area,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,PWS Service Area,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,Public Water System (PWS),Administrative Region Level 2
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,S2 Cell Level 13,PWS Service Area
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,S2 Cell Level 13,gwml2:GW_Aquifer
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,S2 Cell Level 13,gwml2:GW_AquiferSystem
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,S2 Cell Level 13,hyf:HY_WaterBody
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,gwml2:GW_Aquifer,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,gwml2:GW_Aquifer,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,gwml2:GW_AquiferSystem,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfOverlaps,spatially overlaps,Indicates partial spatial overlap.,Predicate,,hyf:HY_WaterBody,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,Indicates features touch at boundaries.,Predicate,,hyf:HY_FlowPath,hyf:HY_WaterBody
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,Indicates features touch at boundaries.,Predicate,,hyf:HY_WaterBody,hyf:HY_FlowPath
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,Administrative Region Level 3,gwml2:GW_Aquifer
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,Illinois State Geological Survey Well,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,Illinois State Geological Survey Well,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,Maine Geological Survey Well,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,Maine Geological Survey Well,S2 Cell Level 13
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,PWS Service Area,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,S2 Cell Level 13,PWS Service Area
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,S2 Cell Level 13,gwml2:GW_Aquifer
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,S2 Cell Level 13,gwml2:GW_AquiferSystem
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,S2 Cell Level 13,hyf:HY_WaterBody
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,gwml2:GW_Aquifer,Administrative Region Level 3
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,Indicates spatial containment (inverse).,Predicate,,hyf:HY_FlowPath,hyf:HY_WaterBody
+http://stko-kwg.geog.ucsb.edu/lod/ontology/spatialRelation,spatial relation,A spatial relationship between features. It holds the same triples as spatial:connectedTo in this graph; see that predicate for the classes it links.,Predicate,,,
 http://www.opengis.net/ont/geosparql#asWKT,as WKT,The WKT serialization of a geometry.,Predicate,,,
 http://www.opengis.net/ont/geosparql#defaultGeometry,geo:defaultGeometry,The default Geometry to be used in spatial calculations. It is usually the most detailed Geometry.,Predicate,,geo:Feature,geo:Geometry
-http://www.opengis.net/ont/geosparql#hasDefaultGeometry,has default geometry,Links a feature to its default geometric representation.,Predicate,,,
+http://www.opengis.net/ont/geosparql#hasDefaultGeometry,has default geometry,Links a feature to its default geometric representation.,Predicate,,geo:Feature,geo:Geometry
 http://www.opengis.net/ont/geosparql#hasGeometry,geo:hasGeometry,A spatial representation for a given Feature.,Predicate,,geo:Feature,geo:Geometry
+http://www.semanticweb.org/efive/aggFilterOnObjectProp,efive:aggFilterOnObjectProp,Relates a stad:DatasetDescription to a string description of an object property filter.,Predicate,,stad:DatasetDescription,
+http://www.semanticweb.org/efive/aggregateClass,efive:aggregateClass,Relates a stad:DatasetDescription to a string description of the class of interest.,Predicate,,stad:DatasetDescription,
+http://www.semanticweb.org/efive/aggregateFilter,efive:aggregateFilter,A superclass for :aggFilterOnDataProp and :aggFilterOnObjectProp.,Predicate,,stad:DatasetDescription,
+http://www.semanticweb.org/efive/aggregateVariable,efive:aggregateVariable,Relates a summary description to a representation of the variable (attribute) of interest.,Predicate,,efive:SummaryDescription,efive:AggregateVariable
+http://www.semanticweb.org/efive/datasetRepresentation,efive:datasetRepresentation,Relates a stad:DatasetDescription to a string description of the associated dataset (in OWL2 turtle syntax),Predicate,,stad:DatasetDescription,
+http://www.semanticweb.org/efive/dateOfSummary,efive:dateOfSummary,Datatype property for capturing the date a summary was calculated.,Predicate,,efive:SummaryDescription,
+http://www.semanticweb.org/efive/hasGIQR,efive:hasGIQR,Object property for relating GIQRs to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,efive:GIQR
+http://www.semanticweb.org/efive/hasGIQR,efive:hasGIQR,Object property for relating GIQRs to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasHingesType,efive:hasHingesType,Object property for relating a type of hinges to a statistical summary.,Predicate,,efive:SummaryDescription,efive:HingesType
+http://www.semanticweb.org/efive/hasLowerFence,efive:hasLowerFence,Object property for relating lower fences to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,efive:LowerFence
+http://www.semanticweb.org/efive/hasLowerFence,efive:hasLowerFence,Object property for relating lower fences to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasLowerHinge,efive:hasLowerHinge,Object property for relating lower hinges to ordered summaries.,Predicate,,efive:OrderedE5Summary,efive:LowerHinge
+http://www.semanticweb.org/efive/hasLowerHingePercentile,efive:hasLowerHingePercentile,Object property for relating an :OrderedE5Summary directly to an appropriate lower hinge :Percentile.,Predicate,,efive:OrderedE5Summary,efive:Percentile
+http://www.semanticweb.org/efive/hasLowerHingePercentile,efive:hasLowerHingePercentile,Object property for relating an :OrderedE5Summary directly to an appropriate lower hinge :Percentile.,Predicate,,efive:OrderedE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasMax,efive:hasMax,Object property for relating maxima to ordered summaries.,Predicate,,efive:OrderedE5Summary,efive:Maximum
+http://www.semanticweb.org/efive/hasMax,efive:hasMax,Object property for relating maxima to ordered summaries.,Predicate,,efive:OrderedE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasMedian,efive:hasMedian,Object property for relating medians to ordered summaries.,Predicate,,efive:OrderedE5Summary,efive:Median
+http://www.semanticweb.org/efive/hasMedian,efive:hasMedian,Object property for relating medians to ordered summaries.,Predicate,,efive:OrderedE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasMin,efive:hasMin,Object property for relating minima to ordered summaries.,Predicate,,efive:OrderedE5Summary,efive:Minimum
+http://www.semanticweb.org/efive/hasMin,efive:hasMin,Object property for relating minima to ordered summaries.,Predicate,,efive:OrderedE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasPercentile,efive:hasPercentile,Object property for relating percentiles to ordered summaries.,Predicate,,efive:OrderedE5Summary,efive:Percentile
+http://www.semanticweb.org/efive/hasPercentile,efive:hasPercentile,Object property for relating percentiles to ordered summaries.,Predicate,,efive:OrderedE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasPosition,efive:hasPosition,Object property for relating a percentile to a position set.,Predicate,,efive:PositionSet,efive:Percentile
+http://www.semanticweb.org/efive/hasPositionSet,efive:hasPositionSet,Object property for relating a position set to its statistical summary.,Predicate,,efive:StatisticalSummary,efive:PositionSet
+http://www.semanticweb.org/efive/hasScale,efive:hasScale,Relates an :AggregateVariable to its :MeasurementScale.,Predicate,,efive:AggregateVariable,efive:MeasurementScale
+http://www.semanticweb.org/efive/hasStatistic,efive:hasStatistic,Superclass for all EFive object properties relating summaries to datapoints.,Predicate,,efive:StatisticalSummary,stad:Datapoint
+http://www.semanticweb.org/efive/hasSummaryDescription,efive:hasSummaryDescription,Relates a statistical summary to its description.,Predicate,,efive:StatisticalSummary,efive:SummaryDescription
+http://www.semanticweb.org/efive/hasUpperFence,efive:hasUpperFence,Object property for relating upper fences to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,efive:UpperFence
+http://www.semanticweb.org/efive/hasUpperFence,efive:hasUpperFence,Object property for relating upper fences to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasUpperHinge,efive:hasUpperHinge,Object property for relating upper hinges to ordered summaries.,Predicate,,efive:OrderedE5Summary,efive:UpperHinge
+http://www.semanticweb.org/efive/hasUpperHingePercentile,efive:hasUpperHingePercentile,Object property for relating an :OrderedE5Summary directly to an appropriate lower hinge :Percentile.,Predicate,,efive:OrderedE5Summary,efive:Percentile
+http://www.semanticweb.org/efive/hasUpperHingePercentile,efive:hasUpperHingePercentile,Object property for relating an :OrderedE5Summary directly to an appropriate lower hinge :Percentile.,Predicate,,efive:OrderedE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hasVariableName,efive:hasVariableName,Relates an efive:AggregateVariable to a string version of the variable (attribute) of interest's name.,Predicate,,efive:AggregateVariable,
+http://www.semanticweb.org/efive/hasVariablename,efive:hasVariablename,EFive term used in the dataset-summary layer; the graph gives it no definition.,Predicate,,efive:AggregateRatioVariable,
+http://www.semanticweb.org/efive/hasVariationDatapoint,efive:hasVariationDatapoint,Object property for relating measures of variation to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,efive:VariationDatapoint
+http://www.semanticweb.org/efive/hasVariationDatapoint,efive:hasVariationDatapoint,Object property for relating measures of variation to quantitative summaries.,Predicate,,efive:QuantitativeE5Summary,stad:Datapoint
+http://www.semanticweb.org/efive/hingeHasPercentile,efive:hingeHasPercentile,Object property for relating a hinge to a :Percentile.,Predicate,,,
+http://www.semanticweb.org/efive/n,efive:n,"Datatype property for a percentile's number (for example, the 50th percentile)",Predicate,,efive:Percentile,
+http://www.semanticweb.org/efive/sizeOfDataset,efive:sizeOfDataset,Datatype property for capturing the size of a dataset.,Predicate,,efive:SummaryDescription,
+http://www.semanticweb.org/efive/summaryScale,efive:summaryScale,Relates a :StatisticalSummary to the measurement scale of its variable of interest.,Predicate,,efive:QuantitativeE5Summary,efive:MeasurementScale
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable name for the resource.,Predicate,,,
 http://www.w3.org/2004/02/skos/core#closeMatch,closeMatch,Indicates two concepts are sufficiently similar to be used interchangeably in some applications.,Predicate,,,
 http://www.w3.org/2004/02/skos/core#definition,definition,A statement of the meaning of a concept.,Predicate,,,
 http://www.w3.org/2004/02/skos/core#mappingRelation,mapping Relation,A relation associating concepts across different concept schemes.,Predicate,,,
 https://schema.org/domainIncludes,domain includes,Relates a property to a class that constitutes one of its expected types for the subject.,Predicate,,,
 https://schema.org/name,name,The name of the item.,Predicate,,,
 https://schema.org/rangeIncludes,range includes,Relates a property to a class that constitutes one of its expected types for the value.,Predicate,,,
-https://www.opengis.net/def/schema/hy_features/hyf/downstreamFlowPath,downstream flow path,Links a flow path to another flow path that is immediately downstream.,Predicate,,,
-https://www.opengis.net/def/schema/hy_features/hyf/downstreamFlowPathTC,downstream flow path (transitive closure),Links a flow path to all flow paths that are downstream (transitive property).,Predicate,,,
-https://www.opengis.net/def/schema/hy_features/hyf/upstreamWaterBody,hyf:upstreamWaterBody,"Identifies another waterbody immediately upstream, allowing network navigation without knowing an inflow or outflow of the catchment realized by the waterbody",Predicate,,,
+https://www.opengis.net/def/schema/hy_features/hyf/downstreamFlowPath,downstream flow path,Links a flow path to another flow path that is immediately downstream.,Predicate,,hyf:HY_FlowPath,hyf:HY_FlowPath
+https://www.opengis.net/def/schema/hy_features/hyf/downstreamFlowPathTC,downstream flow path (transitive closure),Links a flow path to all flow paths that are downstream (transitive property).,Predicate,,hyf:HY_FlowPath,hyf:HY_FlowPath
+https://www.opengis.net/def/schema/hy_features/hyf/upstreamWaterBody,hyf:upstreamWaterBody,"Identifies another waterbody immediately upstream, allowing network navigation without knowing an inflow or outflow of the catchment realized by the waterbody",Predicate,,Elementary Flow Path,Elementary Flow Path
