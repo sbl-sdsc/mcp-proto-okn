@@ -442,8 +442,8 @@ class SPARQLServer:
         """
         Fetch entity metadata from GitHub CSV file.
         Returns a dict mapping URI to {label, description, type, edge_property_of, source_class, target_class}.
-        A node property listed on several classes also carries 'other_classes',
-        a list of {label, description, source_class} for the rows after the first.
+        A URI listed on several rows also carries 'other_rows', a list of
+        {label, description, type, source_class, target_class} for the rows after the first.
         """
         if not self.registry_url:
             return {}
@@ -479,16 +479,18 @@ class SPARQLServer:
                             metadata[uri]['edge_property_of'] = f"{existing};{edge_property_of}"
                         else:
                             metadata[uri]['edge_property_of'] = edge_property_of
-                    elif (uri in metadata
-                          and entity_type.lower() == 'nodeproperty'
-                          and metadata[uri]['type'].lower() == 'nodeproperty'):
-                        # Same node property on another class (e.g., organism
-                        # on both Gene and Study).  Keep one entry per class
-                        # instead of letting the last row replace the others.
-                        metadata[uri].setdefault('other_classes', []).append({
+                    elif uri in metadata:
+                        # Same URI on another row: a property listed once per
+                        # class it sits on (e.g., organism on both Gene and
+                        # Study), or a URI that is both a class and a
+                        # predicate.  Keep every row instead of letting the
+                        # last one replace the others.
+                        metadata[uri].setdefault('other_rows', []).append({
                             'label': label,
                             'description': description,
-                            'source_class': source_class
+                            'type': entity_type,
+                            'source_class': source_class,
+                            'target_class': target_class
                         })
                     else:
                         metadata[uri] = {
@@ -1168,7 +1170,14 @@ WHERE {{
             edge_properties_dict = {}
             node_properties = []
             
-            for uri, metadata in entity_metadata.items():
+            # A URI can span several CSV rows; each row is its own entry
+            rows = [
+                (uri, row)
+                for uri, metadata in entity_metadata.items()
+                for row in [metadata] + metadata.get('other_rows', [])
+            ]
+            
+            for uri, metadata in rows:
                 entity_type = metadata.get('type', '').lower()
                 
                 if entity_type == 'class':
@@ -1211,15 +1220,13 @@ WHERE {{
                                 'type': metadata.get('type', '')
                             })
                 elif entity_type == 'nodeproperty':
-                    # One entry per class the property sits on
-                    for row in [metadata] + metadata.get('other_classes', []):
-                        node_properties.append({
-                            'uri': uri,
-                            'label': row.get('label', ''),
-                            'description': row.get('description', ''),
-                            'type': metadata.get('type', ''),
-                            'class': row.get('source_class', '')
-                        })
+                    node_properties.append({
+                        'uri': uri,
+                        'label': metadata.get('label', ''),
+                        'description': metadata.get('description', ''),
+                        'type': metadata.get('type', ''),
+                        'class': metadata.get('source_class', '')
+                    })
             
             # Mark predicates that have edge properties
             # BUGFIX: Match using short_name (e.g., "TREATS_CtD") not label (e.g., "Treats (Compound treats Disease)")
