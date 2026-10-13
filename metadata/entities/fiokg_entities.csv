@@ -21,7 +21,7 @@ http://w3id.org/fio/v1/epa-frs#AnimalOperation,ANIMAL OPERATIONS,ENVIRONMENTAL P
 http://w3id.org/fio/v1/epa-frs#AssistanceSupportProgram,ASSISTANCE AND SUPPORT PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT PROVIDE ASSISTANCE TO THE REGULATED COMMUNITY AND THE GENERAL PUBLIC (E.G., ENVIRONMENTAL GRANTS, OUTREACH ACTIVITIES) OR ACTIVITIES THAT PROVIDE SUPPORT ACROSS ENVIRONMENTAL PROGRAMS.",Class,,,
 http://w3id.org/fio/v1/epa-frs#ChemicalReleaseProgram,CHEMICAL RELEASE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR CHEMICALS RELEASED TO THE ENVIRONMENT (E.G., TOXIC RELEASE INVENTORY, RELEASE ASSESSMENTS).",Class,,,
 http://w3id.org/fio/v1/epa-frs#ChemicalStorageProgram,CHEMICAL STORAGE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE OR MONITOR THE STORAGE OF CHEMICALS (E.G., RISK MANAGEMENT PROGRAM, SUPERFUND AMENDMENTS AND REAUTHORIZATION ACT (SARA) TITLE III PROGRAM).",Class,,,
-http://w3id.org/fio/v1/epa-frs#Chemicalstorageprograms,Chemicalstorageprograms,,Class,,,
+http://w3id.org/fio/v1/epa-frs#Chemicalstorageprograms,Chemicalstorageprograms,"Chemical storage programs: an environmental interest type, a subclass of frs:RiskInterest and frs:EnvironmentalInterestByRecordType. Declared in the schema but not populated in the current release.",Class,,,
 http://w3id.org/fio/v1/epa-frs#CoastalOceanProgram,COASTAL AND OCEAN PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT IMPROVE THE QUALITY OF COASTAL AND MARINE ECOSYSTEMS AND PROTECT BEACHES, COAST, AND OCEAN RESOURCES FROM POLLUTION.",Class,,,
 http://w3id.org/fio/v1/epa-frs#ComplianceInterest,Compliance Interest,Environmental interest classification for compliance-related activities and records,Class,,,
 http://w3id.org/fio/v1/epa-frs#ComplianceRecord,Compliance Record,A record documenting compliance status and history for a facility,Class,,,
@@ -71,7 +71,7 @@ http://w3id.org/fio/v1/epa-frs#SiteSystem,Site System,Information system for tra
 http://w3id.org/fio/v1/epa-frs#SolidWasteProgram,SOLID WASTE PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT REGULATE SOLID WASTES (E.G., COMPOST SITES, LANDFILLS, TRANSFER STATIONS).",Class,,,
 http://w3id.org/fio/v1/epa-frs#StateSystem,State System,State-level information system for environmental program management,Class,,,
 http://w3id.org/fio/v1/epa-frs#StateTrackingRecord,State Tracking Record,A record maintained by state environmental agencies,Class,,,
-http://w3id.org/fio/v1/epa-frs#StationSystem,Station System,Information system for environmental monitoring stations,Class,,,
+http://w3id.org/fio/v1/epa-frs#StationSystem,Station System,Information system for environmental monitoring stations Declared in the schema but not populated in the current release.,Class,,,
 http://w3id.org/fio/v1/epa-frs#SupplementalRecord,Facility Supplemental Record,"Supplemental Record that relates to a facility but primarily identifies something other than the facility itself (e.g. permit, license, incident, enforcement action records)",Class,,,
 http://w3id.org/fio/v1/epa-frs#TribalSystem,Tribal System,Tribal government information system for environmental program management,Class,,,
 http://w3id.org/fio/v1/epa-frs#TribalTrackingRecord,Tribal Tracking Record,A record maintained by tribal environmental agencies,Class,,,
@@ -80,14 +80,15 @@ http://w3id.org/fio/v1/epa-frs#WasteWaterProgram,WASTE WATER PROGRAMS,"ENVIRONME
 http://w3id.org/fio/v1/epa-frs#WaterResourcesProgram,WATER RESOURCES PROGRAMS,"ENVIRONMENTAL PROGRAMS THAT MANAGE WATER RESOURCES TO MEET THE NEEDS OF THE NATURAL ENVIRONMENT AND HUMAN COMMUNITIES, INCLUDING WATERSHED MANAGEMENT, STREAM FLOWS, WATER RIGHTS, WELL DRILLING, USE OF WATER SUPPLIES, AND DAM SAFETY.",Class,,,
 http://w3id.org/fio/v1/fio#Facility,Facility,"Any physical building, building complex or site (e.g. an airstrip, a mine, or superfund site) at which a commercial or institutional activity occurs.",Class,,,
 http://w3id.org/fio/v1/fio#Industry,Industry,A distinct group of productive or profit-making enterprises.,Class,,,
-http://w3id.org/fio/v1/fio#IndustryCollection,Industry Collection,A collection of industries grouped by a common characteristic.,Class,,,
+http://w3id.org/fio/v1/fio#IndustryCollection,Industry Collection,"A collection of industries grouped by a common characteristic. Not instantiated: the PFAS industry collections (e.g., pfas#ECOS-PFAS-IndustryCollection) are subclasses used directly as nodes, linked to their industries through fio:hasMember.",Class,,,
 http://w3id.org/fio/v1/fio#Organization,Organization,"An organized entity such as a company, government agency, or institution that owns or operates facilities",Class,,,
 http://w3id.org/fio/v1/naics#NAICS-Industry,NAICS Industry,North American Industry Classification System (NAICS) industry code - the most detailed level of industry classification (6 digits),Class,,,
 http://w3id.org/fio/v1/naics#NAICS-IndustryCode,NAICS Industry Code,A NAICS code that identifies a specific industry category at any level of the classification hierarchy,Class,,,
 http://w3id.org/fio/v1/naics#NAICS-IndustryGroup,NAICS Industry Group,NAICS industry group - an intermediate aggregation of industries (4 digits),Class,,,
 http://w3id.org/fio/v1/naics#NAICS-IndustrySector,NAICS Industry Sector,NAICS sector - the highest level of industry aggregation (2 digits),Class,,,
 http://w3id.org/fio/v1/naics#NAICS-IndustrySubsector,NAICS Industry Subsector,NAICS subsector - a subdivision of sectors into more specific industry categories (3 digits),Class,,,
-http://purl.org/dc/elements/1.1/source,source,A related resource from which the described resource is derived.,Predicate,,,
+http://www.opengis.net/ont/geosparql#SpatialObject,Spatial Object,"Anything spatial (being or having a shape, position or an extent). Here the only specific type of the regions facilities are located in: counties, county subdivisions and Level 13 S2 cells; facilities have it too.",Class,,,
+http://purl.org/dc/elements/1.1/source,source (DC elements),A related resource from which the described resource is derived.,Predicate,,,
 http://purl.org/dc/terms/alternative,alternative,An alternative name by which the resource is known.,Predicate,,,
 http://purl.org/dc/terms/contributor,contributor,An entity responsible for making contributions to the resource.,Predicate,,,
 http://purl.org/dc/terms/created,created,Date of creation of the resource.,Predicate,,,
@@ -96,11 +97,22 @@ http://purl.org/dc/terms/decription,decription,An account of the resource (sourc
 http://purl.org/dc/terms/description,description,An account of the resource.,Predicate,,,
 http://purl.org/dc/terms/identifier,identifier,An unambiguous reference to the resource within a given context.,Predicate,,,
 http://purl.org/dc/terms/issued,issued,Date of formal issuance of the resource.,Predicate,,,
+http://purl.org/dc/terms/modified,modified,Date on which the facility entry was last changed in the EPA Facility Registry Service (date).,Predicate,,FRS Facility,
 http://purl.org/dc/terms/publisher,publisher,An entity responsible for making the resource available.,Predicate,,,
 http://purl.org/dc/terms/source,source,A related resource from which the described resource is derived.,Predicate,,,
 http://purl.org/dc/terms/title,title,A name given to the resource.,Predicate,,,
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,connected to,"Topological connection (spatial contact) between a facility and a region, in both directions; the union of sfWithin, sfContains and sfTouches.",Predicate,,FRS Facility,Spatial Object
+http://purl.org/spatialai/spatial/spatial-full#connectedTo,connected to,"Topological connection (spatial contact) between a facility and a region, in both directions; the union of sfWithin, sfContains and sfTouches.",Predicate,,Spatial Object,FRS Facility
+http://purl.org/spatialai/spatial/spatial-full#spatiallyRelatedTo,spatially related to,A general spatial relationship between two features. It holds the same triples as spatial:connectedTo in this graph.,Predicate,,FRS Facility,Spatial Object
+http://purl.org/spatialai/spatial/spatial-full#spatiallyRelatedTo,spatially related to,A general spatial relationship between two features. It holds the same triples as spatial:connectedTo in this graph.,Predicate,,Spatial Object,FRS Facility
 http://schema.org/address,address,The physical address of the item.,Predicate,,,
 http://schema.org/dateModified,date Modified,The date on which the item was most recently modified.,Predicate,,,
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfContains,spatially contains,"Indicates that a region (county, county subdivision or Level 13 S2 cell) spatially contains a facility; the inverse of sfWithin.",Predicate,,Spatial Object,FRS Facility
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,"Indicates that a facility and a county subdivision touch at their boundaries; a few hundred cases, in both directions.",Predicate,,FRS Facility,Spatial Object
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfTouches,spatially touches,"Indicates that a facility and a county subdivision touch at their boundaries; a few hundred cases, in both directions.",Predicate,,Spatial Object,FRS Facility
+http://stko-kwg.geog.ucsb.edu/lod/ontology/sfWithin,spatially within,"Indicates that a facility is spatially within a region: its county (KnowWhereGraph administrativeRegion.USA.<fips>), its county subdivision (Data Commons geoId IRI) and its Level 13 S2 cell (KnowWhereGraph s2.level13.<id>). The regions carry no type more specific than geo:SpatialObject, so select them by IRI pattern.",Predicate,,FRS Facility,Spatial Object
+http://stko-kwg.geog.ucsb.edu/lod/ontology/spatialRelation,spatial relation,A general spatial relationship between two geographic features. It holds the same triples as spatial:connectedTo in this graph.,Predicate,,FRS Facility,Spatial Object
+http://stko-kwg.geog.ucsb.edu/lod/ontology/spatialRelation,spatial relation,A general spatial relationship between two geographic features. It holds the same triples as spatial:connectedTo in this graph.,Predicate,,Spatial Object,FRS Facility
 http://w3id.org/fio/v1/epa-frs#fromSystem,from System,Links a record to the information system it originated from,Predicate,,,
 http://w3id.org/fio/v1/epa-frs#hasEnvironmentalInterest,in program type,Links a facility to the environmental program types or interest classifications that apply to it,Predicate,,,Environmental Interest Type
 http://w3id.org/fio/v1/epa-frs#hasFRSId,has FRS Id,has Identifier in EPA Facility Registry Service,Predicate,,FRS Facility,
@@ -119,3 +131,9 @@ http://w3id.org/fio/v1/fio#ofYear,of Year,A relation between an industry code an
 http://w3id.org/fio/v1/fio#ownedBy,owned By,Links a facility to the organization that owns or operates it,Predicate,,,
 http://w3id.org/fio/v1/fio#subcodeOf,subcode of,A hierarchical relation between an industry and its parent industry,Predicate,,Industry,Industry
 http://w3id.org/fio/v1/fio#yearDeprecated,year deprecated,A relation between an industry code and the schema year it was deprecated and removed as a industry code with the same meaning.,Predicate,,Industry,
+http://www.opengis.net/ont/geosparql#asWKT,as WKT,"The Well-Known Text serialization of a facility's geometry, a point such as POINT(-72.618970 42.084690) in longitude latitude order, on the geometry node.",Predicate,,,
+http://www.opengis.net/ont/geosparql#hasGeometry,has geometry,Links a facility to its point geometry. Geometry nodes carry no rdf:type; read the coordinates through geo:asWKT.,Predicate,,FRS Facility,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable name for the resource.,Predicate,,,
+http://www.w3.org/2002/07/owl#sameAs,same as,"Links a six-digit NAICS code ending in 0 to the identical five-digit industry (e.g., NAICS-111110 and NAICS-11111), in both directions. Every node also has a reflexive owl:sameAs triple to itself, so filter on ?s != ?o.",Predicate,,Industry,Industry
+http://www.w3.org/ns/prov#endedAtTime,ended at time,"End time of a facility record, e.g. when a permit expired or was closed (dateTime).",Predicate,,Facility Record,
+http://www.w3.org/ns/prov#startedAtTime,started at time,"Start time of a facility record, e.g. when a permit or registration took effect (dateTime).",Predicate,,Facility Record,

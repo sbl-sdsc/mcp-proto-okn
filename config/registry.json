@@ -1387,7 +1387,7 @@
       "industry",
       "regulatory"
     ],
-    "description_summary": "The FIO KG  is a core component of the SAWGraph (Safe Agricultural Products and Water Graph) project, an NSF-funded Proto-OKN initiative to monitor and trace PFAS and other contaminants in the nation's food and water systems. This knowledge graph integrates comprehensive facility (i.e. industrial, federal, and utility facilities) and industry classification data for the coterminous United States (48 states) from EPA's Facility Registry Service (FRS), which provides an integrated source of environmental information about over 826,000 regulated facilities across air, water, and waste programs. The graph is built on top of the Facilities and Industries Ontology (FIO) that offers hierarchically structured NAICS industries and generalized links to facilities. The FRS KG currently contains 2.6 million entities and over 10 million triples, structuring data around facilities, environmental records (monitoring, permits, enforcement), and NAICS industry codes. Each facility is spatially indexed to S2 cells (Level 13; from the Spatial KG) and Level 3 administrative regions (county subdivisions; using DataCommons URIs) using KnowWhereGraph\u2019s spatial relations and linked to environmental interest types, compliance systems, and temporal tracking records. The dataset employs standard vocabularies including Dublin Core, PROV-O, GeoSPARQL, and Schema.org. The graph supports SPARQL queries such as for environmental compliance research, contaminant pathway analysis, and facility-industry profiling.",
+    "description_summary": "The FIO KG  is a core component of the SAWGraph (Safe Agricultural Products and Water Graph) project, an NSF-funded Proto-OKN initiative to monitor and trace PFAS and other contaminants in the nation's food and water systems. This knowledge graph integrates comprehensive facility (i.e. industrial, federal, and utility facilities) and industry classification data for the coterminous United States (48 states) from EPA's Facility Registry Service (FRS), an integrated source of environmental information about regulated facilities across air, water, and waste programs. The graph is built on top of the Facilities and Industries Ontology (FIO) that offers hierarchically structured NAICS industries and generalized links to facilities. The graph currently contains about 295 million triples, roughly half of them inferred (types, reflexive owl:sameAs links and spatial super-properties), covering 3.7 million facilities and 9.1 million facility records and structuring data around facilities, environmental records (monitoring, permits, enforcement), and NAICS industry codes. Each facility is spatially indexed to S2 cells (Level 13; from the Spatial KG) and Level 3 administrative regions (county subdivisions; using DataCommons URIs) using KnowWhereGraph\u2019s spatial relations and linked to environmental interest types, compliance systems, and temporal tracking records. The dataset employs standard vocabularies including Dublin Core, PROV-O, GeoSPARQL, and Schema.org. The graph supports SPARQL queries such as for environmental compliance research, contaminant pathway analysis, and facility-industry profiling.",
     "entity_types": {
       "classes": [
         "Agency",
@@ -1477,10 +1477,11 @@
         "NAICS Industry Code",
         "NAICS Industry Group",
         "NAICS Industry Sector",
-        "NAICS Industry Subsector"
+        "NAICS Industry Subsector",
+        "Spatial Object"
       ],
       "predicates": [
-        "source",
+        "source (DC elements)",
         "alternative",
         "contributor",
         "created",
@@ -1489,10 +1490,18 @@
         "description",
         "identifier",
         "issued",
+        "modified",
         "publisher",
+        "source",
         "title",
+        "connected to",
+        "spatially related to",
         "address",
         "date Modified",
+        "spatially contains",
+        "spatially touches",
+        "spatially within",
+        "spatial relation",
         "from System",
         "in program type",
         "has FRS Id",
@@ -1510,7 +1519,13 @@
         "of Year",
         "owned By",
         "subcode of",
-        "year deprecated"
+        "year deprecated",
+        "as WKT",
+        "has geometry",
+        "label",
+        "same as",
+        "ended at time",
+        "started at time"
       ],
       "has_edge_properties": false
     },
