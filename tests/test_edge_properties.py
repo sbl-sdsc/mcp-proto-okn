@@ -167,3 +167,55 @@ class TestEdgePropertyJoin:
         # Other predicates should still work too
         assert preds["MEASURED_DIFFERENTIAL_ABUNDANCE_ASmO"]["has_edge_properties"] is True
         assert preds["MEASURED_DIFFERENTIAL_METHYLATION_ASmMR"]["has_edge_properties"] is True
+
+
+# Edge properties whose labels differ from their local names, and one that
+# lives in another namespace than its predicate.
+LABELLED_EDGE_PROPS_CSV = """\
+URI,Label,Description,Type,EdgePropertyOf,SourceClass,TargetClass
+https://ex.org/kg/Observation,Observation,An observation,Class,,,
+https://ex.org/kg/Species,Species,A species,Class,,,
+https://ex.org/kg/Place,Place,A place,Class,,,
+https://ex.org/kg/OBSERVED,Observed Organism,Observation of a species,Predicate,,https://ex.org/kg/Observation,https://ex.org/kg/Species
+https://ex.org/kg/measurement_type,Measurement Type,Kind of measurement (string),EdgeProperty,OBSERVED,,
+https://ex.org/kg/SEEN_AT,Seen At,Where a species was seen,Predicate,,https://ex.org/kg/Species,https://ex.org/kg/Place
+http://purl.org/dc/terms/date,Date,Date of the sighting (dateTime),EdgeProperty,SEEN_AT,,
+https://ex.org/kg/seen_times,Seen Times,Number of sightings (int),EdgeProperty,SEEN_AT,,
+"""
+
+
+class TestQueryTemplate:
+    """The query template for a reified edge must be valid SPARQL for any graph."""
+
+    def _templates(self, mock_urlopen):
+        mock_urlopen.return_value = _mock_urlopen(LABELLED_EDGE_PROPS_CSV)
+
+        server = SPARQLServer(endpoint_url="http://localhost/sparql")
+        server.registry_url = "http://example.org"
+        server.kg_name = "test-kg"
+        edge_props = server.query_schema()["edge_properties"]
+        return {name: info["query_template"] for name, info in edge_props.items()}
+
+    @patch("mcp_proto_okn.server.urlopen")
+    def test_shared_namespace_uses_the_graphs_own_prefix(self, mock_urlopen):
+        template = self._templates(mock_urlopen)["OBSERVED"]
+
+        assert "PREFIX schema: <https://ex.org/kg/>" in template
+        assert "rdf:predicate schema:OBSERVED ;" in template
+        assert "schema:measurement_type ?measurement_type ." in template
+
+    @patch("mcp_proto_okn.server.urlopen")
+    def test_names_come_from_uris_not_labels(self, mock_urlopen):
+        template = self._templates(mock_urlopen)["OBSERVED"]
+
+        assert "Measurement Type" not in template
+        assert "SELECT ?observation ?species ?measurement_type" in template
+
+    @patch("mcp_proto_okn.server.urlopen")
+    def test_mixed_namespaces_use_full_iris(self, mock_urlopen):
+        template = self._templates(mock_urlopen)["SEEN_AT"]
+
+        assert "PREFIX schema:" not in template
+        assert "rdf:predicate <https://ex.org/kg/SEEN_AT> ;" in template
+        assert "<http://purl.org/dc/terms/date> ?date ;" in template
+        assert "<https://ex.org/kg/seen_times> ?seen_times ." in template

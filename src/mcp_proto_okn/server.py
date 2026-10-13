@@ -1101,32 +1101,57 @@ class SPARQLServer:
         
         return formatted_result
 
-    def _generate_query_template(self, relationship_label: str, source_class: str, target_class: str, properties: List[Dict]) -> str:
+    def _generate_query_template(self, relationship_uri: str, source_class: str, target_class: str, properties: List[Dict]) -> str:
         """Generate a SPARQL query template for a reified relationship with edge properties."""
         
-        source_var = source_class.lower() if source_class else 'source'
-        target_var = target_class.lower() if target_class else 'target'
+        def local_name(term: str) -> str:
+            return re.split(r'[/#]', term)[-1] if term else ''
+        
+        def variable(term: str, fallback: str) -> str:
+            # SPARQL variable from a class or property name (a URI or a bare name)
+            name = re.sub(r'\W+', '_', local_name(term)).strip('_')
+            return name or fallback
+        
+        source_var = variable(source_class, 'source').lower()
+        target_var = variable(target_class, 'target').lower()
+        if target_var == source_var:
+            target_var += '_2'
+        
+        # Use one prefix when the relationship and all its properties share a
+        # namespace and have plain local names; otherwise write full IRIs.
+        uris = [relationship_uri] + [prop['uri'] for prop in properties]
+        namespace = relationship_uri[:len(relationship_uri) - len(local_name(relationship_uri))]
+        shared = all(
+            uri.startswith(namespace) and re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*', uri[len(namespace):])
+            for uri in uris
+        )
+        
+        def term(uri: str) -> str:
+            return f"schema:{uri[len(namespace):]}" if shared else f"<{uri}>"
         
         # Build property selects and patterns
         prop_selects = []
         prop_patterns = []
         
         for prop in properties:
-            prop_label = prop['label']
-            prop_selects.append(f"?{prop_label}")
-            prop_patterns.append(f"         schema:{prop_label} ?{prop_label} ;")
+            prop_var = variable(prop['uri'], 'value')
+            prop_selects.append(f"?{prop_var}")
+            prop_patterns.append(f"         {term(prop['uri'])} ?{prop_var} ;")
         
         # Remove trailing semicolon from last pattern
         if prop_patterns:
             prop_patterns[-1] = prop_patterns[-1].rstrip(' ;') + ' .'
         
-        template = f"""PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX schema: <https://purl.org/okn/frink/kg/spoke-genelab/schema/>
+        prefixes = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+        if shared:
+            prefixes += f"\nPREFIX schema: <{namespace}>"
+        
+        template = f"""{prefixes}
 
 SELECT ?{source_var} ?{target_var} {' '.join(prop_selects)}
 WHERE {{
   ?stmt rdf:subject ?{source_var} ;
-        rdf:predicate schema:{relationship_label} ;
+        rdf:predicate {term(relationship_uri)} ;
         rdf:object ?{target_var} ;
 {chr(10).join(prop_patterns)}
 }}"""
@@ -1250,7 +1275,7 @@ WHERE {{
                         'target_class': rel_metadata['target_class'],
                         'properties': properties,
                         'query_template': self._generate_query_template(
-                            relationship_label, 
+                            rel_metadata['uri'], 
                             rel_metadata['source_class'],
                             rel_metadata['target_class'],
                             properties
