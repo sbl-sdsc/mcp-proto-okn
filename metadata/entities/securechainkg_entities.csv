@@ -9,51 +9,102 @@ https://w3id.org/secure-chain/Software,Software,Represents software applications
 https://w3id.org/secure-chain/SoftwareVersion,Software Version,Represents a specific version of a software application within the secure chain.,Class,,,
 https://w3id.org/secure-chain/Vulnerability,Vulnerability,Represents vulnerabilities that may affect software or hardware components in the secure supply chain.,Class,,,
 https://w3id.org/secure-chain/VulnerabilityType,Vulnerability Type,Represents types or classifications of vulnerabilities affecting secure supply chains.,Class,,,
-http://asu.edu/semantics/SUDOKN/hasIntegerValue,has Integer Value,Integer value property.,NodeProperty,,TwoDimensionalCartesianSpatialCoordinateDatum,
-http://asu.edu/semantics/SUDOKN/hasLatitudeValue,has Latitude Value,Latitude coordinate value.,NodeProperty,,GeospatialLocation,
-http://asu.edu/semantics/SUDOKN/hasLongitudeValue,has Longitude Value,Longitude coordinate value.,NodeProperty,,GeospatialLocation,
-http://asu.edu/semantics/SUDOKN/hasNAICSTextValue,has NAICS Text Value,NAICS classification text value.,NodeProperty,,Manufacturer,
+http://schema.org/Organization,Organization,"An organization such as a school, NGO, corporation, club, etc.",Class,,,
+http://asu.edu/semantics/SUDOKN/GeospatialLocation,Geospatial Location,"A manufacturer's site: links to its postal address, ZIP code, coordinates and city. Part of the SUDOKN manufacturer data embedded in this graph.",Class,,,
+http://asu.edu/semantics/SUDOKN/PostalAddress,Postal Address,A postal address node; its text is read through hasTextValue. Part of the SUDOKN manufacturer data embedded in this graph.,Class,,,
+http://asu.edu/semantics/SUDOKN/USPostalCode,US Postal Code,"A ZIP code node; its value is read through hasIntegerValue, as a string. Part of the SUDOKN manufacturer data embedded in this graph.",Class,,,
+http://asu.edu/semantics/SUDOKN/TwoDimensionalCartesianSpatialCoordinateDatum,Two Dimensional Cartesian Spatial Coordinate Datum,"A coordinate node carrying a latitude and a longitude value, as strings. Part of the SUDOKN manufacturer data embedded in this graph.",Class,,,
+http://asu.edu/semantics/SUDOKN/BusinessDescription,Business Description,A free-text description of a manufacturer's business; its text is read through hasTextValue. Part of the SUDOKN manufacturer data embedded in this graph.,Class,,,
+http://asu.edu/semantics/SUDOKN/WebAddress,Web Address,A web address of a manufacturer; the URL is its rdfs:label. Part of the SUDOKN manufacturer data embedded in this graph.,Class,,,
+http://asu.edu/semantics/SUDOKN/City,City,A city a manufacturer site is located in. Part of the SUDOKN manufacturer data embedded in this graph.,Class,,,
+http://asu.edu/semantics/SUDOKN/State,State,A state or province that cities are located in. Part of the SUDOKN manufacturer data embedded in this graph.,Class,,,
+http://asu.edu/semantics/SUDOKN/Country,Country,A country that cities and states are located in. Part of the SUDOKN manufacturer data embedded in this graph.,Class,,,
+http://asu.edu/semantics/SUDOKN/OwnershipStatusClassifier,Ownership Status Classifier,"An ownership status of a manufacturer, such as minority-owned or veteran-owned. Part of the SUDOKN manufacturer data embedded in this graph.",Class,,,
+https://climatepub4kg.github.io/ontology#Source,Climate Model Source,"A climate model from the ClimatePub4KG graph (CESM2, GFDL-CM4, GFDL-ESM4), listed here with the software packages it depends on.",Class,,,
+http://asu.edu/semantics/SUDOKN/hasIntegerValue,has Integer Value,Integer value property.,NodeProperty,,USPostalCode,
+http://asu.edu/semantics/SUDOKN/hasLatitudeValue,has Latitude Value,Latitude coordinate value.,NodeProperty,,TwoDimensionalCartesianSpatialCoordinateDatum,
+http://asu.edu/semantics/SUDOKN/hasLongitudeValue,has Longitude Value,Longitude coordinate value.,NodeProperty,,TwoDimensionalCartesianSpatialCoordinateDatum,
+http://asu.edu/semantics/SUDOKN/hasNAICSTextValue,has NAICS Text Value,"NAICS classification text value. Sits on NAICS classifier nodes, which are typed with SUDOKN NAICS classes that are not listed here.",NodeProperty,,,
 http://asu.edu/semantics/SUDOKN/hasNumberOfEmployees,has Number Of Employees,Number of employees in an organization.,NodeProperty,,Manufacturer,
 http://asu.edu/semantics/SUDOKN/hasOrganizationYearOfEstablishment,has Organization Year Of Establishment,Year of establishment for an organization.,NodeProperty,,Manufacturer,
-http://schema.org/Organization,Organization,"An organization such as a school, NGO, corporation, club, etc.",Class,,,
 http://schema.org/contributor,contributor,A contributor to the software.,Predicate,,Software,Person
 http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,Predicate,,,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Vulnerability,
 http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Organization,
+http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,VulnerabilityType,
 http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,License,
 http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Software,
-http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,Vulnerability,
-http://schema.org/identifier,identifier,The identifier property represents any kind of identifier for any kind of Thing.,NodeProperty,,VulnerabilityType,
 http://schema.org/license,license,The license for the software version.,Predicate,,SoftwareVersion,License
-http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,,
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Hardware,Organization
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Hardware,Hardware
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Hardware,Software
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Organization,Organization
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Organization,Hardware
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Organization,Software
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Software,Organization
+http://schema.org/manufacturer,manufacturer,The manufacturer of the product.,Predicate,,Software,Software
 http://schema.org/name,name,The name of the item.,Predicate,,,
-http://schema.org/name,name,The name of the item.,NodeProperty,,Organization,
-http://schema.org/name,name,The name of the item.,NodeProperty,,Person,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Software,
 http://schema.org/name,name,The name of the item.,NodeProperty,,Hardware,
 http://schema.org/name,name,The name of the item.,NodeProperty,,HardwareVersion,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Person,
+http://schema.org/name,name,The name of the item.,NodeProperty,,Organization,
 http://schema.org/name,name,The name of the item.,NodeProperty,,License,
-http://schema.org/name,name,The name of the item.,NodeProperty,,Software,
-http://schema.org/programmingLanguage,programming Language,The programming language used.,Predicate,,Software,
+http://schema.org/programmingLanguage,programming Language,The programming language used.,Predicate,,,
+http://schema.org/programmingLanguage,programming Language,The programming language used.,NodeProperty,,Software,
 http://schema.org/programmingLanguage,programming Language,The programming language used.,NodeProperty,,Organization,
 http://schema.org/programmingLanguage,programming Language,The programming language used.,NodeProperty,,Hardware,
 http://schema.org/url,url,URL of the item.,Predicate,,,
+http://schema.org/url,url,URL of the item.,NodeProperty,,SoftwareVersion,
 http://schema.org/url,url,URL of the item.,NodeProperty,,Organization,
 http://schema.org/url,url,URL of the item.,NodeProperty,,Software,
-http://schema.org/url,url,URL of the item.,NodeProperty,,SoftwareVersion,
-http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,Manufacturer,
 http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,MaterialProduct,
-https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has Text Value,Text value property.,NodeProperty,,BusinessDescription,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,WebAddress,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,Manufacturer,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,City,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,State,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,Country,
+http://www.w3.org/2000/01/rdf-schema#label,label,A human-readable label.,NodeProperty,,OwnershipStatusClassifier,
 https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has Text Value,Text value property.,NodeProperty,,PostalAddress,
+https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/hasTextValue,has Text Value,Text value property.,NodeProperty,,BusinessDescription,
 https://w3id.org/secure-chain/cpe23,cpe23,Common Platform Enumeration (CPE) 2.3 identifier for software or hardware.,Predicate,,,
 https://w3id.org/secure-chain/cpe23,cpe23,Common Platform Enumeration (CPE) 2.3 identifier for software or hardware.,NodeProperty,,HardwareVersion,
 https://w3id.org/secure-chain/dependsOn,depends On,Indicates that a software version depends on another software version.,Predicate,,SoftwareVersion,SoftwareVersion
-https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,Predicate,,Software,
+https://w3id.org/secure-chain/dependsOn,depends On,Indicates that a software version depends on another software version.,Predicate,,Source,Software
+https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,Predicate,,,
+https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Software,
 https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Organization,
 https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Hardware,
-https://w3id.org/secure-chain/ecosystem,ecosystem,Specifies the software ecosystem or platform.,NodeProperty,,Software,
 https://w3id.org/secure-chain/hasHardwareVersion,has Hardware Version,Indicates the relationship between a hardware product and its version.,Predicate,,Hardware,HardwareVersion
+https://w3id.org/secure-chain/hasHardwareVersion,has Hardware Version,Indicates the relationship between a hardware product and its version.,Predicate,,Organization,HardwareVersion
+https://w3id.org/secure-chain/hasHardwareVersion,has Hardware Version,Indicates the relationship between a hardware product and its version.,Predicate,,Software,HardwareVersion
 https://w3id.org/secure-chain/hasSoftwareVersion,has Software Version,Indicates the relationship between a software product and its version.,Predicate,,Software,SoftwareVersion
+https://w3id.org/secure-chain/hasSoftwareVersion,has Software Version,Indicates the relationship between a software product and its version.,Predicate,,Organization,SoftwareVersion
+https://w3id.org/secure-chain/hasSoftwareVersion,has Software Version,Indicates the relationship between a software product and its version.,Predicate,,Hardware,SoftwareVersion
 https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,Predicate,,,
-https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,NodeProperty,,HardwareVersion,
 https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,NodeProperty,,SoftwareVersion,
+https://w3id.org/secure-chain/versionName,version Name,Represents the version name of a software or hardware product.,NodeProperty,,HardwareVersion,
 https://w3id.org/secure-chain/vulnerabilityType,vulnerability Type,Associates a vulnerability with its specific type or classification.,Predicate,,Vulnerability,VulnerabilityType
+https://w3id.org/secure-chain/vulnerableTo,vulnerable To,Indicates that a particular version of software is vulnerable to a specific vulnerability.,Predicate,,HardwareVersion,Vulnerability
 https://w3id.org/secure-chain/vulnerableTo,vulnerable To,Indicates that a particular version of software is vulnerable to a specific vulnerability.,Predicate,,SoftwareVersion,Vulnerability
+http://asu.edu/semantics/SUDOKN/organizationLocatedIn,organization Located In,Links a manufacturer to a site it operates.,Predicate,,Manufacturer,GeospatialLocation
+http://asu.edu/semantics/SUDOKN/hasPostalAddress,has Postal Address,Links a manufacturer site to its postal address node.,Predicate,,GeospatialLocation,PostalAddress
+http://asu.edu/semantics/SUDOKN/hasZIPcode,has ZIP code,Links a manufacturer site to its ZIP code node.,Predicate,,GeospatialLocation,USPostalCode
+http://asu.edu/semantics/SUDOKN/hasSpatialCoordinates,has Spatial Coordinates,"Links a manufacturer site to its coordinate node, which carries the latitude and longitude.",Predicate,,GeospatialLocation,TwoDimensionalCartesianSpatialCoordinateDatum
+http://asu.edu/semantics/SUDOKN/locatedInCity,located In City,Links a manufacturer site to the city it is in.,Predicate,,GeospatialLocation,City
+http://asu.edu/semantics/SUDOKN/locatedInState,located In State,Links a city to its state.,Predicate,,City,State
+http://asu.edu/semantics/SUDOKN/locatedInCountry,located In Country,Links a city or a state to its country.,Predicate,,City,Country
+http://asu.edu/semantics/SUDOKN/locatedInCountry,located In Country,Links a city or a state to its country.,Predicate,,State,Country
+http://asu.edu/semantics/SUDOKN/locatedInCountry,located In Country,Links a city or a state to its country.,Predicate,,GeospatialLocation,Country
+http://asu.edu/semantics/SUDOKN/hasWebAddress,has Web Address,Links a manufacturer to its web address node.,Predicate,,Manufacturer,WebAddress
+http://asu.edu/semantics/SUDOKN/manufactures,manufactures,"Links a manufacturer to a product it makes. Read backwards from a product that a hardware version is owl:sameAs, it gives the manufacturer of that hardware.",Predicate,,Manufacturer,MaterialProduct
+http://asu.edu/semantics/SUDOKN/classifiedByProductCategory,classified By Product Category,"Links a product to its product category. The object is a product category IRI used as a node (e.g., sud:TelevisionsProductCategory) and carries no rdf:type.",Predicate,,MaterialProduct,
+http://asu.edu/semantics/SUDOKN/hasProcessCapability,has Process Capability,"Links a manufacturer to a manufacturing process it offers. The capability node is typed with one of 444 SUDOKN capability classes (e.g., sud:CNCMachiningCapability), which are not listed here.",Predicate,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasMaterialCapability,has Material Capability,"Links a manufacturer to a material it can process. The capability node is typed with one of 444 SUDOKN capability classes (e.g., sud:AluminumProcessingCapability), which are not listed here.",Predicate,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasCertificate,has Certificate,"Links a manufacturer to a certificate it holds. The certificate node is typed with a SUDOKN certificate class (e.g., sud:ISO9001, sud:AS9100), which are not listed here.",Predicate,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/suppliesToIndustry,supplies To Industry,"Links a manufacturer to an industry it supplies. The industry node is typed with one of 84 SUDOKN industry classes (e.g., sud:AerospaceIndustry), which are not listed here.",Predicate,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasPrimaryNAICSClassifier,has Primary NAICS Classifier,"Links a manufacturer to its primary NAICS industry code. The node is typed with one of 301 SUDOKN NAICS classes (e.g., sud:NAICS332111.0), which are not listed here.",Predicate,,Manufacturer,
+http://asu.edu/semantics/SUDOKN/hasOwnershipStatusClassifier,has Ownership Status Classifier,Links a manufacturer to an ownership status such as minority-owned or veteran-owned.,Predicate,,Manufacturer,OwnershipStatusClassifier
+https://spec.industrialontologies.org/ontology/core/Core/describedBy,described By,Links a manufacturer to its business description node.,Predicate,,Manufacturer,BusinessDescription
+http://www.w3.org/2002/07/owl#sameAs,same As,"Links a hardware version to the SUDOKN product it corresponds to. This is the bridge from the software and hardware supply-chain data to the embedded manufacturer data: follow it, then sud:manufactures backwards, to reach the manufacturer.",Predicate,,HardwareVersion,MaterialProduct
+https://climatepub4kg.github.io/ontology#name,climate model name,"Name of a climate model source (e.g., CESM2).",NodeProperty,,Source,
