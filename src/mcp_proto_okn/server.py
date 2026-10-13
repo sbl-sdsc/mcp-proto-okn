@@ -438,10 +438,12 @@ class SPARQLServer:
         except Exception:
             return None
 
-    def _get_entity_metadata(self) -> Dict[str, Dict[str, str]]:
+    def _get_entity_metadata(self) -> Dict[str, Dict[str, Any]]:
         """
         Fetch entity metadata from GitHub CSV file.
         Returns a dict mapping URI to {label, description, type, edge_property_of, source_class, target_class}.
+        A node property listed on several classes also carries 'other_classes',
+        a list of {label, description, source_class} for the rows after the first.
         """
         if not self.registry_url:
             return {}
@@ -477,6 +479,17 @@ class SPARQLServer:
                             metadata[uri]['edge_property_of'] = f"{existing};{edge_property_of}"
                         else:
                             metadata[uri]['edge_property_of'] = edge_property_of
+                    elif (uri in metadata
+                          and entity_type.lower() == 'nodeproperty'
+                          and metadata[uri]['type'].lower() == 'nodeproperty'):
+                        # Same node property on another class (e.g., organism
+                        # on both Gene and Study).  Keep one entry per class
+                        # instead of letting the last row replace the others.
+                        metadata[uri].setdefault('other_classes', []).append({
+                            'label': label,
+                            'description': description,
+                            'source_class': source_class
+                        })
                     else:
                         metadata[uri] = {
                             'label': label,
@@ -1198,13 +1211,15 @@ WHERE {{
                                 'type': metadata.get('type', '')
                             })
                 elif entity_type == 'nodeproperty':
-                    node_properties.append({
-                        'uri': uri,
-                        'label': metadata.get('label', ''),
-                        'description': metadata.get('description', ''),
-                        'type': metadata.get('type', ''),
-                        'class': metadata.get('source_class', '')
-                    })
+                    # One entry per class the property sits on
+                    for row in [metadata] + metadata.get('other_classes', []):
+                        node_properties.append({
+                            'uri': uri,
+                            'label': row.get('label', ''),
+                            'description': row.get('description', ''),
+                            'type': metadata.get('type', ''),
+                            'class': row.get('source_class', '')
+                        })
             
             # Mark predicates that have edge properties
             # BUGFIX: Match using short_name (e.g., "TREATS_CtD") not label (e.g., "Treats (Compound treats Disease)")
