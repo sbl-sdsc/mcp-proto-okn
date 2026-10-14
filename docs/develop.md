@@ -125,7 +125,7 @@ src/mcp_proto_okn/
 ├── registry.py            # GraphRegistry + GraphInfo (graph catalog)
 ├── identifier_mapping.py  # Cross-graph identifier bridges + join strategies
 ├── server.py              # SPARQLServer (per-graph query engine)
-└── registry.json          # Packaged graph catalog (33 graphs)
+└── registry.json          # Packaged graph catalog (40 graphs)
 
 config/
 └── registry.json          # Source graph catalog (build artifact, packaged with the wheel)
@@ -150,7 +150,7 @@ The AI assistant uses these tools in sequence to navigate from a natural-languag
 
 | Tool | Purpose |
 |---|---|
-| `list_graphs(domain?, entity_type?)` | Browse all 33 graphs with metadata |
+| `list_graphs(domain?, entity_type?)` | Browse all 40 graphs with metadata |
 | `route_query(question)` | Rank all graphs by keyword overlap with the question (lexical prefilter, not a semantic router) |
 | `get_description(graph_name)` | Full description, example queries, identifier namespaces |
 | `get_schema(graph_name)` | Classes, predicates, edge properties for a graph |
@@ -170,7 +170,7 @@ Pseudocode specification of the internals: **[docs/README.md](README.md)**.
 
 ### Components
 
-**Graph Registry (`registry.py` + `registry.json`)** — a structured catalog of all 33 graphs. Each entry contains `name`, `display_name`, `endpoint_url`, `domain_tags`, `description_summary`, `entity_types`, `identifier_namespaces`, `example_queries`, and optional `aliases`. The registry enables **discovery without querying**.
+**Graph Registry (`registry.py` + `registry.json`)** — a structured catalog of all 40 graphs. Each entry contains `name`, `display_name`, `endpoint_url`, `domain_tags`, `description_summary`, `entity_types`, `identifier_namespaces`, `example_queries`, and optional `aliases`. The registry enables **discovery without querying**.
 
 **Identifier Mapping (`identifier_mapping.py`)** — a static bridge table that maps identifier types to graphs and URI patterns, so the assistant can pick the right join key when bridging two graphs:
 

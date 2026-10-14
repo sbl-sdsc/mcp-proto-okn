@@ -8,7 +8,7 @@ For how these tools work internally — the query pipeline, ontology expansion, 
 
 ### `list_graphs(domain?, entity_type?)`
 
-Browse all 33 graphs with metadata. Call this first to understand what data is available.
+Browse all 40 graphs with metadata. Call this first to understand what data is available.
 
 **Parameters**
 - `domain` (string, optional): filter by domain tag (`biology`, `health`, `toxicology`, `environment`, `geospatial`, …)
